@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Mobile Menu Toggle ---
     const mobileToggle = document.getElementById('mobile-toggle');
+    const campusMenuToggle = document.getElementById('campus-menu-toggle');
     const mainNav = document.getElementById('main-nav');
 
     if (mobileToggle && mainNav) {
@@ -38,8 +39,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
             mobileToggle.setAttribute('aria-expanded', !expanded);
             mainNav.classList.toggle('mobile-open');
+            mobileToggle.classList.toggle('is-active');
+            
+            // Prevent body scrolling when mobile menu is open
+            document.body.style.overflow = mainNav.classList.contains('mobile-open') ? 'hidden' : '';
         });
     }
+
+    // --- Mobile Menu Accordions ---
+    const mobileDropdownLinks = document.querySelectorAll('.main-nav__item--has-dropdown > .main-nav__link');
+    
+    mobileDropdownLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Only fire accordion logic if we are in mobile view (hamburger toggle is visible)
+            const isMobile = mobileToggle && window.getComputedStyle(mobileToggle).display !== 'none';
+            
+            if (isMobile) {
+                e.preventDefault();
+                const parentItem = link.parentElement;
+                
+                // Close other open accordions for a cleaner UX
+                document.querySelectorAll('.main-nav__item.accordion-open').forEach(item => {
+                    if (item !== parentItem) item.classList.remove('accordion-open');
+                });
+
+                parentItem.classList.toggle('accordion-open');
+            }
+        });
+    });
 
     // --- Hero Image Slider ---
     const heroSlides = document.querySelectorAll('.hero__slide');

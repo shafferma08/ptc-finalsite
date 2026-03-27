@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinellas Technical College — Website Redesign Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ptc-green: #008142;
+            --ptc-green-light: #8DC63F;
+            --ptc-yellow: #FFCF01;
+            --text-dark: #1A1A1A;
+            --text-light: #555555;
+            --border-light: #e0e0e0;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; color: var(--text-dark); line-height: 1.7; margin: 0; padding: 0; background: #f4f6f8; }
+        .page { max-width: 8.5in; margin: 2rem auto; padding: 1in; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        h1, h2, h3, h4 { font-family: 'Roboto Slab', serif; color: var(--ptc-green); }
+        h1 { font-size: 2.6rem; text-align: center; margin-bottom: 0.5rem; line-height: 1.2; }
+        h2 { font-size: 1.7rem; border-bottom: 3px solid var(--ptc-yellow); padding-bottom: 0.5rem; margin-top: 2.5rem; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; color: #2c3e50; }
+        h4 { font-size: 1.05rem; margin-top: 1rem; margin-bottom: 0.5rem; }
+        p, li { font-size: 1rem; }
+        ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        li { margin-bottom: 0.4rem; }
+        
+        /* Cover */
+        .cover { min-height: 65vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem 0; }
+        .cover img { max-width: 300px; margin-bottom: 2.5rem; }
+        .cover-subtitle { font-size: 1.35rem; color: #2c3e50; margin-bottom: 1.5rem; font-weight: 300; max-width: 500px; }
+        .cover-meta { font-size: 1rem; color: var(--text-light); margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-light); width: 75%; }
+        .cover-meta p { margin: 0.3rem 0; }
+        
+        /* Callouts */
+        .alert { padding: 1rem 1.2rem; border-left: 5px solid var(--ptc-yellow); background: #fffcf0; margin: 1.5rem 0; font-weight: 400; }
+        .alert-danger { border-left-color: #d9534f; background: #fdf7f7; }
+        .alert-success { border-left-color: var(--ptc-green); background: #f0fdf4; }
+        .alert strong { display: block; margin-bottom: 0.25rem; }
+        
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem; }
+        th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background: #f8f9fa; font-weight: 600; color: var(--ptc-green); }
+        tr:nth-child(even) { background-color: #fcfcfc; }
+        
+        /* Cards */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+        .grid--3 { grid-template-columns: 1fr 1fr 1fr; }
+        .card { padding: 1.2rem; border: 1px solid var(--border-light); border-radius: 8px; background: #fafafa; }
+        .card h4 { margin-top: 0; color: var(--ptc-green); font-size: 1.05rem; }
+        .card p { font-size: 0.92rem; margin-bottom: 0; }
+        .card ul { font-size: 0.88rem; margin-bottom: 0; padding-left: 1.2rem; }
+        .card ul li { margin-bottom: 0.2rem; }
+        
+        /* Badges */
+        .badge { display: inline-block; padding: 0.2rem 0.5rem; background: var(--ptc-green); color: white; border-radius: 3px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-danger { background: #d9534f; }
+        .badge-warning { background: #f0ad4e; color: #333; }
+        
+        /* Sitemap tree */
+        .sitemap-tree { font-family: 'Roboto Mono', 'Courier New', monospace; font-size: 0.78rem; line-height: 1.5; background: #f8f9fa; padding: 1rem 1.2rem; border: 1px solid var(--border-light); border-radius: 6px; overflow-x: auto; white-space: pre; margin: 1rem 0; }
+        
+        /* Stat bar */
+        .stat-bar { display: flex; gap: 1.5rem; margin: 1.5rem 0; flex-wrap: wrap; }
+        .stat-item { flex: 1; min-width: 120px; text-align: center; padding: 1rem; background: #f0fdf4; border-radius: 8px; border: 1px solid #c3e6cb; }
+        .stat-item .num { font-size: 2rem; font-weight: 700; color: var(--ptc-green); display: block; }
+        .stat-item .label { font-size: 0.82rem; color: var(--text-light); }
+        
+        /* Print */
+        .print-btn { display: block; width: 220px; margin: 2rem auto; padding: 0.9rem; background: var(--ptc-green); color: white; text-align: center; border-radius: 4px; font-weight: bold; cursor: pointer; border: none; font-size: 1rem; }
+        .print-btn:hover { background: #006030; }
+        
+        @media print {
+            body { background: white; }
+            .page { margin: 0; padding: 0.5in; box-shadow: none; max-width: 100%; }
+            .page-break { page-break-before: always; }
+            .no-break { page-break-inside: avoid; }
+            .print-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn" onclick="window.print()">&#128438; Print / Save as PDF</button>
+
+    <div class="page">
+
+        <!-- ===== COVER PAGE ===== -->
+        <div class="cover">
+            <img src="assets/images/logos/ptc-logo-horizontal-tagline.png" alt="Pinellas Technical College Logo">
+            <h1>Comprehensive Website Audit &amp; Redesign Strategy</h1>
+            <div class="cover-subtitle">Modernizing the Information Architecture, Brand Compliance, and User Experience across all PTC web properties</div>
+            
+            <div class="cover-meta">
+                <p><strong>Prepared For:</strong> Pinellas Technical College Leadership</p>
+                <p><strong>Prepared By:</strong> PTC Web Development Team</p>
+                <p><strong>Scope:</strong> myptc.edu &middot; clearwater.myptc.edu &middot; stpete.myptc.edu</p>
+                <p><strong>Date:</strong> March 2026</p>
+                <p><strong>Platform:</strong> Finalsite CMS</p>
+            </div>
+        </div>
+        
+        <div class="page-break"></div>
+
+        <!-- ===== TABLE OF CONTENTS ===== -->
+        <h2>Table of Contents</h2>
+        <ol style="font-size: 1.05rem; line-height: 2;">
+            <li>Executive Summary</li>
+            <li>Brand Compliance Audit</li>
+            <li>Navigation &amp; UX Issues (Legacy)</li>
+            <li>COE Accreditation &amp; Compliance Strategy</li>
+            <li>Proposed Navigation Architecture (5-Pillar System)</li>
+            <li>Visual Design Modernization</li>
+            <li>Technical Issues Found</li>
+            <li>Implementation Roadmap</li>
+            <li>Appendix A: Legacy Site Map — myptc.edu</li>
+            <li>Appendix B: Legacy Site Map — Clearwater Campus</li>
+            <li>Appendix C: Legacy Site Map — St. Petersburg Campus</li>
+        </ol>
+
+        <div class="page-break"></div>
+
+        <!-- ===== 1. EXECUTIVE SUMMARY ===== -->
+        <h2>1. Executive Summary</h2>
+        <p>This audit evaluates all three Pinellas Technical College websites — the <strong>PTC Main Site</strong> (myptc.edu), the <strong>Clearwater Campus</strong> (clearwater.myptc.edu), and the <strong>St. Petersburg Campus</strong> (stpete.myptc.edu) — against the official PTC brand guide, modern UX/UI best practices, COE accreditation requirements, and the capabilities of the Finalsite CMS platform.</p>
+        
+        <p>While the current sites are functional, our audit uncovered <strong>systemic issues</strong> that undermine brand integrity, create maintenance overhead, and pose potential accreditation compliance risk:</p>
+
+        <div class="stat-bar">
+            <div class="stat-item">
+                <span class="num">3</span>
+                <span class="label">Brand Violations</span>
+            </div>
+            <div class="stat-item">
+                <span class="num">6+</span>
+                <span class="label">Broken Links Found</span>
+            </div>
+            <div class="stat-item">
+                <span class="num">200+</span>
+                <span class="label">Pages Audited</span>
+            </div>
+            <div class="stat-item">
+                <span class="num">17</span>
+                <span class="label">COE Data Points Mapped</span>
+            </div>
+        </div>
+
+        <div class="alert alert-danger">
+            <strong>Critical Finding: Content Duplication</strong>
+            The legacy architecture relies on copy-pasting identical Financial Aid, Admissions, Testing, and Distance Learning content across all three sites. This creates an immense maintenance burden: when one page is updated, the copies on the other two sites fall out of sync, leading to data rot and potential student confusion.
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- ===== 2. BRAND COMPLIANCE ===== -->
+        <h2>2. Brand Compliance Audit</h2>
+        <p>Our review compared the live website implementation directly against the official Pinellas County Schools / PTC Brand Guide. Three critical deviations were identified:</p>
+
+        <table>
+            <tr>
+                <th>Element</th>
+                <th>Brand Guide Standard</th>
+                <th>Legacy Implementation</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td><strong>Headline Font</strong></td>
+                <td>Elizeth (Adobe) / Roboto Slab (Free)</td>
+                <td>Playfair Display</td>
+                <td><span class="badge badge-danger">Non-Compliant</span></td>
+            </tr>
+            <tr>
+                <td><strong>Body Font</strong></td>
+                <td>Proxima Nova (Adobe) / Roboto (Free)</td>
+                <td>Mulish</td>
+                <td><span class="badge badge-danger">Non-Compliant</span></td>
+            </tr>
+            <tr>
+                <td><strong>Primary Green</strong></td>
+                <td>#008142 (PMS 348)</td>
+                <td>#278406</td>
+                <td><span class="badge badge-danger">Non-Compliant</span></td>
+            </tr>
+            <tr>
+                <td><strong>Primary Yellow</strong></td>
+                <td>#FFCF01 (PMS 115)</td>
+                <td>Appears close</td>
+                <td><span class="badge badge-warning">Verify</span></td>
+            </tr>
+        </table>
+        
+        <h3>2.1 Corrected Brand Color System</h3>
+        <table>
+            <tr>
+                <th>Token Name</th>
+                <th>Hex Value</th>
+                <th>Usage</th>
+            </tr>
+            <tr><td>PTC Green (Primary)</td><td><strong>#008142</strong></td><td>Headers, buttons, links, nav bar</td></tr>
+            <tr><td>PTC Yellow (Accent)</td><td><strong>#FFCF01</strong></td><td>Highlights, CTAs, campus identity accents</td></tr>
+            <tr><td>OWI-BIS Green (Secondary)</td><td><strong>#8DC63F</strong></td><td>Supporting elements, hover states, badges</td></tr>
+            <tr><td>Body Text</td><td><strong>#1A1A1A</strong></td><td>All paragraph and body text</td></tr>
+        </table>
+
+        <div class="page-break"></div>
+
+        <!-- ===== 3. NAVIGATION & UX ISSUES ===== -->
+        <h2>3. Navigation &amp; UX Issues (Legacy)</h2>
+        <p>All three legacy sites hide their entire navigation behind a hamburger menu — even on desktop. This is an anti-pattern for institutional websites where discoverability is critical for enrollment conversion.</p>
+
+        <h3>3.1 Main Site (myptc.edu)</h3>
+        <ul>
+            <li><strong>No visible desktop navigation bar</strong> — all content hidden behind a hamburger &#9776; icon</li>
+            <li>"About Us" contains <strong>12+ items nested 3 levels deep</strong> under a "Welcome to PTC!" sub-page</li>
+            <li>"Resources" mixes unrelated items (Student Resources, Career Center, Community Involvement, Unemployment Info)</li>
+            <li>Redundant links — "Campuses" appears in both the utility bar and the navigation</li>
+            <li>No dedicated "Admissions" or "Financial Aid" menu — the primary conversion pathways are buried</li>
+        </ul>
+
+        <h3>3.2 Campus Sites</h3>
+        <ul>
+            <li>Programs listed as a <strong>flat list of 25+ items</strong> with no categorization by career cluster</li>
+            <li>"Admissions > Admissions" redundant nesting in URLs</li>
+            <li>Inconsistent naming: "Student Services and Hours" (Clearwater) vs. "Student Services Hours" (St. Pete)</li>
+            <li>Placeholder URLs actively live on stpete.myptc.edu (<code>/link-one</code>, <code>/link-two</code>, <code>/link-three</code>)</li>
+            <li>St. Pete lunch menu URL is literally <code>/menus/clw-menu-clone</code> — a clone of Clearwater's menu page</li>
+        </ul>
+
+        <h3>3.3 Cross-Site Architecture</h3>
+        <ul>
+            <li>Campus links open in <strong>new browser tabs</strong>, creating a confusing multi-window experience</li>
+            <li>No unified navigation shell — main site and campus sites feel like entirely separate websites</li>
+            <li>"Return to MyPTC.edu" text on campus sites makes users feel they've left the PTC ecosystem</li>
+        </ul>
+
+        <div class="page-break"></div>
+
+        <!-- ===== 4. COE COMPLIANCE ===== -->
+        <h2>4. COE Accreditation &amp; Compliance Strategy</h2>
+        <p>PTC's footer legally states: <em>"Each Pinellas Technical College campus is <strong>individually accredited</strong> by the Council on Occupational Education."</em> This accreditation model means COE evaluates each campus website <strong>independently</strong> during review.</p>
+
+        <div class="alert alert-success">
+            <strong>The Redesign Paradigm</strong>
+            The PTC Main Site (myptc.edu) will serve as the institutional "Exploratory Hub" — routing visitors to the correct campus and housing shared policies. Each campus site will function as a fully standalone, COE-compliant hub with its own programs, outcomes data, and consumer disclosures.
+        </div>
+
+        <h3>4.1 Content That Must Be Campus-Specific (COE Mandated)</h3>
+        <table>
+            <tr><th>#</th><th>Required Disclosure</th><th>COE Standard</th></tr>
+            <tr><td>1</td><td>Accreditation status with COE's full name, address, and phone</td><td>COE Policy</td></tr>
+            <tr><td>2</td><td>Program listings with descriptions, length, prerequisites, and costs</td><td>Standard 2</td></tr>
+            <tr><td>3</td><td><strong>CPL Data</strong> — Completion, Placement, Licensure rates (cannot be combined across campuses)</td><td>Standard 3</td></tr>
+            <tr><td>4</td><td>Net Price Calculator (campus-specific tuition/fees)</td><td>Federal (HEA)</td></tr>
+            <tr><td>5</td><td>Admissions requirements and enrollment procedures</td><td>Standard 5</td></tr>
+            <tr><td>6</td><td>Student services information and hours</td><td>Standard 5</td></tr>
+            <tr><td>7</td><td>Campus safety / Clery Act crime statistics</td><td>Federal (Clery)</td></tr>
+            <tr><td>8</td><td>Campus catalog (PDF or online)</td><td>COE Condition</td></tr>
+            <tr><td>9</td><td>Faculty qualifications / Staff directory</td><td>Standard 4</td></tr>
+        </table>
+
+        <div class="alert alert-danger">
+            <strong>Compliance Gap Identified</strong>
+            CPL Data (Completion, Placement, and Licensure rates) is not currently published on either campus website. COE explicitly states this data "cannot be combined across campuses." This is the highest-priority compliance item.
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- ===== 5. PROPOSED NAVIGATION ===== -->
+        <h2>5. Proposed Navigation Architecture</h2>
+        <p>We replaced the legacy hamburger-only menu with a <strong>persistent, visible horizontal navigation bar</strong> using a clean <strong>5-Pillar Taxonomy</strong>. Each pillar is purpose-driven by user intent.</p>
+
+        <h3>5.1 PTC Main Site Navigation (myptc.edu)</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>1. Programs</h4>
+                <p><strong>By Category:</strong></p>
+                <ul>
+                    <li>Health Sciences</li>
+                    <li>Information Technology</li>
+                    <li>Skilled Trades</li>
+                    <li>Transportation &amp; Logistics</li>
+                    <li>Culinary &amp; Hospitality</li>
+                    <li>Cosmetology &amp; Barbering</li>
+                    <li>Business &amp; Office</li>
+                    <li>Arts &amp; Media</li>
+                </ul>
+                <p><strong>Explore:</strong></p>
+                <ul>
+                    <li>All Programs A–Z</li>
+                    <li>Evening &amp; Part-Time</li>
+                    <li>Apprenticeships</li>
+                    <li>Dual Enrollment</li>
+                    <li>Distance Learning</li>
+                    <li>ABE / GED / ESOL</li>
+                    <li>Student Orgs</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>2. Admissions &amp; Aid</h4>
+                <ul>
+                    <li>How to Apply</li>
+                    <li>Enrollment Steps</li>
+                    <li>Testing &amp; Assessment</li>
+                    <li>Tuition &amp; Fee Rates</li>
+                    <li>FAFSA &amp; Eligibility</li>
+                    <li>Scholarships &amp; Veterans</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>3. Campuses</h4>
+                <ul>
+                    <li>Clearwater Campus</li>
+                    <li>St. Petersburg Campus</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>4. Current Students</h4>
+                <ul>
+                    <li>Canvas Login</li>
+                    <li>Focus / SIS Portal</li>
+                    <li>Academic Calendar</li>
+                    <li>Transcript Request</li>
+                    <li>Tech Support</li>
+                </ul>
+            </div>
+            <div class="card" style="grid-column: span 2;">
+                <h4>5. About PTC</h4>
+                <ul style="column-count: 2;">
+                    <li>Welcome &amp; History</li>
+                    <li>Accreditation</li>
+                    <li>Staff Directory</li>
+                    <li>Employer Partnerships</li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>5.2 Campus Site Navigation (Clearwater &amp; St. Petersburg)</h3>
+        <p>Campus sites share the same 5-pillar framework but with campus-specific content. The utility bar includes direct links to Canvas/Focus, PTC Main Site, and the sister campus for seamless cross-navigation.</p>
+        <table>
+            <tr><th>Pillar</th><th>Dropdown Items</th></tr>
+            <tr><td><strong>Programs</strong></td><td>Health Sciences, Skilled Trades, Technology / IT, Culinary Arts, Distance Learning</td></tr>
+            <tr><td><strong>Admissions &amp; Aid</strong></td><td>How to Apply, Tuition Rates, Financial Aid &amp; FAFSA, Scholarships, Testing &amp; Assessment</td></tr>
+            <tr><td><strong>Current Students</strong></td><td>Academic Calendar, Student Services, Campus Bookstore, Record Request</td></tr>
+            <tr><td><strong>Campus Info</strong></td><td>About This Campus, Map &amp; Directions, Staff Directory, Consumer Information</td></tr>
+            <tr><td><strong>Apply Now</strong></td><td>Primary CTA button — no dropdown</td></tr>
+        </table>
+
+        <div class="page-break"></div>
+
+        <!-- ===== 6. VISUAL DESIGN ===== -->
+        <h2>6. Visual Design Modernization</h2>
+        <p>The redesign transitions from a dated, flat-block aesthetic to a modern, card-based layout system with proper whitespace, dynamic hero sections, and accessible typography.</p>
+
+        <h3>6.1 Key Design Changes</h3>
+        <table>
+            <tr><th>Element</th><th>Legacy</th><th>Redesign</th></tr>
+            <tr><td>Desktop Navigation</td><td>Hamburger-only (hidden)</td><td>Persistent horizontal 5-pillar bar</td></tr>
+            <tr><td>Hero Section</td><td>Simple image slider, no CTA</td><td>Full-viewport Ken Burns slider with bold headline and dual CTAs</td></tr>
+            <tr><td>Programs</td><td>Flat text list (25+ items)</td><td>Categorized icon cards grouped by career cluster</td></tr>
+            <tr><td>News &amp; Events</td><td>Raw text blocks, no images</td><td>Modern card layout with thumbnails and dates</td></tr>
+            <tr><td>Footer</td><td>Skyway Bridge background, hard to read</td><td>Clean dark green with structured quick-link columns</td></tr>
+            <tr><td>Campus Hero</td><td>Same style as main site</td><td>Unique split-layout: campus image + action block with CTAs</td></tr>
+            <tr><td>Color System</td><td>#278406 (wrong green)</td><td>#008142 (brand-compliant PMS 348)</td></tr>
+            <tr><td>Typography</td><td>Playfair Display + Mulish</td><td>Roboto Slab + Roboto (brand-approved)</td></tr>
+        </table>
+
+        <div class="page-break"></div>
+
+        <!-- ===== 7. TECHNICAL ISSUES ===== -->
+        <h2>7. Technical Issues Found</h2>
+        <table>
+            <tr><th>Issue</th><th>Location</th><th>Severity</th></tr>
+            <tr><td>Broken Twitter/X social link (empty href)</td><td>stpete.myptc.edu footer</td><td><span class="badge badge-danger">High</span></td></tr>
+            <tr><td>Broken YouTube social link (empty href)</td><td>clearwater.myptc.edu footer</td><td><span class="badge badge-danger">High</span></td></tr>
+            <tr><td>Lunch menu URL is <code>/menus/clw-menu-clone</code></td><td>stpete.myptc.edu</td><td><span class="badge badge-danger">High</span></td></tr>
+            <tr><td>Placeholder URLs: <code>/link-one</code>, <code>/link-two</code>, <code>/link-three</code></td><td>stpete.myptc.edu header</td><td><span class="badge badge-danger">High</span></td></tr>
+            <tr><td>"LInkedIn" typo (capital I)</td><td>stpete.myptc.edu footer</td><td><span class="badge badge-warning">Med</span></td></tr>
+            <tr><td>Events widget showing same event repeated 9 times</td><td>All 3 sites</td><td><span class="badge badge-danger">High</span></td></tr>
+            <tr><td>Event "Read More" links point to homepage (<code>/</code>)</td><td>All 3 sites</td><td><span class="badge badge-danger">High</span></td></tr>
+            <tr><td>OG meta descriptions are generic "Home - Pinellas Technical College"</td><td>All 3 sites</td><td><span class="badge badge-warning">Med</span></td></tr>
+            <tr><td>Identical calendar resource ID used across all sites</td><td>All 3 sites</td><td><span class="badge badge-warning">Med</span></td></tr>
+        </table>
+
+        <div class="page-break"></div>
+
+        <!-- ===== 8. IMPLEMENTATION ROADMAP ===== -->
+        <h2>8. Implementation Roadmap</h2>
+        <p>The modernization follows a phased approach to manage risk, gather approval at each gate, and protect live site data during the transition.</p>
+
+        <table>
+            <tr>
+                <th>Phase</th>
+                <th>Objective</th>
+                <th>Deliverables</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td><strong>Phase 1</strong><br>Audit &amp; Research</td>
+                <td>Scrape and map the full page structure of all three sites. Verify brand compliance. Identify COE gaps.</td>
+                <td>Site Audit Report, Complete Site Maps (200+ pages catalogued), Brand Comparison Matrix</td>
+                <td><span class="badge">Completed</span></td>
+            </tr>
+            <tr>
+                <td><strong>Phase 2</strong><br>Strategy &amp; Proposal</td>
+                <td>Define the new 5-Pillar navigation model, campus vs. main site content ownership, and visual direction.</td>
+                <td>This Redesign Proposal, Proposed Sitemaps, COE Compliance Matrix, UX Review</td>
+                <td><span class="badge">Completed</span></td>
+            </tr>
+            <tr>
+                <td><strong>Phase 3</strong><br>HTML/CSS Mockups</td>
+                <td>Build high-fidelity, responsive HTML templates for all page types before Finalsite implementation.</td>
+                <td>Main Site Homepage &#10003;, Campus Homepages &#10003;, Interior Pages (Programs A-Z, Admissions, Financial Aid)</td>
+                <td><span class="badge badge-warning">In Progress</span></td>
+            </tr>
+            <tr>
+                <td><strong>Phase 4</strong><br>Finalsite Implementation</td>
+                <td>Migrate approved HTML/CSS templates directly into the Finalsite Composer environment and launch.</td>
+                <td>Live site deployment, QA testing, SEO validation, Accessibility audit</td>
+                <td><span class="badge badge-danger">Pending</span></td>
+            </tr>
+        </table>
+
+        <h3>8.1 Phase 3 — Interior Pages (Next Steps)</h3>
+        <p>With the homepage mockups complete for the Main Site and both campuses, the following conversion-critical interior pages are next:</p>
+        <div class="grid grid--3">
+            <div class="card">
+                <h4>Programs A–Z Directory</h4>
+                <p>Master program listing with filters for Campus, Career Cluster, and Format (Day/Evening/Online).</p>
+            </div>
+            <div class="card">
+                <h4>Admissions Pathway</h4>
+                <p>A visual step-by-step enrollment wizard: Choose Program → Take Assessment → Apply → Register.</p>
+            </div>
+            <div class="card">
+                <h4>Financial Aid Hub</h4>
+                <p>Card-based navigation to FAFSA, Veterans Benefits, Scholarships, and campus-specific Net Price Calculators.</p>
+            </div>
+        </div>
+
+        <div class="alert alert-success" style="margin-top: 2rem;">
+            <strong>Approval Requested</strong>
+            With the PTC Main Site and Campus homepage mockups complete, we request leadership approval to proceed with the interior page architecture in Phase 3, followed by Finalsite implementation in Phase 4.
+        </div>
+
+        <div class="page-break"></div>
+
+        <!-- ===== APPENDIX A ===== -->
+        <h2>Appendix A: Legacy Site Map — myptc.edu</h2>
+        <p>The following page tree was manually scraped and catalogued from the live myptc.edu site. This map reveals the heavy reliance on deep nesting and a hamburger-only navigation model.</p>
+        <div class="sitemap-tree">myptc.edu/
+├── Top Utility Links
+│   ├── Student Record Request/Verification
+│   ├── Post a Job Opportunity
+│   └── Student Links
+│       ├── Canvas Login
+│       ├── SIS Portal for PTC Students
+│       └── Barnes &amp; Noble | PTC's Virtual Bookstore
+├── Floating Sidebar CTAs (Sticky Right)
+│   ├── Inquire
+│   ├── Apply
+│   ├── STP Dual Enrollment
+│   └── CLW Dual Enrollment
+└── Main Navigation (Hamburger Menu)
+    ├── Pinellas Technical College Calendar
+    ├── Clearwater Campus
+    ├── St. Petersburg Campus
+    ├── About Us
+    │   └── Welcome to PTC!
+    │       ├── Get to Know PTC!
+    │       ├── PTC Programs Brochure
+    │       ├── PTC Programs Brochure (en español)
+    │       ├── Mission - Vision - Core Values
+    │       ├── (How to) Request Your Student Record(s) from PTC
+    │       ├── A Career in a Year
+    │       ├── PTC Annual Impact Report
+    │       ├── Pinellas County Schools/CTAE - Compliance Statements
+    │       ├── Pinellas County Schools - School Improvement Plans
+    │       ├── Pinellas County Schools - School Financial Reports
+    │       └── Sexual Misconduct | Sexual Predators
+    ├── Resources
+    │   ├── PTC Student Resources Guide
+    │   ├── Community Resources
+    │   │   ├── Care for Kids
+    │   │   └── Unemployment Compensation Information
+    │   ├── Career Center
+    │   │   ├── Career Center
+    │   │   ├── Career Rocket
+    │   │   ├── Post a Job Opportunity
+    │   │   └── Career Exploration
+    │   └── Community Involvement
+    │       ├── Volunteer Registration Form
+    │       └── School Advisory Committee
+    └── Workforce Innovation
+        ├── Office of Workforce Innovation
+        │   ├── Training Services
+        │   └── PTC Short Courses | Evening Classes
+        └── We Hire PTC: PTC Works!</div>
+
+        <div class="page-break"></div>
+
+        <!-- ===== APPENDIX B ===== -->
+        <h2>Appendix B: Legacy Site Map — Clearwater Campus</h2>
+        <p>The Clearwater campus site contains <strong>75+ individual pages and links</strong> across programs, admissions, financial aid, student organizations, and school information.</p>
+        <div class="sitemap-tree">clearwater.myptc.edu/
+├── Top Utility Links
+│   ├── Student Record Request/Verification
+│   ├── Post a Job for PTC Students!
+│   └── QuickLinks
+├── Floating Sidebar CTAs (Sticky Right)
+│   ├── INQUIRE
+│   ├── APPLY
+│   ├── PURCHASE BOOKS!
+│   ├── ONLINE FEE PAYMENT!
+│   └── DUAL ENROLLMENT AT CLW
+└── Main Navigation (Hamburger Menu)
+    ├── Welcome to PTC - Clearwater
+    ├── PTC-Clearwater Campus Calendar
+    ├── Admissions
+    │   ├── Acceptable Proofs of Residency
+    │   ├── Shadowing Days &amp; Times
+    │   ├── Transfer
+    │   ├── Readmission
+    │   └── Enrollment Options
+    ├── Student Services and Hours
+    │   └── FL Dept of Law Enforcement Sexual Predator Notice
+    ├── Student Portal
+    ├── Financial Aid
+    │   ├── FAFSA &amp; FSA Eligibility Help
+    │   ├── Net Price Calculator | Clearwater
+    │   ├── Fees and Expenses
+    │   ├── Federal and State Funding
+    │   ├── Scholarships
+    │   ├── PCSB Financial Aid - SCHOLARSHIPS
+    │   ├── Veterans Benefits
+    │   └── Refund Policy
+    ├── Testing
+    │   ├── CASAS
+    │   └── TEAS
+    ├── Programs / Clearwater Program Offerings
+    │   ├── Clearwater Full-Time Programs (26 programs)
+    │   │   ├── Accounting Operations
+    │   │   ├── Baking &amp; Pastry Arts
+    │   │   ├── Barbering
+    │   │   ├── Cabinetmaking
+    │   │   ├── Child Care Center Operations
+    │   │   ├── Computer Systems &amp; Information Technology
+    │   │   ├── Diesel Maintenance Technician
+    │   │   ├── Diesel Systems Technician 1 &amp; 2
+    │   │   ├── Electricity / Electricity 1
+    │   │   ├── Electronic Systems Integration and Automation
+    │   │   ├── Fundamental Foodservice Skills
+    │   │   ├── HVAC/R 1 - IET
+    │   │   ├── Interior Decorating Services
+    │   │   ├── Machining Technologies
+    │   │   ├── Marine Service Technologies
+    │   │   ├── Master Automotive Service Technology 1 &amp; 2
+    │   │   ├── Medical Administrative Specialist
+    │   │   ├── Network Support Services
+    │   │   ├── Practical Nursing
+    │   │   ├── Professional Culinary Arts &amp; Hospitality
+    │   │   ├── Professional Nursing (LPN-RN)
+    │   │   ├── Stage Production
+    │   │   ├── Web Development (closing)
+    │   │   ├── Welding Technology
+    │   │   └── Welding Technology - Advanced
+    │   ├── Short Courses | Evening Classes (6 courses)
+    │   └── Clearwater Apprenticeships (7 programs)
+    ├── PTC-Clearwater | Pinellas High Innovation Programs
+    │   ├── ESOL
+    │   ├── Child Care Apprenticeship
+    │   └── Phlebotomy
+    ├── Dual Enrollment @ PTC-Clearwater
+    ├── ABE-GED-ASB
+    ├── ESOL @ PTC-Clearwater
+    ├── Articulation Agreements
+    ├── Rapid Credentialing
+    ├── Distance Learning @ PTC - Clearwater (5 sub-pages)
+    ├── Career | Technical Student Organizations
+    │   ├── FBLA-PBL
+    │   ├── NTHS
+    │   ├── SkillsUSA
+    │   ├── Student Council
+    │   └── Society of Manufacturing Engineers
+    ├── School Information / About Us
+    │   ├── Campus Information
+    │   ├── Mission - Vision - Core Values CLW
+    │   ├── Campus Accreditation
+    │   ├── Campus Catalog
+    │   ├── Student Record Request
+    │   ├── School Improvement Plan
+    │   ├── Campus Written Plans
+    │   ├── Safety &amp; Security Data
+    │   └── Financial Accountability
+    ├── Employment / Career Center
+    ├── We Hire PTC | PTC Works!
+    ├── PTC-Clearwater Campus Staff
+    └── Clearwater Food Pantry</div>
+
+        <div class="page-break"></div>
+
+        <!-- ===== APPENDIX C ===== -->
+        <h2>Appendix C: Legacy Site Map — St. Petersburg Campus</h2>
+        <p>The St. Petersburg campus site contains <strong>70+ individual pages and links</strong> with a similar structure to Clearwater but with different program offerings and several placeholder URLs.</p>
+        <div class="sitemap-tree">stpete.myptc.edu/
+├── Top Utility Links
+│   ├── Student Record Request/Verification
+│   ├── Post a Job for PTC Students!
+│   └── QuickLinks (contains placeholder URLs)
+├── Floating Sidebar CTAs (Sticky Right)
+│   ├── INQUIRE
+│   ├── APPLY
+│   ├── PURCHASE BOOKS!
+│   ├── ONLINE FEE PAYMENT!
+│   └── DUAL ENROLLMENT AT STP
+└── Main Navigation (Hamburger Menu)
+    ├── Welcome to PTC - St. Petersburg
+    ├── PTC-St. Petersburg Campus Calendar
+    ├── Admissions
+    │   ├── Acceptable Proofs of Residency
+    │   ├── Transfer
+    │   ├── Readmission
+    │   └── Enrollment Options
+    ├── Student Services Hours
+    │   └── FL Dept of Law Enforcement Sexual Predator Notice
+    ├── Student Portal
+    ├── Financial Aid
+    │   ├── FAFSA &amp; FSA Eligibility Help
+    │   ├── Net Price Calculator | St. Petersburg
+    │   ├── Fees and Expenses
+    │   ├── Federal and State Funding
+    │   ├── Scholarships
+    │   ├── PCSB Financial Aid - SCHOLARSHIPS
+    │   ├── Veterans Benefits
+    │   └── Refund Policy
+    ├── Testing
+    │   ├── CASAS
+    │   └── TEAS
+    ├── Programs / St. Petersburg Program Offerings
+    │   ├── St. Petersburg Full-Time Programs (25 programs)
+    │   │   ├── Automotive Collision Technology Technician
+    │   │   ├── Barbering
+    │   │   ├── Building Trades and Construction Design Technology
+    │   │   ├── Child Care Center Operations
+    │   │   ├── Commercial Class B Driving
+    │   │   ├── Commercial Vehicle Driving
+    │   │   ├── Computer-Aided Drawing and Modeling
+    │   │   ├── Computer Systems and Information Technology
+    │   │   ├── Cosmetology
+    │   │   ├── Dental Assisting
+    │   │   ├── Early Childhood Education
+    │   │   ├── Electricity
+    │   │   ├── Emergency Medical Technician
+    │   │   ├── Facials Specialty
+    │   │   ├── HVAC/R 1
+    │   │   ├── Master Automotive Service Technology 1 &amp; 2
+    │   │   ├── Medical Coder/Biller
+    │   │   ├── Nails Specialty
+    │   │   ├── Plumbing
+    │   │   ├── Practical Nursing
+    │   │   ├── Professional Culinary Arts &amp; Hospitality
+    │   │   ├── Public Works
+    │   │   ├── School Age Professional Certificate
+    │   │   ├── Surgical Technology
+    │   │   ├── Welding Technology
+    │   │   └── Welding Technology - Advanced
+    │   ├── Short Courses | Evening Classes (6 courses)
+    │   └── St. Petersburg Apprenticeships (6 programs)
+    ├── PTC-St. Petersburg | Clearview Adult Ed Center
+    │   └── Computer Systems &amp; Info Technology (CSIT)-IET @ CVAEC
+    ├── Dual Enrollment @ PTC-St. Petersburg
+    ├── ABE-GED | Lakewood Community
+    ├── ESOL | Lakewood Community
+    ├── Articulation Agreements
+    ├── Rapid Credentialing
+    ├── Distance Learning @ PTC - St. Petersburg (5 sub-pages)
+    ├── Career | Technical Student Organizations
+    │   ├── FBLA-PBL
+    │   ├── NTHS
+    │   ├── SkillsUSA
+    │   └── Society of Manufacturing Engineers
+    ├── School Information / About Us
+    │   ├── Campus Information
+    │   ├── Mission - Vision - Core Values STP
+    │   ├── Campus Accreditation
+    │   ├── Campus Catalog
+    │   ├── Campus Code of Conduct
+    │   ├── Student Record Request
+    │   ├── School Improvement Plan
+    │   ├── Campus Written Plans
+    │   ├── Safety &amp; Security Data
+    │   └── Financial Accountability
+    ├── Employment / Career Center
+    ├── We Hire PTC | PTC Works!
+    └── PTC-St. Petersburg Campus Staff</div>
+
+    </div>
+</body>
+</html>

@@ -14,132 +14,124 @@
 <body>
 
     <!-- ============================================
-         UTILITY BAR (Top-most bar)
+         CAMPUS UTILITY BAR
     ============================================= -->
-    <div class="utility-bar">
+    <div class="utility-bar utility-bar--campus">
         <div class="container utility-bar__inner">
             <div class="utility-bar__left">
-                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
-                <span class="utility-bar__divider">|</span>
-                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+                 <!-- Campus Contact info -->
+                 <a href="tel:7275387167"><i class="fas fa-phone"></i> [Campus Phone]</a>
+                 <span class="utility-bar__divider">|</span>
+                 <a href="#"><i class="fas fa-map-marker-alt"></i> [Campus Address]</a>
             </div>
             <div class="utility-bar__right">
-                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
-                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
-                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
-                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
-                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+                <a href="#"><i class="fas fa-desktop"></i> Canvas Login</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="#"><i class="fas fa-user-graduate"></i> SIS Portal / Focus</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="index.html"><i class="fas fa-home"></i> PTC Main Site</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="#"><i class="fas fa-exchange-alt"></i> [Other Campus]</a>
+                <a href="#" class="btn btn--primary btn--sm" style="margin-left: 1rem;"><i class="fas fa-search"></i></a>
             </div>
         </div>
     </div>
 
     <!-- ============================================
-         MAIN HEADER / NAVIGATION
+         CAMPUS HEADER (5-Pillar Structure)
     ============================================= -->
     <header class="site-header" id="site-header">
         <div class="container site-header__inner">
             <a href="/" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
-                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College — Opportunity Starts Here" id="header-logo" style="height: 60px;">
-                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
-                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
-                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
+                <img src="assets/logos/ptc-circle-logo.png" alt="PTC Logo" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column;">
+                    <span style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--color-gray-900); line-height: 1.1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: var(--color-green); line-height: 1.1; margin-top:2px;">[Campus Name]</span>
                 </div>
             </a>
-            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+            
+            <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
                 <ul class="main-nav__list">
-                    <!-- PROGRAMS -->
+                    <!-- PILLAR 1: Programs & Pathways -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
                         <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down"></i></a>
-                        <div class="main-nav__dropdown">
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
-                                    <h4>By Category</h4>
                                     <ul>
                                         <li><a href="#">Health Sciences</a></li>
-                                        <li><a href="#">Information Technology</a></li>
                                         <li><a href="#">Skilled Trades</a></li>
-                                        <li><a href="#">Transportation &amp; Logistics</a></li>
-                                        <li><a href="#">Culinary &amp; Hospitality</a></li>
-                                        <li><a href="#">Cosmetology &amp; Barbering</a></li>
-                                        <li><a href="#">Business &amp; Office</a></li>
-                                        <li><a href="#">Arts &amp; Media</a></li>
-                                    </ul>
-                                </div>
-                                <div class="dropdown__column">
-                                    <h4>Explore</h4>
-                                    <ul>
-                                        <li><a href="#">All Programs A–Z</a></li>
-                                        <li><a href="#">Evening &amp; Part-Time</a></li>
-                                        <li><a href="#">Apprenticeships</a></li>
-                                        <li><a href="#">Dual Enrollment</a></li>
+                                        <li><a href="#">Technology / IT</a></li>
+                                        <li><a href="#">Culinary Arts</a></li>
                                         <li><a href="#">Distance Learning</a></li>
-                                        <li><a href="#">ABE / GED / ESOL</a></li>
-                                        <li><a href="#">Student Orgs</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <!-- ADMISSIONS & AID -->
+                    
+                    <!-- PILLAR 2: Admissions & Aid -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down"></i></a>
+                        <a href="#" class="main-nav__link">Admissions & Aid <i class="fas fa-chevron-down"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
                                         <li><a href="#">How to Apply</a></li>
-                                        <li><a href="#">Enrollment Steps</a></li>
-                                        <li><a href="#">Testing &amp; Assessment</a></li>
-                                        <li><a href="#">Tuition &amp; Fee Rates</a></li>
-                                        <li><a href="#">FAFSA &amp; Eligibility</a></li>
-                                        <li><a href="#">Scholarships &amp; Veterans</a></li>
+                                        <li><a href="#">Tuition Rates</a></li>
+                                        <li><a href="#">Financial Aid & FAFSA</a></li>
+                                        <li><a href="#">Scholarships</a></li>
+                                        <li><a href="#">Testing & Assessment</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <!-- CAMPUSES -->
-                    <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Campuses <i class="fas fa-chevron-down"></i></a>
-                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
-                            <div class="dropdown__inner">
-                                <div class="dropdown__column">
-                                    <ul>
-                                        <li><a href="clearwater.html">Clearwater Campus</a></li>
-                                        <li><a href="stpete.html">St. Petersburg Campus</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- CURRENT STUDENTS -->
+                    
+                    <!-- PILLAR 3: Current Students -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
                         <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="#">Canvas Login</a></li>
-                                        <li><a href="#">Focus / SIS Portal</a></li>
                                         <li><a href="#">Academic Calendar</a></li>
-                                        <li><a href="#">Transcript Request</a></li>
-                                        <li><a href="#">Tech Support</a></li>
+                                        <li><a href="#">Student Services</a></li>
+                                        <li><a href="#">Campus Bookstore</a></li>
+                                        <li><a href="#">Record Request</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <!-- ABOUT PTC -->
+                    
+                    <!-- PILLAR 4: Community & Employers -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">About PTC <i class="fas fa-chevron-down"></i></a>
+                        <a href="#" class="main-nav__link">Community <i class="fas fa-chevron-down"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="#">Welcome &amp; History</a></li>
-                                        <li><a href="#">Accreditation</a></li>
-                                        <li><a href="#">Staff Directory</a></li>
+                                        <li><a href="#">Post a Job for Students</a></li>
                                         <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="#">Advisory Committees</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- PILLAR 5: Campus Info -->
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Campus Info <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">Map & Directions</a></li>
+                                        <li><a href="#">Staff Directory</a></li>
+                                        <li><a href="#">Consumer Information</a></li>
+                                        <li><a href="#">Accreditation</a></li>
                                         <li><a href="#">Contact Us</a></li>
                                     </ul>
                                 </div>
@@ -148,10 +140,9 @@
                     </li>
                 </ul>
             </nav>
+
             <div class="site-header__actions">
-                <button class="search-toggle" id="search-toggle" aria-label="Search">
-                    <i class="fas fa-search"></i>
-                </button>
+                <a href="#" class="btn btn--primary btn--sm site-header__cta">Apply Now</a>
                 <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
                     <span class="mobile-toggle__bar"></span>
                     <span class="mobile-toggle__bar"></span>
@@ -159,60 +150,25 @@
                 </button>
             </div>
         </div>
-        <!-- Search Overlay -->
-        <div class="search-overlay" id="search-overlay">
-            <div class="container">
-                <form class="search-form" role="search" aria-label="Site Search">
-                    <input type="search" placeholder="Search programs, courses, and more..." class="search-form__input" id="search-input">
-                    <button type="submit" class="search-form__btn" id="search-submit"><i class="fas fa-search"></i></button>
-                    <button type="button" class="search-form__close" id="search-close"><i class="fas fa-times"></i></button>
-                </form>
-            </div>
-        </div>
     </header>
 
     <main id="main-content">
 
         <!-- ============================================
-             HERO SECTION
+             SPLIT HERO SECTION
         ============================================= -->
-        <section class="hero" id="hero-section">
-            <div class="hero__bg" id="hero-slider">
-                <img src="assets/images/PTC1Graduation2025-1536.jpg" alt="Students graduating" aria-hidden="true" class="hero__slide active" style="object-position: top center;">
-                <img src="assets/images/PTC1Graduation2025-1554.jpg" alt="Students graduating" aria-hidden="true" class="hero__slide" style="object-position: top center;">
-                <img src="assets/images/PTCNursingCamp2023-8330.png" alt="Nursing students" aria-hidden="true" class="hero__slide">
-                <img src="assets/images/PTCRobinsonLSF.jpg" alt="Students in lab" aria-hidden="true" class="hero__slide">
-                <div class="hero__overlay"></div>
-            </div>
-            <div class="container hero__content">
-                <div class="hero__text">
-                    <p class="hero__tag">Pinellas County's Premier Technical College</p>
-                    <h1 class="hero__title">Your Career <span class="hero__title--highlight">Starts Here</span></h1>
-                    <p class="hero__subtitle">Industry-certified training programs in healthcare, technology, skilled trades, and more. Two campuses. One mission: <strong>your success.</strong></p>
-                    <div class="hero__ctas">
-                        <a href="#" class="btn btn--accent btn--lg" id="hero-explore-btn">Explore Programs</a>
-                        <a href="#" class="btn btn--outline-white btn--lg" id="hero-apply-btn">Apply Today</a>
-                    </div>
-                </div>
-                <div class="hero__stats">
-                    <div class="hero__stat">
-                        <span class="hero__stat-number" data-count="40">40+</span>
-                        <span class="hero__stat-label">Career Programs</span>
-                    </div>
-                    <div class="hero__stat">
-                        <span class="hero__stat-number" data-count="50">50+</span>
-                        <span class="hero__stat-label">Industry Partners</span>
-                    </div>
-                    <div class="hero__stat">
-                        <span class="hero__stat-number">2</span>
-                        <span class="hero__stat-label">Campus Locations</span>
-                    </div>
+        <section class="hero--split" id="hero-section">
+            <div class="hero--split__content">
+                <p class="hero--split__tag">Specialized Career Training</p>
+                <h1 class="hero--split__title">Welcome to <span>[Campus Name]</span></h1>
+                <p class="hero--split__desc">Find the career you are passionate about. We offer industry-aligned programs that fast-track your future. Let's get started on your journey.</p>
+                <div class="hero--split__actions">
+                    <a href="#" class="btn btn--accent btn--lg" id="hero-explore-btn">Start an Application</a>
+                    <a href="#" class="btn btn--outline btn--lg" id="hero-apply-btn">View Campus Programs</a>
                 </div>
             </div>
-            <div class="hero__scroll-indicator">
-                <a href="#quick-links" aria-label="Scroll to content">
-                    <i class="fas fa-chevron-down"></i>
-                </a>
+            <div class="hero--split__image">
+                <img src="assets/images/PTC-CLW.jpg" alt="Campus building exterior" aria-hidden="true">
             </div>
         </section>
 
@@ -222,86 +178,35 @@
         <section class="quick-links" id="quick-links">
             <div class="container">
                 <div class="quick-links__grid">
-                    <a href="#" class="quick-link" id="ql-apply">
-                        <div class="quick-link__icon"><i class="fas fa-file-alt"></i></div>
-                        <span class="quick-link__label">Apply Now</span>
-                    </a>
-                    <a href="#" class="quick-link" id="ql-programs">
-                        <div class="quick-link__icon"><i class="fas fa-book-open"></i></div>
-                        <span class="quick-link__label">Programs</span>
+                    <a href="#" class="quick-link" id="ql-admissions">
+                        <div class="quick-link__icon"><i class="fas fa-id-card"></i></div>
+                        <span class="quick-link__label">Admissions</span>
                     </a>
                     <a href="#" class="quick-link" id="ql-finaid">
                         <div class="quick-link__icon"><i class="fas fa-dollar-sign"></i></div>
-                        <span class="quick-link__label">Tuition & Aid</span>
+                        <span class="quick-link__label">Financial Aid</span>
+                    </a>
+                    <a href="#" class="quick-link" id="ql-books">
+                        <div class="quick-link__icon"><i class="fas fa-book"></i></div>
+                        <span class="quick-link__label">Campus Bookstore</span>
                     </a>
                     <a href="#" class="quick-link" id="ql-visit">
                         <div class="quick-link__icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <span class="quick-link__label">Visit Campus</span>
+                        <span class="quick-link__label">Visit [Campus]</span>
                     </a>
                     <a href="#" class="quick-link" id="ql-portal">
                         <div class="quick-link__icon"><i class="fas fa-user-graduate"></i></div>
                         <span class="quick-link__label">Student Portal</span>
                     </a>
-                    <a href="#" class="quick-link" id="ql-contact">
-                        <div class="quick-link__icon"><i class="fas fa-envelope"></i></div>
-                        <span class="quick-link__label">Contact Us</span>
+                    <a href="#" class="quick-link" id="ql-coe">
+                        <div class="quick-link__icon"><i class="fas fa-info-circle"></i></div>
+                        <span class="quick-link__label">Consumer Info</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- ============================================
-             WHY PTC (VALUE PROPOSITION) — now first after quick links
-        ============================================= -->
-        <section class="why-ptc" id="why-ptc-section">
-            <div class="container">
-                <div class="why-ptc__layout">
-                    <div class="why-ptc__image">
-                        <img src="assets/images/PTCAutoMechanicgirls-0593copy.png" alt="PTC auto mechanic students collaborating in a modern learning environment" loading="lazy">
-                        <div class="why-ptc__accent-badge">
-                            <span class="why-ptc__badge-number">Est.</span>
-                            <span class="why-ptc__badge-text">1961</span>
-                        </div>
-                    </div>
-                    <div class="why-ptc__content">
-                        <p class="section-header__tag">Why Choose PTC</p>
-                        <h2 class="section-header__title">Hands-On Training. Real-World Skills.</h2>
-                        <p class="why-ptc__desc">For over 60 years, Pinellas Technical College has been preparing students for high-demand careers through immersive, hands-on training programs. Our graduates don't just earn certificates — they launch careers.</p>
-                        <div class="why-ptc__features">
-                            <div class="why-ptc__feature">
-                                <div class="why-ptc__feature-icon"><i class="fas fa-award"></i></div>
-                                <div>
-                                    <h4>COE Accredited</h4>
-                                    <p>Both campuses individually accredited by the Council on Occupational Education.</p>
-                                </div>
-                            </div>
-                            <div class="why-ptc__feature">
-                                <div class="why-ptc__feature-icon"><i class="fas fa-briefcase"></i></div>
-                                <div>
-                                    <h4>Industry Partnerships</h4>
-                                    <p>Direct connections to Tampa Bay employers for internships and job placement.</p>
-                                </div>
-                            </div>
-                            <div class="why-ptc__feature">
-                                <div class="why-ptc__feature-icon"><i class="fas fa-clock"></i></div>
-                                <div>
-                                    <h4>Flexible Scheduling</h4>
-                                    <p>Day, evening, and hybrid options so you can learn on your schedule.</p>
-                                </div>
-                            </div>
-                            <div class="why-ptc__feature">
-                                <div class="why-ptc__feature-icon"><i class="fas fa-hand-holding-usd"></i></div>
-                                <div>
-                                    <h4>Affordable Tuition</h4>
-                                    <p>Financial aid, scholarships, and payment plans available to all students.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#" class="btn btn--primary" id="learn-more-about-btn">Learn More About PTC <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- District-level 'Why Choose PTC' section removed for Campus Templates -->
 
         <!-- ============================================
              FEATURED PROGRAMS
@@ -310,8 +215,8 @@
             <div class="container">
                 <div class="section-header">
                     <p class="section-header__tag">Career Training</p>
-                    <h2 class="section-header__title">Explore Our Programs</h2>
-                    <p class="section-header__desc">From healthcare to skilled trades, find the program that fits your career goals. Graduate job-ready with industry certifications.</p>
+                    <h2 class="section-header__title">Programs at [Campus]</h2>
+                    <p class="section-header__desc">Explore the specialized programs offered specifically at our [Campus Name] location. Graduate job-ready with industry certifications.</p>
                 </div>
                 <div class="programs-grid">
                     <a href="#" class="program-card" id="prog-health">
@@ -357,58 +262,7 @@
             </div>
         </section>
 
-        <!-- ============================================
-             CAMPUS CARDS
-        ============================================= -->
-        <section class="campuses-section" id="campuses-section">
-            <div class="container">
-                <div class="section-header section-header--center">
-                    <p class="section-header__tag">Two Campuses, One Mission</p>
-                    <h2 class="section-header__title">Choose Your Campus</h2>
-                    <p class="section-header__desc">Each campus offers unique programs and resources. Explore what's available near you.</p>
-                </div>
-                <div class="campus-cards">
-                    <div class="campus-card" id="campus-clearwater">
-                        <div class="campus-card__image">
-                            <img src="assets/images/PTC-CLW.jpg" alt="Clearwater Campus" loading="lazy">
-                            <div class="campus-card__badge">Clearwater</div>
-                        </div>
-                        <div class="campus-card__body">
-                            <h3 class="campus-card__title">Clearwater Campus</h3>
-                            <p class="campus-card__address"><i class="fas fa-map-marker-alt"></i> 6100 154th Ave N, Clearwater, FL 33760</p>
-                            <p class="campus-card__phone"><i class="fas fa-phone"></i> 727.538.7167</p>
-                            <p class="campus-card__desc">Our Clearwater campus specializes in health sciences, automotive technology, HVAC, welding, and more. State-of-the-art labs and simulation centers.</p>
-                            <div class="campus-card__tags">
-                                <span class="tag">Health Sciences</span>
-                                <span class="tag">Automotive</span>
-                                <span class="tag">Welding</span>
-                                <span class="tag">+12 More</span>
-                            </div>
-                            <a href="clearwater.html" class="btn btn--primary btn--block" id="visit-clearwater-btn">Visit Clearwater Campus <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="campus-card" id="campus-stpete">
-                        <div class="campus-card__image">
-                            <img src="assets/images/PTC_STP.jpg" alt="St. Petersburg Campus" loading="lazy">
-                            <div class="campus-card__badge">St. Petersburg</div>
-                        </div>
-                        <div class="campus-card__body">
-                            <h3 class="campus-card__title">St. Petersburg Campus</h3>
-                            <p class="campus-card__address"><i class="fas fa-map-marker-alt"></i> 901 34th St S, St. Petersburg, FL 33711</p>
-                            <p class="campus-card__phone"><i class="fas fa-phone"></i> 727.893.2500</p>
-                            <p class="campus-card__desc">Our St. Petersburg campus features culinary arts, cosmetology, networking, electrical, and commercial vehicle training — all with industry-standard equipment.</p>
-                            <div class="campus-card__tags">
-                                <span class="tag">Culinary</span>
-                                <span class="tag">Cosmetology</span>
-                                <span class="tag">IT</span>
-                                <span class="tag">+10 More</span>
-                            </div>
-                            <a href="stpete.html" class="btn btn--primary btn--block" id="visit-stpete-btn">Visit St. Pete Campus <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- District-level 'Campuses' section removed for Campus Templates -->
 
         <!-- ============================================
              NEWS & EVENTS
@@ -488,7 +342,9 @@
             <div class="footer__top">
                 <div class="footer__brand">
                     <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
-                    <p class="footer__tagline">Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
+                    <p class="footer__tagline"><strong>[Campus Address]</strong><br>
+                    Phone: [Campus Phone]<br>
+                    Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
                     <div class="footer__social">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -509,12 +365,12 @@
                         </ul>
                     </div>
                     <div class="footer__col">
-                        <h4>Campuses</h4>
+                        <h4>[Campus] Links</h4>
                         <ul>
-                            <li><a href="clearwater.html">Clearwater Campus</a></li>
-                            <li><a href="stpete.html">St. Petersburg Campus</a></li>
-                            <li><a href="#">Campus Maps</a></li>
-                            <li><a href="#">Request Info</a></li>
+                            <li><a href="#">Campus Map &amp; Directions</a></li>
+                            <li><a href="#">Academic Calendar</a></li>
+                            <li><a href="#">Schedule a Tour</a></li>
+                            <li><a href="#">Staff Directory</a></li>
                         </ul>
                     </div>
                     <div class="footer__col">
