@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTC Short Courses | Evening Classes — Pinellas Technical College</title>
+    <meta name="description" content="Explore short courses, evening classes, and summer camps for youth at Pinellas Technical College's St. Petersburg Campus. Register today!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- 
+    =====================================================
+    FINALSITE IMPLEMENTATION NOTES:
+    =====================================================
+    To implement this in Finalsite:
+    1. Copy everything inside the <style> block into a 
+       Finalsite "Custom CSS" or "Code" element
+    2. Copy the HTML content (from the campus-alert banner
+       through the end of .sc-page-wrapper) into a 
+       Finalsite "Content" or "HTML" element
+    3. Copy the <script> block into a Finalsite "Code" 
+       element placed BELOW the content
+    =====================================================
+    -->
+
+    <style>
+        /* ============================================
+           SHORT COURSES PAGE — EMBEDDED STYLES
+           (Finalsite-compatible, self-contained)
+           ============================================ */
+
+        /* -- Reset & Base for this page section -- */
+        .sc-page-wrapper {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .sc-page-wrapper *, .sc-page-wrapper *::before, .sc-page-wrapper *::after {
+            box-sizing: border-box;
+        }
+
+        /* -- Campus Alert Banner -- */
+        .sc-campus-alert {
+            background: linear-gradient(135deg, #0c173c 0%, #1a2a5e 100%);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .sc-campus-alert__icon {
+            background: #ffd145;
+            color: #0c173c;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .sc-campus-alert__text {
+            flex: 1;
+            min-width: 200px;
+        }
+        .sc-campus-alert__title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 0.25rem 0;
+        }
+        .sc-campus-alert__desc {
+            font-size: 0.9rem;
+            color: #cbd5e0;
+            margin: 0;
+            line-height: 1.5;
+        }
+        .sc-campus-alert__desc strong {
+            color: #ffd145;
+        }
+        .sc-campus-alert__phone {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 0.6rem 1.25rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .sc-campus-alert__phone-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a0aec0;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .sc-campus-alert__phone-number {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffd145;
+            text-decoration: none;
+        }
+        .sc-campus-alert__phone-number:hover {
+            color: #fff;
+        }
+
+        /* -- Page Intro -- */
+        .sc-intro {
+            margin-bottom: 2rem;
+        }
+        .sc-intro__heading {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0c173c;
+            margin: 0 0 0.75rem 0;
+        }
+        .sc-intro__text {
+            font-size: 0.95rem;
+            color: #4a5568;
+            margin: 0;
+            max-width: 100%;
+        }
+
+        /* -- Section Headers -- */
+        .sc-section {
+            margin-bottom: 2.5rem;
+        }
+        .sc-section__header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid #278406;
+        }
+        .sc-section__header--camps {
+            border-bottom-color: #ffd145;
+        }
+        .sc-section__icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .sc-section__icon--courses {
+            background: linear-gradient(135deg, #278406, #34a80a);
+            color: #fff;
+        }
+        .sc-section__icon--camps {
+            background: linear-gradient(135deg, #e8a500, #ffd145);
+            color: #0c173c;
+        }
+        .sc-section__title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0c173c;
+            margin: 0;
+        }
+
+        /* -- Filter Tabs -- */
+        .sc-filters {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .sc-filter-btn {
+            padding: 0.5rem 1.15rem;
+            border-radius: 100px;
+            border: 2px solid #e2e8f0;
+            background: #fff;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .sc-filter-btn:hover {
+            border-color: #278406;
+            color: #278406;
+        }
+        .sc-filter-btn.active {
+            background: #278406;
+            border-color: #278406;
+            color: #fff;
+        }
+
+        /* -- Course Cards -- */
+        .sc-cards {
+            display: grid;
+            gap: 1rem;
+        }
+        .sc-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .sc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #278406;
+            border-radius: 4px 0 0 4px;
+        }
+        .sc-card--camp::before {
+            background: linear-gradient(180deg, #ffd145, #e8a500);
+        }
+        .sc-card:hover {
+            border-color: #cbd5e0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transform: translateY(-1px);
+        }
+        .sc-card--no-sessions {
+            opacity: 0.6;
+        }
+        .sc-card--no-sessions:hover {
+            opacity: 0.8;
+        }
+
+        .sc-card__top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .sc-card__title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin: 0;
+        }
+        .sc-card__campus-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .sc-card__campus-badge--stpete {
+            background: #e6f4ea;
+            color: #278406;
+            border: 1px solid #c6e9cc;
+        }
+        .sc-card__campus-badge--clearwater {
+            background: #eef2ff;
+            color: #1a2a5e;
+            border: 1px solid #c7d2fe;
+        }
+        .sc-card--clearwater::before {
+            background: linear-gradient(180deg, #1a2a5e, #0c173c);
+        }
+        .sc-card__campus-badge i {
+            font-size: 0.65rem;
+        }
+
+        .sc-card__desc {
+            font-size: 0.88rem;
+            color: #718096;
+            margin: 0 0 0.75rem 0;
+            line-height: 1.55;
+        }
+
+        .sc-card__sessions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            margin-bottom: 0.85rem;
+        }
+        .sc-card__session {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            color: #4a5568;
+            padding: 0.35rem 0.65rem;
+            background: #f7fafc;
+            border-radius: 6px;
+        }
+        .sc-card__session i {
+            color: #278406;
+            margin-top: 2px;
+            flex-shrink: 0;
+            font-size: 0.75rem;
+        }
+        .sc-card__session--camp i {
+            color: #d69e00;
+        }
+
+        .sc-card__no-sessions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            color: #a0aec0;
+            font-style: italic;
+            padding: 0.35rem 0.65rem;
+            background: #fafafa;
+            border-radius: 6px;
+            margin-bottom: 0.85rem;
+        }
+        .sc-card__no-sessions i {
+            font-size: 0.75rem;
+        }
+
+        .sc-card__actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .sc-card__register-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1.15rem;
+            background: #278406;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .sc-card__register-btn:hover {
+            background: #1f6b05;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(39,132,6,0.3);
+        }
+        .sc-card__register-btn--camp {
+            background: #d69e00;
+            color: #0c173c;
+        }
+        .sc-card__register-btn--camp:hover {
+            background: #c08e00;
+            box-shadow: 0 2px 8px rgba(214,158,0,0.3);
+        }
+        .sc-card__register-btn--disabled {
+            background: #cbd5e0;
+            color: #718096;
+            pointer-events: none;
+        }
+        .sc-card__notify-link {
+            font-size: 0.8rem;
+            color: #278406;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .sc-card__notify-link:hover {
+            text-decoration: underline;
+        }
+
+        /* -- Clearwater Redirect Box -- */
+        .sc-clearwater-box {
+            background: linear-gradient(135deg, #fefce8 0%, #fff9e0 100%);
+            border: 2px solid #ffd145;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-top: 2.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .sc-clearwater-box__icon {
+            background: #ffd145;
+            color: #0c173c;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .sc-clearwater-box__text {
+            flex: 1;
+            min-width: 200px;
+        }
+        .sc-clearwater-box__title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0c173c;
+            margin: 0 0 0.25rem 0;
+        }
+        .sc-clearwater-box__desc {
+            font-size: 0.88rem;
+            color: #4a5568;
+            margin: 0;
+        }
+        .sc-clearwater-box__desc a {
+            color: #278406;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .sc-clearwater-box__desc a:hover {
+            text-decoration: underline;
+        }
+        .sc-clearwater-box__phone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.15rem;
+            flex-shrink: 0;
+        }
+        .sc-clearwater-box__phone-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #718096;
+        }
+        .sc-clearwater-box__phone-number {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0c173c;
+            text-decoration: none;
+        }
+        .sc-clearwater-box__phone-number:hover {
+            color: #278406;
+        }
+
+        /* -- Disclaimer -- */
+        .sc-disclaimer {
+            font-size: 0.82rem;
+            color: #a0aec0;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1.25rem;
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+
+        /* -- Responsive -- */
+        @media (max-width: 640px) {
+            .sc-campus-alert {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.25rem;
+            }
+            .sc-campus-alert__text {
+                text-align: center;
+            }
+            .sc-clearwater-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            .sc-card__top {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .sc-filters {
+                justify-content: center;
+            }
+        }
+
+        /* -- Animation for cards -- */
+        .sc-card {
+            animation: sc-fadeIn 0.3s ease forwards;
+            opacity: 0;
+        }
+        .sc-card:nth-child(1) { animation-delay: 0.05s; }
+        .sc-card:nth-child(2) { animation-delay: 0.1s; }
+        .sc-card:nth-child(3) { animation-delay: 0.15s; }
+        .sc-card:nth-child(4) { animation-delay: 0.2s; }
+        .sc-card:nth-child(5) { animation-delay: 0.25s; }
+        .sc-card:nth-child(6) { animation-delay: 0.3s; }
+        .sc-card:nth-child(7) { animation-delay: 0.35s; }
+        .sc-card:nth-child(8) { animation-delay: 0.4s; }
+        .sc-card:nth-child(9) { animation-delay: 0.45s; }
+        .sc-card:nth-child(10) { animation-delay: 0.5s; }
+        .sc-card:nth-child(11) { animation-delay: 0.55s; }
+        .sc-card:nth-child(12) { animation-delay: 0.6s; }
+
+        @keyframes sc-fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .sc-card--no-sessions {
+            animation: sc-fadeIn 0.3s ease forwards;
+        }
+
+        /* -- Category filter hiding -- */
+        .sc-card[data-hidden="true"] {
+            display: none;
+        }
+    </style>
+</head>
+<body style="background: #f5f7fa; padding: 2rem 1rem;">
+
+    <!-- ================================================
+         START: Content to paste into Finalsite
+         ================================================ -->
+    <div class="sc-page-wrapper">
+
+        <!-- CAMPUS LOCATION BANNER -->
+        <div class="sc-campus-alert">
+            <div class="sc-campus-alert__icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="sc-campus-alert__text">
+                <p class="sc-campus-alert__title"><i class="fas fa-building" style="margin-right:0.35rem;"></i> Please Note the Campus Location for Each Course</p>
+                <p class="sc-campus-alert__desc"><strong>Please check the campus listed on each course below</strong> to make sure you contact the right location.</p>
+            </div>
+            <div class="sc-campus-alert__phone" style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <div style="text-align:center;">
+                    <span class="sc-campus-alert__phone-label">St. Pete Campus</span>
+                    <a href="tel:7278932500" class="sc-campus-alert__phone-number"><i class="fas fa-phone" style="font-size:0.8rem; margin-right:0.3rem;"></i> 727.893.2500</a>
+                </div>
+                <div style="text-align:center;">
+                    <span class="sc-campus-alert__phone-label">Clearwater Campus</span>
+                    <a href="tel:7275387167" class="sc-campus-alert__phone-number"><i class="fas fa-phone" style="font-size:0.8rem; margin-right:0.3rem;"></i> 727.538.7167</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE INTRO -->
+        <div class="sc-intro">
+            <h1 class="sc-intro__heading">Short Courses, Evening Classes & Summer Camps</h1>
+            <p class="sc-intro__text">These are high-quality courses developed by Pinellas Technical College instructors as short, Continuing Workforce Development courses which provide a portion of the state-approved curriculum. Due to their abbreviated nature, these courses do <strong>NOT</strong> articulate or grant credit toward Pinellas Technical College’s program level courses. The following short courses are currently available:</p>
+        </div>
+
+        <!-- FILTER TABS -->
+        <div class="sc-filters">
+            <button class="sc-filter-btn active" data-filter="all" onclick="scFilterCards('all', this)">All Programs</button>
+            <button class="sc-filter-btn" data-filter="course" onclick="scFilterCards('course', this)"><i class="fas fa-book" style="margin-right:0.3rem;"></i> Workforce Courses</button>
+            <button class="sc-filter-btn" data-filter="camp" onclick="scFilterCards('camp', this)"><i class="fas fa-campground" style="margin-right:0.3rem;"></i> Summer Camps</button>
+        </div>
+
+        <!-- ================================
+             SECTION: WORKFORCE COURSES
+             ================================ -->
+        <div class="sc-section">
+            <div class="sc-section__header">
+                <div class="sc-section__icon sc-section__icon--courses"><i class="fas fa-book-open"></i></div>
+                <h2 class="sc-section__title">Continuing Workforce & Life Enrichment Courses</h2>
+            </div>
+
+            <div class="sc-cards" id="sc-courses-grid">
+
+                <!-- Air Conditioning Service Fundamentals -->
+                <div class="sc-card" data-category="course">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Air Conditioning Service Fundamentals</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">Gain the skills needed to install air conditioning systems.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>April 28 – May 28, 2026 &nbsp;·&nbsp; Building 1, RM 020</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=ACSF" target="_blank" rel="noopener" class="sc-card__register-btn">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Child Care Staff or Director Credential Renewal -->
+                <div class="sc-card" data-category="course">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Staff or Director Credential Renewal (DCF Approved)</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">DCF approved course used to obtain the Staff or Director Credential Renewal. This course prepares students to renew the requirements for the state administrator credential coursework. Students must successfully complete the 45 hours of distance (online) learning course work in order to be eligible for the Staff or Director Credential Renewal.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session">
+                            <i class="fas fa-file-pdf"></i>
+                            <span><a href="https://www.myptc.edu/fs/resource-manager/view/7172ea77-f6e6-4809-87ee-d4ebe32f8e1a" target="_blank" rel="noopener" style="color:#278406; font-weight:600; text-decoration:none;">Click to download 2025–2026 Child Care Training Program Dates (PDF)</a></span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=SDCR" target="_blank" rel="noopener" class="sc-card__register-btn">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Drone Pilot -->
+                <div class="sc-card" data-category="course">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Drone Pilot: Small Unmanned Aircraft Systems</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">The sky’s the limit for opportunities in the drone industry. Become an FAA Certified Drone Pilot with this FAA Drone Certification Test Prep course. Students will train for Remote Pilot Certification – Small Unmanned Aircraft Systems (sUAS).</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Aug 18 – Oct 15, 2026</span>
+                        </div>
+                        <div class="sc-card__session">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Oct 20, 2026 – Jan 7, 2027</span>
+                        </div>
+                        <div class="sc-card__session">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Jan 12 – Mar 11, 2027</span>
+                        </div>
+                        <div class="sc-card__session">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Mar 23 – May 20, 2027</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=SUAS" target="_blank" rel="noopener" class="sc-card__register-btn">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Forklift Operation & Safety -->
+                <div class="sc-card" data-category="course">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Forklift Operation & Safety</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">Forklift Operation &amp; Safety training course.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Tuesday, April 14, 2026 &nbsp;·&nbsp; Building 1, RM 020</span>
+                        </div>
+                        <div class="sc-card__session">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Thursday, May 14, 2026 &nbsp;·&nbsp; Building 1, RM 020</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=FOAS" target="_blank" rel="noopener" class="sc-card__register-btn">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Water Treatment -->
+                <div class="sc-card" data-category="course">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Water Treatment Plant Operation Study Session (Online)</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">This is an online course offering for independent students who are studying for their licensure outside of PTC Apprenticeship with the City of St. Petersburg. This public offering is for additional tutorial support only and will not be a guarantee or verification of coursework for licensure purposes.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Jan 12 – July 16, 2026</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2601-WTPOSS-01P&courseId=WTPOSS&categoryId=ROOT" target="_blank" rel="noopener" class="sc-card__register-btn">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- School Board Employee Training -->
+                <div class="sc-card" data-category="course">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">School Board Employee Training</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">School Board Employee Training.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>See registration page for available sessions</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.myptc.edu/fs/resource-manager/view/5553f0ec-6f1e-42d9-b801-19b65407b545" target="_blank" rel="noopener" class="sc-card__register-btn">View Details <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Welding (Evening Class — CLEARWATER CAMPUS) -->
+                <div class="sc-card sc-card--clearwater" data-category="course">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Welding (Evening Class)</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--clearwater"><i class="fas fa-map-marker-alt"></i> Clearwater</span>
+                    </div>
+                    <p class="sc-card__desc">Welding evening class offered at the Clearwater Campus.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>See program page for schedule and details</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://clearwater.myptc.edu/programs/short-courses-evening-classes/welding" target="_blank" rel="noopener" class="sc-card__register-btn">View Details <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- CPR | AED | First Aid -->
+                <div class="sc-card sc-card--no-sessions" data-category="course">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">CPR | AED | First Aid</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">CPR | AED | First Aid certification course.</p>
+                    <div class="sc-card__no-sessions">
+                        <i class="fas fa-clock"></i>
+                        <span>No sessions currently scheduled</span>
+                    </div>
+                </div>
+
+                <!-- Silversmithing -->
+                <div class="sc-card sc-card--no-sessions" data-category="course">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Silversmithing 101</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">Learn the tools and skills you need to create custom jewelry. This class is designed for students who have no prior knowledge or limited knowledge of silversmithing.</p>
+                    <div class="sc-card__no-sessions">
+                        <i class="fas fa-clock"></i>
+                        <span>No sessions currently scheduled</span>
+                    </div>
+                </div>
+
+                <!-- Upholstery -->
+                <div class="sc-card sc-card--no-sessions" data-category="course">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Upholstery</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">Participants will learn how to disassemble and/or assemble various custom pieces of furniture.</p>
+                    <div class="sc-card__no-sessions">
+                        <i class="fas fa-clock"></i>
+                        <span>No sessions currently scheduled</span>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=UPHO" target="_blank" rel="noopener" class="sc-card__register-btn">View Details <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Defensive Driving -->
+                <div class="sc-card sc-card--no-sessions" data-category="course">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Defensive Driving</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">Using Coaching Systems LLC curriculum, this course provides defensive driving instruction for van drivers who are transporting passengers and/or cargo (also known as Coaching the Van Driver).</p>
+                    <div class="sc-card__no-sessions">
+                        <i class="fas fa-clock"></i>
+                        <span>No sessions currently scheduled</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="https://www.enrole.com/ptc/jsp/index.jsp" target="_blank" rel="noopener" class="sc-card__register-btn" style="padding: 0.75rem 1.5rem; font-size: 0.95rem;">
+                    <i class="fas fa-list" style="margin-right:0.35rem;"></i> Browse All Short Courses on Enrole <i class="fas fa-external-link-alt" style="font-size:0.75rem; margin-left:0.25rem;"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- ================================
+             SECTION: SUMMER CAMPS
+             ================================ -->
+        <div class="sc-section">
+            <div class="sc-section__header sc-section__header--camps">
+                <div class="sc-section__icon sc-section__icon--camps"><i class="fas fa-campground"></i></div>
+                <h2 class="sc-section__title">Summer Camps for Youth (2026)</h2>
+            </div>
+
+            <div class="sc-cards" id="sc-camps-grid">
+
+                <!-- Barbering Summer Camp -->
+                <div class="sc-card sc-card--camp" data-category="camp">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Barbering Summer Camp</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">This hands-on summer camp introduces teens to the exciting world of barbering.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session sc-card__session--camp">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>June 8 – 11, 2026</span>
+                        </div>
+                        <div class="sc-card__session sc-card__session--camp">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>June 15 – 18, 2026</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=BASC" target="_blank" rel="noopener" class="sc-card__register-btn sc-card__register-btn--camp">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Construction Summer Camp -->
+                <div class="sc-card sc-card--camp" data-category="camp">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Construction Summer Camp</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">In this hands-on summer camp, teens will explore the basics of the building and construction trades while learning practical skills they can use for life.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session sc-card__session--camp">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>June 1 – 18, 2026</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-COSC&courseId=COSC&categoryId=ROOT" target="_blank" rel="noopener" class="sc-card__register-btn sc-card__register-btn--camp">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Cosmetology Summer Braiding Camp -->
+                <div class="sc-card sc-card--camp" data-category="camp">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Cosmetology Summer Braiding Camp</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">Cosmetology Summer Camp introduces teens to the exciting world of beauty and entrepreneurship through engaging, hands-on activities.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session sc-card__session--camp">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>June 8 – 11, 2026</span>
+                        </div>
+                        <div class="sc-card__session sc-card__session--camp">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>June 15 – 18, 2026</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=CSBC" target="_blank" rel="noopener" class="sc-card__register-btn sc-card__register-btn--camp">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- CPR for Teens -->
+                <div class="sc-card sc-card--camp" data-category="camp">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">CPR for Teens</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">Register for any one of the available CPR for Teens summer camp sessions and gain skills that could save someone’s life. The CPR for Teens (Basic Life Support) course teaches essential life-saving skills used in medical emergencies.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session sc-card__session--camp">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Wednesday, June 10, 2026</span>
+                        </div>
+                        <div class="sc-card__session sc-card__session--camp">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Tuesday, June 16, 2026</span>
+                        </div>
+                        <div class="sc-card__session sc-card__session--camp">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Wednesday, June 24, 2026</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=CPSC" target="_blank" rel="noopener" class="sc-card__register-btn sc-card__register-btn--camp">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Crazy Hot Culinary Summer Camp -->
+                <div class="sc-card sc-card--camp" data-category="camp">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Crazy Hot Culinary Summer Camp</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">The “Crazy Hot” Summer Camp is a three-day, hands-on summer camp designed to introduce students to professional kitchen skills, safety, and culinary creativity.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session sc-card__session--camp">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>June 15 – 18, 2026</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-CCSC-01P&courseId=CCSC&categoryId=ROOT" target="_blank" rel="noopener" class="sc-card__register-btn sc-card__register-btn--camp">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Nails Specialty Summer Camp -->
+                <div class="sc-card sc-card--camp" data-category="camp">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Nails Specialty Summer Camp</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">Nails Specialty Summer Camp gives teens a fun, hands-on introduction to the world of nail artistry and professional nail care.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session sc-card__session--camp">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>June 8 – 11, 2026</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-NSSC-01P&courseId=NSSC&categoryId=ROOT" target="_blank" rel="noopener" class="sc-card__register-btn sc-card__register-btn--camp">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+                <!-- Skin Care is Self Care -->
+                <div class="sc-card sc-card--camp" data-category="camp">
+                    <div class="sc-card__top">
+                        <h3 class="sc-card__title">Skin Care is Self Care</h3>
+                        <span class="sc-card__campus-badge sc-card__campus-badge--stpete"><i class="fas fa-map-marker-alt"></i> St. Petersburg</span>
+                    </div>
+                    <p class="sc-card__desc">Skin Care is Self-Care Camp introduces teens to healthy skincare and natural beauty techniques through fun, hands-on activities.</p>
+                    <div class="sc-card__sessions">
+                        <div class="sc-card__session sc-card__session--camp">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>June 22 – 25, 2026</span>
+                        </div>
+                    </div>
+                    <div class="sc-card__actions">
+                        <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-SCSC-01P&courseId=SCSC&categoryId=ROOT" target="_blank" rel="noopener" class="sc-card__register-btn sc-card__register-btn--camp">Register <i class="fas fa-external-link-alt" style="font-size:0.7rem;"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FULL-TIME PROGRAMS BOX -->
+        <div class="sc-clearwater-box">
+            <div class="sc-clearwater-box__icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="sc-clearwater-box__text">
+                <p class="sc-clearwater-box__title">Looking for Full-Time Programs?</p>
+                <p class="sc-clearwater-box__desc">Pinellas Technical College offers 40+ full-time career training programs across both campuses. Visit your campus website for complete program listings:</p>
+                <p class="sc-clearwater-box__desc" style="margin-top:0.5rem;"><a href="https://stpete.myptc.edu" target="_blank" rel="noopener">stpete.myptc.edu</a> &nbsp;|&nbsp; <a href="https://clearwater.myptc.edu" target="_blank" rel="noopener">clearwater.myptc.edu</a></p>
+            </div>
+            <div class="sc-clearwater-box__phone" style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <div style="text-align:center;">
+                    <span class="sc-clearwater-box__phone-label">St. Pete</span>
+                    <a href="tel:7278932500" class="sc-clearwater-box__phone-number"><i class="fas fa-phone" style="font-size:0.75rem; margin-right:0.25rem;"></i> 727.893.2500</a>
+                </div>
+                <div style="text-align:center;">
+                    <span class="sc-clearwater-box__phone-label">Clearwater</span>
+                    <a href="tel:7275387167" class="sc-clearwater-box__phone-number"><i class="fas fa-phone" style="font-size:0.75rem; margin-right:0.25rem;"></i> 727.538.7167</a>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- ================================================
+         END: Content to paste into Finalsite
+         ================================================ -->
+
+    <script>
+        /* Filter functionality */
+        function scFilterCards(filter, btn) {
+            /* Update active button */
+            document.querySelectorAll('.sc-filter-btn').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            btn.classList.add('active');
+
+            /* Show/hide cards */
+            document.querySelectorAll('.sc-card').forEach(function(card) {
+                if (filter === 'all') {
+                    card.setAttribute('data-hidden', 'false');
+                    card.style.display = '';
+                } else if (card.getAttribute('data-category') === filter) {
+                    card.setAttribute('data-hidden', 'false');
+                    card.style.display = '';
+                } else {
+                    card.setAttribute('data-hidden', 'true');
+                    card.style.display = 'none';
+                }
+            });
+
+            /* Show/hide section headers */
+            document.querySelectorAll('.sc-section').forEach(function(section) {
+                var visibleCards = section.querySelectorAll('.sc-card:not([data-hidden="true"])');
+                section.style.display = visibleCards.length > 0 ? '' : 'none';
+            });
+        }
+    </script>
+
+</body>
+</html>

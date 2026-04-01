@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTC Short Courses - Simplified</title>
+    <!-- Simplified completely inline styles -->
+    <style>
+        .ptc-simple-container {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* 1. Alerts & Callouts */
+        .ptc-simple-alert {
+            background-color: #f8f9fa;
+            border-left: 5px solid #00205B;
+            /* Navy */
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .ptc-simple-alert h2,
+        .ptc-simple-alert h3 {
+            color: #00205B;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 2. Typography */
+        .ptc-simple-container h1 {
+            color: #00205B;
+            border-bottom: 2px solid #278406;
+            /* Green */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .ptc-simple-container h2.section-header {
+            color: #278406;
+            margin-top: 2.5rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        /* 3. Course Lists */
+        .ptc-simple-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 1.5rem 0 0;
+        }
+
+        .ptc-simple-list li {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .ptc-course-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000;
+            margin: 0 0 0.25rem 0;
+        }
+
+        /* 4. Campus Badges */
+        .ptc-campus-text {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+            color: #fff;
+        }
+
+        .ptc-campus-text.stpete {
+            background-color: #278406;
+        }
+
+        .ptc-campus-text.clearwater {
+            background-color: #00205B;
+        }
+
+        /* No Sessions Warning */
+        .ptc-no-sessions {
+            display: inline-block;
+            margin-top: 0.3rem;
+            background: #fff3cd;
+            border-left: 3px solid #e6a800;
+            color: #7a5500;
+            font-size: 0.88rem;
+            font-weight: bold;
+            padding: 0.3rem 0.6rem;
+        }
+
+        /* Section divider for no-sessions group */
+        .ptc-nosessions-divider {
+            margin: 1.5rem 0 1rem;
+            padding: 0.6rem 0.85rem;
+            background: #eef0f4;
+            border-left: 4px solid #555;
+            color: #333;
+            font-size: 0.9rem;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* 5. Details & Actions */
+        .ptc-course-desc {
+            margin: 0.5rem 0;
+        }
+
+        .ptc-course-meta {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.75rem;
+            background: #fdfdfd;
+            padding: 0.5rem;
+            border-left: 3px solid #ddd;
+        }
+
+        .ptc-action-text {
+            display: inline-block;
+            margin-top: 0.25rem;
+            color: #278406;
+            font-weight: bold;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .ptc-action-text:hover {
+            text-decoration: underline;
+            color: #00205B;
+        }
+
+        /* Jump Menu Navigation */
+        .ptc-simple-nav {
+            background-color: #f4f6f9;
+            border: 1px solid #e2e6ea;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .ptc-simple-nav a {
+            color: #00205B;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .ptc-simple-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Clearwater Bottom Box */
+        .ptc-bottom-box {
+            background-color: #fff8e1;
+            /* very light yellow */
+            border: 1px solid #ffd145;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ptc-simple-container">
+
+
+
+        <h1>Short Courses, Evening Classes & Summer Camps</h1>
+
+
+        <!-- JUMP NAV -->
+        <div class="ptc-simple-nav">
+            Jump to section:
+            <a href="#workforce-courses">Continuing Workforce Courses</a> &nbsp;|&nbsp;
+            <a href="#summer-camps">Summer Camps for Youth</a> &nbsp;|&nbsp;
+            <a href="https://www.enrole.com/ptc/jsp/index.jsp" target="_blank" rel="noopener">All Courses</a>
+        </div>
+
+        <!-- Top Campus Alert -->
+        <div class="ptc-simple-alert">
+            <h2>Please Note the Campus Location for Each Course</h2>
+            <p><strong>Please check the campus location listed for each course</strong> before calling or registering to
+                make sure you reach the right location.</p>
+            <p style="margin-bottom:0;"><strong>St. Petersburg Campus:</strong> 727-893-2500 &nbsp;|&nbsp;
+                <strong>Clearwater Campus:</strong> 727-538-7167
+            </p>
+        </div>
+
+        <!-- WORKFORCE COURSES SECTION -->
+        <h2 id="workforce-courses" class="section-header">Continuing Workforce & Life Enrichment Courses</h2>
+        <p>These are high-quality courses developed by Pinellas Technical College instructors as short, Continuing
+            Workforce Development courses which provide a portion of the state-approved curriculum. Due to their
+            abbreviated nature, these courses do <strong>NOT</strong> articulate or grant credit toward Pinellas
+            Technical College's program level courses. The following short courses are currently available:</p>
+
+        <ul class="ptc-simple-list">
+
+            <li>
+                <h3 class="ptc-course-title">Air Conditioning Service Fundamentals</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Gain the skills needed to install and service air conditioning systems.</p>
+                <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=ACSF"
+                    class="ptc-action-text" target="_blank" rel="noopener">Course Details & Register &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Child Care Staff or Director Credential Renewal Courses</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">DCF-approved course for staff and directors seeking to renew their state
+                    administrator credential.<br>
+                    <a href="https://www.myptc.edu/fs/resource-manager/view/7172ea77-f6e6-4809-87ee-d4ebe32f8e1a"
+                        target="_blank"
+                        style="color: #278406; font-weight: bold; font-size: 0.9rem; text-decoration: underline;">Download
+                        2025-2026 Child Care Training Program Dates (PDF)</a>
+                </p>
+                <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=SDCR"
+                    class="ptc-action-text" target="_blank" rel="noopener">Course Details & Register &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Drone Pilot: Small Unmanned Aircraft Systems</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Prep for your FAA Remote Pilot Certification through this hands-on sUAS
+                    training course.</p>
+                <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=SUAS"
+                    class="ptc-action-text" target="_blank" rel="noopener">Course Details & Register &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Forklift Operation & Safety</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Earn hands-on forklift operator training in a structured one-day session.</p>
+                <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=FOAS"
+                    class="ptc-action-text" target="_blank" rel="noopener">Course Details & Register &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Water Treatment Plant Operation Study Session (Online)</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Online tutorial support for independent students preparing for water
+                    treatment plant operator licensure.</p>
+                <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2601-WTPOSS-01P&courseId=WTPOSS&categoryId=ROOT"
+                    class="ptc-action-text" target="_blank" rel="noopener">Course Details & Register &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">School Board Employee Training</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Training available exclusively to Pinellas County School Board employees.</p>
+                <a href="https://www.myptc.edu/fs/resource-manager/view/5553f0ec-6f1e-42d9-b801-19b65407b545"
+                    class="ptc-action-text" target="_blank" rel="noopener">View Details &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Welding (Evening Class)</h3>
+                <span class="ptc-campus-text clearwater">Clearwater Campus</span>
+                <p class="ptc-course-desc">Evening welding class for adults offered at the PTC Clearwater Campus.</p>
+                <a href="https://clearwater.myptc.edu/programs/short-courses-evening-classes/welding"
+                    class="ptc-action-text" target="_blank" rel="noopener">View Program Details &rarr;</a>
+            </li>
+
+            <!-- Grouped "No Sessions" Courses -->
+            <div class="ptc-nosessions-divider">The following courses have no upcoming sessions scheduled. Check back or
+                contact the campus for availability.</div>
+
+            <li>
+                <h3 class="ptc-course-title">CPR | AED | First Aid</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Earn CPR, AED, and First Aid certification through this hands-on course.</p>
+                <span class="ptc-no-sessions">&#9888; No sessions currently scheduled</span>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Silversmithing 101</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Learn to create custom jewelry using professional silversmithing tools and
+                    techniques.</p>
+                <span class="ptc-no-sessions">&#9888; No sessions currently scheduled</span>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Upholstery</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Learn to repair and reupholster furniture pieces in this hands-on workshop.
+                </p>
+                <span class="ptc-no-sessions">&#9888; No sessions currently scheduled</span>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Defensive Driving</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Defensive driving instruction for van operators transporting passengers or
+                    cargo.</p>
+                <span class="ptc-no-sessions">&#9888; No sessions currently scheduled</span>
+            </li>
+
+        </ul>
+
+
+
+        <!-- SUMMER CAMPS SECTION -->
+        <h2 id="summer-camps" class="section-header" style="color:#d69e00;">Summer Camps for Youth (2026)</h2>
+
+        <ul class="ptc-simple-list">
+
+            <li>
+                <h3 class="ptc-course-title">Barbering Summer Camp</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Teens discover barbering tools, techniques, and the world of professional
+                    grooming.</p>
+                <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=BASC"
+                    class="ptc-action-text" target="_blank" rel="noopener" style="color:#d69e00;">Course Details &
+                    Register &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Construction Summer Camp</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Teens explore building trades basics through hands-on construction projects.
+                </p>
+                <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-COSC&courseId=COSC&categoryId=ROOT"
+                    class="ptc-action-text" target="_blank" rel="noopener" style="color:#d69e00;">Course Details &
+                    Register &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Cosmetology Summer Braiding Camp</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Teens explore natural hair braiding and the world of professional
+                    cosmetology.</p>
+                <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=CSBC"
+                    class="ptc-action-text" target="_blank" rel="noopener" style="color:#d69e00;">Course Details &
+                    Register &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">CPR for Teens</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Teens learn life-saving CPR and Basic Life Support skills in a hands-on camp
+                    session.</p>
+                <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=CPSC"
+                    class="ptc-action-text" target="_blank" rel="noopener" style="color:#d69e00;">Course Details &
+                    Register &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Crazy Hot Culinary Summer Camp</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Teens learn professional kitchen skills, food safety, and culinary
+                    creativity.</p>
+                <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-CCSC-01P&courseId=CCSC&categoryId=ROOT"
+                    class="ptc-action-text" target="_blank" rel="noopener" style="color:#d69e00;">Course Details &
+                    Register &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Nails Specialty Summer Camp</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Teens get a hands-on introduction to nail artistry and professional nail
+                    care.</p>
+                <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-NSSC-01P&courseId=NSSC&categoryId=ROOT"
+                    class="ptc-action-text" target="_blank" rel="noopener" style="color:#d69e00;">Course Details &
+                    Register &rarr;</a>
+            </li>
+
+            <li>
+                <h3 class="ptc-course-title">Skin Care is Self Care</h3>
+                <span class="ptc-campus-text stpete">St. Petersburg Campus</span>
+                <p class="ptc-course-desc">Teens learn healthy skincare routines and natural beauty techniques.</p>
+                <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-SCSC-01P&courseId=SCSC&categoryId=ROOT"
+                    class="ptc-action-text" target="_blank" rel="noopener" style="color:#d69e00;">Course Details &
+                    Register &rarr;</a>
+            </li>
+
+        </ul>
+
+        <!-- FULL-TIME PROGRAMS REDIRECT BOX -->
+        <div class="ptc-bottom-box">
+            <h3 style="margin-top:0; color:#00205B;">Looking for Full-Time Programs?</h3>
+            <p>Pinellas Technical College offers 40+ full-time career training programs across both campuses. Visit your
+                campus website for complete program listings:</p>
+            <p style="margin-bottom:0;">
+                <a href="https://stpete.myptc.edu/programs/st-petersburg-full-time-programs" target="_blank"
+                    rel="noopener"><strong>St. Pete Campus</strong> Full-Time Programs</a> &nbsp;|&nbsp;
+                <a href="https://clearwater.myptc.edu/programs/clearwater-full-time-programs" target="_blank"
+                    rel="noopener"><strong>Clearwater Campus</strong> Full-Time Programs</a>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
