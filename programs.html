@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Programs A-Z — Pinellas Technical College</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header { background: var(--color-green); color: white; padding: 4rem 0 2rem; text-align: center; }
+        .page-header h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; }
+        .page-header p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.5; color: rgba(255,255,255,0.9); }
+        
+        .filters { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin: -2rem auto 3rem; padding: 1.5rem; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 800px; position: relative; z-index: 10; border: 1px solid var(--color-gray-200); }
+        .filter-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .filter-group label { font-weight: 600; font-size: 0.9rem; color: var(--color-gray-700); }
+        .filter-select { padding: 0.6rem; border: 1px solid var(--color-gray-300); border-radius: 4px; font-family: inherit; font-size: 1rem; min-width: 250px; background: white; }
+        
+        .programs-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+        .prog-card { background: white; border: 1px solid var(--color-gray-200); border-radius: 8px; padding: 1.5rem; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+        .prog-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .prog-card h3 { color: var(--color-green); font-family: var(--font-heading); margin-bottom: 0.5rem; font-size: 1.25rem; }
+        .prog-card p { font-size: 0.9rem; color: var(--color-gray-700); margin-bottom: 1rem; flex-grow: 1; line-height: 1.5; }
+        .prog-card .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .prog-card .tag { background: var(--color-gray-100); color: var(--color-gray-800); font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 500; }
+        .prog-card .campus-tag { background: #e0f2fe; color: #0284c7; }
+        .prog-card-link { margin-top: auto; color: var(--color-accent); font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .prog-card-link:hover { text-decoration: underline; }
+
+        .hidden { display: none !important; }
+        
+        .no-results { grid-column: 1 / -1; text-align: center; padding: 3rem; background: var(--color-gray-100); border-radius: 8px; color: var(--color-gray-700); font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         UTILITY BAR (Top-most bar)
+    ============================================= -->
+    <div class="utility-bar">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
+                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
+                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
+                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MAIN HEADER / NAVIGATION
+    ============================================= -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="/" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College — Opportunity Starts Here" id="header-logo" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
+                </div>
+            </a>
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                <ul class="main-nav__list">
+                    <!-- PROGRAMS -->
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <h4>By Category</h4>
+                                    <ul>
+                                        <li><a href="#">Health Sciences</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                        <li><a href="#">Skilled Trades</a></li>
+                                        <li><a href="#">Transportation &amp; Logistics</a></li>
+                                        <li><a href="#">Culinary &amp; Hospitality</a></li>
+                                        <li><a href="#">Cosmetology &amp; Barbering</a></li>
+                                        <li><a href="#">Business &amp; Office</a></li>
+                                        <li><a href="#">Arts &amp; Media</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <h4>Explore</h4>
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A–Z</a></li>
+                                        <li><a href="#">Evening &amp; Part-Time</a></li>
+                                        <li><a href="#">Apprenticeships</a></li>
+                                        <li><a href="#">Dual Enrollment</a></li>
+                                        <li><a href="#">Distance Learning</a></li>
+                                        <li><a href="#">ABE / GED / ESOL</a></li>
+                                        <li><a href="#">Student Orgs</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- ADMISSIONS & AID -->
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">How to Apply</a></li>
+                                        <li><a href="#">Enrollment Steps</a></li>
+                                        <li><a href="#">Testing &amp; Assessment</a></li>
+                                        <li><a href="#">Tuition &amp; Fee Rates</a></li>
+                                        <li><a href="#">FAFSA &amp; Eligibility</a></li>
+                                        <li><a href="#">Scholarships &amp; Veterans</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- CAMPUSES -->
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Campuses <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="clearwater.html">Clearwater Campus</a></li>
+                                        <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- CURRENT STUDENTS -->
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">Canvas Login</a></li>
+                                        <li><a href="#">Focus / SIS Portal</a></li>
+                                        <li><a href="#">Academic Calendar</a></li>
+                                        <li><a href="#">Transcript Request</a></li>
+                                        <li><a href="#">Tech Support</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- ABOUT PTC -->
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">About PTC <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">Welcome &amp; History</a></li>
+                                        <li><a href="#">Accreditation</a></li>
+                                        <li><a href="#">Staff Directory</a></li>
+                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="#">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="site-header__actions">
+                <button class="search-toggle" id="search-toggle" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+        <!-- Search Overlay -->
+        <div class="search-overlay" id="search-overlay">
+            <div class="container">
+                <form class="search-form" role="search" aria-label="Site Search">
+                    <input type="search" placeholder="Search programs, courses, and more..." class="search-form__input" id="search-input">
+                    <button type="submit" class="search-form__btn" id="search-submit"><i class="fas fa-search"></i></button>
+                    <button type="button" class="search-form__close" id="search-close"><i class="fas fa-times"></i></button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- PAGE HEADER -->
+        <section class="page-header" style="padding-bottom: 3rem;">
+            <div class="container">
+                <h1>Programs A–Z Directory</h1>
+                <p style="margin-bottom: 1.5rem;">Explore over 40 industry-certified training programs designed to fast-track your career. Filter by your area of interest or preferred campus.</p>
+                <div class="short-courses-callout">
+                    <span style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-right: 15px;">Looking for continuing education?</span>
+                    <a href="#" class="btn btn--outline-white btn--sm" style="border-width: 1px; padding: 0.4rem 1rem;">Explore Short Courses &amp; Evening Classes</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTENT -->
+        <section class="container">
+            <!-- FILTERS -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filter-cluster">Career Cluster</label>
+                    <select id="filter-cluster" class="filter-select">
+                        <option value="all">All Clusters</option>
+                        <option value="health">Health Sciences</option>
+                        <option value="it">Information Technology</option>
+                        <option value="trades">Skilled Trades & Manufacturing</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="culinary">Culinary Arts</option>
+                        <option value="cosmo">Cosmetology & Design</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filter-campus">Location</label>
+                    <select id="filter-campus" class="filter-select">
+                        <option value="all">Both Campuses</option>
+                        <option value="clw">Clearwater Campus</option>
+                        <option value="stp">St. Petersburg Campus</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PROGRAMS LIST -->
+            <div class="programs-list" id="programs-container">
+                <!-- Program Cards -->
+                <!-- A -->
+                <div class="prog-card" data-cluster="it" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-laptop"></i> IT</span></div>
+                    <h3>Accounting Operations</h3>
+                    <p>Learn financial accounting principles, payroll processing, and accounting software used in modern business.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="transportation" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-car"></i> Transportation</span></div>
+                    <h3>Automotive Collision Technology</h3>
+                    <p>Learn to repair, reconstruct and finish automobile bodies, fenders, and external features.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="transportation" data-campus="clw stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater & St. Pete</span><span class="tag"><i class="fas fa-car"></i> Transportation</span></div>
+                    <h3>Automotive Service Technology 1 & 2</h3>
+                    <p>Comprehensive training in engines, electrical systems, brakes, and performance diagnosis.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- B -->
+                <div class="prog-card" data-cluster="culinary" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-utensils"></i> Culinary</span></div>
+                    <h3>Baking & Pastry Arts</h3>
+                    <p>Master the art of creating breads, pastries, cakes, and desserts for commercial bakeries and restaurants.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="cosmo" data-campus="clw stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater & St. Pete</span><span class="tag"><i class="fas fa-cut"></i> Cosmetology</span></div>
+                    <h3>Barbering</h3>
+                    <p>Train in hair cutting, styling, facial hair grooming, and salon management.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="trades" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-hard-hat"></i> Trades</span></div>
+                    <h3>Building Trades and Construction Design</h3>
+                    <p>Hands-on training in carpentry, masonry, plumbing, and basic electrical skills for construction.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- C -->
+                <div class="prog-card" data-cluster="trades" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-hard-hat"></i> Trades</span></div>
+                    <h3>Cabinetmaking</h3>
+                    <p>Develop precise woodworking skills to design and build custom cabinetry and fine furniture.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health" data-campus="clw stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater & St. Pete</span><span class="tag"><i class="fas fa-child"></i> Education</span></div>
+                    <h3>Child Care Center Operations</h3>
+                    <p>Earn your Director's Credential to manage child care facilities and lead staff.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="transportation" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-truck"></i> Transportation</span></div>
+                    <h3>Commercial Class B Driving</h3>
+                    <p>Training to operate heavy straight trucks, dump trucks, and passenger buses safely.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="transportation" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-truck"></i> Transportation</span></div>
+                    <h3>Commercial Vehicle Driving (CDL)</h3>
+                    <p>Comprehensive Class A CDL training for a career in commercial interstate trucking.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="it" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-drafting-compass"></i> IT</span></div>
+                    <h3>Computer-Aided Drawing & Modeling</h3>
+                    <p>Learn AutoCAD, Revit, and SolidWorks to create architectural and engineering drafts.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="it" data-campus="clw stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater & St. Pete</span><span class="tag"><i class="fas fa-laptop"></i> IT</span></div>
+                    <h3>Computer Systems & IT</h3>
+                    <p>Get certified in CompTIA A+, Network+, and Security+ handling modern hardware and networks.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="cosmo" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-cut"></i> Cosmetology</span></div>
+                    <h3>Cosmetology</h3>
+                    <p>Full licensing program covering hair styling, chemical services, skin care, and nail care.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- D-E -->
+                <div class="prog-card" data-cluster="health" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-heartbeat"></i> Health Sciences</span></div>
+                    <h3>Dental Assisting</h3>
+                    <p>Prepare for a fast-paced career assisting dentists, managing patient care, and taking x-rays.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="transportation" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-truck"></i> Transportation</span></div>
+                    <h3>Diesel Maintenance Technician</h3>
+                    <p>Learn the foundations of maintaining and repairing diesel engines and heavy-duty vehicles.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="transportation" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-truck"></i> Transportation</span></div>
+                    <h3>Diesel Systems Technician 1 & 2</h3>
+                    <p>Advanced diagnostic and repair training for heavy equipment, trucks, and buses.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-child"></i> Education</span></div>
+                    <h3>Early Childhood Education</h3>
+                    <p>Prepare to become a lead preschool teacher with national CDA credential training.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="trades" data-campus="clw stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater & St. Pete</span><span class="tag"><i class="fas fa-bolt"></i> Trades</span></div>
+                    <h3>Electricity</h3>
+                    <p>Master residential and commercial electrical wiring, code compliance, and power systems.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="trades" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-cogs"></i> Trades</span></div>
+                    <h3>Electronic Systems Integration</h3>
+                    <p>Install and troubleshoot smart home technologies, security systems, and audio/video networks.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-ambulance"></i> Health Sciences</span></div>
+                    <h3>Emergency Medical Technician</h3>
+                    <p>Fast-track training for critical pre-hospital emergency medical care and transport.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- F-M -->
+                <div class="prog-card" data-cluster="cosmo" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-spa"></i> Cosmetology</span></div>
+                    <h3>Facials Specialty</h3>
+                    <p>Learn advanced skincare, makeup application, and spa treatments to become a licensed esthetician.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="culinary" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-utensils"></i> Culinary</span></div>
+                    <h3>Fundamental Foodservice Skills</h3>
+                    <p>Entry-level prep cooking, sanitation, and safety training for commercial kitchens.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="trades" data-campus="clw stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater & St. Pete</span><span class="tag"><i class="fas fa-snowflake"></i> Trades</span></div>
+                    <h3>HVAC/R 1</h3>
+                    <p>Heating, ventilation, air conditioning, and refrigeration installation and repair.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="cosmo" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-couch"></i> Cosmetology</span></div>
+                    <h3>Interior Decorating Services</h3>
+                    <p>Study color theory, space planning, and materials to design beautiful residential interiors.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="trades" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-cogs"></i> Trades</span></div>
+                    <h3>Machining Technologies</h3>
+                    <p>Operate manual and CNC mills, lathes, and grinders to manufacture precision metal parts.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="transportation" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-ship"></i> Transportation</span></div>
+                    <h3>Marine Service Technologies</h3>
+                    <p>Train to repair outboard/inboard engines, stern drives, and marine electrical systems.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-heartbeat"></i> Health Sciences</span></div>
+                    <h3>Medical Administrative Specialist</h3>
+                    <p>Master medical billing, patient scheduling, terminology, and front-office operations.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-heartbeat"></i> Health Sciences</span></div>
+                    <h3>Medical Coder/Biller</h3>
+                    <p>Learn ICD-10, CPT coding, and health insurance claim processing for healthcare facilities.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- N-S -->
+                <div class="prog-card" data-cluster="cosmo" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-spa"></i> Cosmetology</span></div>
+                    <h3>Nails Specialty</h3>
+                    <p>Train in manicures, pedicures, extensions, and nail art techniques to become a licensed technician.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="it" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-network-wired"></i> IT</span></div>
+                    <h3>Network Support Services</h3>
+                    <p>Advanced Cisco CCNA routing, switching, and cloud infrastructure management.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="trades" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-wrench"></i> Trades</span></div>
+                    <h3>Plumbing</h3>
+                    <p>Learn pipe fitting, fixture installation, and water/waste system maintenance.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health" data-campus="clw stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater & St. Pete</span><span class="tag"><i class="fas fa-user-nurse"></i> Health Sciences</span></div>
+                    <h3>Practical Nursing</h3>
+                    <p>Intensive program preparing students for the NCLEX-PN exam to become a licensed practical nurse.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="culinary" data-campus="clw stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater & St. Pete</span><span class="tag"><i class="fas fa-utensils"></i> Culinary</span></div>
+                    <h3>Professional Culinary Arts</h3>
+                    <p>Train in classical and modern cooking techniques, food safety, and kitchen management.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-user-nurse"></i> Health Sciences</span></div>
+                    <h3>Professional Nursing (LPN-RN)</h3>
+                    <p>Bridge program for LPNs to earn their RN through advanced clinical training.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="trades" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-road"></i> Trades</span></div>
+                    <h3>Public Works</h3>
+                    <p>Training in municipal infrastructure maintenance, street repair, and heavy equipment operation.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-child"></i> Education</span></div>
+                    <h3>School Age Professional Certificate</h3>
+                    <p>Specialized training for before and after-school care providers managing K-5 students.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="cosmo" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-theater-masks"></i> Cosmetology</span></div>
+                    <h3>Stage Production</h3>
+                    <p>Hands-on experience in lighting, sound, scenic design, and live event management.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health" data-campus="stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> St. Pete</span><span class="tag"><i class="fas fa-heartbeat"></i> Health Sciences</span></div>
+                    <h3>Surgical Technology</h3>
+                    <p>Learn sterile techniques, instrumentation, and operating room procedures to assist surgeons.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- W -->
+                <div class="prog-card" data-cluster="it" data-campus="clw">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater</span><span class="tag"><i class="fas fa-code"></i> IT</span></div>
+                    <h3>Web Development</h3>
+                    <p>Frontend and backend coding skills for creating responsive websites and applications.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="trades" data-campus="clw stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater & St. Pete</span><span class="tag"><i class="fas fa-fire"></i> Trades</span></div>
+                    <h3>Welding Technology</h3>
+                    <p>Learn SMAW, GMAW, FCAW, and GTAW welding processes for construction and manufacturing.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="trades" data-campus="clw stp">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt"></i> Clearwater & St. Pete</span><span class="tag"><i class="fas fa-fire"></i> Trades</span></div>
+                    <h3>Welding Technology - Advanced</h3>
+                    <p>Specialized pipe welding, layout, and fabrication techniques for advanced manufacturing.</p>
+                    <a href="#" class="prog-card-link">Learn More <i class="arrow right"></i></a>
+                </div>
+                
+                <div id="no-results-msg" class="no-results hidden">
+                    <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; color: var(--color-gray-400); display: block;"></i>
+                    No programs match your selected filters. Try adjusting your selection.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================
+         FOOTER
+    ============================================= -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline">Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">Programs</a></li>
+                            <li><a href="#">Admissions</a></li>
+                            <li><a href="#">Tuition &amp; Aid</a></li>
+                            <li><a href="#">Student Resources</a></li>
+                            <li><a href="#">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Campuses</h4>
+                        <ul>
+                            <li><a href="clearwater.html">Clearwater Campus</a></li>
+                            <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                            <li><a href="#">Campus Maps</a></li>
+                            <li><a href="#">Request Info</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Consumer Information</a></li>
+                            <li><a href="#">Non-Discrimination</a></li>
+                            <li><a href="#">Accreditation</a></li>
+                            <li><a href="#">Careers at PTC</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Accessibility</a> | <a href="#">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple client-side filtering script (avoids frameworks, easy for Finalsite)
+        document.addEventListener('DOMContentLoaded', () => {
+            const clusterFilter = document.getElementById('filter-cluster');
+            const campusFilter = document.getElementById('filter-campus');
+            const cards = document.querySelectorAll('.prog-card');
+            const noResultsMsg = document.getElementById('no-results-msg');
+            
+            // Check for URL parameters (e.g. ?campus=clw)
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('campus')) {
+                campusFilter.value = urlParams.get('campus');
+            }
+            if (urlParams.has('cluster')) {
+                clusterFilter.value = urlParams.get('cluster');
+            }
+
+            function filterPrograms() {
+                const cluster = clusterFilter.value;
+                const campus = campusFilter.value;
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const cardCluster = card.getAttribute('data-cluster');
+                    const cardCampus = card.getAttribute('data-campus');
+                    
+                    const matchCluster = (cluster === 'all') || (cardCluster === cluster);
+                    const matchCampus = (campus === 'all') || (cardCampus.includes(campus));
+
+                    if (matchCluster && matchCampus) {
+                        card.classList.remove('hidden');
+                        visibleCount++;
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                if (visibleCount === 0) {
+                    noResultsMsg.classList.remove('hidden');
+                } else {
+                    noResultsMsg.classList.add('hidden');
+                }
+            }
+
+            clusterFilter.addEventListener('change', filterPrograms);
+            campusFilter.addEventListener('change', filterPrograms);
+            
+            // Run on initial load in case URL params set initial values
+            filterPrograms();
+        });
+    </script>
+</body>
+</html>

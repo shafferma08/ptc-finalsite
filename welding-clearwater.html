@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welding Technology - Clearwater Campus &mdash; Pinellas Technical College</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Program Page Specific Styles */
+        .program-hero {
+            background: linear-gradient(135deg, var(--color-green-dark) 0%, #004d29 100%);
+            color: white;
+            padding: 0;
+            overflow: hidden;
+        }
+        .program-hero__inner {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            min-height: 480px;
+        }
+        .program-hero__text {
+            padding: 4rem 0 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .program-hero__image {
+            overflow: hidden;
+        }
+        .program-hero__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .stat-bar {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        .stat-bar__item strong {
+            display: block;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+        .stat-bar__item span {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .stat-bar__item span.unavailable {
+            color: #fca5a5;
+        }
+        .start-steps {
+            background: var(--color-yellow);
+            padding: 1.25rem 0;
+        }
+        .start-steps__inner {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .start-steps__label {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: var(--color-gray-900);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .start-steps__links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .step-btn {
+            padding: 0.55rem 1.15rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .step-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .step-btn--dark {
+            background: var(--color-green-dark);
+            color: white;
+        }
+        .step-btn--outline {
+            background: white;
+            color: var(--color-green-dark);
+            border: 2px solid var(--color-green-dark);
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .video-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .video-card__embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .video-card__embed iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+        .accordion-item {
+            border: 1px solid var(--color-gray-300);
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            transition: box-shadow 0.2s;
+        }
+        .accordion-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .accordion-item summary {
+            padding: 1.25rem 1.75rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            background: var(--color-gray-100);
+            border-bottom: 1px solid var(--color-gray-200);
+            gap: 1rem;
+        }
+        .accordion-item summary::-webkit-details-marker { display: none; }
+        .accordion-item summary .course-name {
+            font-weight: 700;
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--color-green-dark);
+            flex: 1;
+        }
+        .accordion-item .hours-badge {
+            background: var(--color-green);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .accordion-item .accordion-body {
+            padding: 2rem;
+        }
+        .pdf-card {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--color-gray-200);
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .pdf-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .pdf-icon {
+            width: 50px; height: 50px;
+            background: #fee2e2;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .pdf-icon i { color: #dc2626; font-size: 1.5rem; }
+        .counselor-card {
+            background: var(--color-gray-100);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-gray-200);
+            text-align: center;
+        }
+        .counselor-avatar {
+            width: 80px; height: 80px;
+            background: var(--color-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- UTILITY BAR -->
+    <div class="utility-bar">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
+                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
+                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
+                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="/" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College" id="header-logo" style="height: 60px;">
+                <div style="display: flex; flex-direction: column; white-space: nowrap;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
+                </div>
+            </a>
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <h4>By Category</h4>
+                                    <ul>
+                                        <li><a href="#">Health Sciences</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                        <li><a href="#">Skilled Trades</a></li>
+                                        <li><a href="#">Transportation &amp; Logistics</a></li>
+                                        <li><a href="#">Culinary &amp; Hospitality</a></li>
+                                        <li><a href="#">Cosmetology &amp; Barbering</a></li>
+                                        <li><a href="#">Business &amp; Office</a></li>
+                                        <li><a href="#">Arts &amp; Media</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <h4>Explore</h4>
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="#">Evening &amp; Part-Time</a></li>
+                                        <li><a href="#">Apprenticeships</a></li>
+                                        <li><a href="#">Dual Enrollment</a></li>
+                                        <li><a href="#">Distance Learning</a></li>
+                                        <li><a href="#">ABE / GED / ESOL</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">How to Apply</a></li>
+                                        <li><a href="#">Enrollment Steps</a></li>
+                                        <li><a href="#">Testing &amp; Assessment</a></li>
+                                        <li><a href="#">Tuition &amp; Fee Rates</a></li>
+                                        <li><a href="#">FAFSA &amp; Eligibility</a></li>
+                                        <li><a href="#">Scholarships &amp; Veterans</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Campuses <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="clearwater.html">Clearwater Campus</a></li>
+                                        <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">Canvas Login</a></li>
+                                        <li><a href="#">Focus / SIS Portal</a></li>
+                                        <li><a href="#">Academic Calendar</a></li>
+                                        <li><a href="#">Transcript Request</a></li>
+                                        <li><a href="#">Tech Support</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">About PTC <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">Welcome &amp; History</a></li>
+                                        <li><a href="#">Accreditation</a></li>
+                                        <li><a href="#">Staff Directory</a></li>
+                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="#">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="site-header__actions">
+                <button class="search-toggle" id="search-toggle" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- ============================
+             1. HERO — What is this program?
+             Split layout: text + real photo
+        ============================= -->
+        <section class="program-hero">
+            <div class="container">
+                <div class="program-hero__inner">
+                    <div class="program-hero__text">
+                        <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--color-accent); font-weight: 700; font-size: 0.9rem;">Clearwater Campus</p>
+                        <h1 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 3.75rem); margin-bottom: 1rem; line-height: 1.1;">Welding Technology</h1>
+                        <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.9; max-width: 520px; margin-bottom: 0;">"The mission of this program is to prepare students for employment as welders in the fabrication and repair industry, as well as the construction industry."</p>
+
+                        <div class="stat-bar">
+                            <div class="stat-bar__item">
+                                <strong>Format</strong>
+                                <span>Full-Time</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Location</strong>
+                                <span>Clearwater</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Delivery</strong>
+                                <span>On-Campus</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Length</strong>
+                                <span>1,050 Hours</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Distance Ed</strong>
+                                <span class="unavailable">Not Available</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="program-hero__image">
+                        <img src="assets/images/content/Welder.jpg" alt="PTC Clearwater welding student at work in the shop with sparks flying">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             2. START HERE — What do I do first?
+             The #1 thing counselors repeat
+        ============================= -->
+        <div class="start-steps">
+            <div class="container">
+                <div class="start-steps__inner">
+                    <span class="start-steps__label"><i class="fas fa-bolt" style="margin-right: 0.4rem;"></i> New to PTC? Start Here:</span>
+                    <div class="start-steps__links">
+                        <a href="https://www.myptc.edu/admissions" target="_blank" class="step-btn step-btn--dark"><i class="fas fa-file-alt"></i> Step 1: Apply Online</a>
+                        <a href="https://clearwater.myptc.edu/admissions/admissions/shadowing-days-times" target="_blank" class="step-btn step-btn--outline"><i class="fas fa-calendar-check"></i> Step 2: Schedule a Shadow Day</a>
+                        <a href="#counselor" class="step-btn step-btn--outline"><i class="fas fa-user-tie"></i> Step 3: Meet Your Counselor</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Breadcrumbs -->
+        <div style="background-color: var(--color-gray-100); padding: 0.75rem 0; font-size: 0.875rem;">
+            <div class="container">
+                <p style="margin: 0; color: var(--color-gray-500);"><a href="index.html" style="color: var(--color-green); font-weight: 600;">Home</a> / <a href="programs.html" style="color: var(--color-green); font-weight: 600;">Programs A&ndash;Z</a> / <a href="clearwater.html" style="color: var(--color-green); font-weight: 600;">Clearwater</a> / <span style="color: var(--color-gray-700);">Welding Technology</span></p>
+            </div>
+        </div>
+
+        <!-- ============================
+             3. SEE IT IN ACTION — Social proof first
+             Videos before curriculum details
+        ============================= -->
+        <section style="padding: 5rem 0; background: var(--color-gray-900);">
+            <div class="container">
+                <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--color-accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">See It In Action</p>
+                <h2 style="font-family: var(--font-heading); font-size: 2.25rem; color: white; margin-bottom: 0.75rem;">What It&rsquo;s Really Like</h2>
+                <p style="color: rgba(255,255,255,0.65); margin-bottom: 3rem; font-size: 1.05rem; max-width: 600px;">Get a real look at our welding facility, hear from students and instructors, and see the kind of work you&rsquo;ll be doing.</p>
+
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-card__embed">
+                            <iframe src="https://www.youtube.com/embed/E7SOzBO83GI?si=USn0DAfcpSTxtTlT" title="Welding Technology at PTC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-card__embed">
+                            <iframe src="https://www.youtube.com/embed/iW1sNgrpRmY?si=Fv3kK7djhJXWPen3" title="Welding Technology at PTC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-card__embed">
+                            <iframe src="https://www.youtube.com/embed/20QwBJJDDcY?si=7h2xvMUJkyQmJfDF" title="Welding Technology at PTC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-card__embed">
+                            <iframe src="https://www.youtube.com/embed/2zcC2w7uxSU?si=qCWm4VRxZJYcbsYh" title="Welding Technology at PTC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             4. PROGRAM OVERVIEW — What will I learn?
+             Mission + detailed description
+        ============================= -->
+        <section style="padding: 5rem 0; background-color: white;">
+            <div class="container" style="max-width: 900px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">About This Program</h2>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 3rem; font-size: 1.1rem;">Program J400400 consists of a planned sequence of courses totaling 1,050 clock hours.</p>
+                <p style="font-size: 1.1rem; color: var(--color-gray-700); line-height: 1.8; margin-bottom: 2rem;">The Welder course builds on the skills and knowledge students learned in the Welder Assistant and Welder SMAW courses. Students explore career opportunities and requirements of a professional welder in the fabrication, repair, and construction industries.</p>
+
+                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-gray-900);">Course Sequence</h3>
+                <p style="color: var(--color-gray-500); margin-bottom: 2rem; font-size: 0.95rem;">Click each phase to see what you&rsquo;ll learn. Courses must be completed in order.</p>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <details class="accordion-item" open>
+                        <summary>
+                            <span class="course-name">Welder Assistant 2 (PMT0071)</span>
+                            <span class="hours-badge">150 Hours</span>
+                        </summary>
+                        <div class="accordion-body">
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">The Welder Assistant 2 course is designed to build on the skills and knowledge students learned in Welder Assistant 1 for entry into the welding industry. Students study drawings and welding symbols, intermediate oxyfuel gas cutting practices, plasma arc cutting principles, and basic shielded metal arc welding (SMAW).</p>
+                        </div>
+                    </details>
+                    <details class="accordion-item">
+                        <summary>
+                            <span class="course-name">Welder, SMAW 1 (PMT0072)</span>
+                            <span class="hours-badge">150 Hours</span>
+                        </summary>
+                        <div class="accordion-body">
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Prepares students for entry into the industry as a basic Shielded Metal Arc Welder. Students study basic shielded metal arc welding (SMAW), Carbon Arc Gouging (GAC) principles, and visual examination skills.</p>
+                        </div>
+                    </details>
+                    <details class="accordion-item">
+                        <summary>
+                            <span class="course-name">Welder, SMAW 2 (PMT0073)</span>
+                            <span class="hours-badge">150 Hours</span>
+                        </summary>
+                        <div class="accordion-body">
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Builds on the skills learned in Welder SMAW 1. Students study employability and welding careers, and intermediate shielded metal arc welding (SMAW).</p>
+                        </div>
+                    </details>
+                    <details class="accordion-item">
+                        <summary>
+                            <span class="course-name">Welder (PMT0074)</span>
+                            <span class="hours-badge">450 Hours</span>
+                        </summary>
+                        <div class="accordion-body">
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">The final phase builds on previous courses. Students study basic and intermediate Gas Metal Arc Welding (GMAW), basic and intermediate Flux-Core Arc Welding (FCAW), basic and intermediate Gas Tungsten Arc Welding (GTAW), and a basic understanding of pipe welding.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             5. CREDENTIALS — What do I earn?
+             AWS + Florida Ready to Work
+        ============================= -->
+        <section style="padding: 5rem 0; background-color: var(--color-gray-100);">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: stretch;">
+                    <div style="background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--color-accent);">
+                        <h2 style="color: var(--color-green-dark); margin-bottom: 2rem; font-family: var(--font-heading);">Industry Credentials</h2>
+                        
+                        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-gray-900);">American Welding Society (AWS)</h3>
+                        <p style="color: var(--color-gray-700); line-height: 1.7; margin-bottom: 1.25rem;">After completing all competencies, students are encouraged and eligible to take the American Welding Society (AWS) certification test. There is an application fee from AWS. The Clearwater campus of Pinellas Technical College is an <strong>AWS accredited testing facility</strong>.</p>
+                        <img src="assets/images/content/awsatflogo_color.jpg" alt="AWS Accredited Test Facility - Welder Testing" style="max-width: 200px; margin-bottom: 2rem;">
+                        
+                        <div style="background: rgba(0, 129, 66, 0.05); border-left: 4px solid var(--color-green); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+                            <h4 style="color: var(--color-green); margin-bottom: 0.75rem; font-size: 1.05rem;"><i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i> Florida Ready to Work</h4>
+                            <p style="font-size: 0.95rem; color: var(--color-gray-700); line-height: 1.6; margin-bottom: 0.75rem;">The goal of Pinellas Technical College&rsquo;s career and technical programs is for each student to achieve an industry-recognized credential or professional license. It is an expectation that students will earn the <strong>FL Ready to Work Soft Skills</strong> credential before graduating. The <strong>Digital Skills</strong> credential is also highly recommended as all careers use technology. The <strong>Employability Skills</strong> credential reviews basic reading and math skills used on the job.</p>
+                            <p style="font-size: 0.9rem; color: var(--color-gray-700); margin: 0;">These credentials align with our <strong>BIGSIX initiative</strong> &mdash; professionalism, pride, focus, success, ownership, and excellence. <a href="https://www.myfloridareadytowork.com" target="_blank" style="color: var(--color-green); font-weight: 600;">myfloridareadytowork.com &rarr;</a></p>
+                        </div>
+                    </div>
+
+                    <!-- Cost + Financial Aid sidebar -->
+                    <div style="display: flex; flex-direction: column; gap: 2rem;">
+                        <div style="background: var(--color-green-dark); border-radius: 12px; padding: 3rem; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; flex: 1; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <div style="color: var(--color-accent); font-size: 3rem; margin-bottom: 1.5rem;">
+                                <i class="fas fa-circle-dollar-to-slot"></i>
+                            </div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; font-family: var(--font-heading);">Financial Aid &amp; Costs</h3>
+                            <p style="margin-bottom: 2rem; opacity: 0.9; line-height: 1.6; font-size: 0.95rem;">Program length and costs are approximate, and subject to change. Financial assistance is available to those who qualify.</p>
+                            <a href="#" class="btn btn--accent" style="width: 100%;">Explore Financial Aid</a>
+                        </div>
+
+                        <!-- PDF Downloads -->
+                        <a href="program-flyers/FT-CLWWeldingTechnology.pdf" target="_blank" class="pdf-card">
+                            <div class="pdf-icon"><i class="fas fa-file-pdf"></i></div>
+                            <div>
+                                <strong style="display: block; color: var(--color-gray-900); font-size: 1rem; margin-bottom: 0.2rem;">Program Flyer</strong>
+                                <span style="font-size: 0.85rem; color: var(--color-gray-500);">Full-Time &mdash; Clearwater &bull; PDF</span>
+                            </div>
+                        </a>
+                        <a href="program-flyers/WeldTech_CW_01272026.pdf" target="_blank" class="pdf-card">
+                            <div class="pdf-icon"><i class="fas fa-file-pdf"></i></div>
+                            <div>
+                                <strong style="display: block; color: var(--color-gray-900); font-size: 1rem; margin-bottom: 0.2rem;">Program Costs</strong>
+                                <span style="font-size: 0.85rem; color: var(--color-gray-500);">Welding Technology &mdash; Jan 2026 &bull; PDF</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             6. NEXT STEPS — OK I'm in, what now?
+             Counselor + Apply CTA
+        ============================= -->
+        <section id="counselor" style="padding: 5rem 0; background-color: white; scroll-margin-top: 100px;">
+            <div class="container" style="max-width: 750px; text-align: center;">
+                <h2 class="section-title" style="margin-bottom: 0.75rem;">Ready to Get Started?</h2>
+                <p style="color: var(--color-gray-600); font-size: 1.1rem; line-height: 1.6; margin-bottom: 3rem;">The first step is to <strong>apply online</strong>. Then connect with your program counselor to discuss enrollment, financial aid, or schedule a shadowing day on the Clearwater campus.</p>
+
+                <!-- Apply CTA -->
+                <div style="margin-bottom: 3rem;">
+                    <a href="https://www.myptc.edu/admissions" target="_blank" class="btn btn--accent" style="padding: 1.1rem 3rem; font-size: 1.15rem;"><i class="fas fa-file-alt"></i> Apply Online Now</a>
+                </div>
+                
+                <!-- Counselor Card -->
+                <div class="counselor-card">
+                    <div class="counselor-avatar">VS</div>
+                    <h3 style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 0.25rem;">Valerie Santos</h3>
+                    <p style="color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 2rem;">School Counselor</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; max-width: 320px; margin: 0 auto;">
+                        <a href="mailto:santosv@pcsb.org" class="btn btn--primary" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-envelope"></i> santosv@pcsb.org
+                        </a>
+                        <a href="tel:727-538-7167" class="btn" style="width: 100%; justify-content: center; border: 2px solid var(--color-green); color: var(--color-green);">
+                            <i class="fas fa-phone"></i> (727) 538-7167 x2017
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PROGRAM INSTRUCTORS -->
+                <div style="margin-top: 3.5rem;">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--color-gray-900);">Program Instructors</h3>
+                    <p style="color: var(--color-gray-500); font-size: 0.95rem; margin-bottom: 1.5rem;">Have questions about the program? Reach out to an instructor directly.</p>
+
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; max-width: 650px; margin: 0 auto; text-align: left;">
+                        <!-- Instructor 1 -->
+                        <div style="background: var(--color-gray-100); padding: 1.25rem 1.5rem; border-radius: 10px; border: 1px solid var(--color-gray-200);">
+                            <strong style="display: block; color: var(--color-green-dark); font-size: 1rem;">Shawn Galyen</strong>
+                            <span style="font-size: 0.85rem; color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">AM Instructor</span>
+                            <div style="margin-top: 0.75rem; font-size: 0.9rem;">
+                                <a href="mailto:galyens@pcsb.org" style="color: var(--color-green); font-weight: 600;"><i class="fas fa-envelope" style="width: 16px; margin-right: 0.3rem;"></i>galyens@pcsb.org</a><br>
+                                <span style="color: var(--color-gray-500);"><i class="fas fa-phone" style="width: 16px; margin-right: 0.3rem;"></i>(727) 538-7167 x2098</span>
+                            </div>
+                        </div>
+                        <!-- Instructor 2 -->
+                        <div style="background: var(--color-gray-100); padding: 1.25rem 1.5rem; border-radius: 10px; border: 1px solid var(--color-gray-200);">
+                            <strong style="display: block; color: var(--color-green-dark); font-size: 1rem;">Mike Norris</strong>
+                            <span style="font-size: 0.85rem; color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">AM Instructor</span>
+                            <div style="margin-top: 0.75rem; font-size: 0.9rem;">
+                                <a href="mailto:norrismi@pcsb.org" style="color: var(--color-green); font-weight: 600;"><i class="fas fa-envelope" style="width: 16px; margin-right: 0.3rem;"></i>norrismi@pcsb.org</a><br>
+                                <span style="color: var(--color-gray-500);"><i class="fas fa-phone" style="width: 16px; margin-right: 0.3rem;"></i>(727) 538-7167 x2098</span>
+                            </div>
+                        </div>
+                        <!-- Instructor 3 -->
+                        <div style="background: var(--color-gray-100); padding: 1.25rem 1.5rem; border-radius: 10px; border: 1px solid var(--color-gray-200);">
+                            <strong style="display: block; color: var(--color-green-dark); font-size: 1rem;">Shea Smith</strong>
+                            <span style="font-size: 0.85rem; color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">PM Instructor</span>
+                            <div style="margin-top: 0.75rem; font-size: 0.9rem;">
+                                <a href="mailto:smithshea@pcsb.org" style="color: var(--color-green); font-weight: 600;"><i class="fas fa-envelope" style="width: 16px; margin-right: 0.3rem;"></i>smithshea@pcsb.org</a><br>
+                                <span style="color: var(--color-gray-500);"><i class="fas fa-phone" style="width: 16px; margin-right: 0.3rem;"></i>(727) 538-7167 x2201</span>
+                            </div>
+                        </div>
+                        <!-- Instructor 4 -->
+                        <div style="background: var(--color-gray-100); padding: 1.25rem 1.5rem; border-radius: 10px; border: 1px solid var(--color-gray-200);">
+                            <strong style="display: block; color: var(--color-green-dark); font-size: 1rem;">James Pitre</strong>
+                            <span style="font-size: 0.85rem; color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">PM Instructor</span>
+                            <div style="margin-top: 0.75rem; font-size: 0.9rem;">
+                                <a href="mailto:pitrej@pcsb.org" style="color: var(--color-green); font-weight: 600;"><i class="fas fa-envelope" style="width: 16px; margin-right: 0.3rem;"></i>pitrej@pcsb.org</a><br>
+                                <span style="color: var(--color-gray-500);"><i class="fas fa-phone" style="width: 16px; margin-right: 0.3rem;"></i>(727) 538-7167 x2201</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2.5rem;">
+                    <a href="https://clearwater.myptc.edu/admissions/admissions/shadowing-days-times" target="_blank" style="color: var(--color-green); font-weight: 600; text-decoration: underline; font-size: 1.05rem;"><i class="fas fa-calendar-check" style="margin-right: 0.4rem;"></i> View Program Shadowing Schedule &rarr;</a>
+                    <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--color-gray-400);">Specific certification and license requirements are available from PTC school counselors and program instructors.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline">Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="#">Admissions</a></li>
+                            <li><a href="#">Tuition &amp; Aid</a></li>
+                            <li><a href="#">Student Resources</a></li>
+                            <li><a href="#">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Campuses</h4>
+                        <ul>
+                            <li><a href="clearwater.html">Clearwater Campus</a></li>
+                            <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                            <li><a href="#">Campus Maps</a></li>
+                            <li><a href="#">Request Info</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Consumer Information</a></li>
+                            <li><a href="#">Non-Discrimination</a></li>
+                            <li><a href="#">Accreditation</a></li>
+                            <li><a href="#">Careers at PTC</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Accessibility</a> | <a href="#">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
