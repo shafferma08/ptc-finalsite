@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Pinellas Technical College (Improved Mockup)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* =============================================
+           EXISTING SITE DESIGN LANGUAGE
+           Keeping: Playfair Display, green/yellow palette,
+           general structure. Improving: content & clarity.
+        ============================================= */
+        :root {
+            --green: #278406;
+            --green-dark: #1a5c04;
+            --yellow: #FFD100;
+            --yellow-light: #FFF4CC;
+            --gray-900: #1a1a1a;
+            --gray-700: #444;
+            --gray-500: #777;
+            --gray-300: #ccc;
+            --gray-100: #f5f5f5;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Mulish', sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ---- TOP UTILITY BAR (Matches Current) ---- */
+        .utility-bar {
+            background: var(--green);
+            color: white;
+            font-size: 0.8rem;
+            padding: 0.4rem 0;
+        }
+        .utility-bar__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .utility-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-weight: 500;
+        }
+        .utility-bar a:hover { text-decoration: underline; }
+
+        /* ---- HEADER (Matches Current) ---- */
+        .site-header {
+            background: white;
+            padding: 0.75rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .site-header__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .site-header__logo img {
+            height: 65px;
+        }
+        .site-header__nav {
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+        .site-header__nav a {
+            text-decoration: none;
+            color: var(--gray-900);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 0.5rem 0.85rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .site-header__nav a:hover {
+            background: var(--gray-100);
+        }
+        .header-cta {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .header-cta a {
+            padding: 0.5rem 1.1rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .btn-inquire {
+            background: var(--green);
+            color: white;
+        }
+        .btn-apply {
+            background: var(--yellow);
+            color: var(--gray-900);
+        }
+
+        /* ---- HERO SECTION (IMPROVED) ---- */
+        .hero {
+            position: relative;
+            min-height: 520px;
+            background: url('assets/images/content/Welder.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%);
+        }
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 600px;
+            padding: 3rem 0;
+        }
+        .hero__content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+        .hero__content p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        .hero__buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .hero__buttons a {
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .hero__buttons a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .hero-btn-primary {
+            background: var(--yellow);
+            color: var(--gray-900);
+        }
+        .hero-btn-secondary {
+            background: white;
+            color: var(--green-dark);
+        }
+
+        /* ---- CAMPUS LOCATIONS (Matches Current + Improved) ---- */
+        .campus-locations {
+            background: var(--yellow);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .campus-locations h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 2rem;
+        }
+        .campus-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .campus-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .campus-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .campus-card__image {
+            height: 160px;
+            background: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        .campus-card__body {
+            padding: 1.5rem;
+        }
+        .campus-card__body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.25rem;
+            color: var(--green-dark);
+        }
+        .campus-card__body p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: 1rem;
+        }
+        .campus-card__btn {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .campus-card__btn:hover {
+            background: var(--green-dark);
+        }
+
+        /* ---- QUICK LINKS ROW (IMPROVED icons) ---- */
+        .quick-links {
+            background: white;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--gray-300);
+        }
+        .quick-links__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .quick-link {
+            text-decoration: none;
+            color: var(--gray-900);
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--gray-100);
+            transition: all 0.2s;
+        }
+        .quick-link:hover {
+            background: var(--gray-100);
+            border-color: var(--green);
+            transform: translateY(-2px);
+        }
+        .quick-link i {
+            font-size: 2rem;
+            color: var(--green);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .quick-link span {
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: block;
+        }
+
+        /* ---- MISSION BANNER (CONDENSED from 3-column) ---- */
+        .mission-banner {
+            background: var(--green-dark);
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+        .mission-banner__inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .mission-banner__label {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            opacity: 0.7;
+            margin-bottom: 0.75rem;
+        }
+        .mission-banner blockquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .mission-banner__link {
+            color: var(--yellow);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .mission-banner__link:hover { text-decoration: underline; }
+
+        /* ---- NEWS & ANNOUNCEMENTS (IMPROVED) ---- */
+        .news-section {
+            background: var(--gray-100);
+            padding: 4rem 0;
+        }
+        .news-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: var(--gray-900);
+        }
+        .news-section > .container > p {
+            text-align: center;
+            color: var(--gray-500);
+            margin-bottom: 2.5rem;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .news-card__image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        .news-card__body {
+            padding: 1.5rem;
+        }
+        .news-card__tag {
+            display: inline-block;
+            background: var(--yellow-light);
+            color: var(--green-dark);
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+        .news-card__body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            color: var(--gray-900);
+            line-height: 1.3;
+        }
+        .news-card__body p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .news-card__link {
+            color: var(--green);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .news-card__link:hover { text-decoration: underline; }
+        .news-view-all {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .news-view-all a {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* ---- UPCOMING EVENTS (Cleaned up) ---- */
+        .events-section {
+            background: white;
+            padding: 4rem 0;
+        }
+        .events-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--gray-900);
+        }
+        .events-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .event-card {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1.25rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--gray-900);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .event-card:hover {
+            border-color: var(--green);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        .event-date {
+            background: var(--green);
+            color: white;
+            border-radius: 8px;
+            padding: 0.6rem 0.75rem;
+            text-align: center;
+            min-width: 60px;
+            flex-shrink: 0;
+        }
+        .event-date__month {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .event-date__day {
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .event-info h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .event-info p {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+        .events-calendar-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .events-calendar-link a {
+            color: var(--green);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .events-calendar-link a:hover { text-decoration: underline; }
+
+        /* ---- SIGNING DAY BANNER (Kept as-is, it works) ---- */
+        .signing-day {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+            padding: 3.5rem 0;
+            color: white;
+            text-align: center;
+        }
+        .signing-day h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .signing-day > .container > p {
+            opacity: 0.85;
+            margin-bottom: 2.5rem;
+            font-size: 1.05rem;
+        }
+        .signing-day__cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .signing-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        .signing-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .signing-card p {
+            opacity: 0.85;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        .signing-card .time {
+            color: var(--yellow);
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        /* ---- FOOTER (Matches Current) ---- */
+        .site-footer {
+            background: var(--gray-900);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        .footer__top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer__brand img {
+            height: 50px;
+            margin-bottom: 1rem;
+            filter: brightness(0) invert(1);
+        }
+        .footer__brand p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .footer__social {
+            display: flex;
+            gap: 0.75rem;
+        }
+        .footer__social a {
+            color: white;
+            opacity: 0.6;
+            font-size: 1.1rem;
+        }
+        .footer__social a:hover { opacity: 1; }
+        .footer__col h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            color: var(--yellow);
+        }
+        .footer__col ul { list-style: none; }
+        .footer__col li { margin-bottom: 0.5rem; }
+        .footer__col a {
+            color: white;
+            opacity: 0.7;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        .footer__col a:hover { opacity: 1; }
+        .footer__bottom {
+            text-align: center;
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+        .footer__accred {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .footer__accred img {
+            height: 40px;
+            filter: brightness(0) invert(1);
+            opacity: 0.5;
+        }
+
+        /* ---- IMPROVEMENT ANNOTATIONS ---- */
+        .annotation {
+            position: relative;
+        }
+        .annotation::after {
+            content: attr(data-note);
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #e74c3c;
+            color: white;
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            font-family: 'Mulish', sans-serif;
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .hero__content h1 { font-size: 2rem; }
+            .campus-cards { grid-template-columns: 1fr; }
+            .quick-links__grid { grid-template-columns: repeat(2, 1fr); }
+            .news-grid { grid-template-columns: 1fr; }
+            .footer__top { grid-template-columns: 1fr; }
+            .signing-day__cards { grid-template-columns: 1fr; }
+            .site-header__nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         TOP UTILITY BAR (same as current)
+    ============================================= -->
+    <div class="utility-bar">
+        <div class="container utility-bar__inner">
+            <div>
+                <a href="https://www.myptc.edu/pinellas-technical-college-calendar"><i class="fas fa-calendar"></i> Calendar</a>
+                <a href="https://clearwater.myptc.edu" target="_blank"><i class="fas fa-map-marker-alt"></i> Clearwater Campus</a>
+                <a href="https://stpete.myptc.edu" target="_blank"><i class="fas fa-map-marker-alt"></i> St. Petersburg Campus</a>
+            </div>
+            <div>
+                <a href="https://www.myptc.edu/about-us">About Us</a>
+                <a href="https://www.myptc.edu/resources">Resources</a>
+                <a href="https://www.myptc.edu/workforce-innovation">Workforce Innovation</a>
+                <a href="https://www.myptc.edu/we-hire-ptc-ptc-works">We Hire PTC</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         HEADER (same structure as current)
+    ============================================= -->
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a href="https://www.myptc.edu">
+                <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="site-header__logo">
+            </a>
+            <nav class="site-header__nav">
+                <a href="https://www.myptc.edu/about-us">About Us</a>
+                <a href="https://www.myptc.edu/resources">Resources</a>
+                <a href="https://www.myptc.edu/workforce-innovation">Workforce</a>
+                <a href="https://www.myptc.edu/student-links">Student Links</a>
+                <a href="https://www.myptc.edu/we-hire-ptc-ptc-works">We Hire PTC</a>
+            </nav>
+            <div class="header-cta">
+                <a href="https://inforequest.myptc.edu/" target="_blank" class="btn-inquire"><i class="fas fa-envelope"></i> Inquire</a>
+                <a href="https://apply.myptc.edu/" target="_blank" class="btn-apply"><i class="fas fa-pen-to-square"></i> Apply</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================
+         HERO — IMPROVED: Added text overlay + CTAs
+         Currently just a bare image with no message.
+    ============================================= -->
+    <section class="hero annotation" data-note="✦ Improved — Added headline + CTA buttons">
+        <div class="container">
+            <div class="hero__content">
+                <h1>Your Career<br>Starts Here.</h1>
+                <p>Hands-on career training in high-demand fields at two Pinellas County campuses. Earn industry certifications and be job-ready in under a year.</p>
+                <div class="hero__buttons">
+                    <a href="https://apply.myptc.edu/" target="_blank" class="hero-btn-primary"><i class="fas fa-pen-to-square"></i> Apply Now</a>
+                    <a href="https://www.myptc.edu/about-us/welcome-to-ptc" class="hero-btn-secondary"><i class="fas fa-play-circle"></i> Explore Programs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         2 CAMPUS LOCATIONS — IMPROVED: Cards with
+         visual identity instead of plain buttons
+    ============================================= -->
+    <section class="campus-locations annotation" data-note="✦ Improved — Cards instead of plain buttons">
+        <div class="container">
+            <h2>2 Campus Locations</h2>
+            <div class="campus-cards">
+                <div class="campus-card">
+                    <div class="campus-card__image" style="background: linear-gradient(135deg, #278406, #1a5c04);">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="campus-card__body">
+                        <h3>Clearwater Campus</h3>
+                        <p>6100 154th Ave N, Clearwater, FL</p>
+                        <a href="https://clearwater.myptc.edu/" target="_blank" class="campus-card__btn">Explore Clearwater Programs</a>
+                    </div>
+                </div>
+                <div class="campus-card">
+                    <div class="campus-card__image" style="background: linear-gradient(135deg, #278406, #1a5c04);">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="campus-card__body">
+                        <h3>St. Petersburg Campus</h3>
+                        <p>901 34th St S, St. Petersburg, FL</p>
+                        <a href="https://stpete.myptc.edu/" target="_blank" class="campus-card__btn">Explore St. Pete Programs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         QUICK LINKS (IMPROVED — bigger icons,
+         clearer labels, removed low-priority items)
+    ============================================= -->
+    <section class="quick-links annotation" data-note="✦ Improved — Larger icons, clearer labels">
+        <div class="container">
+            <div class="quick-links__grid">
+                <a href="https://www.myptc.edu/about-us/welcome-to-ptc" class="quick-link">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Admissions &amp; Enrollment</span>
+                </a>
+                <a href="https://www.myptc.edu/pinellas-technical-college-calendar" class="quick-link">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Academic Calendar</span>
+                </a>
+                <a href="https://bncvirtual.com/ptc" target="_blank" class="quick-link">
+                    <i class="fas fa-book"></i>
+                    <span>Buy Your Books</span>
+                </a>
+                <a href="https://pinellas.focusschoolsoftware.com/" target="_blank" class="quick-link">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Pay Your Fees</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         MISSION BANNER (CONDENSED — was 3 columns
+         of Mission/Core Values/Vision, now 1 line)
+    ============================================= -->
+    <section class="mission-banner annotation" data-note="✦ Improved — Condensed from 3 columns to 1 quote">
+        <div class="container">
+            <div class="mission-banner__inner">
+                <p class="mission-banner__label">Our Mission</p>
+                <blockquote>"To provide students the opportunity to develop national workplace competencies to fill the needs of business and industry."</blockquote>
+                <a href="https://www.myptc.edu/about-us/welcome-to-ptc/mission-vision-core-values" class="mission-banner__link">Read Our Full Mission, Vision &amp; Core Values →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         LUNCH MENUS — REMOVED
+         (Moved to internal "Current Students" page)
+    ============================================= -->
+    <!-- 
+        ❌ REMOVED: "Campus Lunch Menus" section
+        Reason: Not relevant to prospective students.
+        Recommendation: Move to Current Students page 
+        or add as a link in the footer.
+    -->
+
+    <!-- ============================================
+         NEWS & ANNOUNCEMENTS (IMPROVED — recruitment
+         focused content instead of operational info)
+    ============================================= -->
+    <section class="news-section annotation" data-note="✦ Improved — Recruitment-focused content">
+        <div class="container">
+            <h2>News &amp; Announcements</h2>
+            <p>What's happening at Pinellas Technical College</p>
+
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-card__image" style="background: linear-gradient(135deg, #278406, #1a5c04);">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="news-card__body">
+                        <span class="news-card__tag">Recognition</span>
+                        <h3>PTC Named Top Vocational School by USA Today</h3>
+                        <p>COE is elated that 43 of its accredited institutions have been recognized on USA Today's 2025 list of America's Top 250 Vocational Schools.</p>
+                        <a href="https://www.usatoday.com/story/news/nation/2025/07/21/top-vocational-schools-in-us-ranked-2025/84497925007/" target="_blank" class="news-card__link">Read More →</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-card__image" style="background: linear-gradient(135deg, #c9a818, #8a7210);">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <div class="news-card__body">
+                        <span class="news-card__tag">Event</span>
+                        <h3>Join Us for Signing Day 2026!</h3>
+                        <p>Open to graduating seniors ready to commit to a technical education. Clearwater: April 15 · St. Pete: April 16.</p>
+                        <a href="#" class="news-card__link">Learn More →</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-card__image" style="background: linear-gradient(135deg, #2d5aa0, #1a3660);">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="news-card__body">
+                        <span class="news-card__tag">Enrollment</span>
+                        <h3>Summer Camps &amp; Short Courses Now Open</h3>
+                        <p>Explore hands-on summer programs for teens and adults. From welding to culinary arts — spots fill fast!</p>
+                        <a href="https://www.myptc.edu/workforce-innovation/office-of-workforce-innovation/ptc-short-courses-evening-classes" class="news-card__link">View Courses →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-view-all">
+                <a href="https://www.myptc.edu/fs/pages/1402">View All News</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         UPCOMING EVENTS (Cleaned up layout)
+    ============================================= -->
+    <section class="events-section annotation" data-note="✦ Improved — Cleaner date cards">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <div class="events-list">
+                <a href="#" class="event-card">
+                    <div class="event-date">
+                        <div class="event-date__month">Apr</div>
+                        <div class="event-date__day">4</div>
+                    </div>
+                    <div class="event-info">
+                        <h4>Teacher Workday — No School</h4>
+                        <p>All campuses closed for students</p>
+                    </div>
+                </a>
+                <a href="#" class="event-card">
+                    <div class="event-date">
+                        <div class="event-date__month">Apr</div>
+                        <div class="event-date__day">12</div>
+                    </div>
+                    <div class="event-info">
+                        <h4>Family Fun Day</h4>
+                        <p>Community event at both campuses</p>
+                    </div>
+                </a>
+                <a href="#" class="event-card">
+                    <div class="event-date">
+                        <div class="event-date__month">Apr</div>
+                        <div class="event-date__day">15</div>
+                    </div>
+                    <div class="event-info">
+                        <h4>National Signing Day — Clearwater</h4>
+                        <p>11:00 AM – 12:00 PM</p>
+                    </div>
+                </a>
+                <a href="#" class="event-card">
+                    <div class="event-date">
+                        <div class="event-date__month">Apr</div>
+                        <div class="event-date__day">16</div>
+                    </div>
+                    <div class="event-info">
+                        <h4>National Signing Day — St. Petersburg</h4>
+                        <p>11:00 AM – 12:00 PM</p>
+                    </div>
+                </a>
+                <a href="#" class="event-card">
+                    <div class="event-date">
+                        <div class="event-date__month">May</div>
+                        <div class="event-date__day">1</div>
+                    </div>
+                    <div class="event-info">
+                        <h4>Apprenticeship Programs Showcase</h4>
+                        <p>Past, Present, and Future</p>
+                    </div>
+                </a>
+                <a href="#" class="event-card">
+                    <div class="event-date">
+                        <div class="event-date__month">May</div>
+                        <div class="event-date__day">22</div>
+                    </div>
+                    <div class="event-info">
+                        <h4>Graduation Registration Deadline</h4>
+                        <p>Register at the Bookstore by this date</p>
+                    </div>
+                </a>
+            </div>
+            <div class="events-calendar-link">
+                <a href="https://www.myptc.edu/fs/pages/423"><i class="fas fa-calendar-alt" style="margin-right: 0.4rem;"></i> View Full Calendar →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SIGNING DAY (Kept — it works well)
+    ============================================= -->
+    <section class="signing-day annotation" data-note="✦ Kept — Already effective">
+        <div class="container">
+            <h2>🎓 Signing Day 2026</h2>
+            <p>Celebrate your commitment to a career in the skilled trades!</p>
+            <div class="signing-day__cards">
+                <div class="signing-card">
+                    <h3>Clearwater Campus</h3>
+                    <p>Wednesday, April 15, 2026</p>
+                    <p class="time">11:00 AM – 12:00 PM</p>
+                </div>
+                <div class="signing-card">
+                    <h3>St. Petersburg Campus</h3>
+                    <p>Thursday, April 16, 2026</p>
+                    <p class="time">11:00 AM – 12:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER (Matches current structure)
+    ============================================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College">
+                    <p>Each Pinellas Technical College campus is individually accredited by the Council on Occupational Education and COGNIA. Most PTC programs are individually accredited by one or more professional accrediting bodies.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/pinellastechnical" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/pinellastechcollege/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/PinellasTech" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/school/pinellas-technical-college/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/channel/UCWkxO2mdSU5u_TISnnhPZWA" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer__col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="https://clearwater.myptc.edu" target="_blank">Clearwater Campus</a></li>
+                        <li><a href="https://stpete.myptc.edu" target="_blank">St. Petersburg Campus</a></li>
+                        <li><a href="https://www.myptc.edu/pinellas-technical-college-calendar">Calendar</a></li>
+                        <li><a href="https://www.myptc.edu/student-links/canvas-login">Canvas Login</a></li>
+                        <li><a href="https://bncvirtual.com/ptc" target="_blank">Bookstore</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://www.myptc.edu/resources/ptc-student-resources-guide">Student Resources</a></li>
+                        <li><a href="https://www.myptc.edu/resources/career-center">Career Center</a></li>
+                        <li><a href="https://www.myptc.edu/resources/career-center/post-a-job-opportunity">Post a Job</a></li>
+                        <li><a href="https://www.myptc.edu/studentrecords">Student Records</a></li>
+                        <li><a href="https://www.myptc.edu/fs/pages/1378">Lunch Menus</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__accred">
+                <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited">
+                <img src="assets/logos/Cognia.png" alt="Cognia Accredited">
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College &bull; <a href="https://www.myptc.edu/site-map" style="color: white;">Site Map</a> &bull; <a href="https://www.myptc.edu/privacy-policy" style="color: white;">Privacy Policy</a> &bull; <a href="https://www.myptc.edu/accessibility-statement" style="color: white;">Accessibility</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
