@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer Camps Mockup &mdash; PTC Quick-Win Ideas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700;800;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ═══════════════════════════════════════
+           BASE / RESET
+        ═══════════════════════════════════════ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f0f0f0;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+        a { text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        /* PTC Brand Colors */
+        :root {
+            --ptc-blue: #003366;
+            --ptc-blue-dark: #00264d;
+            --ptc-green: #008142;
+            --ptc-yellow: #F2A900;
+            --ptc-cyan: #00B4D8;
+            --summer-orange: #FF6B35;
+            --summer-coral: #FF8C61;
+            --summer-sky: #0096C7;
+            --summer-teal: #00B4D8;
+            --summer-sand: #FFF8F0;
+            --summer-yellow: #FFBE0B;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-900: #171717;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ═══════════════════════════════════════
+           IDEA LABELS (for the mockup only)
+        ═══════════════════════════════════════ */
+        .mockup-label {
+            background: #1a1a2e;
+            color: #a5b4fc;
+            padding: 1.5rem 2rem;
+            font-family: 'Roboto Slab', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 3px solid #6366f1;
+        }
+        .mockup-label span {
+            color: #e0e7ff;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            text-transform: none;
+            font-size: 0.9rem;
+            letter-spacing: 0;
+            display: block;
+            margin-top: 0.25rem;
+            opacity: 0.7;
+        }
+
+        /* ═══════════════════════════════════════
+           IDEA 1: ALERT BANNER
+           (Finalsite: Alert Bar or Content Snippet)
+        ═══════════════════════════════════════ */
+        .summer-alert {
+            background: linear-gradient(135deg, var(--summer-orange), #FF9A5C);
+            color: white;
+            padding: 0.85rem 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Subtle animated shimmer */
+        .summer-alert::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            animation: shimmer 4s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+        .summer-alert .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        .summer-alert__text {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .summer-alert__text i {
+            font-size: 1.25rem;
+        }
+        .summer-alert__cta {
+            background: white;
+            color: var(--summer-orange);
+            padding: 0.45rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .summer-alert__cta:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        /* ═══════════════════════════════════════
+           Fake site header (context only)
+        ═══════════════════════════════════════ */
+        .fake-header {
+            background: white;
+            padding: 1rem 2rem;
+            border-bottom: 3px solid var(--ptc-blue);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .fake-header__logo {
+            font-family: 'Roboto Slab', serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--ptc-blue);
+        }
+        .fake-header__nav {
+            margin-left: auto;
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        /* ═══════════════════════════════════════
+           IDEA 2: SUMMER CAMPS SECTION
+           (Finalsite: Content Block + Cards)
+        ═══════════════════════════════════════ */
+        .summer-section {
+            background: var(--summer-sand);
+            padding: 5rem 0;
+            position: relative;
+        }
+        .summer-section__header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        .summer-section__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--summer-orange);
+            color: white;
+            padding: 0.4rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.25rem;
+        }
+        .summer-section__title {
+            font-family: 'Roboto Slab', serif;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--ptc-blue);
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+        .summer-section__subtitle {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .summer-section__meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .summer-section__meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+        .summer-section__meta-item i {
+            color: var(--summer-orange);
+            font-size: 1.1rem;
+        }
+
+        /* Camp Cards Grid */
+        .camp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .camp-card {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.25s, box-shadow 0.25s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .camp-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+        .camp-card__image {
+            height: 160px;
+            overflow: hidden;
+            position: relative;
+        }
+        .camp-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .camp-card:hover .camp-card__image img {
+            transform: scale(1.05);
+        }
+        .camp-card__icon-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 1.2rem;
+        }
+        .camp-card__body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .camp-card__campus {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--summer-sky);
+            margin-bottom: 0.5rem;
+        }
+        .camp-card__title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--ptc-blue);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .camp-card__desc {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+            flex: 1;
+        }
+        .camp-card__footer {
+            padding: 0 1.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        .camp-card__dates {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .camp-card__btn {
+            background: var(--summer-orange);
+            color: white;
+            padding: 0.5rem 1.15rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: background 0.2s, transform 0.15s;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .camp-card__btn:hover {
+            background: #e55a2b;
+            transform: translateY(-1px);
+        }
+
+        /* Bottom CTA */
+        .summer-section__cta-bar {
+            text-align: center;
+            padding-top: 1rem;
+        }
+        .summer-section__cta-btn {
+            background: var(--ptc-blue);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .summer-section__cta-btn:hover {
+            background: var(--ptc-blue-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ═══════════════════════════════════════
+           IDEA 3: SIMPLIFIED FINALSITE VERSION
+           (pure text + buttons, no images needed)
+        ═══════════════════════════════════════ */
+        .simple-section {
+            background: white;
+            padding: 4rem 0;
+        }
+        .simple-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .simple-left {
+            background: linear-gradient(135deg, var(--summer-orange), #FF9A5C);
+            color: white;
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .simple-left__icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .simple-left h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .simple-left p {
+            opacity: 0.9;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .simple-left__meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .simple-left__meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .simple-left a {
+            background: white;
+            color: var(--summer-orange);
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .simple-right {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .simple-camp {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--gray-50);
+            border-radius: 10px;
+            border: 1px solid var(--gray-200);
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+        .simple-camp:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transform: translateX(4px);
+        }
+        .simple-camp__icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--summer-orange), var(--summer-coral));
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .simple-camp__info {
+            flex: 1;
+        }
+        .simple-camp__name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--ptc-blue);
+        }
+        .simple-camp__detail {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+        .simple-camp__arrow {
+            color: var(--summer-orange);
+            font-size: 1rem;
+        }
+
+        /* ═══════════════════════════════════════
+           SPACER
+        ═══════════════════════════════════════ */
+        .spacer {
+            height: 40px;
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     IDEA 1: ALERT BANNER
+════════════════════════════════════════════ -->
+<div class="mockup-label">
+    <i class="fas fa-lightbulb" style="color: #fbbf24; margin-right: 0.5rem;"></i> Idea 1: Alert Banner
+    <span>Add to the very top of the homepage. In Finalsite, use an "Alert Bar" or "Notification Snippet." Takes &lt;5 minutes.</span>
+</div>
+
+<!-- Simulated Finalsite header for context -->
+<div class="summer-alert">
+    <div class="container">
+        <span class="summer-alert__text">
+            <i class="fas fa-sun"></i>
+            <strong>PTC Summer Camps for Teens — Now Enrolling!</strong> Barbering · Culinary · Cosmetology · Construction &amp; more
+        </span>
+        <a href="https://www.myptc.edu/workforce-innovation/office-of-workforce-innovation/ptc-short-courses-evening-classes#summer-camps" class="summer-alert__cta">
+            View Camps <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+<div class="fake-header">
+    <div class="fake-header__logo"><i class="fas fa-graduation-cap" style="margin-right: 0.5rem;"></i> Pinellas Technical College</div>
+    <div class="fake-header__nav">
+        <span>About Us</span>
+        <span>Resources</span>
+        <span>Workforce Innovation</span>
+        <span>We Hire PTC</span>
+    </div>
+</div>
+<div style="background: var(--ptc-blue); color: white; padding: 4rem 2rem; text-align: center; font-family: 'Roboto Slab', serif; font-size: 1.5rem; opacity: 0.3;">
+    [ Existing Homepage Hero Area ]
+</div>
+
+<div class="spacer"></div>
+
+<!-- ════════════════════════════════════════════
+     IDEA 2: FULL SECTION WITH CAMP CARDS
+════════════════════════════════════════════ -->
+<div class="mockup-label">
+    <i class="fas fa-lightbulb" style="color: #fbbf24; margin-right: 0.5rem;"></i> Idea 2: Summer Camps Feature Section (with images)
+    <span>Add to the homepage as a new section. In Finalsite, use a "Content Block" with custom HTML or a "3-Column Card" layout. Best if you have camp photos.</span>
+</div>
+
+<section class="summer-section">
+    <div class="container">
+        <div class="summer-section__header">
+            <div class="summer-section__eyebrow"><i class="fas fa-sun"></i> Summer 2026</div>
+            <h2 class="summer-section__title">Summer Camps for Teens</h2>
+            <p class="summer-section__subtitle">Hands-on career exploration for middle and high school students. Try a trade, build real skills, and have fun doing it.</p>
+            <div class="summer-section__meta">
+                <span class="summer-section__meta-item"><i class="fas fa-map-marker-alt"></i> St. Petersburg Campus</span>
+                <span class="summer-section__meta-item"><i class="fas fa-calendar-alt"></i> June – July 2026</span>
+                <span class="summer-section__meta-item"><i class="fas fa-users"></i> Ages 13–17</span>
+            </div>
+        </div>
+
+        <div class="camp-grid">
+            <!-- Camp 1: Barbering -->
+            <div class="camp-card">
+                <div class="camp-card__image" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3.5rem;">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="camp-card__icon-badge" style="color: #764ba2;">
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="camp-card__body">
+                    <span class="camp-card__campus">St. Petersburg Campus</span>
+                    <h3 class="camp-card__title">Barbering Summer Camp</h3>
+                    <p class="camp-card__desc">Discover barbering tools, techniques, and the world of professional grooming.</p>
+                </div>
+                <div class="camp-card__footer">
+                    <span class="camp-card__dates"><i class="fas fa-calendar-day"></i> Dates TBD</span>
+                    <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=BASC" target="_blank" class="camp-card__btn">Register <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Camp 2: Construction -->
+            <div class="camp-card">
+                <div class="camp-card__image" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3.5rem;">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div class="camp-card__icon-badge" style="color: #d97706;">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                </div>
+                <div class="camp-card__body">
+                    <span class="camp-card__campus">St. Petersburg Campus</span>
+                    <h3 class="camp-card__title">Construction Summer Camp</h3>
+                    <p class="camp-card__desc">Explore building trades basics through hands-on construction projects.</p>
+                </div>
+                <div class="camp-card__footer">
+                    <span class="camp-card__dates"><i class="fas fa-calendar-day"></i> Dates TBD</span>
+                    <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-COSC&courseId=COSC&categoryId=ROOT" target="_blank" class="camp-card__btn">Register <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Camp 3: Cosmetology Braiding -->
+            <div class="camp-card">
+                <div class="camp-card__image" style="background: linear-gradient(135deg, #ec4899, #db2777);">
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3.5rem;">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="camp-card__icon-badge" style="color: #db2777;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="camp-card__body">
+                    <span class="camp-card__campus">St. Petersburg Campus</span>
+                    <h3 class="camp-card__title">Cosmetology Summer Braiding Camp</h3>
+                    <p class="camp-card__desc">Explore natural hair braiding and the world of professional cosmetology.</p>
+                </div>
+                <div class="camp-card__footer">
+                    <span class="camp-card__dates"><i class="fas fa-calendar-day"></i> Dates TBD</span>
+                    <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=CSBC" target="_blank" class="camp-card__btn">Register <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Camp 4: CPR for Teens -->
+            <div class="camp-card">
+                <div class="camp-card__image" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3.5rem;">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="camp-card__icon-badge" style="color: #dc2626;">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+                <div class="camp-card__body">
+                    <span class="camp-card__campus">St. Petersburg Campus</span>
+                    <h3 class="camp-card__title">CPR for Teens</h3>
+                    <p class="camp-card__desc">Learn life-saving CPR and Basic Life Support skills in a hands-on camp session.</p>
+                </div>
+                <div class="camp-card__footer">
+                    <span class="camp-card__dates"><i class="fas fa-calendar-day"></i> Dates TBD</span>
+                    <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=CPSC" target="_blank" class="camp-card__btn">Register <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Camp 5: Culinary -->
+            <div class="camp-card">
+                <div class="camp-card__image" style="background: linear-gradient(135deg, #f97316, #ea580c);">
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3.5rem;">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="camp-card__icon-badge" style="color: #ea580c;">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                </div>
+                <div class="camp-card__body">
+                    <span class="camp-card__campus">St. Petersburg Campus</span>
+                    <h3 class="camp-card__title">Crazy Hot Culinary Summer Camp</h3>
+                    <p class="camp-card__desc">Learn professional kitchen skills, food safety, and culinary creativity.</p>
+                </div>
+                <div class="camp-card__footer">
+                    <span class="camp-card__dates"><i class="fas fa-calendar-day"></i> Dates TBD</span>
+                    <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-CCSC-01P&courseId=CCSC&categoryId=ROOT" target="_blank" class="camp-card__btn">Register <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Camp 6: Nails -->
+            <div class="camp-card">
+                <div class="camp-card__image" style="background: linear-gradient(135deg, #a855f7, #9333ea);">
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3.5rem;">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <div class="camp-card__icon-badge" style="color: #9333ea;">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                </div>
+                <div class="camp-card__body">
+                    <span class="camp-card__campus">St. Petersburg Campus</span>
+                    <h3 class="camp-card__title">Nails Specialty Summer Camp</h3>
+                    <p class="camp-card__desc">Get a hands-on introduction to nail artistry and professional nail care.</p>
+                </div>
+                <div class="camp-card__footer">
+                    <span class="camp-card__dates"><i class="fas fa-calendar-day"></i> Dates TBD</span>
+                    <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-NSSC-01P&courseId=NSSC&categoryId=ROOT" target="_blank" class="camp-card__btn">Register <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Camp 7: Skin Care -->
+            <div class="camp-card">
+                <div class="camp-card__image" style="background: linear-gradient(135deg, #14b8a6, #0d9488);">
+                    <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3.5rem;">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="camp-card__icon-badge" style="color: #0d9488;">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                </div>
+                <div class="camp-card__body">
+                    <span class="camp-card__campus">St. Petersburg Campus</span>
+                    <h3 class="camp-card__title">Skin Care is Self Care</h3>
+                    <p class="camp-card__desc">Learn healthy skincare routines and natural beauty techniques.</p>
+                </div>
+                <div class="camp-card__footer">
+                    <span class="camp-card__dates"><i class="fas fa-calendar-day"></i> Dates TBD</span>
+                    <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-SCSC-01P&courseId=SCSC&categoryId=ROOT" target="_blank" class="camp-card__btn">Register <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="summer-section__cta-bar">
+            <a href="https://www.myptc.edu/workforce-innovation/office-of-workforce-innovation/ptc-short-courses-evening-classes#summer-camps" class="summer-section__cta-btn">
+                <i class="fas fa-list"></i> View All Camp Details &amp; Register
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="spacer"></div>
+
+<!-- ════════════════════════════════════════════
+     IDEA 3: SIMPLER LIST APPROACH (no images needed)
+════════════════════════════════════════════ -->
+<div class="mockup-label">
+    <i class="fas fa-lightbulb" style="color: #fbbf24; margin-right: 0.5rem;"></i> Idea 3: Compact List Layout (no images needed)
+    <span>Easier to build in Finalsite — just a colored sidebar panel + text list. Great if you don't have camp photos yet. Uses only basic Finalsite components.</span>
+</div>
+
+<section class="simple-section">
+    <div class="container">
+        <div class="simple-grid">
+            <div class="simple-left">
+                <div class="simple-left__icon">☀️</div>
+                <h2>Summer Camps for Teens</h2>
+                <p>Hands-on career exploration at PTC. Try a trade this summer!</p>
+                <div class="simple-left__meta">
+                    <span><i class="fas fa-map-marker-alt"></i> St. Pete</span>
+                    <span><i class="fas fa-calendar"></i> Summer 2026</span>
+                </div>
+                <a href="https://www.myptc.edu/workforce-innovation/office-of-workforce-innovation/ptc-short-courses-evening-classes#summer-camps">
+                    View All Camps <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="simple-right">
+                <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=BASC" target="_blank" class="simple-camp">
+                    <div class="simple-camp__icon"><i class="fas fa-cut"></i></div>
+                    <div class="simple-camp__info">
+                        <div class="simple-camp__name">Barbering Summer Camp</div>
+                        <div class="simple-camp__detail">Tools, techniques & professional grooming</div>
+                    </div>
+                    <i class="fas fa-chevron-right simple-camp__arrow"></i>
+                </a>
+                <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-COSC&courseId=COSC&categoryId=ROOT" target="_blank" class="simple-camp">
+                    <div class="simple-camp__icon"><i class="fas fa-hard-hat"></i></div>
+                    <div class="simple-camp__info">
+                        <div class="simple-camp__name">Construction Summer Camp</div>
+                        <div class="simple-camp__detail">Building trades basics & hands-on projects</div>
+                    </div>
+                    <i class="fas fa-chevron-right simple-camp__arrow"></i>
+                </a>
+                <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=CSBC" target="_blank" class="simple-camp">
+                    <div class="simple-camp__icon"><i class="fas fa-spa"></i></div>
+                    <div class="simple-camp__info">
+                        <div class="simple-camp__name">Cosmetology Braiding Camp</div>
+                        <div class="simple-camp__detail">Natural hair braiding & cosmetology intro</div>
+                    </div>
+                    <i class="fas fa-chevron-right simple-camp__arrow"></i>
+                </a>
+                <a href="https://www.enrole.com/ptc/jsp/course.jsp?categoryId=ROOT&courseId=CPSC" target="_blank" class="simple-camp">
+                    <div class="simple-camp__icon"><i class="fas fa-heartbeat"></i></div>
+                    <div class="simple-camp__info">
+                        <div class="simple-camp__name">CPR for Teens</div>
+                        <div class="simple-camp__detail">Life-saving CPR & BLS certification</div>
+                    </div>
+                    <i class="fas fa-chevron-right simple-camp__arrow"></i>
+                </a>
+                <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-CCSC-01P&courseId=CCSC&categoryId=ROOT" target="_blank" class="simple-camp">
+                    <div class="simple-camp__icon"><i class="fas fa-utensils"></i></div>
+                    <div class="simple-camp__info">
+                        <div class="simple-camp__name">Crazy Hot Culinary Camp</div>
+                        <div class="simple-camp__detail">Kitchen skills, food safety & creativity</div>
+                    </div>
+                    <i class="fas fa-chevron-right simple-camp__arrow"></i>
+                </a>
+                <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-NSSC-01P&courseId=NSSC&categoryId=ROOT" target="_blank" class="simple-camp">
+                    <div class="simple-camp__icon"><i class="fas fa-hand-sparkles"></i></div>
+                    <div class="simple-camp__info">
+                        <div class="simple-camp__name">Nails Specialty Camp</div>
+                        <div class="simple-camp__detail">Nail artistry & professional nail care</div>
+                    </div>
+                    <i class="fas fa-chevron-right simple-camp__arrow"></i>
+                </a>
+                <a href="https://www.enrole.com/ptc/jsp/session.jsp?sessionId=SP2606-SCSC-01P&courseId=SCSC&categoryId=ROOT" target="_blank" class="simple-camp">
+                    <div class="simple-camp__icon"><i class="fas fa-leaf"></i></div>
+                    <div class="simple-camp__info">
+                        <div class="simple-camp__name">Skin Care is Self Care</div>
+                        <div class="simple-camp__detail">Healthy skincare routines & natural beauty</div>
+                    </div>
+                    <i class="fas fa-chevron-right simple-camp__arrow"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="spacer"></div>
+<div style="background: #1a1a2e; color: #a5b4fc; padding: 2rem; text-align: center; font-size: 0.9rem;">
+    <strong>End of Mockup</strong> — These are independent ideas. Mix and match for the current Finalsite site.
+</div>
+
+</body>
+</html>
