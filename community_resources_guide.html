@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Military & Veteran Community Resource Guide</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --brand-green: #008142;
+            --brand-yellow: #FFCF01;
+            --brand-light-green: #8DC63F;
+            --text-dark: #333333;
+            --text-light: #555555;
+            --bg-light: #f6faf2;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            -webkit-print-color-adjust: exact !important;
+            /* Forces Chrome to print background colors */
+            print-color-adjust: exact !important;
+            /* Forces other browsers to print background colors */
+        }
+
+        .document-container {
+            max-width: 8.5in;
+            /* Standard letter width */
+            margin: 0 auto;
+            padding: 30px;
+            /* Reduced to fit 1 page */
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 4px solid var(--brand-green);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            height: 4px;
+            background-color: var(--brand-yellow);
+        }
+
+        .header h1 {
+            font-family: 'Roboto Slab', serif;
+            color: var(--brand-green);
+            font-size: 26px;
+            /* Slightly reduced */
+            margin: 0 0 5px 0;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 15px;
+            margin: 0;
+        }
+
+        .intro {
+            font-size: 14px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            /* Slightly increased gap */
+        }
+
+        .resource-card {
+            background-color: var(--bg-light) !important;
+            /* Force color on print */
+            border-left: 5px solid var(--brand-green) !important;
+            border-radius: 6px;
+            padding: 12px 18px;
+            /* Slightly increased padding */
+            page-break-inside: avoid;
+            /* Prevents card from splitting across pages when printing */
+        }
+
+        .resource-card h3 {
+            font-size: 16px;
+            /* Restored size slightly */
+            color: var(--brand-green) !important;
+            margin: 0 0 4px 0;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .resource-card a {
+            color: var(--text-dark) !important;
+            text-decoration: none;
+            font-size: 12px;
+            /* Restored link size slightly */
+            display: inline-block;
+            word-wrap: break-word;
+            width: 100%;
+        }
+
+        .resource-card a:hover {
+            color: var(--brand-green) !important;
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-light);
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                background-color: white;
+            }
+
+            .document-container {
+                padding: 0.25in;
+                /* Gives a small border when printing */
+            }
+
+            .resource-card {
+                border: 1px solid #e0e0e0;
+                border-left: 5px solid var(--brand-green) !important;
+            }
+
+            /* Explicitly override browsers trying to strip backgrounds */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="document-container">
+        <div class="header">
+            <h1>Community & Additional Resources</h1>
+            <p>Pinellas Technical College-Clearwater</p>
+        </div>
+
+        <p class="intro">
+            The following local, state, and federal organizations may be of interest
+            to you as a military-connected student.<br>
+            <span
+                style="font-size: 11px; font-style: italic; color: var(--text-light); display: inline-block; margin-top: 5px;">
+                *Disclaimer: The following external links are provided for informational purposes only. Pinellas
+                Technical College does not endorse, control, or take responsibility for the content, privacy policies,
+                or services of these external organizations.
+            </span>
+        </p>
+
+        <div class="links-grid">
+
+            <div class="resource-card">
+                <h3>American Legion - FL</h3>
+                <a href="https://www.floridalegion.org/" target="_blank">https://www.floridalegion.org/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Bay Pines VA Healthcare System</h3>
+                <a href="https://www.va.gov/bay-pines-health-care/"
+                    target="_blank">https://www.va.gov/bay-pines-health-care/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>CareerSource Pinellas – Veterans Services</h3>
+                <a href="https://careersourcepinellas.com/veteran-services/"
+                    target="_blank">https://careersourcepinellas.com/veteran-services/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Clearwater Vet Center</h3>
+                <a href="https://www.va.gov/clearwater-vet-center/"
+                    target="_blank">https://www.va.gov/clearwater-vet-center/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Club-214</h3>
+                <a href="https://linktr.ee/club214?utm_source=qr_code"
+                    target="_blank">https://linktr.ee/club214?utm_source=qr_code</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>First Contact</h3>
+                <a href="https://www.firstcontact.org/" target="_blank">https://www.firstcontact.org/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Florida Veterans Support Line</h3>
+                <a href="https://www.myflvet.com/" target="_blank">https://www.myflvet.com/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>LCH2H (Liebe Cornelia Hooves to Healing)</h3>
+                <a href="https://lch2h.org/" target="_blank">https://lch2h.org/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>MacDill’s EFMP Families Resources</h3>
+                <a href="https://macdillfss.com/efmp-additional-resources/"
+                    target="_blank">https://macdillfss.com/efmp-additional-resources/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Military OneSource</h3>
+                <a href="https://www.militaryonesource.mil/" target="_blank">https://www.militaryonesource.mil/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Mind the GAP Together</h3>
+                <a href="https://www.mindthegaptogether.org/resources"
+                    target="_blank">https://www.mindthegaptogether.org/resources</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Mission Roll Call</h3>
+                <a href="https://missionrollcall.org/" target="_blank">https://missionrollcall.org/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>U.S. Department of Veterans Affairs</h3>
+                <a href="https://www.va.gov/" target="_blank">https://www.va.gov/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>VA Education and Training Benefits</h3>
+                <a href="https://www.va.gov/education/" target="_blank">https://www.va.gov/education/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Veteran Readiness and Employment (VR&E)</h3>
+                <a href="https://www.benefits.va.gov/vocrehab/"
+                    target="_blank">https://www.benefits.va.gov/vocrehab/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Veterans' Employment and Training Service</h3>
+                <a href="https://www.dol.gov/agencies/vets" target="_blank">https://www.dol.gov/agencies/vets</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Veterans Crisis Line</h3>
+                <a href="https://www.veteranscrisisline.net/" target="_blank">https://www.veteranscrisisline.net/</a>
+            </div>
+
+            <div class="resource-card">
+                <h3>Wounded Warrior Project</h3>
+                <a href="https://www.woundedwarriorproject.org/programs/wwp-resource-center"
+                    target="_blank">https://www.woundedwarriorproject.org/programs/wwp-resource-center</a>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            Provided as a resource for military-connected students by Pinellas Technical College.
+        </div>
+    </div>
+
+</body>
+
+</html>

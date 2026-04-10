@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Military &amp; Veteran Student Resources — PTC Clearwater</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ptc-green: #008142;
+            --ptc-green-light: #8DC63F;
+            --ptc-yellow: #FFCF01;
+            --text-dark: #1A1A1A;
+            --text-light: #555555;
+            --border-light: #e0e0e0;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; color: var(--text-dark); line-height: 1.6; margin: 0; padding: 0; background: #f4f6f8; }
+        .page { max-width: 960px; margin: 2rem auto; padding: 2rem; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 8px; }
+        h1, h2, h3, h4 { font-family: 'Roboto Slab', serif; }
+        h1 { color: var(--ptc-green); font-size: 2rem; margin-bottom: 0.5rem; }
+        h2 { color: var(--ptc-green); border-bottom: 2px solid var(--border-light); padding-bottom: 10px; font-size: 1.5rem; margin-top: 2.5rem; }
+        h3 { font-size: 1.25rem; margin-top: 0; }
+        a { color: var(--ptc-green); }
+
+        /* ===== HOVER EFFECTS ===== */
+
+        /* Step cards (How to Apply), event cards, contact cards — lift on hover */
+        div[style*="flex: 1 1 300px"][style*="border: 1px solid #E0E0E0"][style*="border-radius: 8px"][style*="padding: 20px"] {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        div[style*="flex: 1 1 300px"][style*="border: 1px solid #E0E0E0"][style*="border-radius: 8px"][style*="padding: 20px"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+
+        /* Event cards (yellow top border) — also lift */
+        div[style*="border-top: 4px solid #FFCF01"] {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        div[style*="border-top: 4px solid #FFCF01"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+
+        /* Community resource pill buttons */
+        a[style*="background-color: #f6faf2"][style*="border: 1px solid #8DC63F"] {
+            transition: all 0.2s ease;
+        }
+        a[style*="background-color: #f6faf2"][style*="border: 1px solid #8DC63F"]:hover {
+            background-color: #008142 !important;
+            color: #fff !important;
+            border-color: #008142 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,129,66,0.25);
+        }
+
+        /* PDF download button */
+        a[style*="background-color: #008142"][style*="border-radius: 8px"][style*="font-size: 16px"] {
+            transition: all 0.2s ease;
+        }
+        a[style*="background-color: #008142"][style*="border-radius: 8px"][style*="font-size: 16px"]:hover {
+            background-color: #006030 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,129,66,0.3);
+        }
+
+        /* Links inside cards — subtle color shift */
+        div[style*="flex: 1 1 300px"] a[style*="color: #008142"]:hover {
+            color: #006030 !important;
+        }
+
+        /* Back to top button */
+        html { scroll-behavior: smooth; }
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: #fff;
+            color: var(--text-light);
+            border: 1px solid var(--border-light);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.25s ease;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 100;
+        }
+        .back-to-top-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .back-to-top-btn:hover {
+            background: var(--ptc-green);
+            color: #fff;
+            border-color: var(--ptc-green);
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,129,66,0.3);
+        }
+
+        @media print {
+            .back-to-top-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+
+        <!-- ===== SECTION 1: INTRO & MVRC ===== -->
+        <div style="line-height: 1.6; color: #333;">
+            <p style="font-size: 18px; font-weight: 500;">Pinellas Technical College-Clearwater is proud to serve those who serve! We are committed to providing dedicated resources and support for active-duty military members, veterans, and their spouses and dependents as they pursue their educational goals. We aim to guide and empower military-connected students every step of the way &mdash; from admissions to graduation and beyond.</p>
+            <div style="background-color: #F8F9FA; border: 1px solid #E0E0E0; border-left: 6px solid #008142; border-radius: 8px; padding: 25px; margin: 30px 0;">
+                <h3 style="color: #008142; margin-top: 0; font-size: 22px;">Military &amp; Veteran Resource Center (MVRC)</h3>
+                <p style="margin-bottom: 15px;">The Student Services area in Building 1 currently serves as the Military &amp; Veteran Resource Center (MVRC). This space functions as a welcoming resource hub for military-connected students and their families. Prospective students are encouraged to reach out or stop by for assistance with:</p>
+                <ul style="list-style-type: square; color: #008142; font-weight: bold; margin-bottom: 15px;">
+                    <li style="margin-bottom: 5px;"><span style="color: #333; font-weight: normal;">VA educational benefits</span></li>
+                    <li style="margin-bottom: 5px;"><span style="color: #333; font-weight: normal;">Academic and career guidance</span></li>
+                    <li><span style="color: #333; font-weight: normal;">Connecting with staff committed to supporting military-connected students.</span></li>
+                </ul>
+                <p style="margin-bottom: 10px; font-weight: bold;">For current students, the MVRC space offers:</p>
+                <ul style="list-style-type: square; color: #008142; font-weight: bold; margin-bottom: 0;">
+                    <li style="margin-bottom: 5px;"><span style="color: #333; font-weight: normal;">A place to connect with peers</span></li>
+                    <li style="margin-bottom: 5px;"><span style="color: #333; font-weight: normal;">Access to computers</span></li>
+                    <li><span style="color: #333; font-weight: normal;">Guidance tailored to military-connected student needs</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 2: HOW TO APPLY ===== -->
+        <div style="line-height: 1.6; color: #333;">
+            <h2 style="color: #008142; border-bottom: 2px solid #E0E0E0; padding-bottom: 10px;">How to Apply</h2>
+            <p>Thinking about attending PTC-Clearwater using VA education benefits? You can start by visiting our <a href="https://clearwater.myptc.edu/admissions/admissions" style="color: #008142; font-weight: bold;">Admissions</a> page. Below is a quick summary to help guide you through the process:</p>
+            <div style="background-color: #f6faf2; border-left: 5px solid #8DC63F; border-radius: 4px; padding: 20px; margin: 20px 0;"><strong style="color: #008142; font-size: 18px;">Priority Registration Note:</strong><br />
+                Please note that we are a small school with limited seating. Whenever possible, <strong>preference is given to military-connected students</strong>&mdash;just be sure to answer the application question regarding your military status!</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 25px;">
+                <!-- STEP: Explore & Shadow -->
+                <div style="flex: 1 1 300px; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px; background-color: #fff;">
+                    <h4 style="color: #008142; margin-top: 0; font-size: 18px;">Explore &amp; Shadow Programs</h4>
+                    <p style="margin-bottom: 0; font-size: 15px;">Review the full list of <a href="https://clearwater.myptc.edu/programs" style="color: #008142; font-weight: bold; text-decoration: underline;">PTC Programs</a> to determine which best suits you, then come in for the scheduled time to <a href="https://clearwater.myptc.edu/admissions/admissions/shadowing-days-times" style="color: #008142; font-weight: bold; text-decoration: underline;">shadow the program</a>.</p>
+                </div>
+                <!-- STEP: Application -->
+                <div style="flex: 1 1 300px; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px; background-color: #fff;">
+                    <h4 style="color: #008142; margin-top: 0; font-size: 18px;">Application for Admission</h4>
+                    <p style="margin-bottom: 0; font-size: 15px;">Complete the <a href="https://apply.myptc.edu/" style="color: #008142; font-weight: bold; text-decoration: underline;">PTC Application</a> and work through your checklist (ID, transcripts, and required documents). Be sure to answer the application question regarding your military status.</p>
+                </div>
+                <!-- STEP: VA Benefits -->
+                <div style="flex: 1 1 300px; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px; background-color: #fff;">
+                    <h4 style="color: #008142; margin-top: 0; font-size: 18px;">VA Benefits</h4>
+                    <p style="margin-bottom: 0; font-size: 15px;">Review the <a href="https://clearwater.myptc.edu/admissions/financial-aid/veterans-benefits" style="color: #008142; font-weight: bold; text-decoration: underline;">PTC Veterans&rsquo; Benefits</a> page and apply for your Certificate of Eligibility on <a href="https://www.va.gov/education/how-to-apply/" style="color: #008142; font-weight: bold; text-decoration: underline;" target="_blank">VA.gov</a>.</p>
+                </div>
+                <!-- STEP: Financial Aid -->
+                <div style="flex: 1 1 300px; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px; background-color: #fff;">
+                    <h4 style="color: #008142; margin-top: 0; font-size: 18px;">Apply for Financial Aid</h4>
+                    <p style="margin-bottom: 0; font-size: 15px;">Military-connected students may also be eligible for federal financial aid and other aid available to the general campus population. Complete the <a href="https://clearwater.myptc.edu/admissions/financial-aid/fafsa-fsa-eligibility-help" style="color: #008142; font-weight: bold; text-decoration: underline;">FAFSA</a> (School Code: 005605) to determine eligibility, and then, after 3&ndash;5 days, follow up with the <a href="https://clearwater.myptc.edu/admissions/financial-aid" style="color: #008142; font-weight: bold; text-decoration: underline;">Financial Aid Office</a> (727-538-7167, Option 7) for next steps.</p>
+                </div>
+                <!-- STEP: Testing -->
+                <div style="flex: 1 1 300px; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px; background-color: #fff;">
+                    <h4 style="color: #008142; margin-top: 0; font-size: 18px;">Basic Skills Testing</h4>
+                    <p style="margin-bottom: 0; font-size: 15px;">Take the required basic skills test or provide an appropriate exemption. To schedule testing, contact Student Services at 727-538-7167 ext. 2006.</p>
+                </div>
+                <!-- STEP: Finalize -->
+                <div style="flex: 1 1 300px; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px; background-color: #fff;">
+                    <h4 style="color: #008142; margin-top: 0; font-size: 18px;">Finalize Enrollment</h4>
+                    <p style="margin-bottom: 0; font-size: 15px;">Once notified of an available seat, complete your enrollment with the School Counselor and VA Certifying Official (Building 1) and pay any remaining fees. Please bring your Certificate of Eligibility letter received from the VA.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 3: UPCOMING EVENTS ===== -->
+        <div style="line-height: 1.6; color: #333; margin-top: 40px;">
+            <h2 style="color: #008142; border-bottom: 2px solid #E0E0E0; padding-bottom: 10px;">Upcoming Events on Our Campus</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 40px;">
+                <!-- Event 1 -->
+                <div style="flex: 1 1 300px; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px; background-color: #fafafa; border-top: 4px solid #FFCF01;">
+                    <div style="color: #008142; font-weight: bold; margin-bottom: 10px;">📅 Date &amp; Time: TBD</div>
+                    <h3 style="margin-top:0; font-size: 20px; margin-bottom: 5px;">Schoolwide Shadow Day for Military-Connected Families</h3>
+                    <p style="color: #555; font-size: 14px; margin-bottom: 15px;"><strong>Location:</strong> PTC-Clearwater</p>
+                    <p style="font-size: 15px; margin-bottom: 10px;">Ease into Pinellas Technical College - Clearwater and discover how our school can support your personal growth and goals. This event is designed for military-connected families to explore career programs, tour our campus, and meet instructors and students.</p>
+                </div>
+                <!-- Event 2 -->
+                <div style="flex: 1 1 300px; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px; background-color: #fafafa; border-top: 4px solid #FFCF01;">
+                    <div style="color: #008142; font-weight: bold; margin-bottom: 10px;">📅 November 11, 2026 | Time: TBD</div>
+                    <h3 style="margin-top:0; font-size: 20px; margin-bottom: 5px;">Veterans Day Breakfast (Student Veterans Only)</h3>
+                    <p style="color: #555; font-size: 14px; margin-bottom: 15px;"><strong>Location:</strong> Building 6 (Culinary)</p>
+                    <p style="margin-bottom: 0; font-size: 15px;">PTC-Clearwater is proud to honor our amazing student veterans with a breakfast. This is a time to relax, connect with fellow veterans, and feel appreciated for your service and presence on our campus.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 4: MILITARY SUPPORT TEAM ===== -->
+        <div style="line-height: 1.6; color: #333; margin-top: 40px;">
+            <h2 style="color: #008142; border-bottom: 2px solid #E0E0E0; padding-bottom: 10px;">Military-Connected Student Support Team</h2>
+            <p>We&rsquo;re here to support you&mdash;whether you need help with financial aid, academics, or your VA paperwork.</p>
+            <div style="background-color: #e6f2e8; border-left: 5px solid #008142; border-radius: 4px; padding: 20px; margin: 25px 0;"><strong style="color: #008142; font-size: 18px;">Have questions about a specific career track?</strong><br />
+                Connect with a school counselor or program instructor for guidance on our <a href="https://clearwater.myptc.edu/programs/clearwater-full-time-programs" style="color: #008142; font-weight: bold; text-decoration: underline;">specific programs</a>.</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                <!-- Lidija -->
+                <div style="flex: 1 1 300px; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px;">
+                    <h3 style="color: #008142; margin-top: 0; margin-bottom: 5px; font-size: 20px;">Lidija Milisav</h3>
+                    <p style="font-weight: bold; color: #555; font-size: 14px; margin-bottom: 15px; margin-top: 0;">Military &amp; Veteran Resources Coordinator | School Counselor</p>
+                    <p style="margin-bottom: 5px; font-size: 15px;">✉ <a href="mailto:milisavl@pcsb.org" style="color: #008142; text-decoration: none;">milisavl@pcsb.org</a></p>
+                    <p style="margin-bottom: 0; font-size: 15px;">📞 <a href="tel:7275387167" style="color: #008142; text-decoration: none;">727-538-7167 x2020</a></p>
+                </div>
+                <!-- Susan -->
+                <div style="flex: 1 1 300px; border: 1px solid #E0E0E0; border-radius: 8px; padding: 20px;">
+                    <h3 style="color: #008142; margin-top: 0; margin-bottom: 5px; font-size: 20px;">Susan Welden</h3>
+                    <p style="font-weight: bold; color: #555; font-size: 14px; margin-bottom: 15px; margin-top: 0;">VA Certifying Official | Financial Aid Specialist</p>
+                    <p style="margin-bottom: 5px; font-size: 15px;">✉ <a href="mailto:weldens@pcsb.org" style="color: #008142; text-decoration: none;">weldens@pcsb.org</a></p>
+                    <p style="margin-bottom: 0; font-size: 15px;">📞 <a href="tel:7275387167" style="color: #008142; text-decoration: none;">727-538-7167 x2023</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 5: COMMUNITY RESOURCES ===== -->
+        <div style="line-height: 1.6; color: #333; margin-top: 40px;">
+            <h2 style="color: #008142; border-bottom: 2px solid #E0E0E0; padding-bottom: 10px;">Nearby Community &amp; Other Resources</h2>
+            <p>The following local, state, and federal organizations may be of interest to you as a military-connected student:</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 25px;">
+                <a href="https://www.va.gov/" style="background-color: #f6faf2; border: 1px solid #8DC63F; color: #008142; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; display: inline-block;" target="_blank">U.S. Department of Veterans Affairs</a>
+                <a href="https://www.veteranscrisisline.net/" style="background-color: #f6faf2; border: 1px solid #8DC63F; color: #008142; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; display: inline-block;" target="_blank">Veterans Crisis Line &ndash; Dial 988, 1</a>
+                <a href="https://www.va.gov/bay-pines-health-care/" style="background-color: #f6faf2; border: 1px solid #8DC63F; color: #008142; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; display: inline-block;" target="_blank">Bay Pines VA Healthcare System</a>
+                <a href="https://careersourcepinellas.com/veteran-services/" style="background-color: #f6faf2; border: 1px solid #8DC63F; color: #008142; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; display: inline-block;" target="_blank">CareerSource Pinellas &ndash; Veterans</a>
+                <a href="https://www.myflvet.com/" style="background-color: #f6faf2; border: 1px solid #8DC63F; color: #008142; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; display: inline-block;" target="_blank">Florida Veterans Support Line</a>
+                <a href="https://www.militaryonesource.mil/" style="background-color: #f6faf2; border: 1px solid #8DC63F; color: #008142; text-decoration: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; display: inline-block;" target="_blank">Military OneSource</a>
+            </div>
+            <div style="margin-top: 30px; text-align: left;">
+                <p style="margin-bottom: 15px;">Looking for additional local organizations, including Wounded Warrior Project, Club-214, and First Contact?</p>
+                <!-- PDF Download Button -->
+                <a data-file-name="MilitaryVeteranCommunityResourceGuide.pdf" data-resource-uuid="a61ff060-cb4f-4dfc-bb07-d835d57fb81f" href="/fs/resource-manager/view/a61ff060-cb4f-4dfc-bb07-d835d57fb81f" style="background-color: #008142; color: #ffffff; text-decoration: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 16px;" target="_blank">📄 Download Community &amp; Additional Resources (PDF)</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top-btn" id="backToTop" aria-label="Back to top">&uarr;</a>
+
+    <script>
+        const btn = document.getElementById('backToTop');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+    </script>
+
+</body>
+</html>

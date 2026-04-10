@@ -1,15 +1,36 @@
 # Pinellas Technical College — Comprehensive Website Audit & Redesign Proposal
 
-**Prepared for:** PTC Web Team
-**Date:** March 26, 2026
+**Prepared by:** Marianne Shaffer, Distance Learning Coordinator & Webmaster
+**Date:** March 26, 2026 | **Last Updated:** April 9, 2026
 **Sites Audited:** [myptc.edu](https://www.myptc.edu) · [clearwater.myptc.edu](https://clearwater.myptc.edu) · [stpete.myptc.edu](https://stpete.myptc.edu)
 **Platform:** Finalsite
+**Document Status:** Living document -- updated as improvements are implemented
+
+---
+
+## Table of Contents
+
+1. [Executive Summary](#executive-summary)
+2. [Brand Compliance Audit](#1-brand-compliance-audit)
+3. [Navigation & Information Architecture Audit](#2-navigation--information-architecture-audit)
+4. [Visual Design & UX/UI Audit](#3-visual-design--uxui-audit)
+5. [Content & Duplication Audit](#4-content--duplication-audit)
+6. [Technical & Accessibility Issues](#5-technical--accessibility-issues)
+7. [Redesign Proposal](#6-redesign-proposal)
+8. [Immediate Fixes (Quick Wins)](#7-immediate-fixes-quick-wins)
+9. [Priority Order for Redesign](#8-priority-order-for-redesign)
+10. [Next Steps](#9-next-steps)
+11. [Change Log](#change-log)
+12. [Appendix: Site Recordings](#appendix-site-recordings)
 
 ---
 
 ## Executive Summary
 
-This audit evaluates all three PTC websites against the official brand guide, modern UX/UI principles, COE accreditation requirements, and Finalsite platform best practices. The sites are functional but suffer from **incorrect brand implementation** (wrong fonts, wrong green), **deeply nested and cluttered navigation**, **duplicated content across all three sites**, and a **dated visual design** that does not reflect current web standards. Below is a detailed analysis and phased proposal for improvement.
+This audit evaluates all three PTC websites against the official brand guide, modern UX/UI principles, COE accreditation requirements, and Finalsite platform best practices. The sites are functional but suffer from **deeply nested and cluttered navigation**, **duplicated content across all three sites**, and a **dated visual design** that does not reflect current web standards. Below is a detailed analysis and phased proposal for improvement.
+
+> [!NOTE]
+> **Progress Update (April 2026):** Brand typography has been corrected site-wide (Roboto Slab for headings, Roboto for body). The primary green has been corrected to #008142. The main site homepage has received improvements including structured news cards with images and updated event listings. See the [Change Log](#change-log) for full details.
 
 ---
 
@@ -29,15 +50,15 @@ This audit evaluates all three PTC websites against the official brand guide, mo
 
 | Element | Brand Guide | Current Site | Status |
 |---|---|---|---|
-| **Headline Font** | Elizeth / Roboto Slab | Playfair Display | ❌ Wrong |
-| **Body Font** | Proxima Nova / Roboto | Mulish | ❌ Wrong |
-| **Primary Green** | #008142 | #278406 | ❌ Wrong shade |
+| **Headline Font** | Elizeth / Roboto Slab | Roboto Slab | ✅ Fixed (April 2026) |
+| **Body Font** | Proxima Nova / Roboto | Roboto | ✅ Fixed (April 2026) |
+| **Primary Green** | #008142 | #008142 | ✅ Fixed (April 2026) |
 | **Primary Yellow** | #FFCF01 | Appears close | ⚠️ Verify |
 | **Logo Usage** | Vertical/Horizontal approved | Logo present, needs color verification | ⚠️ Check |
-| **Font Consistency** | Single system across all sites | Mixed fonts across pages | ❌ Inconsistent |
+| **Font Consistency** | Single system across all sites | Roboto / Roboto Slab applied via global override | ✅ Fixed (April 2026) |
 
-> [!CAUTION]
-> **The entire site is using the wrong typefaces and primary green.** This is the most fundamental brand violation and should be corrected first in any redesign.
+> [!NOTE]
+> **Update:** Typography and primary green color have been corrected site-wide via CSS overrides applied in Finalsite. The previous site was using Playfair Display (headlines), Mulish (body), and #278406 (wrong green). These have been replaced with the brand-compliant Roboto Slab, Roboto, and #008142 respectively. Verified live on April 9, 2026.
 
 ### 1.3 Brand Guide Reference
 
@@ -132,16 +153,18 @@ graph TD
 
 | Category | Issue | Severity |
 |---|---|---|
-| **Hero** | Image slider with no clear headline or CTA — "Opportunity starts here" is small and easily missed | 🔴 High |
+| **Hero** | Image slider now has bold taglines per slide ("Your Career Starts Here", "60+ Programs. 40+ Career Paths.") but still no clear CTA button on the hero itself | 🟡 Improved |
 | **Color Blocks** | Large flat green/yellow sections feel dated (early 2010s aesthetic) | 🟡 Medium |
-| **Campus CTAs** | "VISIT CLEARWATER CAMPUS" / "VISIT St. Petersburg CAMPUS" buttons use heavy box shadows and look dated | 🟡 Medium |
-| **Quick Links** | Icon grid (Calendar, Books, Fees) is functional but visually basic | 🟡 Medium |
-| **Guiding Principles** | Yellow background with serif font feels disconnected from rest of site | 🟡 Medium |
-| **News Cards** | No visual cards — news items are raw text blocks with no images or structure | 🔴 High |
-| **Events** | "Term 4 - Drop period/refund available" repeated 9 times identically | 🔴 High |
+| **Campus CTAs** | Campus cards now show address, phone, and lunch menu links | 🟡 Improved |
+| **Quick Links** | Icon grid updated (Welcome, Calendar, Books, Fees, Summer Camps) but still visually basic | 🟡 Medium |
+| **Guiding Principles** | Mission/Vision/Core Values section still present with icon cards | 🟡 Medium |
+| **News Cards** | Now uses structured cards with images, categories, and descriptions (e.g., Signing Day, Graduation, USA Today recognition) | ✅ Fixed |
+| **Events** | Now showing real, distinct events with dates and campus labels | ✅ Fixed |
+| **Signing Day** | New countdown section added for National Signing Day 2026 with per-campus dates | ✅ New |
 | **Footer** | Busy Skyway Bridge background image makes white text hard to read | 🟡 Medium |
 | **Whitespace** | Very little breathing room between sections | 🟡 Medium |
 | **Mobile** | Hamburger-only nav on desktop removes discoverability | 🔴 High |
+| **Event Links** | "Read More" links on events still point to `#` (no destination) | 🔴 High |
 
 ### 3.2 Campus Sites
 
@@ -169,7 +192,7 @@ graph TD
 | **Social Links** | Twitter/X link is broken on St. Pete (no URL), YouTube broken on Clearwater | 🔴 High |
 | **St Pete Lunch Menu** | URL is `/menus/clw-menu-clone` — clearly a clone of the Clearwater menu | 🔴 High |
 | **Placeholder URLs** | St. Pete uses `/link-one`, `/link-two`, `/link-three` for QuickLinks items | 🔴 High |
-| **Typography** | Same off-brand fonts as main site | 🔴 High |
+| **Typography** | ~~Same off-brand fonts as main site~~ Corrected to Roboto / Roboto Slab | ✅ Fixed |
 | **Visual Consistency** | Both campus sites look identical to each other in structure but differ from the main site | 🟡 Medium |
 
 ---
@@ -241,11 +264,12 @@ Based on COE Standards of Accreditation (Handbook, 2025 Edition) and federal con
 
 ### 4.4 Content Quality Issues
 
-- **News items lack images** — plain text blocks instead of structured cards with thumbnails
-- **Events widget is broken** — shows same event repeated 9 times
+- ~~**News items lack images**~~ ✅ Main site now has structured news cards with images (campus sites still need update)
+- ~~**Events widget is broken**~~ ✅ Events now show distinct, real events
 - **"NTHS" stoles description** appears on all 3 sites as a standalone news item without context
-- **Graduation information** is identical across both campus sites — could be centralized with date/location variables
-- **CPL data / student outcomes are not published** on any of the 3 sites — this is a potential COE compliance gap
+- **Graduation information** is identical across both campus sites -- could be centralized with date/location variables
+- **CPL data / student outcomes are not published** on any of the 3 sites -- this is a potential COE compliance gap
+- **Event "Read More" links** still point to `#` (no destination) on the main site
 
 ---
 
@@ -376,33 +400,41 @@ graph LR
 
 ## 7. Immediate Fixes (Quick Wins)
 
-These can be done right away without a full redesign:
+These can be done right away without a full redesign. Items marked with dates have been completed.
 
-1. ✅ Fix broken Twitter/X link on St. Pete footer
-2. ✅ Fix broken YouTube link on Clearwater footer
-3. ✅ Fix St. Pete lunch menu URL (remove `/clw-menu-clone`)
-4. ✅ Fix placeholder URLs on St. Pete (`/link-one`, `/link-two`, `/link-three`)
-5. ✅ Fix "LInkedIn" typo on St. Pete footer
-6. ✅ Fix events widget showing 9 duplicate entries
-7. ✅ Fix "Read More" event links pointing to homepage
-8. ✅ Update OG descriptions to be descriptive per page
+| # | Fix | Status |
+|---|-----|--------|
+| 1 | Fix broken Twitter/X link on St. Pete footer | ⬜ Needs verification |
+| 2 | Fix broken YouTube link on Clearwater footer | ⬜ Needs verification |
+| 3 | Fix St. Pete lunch menu URL (remove `/clw-menu-clone`) | ⬜ Needs verification |
+| 4 | Fix placeholder URLs on St. Pete (`/link-one`, `/link-two`, `/link-three`) | ⬜ Needs verification |
+| 5 | Fix "LInkedIn" typo on St. Pete footer | ⬜ Needs verification |
+| 6 | Fix events widget showing 9 duplicate entries | ✅ Fixed |
+| 7 | Fix "Read More" event links pointing to homepage | 🔴 Still broken (links to `#`) |
+| 8 | Update OG descriptions to be descriptive per page | ⬜ Needs verification |
+| 9 | Correct typography to brand fonts (Roboto Slab + Roboto) | ✅ Fixed (April 2026) |
+| 10 | Correct primary green to #008142 across all sites | ✅ Fixed (April 2026) |
+| 11 | Add structured news cards with images to homepage | ✅ Fixed |
+| 12 | Add National Signing Day section with countdown | ✅ Added |
 
 ---
 
 ## 8. Priority Order for Redesign
 
-| Priority | Task | Impact | Effort |
-|---|---|---|---|
-| 🔴 P1 | Fix broken links, placeholder URLs, typos | Immediate quality | 1-2 hours |
-| 🔴 P1 | Correct typography to brand fonts (Roboto Slab + Roboto) | Brand compliance | 2-4 hours |
-| 🔴 P1 | Correct green color to #008142 across all sites | Brand compliance | 1-2 hours |
-| 🟡 P2 | Restructure main site navigation (flatten, add visible nav bar) | UX improvement | 1-2 days |
-| 🟡 P2 | Restructure campus site navigation (align with main site) | UX consistency | 1-2 days |
-| 🟡 P2 | Modernize homepage hero section | First impressions | 4-8 hours |
-| 🟡 P2 | Implement card-based news/events layouts | Content presentation | 4-8 hours |
-| 🟢 P3 | Redesign footer (clean, modern, accessible) | Visual polish | 2-4 hours |
-| 🟢 P3 | Consolidate shared content across sites | Maintenance | 2-4 days |
-| 🟢 P3 | Program pages redesign (career cluster grouping) | Enrollment UX | 1-2 weeks |
+| Priority | Task | Impact | Effort | Status |
+|---|---|---|---|---|
+| 🔴 P1 | Fix broken links, placeholder URLs, typos | Immediate quality | 1-2 hours | ⬜ Partially done -- needs campus site verification |
+| 🔴 P1 | Correct typography to brand fonts (Roboto Slab + Roboto) | Brand compliance | 2-4 hours | ✅ Complete |
+| 🔴 P1 | Correct green color to #008142 across all sites | Brand compliance | 1-2 hours | ✅ Complete |
+| 🔴 P1 | Fix event "Read More" links (currently point to `#`) | Broken functionality | 1 hour | 🔴 Open |
+| 🟡 P2 | Restructure main site navigation (flatten, add visible nav bar) | UX improvement | 1-2 days | ⬜ Not started |
+| 🟡 P2 | Restructure campus site navigation (align with main site) | UX consistency | 1-2 days | ⬜ Not started |
+| 🟡 P2 | Modernize homepage hero section (add CTA buttons) | First impressions | 4-8 hours | 🟡 Partially improved |
+| 🟡 P2 | Implement card-based news/events layouts | Content presentation | 4-8 hours | ✅ Complete (main site) |
+| 🟡 P2 | Publish CPL data on each campus site | COE compliance | 2-4 days | 🔴 Critical gap |
+| 🟢 P3 | Redesign footer (clean, modern, accessible) | Visual polish | 2-4 hours | ⬜ Not started |
+| 🟢 P3 | Consolidate shared content across sites | Maintenance | 2-4 days | ⬜ Not started |
+| 🟢 P3 | Program pages redesign (career cluster grouping) | Enrollment UX | 1-2 weeks | ⬜ Not started |
 
 ---
 
@@ -413,6 +445,20 @@ These can be done right away without a full redesign:
 3. **Implement Phase 1** — navigation restructure within Finalsite
 4. **Implement Phase 2** — branding corrections (fonts + colors)
 5. **Implement Phase 3** — content consolidation and shared components
+
+---
+
+## Change Log
+
+| Date | Change | Section(s) Updated |
+|------|--------|-------------------|
+| March 26, 2026 | Initial audit and proposal created | All |
+| April 2026 | Applied brand-compliant typography (Roboto Slab + Roboto) site-wide via Finalsite CSS override | 1.2, 7, 8 |
+| April 2026 | Corrected primary green from #278406 to #008142 site-wide | 1.2, 7, 8 |
+| April 2026 | Redesigned homepage news section with structured image cards | 3.1, 7 |
+| April 2026 | Fixed events widget (no longer showing 9 duplicate entries) | 3.1, 7 |
+| April 2026 | Added National Signing Day countdown section to homepage | 3.1 |
+| April 9, 2026 | Document updated to living format with table of contents, change log, and status tracking | All |
 
 ---
 
