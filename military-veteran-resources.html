@@ -6,48 +6,48 @@
     <title>Military &amp; Veteran Student Resources — PTC Clearwater</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root {
+        /* ===== ALL STYLES SCOPED TO .mvrc-page ===== */
+        /* This prevents any CSS from bleeding into other Finalsite panels/pages */
+
+        .mvrc-page {
             --ptc-green: #008142;
             --ptc-green-light: #8DC63F;
             --ptc-yellow: #FFCF01;
             --text-dark: #1A1A1A;
             --text-light: #555555;
             --border-light: #e0e0e0;
+            line-height: 1.6;
+            color: #1A1A1A;
         }
-        * { box-sizing: border-box; }
-        body { font-family: 'Roboto', sans-serif; color: var(--text-dark); line-height: 1.6; margin: 0; padding: 0; background: #f4f6f8; }
-        .page { max-width: 960px; margin: 2rem auto; padding: 2rem; background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 8px; }
-        h1, h2, h3, h4 { font-family: 'Roboto Slab', serif; }
-        h1 { color: var(--ptc-green); font-size: 2rem; margin-bottom: 0.5rem; }
-        h2 { color: var(--ptc-green); border-bottom: 2px solid var(--border-light); padding-bottom: 10px; font-size: 1.5rem; margin-top: 2.5rem; }
-        h3 { font-size: 1.25rem; margin-top: 0; }
-        a { color: var(--ptc-green); }
+        .mvrc-page *, .mvrc-page *::before, .mvrc-page *::after {
+            box-sizing: border-box;
+        }
 
-        /* ===== HOVER EFFECTS ===== */
+        /* ===== HOVER EFFECTS (scoped) ===== */
 
-        /* Step cards (How to Apply), event cards, contact cards — lift on hover */
-        div[style*="flex: 1 1 300px"][style*="border: 1px solid #E0E0E0"][style*="border-radius: 8px"][style*="padding: 20px"] {
+        /* Step cards, contact cards — lift on hover */
+        .mvrc-page div[style*="flex: 1 1 300px"][style*="border: 1px solid #E0E0E0"][style*="border-radius: 8px"][style*="padding: 20px"] {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        div[style*="flex: 1 1 300px"][style*="border: 1px solid #E0E0E0"][style*="border-radius: 8px"][style*="padding: 20px"]:hover {
+        .mvrc-page div[style*="flex: 1 1 300px"][style*="border: 1px solid #E0E0E0"][style*="border-radius: 8px"][style*="padding: 20px"]:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 16px rgba(0,0,0,0.1);
         }
 
-        /* Event cards (yellow top border) — also lift */
-        div[style*="border-top: 4px solid #FFCF01"] {
+        /* Event cards (yellow top border) */
+        .mvrc-page div[style*="border-top: 4px solid #FFCF01"] {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        div[style*="border-top: 4px solid #FFCF01"]:hover {
+        .mvrc-page div[style*="border-top: 4px solid #FFCF01"]:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 16px rgba(0,0,0,0.1);
         }
 
         /* Community resource pill buttons */
-        a[style*="background-color: #f6faf2"][style*="border: 1px solid #8DC63F"] {
+        .mvrc-page a[style*="background-color: #f6faf2"][style*="border: 1px solid #8DC63F"] {
             transition: all 0.2s ease;
         }
-        a[style*="background-color: #f6faf2"][style*="border: 1px solid #8DC63F"]:hover {
+        .mvrc-page a[style*="background-color: #f6faf2"][style*="border: 1px solid #8DC63F"]:hover {
             background-color: #008142 !important;
             color: #fff !important;
             border-color: #008142 !important;
@@ -56,31 +56,30 @@
         }
 
         /* PDF download button */
-        a[style*="background-color: #008142"][style*="border-radius: 8px"][style*="font-size: 16px"] {
+        .mvrc-page a[style*="background-color: #008142"][style*="border-radius: 8px"][style*="font-size: 16px"] {
             transition: all 0.2s ease;
         }
-        a[style*="background-color: #008142"][style*="border-radius: 8px"][style*="font-size: 16px"]:hover {
+        .mvrc-page a[style*="background-color: #008142"][style*="border-radius: 8px"][style*="font-size: 16px"]:hover {
             background-color: #006030 !important;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,129,66,0.3);
         }
 
         /* Links inside cards — subtle color shift */
-        div[style*="flex: 1 1 300px"] a[style*="color: #008142"]:hover {
+        .mvrc-page div[style*="flex: 1 1 300px"] a[style*="color: #008142"]:hover {
             color: #006030 !important;
         }
 
         /* Back to top button */
-        html { scroll-behavior: smooth; }
-        .back-to-top-btn {
+        .mvrc-back-to-top {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
             width: 44px;
             height: 44px;
             background: #fff;
-            color: var(--text-light);
-            border: 1px solid var(--border-light);
+            color: #555555;
+            border: 1px solid #e0e0e0;
             border-radius: 50%;
             font-size: 1.2rem;
             text-decoration: none;
@@ -93,26 +92,26 @@
             pointer-events: none;
             z-index: 100;
         }
-        .back-to-top-btn.visible {
+        .mvrc-back-to-top.mvrc-visible {
             opacity: 1;
             pointer-events: auto;
         }
-        .back-to-top-btn:hover {
-            background: var(--ptc-green);
+        .mvrc-back-to-top:hover {
+            background: #008142;
             color: #fff;
-            border-color: var(--ptc-green);
+            border-color: #008142;
             transform: scale(1.1);
             box-shadow: 0 4px 12px rgba(0,129,66,0.3);
         }
 
         @media print {
-            .back-to-top-btn { display: none; }
+            .mvrc-back-to-top { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <div class="page">
+    <div class="mvrc-page">
 
         <!-- ===== SECTION 1: INTRO & MVRC ===== -->
         <div style="line-height: 1.6; color: #333;">
@@ -241,17 +240,19 @@
     </div>
 
     <!-- Back to top button -->
-    <a href="#" class="back-to-top-btn" id="backToTop" aria-label="Back to top">&uarr;</a>
+    <a href="#" class="mvrc-back-to-top" id="mvrcBackToTop" aria-label="Back to top">&uarr;</a>
 
     <script>
-        const btn = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 400) {
-                btn.classList.add('visible');
-            } else {
-                btn.classList.remove('visible');
-            }
-        });
+        (function() {
+            var btn = document.getElementById('mvrcBackToTop');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 400) {
+                    btn.classList.add('mvrc-visible');
+                } else {
+                    btn.classList.remove('mvrc-visible');
+                }
+            });
+        })();
     </script>
 
 </body>

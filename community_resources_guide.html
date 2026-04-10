@@ -4,147 +4,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Military & Veteran Community Resource Guide</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+    <title>Community & Additional Resources - PTC-Clearwater</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-green: #008142;
-            --brand-yellow: #FFCF01;
-            --brand-light-green: #8DC63F;
-            --text-dark: #333333;
+            --ptc-green: #008142;
+            --ptc-yellow: #FFCF01;
+            --ptc-green-light: #8DC63F;
+            --text-dark: #1A1A1A;
             --text-light: #555555;
             --bg-light: #f6faf2;
+            --border-light: #e0e0e0;
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Roboto', Arial, sans-serif;
             color: var(--text-dark);
-            line-height: 1.4;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
+            line-height: 1.35;
+            background: #fff;
             -webkit-print-color-adjust: exact !important;
-            /* Forces Chrome to print background colors */
             print-color-adjust: exact !important;
-            /* Forces other browsers to print background colors */
         }
 
-        .document-container {
-            max-width: 8.5in;
-            /* Standard letter width */
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            max-height: 11in;
             margin: 0 auto;
-            padding: 30px;
-            /* Reduced to fit 1 page */
+            padding: 0.4in 0.5in 0.35in;
+            overflow: hidden;
         }
 
+        /* ===== HEADER ===== */
         .header {
             text-align: center;
-            border-bottom: 4px solid var(--brand-green);
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+            padding-bottom: 12px;
+            margin-bottom: 10px;
             position: relative;
+            border-bottom: 4px solid var(--ptc-green);
         }
-
         .header::after {
             content: '';
             position: absolute;
             bottom: -4px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 35%;
             width: 30%;
             height: 4px;
-            background-color: var(--brand-yellow);
+            background: var(--ptc-yellow);
         }
-
         .header h1 {
             font-family: 'Roboto Slab', serif;
-            color: var(--brand-green);
-            font-size: 26px;
-            /* Slightly reduced */
-            margin: 0 0 5px 0;
+            color: var(--ptc-green);
+            font-size: 32px;
+            margin-bottom: 5px;
+            font-weight: 700;
         }
-
-        .header p {
+        .header .subtitle {
+            font-family: 'Roboto', sans-serif;
             color: var(--text-light);
-            font-size: 15px;
-            margin: 0;
+            font-size: 16px;
+            font-weight: 400;
         }
 
+        /* ===== INTRO ===== */
         .intro {
-            font-size: 14px;
-            margin-bottom: 20px;
             text-align: center;
+            font-size: 15px;
+            margin: 12px 0 16px;
+            color: var(--text-dark);
+        }
+        .disclaimer {
+            font-size: 11px;
+            font-style: italic;
+            color: var(--text-light);
+            display: block;
+            margin-top: 4px;
         }
 
-        .links-grid {
+        /* ===== TWO-COLUMN TABLE ===== */
+        .resources {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            /* Slightly increased gap */
+            gap: 0 20px;
         }
-
-        .resource-card {
-            background-color: var(--bg-light) !important;
-            /* Force color on print */
-            border-left: 5px solid var(--brand-green) !important;
-            border-radius: 6px;
-            padding: 12px 18px;
-            /* Slightly increased padding */
-            page-break-inside: avoid;
-            /* Prevents card from splitting across pages when printing */
+        .resource-row {
+            border-left: 4px solid var(--ptc-green);
+            background: var(--bg-light);
+            padding: 9px 14px;
+            margin-bottom: 9px;
+            border-radius: 0 4px 4px 0;
         }
-
-        .resource-card h3 {
-            font-size: 16px;
-            /* Restored size slightly */
-            color: var(--brand-green) !important;
-            margin: 0 0 4px 0;
+        .resource-row h3 {
             font-family: 'Roboto Slab', serif;
+            font-size: 16px;
+            color: var(--ptc-green);
+            margin: 0 0 2px 0;
+            font-weight: 700;
+            line-height: 1.3;
         }
-
-        .resource-card a {
-            color: var(--text-dark) !important;
+        .resource-row a {
+            font-size: 13px;
+            color: var(--text-dark);
             text-decoration: none;
-            font-size: 12px;
-            /* Restored link size slightly */
-            display: inline-block;
-            word-wrap: break-word;
-            width: 100%;
+            word-break: break-all;
+            line-height: 1.3;
         }
-
-        .resource-card a:hover {
-            color: var(--brand-green) !important;
+        .resource-row a:hover {
+            color: var(--ptc-green);
             text-decoration: underline;
         }
 
+        /* ===== FOOTER ===== */
         .footer {
-            margin-top: 25px;
             text-align: center;
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-light);
-            border-top: 1px solid #ccc;
-            padding-top: 10px;
+            border-top: 1px solid var(--border-light);
+            padding-top: 8px;
+            margin-top: 10px;
         }
 
-        /* Print Specific Styles */
+        /* ===== PRINT ===== */
         @media print {
-            body {
-                background-color: white;
-            }
-
-            .document-container {
-                padding: 0.25in;
-                /* Gives a small border when printing */
-            }
-
-            .resource-card {
-                border: 1px solid #e0e0e0;
-                border-left: 5px solid var(--brand-green) !important;
-            }
-
-            /* Explicitly override browsers trying to strip backgrounds */
+            body { background: white; }
+            .page { padding: 0.35in 0.45in 0.3in; }
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
@@ -155,121 +140,108 @@
 
 <body>
 
-    <div class="document-container">
+    <div class="page">
+
         <div class="header">
             <h1>Community & Additional Resources</h1>
-            <p>Pinellas Technical College-Clearwater</p>
+            <div class="subtitle">Pinellas Technical College-Clearwater</div>
         </div>
 
         <p class="intro">
-            The following local, state, and federal organizations may be of interest
-            to you as a military-connected student.<br>
-            <span
-                style="font-size: 11px; font-style: italic; color: var(--text-light); display: inline-block; margin-top: 5px;">
-                *Disclaimer: The following external links are provided for informational purposes only. Pinellas
-                Technical College does not endorse, control, or take responsibility for the content, privacy policies,
-                or services of these external organizations.
-            </span>
+            The following local, state, and federal organizations may be of interest to you as a military-connected student.
+            <span class="disclaimer">*Disclaimer: The following external links are provided for informational purposes only. Pinellas Technical College does not endorse, control, or take responsibility for the content, privacy policies, or services of these external organizations.</span>
         </p>
 
-        <div class="links-grid">
+        <div class="resources">
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>American Legion - FL</h3>
-                <a href="https://www.floridalegion.org/" target="_blank">https://www.floridalegion.org/</a>
+                <a href="https://www.floridalegion.org/" target="_blank">floridalegion.org</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>Bay Pines VA Healthcare System</h3>
-                <a href="https://www.va.gov/bay-pines-health-care/"
-                    target="_blank">https://www.va.gov/bay-pines-health-care/</a>
+                <a href="https://www.va.gov/bay-pines-health-care/" target="_blank">va.gov/bay-pines-health-care</a>
             </div>
 
-            <div class="resource-card">
-                <h3>CareerSource Pinellas – Veterans Services</h3>
-                <a href="https://careersourcepinellas.com/veteran-services/"
-                    target="_blank">https://careersourcepinellas.com/veteran-services/</a>
+            <div class="resource-row">
+                <h3>CareerSource Pinellas - Veterans Services</h3>
+                <a href="https://careersourcepinellas.com/veteran-services/" target="_blank">careersourcepinellas.com/veteran-services</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>Clearwater Vet Center</h3>
-                <a href="https://www.va.gov/clearwater-vet-center/"
-                    target="_blank">https://www.va.gov/clearwater-vet-center/</a>
+                <a href="https://www.va.gov/clearwater-vet-center/" target="_blank">va.gov/clearwater-vet-center</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>Club-214</h3>
-                <a href="https://linktr.ee/club214?utm_source=qr_code"
-                    target="_blank">https://linktr.ee/club214?utm_source=qr_code</a>
+                <a href="https://linktr.ee/club214" target="_blank">linktr.ee/club214</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>First Contact</h3>
-                <a href="https://www.firstcontact.org/" target="_blank">https://www.firstcontact.org/</a>
+                <a href="https://www.firstcontact.org/" target="_blank">firstcontact.org</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>Florida Veterans Support Line</h3>
-                <a href="https://www.myflvet.com/" target="_blank">https://www.myflvet.com/</a>
+                <a href="https://www.myflvet.com/" target="_blank">myflvet.com</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>LCH2H (Liebe Cornelia Hooves to Healing)</h3>
-                <a href="https://lch2h.org/" target="_blank">https://lch2h.org/</a>
+                <a href="https://lch2h.org/" target="_blank">lch2h.org</a>
             </div>
 
-            <div class="resource-card">
-                <h3>MacDill’s EFMP Families Resources</h3>
-                <a href="https://macdillfss.com/efmp-additional-resources/"
-                    target="_blank">https://macdillfss.com/efmp-additional-resources/</a>
+            <div class="resource-row">
+                <h3>MacDill's EFMP Families Resources</h3>
+                <a href="https://macdillfss.com/efmp-additional-resources/" target="_blank">macdillfss.com/efmp-additional-resources</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>Military OneSource</h3>
-                <a href="https://www.militaryonesource.mil/" target="_blank">https://www.militaryonesource.mil/</a>
+                <a href="https://www.militaryonesource.mil/" target="_blank">militaryonesource.mil</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>Mind the GAP Together</h3>
-                <a href="https://www.mindthegaptogether.org/resources"
-                    target="_blank">https://www.mindthegaptogether.org/resources</a>
+                <a href="https://www.mindthegaptogether.org/resources" target="_blank">mindthegaptogether.org/resources</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>Mission Roll Call</h3>
-                <a href="https://missionrollcall.org/" target="_blank">https://missionrollcall.org/</a>
+                <a href="https://missionrollcall.org/" target="_blank">missionrollcall.org</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>U.S. Department of Veterans Affairs</h3>
-                <a href="https://www.va.gov/" target="_blank">https://www.va.gov/</a>
+                <a href="https://www.va.gov/" target="_blank">va.gov</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>VA Education and Training Benefits</h3>
-                <a href="https://www.va.gov/education/" target="_blank">https://www.va.gov/education/</a>
+                <a href="https://www.va.gov/education/" target="_blank">va.gov/education</a>
             </div>
 
-            <div class="resource-card">
-                <h3>Veteran Readiness and Employment (VR&E)</h3>
-                <a href="https://www.benefits.va.gov/vocrehab/"
-                    target="_blank">https://www.benefits.va.gov/vocrehab/</a>
+            <div class="resource-row">
+                <h3>Veteran Readiness and Employment (VR&amp;E)</h3>
+                <a href="https://www.benefits.va.gov/vocrehab/" target="_blank">benefits.va.gov/vocrehab</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>Veterans' Employment and Training Service</h3>
-                <a href="https://www.dol.gov/agencies/vets" target="_blank">https://www.dol.gov/agencies/vets</a>
+                <a href="https://www.dol.gov/agencies/vets" target="_blank">dol.gov/agencies/vets</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>Veterans Crisis Line</h3>
-                <a href="https://www.veteranscrisisline.net/" target="_blank">https://www.veteranscrisisline.net/</a>
+                <a href="https://www.veteranscrisisline.net/" target="_blank">veteranscrisisline.net</a>
             </div>
 
-            <div class="resource-card">
+            <div class="resource-row">
                 <h3>Wounded Warrior Project</h3>
-                <a href="https://www.woundedwarriorproject.org/programs/wwp-resource-center"
-                    target="_blank">https://www.woundedwarriorproject.org/programs/wwp-resource-center</a>
+                <a href="https://www.woundedwarriorproject.org/programs/wwp-resource-center" target="_blank">woundedwarriorproject.org/programs/wwp-resource-center</a>
             </div>
 
         </div>
@@ -277,6 +249,7 @@
         <div class="footer">
             Provided as a resource for military-connected students by Pinellas Technical College.
         </div>
+
     </div>
 
 </body>
