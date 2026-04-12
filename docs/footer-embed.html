@@ -1,29 +1,18 @@
 <!--
   PTC SITE FOOTER — Finalsite Composer Embed Code
   ================================================
+  Version 2 — Live-ready (April 2026)
+  - Only real, verified links included
+  - LINK_TODO placeholders removed
+  - Add more nav items as pages are built out in the redesign
+
   HOW TO USE:
-  1. In Finalsite Composer, add an "Embed" element at the bottom of the page (below all other content)
+  1. In Finalsite Composer, add an "Embed" element at the bottom of the page
   2. Paste this entire block into the embed's HTML field
-  3. Replace all instances of LINK_TODO with real URLs (search for "LINK_TODO" to find them all)
-  4. Replace logo/accreditation image src URLs with your actual Finalsite media URLs
-  5. Save and preview before publishing
-
-  NOTES:
-  - All CSS is scoped to .ptc-footer to avoid conflicts with Finalsite's existing styles
-  - Font Awesome icons assumed available (Finalsite loads it); if not, uncomment the CDN link below
-  - Logos need to be uploaded to Finalsite's media library and their URLs inserted below
-  - The non-discrimination statement text should be verified with your legal/admin team
--->
-
-<!-- Uncomment if Font Awesome is NOT already loaded by Finalsite:
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  3. Save and preview before publishing
 -->
 
 <style>
-/* ============================================================
-   PTC FOOTER STYLES — scoped to .ptc-footer
-   ============================================================ */
-
 .ptc-footer *,
 .ptc-footer *::before,
 .ptc-footer *::after {
@@ -42,14 +31,12 @@
     width: 100%;
 }
 
-/* Container */
 .ptc-footer .ptc-footer__container {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 1.5rem;
 }
 
-/* ---- TOP SECTION: Brand + Nav Columns ---- */
 .ptc-footer .ptc-footer__top {
     display: grid;
     grid-template-columns: 1.2fr 2fr;
@@ -58,7 +45,6 @@
     border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-/* Brand column */
 .ptc-footer .ptc-footer__logo {
     height: 44px;
     width: auto;
@@ -74,7 +60,6 @@
     color: #9CA3AF;
 }
 
-/* Social icons */
 .ptc-footer .ptc-footer__social {
     display: flex;
     gap: 0.5rem;
@@ -101,7 +86,6 @@
     transform: translateY(-2px);
 }
 
-/* Nav columns grid */
 .ptc-footer .ptc-footer__nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -148,7 +132,6 @@
     padding-left: 0.3rem;
 }
 
-/* ---- ACCREDITATION BAR ---- */
 .ptc-footer .ptc-footer__accreditation {
     display: flex;
     justify-content: center;
@@ -172,20 +155,15 @@
     transition: opacity 0.15s ease;
 }
 
-.ptc-footer .ptc-footer__accred-logo:hover {
-    opacity: 0.8;
-}
+.ptc-footer .ptc-footer__accred-logo:hover { opacity: 0.8; }
 
 .ptc-footer .ptc-footer__accred-logo--invert {
     filter: brightness(0) invert(1);
     opacity: 0.7;
 }
 
-.ptc-footer .ptc-footer__accred-logo--invert:hover {
-    opacity: 1;
-}
+.ptc-footer .ptc-footer__accred-logo--invert:hover { opacity: 1; }
 
-/* ---- BOTTOM BAR ---- */
 .ptc-footer .ptc-footer__bottom {
     text-align: center;
     padding: 2rem 0;
@@ -193,9 +171,7 @@
     line-height: 1.6;
 }
 
-.ptc-footer .ptc-footer__bottom p {
-    margin-bottom: 0.5rem;
-}
+.ptc-footer .ptc-footer__bottom p { margin-bottom: 0.5rem; }
 
 .ptc-footer .ptc-footer__bottom a {
     color: #9CA3AF;
@@ -203,13 +179,8 @@
     transition: color 0.15s ease;
 }
 
-.ptc-footer .ptc-footer__bottom a:hover {
-    color: #ffffff;
-}
+.ptc-footer .ptc-footer__bottom a:hover { color: #ffffff; }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
 @media (max-width: 900px) {
     .ptc-footer .ptc-footer__top {
         grid-template-columns: 1fr;
@@ -221,9 +192,7 @@
 }
 
 @media (max-width: 560px) {
-    .ptc-footer .ptc-footer__nav {
-        grid-template-columns: 1fr;
-    }
+    .ptc-footer .ptc-footer__nav { grid-template-columns: 1fr; }
     .ptc-footer .ptc-footer__accreditation {
         flex-direction: column;
         gap: 1.5rem;
@@ -240,19 +209,18 @@
 
             <!-- Brand -->
             <div class="ptc-footer__brand">
-                <!-- Replace src with your Finalsite media library URL for the horizontal PTC logo -->
                 <img
-                    src="LOGO_URL_TODO"
+                    src="https://myptecorg.finalsite.com/fs/resource-manager/view/033588a2-506b-4dae-b190-29ad7d7c3112"
                     alt="Pinellas Technical College — Opportunity Starts Here"
                     class="ptc-footer__logo"
                 >
                 <p class="ptc-footer__tagline">Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
                 <div class="ptc-footer__social">
-                    <a href="LINK_TODO_FACEBOOK" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-                    <a href="LINK_TODO_INSTAGRAM" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-                    <a href="LINK_TODO_TWITTER" aria-label="Twitter/X" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i></a>
-                    <a href="LINK_TODO_YOUTUBE" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
-                    <a href="LINK_TODO_LINKEDIN" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/pinellastechnical" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/pinellastechcollege/" aria-label="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/PinellasTech" aria-label="Twitter/X" target="_blank" rel="noopener"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/channel/UCWkxO2mdSU5u_TISnnhPZWA" aria-label="YouTube" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/school/pinellas-technical-college/" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
 
@@ -261,11 +229,9 @@
                 <div class="ptc-footer__col">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="LINK_TODO_PROGRAMS">Programs</a></li>
-                        <li><a href="LINK_TODO_ADMISSIONS">Admissions</a></li>
-                        <li><a href="LINK_TODO_TUITION">Tuition &amp; Aid</a></li>
-                        <li><a href="LINK_TODO_STUDENT_RESOURCES">Student Resources</a></li>
-                        <li><a href="LINK_TODO_ABOUT">About PTC</a></li>
+                        <li><a href="https://www.myptc.edu/about-us/welcome-to-ptc/ptc-programs-brochure">Programs</a></li>
+                        <li><a href="https://www.myptc.edu/resources/ptc-student-resources-guide">Student Resources</a></li>
+                        <li><a href="https://www.myptc.edu/about-us/welcome-to-ptc">About PTC</a></li>
                     </ul>
                 </div>
                 <div class="ptc-footer__col">
@@ -273,18 +239,14 @@
                     <ul>
                         <li><a href="https://clearwater.myptc.edu">Clearwater Campus</a></li>
                         <li><a href="https://stpete.myptc.edu">St. Petersburg Campus</a></li>
-                        <li><a href="LINK_TODO_CAMPUS_MAPS">Campus Maps</a></li>
-                        <li><a href="LINK_TODO_TOUR">Schedule a Tour</a></li>
                     </ul>
                 </div>
                 <div class="ptc-footer__col">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="LINK_TODO_CONSUMER_INFO">Consumer Information</a></li>
-                        <li><a href="LINK_TODO_NONDISCRIMINATION">Non-Discrimination</a></li>
-                        <li><a href="LINK_TODO_ACCREDITATION">Accreditation</a></li>
-                        <li><a href="LINK_TODO_CAREERS">Careers at PTC</a></li>
-                        <li><a href="LINK_TODO_CONTACT">Contact Us</a></li>
+                        <li><a href="https://www.myptc.edu/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="https://www.myptc.edu/accessibility-statement">Accessibility</a></li>
+                        <li><a href="https://www.myptc.edu/site-map">Sitemap</a></li>
                     </ul>
                 </div>
             </nav>
@@ -293,18 +255,30 @@
         <!-- ACCREDITATION BAR -->
         <div class="ptc-footer__accreditation">
             <div class="ptc-footer__accred-item">
-                <!-- Replace src with Finalsite media URL for COE logo -->
-                <img src="COE_LOGO_URL_TODO" alt="COE Accredited" class="ptc-footer__accred-logo" style="max-height:48px;">
+                <img
+                    src="https://myptecorg.finalsite.com/fs/resource-manager/view/608a2a87-b26e-46bd-bca6-eb3b2f1888fd"
+                    alt="COE Accredited"
+                    class="ptc-footer__accred-logo"
+                    style="max-height:48px;"
+                >
                 <span>Accredited by the Council on Occupational Education</span>
             </div>
             <div class="ptc-footer__accred-item">
-                <!-- Replace src with Finalsite media URL for Cognia logo -->
-                <img src="COGNIA_LOGO_URL_TODO" alt="Cognia Accredited" class="ptc-footer__accred-logo ptc-footer__accred-logo--invert" style="max-height:30px;">
+                <img
+                    src="https://myptecorg.finalsite.com/fs/resource-manager/view/49e1fe88-6a52-42f8-859f-f73b807492dc"
+                    alt="Cognia Accredited"
+                    class="ptc-footer__accred-logo ptc-footer__accred-logo--invert"
+                    style="max-height:30px;"
+                >
                 <span>Accredited as part of Pinellas County Schools</span>
             </div>
             <div class="ptc-footer__accred-item">
-                <!-- Replace src with Finalsite media URL for PCSB district logo -->
-                <img src="PCSB_LOGO_URL_TODO" alt="Pinellas County Schools" class="ptc-footer__accred-logo ptc-footer__accred-logo--invert" style="max-height:40px;">
+                <img
+                    src="https://myptecorg.finalsite.com/fs/resource-manager/view/40b72155-d047-4de7-9fa4-a4897023eaa7"
+                    alt="Pinellas County Schools"
+                    class="ptc-footer__accred-logo ptc-footer__accred-logo--invert"
+                    style="max-height:40px;"
+                >
                 <span>Part of Pinellas County Schools</span>
             </div>
         </div>
@@ -314,9 +288,9 @@
             <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
             <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
             <p>
-                <a href="LINK_TODO_PRIVACY">Privacy Policy</a> &nbsp;|&nbsp;
-                <a href="LINK_TODO_ACCESSIBILITY">Accessibility</a> &nbsp;|&nbsp;
-                <a href="LINK_TODO_SITEMAP">Sitemap</a>
+                <a href="https://www.myptc.edu/privacy-policy">Privacy Policy</a> &nbsp;|&nbsp;
+                <a href="https://www.myptc.edu/accessibility-statement">Accessibility</a> &nbsp;|&nbsp;
+                <a href="https://www.myptc.edu/site-map">Sitemap</a>
             </p>
         </div>
 
