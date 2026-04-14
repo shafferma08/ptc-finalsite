@@ -285,6 +285,84 @@
             align-items: stretch;
         }
 
+        /* Salary BLS label */
+        .stat-bls {
+            font-size: 0.7em;
+            opacity: 0.6;
+            font-weight: 400;
+        }
+
+        /* Counselor nudge in hero */
+        .hero-counselor-nudge {
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .hero-counselor-nudge a {
+            color: var(--color-yellow);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .hero-counselor-nudge a:hover {
+            text-decoration: underline;
+        }
+
+        /* Jump Nav */
+        .jump-nav {
+            background: white;
+            border-bottom: 2px solid var(--color-gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .jump-nav__inner {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .jump-nav__inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .jump-nav__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.9rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-gray-600);
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .jump-nav__link:hover {
+            color: var(--color-green);
+            border-bottom-color: var(--color-green);
+        }
+
+        .jump-nav__link--cta {
+            margin-left: auto;
+            color: var(--color-green);
+            border-left: 1px solid var(--color-gray-200);
+            padding-left: 1.5rem;
+        }
+
+        .jump-nav__link--cta:hover {
+            background: var(--color-green-light);
+            border-bottom-color: var(--color-green);
+        }
+
         @media screen and (max-width: 768px) {
             .program-hero__inner {
                 grid-template-columns: 1fr;
@@ -322,6 +400,10 @@
 
             .stat-bar {
                 gap: 1.5rem;
+            }
+
+            .jump-nav__link--cta {
+                margin-left: 0;
             }
         }
     </style>
@@ -375,43 +457,53 @@
 
             <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
                 <ul class="main-nav__list">
-                    <!-- PILLAR 1: Programs & Pathways -->
+                    <!-- PROGRAMS -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
                         <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
+                                    <h4>By Career Cluster</h4>
                                     <ul>
                                         <li><a href="#">Health Sciences</a></li>
-                                        <li><a href="#">Skilled Trades</a></li>
-                                        <li><a href="#">Technology / IT</a></li>
-                                        <li><a href="#">Culinary Arts</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                        <li><a href="#">Skilled Trades &amp; Construction</a></li>
+                                        <li><a href="#">Transportation &amp; Logistics</a></li>
+                                        <li><a href="#">Culinary &amp; Hospitality</a></li>
+                                        <li><a href="#">Cosmetology &amp; Barbering</a></li>
+                                        <li><a href="#">Business &amp; Office</a></li>
+                                        <li><a href="#">Arts, Media &amp; Education</a></li>
+                                    </ul>
+                                    <h4>Explore</h4>
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
                                         <li><a href="#">Distance Learning</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-
-                    <!-- PILLAR 2: Admissions & Aid -->
+                    <!-- ADMISSIONS & AID -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Admissions & Aid <i class="fas fa-chevron-down"></i></a>
+                        <a href="#" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
                                         <li><a href="#">How to Apply</a></li>
-                                        <li><a href="#">Tuition Rates</a></li>
-                                        <li><a href="#">Financial Aid & FAFSA</a></li>
+                                        <li><a href="#">Enrollment Steps</a></li>
+                                        <li><a href="#">Tuition &amp; Fees</a></li>
+                                        <li><a href="#">Financial Aid &amp; FAFSA</a></li>
                                         <li><a href="#">Scholarships</a></li>
-                                        <li><a href="#">Testing & Assessment</a></li>
+                                        <li><a href="#">Testing &amp; Assessment</a></li>
+                                        <li><a href="#">Veterans Benefits</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-
-                    <!-- PILLAR 3: Current Students -->
+                    <!-- CURRENT STUDENTS -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
                         <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
@@ -419,42 +511,30 @@
                                 <div class="dropdown__column">
                                     <ul>
                                         <li><a href="#">Academic Calendar</a></li>
+                                        <li><a href="#">Canvas Login</a></li>
                                         <li><a href="#">Student Services</a></li>
                                         <li><a href="#">Campus Bookstore</a></li>
                                         <li><a href="#">Record Request</a></li>
+                                        <li><a href="#">Tech Support</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-
-                    <!-- PILLAR 4: Community & Employers -->
-                    <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Community <i class="fas fa-chevron-down"></i></a>
-                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
-                            <div class="dropdown__inner">
-                                <div class="dropdown__column">
-                                    <ul>
-                                        <li><a href="#">Post a Job for Students</a></li>
-                                        <li><a href="#">Employer Partnerships</a></li>
-                                        <li><a href="#">Advisory Committees</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!-- PILLAR 5: Campus Info -->
+                    <!-- CAMPUS INFO -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
                         <a href="#" class="main-nav__link">Campus Info <i class="fas fa-chevron-down"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="#">Map & Directions</a></li>
+                                        <li><a href="#">About This Campus</a></li>
+                                        <li><a href="#">Map &amp; Directions</a></li>
                                         <li><a href="#">Staff Directory</a></li>
+                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="#">Post a Job for Students</a></li>
+                                        <li><a href="#">Advisory Committees</a></li>
                                         <li><a href="#">Consumer Information</a></li>
-                                        <li><a href="#">Accreditation</a></li>
                                         <li><a href="#">Contact Us</a></li>
                                     </ul>
                                 </div>
@@ -517,7 +597,12 @@
                                 <strong>Distance Ed</strong>
                                 <span class="unavailable">Not Available</span>
                             </div>
+                            <div class="stat-bar__item">
+                                <strong>Avg. Salary</strong>
+                                <span>$47,540/yr <span class="stat-bls">&#x2022; BLS 2023</span></span>
+                            </div>
                         </div>
+                        <p class="hero-counselor-nudge"><i class="fas fa-user-tie"></i> Have questions? <a href="#counselor">Talk to your counselor</a> before you apply.</p>
                     </div>
                     <div class="program-hero__image">
                         <img src="assets/images/content/Welder.jpg"
@@ -560,11 +645,24 @@
             </div>
         </div>
 
+        <!-- Jump Nav -->
+        <nav class="jump-nav" id="jump-nav" aria-label="Page sections">
+            <div class="container">
+                <div class="jump-nav__inner">
+                    <a href="#program-videos" class="jump-nav__link">See It In Action</a>
+                    <a href="#program-courses" class="jump-nav__link">Course Sequence</a>
+                    <a href="#program-credentials" class="jump-nav__link">Credentials &amp; Cost</a>
+                    <a href="#counselor" class="jump-nav__link">Get Started</a>
+                    <a href="#counselor" class="jump-nav__link jump-nav__link--cta"><i class="fas fa-user-tie"></i> Talk to a Counselor</a>
+                </div>
+            </div>
+        </nav>
+
         <!-- ============================
              3. SEE IT IN ACTION — Social proof first
              Videos before curriculum details
         ============================= -->
-        <section style="padding: 5rem 0; background: var(--color-gray-900);">
+        <section id="program-videos" style="padding: 5rem 0; background: var(--color-gray-900);">
             <div class="container">
                 <p
                     style="text-transform: uppercase; letter-spacing: 2px; color: var(--color-accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">
@@ -616,7 +714,7 @@
              4. PROGRAM OVERVIEW — What will I learn?
              Mission + detailed description
         ============================= -->
-        <section style="padding: 5rem 0; background-color: white;">
+        <section id="program-courses" style="padding: 5rem 0; background-color: white;">
             <div class="container" style="max-width: 900px;">
                 <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">About This Program</h2>
                 <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 3rem; font-size: 1.1rem;">
@@ -690,7 +788,7 @@
              5. CREDENTIALS — What do I earn?
              AWS + Florida Ready to Work
         ============================= -->
-        <section style="padding: 5rem 0; background-color: var(--color-gray-100);">
+        <section id="program-credentials" style="padding: 5rem 0; background-color: var(--color-gray-100);">
             <div class="container">
                 <div class="content-split">
                     <div
@@ -939,6 +1037,7 @@
                     <div class="footer__col">
                         <h4>Clearwater Links</h4>
                         <ul>
+                            <li><a href="schedule-clearwater.html">Class Schedule</a></li>
                             <li><a href="#">Campus Map &amp; Directions</a></li>
                             <li><a href="#">Academic Calendar</a></li>
                             <li><a href="#">Schedule a Tour</a></li>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026–2027 Class Schedule — PTC Clearwater</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ---- Page Header ---- */
+        .schedule-page-header {
+            background: linear-gradient(135deg, var(--color-green-dark) 0%, #004d29 100%);
+            color: white;
+            padding: 3rem 0 2.5rem;
+        }
+        .schedule-page-header h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            margin-bottom: 0.5rem;
+        }
+        .schedule-page-header p {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            max-width: 600px;
+        }
+        .schedule-page-header__meta {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .schedule-page-header__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            padding: 0.4rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* ---- Filter Bar ---- */
+        .schedule-filters {
+            background: white;
+            border-bottom: 2px solid var(--color-gray-200);
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .filters-inner {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .filter-group label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-gray-500);
+        }
+        .filter-chips {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+        .chip {
+            padding: 0.4rem 0.9rem;
+            border-radius: 30px;
+            border: 1.5px solid var(--color-gray-300);
+            background: white;
+            color: var(--color-gray-700);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: var(--font-body);
+        }
+        .chip:hover {
+            border-color: var(--color-green);
+            color: var(--color-green);
+        }
+        .chip.active {
+            background: var(--color-green);
+            border-color: var(--color-green);
+            color: white;
+        }
+        .search-wrap {
+            flex: 1;
+            min-width: 220px;
+        }
+        .search-wrap label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-gray-500);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .schedule-search {
+            width: 100%;
+            padding: 0.45rem 0.9rem 0.45rem 2.2rem;
+            border: 1.5px solid var(--color-gray-300);
+            border-radius: 30px;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            outline: none;
+            transition: border-color 0.15s;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 0.7rem center;
+        }
+        .schedule-search:focus {
+            border-color: var(--color-green);
+        }
+
+        /* ---- Results bar ---- */
+        .results-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            font-size: 0.875rem;
+            color: var(--color-gray-500);
+            border-bottom: 1px solid var(--color-gray-200);
+            margin-bottom: 0;
+        }
+        .results-count strong {
+            color: var(--color-gray-900);
+        }
+        .clear-filters {
+            background: none;
+            border: none;
+            color: var(--color-green);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-family: var(--font-body);
+            padding: 0;
+            display: none;
+        }
+        .clear-filters.visible { display: inline; }
+
+        /* ---- Category Section Headings ---- */
+        .category-heading {
+            background: var(--color-gray-100);
+            border-left: 4px solid var(--color-green);
+            padding: 0.6rem 1rem;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-green-dark);
+            letter-spacing: 0.3px;
+        }
+        .category-heading.hidden { display: none; }
+
+        /* ---- Schedule Table ---- */
+        .schedule-wrap {
+            overflow-x: auto;
+        }
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .schedule-table thead th {
+            background: var(--color-gray-900);
+            color: white;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .schedule-table tbody tr {
+            border-bottom: 1px solid var(--color-gray-200);
+            transition: background 0.1s;
+        }
+        .schedule-table tbody tr:hover {
+            background: var(--color-green-light);
+        }
+        .schedule-table tbody tr.hidden {
+            display: none;
+        }
+        .schedule-table td {
+            padding: 0.8rem 1rem;
+            vertical-align: middle;
+            color: var(--color-gray-800);
+        }
+        .prog-name {
+            font-weight: 600;
+            color: var(--color-gray-900);
+        }
+        .prog-hours {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--color-gray-500);
+            font-weight: 400;
+            margin-top: 0.15rem;
+        }
+
+        /* Day badges */
+        .days-list {
+            display: flex;
+            gap: 0.2rem;
+            flex-wrap: wrap;
+        }
+        .day-badge {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            background: var(--color-gray-200);
+            color: var(--color-gray-600);
+        }
+        .day-badge.active {
+            background: var(--color-green);
+            color: white;
+        }
+
+        /* Time badge */
+        .time-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .time-badge--morning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .time-badge--afternoon {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .time-badge--evening {
+            background: #ede9fe;
+            color: #5b21b6;
+        }
+        .time-badge--online {
+            background: var(--color-green-light);
+            color: var(--color-green-dark);
+        }
+        .time-badge--hybrid {
+            background: #fce7f3;
+            color: #9d174d;
+        }
+        .time-badge--offsite {
+            background: var(--color-gray-100);
+            color: var(--color-gray-600);
+        }
+
+        /* Location badge */
+        .loc-badge {
+            display: inline-block;
+            padding: 0.2rem 0.55rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .loc-badge--main {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .loc-badge--phi {
+            background: #fef9c3;
+            color: #854d0e;
+        }
+        .loc-badge--offsite {
+            background: var(--color-gray-100);
+            color: var(--color-gray-600);
+        }
+
+        /* Start date */
+        .start-date {
+            font-size: 0.82rem;
+            color: var(--color-gray-500);
+        }
+        .start-date.coming-soon {
+            color: var(--color-accent);
+            font-style: italic;
+        }
+
+        /* No results */
+        .no-results {
+            text-align: center;
+            padding: 4rem 1rem;
+            color: var(--color-gray-500);
+            display: none;
+        }
+        .no-results.visible { display: block; }
+        .no-results i { font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.3; display: block; }
+
+        /* Note band */
+        .schedule-note {
+            background: var(--color-gray-100);
+            border-top: 1px solid var(--color-gray-200);
+            padding: 1.25rem 0;
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+            margin-top: 2rem;
+        }
+        .schedule-note p { margin: 0.25rem 0; }
+        .schedule-note strong { color: var(--color-gray-700); }
+
+        @media (max-width: 768px) {
+            .filters-inner { gap: 1rem; }
+            .schedule-table thead th:nth-child(5),
+            .schedule-table tbody td:nth-child(5) { display: none; } /* hide start date on mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         CAMPUS UTILITY BAR
+    ============================================= -->
+    <div class="utility-bar utility-bar--campus">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                <a href="tel:7275387167"><i class="fas fa-phone"></i> 727.538.7167</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> 6100 154th Ave N, Clearwater, FL</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="#"><i class="fas fa-desktop"></i> Canvas Login</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="#"><i class="fas fa-user-graduate"></i> SIS Portal / Focus</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="index.html"><i class="fas fa-home"></i> PTC Main Site</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="stpete.html"><i class="fas fa-exchange-alt"></i> St. Pete Campus</a>
+                <a href="#" class="btn btn--primary btn--sm" style="margin-left: 1rem;"><i class="fas fa-search"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         CAMPUS HEADER (5-Pillar Structure)
+    ============================================= -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="clearwater.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="PTC Logo" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Clearwater Campus</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
+                <ul class="main-nav__list">
+                    <!-- PROGRAMS -->
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <h4>By Career Cluster</h4>
+                                    <ul>
+                                        <li><a href="#">Health Sciences</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                        <li><a href="#">Skilled Trades &amp; Construction</a></li>
+                                        <li><a href="#">Transportation &amp; Logistics</a></li>
+                                        <li><a href="#">Culinary &amp; Hospitality</a></li>
+                                        <li><a href="#">Cosmetology &amp; Barbering</a></li>
+                                        <li><a href="#">Business &amp; Office</a></li>
+                                        <li><a href="#">Arts, Media &amp; Education</a></li>
+                                    </ul>
+                                    <h4>Explore</h4>
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                                        <li><a href="#">Distance Learning</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- ADMISSIONS & AID -->
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">How to Apply</a></li>
+                                        <li><a href="#">Enrollment Steps</a></li>
+                                        <li><a href="#">Tuition &amp; Fees</a></li>
+                                        <li><a href="#">Financial Aid &amp; FAFSA</a></li>
+                                        <li><a href="#">Scholarships</a></li>
+                                        <li><a href="#">Testing &amp; Assessment</a></li>
+                                        <li><a href="#">Veterans Benefits</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- CURRENT STUDENTS -->
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">Academic Calendar</a></li>
+                                        <li><a href="#">Canvas Login</a></li>
+                                        <li><a href="#">Student Services</a></li>
+                                        <li><a href="#">Campus Bookstore</a></li>
+                                        <li><a href="#">Record Request</a></li>
+                                        <li><a href="#">Tech Support</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- CAMPUS INFO -->
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Campus Info <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">About This Campus</a></li>
+                                        <li><a href="#">Map &amp; Directions</a></li>
+                                        <li><a href="#">Staff Directory</a></li>
+                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="#">Post a Job for Students</a></li>
+                                        <li><a href="#">Advisory Committees</a></li>
+                                        <li><a href="#">Consumer Information</a></li>
+                                        <li><a href="#">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a href="#" class="btn btn--primary btn--sm site-header__cta">Apply Now</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="schedule-page-header">
+        <div class="container">
+            <p style="text-transform:uppercase;letter-spacing:2px;color:var(--color-accent);font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;">Clearwater Campus</p>
+            <h1>2026–2027 Class Schedule</h1>
+            <p>Browse all programs, adult education courses, and apprenticeships offered at the Clearwater campus. Use the filters below to find the schedule that fits your life.</p>
+            <div class="schedule-page-header__meta">
+                <span class="schedule-page-header__badge"><i class="fas fa-map-marker-alt"></i> 6100 154th Ave N, Clearwater, FL 33760</span>
+                <span class="schedule-page-header__badge"><i class="fas fa-calendar-alt"></i> Academic Year 2026–2027</span>
+                <span class="schedule-page-header__badge"><i class="fas fa-info-circle"></i> Start dates subject to change</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Filter Bar -->
+    <div class="schedule-filters" id="schedule-filters">
+        <div class="container">
+            <div class="filters-inner">
+                <div class="filter-group">
+                    <label>Category</label>
+                    <div class="filter-chips" id="filter-category">
+                        <button class="chip active" data-value="all">All</button>
+                        <button class="chip" data-value="fulltime">Full-Time Programs</button>
+                        <button class="chip" data-value="adult">Adult Education</button>
+                        <button class="chip" data-value="apprenticeship">Apprenticeships</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label>Time of Day</label>
+                    <div class="filter-chips" id="filter-time">
+                        <button class="chip active" data-value="all">All</button>
+                        <button class="chip" data-value="morning">Morning</button>
+                        <button class="chip" data-value="afternoon">Afternoon</button>
+                        <button class="chip" data-value="evening">Evening</button>
+                        <button class="chip" data-value="online">Online</button>
+                        <button class="chip" data-value="offsite">Offsite</button>
+                    </div>
+                </div>
+                <div class="search-wrap">
+                    <label for="prog-search">Search</label>
+                    <input type="search" id="prog-search" class="schedule-search" placeholder="Search programs...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <div class="container" style="padding-top:1.5rem;padding-bottom:4rem;">
+
+            <!-- Results bar -->
+            <div class="results-bar">
+                <span class="results-count">Showing <strong id="result-count">0</strong> programs</span>
+                <button class="clear-filters" id="clear-btn" onclick="clearAllFilters()">Clear filters &times;</button>
+            </div>
+
+            <div class="schedule-wrap">
+                <table class="schedule-table" id="schedule-table">
+                    <thead>
+                        <tr>
+                            <th style="width:35%">Program / Hours</th>
+                            <th>Days</th>
+                            <th>Time</th>
+                            <th>Location</th>
+                            <th>Start Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="schedule-body">
+                        <!-- Rows injected by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="no-results" id="no-results">
+                <i class="fas fa-search"></i>
+                <p>No programs match your current filters.</p>
+                <button class="btn btn--primary" style="margin-top:1rem;" onclick="clearAllFilters()">Clear filters</button>
+            </div>
+
+            <!-- Notes -->
+            <div class="schedule-note">
+                <div class="container" style="padding:0;">
+                    <p><strong>R = Thursday</strong> in the days column (standard academic notation).</p>
+                    <p><strong>Pinellas High Innovation</strong> is a separate PTC campus location.</p>
+                    <p>Program lengths and start dates are approximate and subject to change. Contact your counselor for current enrollment availability.</p>
+                    <p style="margin-top:0.75rem;"><strong>Questions?</strong> Call <a href="tel:7275387167" style="color:var(--color-green);font-weight:600;">727.538.7167</a> or <a href="#" style="color:var(--color-green);font-weight:600;">apply online</a>.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ============================================
+         FOOTER
+    ============================================= -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline"><strong>6100 154th Ave N, Clearwater, FL 33760</strong><br>
+                    Phone: 727.538.7167<br>
+                    Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#">Programs</a></li>
+                            <li><a href="#">Admissions</a></li>
+                            <li><a href="#">Tuition &amp; Aid</a></li>
+                            <li><a href="#">Student Resources</a></li>
+                            <li><a href="#">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Clearwater Links</h4>
+                        <ul>
+                            <li><a href="clearwater.html">Clearwater Campus Home</a></li>
+                            <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                            <li><a href="#">Campus Map &amp; Directions</a></li>
+                            <li><a href="#">Academic Calendar</a></li>
+                            <li><a href="#">Staff Directory</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Consumer Information</a></li>
+                            <li><a href="#">Non-Discrimination</a></li>
+                            <li><a href="#">Accreditation</a></li>
+                            <li><a href="#">Careers at PTC</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Accessibility</a> | <a href="#">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ============================================================
+    // SCHEDULE DATA
+    // ============================================================
+    const programs = [
+
+        // ---- FULL-TIME PROGRAMS ----
+        { name: "Accounting Operations", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Baking & Pastry Arts", hours: "600 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Barbering (AM)", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Barbering (PM)", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "2:15 PM – 9:00 PM", timeOfDay: "afternoon", location: "main", startDate: "", category: "fulltime" },
+        { name: "Cabinetmaking", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Child Care Center Operations", hours: "45 hrs", days: [], timeLabel: "Distance Education", timeOfDay: "online", location: "main", startDate: "", category: "fulltime" },
+        { name: "Computer Systems & Information Technology", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Diesel Systems Maintenance Technician", hours: "600 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Diesel Systems Technician 1", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Diesel Systems Technician 2", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Electricity (AM)", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Electricity (PM)", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "12:30 PM – 5:45 PM", timeOfDay: "afternoon", location: "main", startDate: "", category: "fulltime" },
+        { name: "Electronic Systems Integration & Automation", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Fundamental Foodservice Skills", hours: "600 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Heating, Ventilation, Air Conditioning/Refrigeration (HVAC/R) 1 – IET", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Interior Decorating Services", hours: "1250 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Machining Technologies", hours: "1500 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Marine Service Technologies", hours: "1350 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Master Automotive Service Technology 1", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Master Automotive Service Technology 2", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Medical Administrative Specialist", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Network Support Systems", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Phlebotomy", hours: "165 hrs", days: ["M","W"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "phi", startDate: "", category: "fulltime" },
+        { name: "Practical Nursing", hours: "1350 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Professional Culinary Arts & Hospitality", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Professional Nursing (LPN to RN)", hours: "900 hrs", days: ["T","W"], timeLabel: "Hybrid – Tues & Wed face-to-face", timeOfDay: "hybrid", location: "main", startDate: "", category: "fulltime" },
+        { name: "Stage Production", hours: "300 hrs", days: ["M","T","W","R"], timeLabel: "8:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Welding Technology (1st Shift)", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Welding Technology (2nd Shift)", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "12:15 PM – 5:30 PM", timeOfDay: "afternoon", location: "main", startDate: "", category: "fulltime" },
+        { name: "Welding Technology Advanced (1st Shift)", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
+        { name: "Welding Technology Advanced (2nd Shift)", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "12:15 PM – 5:30 PM", timeOfDay: "afternoon", location: "main", startDate: "", category: "fulltime" },
+
+        // ---- ADULT EDUCATION ----
+        { name: "ABE / GED / ASB – Daytime", hours: "", days: ["M","T","W","R","F"], timeLabel: "8:00 AM – 1:00 PM", timeOfDay: "morning", location: "main", startDate: "", category: "adult" },
+        { name: "ABE / GED / ASB – Evening", hours: "", days: ["M","T","W","R"], timeLabel: "5:30 PM – 8:30 PM", timeOfDay: "evening", location: "main", startDate: "", category: "adult" },
+        { name: "ESOL – Daytime", hours: "", days: ["M","T","W","R"], timeLabel: "8:00 AM – 1:00 PM", timeOfDay: "morning", location: "main", startDate: "", category: "adult" },
+        { name: "ESOL – Evening", hours: "", days: ["M","T","W","R"], timeLabel: "4:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "adult" },
+        { name: "ESOL – Evening", hours: "", days: ["M","T","W","R"], timeLabel: "3:30 PM – 8:30 PM", timeOfDay: "evening", location: "phi", startDate: "", category: "adult" },
+
+        // ---- APPRENTICESHIPS ----
+        { name: "Bay Area Electrical Apprenticeship (BAEA) – 1st Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Bay Area Electrical Apprenticeship (BAEA) – 2nd Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Bay Area Electrical Apprenticeship (BAEA) – 3rd Year", hours: "", days: ["T","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Bay Area Electrical Apprenticeship (BAEA) – 4th Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Independent Electrical Contractors (IEC) – 1st Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Independent Electrical Contractors (IEC) – 1st Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Independent Electrical Contractors (IEC) – 2nd Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Independent Electrical Contractors (IEC) – 3rd Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Independent Electrical Contractors (IEC) – 4th Year", hours: "", days: ["M"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "RACCA (Refrigeration & AC) – 1st Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "RACCA (Refrigeration & AC) – 1st Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "RACCA (Refrigeration & AC) – 2nd Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "RACCA (Refrigeration & AC) – 2nd Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "RACCA (Refrigeration & AC) – 3rd Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "RACCA (Refrigeration & AC) – 3rd Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "RACCA (Refrigeration & AC) – 4th Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "RACCA (Refrigeration & AC) – 4th Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Tampa Bay Machining Apprenticeship", hours: "", days: ["M","W"], timeLabel: "5:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Child Care Apprenticeship", hours: "", days: ["T","R"], timeLabel: "5:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Electrical & Electronics / Hybrid-EV Systems Technician", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Facilities Maintenance Apprenticeship", hours: "", days: ["T","R"], timeLabel: "5:30 PM – 8:30 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "Facilities Maintenance Apprenticeship", hours: "", days: ["F"], timeLabel: "7:00 AM – 12:00 PM", timeOfDay: "morning", location: "main", startDate: "", category: "apprenticeship" },
+        { name: "ABC Florida Gulf Coast – Sprinkler Fitter", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
+        { name: "ABC Florida Gulf Coast – Electricity", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
+        { name: "ABC Florida Gulf Coast – Structural Steel", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
+        { name: "ABC Florida Gulf Coast – Boilermaker", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
+        { name: "Pinellas Suncoast Transit Authority (PSTA)", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
+        { name: "Florida Trade Association Apprenticeship (FTA)", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
+    ];
+
+    // ============================================================
+    // RENDER & FILTER
+    // ============================================================
+    const ALL_DAYS = ["M","T","W","R","F","S"];
+    const DAY_LABELS = { M:"M", T:"T", W:"W", R:"R", F:"F", S:"S" };
+
+    const CATEGORY_LABELS = {
+        fulltime: "Full-Time Programs",
+        adult: "Adult Education",
+        apprenticeship: "Apprenticeships"
+    };
+
+    let activeCategory = "all";
+    let activeTime = "all";
+    let searchVal = "";
+
+    function timeBadgeClass(t) {
+        return { morning:"morning", afternoon:"afternoon", evening:"evening", online:"online", hybrid:"hybrid", offsite:"offsite" }[t] || "morning";
+    }
+    function timeIcon(t) {
+        return { morning:"fa-sun", afternoon:"fa-cloud-sun", evening:"fa-moon", online:"fa-laptop", hybrid:"fa-code-branch", offsite:"fa-map-marker-alt" }[t] || "fa-clock";
+    }
+    function locLabel(l) {
+        if (l === "main") return '<span class="loc-badge loc-badge--main">Main</span>';
+        if (l === "phi") return '<span class="loc-badge loc-badge--phi">Pinellas High Innovation</span>';
+        return '<span class="loc-badge loc-badge--offsite">Offsite</span>';
+    }
+
+    function buildRows() {
+        const tbody = document.getElementById("schedule-body");
+        tbody.innerHTML = "";
+
+        let lastCategory = null;
+
+        programs.forEach((p, i) => {
+            // Category heading row
+            if (p.category !== lastCategory) {
+                const headingRow = document.createElement("tr");
+                headingRow.className = "category-heading-row";
+                headingRow.dataset.category = p.category;
+                headingRow.innerHTML = `<td colspan="5" class="category-heading">${CATEGORY_LABELS[p.category]}</td>`;
+                tbody.appendChild(headingRow);
+                lastCategory = p.category;
+            }
+
+            const daysHtml = ALL_DAYS.map(d =>
+                `<span class="day-badge ${p.days.includes(d) ? 'active' : ''}">${d}</span>`
+            ).join("");
+
+            const tr = document.createElement("tr");
+            tr.dataset.category = p.category;
+            tr.dataset.time = p.timeOfDay;
+            tr.dataset.location = p.location;
+            tr.dataset.name = p.name.toLowerCase();
+            tr.innerHTML = `
+                <td>
+                    <span class="prog-name">${p.name}</span>
+                    ${p.hours ? `<span class="prog-hours">${p.hours}</span>` : ""}
+                </td>
+                <td><div class="days-list">${p.days.length ? daysHtml : '<span style="color:var(--color-gray-400);font-size:0.8rem;">See notes</span>'}</div></td>
+                <td><span class="time-badge time-badge--${timeBadgeClass(p.timeOfDay)}"><i class="fas ${timeIcon(p.timeOfDay)}" style="font-size:0.7rem;"></i>${p.timeLabel}</span></td>
+                <td>${locLabel(p.location)}</td>
+                <td><span class="start-date coming-soon">TBD – 2026/27</span></td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function applyFilters() {
+        const rows = document.querySelectorAll("#schedule-body tr");
+        let visible = 0;
+        let visibleByCategory = { fulltime: 0, adult: 0, apprenticeship: 0 };
+
+        rows.forEach(row => {
+            if (row.classList.contains("category-heading-row")) return; // handle separately
+
+            const cat = row.dataset.category;
+            const time = row.dataset.time;
+            const name = row.dataset.name || "";
+
+            const catMatch = activeCategory === "all" || cat === activeCategory;
+            const timeMatch = activeTime === "all" || time === activeTime;
+            const searchMatch = searchVal === "" || name.includes(searchVal.toLowerCase());
+
+            const show = catMatch && timeMatch && searchMatch;
+            row.classList.toggle("hidden", !show);
+            if (show) {
+                visible++;
+                visibleByCategory[cat]++;
+            }
+        });
+
+        // Show/hide category headings based on whether any rows in that category are visible
+        rows.forEach(row => {
+            if (!row.classList.contains("category-heading-row")) return;
+            const cat = row.dataset.category;
+            row.classList.toggle("hidden", visibleByCategory[cat] === 0);
+        });
+
+        document.getElementById("result-count").textContent = visible;
+        document.getElementById("no-results").classList.toggle("visible", visible === 0);
+
+        // Show clear button if any filter is active
+        const isFiltered = activeCategory !== "all" || activeTime !== "all" || searchVal !== "";
+        document.getElementById("clear-btn").classList.toggle("visible", isFiltered);
+    }
+
+    function clearAllFilters() {
+        activeCategory = "all";
+        activeTime = "all";
+        searchVal = "";
+        document.getElementById("prog-search").value = "";
+        document.querySelectorAll(".filter-chips .chip").forEach(c => {
+            c.classList.toggle("active", c.dataset.value === "all");
+        });
+        applyFilters();
+    }
+
+    // Wire up category chips
+    document.getElementById("filter-category").addEventListener("click", e => {
+        if (!e.target.classList.contains("chip")) return;
+        activeCategory = e.target.dataset.value;
+        document.querySelectorAll("#filter-category .chip").forEach(c => c.classList.remove("active"));
+        e.target.classList.add("active");
+        applyFilters();
+    });
+
+    // Wire up time chips
+    document.getElementById("filter-time").addEventListener("click", e => {
+        if (!e.target.classList.contains("chip")) return;
+        activeTime = e.target.dataset.value;
+        document.querySelectorAll("#filter-time .chip").forEach(c => c.classList.remove("active"));
+        e.target.classList.add("active");
+        applyFilters();
+    });
+
+    // Wire up search
+    document.getElementById("prog-search").addEventListener("input", e => {
+        searchVal = e.target.value.trim();
+        applyFilters();
+    });
+
+    // Init
+    buildRows();
+    applyFilters();
+    </script>
+</body>
+</html>
