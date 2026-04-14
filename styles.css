@@ -922,6 +922,7 @@ ul {
    ============================================ */
 .why-ptc {
     padding: var(--space-4xl) 0;
+    background: var(--color-off-white);
 }
 
 .why-ptc__layout {
@@ -1214,6 +1215,7 @@ ul {
    ============================================ */
 .news-section {
     padding: var(--space-4xl) 0;
+    background: var(--color-off-white);
 }
 
 .news-grid {
@@ -1307,6 +1309,68 @@ ul {
     gap: 0.65rem;
 }
 
+
+/* ============================================
+   EMPLOYER HOOK (inside news section)
+   ============================================ */
+.employer-hook {
+    margin-top: var(--space-3xl);
+    background: var(--color-green-light);
+    border: 1px solid #b8dfc6;
+    border-left: 4px solid var(--color-green);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl) var(--space-2xl);
+}
+
+.employer-hook__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.employer-hook__icon {
+    font-size: 2rem;
+    color: var(--color-green);
+    flex-shrink: 0;
+}
+
+.employer-hook__text {
+    font-size: 1rem;
+    color: var(--color-gray-800);
+    line-height: 1.5;
+}
+
+.employer-hook__text strong {
+    font-weight: 700;
+}
+
+.employer-hook__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-green);
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: var(--space-sm);
+    white-space: nowrap;
+}
+
+.employer-hook__link:hover {
+    text-decoration: underline;
+    color: var(--color-green-dark);
+}
+
+@media (max-width: 600px) {
+    .employer-hook__inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .employer-hook__link {
+        margin-left: 0;
+        margin-top: var(--space-sm);
+        display: block;
+    }
+}
 
 /* ============================================
    CTA BAND
