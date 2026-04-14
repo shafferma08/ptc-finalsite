@@ -1,1 +1,22 @@
-.claude/worktrees/naughty-hugle
+# Claude agent worktrees (auto-created during isolated tasks — should never be committed)
+.claude/worktrees/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Node / npm (if any tooling is added later)
+node_modules/
+npm-debug.log*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
