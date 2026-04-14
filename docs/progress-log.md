@@ -232,3 +232,26 @@ Final card distribution: Health Sciences (7), IT (4), Skilled Trades & Construct
 4. **Consumer Information page** — COE compliance disclosures hub, linked from footer.
 5. **welding-stpete.html** — St. Pete equivalent of the welding program page.
 6. **Delete root `campus-template.html`** — once confirmed replaced by `_templates/campus-landing.html`.
+
+---
+
+## April 14, 2026 (Session 5 — Main Site Nav Taxonomy Fix)
+
+### What was completed
+
+**`index.html` + `_templates/shell-main.html` — Programs dropdown taxonomy names corrected**
+
+Two cluster labels in the main site Programs nav dropdown were using shortened/informal names instead of the official Section 5.3 taxonomy:
+- "Skilled Trades" → "Skilled Trades & Construction"
+- "Arts & Media" → "Arts, Media & Education"
+
+Both `index.html` and `_templates/shell-main.html` updated. All taxonomy names in the main site nav now match Section 5.3 exactly, consistent with `programs.html` filter labels and all campus nav dropdowns.
+
+### Next priorities
+
+1. **Contact / About pages** — `about.html` and `contact.html` still missing.
+2. **Admissions landing page** — `admissions.html` still missing.
+3. **Tuition & Aid landing page** — still missing.
+4. **Consumer Information page** — COE compliance disclosures hub, linked from footer Resources column on all three sites.
+5. **welding-stpete.html** — St. Pete equivalent of the welding program page.
+6. **Delete root `campus-template.html`** — once confirmed replaced by `_templates/campus-landing.html`.

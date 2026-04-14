@@ -398,6 +398,9 @@
         <p>We replaced the legacy hamburger-only menu with a <strong>persistent, visible horizontal navigation bar</strong> using a clean <strong>5-Pillar Taxonomy</strong>. Each pillar is purpose-driven by user intent.</p>
 
         <h3>5.1 PTC Main Site Navigation (myptc.edu)</h3>
+        <div class="alert alert-success" style="margin-bottom: 1rem;">
+            <strong>Implemented &amp; updated:</strong> "Admissions &amp; Aid" was split into two separate pillars (Admissions and Tuition &amp; Aid) based on UX review — approved deviation from original draft. Category names in the Programs dropdown updated to match the Section 5.3 official taxonomy.
+        </div>
         <div class="grid">
             <div class="card">
                 <h4>1. Programs</h4>
@@ -405,12 +408,12 @@
                 <ul>
                     <li>Health Sciences</li>
                     <li>Information Technology</li>
-                    <li>Skilled Trades</li>
+                    <li>Skilled Trades &amp; Construction</li>
                     <li>Transportation &amp; Logistics</li>
                     <li>Culinary &amp; Hospitality</li>
                     <li>Cosmetology &amp; Barbering</li>
                     <li>Business &amp; Office</li>
-                    <li>Arts &amp; Media</li>
+                    <li>Arts, Media &amp; Education</li>
                 </ul>
                 <p><strong>Explore:</strong></p>
                 <ul>
@@ -424,25 +427,38 @@
                 </ul>
             </div>
             <div class="card">
-                <h4>2. Admissions &amp; Aid</h4>
+                <h4>2. Admissions <span class="badge">Split from original Pillar 2</span></h4>
                 <ul>
                     <li>How to Apply</li>
                     <li>Enrollment Steps</li>
+                    <li>Transfer Students</li>
+                    <li>Readmission</li>
                     <li>Testing &amp; Assessment</li>
-                    <li>Tuition &amp; Fee Rates</li>
-                    <li>FAFSA &amp; Eligibility</li>
-                    <li>Scholarships &amp; Veterans</li>
+                    <li>Campus Tours</li>
                 </ul>
             </div>
             <div class="card">
-                <h4>3. Campuses</h4>
+                <h4>3. Tuition &amp; Aid <span class="badge">Split from original Pillar 2</span></h4>
+                <ul>
+                    <li>Tuition &amp; Fee Rates</li>
+                    <li>Pay Tuition</li>
+                    <li>FAFSA &amp; Eligibility</li>
+                    <li>Federal &amp; State Funding</li>
+                    <li>Scholarships</li>
+                    <li>Veterans Benefits</li>
+                    <li>Net Price Calculator</li>
+                    <li>Refund Policy</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>4. Campuses</h4>
                 <ul>
                     <li>Clearwater Campus</li>
                     <li>St. Petersburg Campus</li>
                 </ul>
             </div>
             <div class="card">
-                <h4>4. Current Students</h4>
+                <h4>5. Current Students</h4>
                 <ul>
                     <li>Canvas Login</li>
                     <li>Focus / SIS Portal</li>
@@ -452,7 +468,7 @@
                 </ul>
             </div>
             <div class="card" style="grid-column: span 2;">
-                <h4>5. About PTC</h4>
+                <h4>6. About PTC</h4>
                 <ul style="column-count: 2;">
                     <li>Welcome &amp; History</li>
                     <li>Accreditation</li>
@@ -464,14 +480,39 @@
         </div>
 
         <h3>5.2 Campus Site Navigation (Clearwater &amp; St. Petersburg)</h3>
-        <p>Campus sites share the same 5-pillar framework but with campus-specific content. The utility bar includes direct links to Canvas/Focus, PTC Main Site, and the sister campus for seamless cross-navigation.</p>
+        <p>Campus sites use a 4-pillar nav plus an Apply Now CTA button. The Programs dropdown is campus-specific — it shows only the career clusters offered at that campus. The utility bar includes direct links to Canvas/Focus, PTC Main Site, and the sister campus for seamless cross-navigation.</p>
+        <div class="alert" style="margin-bottom: 1rem;">
+            <strong>Note on COE compliance content:</strong> Outcomes and consumer disclosure items (CPL data, gainful employment, accreditation status, catalog) are not surfaced as a nav pillar. Instead, a dedicated <code>consumer-information.html</code> page will consolidate all required disclosures and be linked prominently from the footer Resources column on all three sites. Consumer Information is also included in the Campus Info dropdown.
+        </div>
         <table>
-            <tr><th>Pillar</th><th>Dropdown Items</th></tr>
-            <tr><td><strong>Programs</strong></td><td>Health Sciences, Skilled Trades, Technology / IT, Culinary Arts, Distance Learning</td></tr>
-            <tr><td><strong>Admissions &amp; Aid</strong></td><td>How to Apply, Tuition Rates, Financial Aid &amp; FAFSA, Scholarships, Testing &amp; Assessment</td></tr>
-            <tr><td><strong>Current Students</strong></td><td>Academic Calendar, Student Services, Campus Bookstore, Record Request</td></tr>
-            <tr><td><strong>Campus Info</strong></td><td>About This Campus, Map &amp; Directions, Staff Directory, Consumer Information</td></tr>
-            <tr><td><strong>Apply Now</strong></td><td>Primary CTA button — no dropdown</td></tr>
+            <tr><th>Pillar</th><th>Clearwater Dropdown</th><th>St. Petersburg Dropdown</th></tr>
+            <tr>
+                <td><strong>Programs</strong></td>
+                <td>
+                    <em>By Career Cluster:</em> Health Sciences, Information Technology, Skilled Trades &amp; Construction, Transportation &amp; Logistics, Culinary &amp; Hospitality, Cosmetology &amp; Barbering, Business &amp; Office, Arts, Media &amp; Education<br>
+                    <em>Explore:</em> All Programs A&ndash;Z, Class Schedule, Distance Learning
+                </td>
+                <td>
+                    <em>By Career Cluster:</em> Health Sciences, Information Technology, Skilled Trades &amp; Construction, Transportation &amp; Logistics, Culinary &amp; Hospitality, Cosmetology &amp; Barbering, Arts, Media &amp; Education <em>(no Business &amp; Office — St. Pete has no programs in that cluster)</em><br>
+                    <em>Explore:</em> All Programs A&ndash;Z, Distance Learning
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Admissions &amp; Aid</strong></td>
+                <td colspan="2">How to Apply, Enrollment Steps, Tuition &amp; Fees, Financial Aid &amp; FAFSA, Scholarships, Testing &amp; Assessment, Veterans Benefits</td>
+            </tr>
+            <tr>
+                <td><strong>Current Students</strong></td>
+                <td colspan="2">Academic Calendar, Canvas Login, Student Services, Campus Bookstore, Record Request, Tech Support</td>
+            </tr>
+            <tr>
+                <td><strong>Campus Info</strong></td>
+                <td colspan="2">About This Campus, Map &amp; Directions, Staff Directory, Employer Partnerships, Post a Job for Students, Advisory Committees, Consumer Information, Contact Us</td>
+            </tr>
+            <tr>
+                <td><strong>Apply Now</strong></td>
+                <td colspan="2">Primary CTA button in header — no dropdown</td>
+            </tr>
         </table>
 
         <h3>5.3 Program Industry Classification Taxonomy</h3>
