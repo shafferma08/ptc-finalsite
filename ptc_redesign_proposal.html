@@ -1039,6 +1039,81 @@
                 <td>Change Log</td>
                 <td>Restructured into two sections: Live Site Changes (Track 1) and Proposal Document Revisions. Added all live site work completed to date.</td>
             </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>Section 5 — Navigation &amp; IA</td>
+                <td>Section 5.1: Corrected two taxonomy names ("Skilled Trades &amp; Construction", "Arts, Media &amp; Education") and split the combined "Admissions &amp; Aid" main-site pillar into separate Admissions (pillar 2) and Tuition &amp; Aid (pillar 3) cards with full dropdown items. Pillars renumbered to 6 total. Added alert noting the split as an approved UX deviation from the original proposal.</td>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>Section 5 — Navigation &amp; IA</td>
+                <td>Section 5.2: Replaced the outdated single-column campus nav table with a new two-column table (Clearwater vs. St. Pete) reflecting the fully implemented 4-pillar + Apply Now structure. Table documents campus-specific cluster differences (Clearwater: 8 clusters + Class Schedule; St. Pete: 7 clusters, no Class Schedule), full dropdown items for all pillars, and COE compliance approach (Consumer Information page linked from footer, not a nav pillar).</td>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>Cover — Prototype Links</td>
+                <td>Added Class Schedule (Clearwater) prototype link. Updated "Last Updated" date to April 14, 2026.</td>
+            </tr>
+        </table>
+
+        <h3>Track 2 Prototype Progress</h3>
+        <p>Mockup and prototype work completed in the <a href="https://shafferma08.github.io/ptc-finalsite/" target="_blank">GitHub Pages prototype</a>. These changes represent the redesign in progress and do not yet affect the live sites.</p>
+        <table class="changelog">
+            <tr>
+                <th>Date</th>
+                <th>File(s)</th>
+                <th>Change</th>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>styles.css</td>
+                <td>Added <code>background: var(--color-off-white)</code> to <code>.why-ptc</code> and <code>.news-section</code> to establish proper alternating panel rhythm across the homepage (Hero → Quick Links → Why PTC → Programs → Campuses → News → CTA Band).</td>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>index.html</td>
+                <td>Split "Admissions &amp; Aid" nav item into two separate dropdowns: Admissions (6 items) and Tuition &amp; Aid (8 items including new Pay Tuition link). Implements UX Recommendation #4 from the homepage UX review and aligns with the proposed sitemap.</td>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>index.html, styles.css</td>
+                <td>Added employer engagement callout bar inside the News &amp; Events section ("Are you an employer?…"). Styled with green left-border accent, responsive stacking on mobile. Implements UX Recommendation #3. All four homepage UX recommendations now complete.</td>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>welding-clearwater.html, styles.css</td>
+                <td>Added salary stat to hero stat bar (Avg. Salary $47,540/yr, BLS 2023). Added counselor nudge line below hero CTA. Added sticky jump-nav bar with anchor links to all major page sections (See It In Action, Course Sequence, Credentials &amp; Cost, Get Started, Talk to a Counselor).</td>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>schedule-clearwater.html <em>(new)</em></td>
+                <td>Created interactive class schedule page for Clearwater campus, academic year 2026–2027. 64 program entries with filter chips (Category, Time of Day), search input, dynamic table with day/time/location badges, results counter, and no-results state. Built for Finalsite delivery as a Custom HTML embed. <a href="https://shafferma08.github.io/ptc-finalsite/schedule-clearwater.html" target="_blank">View prototype →</a></td>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>_templates/ <em>(new folder)</em></td>
+                <td>Created shell templates for all three sites: shell-main.html (main site), shell-clearwater.html (Clearwater campus), shell-stpete.html (St. Pete campus). Each contains the correct utility bar, full nav, and footer for its site. Use as the starting point for any new page. Also moved campus-template.html to _templates/campus-landing.html.</td>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>urgent-fixes/ <em>(new folder)</em></td>
+                <td>Reorganized root directory by moving 5 urgent-fix prototype files into urgent-fixes/ subfolder (military-veteran-resources.html, community_resources_guide.html, short-courses-simple.html, summer-camps-mockup.html, homepage-improved-mockup.html). Asset paths updated as needed.</td>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>clearwater.html, welding-clearwater.html, schedule-clearwater.html, stpete.html, _templates/shell-clearwater.html, _templates/shell-stpete.html</td>
+                <td>Campus nav fully rebuilt across all 6 campus files. New 4-pillar + Apply Now structure: Programs (by career cluster + Explore), Admissions &amp; Aid, Current Students, Campus Info. Community content (Employer Partnerships, Post a Job, Advisory Committees) folded into Campus Info. Cluster lists are campus-specific: Clearwater shows all 8 clusters; St. Pete shows 7 (no Business &amp; Office).</td>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>programs.html</td>
+                <td>Filter bar and program card taxonomy fully aligned to Section 5.3 official cluster names. Updated 4 filter labels and added 2 new filters (Business &amp; Office, Arts Media &amp; Education). Corrected 6 miscategorized program cards. Final distribution: 41 programs across 8 clusters.</td>
+            </tr>
+            <tr>
+                <td>Apr 14, 2026</td>
+                <td>index.html, _templates/shell-main.html</td>
+                <td>Corrected two taxonomy names in the main site Programs nav dropdown: "Skilled Trades" → "Skilled Trades &amp; Construction" and "Arts &amp; Media" → "Arts, Media &amp; Education". All nav labels now consistent with Section 5.3 across every page in the prototype.</td>
+            </tr>
         </table>
 
         <a href="#toc" class="back-to-top">&uarr; Back to Table of Contents</a>
