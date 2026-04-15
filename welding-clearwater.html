@@ -309,6 +309,40 @@
             text-decoration: underline;
         }
 
+        /* Breadcrumbs */
+        .breadcrumb-bar {
+            background: var(--color-off-white);
+            border-bottom: 1px solid var(--color-gray-200);
+            padding: 0.6rem 0;
+        }
+
+        .breadcrumb-bar__inner {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            color: var(--color-gray-600);
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb-bar__inner a {
+            color: var(--color-green);
+            text-decoration: none;
+        }
+
+        .breadcrumb-bar__inner a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-bar__sep {
+            color: var(--color-gray-400);
+        }
+
+        .breadcrumb-bar__current {
+            color: var(--color-gray-700);
+            font-weight: 500;
+        }
+
         /* Jump Nav */
         .jump-nav {
             background: white;
@@ -557,6 +591,19 @@
 
     <main id="main-content">
 
+        <!-- BREADCRUMBS -->
+        <div class="breadcrumb-bar">
+            <div class="container breadcrumb-bar__inner">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-bar__sep"><i class="fas fa-chevron-right" style="font-size: 0.65rem;"></i></span>
+                <a href="clearwater.html">Clearwater Campus</a>
+                <span class="breadcrumb-bar__sep"><i class="fas fa-chevron-right" style="font-size: 0.65rem;"></i></span>
+                <a href="programs.html">Programs</a>
+                <span class="breadcrumb-bar__sep"><i class="fas fa-chevron-right" style="font-size: 0.65rem;"></i></span>
+                <span class="breadcrumb-bar__current">Welding Technology</span>
+            </div>
+        </div>
+
         <!-- ============================
              1. HERO — What is this program?
              Split layout: text + real photo
@@ -631,17 +678,6 @@
                             Meet Your Counselor</a>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Breadcrumbs -->
-        <div style="background-color: var(--color-gray-100); padding: 0.75rem 0; font-size: 0.875rem;">
-            <div class="container">
-                <p style="margin: 0; color: var(--color-gray-500);"><a href="index.html"
-                        style="color: var(--color-green); font-weight: 600;">Home</a> / <a href="programs.html"
-                        style="color: var(--color-green); font-weight: 600;">Programs A&ndash;Z</a> / <a
-                        href="clearwater.html" style="color: var(--color-green); font-weight: 600;">Clearwater</a> /
-                    <span style="color: var(--color-gray-700);">Welding Technology</span></p>
             </div>
         </div>
 
