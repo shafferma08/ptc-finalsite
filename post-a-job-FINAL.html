@@ -1,0 +1,224 @@
+<!--
+  POST A JOB - FINAL VERSION (single container)
+  Paste into one code/HTML block in Finalsite Composer.
+  All CSS scoped to #ptc-post-job.
+  Page title set in Finalsite page settings.
+-->
+
+<div id="ptc-post-job">
+
+<style>
+#ptc-post-job {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 20px 40px;
+}
+
+#ptc-post-job *,
+#ptc-post-job *::before,
+#ptc-post-job *::after {
+    box-sizing: border-box;
+}
+
+/* Intro */
+#ptc-post-job .pj-intro-heading {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #008142;
+    margin: 0 0 12px 0;
+}
+#ptc-post-job .pj-intro-note {
+    font-size: 17px;
+    color: #555;
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+
+/* Campus Links (footer) */
+#ptc-post-job .pj-campus-links {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 15px;
+    color: #666;
+}
+#ptc-post-job .pj-campus-links a {
+    color: #008142;
+    text-decoration: none;
+    font-weight: 500;
+}
+#ptc-post-job .pj-campus-links a:hover {
+    text-decoration: underline;
+}
+#ptc-post-job .pj-campus-links .pj-divider {
+    margin: 0 12px;
+    color: #ccc;
+}
+
+/* Highlight box */
+#ptc-post-job .pj-highlight {
+    background: #f0faf4;
+    border-left: 5px solid #008142;
+    padding: 24px 28px;
+    margin-bottom: 36px;
+    border-radius: 0 6px 6px 0;
+}
+#ptc-post-job .pj-highlight p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    margin: 0;
+}
+#ptc-post-job .pj-highlight p + p {
+    margin-top: 10px;
+}
+#ptc-post-job .pj-highlight strong {
+    color: #008142;
+}
+#ptc-post-job .pj-badge {
+    display: inline-block;
+    background: #FFCF01;
+    color: #333;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* CTA Section */
+#ptc-post-job .pj-cta {
+    text-align: center;
+    padding: 40px 32px;
+    margin: 0 -20px 36px;
+    background: #008142;
+    border-radius: 0;
+}
+#ptc-post-job .pj-cta h2 {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 24px;
+    color: #fff;
+    margin: 0 0 12px 0;
+}
+#ptc-post-job .pj-cta p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.9);
+    margin: 0 auto 24px;
+    max-width: 600px;
+}
+#ptc-post-job .pj-cta-btn {
+    display: inline-block;
+    background: #FFCF01;
+    color: #333 !important;
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+#ptc-post-job .pj-cta-btn:hover {
+    background: #e6ba00;
+    color: #333 !important;
+    text-decoration: none !important;
+    transform: translateY(-1px);
+}
+
+/* Contact Info */
+#ptc-post-job .pj-contact {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 28px 32px;
+}
+#ptc-post-job .pj-contact h3 {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 18px;
+    color: #008142;
+    margin: 0 0 12px 0;
+}
+#ptc-post-job .pj-contact p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+}
+#ptc-post-job .pj-contact p + p {
+    margin-top: 12px;
+}
+#ptc-post-job .pj-contact a {
+    color: #008142;
+    text-decoration: none;
+    font-weight: 500;
+}
+#ptc-post-job .pj-contact a:hover {
+    text-decoration: underline;
+}
+#ptc-post-job .pj-contact .pj-hours {
+    font-size: 15px;
+    color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #ptc-post-job {
+        padding: 16px 12px 32px;
+    }
+}
+</style>
+
+<!-- Intro -->
+<h2 class="pj-intro-heading">Connect with Skilled PTC Students and Graduates</h2>
+<p class="pj-intro-note">Our students train in high-demand fields at both PTC campuses, and your job posting on our free job board will reach them all.</p>
+
+<!-- Highlight Box -->
+<div class="pj-highlight">
+    <span class="pj-badge">FREE FOR EMPLOYERS</span>
+    <p>
+        There's no cost to post your job opening at Pinellas Technical College. Your position goes on <strong>Career Rocket&reg;</strong>, our job board built exclusively for PTC students and graduates. You'll find hands-on trained professionals ready to hit the ground running.
+    </p>
+    <p>
+        Once your account is set up, you can post your own positions, job descriptions, required skills, salary info, and more.
+    </p>
+</div>
+
+<!-- CTA -->
+<div class="pj-cta">
+    <h2>Ready to Post Your Opening?</h2>
+    <p>Get in touch with our Placement Coordinator and we'll set up your free employer account.</p>
+    <a href="mailto:mediavillam@pcsb.org?subject=Employer%20Account%20Request%20-%20Career%20Rocket%20Job%20Posting" class="pj-cta-btn">
+        Email Us to Get Started
+    </a>
+</div>
+
+<!-- Contact Details -->
+<div class="pj-contact">
+    <h3>Your Contact</h3>
+    <p>
+        <strong>Maria M. Mediavilla Thackrah</strong>, Placement Coordinator<br>
+        Email: <a href="mailto:mediavillam@pcsb.org">mediavillam@pcsb.org</a>
+    </p>
+    <p><strong>You can also call the campus nearest you:</strong></p>
+    <p>
+        <strong>Clearwater Campus:</strong> Wed, Thu + 1st &amp; 3rd Friday | (727) 538-7167 ext. 2097<br>
+        <strong>St. Petersburg Campus:</strong> Mon, Tue + 2nd &amp; last Friday | (727) 893-2500 ext. 2362
+    </p>
+    <p class="pj-hours">
+        Placement hours: 7:00 AM to 2:00 PM
+    </p>
+</div>
+
+<!-- Campus Links -->
+<div class="pj-campus-links">
+    Visit our campuses: <a href="https://clearwater.myptc.edu">Clearwater Campus</a>
+    <span class="pj-divider">|</span>
+    <a href="https://stpete.myptc.edu">St. Petersburg Campus</a>
+</div>
+
+</div><!-- end #ptc-post-job -->

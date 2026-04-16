@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions — Pinellas Technical College</title>
+    <meta name="description" content="Learn how to apply to Pinellas Technical College. Explore enrollment steps, transfer options, testing requirements, and campus tour information.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Admissions Page Specific Styles */
+        .page-hero {
+            background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
+            color: #fff;
+            padding: 4rem 0 3rem;
+        }
+        .page-hero__breadcrumb {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            opacity: 0.85;
+        }
+        .page-hero__breadcrumb a {
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .page-hero__title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 0.75rem;
+        }
+        .page-hero__subtitle {
+            font-size: 1.15rem;
+            max-width: 700px;
+            opacity: 0.92;
+            line-height: 1.6;
+        }
+
+        /* Steps Section */
+        .admissions-section {
+            padding: 4rem 0;
+        }
+        .admissions-section--alt {
+            background: var(--color-off-white, #F7F8FA);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .step-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #e8ecf1;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .step-card__number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-green);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .step-card__title {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.75rem;
+        }
+        .step-card__desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--color-gray-700, #4a5568);
+            margin: 0;
+        }
+
+        /* Info Cards (Transfer, Readmission, etc.) */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .info-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #e8ecf1;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+        .info-card__icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(0, 129, 66, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--color-green);
+        }
+        .info-card__content h3 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.5rem;
+        }
+        .info-card__content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--color-gray-700, #4a5568);
+            margin: 0 0 0.75rem;
+        }
+        .info-card__content a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-green);
+            text-decoration: none;
+        }
+        .info-card__content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Testing Section */
+        .testing-types {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .testing-type {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 2px solid #e8ecf1;
+            text-align: center;
+        }
+        .testing-type__icon {
+            font-size: 2rem;
+            color: var(--color-green);
+            margin-bottom: 0.75rem;
+        }
+        .testing-type__name {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin: 0 0 0.5rem;
+            color: var(--color-gray-900);
+        }
+        .testing-type__desc {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--color-gray-700, #4a5568);
+        }
+
+        /* Campus Tour Banner */
+        .tour-banner {
+            background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
+            color: #fff;
+            border-radius: 12px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .tour-banner__content h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+        }
+        .tour-banner__content p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        .tour-banner__cta .btn {
+            white-space: nowrap;
+        }
+
+        /* FAQ Section */
+        .faq-list {
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e8ecf1;
+            padding: 1.25rem 0;
+        }
+        .faq-item__question {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--color-gray-900);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .faq-item__question i {
+            flex-shrink: 0;
+            color: var(--color-green);
+            transition: transform 0.2s ease;
+        }
+        .faq-item__answer {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--color-gray-700, #4a5568);
+            margin-top: 0.75rem;
+            display: none;
+        }
+        .faq-item.active .faq-item__answer {
+            display: block;
+        }
+        .faq-item.active .faq-item__question i {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+            .testing-types {
+                grid-template-columns: 1fr;
+            }
+            .tour-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+            .page-hero__title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         UTILITY BAR (Top-most bar)
+    ============================================= -->
+    <div class="utility-bar">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
+                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
+                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
+                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MAIN HEADER / NAVIGATION
+    ============================================= -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College — Opportunity Starts Here" id="header-logo" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
+                </div>
+            </a>
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <h4>By Category</h4>
+                                    <ul>
+                                        <li><a href="#">Health Sciences</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                        <li><a href="#">Skilled Trades &amp; Construction</a></li>
+                                        <li><a href="#">Transportation &amp; Logistics</a></li>
+                                        <li><a href="#">Culinary &amp; Hospitality</a></li>
+                                        <li><a href="#">Cosmetology &amp; Barbering</a></li>
+                                        <li><a href="#">Business &amp; Office</a></li>
+                                        <li><a href="#">Arts, Media &amp; Education</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <h4>Explore</h4>
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="#">Evening &amp; Part-Time</a></li>
+                                        <li><a href="#">Apprenticeships</a></li>
+                                        <li><a href="#">Dual Enrollment</a></li>
+                                        <li><a href="#">Distance Learning</a></li>
+                                        <li><a href="#">ABE / GED / ESOL</a></li>
+                                        <li><a href="#">Student Orgs</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="admissions.html" class="main-nav__link">Admissions <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#how-to-apply">How to Apply</a></li>
+                                        <li><a href="#enrollment-steps">Enrollment Steps</a></li>
+                                        <li><a href="#pathways">Transfer Students</a></li>
+                                        <li><a href="#pathways">Readmission</a></li>
+                                        <li><a href="#testing">Testing &amp; Assessment</a></li>
+                                        <li><a href="#campus-tours">Campus Tours</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="tuition-aid.html#rates">Tuition &amp; Fee Rates</a></li>
+                                        <li><a href="tuition-aid.html#pay">Pay Tuition</a></li>
+                                        <li><a href="tuition-aid.html#fafsa">FAFSA &amp; Eligibility</a></li>
+                                        <li><a href="tuition-aid.html#federal-state">Federal &amp; State Funding</a></li>
+                                        <li><a href="tuition-aid.html#scholarships">Scholarships</a></li>
+                                        <li><a href="tuition-aid.html#veterans">Veterans Benefits</a></li>
+                                        <li><a href="tuition-aid.html#net-price">Net Price Calculator</a></li>
+                                        <li><a href="tuition-aid.html#faq">Refund Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Campuses <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="clearwater.html">Clearwater Campus</a></li>
+                                        <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">Canvas Login</a></li>
+                                        <li><a href="#">Focus / SIS Portal</a></li>
+                                        <li><a href="#">Academic Calendar</a></li>
+                                        <li><a href="#">Transcript Request</a></li>
+                                        <li><a href="#">Tech Support</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="about.html" class="main-nav__link">About PTC <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="about.html">Welcome &amp; History</a></li>
+                                        <li><a href="about.html#accreditation">Accreditation</a></li>
+                                        <li><a href="#">Staff Directory</a></li>
+                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="site-header__actions">
+                <button class="search-toggle" id="search-toggle" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+        <div class="search-overlay" id="search-overlay">
+            <div class="container">
+                <form class="search-form" role="search" aria-label="Site Search">
+                    <input type="search" placeholder="Search programs, courses, and more..." class="search-form__input" id="search-input">
+                    <button type="submit" class="search-form__btn" id="search-submit"><i class="fas fa-search"></i></button>
+                    <button type="button" class="search-form__close" id="search-close"><i class="fas fa-times"></i></button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- ============================================
+             PAGE HERO
+        ============================================= -->
+        <section class="page-hero">
+            <div class="container">
+                <div class="page-hero__breadcrumb">
+                    <a href="index.html">Home</a> / Admissions
+                </div>
+                <h1 class="page-hero__title">Admissions</h1>
+                <p class="page-hero__subtitle">Getting started at PTC is straightforward. Whether you are a first-time student, transferring from another school, or returning after a break, we will guide you through every step.</p>
+            </div>
+        </section>
+
+        <!-- ============================================
+             HOW TO APPLY (3 Steps)
+        ============================================= -->
+        <section class="admissions-section" id="how-to-apply">
+            <div class="container">
+                <div class="section-header section-header--center">
+                    <p class="section-header__tag">Get Started</p>
+                    <h2 class="section-header__title">How to Apply</h2>
+                    <p class="section-header__desc">Applying to PTC is free and takes just a few steps. Most students can complete the process in a single visit.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-card__number">1</div>
+                        <h3 class="step-card__title">Choose Your Program</h3>
+                        <p class="step-card__desc">Browse our 40+ career programs to find the one that matches your goals. Check campus availability, schedule options, and program length.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-card__number">2</div>
+                        <h3 class="step-card__title">Submit Your Application</h3>
+                        <p class="step-card__desc">Complete the online application. You will need proof of residency, a valid ID, and your high school diploma or equivalent. There is no application fee.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-card__number">3</div>
+                        <h3 class="step-card__title">Meet with a Counselor</h3>
+                        <p class="step-card__desc">Schedule a meeting with an admissions counselor to review your application, discuss financial aid options, and plan your enrollment timeline.</p>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 2rem;">
+                    <a href="#" class="btn btn--accent btn--lg">Start Your Application <i class="fas fa-arrow-right"></i></a>
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================================
+             ENROLLMENT STEPS (Detailed)
+        ============================================= -->
+        <section class="admissions-section admissions-section--alt" id="enrollment-steps">
+            <div class="container">
+                <div class="section-header section-header--center">
+                    <p class="section-header__tag">What to Expect</p>
+                    <h2 class="section-header__title">Enrollment Steps</h2>
+                    <p class="section-header__desc">After your application is accepted, here is what comes next.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-card__number"><i class="fas fa-file-alt" style="font-size: 1rem;"></i></div>
+                        <h3 class="step-card__title">Complete Required Testing</h3>
+                        <p class="step-card__desc">Some programs require placement testing (CASAS or TEAS). Your counselor will let you know what testing is needed for your program.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-card__number"><i class="fas fa-dollar-sign" style="font-size: 1rem;"></i></div>
+                        <h3 class="step-card__title">Arrange Financial Aid</h3>
+                        <p class="step-card__desc">Complete your FAFSA and meet with the financial aid office to explore grants, scholarships, veterans benefits, and payment plans.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-card__number"><i class="fas fa-calendar-check" style="font-size: 1rem;"></i></div>
+                        <h3 class="step-card__title">Register for Classes</h3>
+                        <p class="step-card__desc">Work with your counselor to select your start date and register for your program. Attend new student orientation to get set up for day one.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             ADMISSION PATHWAYS
+        ============================================= -->
+        <section class="admissions-section" id="pathways">
+            <div class="container">
+                <div class="section-header section-header--center">
+                    <p class="section-header__tag">Your Path to PTC</p>
+                    <h2 class="section-header__title">Admission Pathways</h2>
+                </div>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-card__icon"><i class="fas fa-exchange-alt"></i></div>
+                        <div class="info-card__content">
+                            <h3>Transfer Students</h3>
+                            <p>Transferring from another technical school or college? You may be able to receive credit for prior coursework. Bring your official transcripts to your admissions meeting.</p>
+                            <a href="#">Learn about transfer credit <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card__icon"><i class="fas fa-redo"></i></div>
+                        <div class="info-card__content">
+                            <h3>Readmission</h3>
+                            <p>Took a break and want to come back? If you were previously enrolled at PTC, you can apply for readmission. Contact your campus admissions office to get started.</p>
+                            <a href="#">Readmission process <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card__icon"><i class="fas fa-user-graduate"></i></div>
+                        <div class="info-card__content">
+                            <h3>Dual Enrollment</h3>
+                            <p>High school students can get a head start on their career by enrolling in PTC programs while still in high school. Talk to your high school counselor to see if you qualify.</p>
+                            <a href="#">Dual enrollment details <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card__icon"><i class="fas fa-medal"></i></div>
+                        <div class="info-card__content">
+                            <h3>Veterans</h3>
+                            <p>PTC proudly serves veterans and active-duty military. We accept VA education benefits and have dedicated veterans resources on both campuses.</p>
+                            <a href="#">Veterans benefits info <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             TESTING & ASSESSMENT
+        ============================================= -->
+        <section class="admissions-section admissions-section--alt" id="testing">
+            <div class="container">
+                <div class="section-header section-header--center">
+                    <p class="section-header__tag">Placement Testing</p>
+                    <h2 class="section-header__title">Testing &amp; Assessment</h2>
+                    <p class="section-header__desc">Some programs require a placement test before enrollment. Your admissions counselor will confirm which test, if any, applies to your program.</p>
+                </div>
+                <div class="testing-types">
+                    <div class="testing-type">
+                        <div class="testing-type__icon"><i class="fas fa-clipboard-check"></i></div>
+                        <h3 class="testing-type__name">CASAS</h3>
+                        <p class="testing-type__desc">Comprehensive Adult Student Assessment System. Required for most career and technical programs. Measures reading, math, and listening skills.</p>
+                    </div>
+                    <div class="testing-type">
+                        <div class="testing-type__icon"><i class="fas fa-stethoscope"></i></div>
+                        <h3 class="testing-type__name">TEAS</h3>
+                        <p class="testing-type__desc">Test of Essential Academic Skills. Required for health science programs including Practical Nursing, Patient Care Technician, and Surgical Technology.</p>
+                    </div>
+                    <div class="testing-type">
+                        <div class="testing-type__icon"><i class="fas fa-book-reader"></i></div>
+                        <h3 class="testing-type__name">ABE / GED / ESOL</h3>
+                        <p class="testing-type__desc">If you need to complete your GED or improve your English language skills, PTC offers Adult Basic Education and ESOL programs at both campuses.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CAMPUS TOURS
+        ============================================= -->
+        <section class="admissions-section" id="campus-tours">
+            <div class="container">
+                <div class="tour-banner">
+                    <div class="tour-banner__content">
+                        <h2><i class="fas fa-map-marker-alt"></i> Visit Our Campuses</h2>
+                        <p>See our labs, meet instructors, and learn about programs firsthand. Campus tours and shadowing days are available at both locations.</p>
+                    </div>
+                    <div class="tour-banner__cta">
+                        <a href="#" class="btn btn--accent btn--lg">Schedule a Tour <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             FAQ
+        ============================================= -->
+        <section class="admissions-section admissions-section--alt" id="admissions-faq">
+            <div class="container">
+                <div class="section-header section-header--center">
+                    <p class="section-header__tag">Questions?</p>
+                    <h2 class="section-header__title">Frequently Asked Questions</h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
+                            Is there an application fee?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-item__answer">
+                            No. Applying to PTC is completely free. There are no application or enrollment fees.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
+                            Do I need a high school diploma or GED?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-item__answer">
+                            Most career and technical programs require a high school diploma or GED equivalent. However, PTC also offers Adult Basic Education (ABE) and GED preparation programs if you need to complete that requirement first.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
+                            When can I start?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-item__answer">
+                            Many PTC programs have multiple start dates throughout the year. Your admissions counselor can provide specific start dates for the program you are interested in. Some programs have rolling enrollment.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
+                            Is financial aid available?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-item__answer">
+                            Yes. PTC participates in federal and state financial aid programs, including Pell Grants, Florida Student Assistance Grants, scholarships, and veterans benefits. Complete your FAFSA to find out what you qualify for.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
+                            Can I attend part-time or in the evening?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-item__answer">
+                            Some programs offer evening and part-time scheduling options. Availability varies by program and campus. Check the program page or ask your counselor for details.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CTA BAND
+        ============================================= -->
+        <section class="cta-band" id="cta-section">
+            <div class="container">
+                <div class="cta-band__inner">
+                    <div class="cta-band__text">
+                        <h2>Ready to Start Your Career?</h2>
+                        <p>Take the first step. Apply today or contact us with questions.</p>
+                    </div>
+                    <div class="cta-band__actions">
+                        <a href="#" class="btn btn--accent btn--lg">Apply Now</a>
+                        <a href="#" class="btn btn--outline-white btn--lg">Contact Admissions</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================
+         FOOTER
+    ============================================= -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline">Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="admissions.html">Admissions</a></li>
+                            <li><a href="tuition-aid.html">Tuition &amp; Aid</a></li>
+                            <li><a href="#">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Campuses</h4>
+                        <ul>
+                            <li><a href="clearwater.html">Clearwater Campus</a></li>
+                            <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                            <li><a href="#">Campus Maps</a></li>
+                            <li><a href="admissions.html#campus-tours">Schedule a Tour</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Consumer Information</a></li>
+                            <li><a href="#">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="#">Careers at PTC</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Accessibility</a> | <a href="#">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clearwater Apprenticeships — Pinellas Technical College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ============================================
+           SCOPED STYLES — Apprenticeships Page
+           Follows PTC Design System tokens
+           All styles scoped to prevent Finalsite bleed
+        ============================================ */
+
+        /* Design Tokens */
+        :root {
+            --color-green: #008142;
+            --color-green-dark: #006B36;
+            --color-green-light: #E8F5EC;
+            --color-yellow: #FFCF01;
+            --color-yellow-dark: #E5BA00;
+            --color-accent: #8DC63F;
+            --color-white: #FFFFFF;
+            --color-off-white: #F7F8FA;
+            --color-gray-100: #F1F3F5;
+            --color-gray-200: #E5E7EB;
+            --color-gray-300: #D1D5DB;
+            --color-gray-400: #9CA3AF;
+            --color-gray-500: #6B7280;
+            --color-gray-600: #4B5563;
+            --color-gray-700: #374151;
+            --color-gray-800: #1F2937;
+            --color-gray-900: #111827;
+            --font-heading: 'Roboto Slab', serif;
+            --font-body: 'Roboto', sans-serif;
+            --container-max: 1100px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+            --transition-base: 0.25s ease;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-gray-800);
+            background: var(--color-white);
+        }
+
+        .appr-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ---- BREADCRUMB BAR ---- */
+        .appr-breadcrumb {
+            background: var(--color-off-white);
+            border-bottom: 1px solid var(--color-gray-200);
+            padding: 0.6rem 0;
+        }
+
+        .appr-breadcrumb__inner {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+        }
+
+        .appr-breadcrumb__inner a {
+            color: var(--color-green);
+            text-decoration: none;
+        }
+
+        .appr-breadcrumb__inner a:hover {
+            text-decoration: underline;
+        }
+
+        .appr-breadcrumb__inner .sep {
+            color: var(--color-gray-400);
+        }
+
+        /* ---- PAGE HERO ---- */
+        .appr-hero {
+            background: linear-gradient(135deg, var(--color-green-dark) 0%, #004d29 100%);
+            color: white;
+            padding: 3.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .appr-hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .appr-hero__inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .appr-hero__campus {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-yellow);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .appr-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .appr-hero__desc {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 720px;
+            color: rgba(255,255,255,0.88);
+        }
+
+        /* ---- SECTION STRUCTURE (alternating panels) ---- */
+        .appr-section {
+            padding: 3.5rem 0;
+        }
+
+        .appr-section--white {
+            background: var(--color-white);
+        }
+
+        .appr-section--gray {
+            background: var(--color-off-white);
+        }
+
+        .appr-section--green {
+            background: var(--color-green-dark);
+            color: white;
+        }
+
+        .appr-section__header {
+            margin-bottom: 2rem;
+        }
+
+        .appr-section__label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: var(--color-green);
+            margin-bottom: 0.4rem;
+        }
+
+        .appr-section--green .appr-section__label {
+            color: var(--color-yellow);
+        }
+
+        .appr-section__title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            line-height: 1.2;
+        }
+
+        .appr-section--green .appr-section__title {
+            color: white;
+        }
+
+        .appr-section__subtitle {
+            font-size: 1rem;
+            color: var(--color-gray-600);
+            margin-top: 0.5rem;
+            max-width: 680px;
+        }
+
+        .appr-section--green .appr-section__subtitle {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* ---- FEATURED CARDS (Sponsored Programs) ---- */
+        .appr-featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .appr-featured-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-base), box-shadow var(--transition-base);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .appr-featured-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .appr-featured-card__image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .appr-featured-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .appr-featured-card__badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--color-green);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.35rem 0.85rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .appr-featured-card__body {
+            padding: 1.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .appr-featured-card__title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .appr-featured-card__desc {
+            font-size: 0.95rem;
+            color: var(--color-gray-600);
+            line-height: 1.65;
+            flex: 1;
+        }
+
+        .appr-featured-card__meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--color-gray-200);
+            flex-wrap: wrap;
+        }
+
+        .appr-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+        }
+
+        .appr-meta-item i {
+            color: var(--color-green);
+            font-size: 0.9rem;
+        }
+
+        .appr-featured-card__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            padding: 0.7rem 1.5rem;
+            background: var(--color-green);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            transition: background var(--transition-base), transform 0.15s;
+            align-self: flex-start;
+        }
+
+        .appr-featured-card__cta:hover {
+            background: var(--color-green-dark);
+            transform: translateY(-1px);
+        }
+
+        /* ---- COMMUNITY PROGRAMS LIST ---- */
+        .appr-community-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .appr-community-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 1.25rem 1.75rem;
+            border-radius: 10px;
+            border: 1px solid var(--color-gray-200);
+            text-decoration: none;
+            transition: border-color var(--transition-base), box-shadow var(--transition-base), transform 0.15s;
+        }
+
+        .appr-community-item:hover {
+            border-color: var(--color-green);
+            box-shadow: 0 4px 12px rgba(0, 129, 66, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .appr-community-item__left {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .appr-community-item__icon {
+            width: 44px;
+            height: 44px;
+            background: var(--color-green-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .appr-community-item__icon i {
+            color: var(--color-gray-800);
+            font-size: 1.1rem;
+        }
+
+        .appr-community-item__name {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+        }
+
+        .appr-community-item__sponsor {
+            font-size: 0.85rem;
+            color: var(--color-gray-500);
+            margin-top: 0.15rem;
+        }
+
+        /* Muted community items — force dark gray icons, override link color */
+        a.appr-community-item .appr-community-item__icon {
+            background: var(--color-gray-200);
+        }
+
+        a.appr-community-item .appr-community-item__icon i {
+            color: var(--color-gray-800) !important;
+        }
+
+        a.appr-community-item .appr-community-item__name {
+            color: var(--color-gray-900);
+        }
+
+        a.appr-community-item .appr-community-item__sponsor {
+            color: var(--color-gray-500);
+        }
+
+        .appr-community-item__arrow {
+            color: var(--color-gray-400);
+            transition: color var(--transition-base), transform 0.15s;
+            font-size: 0.9rem;
+        }
+
+        .appr-community-item:hover .appr-community-item__arrow {
+            color: var(--color-green);
+            transform: translateX(3px);
+        }
+
+        /* ---- HOW IT WORKS SECTION ---- */
+        .appr-steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .appr-step {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .appr-step__number {
+            width: 52px;
+            height: 52px;
+            background: var(--color-yellow);
+            color: var(--color-gray-900);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 auto 1.25rem;
+        }
+
+        .appr-step__number {
+            background: var(--color-green);
+            color: white;
+        }
+
+        .appr-section--green .appr-step__number {
+            background: var(--color-yellow);
+            color: var(--color-green-dark);
+        }
+
+        .appr-step__title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-gray-900);
+        }
+
+        .appr-section--green .appr-step__title {
+            color: white;
+        }
+
+        .appr-step__desc {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--color-gray-600);
+        }
+
+        .appr-section--green .appr-step__desc {
+            color: rgba(255,255,255,0.75);
+        }
+
+        /* ---- CONTACT / CTA BAR ---- */
+        .appr-cta-bar {
+            background: var(--color-yellow);
+            padding: 2rem 0;
+        }
+
+        .appr-cta-bar__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .appr-cta-bar__text h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+        }
+
+        .appr-cta-bar__text p {
+            font-size: 0.95rem;
+            color: var(--color-gray-700);
+            margin-top: 0.25rem;
+        }
+
+        .appr-cta-bar__actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .appr-btn--dark {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-green-dark);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            transition: background var(--transition-base), transform 0.15s;
+        }
+
+        .appr-btn--dark:hover {
+            background: #004d29;
+            transform: translateY(-1px);
+        }
+
+        .appr-btn--outline-dark {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: white;
+            color: var(--color-green-dark);
+            border: 2px solid var(--color-green-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            transition: background var(--transition-base), transform 0.15s;
+        }
+
+        .appr-btn--outline-dark:hover {
+            background: var(--color-green-light);
+            transform: translateY(-1px);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            .appr-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .appr-featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .appr-steps-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .appr-step {
+                padding: 1.5rem;
+            }
+
+            .appr-cta-bar__inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .appr-cta-bar__actions {
+                justify-content: center;
+            }
+
+            .appr-community-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .appr-community-item__arrow {
+                align-self: flex-end;
+            }
+        }
+
+        /* ---- PLACEHOLDER IMAGES ---- */
+        .appr-placeholder-img {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-green-light) 0%, #c8e6d0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-green);
+            font-size: 2.5rem;
+        }
+
+        /* ---- SKIP LINK (accessibility) ---- */
+        .appr-skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--color-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            z-index: 1000;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .appr-skip-link:focus {
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="appr-skip-link">Skip to main content</a>
+
+    <!-- ============================================
+         BREADCRUMB (Finalsite: auto-generated or manual)
+    ============================================= -->
+    <nav class="appr-breadcrumb" aria-label="Breadcrumb">
+        <div class="appr-container appr-breadcrumb__inner">
+            <a href="/">Home</a>
+            <span class="sep">/</span>
+            <a href="/programs">Programs</a>
+            <span class="sep">/</span>
+            <span aria-current="page">Clearwater Apprenticeships</span>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         PAGE HERO
+         Finalsite: Green "Invert Colors" panel
+    ============================================= -->
+    <section class="appr-hero">
+        <div class="appr-container appr-hero__inner">
+            <div class="appr-hero__campus">Clearwater Campus</div>
+            <h1>Apprenticeship Programs</h1>
+            <p class="appr-hero__desc">
+                Earn while you learn. PTC-Clearwater apprenticeship programs combine paid on-the-job training with hands-on classroom instruction, so you can build real skills and a real career at the same time.
+            </p>
+        </div>
+    </section>
+
+    <main id="main-content">
+
+        <!-- ============================================
+             SECTION 1: PTC-Sponsored Programs (FEATURED)
+             Finalsite: White panel, 50/50 layout
+        ============================================= -->
+        <section class="appr-section appr-section--white">
+            <div class="appr-container">
+                <div class="appr-section__header">
+                    <div class="appr-section__label">PTC-Sponsored</div>
+                    <h2 class="appr-section__title">Our Apprenticeship Programs</h2>
+                    <p class="appr-section__subtitle">
+                        These programs are directly sponsored by Pinellas Technical College. We handle enrollment, instruction, and employer coordination.
+                    </p>
+                </div>
+
+                <div class="appr-featured-grid">
+
+                    <!-- Card 1: Automotive -->
+                    <article class="appr-featured-card">
+                        <div class="appr-featured-card__image">
+                            <div class="appr-placeholder-img" aria-hidden="true">
+                                <i class="fa-solid fa-car"></i>
+                            </div>
+                            <span class="appr-featured-card__badge">
+                                <i class="fa-solid fa-star" style="font-size: 0.65rem;"></i> PTC Sponsored
+                            </span>
+                        </div>
+                        <div class="appr-featured-card__body">
+                            <h3 class="appr-featured-card__title">Automotive Electrical / Electronics / Hybrid-EV Systems</h3>
+                            <p class="appr-featured-card__desc">
+                                Train in modern automotive electrical diagnostics, electronics, and hybrid-EV systems. This apprenticeship prepares you for high-demand careers in a rapidly evolving automotive industry.
+                            </p>
+                            <div class="appr-featured-card__meta">
+                                <span class="appr-meta-item">
+                                    <i class="fa-solid fa-clock"></i> Apprenticeship
+                                </span>
+                                <span class="appr-meta-item">
+                                    <i class="fa-solid fa-location-dot"></i> Clearwater Campus
+                                </span>
+                                <span class="appr-meta-item">
+                                    <i class="fa-solid fa-briefcase"></i> Earn while you learn
+                                </span>
+                            </div>
+                            <a href="/fs/pages/1202" class="appr-featured-card__cta">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: Facilities Maintenance -->
+                    <article class="appr-featured-card">
+                        <div class="appr-featured-card__image">
+                            <div class="appr-placeholder-img" aria-hidden="true">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                            </div>
+                            <span class="appr-featured-card__badge">
+                                <i class="fa-solid fa-star" style="font-size: 0.65rem;"></i> PTC Sponsored
+                            </span>
+                        </div>
+                        <div class="appr-featured-card__body">
+                            <h3 class="appr-featured-card__title">Facilities Maintenance</h3>
+                            <p class="appr-featured-card__desc">
+                                Develop the skills needed to maintain and repair commercial and institutional facilities. Covers electrical, plumbing, HVAC basics, and building systems in a hands-on apprenticeship format.
+                            </p>
+                            <div class="appr-featured-card__meta">
+                                <span class="appr-meta-item">
+                                    <i class="fa-solid fa-clock"></i> Apprenticeship
+                                </span>
+                                <span class="appr-meta-item">
+                                    <i class="fa-solid fa-location-dot"></i> Clearwater Campus
+                                </span>
+                                <span class="appr-meta-item">
+                                    <i class="fa-solid fa-briefcase"></i> Earn while you learn
+                                </span>
+                            </div>
+                            <a href="/fs/pages/1203" class="appr-featured-card__cta">
+                                Learn More <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION 2: How Apprenticeships Work
+             Finalsite: Gray panel
+        ============================================= -->
+        <section class="appr-section appr-section--green">
+            <div class="appr-container">
+                <div class="appr-section__header" style="text-align: center;">
+                    <div class="appr-section__label">Get Started</div>
+                    <h2 class="appr-section__title">How Apprenticeships Work</h2>
+                    <p class="appr-section__subtitle" style="margin: 0.5rem auto 0;">
+                        Apprenticeships let you earn a wage while training for a skilled career. Here is what to expect.
+                    </p>
+                </div>
+
+                <div class="appr-steps-grid">
+                    <div class="appr-step">
+                        <div class="appr-step__number">1</div>
+                        <h3 class="appr-step__title">Apply and Get Hired</h3>
+                        <p class="appr-step__desc">
+                            You are employed by a sponsor company from day one. You earn a paycheck while attending classes at PTC.
+                        </p>
+                    </div>
+                    <div class="appr-step">
+                        <div class="appr-step__number">2</div>
+                        <h3 class="appr-step__title">Train On the Job</h3>
+                        <p class="appr-step__desc">
+                            Split your time between hands-on work with your employer and classroom instruction at PTC-Clearwater.
+                        </p>
+                    </div>
+                    <div class="appr-step">
+                        <div class="appr-step__number">3</div>
+                        <h3 class="appr-step__title">Earn Your Credential</h3>
+                        <p class="appr-step__desc">
+                            Complete the program with industry-recognized credentials, real experience, and zero student debt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CTA BAR — under How It Works
+             Finalsite: Yellow panel
+        ============================================= -->
+        <section class="appr-cta-bar">
+            <div class="appr-container appr-cta-bar__inner">
+                <div class="appr-cta-bar__text">
+                    <h3>Ready to Start Your Apprenticeship?</h3>
+                    <p>Contact our admissions team to learn about openings and next steps.</p>
+                </div>
+                <div class="appr-cta-bar__actions">
+                    <a href="tel:7275387167" class="appr-btn--dark">
+                        <i class="fa-solid fa-phone"></i> (727) 538-7167
+                    </a>
+                    <a href="/admissions" class="appr-btn--outline-dark">
+                        <i class="fa-solid fa-user-plus"></i> Admissions Info
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             SECTION 3: Community Apprenticeship Programs
+             Finalsite: Light gray panel — intentionally muted
+        ============================================= -->
+        <section class="appr-section appr-section--gray">
+            <div class="appr-container">
+                <div class="appr-section__header">
+                    <h2 class="appr-section__title" style="font-size: 1.4rem; color: var(--color-gray-600);">Community Apprenticeship Programs</h2>
+                    <p class="appr-section__subtitle">
+                        The following apprenticeship programs are operated and sponsored by outside organizations. Contact the sponsoring organization directly for enrollment and program details.
+                    </p>
+                </div>
+
+                <div class="appr-community-list">
+
+                    <!-- HVAC -->
+                    <a href="/fs/pages/1206" class="appr-community-item">
+                        <div class="appr-community-item__left">
+                            <div class="appr-community-item__icon">
+                                <i class="fa-solid fa-temperature-half"></i>
+                            </div>
+                            <div>
+                                <div class="appr-community-item__name">Heating, Ventilation and Air Conditioning (HVAC)</div>
+                                <div class="appr-community-item__sponsor">Community partner sponsored</div>
+                            </div>
+                        </div>
+                        <span class="appr-community-item__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                    </a>
+
+                    <!-- Electrician (Bay Area) -->
+                    <a href="/fs/pages/1204" class="appr-community-item">
+                        <div class="appr-community-item__left">
+                            <div class="appr-community-item__icon">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div>
+                                <div class="appr-community-item__name">Electrician (Bay Area Electrical)</div>
+                                <div class="appr-community-item__sponsor">Bay Area Electrical JATC</div>
+                            </div>
+                        </div>
+                        <span class="appr-community-item__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                    </a>
+
+                    <!-- Electrician (IEC) -->
+                    <a href="/fs/pages/1205" class="appr-community-item">
+                        <div class="appr-community-item__left">
+                            <div class="appr-community-item__icon">
+                                <i class="fa-solid fa-bolt"></i>
+                            </div>
+                            <div>
+                                <div class="appr-community-item__name">Electrician (Independent Electrical Contractors)</div>
+                                <div class="appr-community-item__sponsor">IEC Apprenticeship</div>
+                            </div>
+                        </div>
+                        <span class="appr-community-item__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                    </a>
+
+                    <!-- Tampa Bay Machining -->
+                    <a href="/fs/pages/1207" class="appr-community-item">
+                        <div class="appr-community-item__left">
+                            <div class="appr-community-item__icon">
+                                <i class="fa-solid fa-gears"></i>
+                            </div>
+                            <div>
+                                <div class="appr-community-item__name">Tampa Bay Machining Apprenticeship</div>
+                                <div class="appr-community-item__sponsor">Tampa Bay Machining</div>
+                            </div>
+                        </div>
+                        <span class="appr-community-item__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                    </a>
+
+                    <!-- Sprinkler Fitter -->
+                    <a href="/fs/pages/1208" class="appr-community-item">
+                        <div class="appr-community-item__left">
+                            <div class="appr-community-item__icon">
+                                <i class="fa-solid fa-fire-extinguisher"></i>
+                            </div>
+                            <div>
+                                <div class="appr-community-item__name">Sprinkler Fitter</div>
+                                <div class="appr-community-item__sponsor">ABC Florida Gulf Coast Chapter</div>
+                            </div>
+                        </div>
+                        <span class="appr-community-item__arrow"><i class="fa-solid fa-chevron-right"></i></span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

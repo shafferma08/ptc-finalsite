@@ -235,6 +235,72 @@ Final card distribution: Health Sciences (7), IT (4), Skilled Trades & Construct
 
 ---
 
+## April 15, 2026 (Session 6 — About Page, Admissions Page, Homepage Taxonomy Fix)
+
+### What was completed
+
+**`about.html` — new About PTC landing page (created)**
+- Full main-site page with the standard shell (utility bar, 6-pillar nav, footer with accreditation badges)
+- Page hero with green gradient background and breadcrumb (Home / About PTC)
+- Mission statement banner with PTC's mission text, styled as a full-width green panel
+- "Our Story" section: two-column layout (text + graduation photo) covering PTC's history, scope, and PCSB relationship
+- "By the Numbers" stats row: 40+ Career Programs, 2 Campus Locations, 60+ Years of Excellence, 50+ Industry Partners
+- History timeline: 6 milestones from 1961 founding through today, vertical line design with green dot markers
+- Accreditation section (anchored as `#accreditation`): 3-card grid for COE, Cognia, and PCSB with logos and descriptions
+- Campus Leadership section: 3 placeholder cards (Clearwater Director, St. Pete Director, District Administration) with avatar icons — names to be filled in by Marianne
+- Two Campuses overview section: reverse-grid layout with campus descriptions and CTA buttons linking to clearwater.html and stpete.html
+- CTA band and standard footer
+- All page-specific styles scoped in a `<style>` block; fully responsive with media queries for mobile
+
+**`admissions.html` — new Admissions landing page (created)**
+- Full main-site page with standard shell
+- Page hero with green gradient, breadcrumb (Home / Admissions)
+- "How to Apply" section: 3-step card layout (Choose Your Program, Submit Application, Meet with Counselor) with numbered green circles and "Start Your Application" CTA
+- "Enrollment Steps" section: 3-card layout covering testing, financial aid, and registration, with icon circles instead of numbers
+- "Admission Pathways" section: 4 info cards covering Transfer Students, Readmission, Dual Enrollment, and Veterans, each with icon, description, and "learn more" links
+- "Testing & Assessment" section: 3-card grid for CASAS, TEAS, and ABE/GED/ESOL with descriptions
+- Campus Tours banner: green gradient CTA bar with "Schedule a Tour" button
+- FAQ section: 5 collapsible questions covering application fees, diploma requirements, start dates, financial aid, and scheduling — uses inline JS toggle
+- CTA band and standard footer
+- All styles scoped in page `<style>` block; fully responsive
+- Admissions nav dropdown links updated to anchor to page sections (#how-to-apply, #enrollment-steps, #pathways, #testing, #campus-tours)
+
+**`index.html` — homepage featured program card titles aligned to Section 5.3 taxonomy**
+- "Skilled Trades" → "Skilled Trades & Construction"
+- "Transportation" → "Transportation & Logistics"
+- "Culinary Arts" → "Culinary & Hospitality"
+- "Cosmetology" → "Cosmetology & Barbering"
+- These 4 cards in the "Explore Our Programs" section now match the taxonomy names used in the nav dropdowns, programs.html filter bar, and campus nav dropdowns
+
+**Navigation links wired up across 3 files**
+- `index.html`: Admissions nav link → `admissions.html`, About PTC nav link → `about.html`, "Welcome & History" → `about.html`, "Accreditation" → `about.html#accreditation`, "Learn More About PTC" button in Why PTC section → `about.html`
+- `_templates/shell-main.html`: Same nav link updates for Admissions and About PTC dropdowns
+- `about.html` and `admissions.html`: Built with correct cross-links from the start (footer Quick Links point to programs.html, admissions.html, about.html)
+
+### Decisions made
+
+- Leadership section uses placeholder cards rather than names, since staff names and photos need to come from Marianne. The structure is ready for her to fill in.
+- About page history timeline uses approximate dates for earlier decades (1970s, 1990s, 2000s) since exact founding dates of the St. Pete campus and initial program expansions were not in the available documentation. The 2018 rebranding date is based on the institution's name change from "Pinellas Technical Education Centers" to "Pinellas Technical College."
+- Admissions FAQ uses a simple inline `onclick` toggle rather than a separate JS file, keeping it self-contained. This will translate cleanly to a Finalsite Composer custom HTML element.
+- Both new pages use page-scoped `<style>` blocks rather than adding to `styles.css`. This keeps page-specific styles isolated and makes it easier to port individual pages to Finalsite Composer without style conflicts.
+- Homepage program cards now show the full taxonomy names even though they are slightly longer. Consistency across all parts of the site is more important than saving a few characters on a card title.
+
+### Issues or blockers
+
+- **Leadership names needed:** The About page leadership section has placeholder cards. Marianne will need to add the actual names, titles, and optionally photos for the campus directors and district administrator.
+- **History dates approximate:** The timeline milestones for the 1970s, 1990s, and 2000s are approximations. If PTC has specific dates documented, those should be substituted.
+- **Programs section missing two clusters:** The homepage "Explore Our Programs" grid shows 6 of the 8 taxonomy clusters (missing Business & Office and Arts, Media & Education). This was a pre-existing condition — adding them would make the grid 8 cards, which is a layout decision for Marianne to weigh.
+
+### Next priorities
+
+1. **Tuition & Aid landing page** — the last main-site nav pillar without a dedicated page
+2. **Contact page** — `contact.html` still missing, referenced by nav and footer
+3. **Consumer Information page** — COE compliance disclosures hub, linked from footer Resources
+4. **Wire up remaining pages' nav** — `clearwater.html`, `stpete.html`, `welding-clearwater.html`, `schedule-clearwater.html`, and `programs.html` should have their About PTC and Admissions nav links updated to point to the new pages (currently still `#`)
+5. **welding-stpete.html** — St. Pete equivalent of the welding program page
+
+---
+
 ## April 14, 2026 (Session 5 — Main Site Nav Taxonomy Fix)
 
 ### What was completed
@@ -255,3 +321,85 @@ Both `index.html` and `_templates/shell-main.html` updated. All taxonomy names i
 4. **Consumer Information page** — COE compliance disclosures hub, linked from footer Resources column on all three sites.
 5. **welding-stpete.html** — St. Pete equivalent of the welding program page.
 6. **Delete root `campus-template.html`** — once confirmed replaced by `_templates/campus-landing.html`.
+
+---
+
+## April 16, 2026 — Tuition & Aid Page, Contact Page, Site-Wide Nav Wire-Up
+
+### What was completed
+
+**`tuition-aid.html` — new Tuition & Financial Aid landing page (created)**
+- Full main-site page with the standard shell (utility bar, 6-pillar nav, footer with accreditation badges)
+- Page hero with green gradient and breadcrumb (Home / Tuition & Financial Aid)
+- "Pay Tuition" prominent banner at the top of the rates section: green callout bar with a direct link to the online payment portal (currently `#` — Marianne to confirm the Business Office payment URL)
+- Tuition rates table: Florida Resident ($2.91/clock hour), Non-Resident ($11.64/clock hour), Dual Enrollment (no cost), with a note row about lab fees and program-specific costs
+- Financial Aid cards grid (2x2): FAFSA & Federal Aid (includes PTC's Federal School Code 013847), Scholarships, State & Workforce Funding (WIOA), and Payment Plans
+- Net Price Calculator callout: prominent bordered card with separate buttons for Clearwater and St. Pete calculators (links currently `#` — campus-specific NPC URLs needed)
+- "How Financial Aid Works" 4-step section: Apply, File FAFSA, Receive Award Letter, Aid Applied
+- Veterans Benefits band: full-width green section listing GI Bill chapters (30, 33, 35, 1606), MyCAA, VR&E (Chapter 31), Tuition Assistance, and the Clearwater Veterans Resource Coordinator
+- Campus Aid Offices section: two cards (Clearwater, St. Pete) with addresses and campus links
+- FAQ: 5 collapsible questions (repayment, school code, fees beyond tuition, refund policy, short-term program aid)
+- CTA band linking to admissions.html and contact.html
+
+**`contact.html` — new Contact Us page (created)**
+- Full main-site page with the standard shell
+- Page hero with green gradient and breadcrumb (Home / Contact Us)
+- Campus contact cards: two-column grid, one card per campus. Each card includes campus name, address, phone, email (placeholder PCSB email format), hours (M-F 7:30 AM-4:30 PM), map placeholder (labeled for Finalsite iframe implementation), and buttons linking to the campus homepage and directions
+- Contact form: full form with first/last name, email, phone, campus selector, topic dropdown (programs, admissions, financial aid, current student, employers, media, other), and message textarea. Includes a note that the form is not for submitting financial documents.
+- Quick Contacts sidebar: 5 compact cards linking to Admissions, Financial Aid, Veterans Services, Employer Inquiries, and Accessibility contacts
+- CTA band linking to programs.html and admissions.html
+
+**Site-wide nav and footer wire-up (11 files updated)**
+
+Files updated: `index.html`, `about.html`, `admissions.html`, `programs.html`, `_templates/shell-main.html`, `clearwater.html`, `stpete.html`, `welding-clearwater.html`, `schedule-clearwater.html`, `_templates/shell-clearwater.html`, `_templates/shell-stpete.html`
+
+Changes applied across all relevant files:
+- Tuition & Aid top-level nav link: `#` → `tuition-aid.html`
+- All 8 Tuition & Aid dropdown items: `#` → `tuition-aid.html#[anchor]`
+- "Contact Us" in About PTC dropdown (main-site pages): `#` → `contact.html`
+- "Contact Us" in Campus Info dropdown (campus pages): `#` → `contact.html`
+- Footer Quick Links: Tuition & Aid → `tuition-aid.html`
+- Footer Resources: Contact Us → `contact.html`
+- Admissions dropdown items (How to Apply, Enrollment Steps, Testing, Transfer, Readmission, Campus Tours): `#` → anchored links to admissions.html sections, in the 6 files that still had placeholder hrefs
+
+### Decisions made
+
+- PTC's Federal School Code (013847) is included directly on the Tuition page as a visible callout since it is among the most common things prospective students search for
+- Veterans benefits are given their own full-width green section (rather than a card in the aid grid) to signal that PTC takes military student support seriously and to create a clean anchor target
+- The contact form topic dropdown includes "Media Inquiry" since the Contact page may receive press inquiries that should route differently from student questions
+- Map placeholders on the Contact page are labeled explicitly for Finalsite iframe implementation so Marianne knows exactly where to drop the Google Maps embed in Composer
+- Campus email addresses use the PCSB domain format (ptc-clearwater@pcsb.org, ptc-stpete@pcsb.org) as best guesses — Marianne should verify before going live
+
+### Issues or blockers
+
+- **Pay Tuition URL needed:** The "Pay Tuition Online" button on `tuition-aid.html` links to `#`. Marianne needs to confirm the correct payment portal URL (likely a Focus/SIS link or third-party payment processor).
+- **Net Price Calculator URLs needed:** Two NPC buttons (Clearwater, St. Pete) also link to `#`. These are campus-specific external links Marianne will need to provide.
+- **Contact page emails to verify:** The campus emails (ptc-clearwater@pcsb.org, ptc-stpete@pcsb.org) are formatted as best guesses and must be confirmed before the page goes live.
+- **Contact form backend:** The form has no action/method — it is a visual mockup. For Finalsite, this will be replaced by a Finalsite Form Element, which handles submissions natively.
+- **Map embeds:** Both campus contact cards have placeholder boxes where Google Maps iframes will go during Finalsite Composer implementation.
+
+### UX recommendations status (all complete)
+
+All four UX recommendations from `docs/homepage_ux_review.md` were implemented in prior sessions. No open items remain from that review.
+
+### Main site nav pillar coverage
+
+| Nav Pillar | Landing Page | Status |
+|---|---|---|
+| Programs | programs.html | Complete |
+| Admissions | admissions.html | Complete |
+| Tuition & Aid | tuition-aid.html | **Complete (this session)** |
+| Campuses | clearwater.html / stpete.html | Complete |
+| Current Students | (links to portals) | Portals only, no landing page needed |
+| About PTC | about.html | Complete |
+| Contact Us | contact.html | **Complete (this session)** |
+
+All six main content pillars now have a dedicated page. The main site nav is fully wired to real pages (no remaining `#` placeholders in top-level nav links).
+
+### Next priorities
+
+1. **Consumer Information page** — the only COE-required compliance hub without a mockup. Should consolidate non-discrimination, privacy, accessibility, and links to campus-specific disclosures. Linked from footer Resources column on all sites.
+2. **welding-stpete.html** — St. Pete equivalent of the welding program page; programs.html currently only links to the Clearwater version.
+3. **Finalsite Composer annotation pass** — add a short annotation block to `docs/implementation_plan.md` for each homepage section documenting the exact Composer panel type and settings that correspond to each mockup section. This would make handoff to Composer significantly easier.
+4. **Homepage program grid expansion** — still shows only 6 of 8 taxonomy clusters (Business & Office and Arts, Media & Education are missing). Marianne to decide whether to expand to an 8-card grid.
+5. **Delete root `campus-template.html`** — once Marianne confirms it is superseded by `_templates/campus-landing.html`.

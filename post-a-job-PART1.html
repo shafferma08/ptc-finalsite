@@ -1,0 +1,218 @@
+<!--
+  PART 1: Campus cards + Highlight box + CTA
+  Paste into first Composer code/HTML block
+-->
+
+<div id="ptc-post-job">
+
+<style>
+/* All styles scoped to #ptc-post-job */
+#ptc-post-job {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 20px 0;
+}
+
+#ptc-post-job *,
+#ptc-post-job *::before,
+#ptc-post-job *::after {
+    box-sizing: border-box;
+}
+
+/* Highlight box */
+#ptc-post-job .pj-highlight {
+    background: #f0faf4;
+    border-left: 5px solid #008142;
+    padding: 24px 28px;
+    margin-bottom: 36px;
+    border-radius: 0 6px 6px 0;
+}
+#ptc-post-job .pj-highlight p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    margin: 0;
+}
+#ptc-post-job .pj-highlight strong {
+    color: #008142;
+}
+
+#ptc-post-job .pj-badge {
+    display: inline-block;
+    background: #FFCF01;
+    color: #333;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* CTA Section */
+#ptc-post-job .pj-cta {
+    text-align: center;
+    padding: 36px 32px;
+    margin: 0;
+    background: #fff;
+    border: 2px solid #008142;
+    border-radius: 8px;
+}
+#ptc-post-job .pj-cta h2 {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 22px;
+    color: #008142;
+    margin: 0 0 12px 0;
+}
+#ptc-post-job .pj-cta p {
+    font-size: 16px;
+    color: #555;
+    margin: 0 auto 24px;
+    max-width: 600px;
+}
+#ptc-post-job .pj-cta-btn {
+    display: inline-block;
+    background: #008142;
+    color: #fff !important;
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px 36px;
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: background 0.2s ease;
+}
+#ptc-post-job .pj-cta-btn:hover {
+    background: #006633;
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+/* Campus Cards */
+#ptc-post-job .pj-campuses {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 36px;
+}
+#ptc-post-job .pj-campus {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-decoration: none !important;
+    color: #333 !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+#ptc-post-job .pj-campus:hover {
+    border-color: #008142;
+    box-shadow: 0 2px 8px rgba(0,129,66,0.12);
+}
+#ptc-post-job .pj-campus-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    background: #008142;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+}
+#ptc-post-job .pj-campus-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: #fff;
+}
+#ptc-post-job .pj-campus-info h3 {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 16px;
+    color: #008142;
+    margin: 0 0 4px 0;
+}
+#ptc-post-job .pj-campus-info p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+}
+#ptc-post-job .pj-campus-link {
+    font-size: 14px;
+    color: #008142;
+    font-weight: 500;
+    margin-top: 4px;
+    display: inline-block;
+}
+#ptc-post-job .pj-campus:hover .pj-campus-link {
+    text-decoration: underline !important;
+}
+
+#ptc-post-job .pj-intro-note {
+    font-size: 17px;
+    color: #555;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #ptc-post-job .pj-campuses {
+        flex-direction: column;
+    }
+    #ptc-post-job {
+        padding: 16px 12px 0;
+    }
+}
+</style>
+
+<!-- Campus Navigation -->
+<p class="pj-intro-note">Pinellas Technical College has two campuses. Job postings through <strong>Career Rocket</strong>, our free job board, reach students at both locations.</p>
+
+<div class="pj-campuses">
+    <a href="https://clearwater.myptc.edu" class="pj-campus" aria-label="Visit Clearwater Campus site">
+        <div class="pj-campus-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        </div>
+        <div class="pj-campus-info">
+            <h3>Clearwater Campus</h3>
+            <p>6100 154th Ave N, Clearwater, FL 33760</p>
+            <span class="pj-campus-link">Visit campus site &rarr;</span>
+        </div>
+    </a>
+    <a href="https://stpete.myptc.edu" class="pj-campus" aria-label="Visit St. Petersburg Campus site">
+        <div class="pj-campus-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+        </div>
+        <div class="pj-campus-info">
+            <h3>St. Petersburg Campus</h3>
+            <p>901 34th St S, St. Petersburg, FL 33711</p>
+            <span class="pj-campus-link">Visit campus site &rarr;</span>
+        </div>
+    </a>
+</div>
+
+<!-- Highlight Box -->
+<div class="pj-highlight">
+    <span class="pj-badge">FREE FOR EMPLOYERS</span>
+    <p>
+        There is no fee to post your job opening at Pinellas Technical College. Your position will be listed on <strong>Career Rocket</strong>, PTC's job board built exclusively for our students and graduates. It could be the gateway to your next great hire!
+    </p>
+</div>
+
+<!-- CTA -->
+<div class="pj-cta">
+    <h2>Ready to Post Your Opening?</h2>
+    <p>Contact our Placement Coordinator to get your free employer account set up.</p>
+    <a href="mailto:mediavillam@pcsb.org?subject=Employer%20Account%20Request%20-%20Career%20Rocket%20Job%20Posting" class="pj-cta-btn">
+        Email Us to Get Started
+    </a>
+</div>
+
+</div><!-- end #ptc-post-job part 1 -->

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job Opportunity - Pinellas Technical College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: #fff;
+        }
+
+        /* === HEADER BAR (simulates Finalsite nav context) === */
+        .site-header {
+            background: #008142;
+            color: #fff;
+            padding: 12px 40px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .site-header a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .site-header a:hover {
+            text-decoration: underline;
+        }
+
+        /* === BREADCRUMB === */
+        .breadcrumb {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 16px 40px;
+            font-size: 13px;
+            color: #666;
+        }
+        .breadcrumb a {
+            color: #008142;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumb span {
+            margin: 0 6px;
+            color: #999;
+        }
+
+        /* === PAGE TITLE BANNER === */
+        .page-banner {
+            background: #008142;
+            padding: 40px;
+            text-align: center;
+        }
+        .page-banner h1 {
+            font-family: 'Roboto Slab', Georgia, serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* === MAIN CONTENT === */
+        .content {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .intro {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+            color: #333;
+        }
+
+        .highlight-box {
+            background: #f0faf4;
+            border-left: 5px solid #008142;
+            padding: 24px 28px;
+            margin-bottom: 36px;
+            border-radius: 0 6px 6px 0;
+        }
+        .highlight-box p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333;
+        }
+        .highlight-box strong {
+            color: #008142;
+        }
+
+        .free-badge {
+            display: inline-block;
+            background: #FFCF01;
+            color: #333;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        /* === CTA SECTION === */
+        .cta-section {
+            text-align: center;
+            padding: 36px 32px;
+            margin: 36px 0;
+            background: #fff;
+            border: 2px solid #008142;
+            border-radius: 8px;
+        }
+        .cta-section h2 {
+            font-family: 'Roboto Slab', Georgia, serif;
+            font-size: 22px;
+            color: #008142;
+            margin-bottom: 12px;
+        }
+        .cta-section p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 24px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #008142;
+            color: #fff;
+            font-family: 'Roboto Slab', Georgia, serif;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 14px 36px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .cta-button:hover {
+            background: #006633;
+        }
+
+        /* === HOW IT WORKS === */
+        .how-it-works {
+            margin: 40px 0 36px;
+        }
+        .how-it-works h2 {
+            font-family: 'Roboto Slab', Georgia, serif;
+            font-size: 22px;
+            color: #008142;
+            margin-bottom: 20px;
+        }
+        .steps {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+        }
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 24px 16px;
+            background: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #e8e8e8;
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #008142;
+            color: #fff;
+            font-family: 'Roboto Slab', Georgia, serif;
+            font-size: 20px;
+            font-weight: 700;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+        .step h3 {
+            font-family: 'Roboto Slab', Georgia, serif;
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .step p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* === CONTACT INFO === */
+        .contact-info {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 28px 32px;
+            margin-top: 36px;
+        }
+        .contact-info h2 {
+            font-family: 'Roboto Slab', Georgia, serif;
+            font-size: 18px;
+            color: #008142;
+            margin-bottom: 12px;
+        }
+        .contact-info p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+        .contact-info a {
+            color: #008142;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* === FOOTER NOTE === */
+        .build-notes {
+            max-width: 960px;
+            margin: 48px auto 40px;
+            padding: 24px 40px;
+            background: #fff8e1;
+            border: 1px dashed #e0a800;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #6d5a00;
+            line-height: 1.7;
+        }
+        .build-notes h3 {
+            font-family: 'Roboto Slab', Georgia, serif;
+            font-size: 16px;
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        .build-notes ul {
+            margin: 8px 0 0 20px;
+        }
+        .build-notes li {
+            margin-bottom: 4px;
+        }
+        .build-notes code {
+            background: #fef3cd;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 13px;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .steps {
+                flex-direction: column;
+            }
+            .content {
+                padding: 24px 20px;
+            }
+            .page-banner {
+                padding: 28px 20px;
+            }
+            .page-banner h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Simulated header for context -->
+    <div class="site-header">
+        <div><strong>Pinellas Technical College</strong></div>
+        <div>
+            <a href="#">Student Record Request</a>
+            <a href="#" style="color: #FFCF01; font-weight: 600;">Post a Job Opportunity</a>
+            <a href="#">Student Links</a>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="#">Home</a>
+        <span>/</span>
+        <a href="#">Resources</a>
+        <span>/</span>
+        <a href="#">Career Center</a>
+        <span>/</span>
+        Post a Job Opportunity
+    </div>
+
+    <!-- Page Banner -->
+    <div class="page-banner">
+        <h1>Post a Job Opportunity</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <div class="highlight-box">
+            <span class="free-badge">FREE FOR EMPLOYERS</span>
+            <p>
+                There is no fee to post your job opening at Pinellas Technical College. Your position will be listed on <strong>Career Rocket</strong>, PTC's job board built exclusively for our students and graduates. It could be the gateway to your next great hire!
+            </p>
+        </div>
+
+        <div class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Contact Us</h3>
+                    <p>Email our Placement Coordinator to get started with your free job posting.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>We Set You Up</h3>
+                    <p>We'll create your employer account on Career Rocket so you can manage your listings.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Start Hiring</h3>
+                    <p>Post positions, job descriptions, skills required, salary info, and connect with PTC talent.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Primary CTA -->
+        <div class="cta-section">
+            <h2>Ready to Post Your Opening?</h2>
+            <p>Contact our Placement Coordinator to get your free employer account set up on Career Rocket.</p>
+            <a href="mailto:mediavillam@pcsb.org?subject=Job%20Posting%20Inquiry%20-%20Pinellas%20Technical%20College" class="cta-button">
+                Email Us to Get Started
+            </a>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="contact-info">
+            <h2>Placement Coordinator</h2>
+            <p>
+                <strong>Maria M. Mediavilla Thackrah</strong><br>
+                Email: <a href="mailto:mediavillam@pcsb.org">mediavillam@pcsb.org</a>
+            </p>
+            <p style="margin-top: 12px;">
+                <strong>Clearwater Campus</strong> &mdash; Wed, Thu + 1st &amp; 3rd Friday &mdash; (727) 538-7167 ext. 2097<br>
+                <strong>St. Petersburg Campus</strong> &mdash; Mon, Tue + 2nd &amp; last Friday &mdash; (727) 893-2500 ext. 2362
+            </p>
+            <p style="margin-top: 12px; font-size: 14px; color: #777;">
+                Placement hours: 7:00 AM to 2:00 PM
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Build Notes (for Marianne only, not for the live page) -->
+    <div class="build-notes">
+        <h3>Finalsite Build Notes (for your reference)</h3>
+        <ul>
+            <li><strong>This page replaces all three existing pages:</strong>
+                <code>www.myptc.edu/post-a-job-opportunity</code>,
+                <code>clearwater.myptc.edu/post-a-job</code>, and
+                <code>stpete.myptc.edu/link-three</code></li>
+            <li><strong>Recommended URL:</strong> <code>www.myptc.edu/post-a-job-opportunity</code> (keep existing main site URL)</li>
+            <li><strong>Campus pages:</strong> Set <code>clearwater.myptc.edu/post-a-job</code> and <code>stpete.myptc.edu/link-three</code> to redirect to the main page (or unpublish and update any nav links pointing to them)</li>
+            <li><strong>Navigation:</strong> The "Post a Job Opportunity" link already exists in the header utility nav and under Resources > Career Center. Make sure both point to this page.</li>
+            <li><strong>Fonts:</strong> Use Roboto (body) and Roboto Slab (headlines) per PTC brand guide</li>
+            <li><strong>Colors used:</strong> Logo Green (#008142), Logo Yellow (#FFCF01), standard text (#333)</li>
+            <li><strong>The yellow "build notes" box is just for you.</strong> Don't include it on the live page!</li>
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+{
+  "review_id": "ptc-live-audit-2026-04-15",
+  "review_date": "2026-04-15",
+  "review_type": "Live Site Audit",
+  "review_scope": "Current public-facing website",
+  "sites_reviewed": [
+    "https://www.myptc.edu",
+    "https://clearwater.myptc.edu",
+    "https://stpete.myptc.edu"
+  ],
+  "platform": "Finalsite CMS",
+  "review_agents": {
+    "prospective_student": {
+      "name": "Jaylen",
+      "profile": "19-year-old high school graduate, first-generation college student, interested in skilled trades, works part-time",
+      "focus": "Program discoverability, cost clarity, credibility, application flow"
+    },
+    "current_student": {
+      "name": "Maria",
+      "profile": "28-year-old Medical Assisting student, busy and impatient, balancing school with other commitments",
+      "focus": "Canvas access, class schedule, student services, campus info, current student navigation"
+    },
+    "parent_guardian": {
+      "name": "Sandra",
+      "profile": "Parent of 17-year-old automotive program candidate",
+      "focus": "Trust, cost/value, safety, outcomes, job placement data, accreditation"
+    },
+    "faculty": {
+      "name": "Robert",
+      "profile": "CNC Machining instructor, PTC St. Petersburg, 8 years experience",
+      "focus": "Program representation, student resources, faculty resources, campus accuracy"
+    },
+    "director": {
+      "name": "Dr. Williams",
+      "profile": "Director, PTC-Clearwater Campus",
+      "focus": "Institutional accuracy, accreditation/compliance, enrollment conversion, brand alignment, campus equity, legal risk"
+    },
+    "designer": {
+      "name": "Senior UX Designer",
+      "profile": "10 years higher education web experience",
+      "focus": "Visual design consistency, color/typography, layout, spacing, interactive elements, visual hierarchy, campus differentiation"
+    },
+    "accessibility_specialist": {
+      "name": "WCAG 2.1 AA Compliance Specialist",
+      "profile": "Accessibility expertise",
+      "focus": "WCAG compliance, ADA/Section 508 requirements, alt text, form labels, link text, keyboard navigation, color contrast"
+    },
+    "finalsite_cms": {
+      "name": "Finalsite CMS Expert",
+      "profile": "Content management platform specialist",
+      "focus": "Composer usage, custom code, maintenance issues, migration considerations, scalability, feature preservation"
+    }
+  },
+  "critical_issues": {
+    "total_count": 8,
+    "categories": {
+      "accessibility": 5,
+      "legal_compliance": 2,
+      "technical_errors": 1
+    },
+    "wcag_violations": {
+      "1_1_1_image_alt_text": {
+        "severity": "CRITICAL",
+        "affected_sites": ["All 3"],
+        "issue_count": 6,
+        "estimated_fix_hours": 10
+      },
+      "1_3_1_missing_h1": {
+        "severity": "CRITICAL",
+        "affected_sites": ["www.myptc.edu"],
+        "issue_count": 1,
+        "estimated_fix_hours": 1
+      },
+      "1_3_1_form_labels": {
+        "severity": "SERIOUS",
+        "affected_sites": ["All 3"],
+        "issue_count": 10,
+        "estimated_fix_hours": 12
+      },
+      "2_4_4_link_text": {
+        "severity": "SERIOUS",
+        "affected_sites": ["All 3"],
+        "issue_count": 13,
+        "estimated_fix_hours": 10
+      },
+      "4_1_2_button_names": {
+        "severity": "SERIOUS",
+        "affected_sites": ["All 3"],
+        "issue_count": 3,
+        "estimated_fix_hours": 4
+      }
+    }
+  },
+  "high_priority_issues": {
+    "total_count": 12,
+    "categories": {
+      "student_experience": 4,
+      "enrollment_friction": 5,
+      "navigation_architecture": 2,
+      "design_visual": 1
+    }
+  },
+  "medium_priority_issues": {
+    "total_count": 13,
+    "categories": {
+      "design_system": 2,
+      "accessibility_improvements": 3,
+      "content_organization": 3,
+      "technical_optimization": 5
+    }
+  },
+  "low_priority_issues": {
+    "total_count": 7,
+    "categories": {
+      "nice_to_have_enhancements": 7
+    }
+  },
+  "strengths_to_preserve": {
+    "total_count": 13,
+    "categories": {
+      "messaging_architecture": 2,
+      "technical_infrastructure": 3,
+      "content_organization": 5,
+      "accessibility_foundation": 2,
+      "user_experience": 1
+    }
+  },
+  "cross_agent_consensus": {
+    "patterns": [
+      {
+        "pattern": "Accessibility Barriers (WCAG 2.1 AA)",
+        "agents_flagging": 3,
+        "severity": "CRITICAL",
+        "key_issues": 6
+      },
+      {
+        "pattern": "Cost/Financial Clarity Missing",
+        "agents_flagging": 3,
+        "severity": "HIGH",
+        "enrollment_impact": "HIGH"
+      },
+      {
+        "pattern": "Campus Differentiation Weak",
+        "agents_flagging": 4,
+        "severity": "HIGH",
+        "enrollment_impact": "MEDIUM-HIGH"
+      },
+      {
+        "pattern": "Current Student Experience Secondary",
+        "agents_flagging": 3,
+        "severity": "HIGH",
+        "retention_impact": "MEDIUM"
+      },
+      {
+        "pattern": "Navigation & Program Scalability",
+        "agents_flagging": 3,
+        "severity": "MEDIUM-HIGH",
+        "operational_impact": "MEDIUM"
+      },
+      {
+        "pattern": "Compliance & Legal Risk",
+        "agents_flagging": 2,
+        "severity": "CRITICAL",
+        "legal_risk": "HIGH"
+      },
+      {
+        "pattern": "Button/CTA Hierarchy",
+        "agents_flagging": 3,
+        "severity": "MEDIUM",
+        "enrollment_impact": "MEDIUM"
+      }
+    ]
+  },
+  "remediation_roadmap": {
+    "phase_1_critical": {
+      "timeline": "1-2 weeks",
+      "priority": "IMMEDIATE",
+      "issue_count": 8,
+      "estimated_hours": 80,
+      "owner": "Webmaster + Accessibility Specialist + Compliance Officer",
+      "deliverables": [
+        "Image alt text audit and remediation",
+        "H1 heading addition to main site",
+        "Form label audit and remediation",
+        "Icon link/button aria-label additions",
+        "YouTube/Twitter URL fixes",
+        "Accreditation page consolidation plan",
+        "Compliance statement consolidation plan"
+      ]
+    },
+    "phase_2_high_priority": {
+      "timeline": "2-4 weeks",
+      "priority": "HIGH",
+      "issue_count": 12,
+      "estimated_hours": 120,
+      "owner": "Webmaster + Content Team + Admissions + Career Center",
+      "deliverables": [
+        "Cost data collection and publication",
+        "Job placement rates and outcomes",
+        "Campus comparison tool",
+        "Current student portal navigation redesign",
+        "Class schedule reference materials",
+        "Campus hours and student services info",
+        "Campus visual differentiation planning"
+      ]
+    },
+    "phase_3_medium_priority": {
+      "timeline": "4-12 weeks (during redesign)",
+      "priority": "MEDIUM",
+      "issue_count": 13,
+      "estimated_hours": 120,
+      "owner": "Designer + Webmaster + Development Team",
+      "deliverables": [
+        "Design system implementation",
+        "Campus-specific branding/colors",
+        "CTA button hierarchy redesign",
+        "Navigation structure improvements",
+        "Content duplication consolidation",
+        "Accessibility improvements (focus, contrast, keyboard nav)",
+        "Consolidated compliance page build"
+      ]
+    },
+    "phase_4_ongoing": {
+      "timeline": "Post-redesign",
+      "priority": "ONGOING",
+      "estimated_hours": 30,
+      "owner": "Webmaster + Web Team",
+      "deliverables": [
+        "Automated accessibility testing setup",
+        "Quarterly accessibility audit schedule",
+        "Analytics implementation and monitoring",
+        "Content management best practices documentation"
+      ]
+    }
+  },
+  "redesign_validation": {
+    "addresses": [
+      "Visual hierarchy and button treatment",
+      "Campus differentiation and branding",
+      "Current student portal prominence",
+      "CTA button visual hierarchy",
+      "Navigation information architecture"
+    ],
+    "partial_dependency": [
+      "Cost transparency (requires content sourcing)",
+      "Job placement data (requires institutional data)",
+      "Student experience (requires content + design)"
+    ],
+    "will_not_address_live_site": [
+      "Broken YouTube/Twitter links (technical fix)",
+      "Missing image alt text (content fix)",
+      "Form input labels (technical fix)",
+      "Missing H1 (technical fix)",
+      "Accessibility WCAG issues (technical fixes needed before redesign)"
+    ],
+    "critical_recommendation": "Treat accessibility remediation as PARALLEL WORKSTREAM to redesign, not sequential. Fix C1-C8 on live site now. Don't migrate old accessibility issues into new design."
+  },
+  "metrics_tracked": {
+    "total_issues_identified": 40,
+    "issues_by_severity": {
+      "critical": 8,
+      "high": 12,
+      "medium": 13,
+      "low": 7
+    },
+    "issues_by_site_affected": {
+      "all_3_sites": 24,
+      "specific_campus": 10,
+      "main_site_only": 3,
+      "campus_sites_only": 3
+    },
+    "wcag_violations": 6,
+    "legal_compliance_gaps": 2,
+    "technical_errors": 1,
+    "enrollment_friction_points": 5,
+    "student_experience_gaps": 4
+  },
+  "report_recipients": {
+    "primary": "Marianne Shaffer (Webmaster, Distance Learning Coordinator, PTC)",
+    "secondary": [
+      "Dr. Williams (Director, PTC-Clearwater)",
+      "PCSB Compliance Officer",
+      "PTC Leadership Team",
+      "Design/Development Team"
+    ]
+  },
+  "follow_up_actions": {
+    "immediate": "Present findings to Marianne and leadership; prioritize C1-C8 for immediate remediation",
+    "week_1": "Schedule accessibility specialist + webmaster kickoff; create detailed remediation checklist",
+    "week_2": "Begin Phase 1 critical fixes; coordinate with compliance officer on accreditation/legal consolidation",
+    "week_4": "Initiate Phase 2 content sourcing (costs, job placement); begin redesign parallel track",
+    "week_12": "Complete Phase 2; merge Phase 3 improvements into redesign; prepare for launch"
+  },
+  "document_generated": "2026-04-15",
+  "document_location": "/sessions/serene-quirky-pasteur/mnt/ptc-finalsite/docs/reviews/2026-04-15-live/",
+  "review_files": [
+    "consolidated-report.md",
+    "review-metadata.json",
+    "agent-prospective-student.md",
+    "agent-current-student.md",
+    "agent-parent-guardian.md",
+    "agent-faculty.md",
+    "agent-director.md",
+    "agent-designer.md",
+    "agent-accessibility.md",
+    "agent-finalsite-cms.md"
+  ]
+}
