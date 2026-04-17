@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumer Information &amp; Disclosures — Pinellas Technical College</title>
+    <meta name="description" content="Required consumer disclosures for Pinellas Technical College, including accreditation, non-discrimination, privacy, accessibility, student outcomes, and financial aid information.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Consumer Information Page Styles */
+        .page-hero {
+            background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
+            color: #fff;
+            padding: 4rem 0 3rem;
+        }
+        .page-hero__breadcrumb {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            opacity: 0.85;
+        }
+        .page-hero__breadcrumb a {
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .page-hero__title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 0.75rem;
+        }
+        .page-hero__subtitle {
+            font-size: 1.15rem;
+            max-width: 760px;
+            opacity: 0.92;
+            line-height: 1.6;
+        }
+
+        /* Intro band with compliance note */
+        .ci-intro {
+            background: var(--color-off-white, #F7F8FA);
+            padding: 2.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .ci-intro__inner {
+            max-width: 900px;
+            font-size: 1.02rem;
+            line-height: 1.7;
+            color: var(--color-gray-700, #4a5568);
+        }
+        .ci-intro__inner strong {
+            color: var(--color-gray-900);
+        }
+
+        /* Two-column layout: sticky sidebar + content */
+        .ci-layout {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 3rem;
+            padding: 3rem 0 4rem;
+            align-items: start;
+        }
+        .ci-sidebar {
+            position: sticky;
+            top: 110px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        .ci-sidebar__title {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--color-green);
+            margin: 0 0 0.75rem;
+        }
+        .ci-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .ci-sidebar li {
+            margin: 0.25rem 0;
+        }
+        .ci-sidebar a {
+            display: block;
+            font-size: 0.92rem;
+            color: var(--color-gray-700, #4a5568);
+            text-decoration: none;
+            padding: 0.4rem 0.5rem;
+            border-radius: 4px;
+            border-left: 2px solid transparent;
+            transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+        }
+        .ci-sidebar a:hover {
+            background: var(--color-off-white, #F7F8FA);
+            color: var(--color-green);
+            border-left-color: var(--color-green);
+        }
+
+        /* Section cards */
+        .ci-content {
+            max-width: 860px;
+        }
+        .ci-section {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 2rem 2.25rem;
+            margin-bottom: 1.75rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            scroll-margin-top: 120px;
+        }
+        .ci-section__heading {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin: 0 0 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--color-green-light, #8DC63F);
+        }
+        .ci-section__heading i {
+            color: var(--color-green);
+            font-size: 1.15rem;
+        }
+        .ci-section p {
+            font-size: 1rem;
+            line-height: 1.65;
+            color: var(--color-gray-700, #4a5568);
+            margin: 0 0 1rem;
+        }
+        .ci-section p:last-child {
+            margin-bottom: 0;
+        }
+        .ci-section strong {
+            color: var(--color-gray-900);
+        }
+        .ci-section ul {
+            margin: 0.25rem 0 1rem 1.25rem;
+            padding: 0;
+            font-size: 1rem;
+            color: var(--color-gray-700, #4a5568);
+            line-height: 1.75;
+        }
+        .ci-section ul:last-child {
+            margin-bottom: 0;
+        }
+        .ci-section a.inline-link {
+            color: var(--color-green);
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .ci-section a.inline-link:hover {
+            color: #006634;
+        }
+
+        /* Accreditation grid */
+        .accred-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .accred-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.1rem 1.25rem;
+            background: var(--color-off-white, #F7F8FA);
+        }
+        .accred-card h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            margin: 0 0 0.4rem;
+            color: var(--color-gray-900);
+        }
+        .accred-card p {
+            font-size: 0.9rem;
+            margin: 0 0 0.4rem;
+            line-height: 1.55;
+        }
+        .accred-card a {
+            font-size: 0.88rem;
+            color: var(--color-green);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .accred-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Compliance contact callout */
+        .compliance-contact {
+            background: var(--color-off-white, #F7F8FA);
+            border-left: 4px solid var(--color-green);
+            border-radius: 6px;
+            padding: 1.1rem 1.25rem;
+            margin-top: 1rem;
+        }
+        .compliance-contact__title {
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+        .compliance-contact p {
+            font-size: 0.92rem;
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        /* Document links list (for "request" type items) */
+        .doc-links {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0;
+        }
+        .doc-links li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed #e5e7eb;
+        }
+        .doc-links li:last-child {
+            border-bottom: none;
+        }
+        .doc-links i {
+            color: var(--color-green);
+            font-size: 1rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+        .doc-links strong {
+            display: block;
+            color: var(--color-gray-900);
+            font-size: 0.98rem;
+            margin-bottom: 0.15rem;
+        }
+        .doc-links p {
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Outcomes placeholder (links to COE/data) */
+        .outcomes-note {
+            background: #FFF8E1;
+            border-left: 4px solid var(--color-yellow, #FFCF01);
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            font-size: 0.95rem;
+            color: var(--color-gray-700, #4a5568);
+            line-height: 1.6;
+        }
+        .outcomes-note strong {
+            color: var(--color-gray-900);
+        }
+
+        /* Responsive */
+        @media (max-width: 960px) {
+            .ci-layout {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .ci-sidebar {
+                position: static;
+                top: auto;
+            }
+            .accred-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 600px) {
+            .page-hero__title {
+                font-size: 1.85rem;
+            }
+            .ci-section {
+                padding: 1.5rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         UTILITY BAR
+    ============================================= -->
+    <div class="utility-bar">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
+                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
+                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
+                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MAIN HEADER / NAVIGATION
+    ============================================= -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College — Opportunity Starts Here" id="header-logo" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
+                </div>
+            </a>
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <h4>By Category</h4>
+                                    <ul>
+                                        <li><a href="#">Health Sciences</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                        <li><a href="#">Skilled Trades &amp; Construction</a></li>
+                                        <li><a href="#">Transportation &amp; Logistics</a></li>
+                                        <li><a href="#">Culinary &amp; Hospitality</a></li>
+                                        <li><a href="#">Cosmetology &amp; Barbering</a></li>
+                                        <li><a href="#">Business &amp; Office</a></li>
+                                        <li><a href="#">Arts, Media &amp; Education</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <h4>Explore</h4>
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A–Z</a></li>
+                                        <li><a href="#">Evening &amp; Part-Time</a></li>
+                                        <li><a href="#">Apprenticeships</a></li>
+                                        <li><a href="#">Dual Enrollment</a></li>
+                                        <li><a href="#">Distance Learning</a></li>
+                                        <li><a href="#">ABE / GED / ESOL</a></li>
+                                        <li><a href="#">Student Orgs</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="admissions.html" class="main-nav__link">Admissions <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="admissions.html#enrollment-steps">Enrollment Steps</a></li>
+                                        <li><a href="admissions.html#pathways">Transfer Students</a></li>
+                                        <li><a href="admissions.html#pathways">Readmission</a></li>
+                                        <li><a href="admissions.html#testing">Testing &amp; Assessment</a></li>
+                                        <li><a href="admissions.html#campus-tours">Campus Tours</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="tuition-aid.html#rates">Tuition &amp; Fee Rates</a></li>
+                                        <li><a href="tuition-aid.html#pay">Pay Tuition</a></li>
+                                        <li><a href="tuition-aid.html#fafsa">FAFSA &amp; Eligibility</a></li>
+                                        <li><a href="tuition-aid.html#federal-state">Federal &amp; State Funding</a></li>
+                                        <li><a href="tuition-aid.html#scholarships">Scholarships</a></li>
+                                        <li><a href="tuition-aid.html#veterans">Veterans Benefits</a></li>
+                                        <li><a href="tuition-aid.html#net-price">Net Price Calculator</a></li>
+                                        <li><a href="tuition-aid.html#faq">Refund Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Campuses <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="clearwater.html">Clearwater Campus</a></li>
+                                        <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">Canvas Login</a></li>
+                                        <li><a href="#">Focus / SIS Portal</a></li>
+                                        <li><a href="#">Academic Calendar</a></li>
+                                        <li><a href="#">Transcript Request</a></li>
+                                        <li><a href="#">Tech Support</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="about.html" class="main-nav__link">About PTC <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="about.html">Welcome &amp; History</a></li>
+                                        <li><a href="about.html#accreditation">Accreditation</a></li>
+                                        <li><a href="#">Staff Directory</a></li>
+                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="site-header__actions">
+                <button class="search-toggle" id="search-toggle" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- ============================================
+             PAGE HERO
+        ============================================= -->
+        <section class="page-hero">
+            <div class="container">
+                <div class="page-hero__breadcrumb">
+                    <a href="index.html">Home</a> / Consumer Information
+                </div>
+                <h1 class="page-hero__title">Consumer Information &amp; Disclosures</h1>
+                <p class="page-hero__subtitle">Federal, state, and accreditation requirements call on colleges to publish certain information to help students and families make informed decisions. This page brings all of our required disclosures together in one place.</p>
+            </div>
+        </section>
+
+        <!-- ============================================
+             INTRO BAND
+        ============================================= -->
+        <section class="ci-intro">
+            <div class="container">
+                <div class="ci-intro__inner">
+                    <p>Pinellas Technical College (PTC) is a career and technical college operated by the Pinellas County School Board (PCSB). As a postsecondary institution receiving federal student aid and accredited by the Council on Occupational Education (COE), PTC is required to make the following consumer information publicly available. <strong>If you would like a paper copy of any document linked on this page, please contact the campus of your choice and one will be provided free of charge.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             MAIN LAYOUT (SIDEBAR + CONTENT)
+        ============================================= -->
+        <section class="container">
+            <div class="ci-layout">
+
+                <!-- STICKY SIDEBAR: Jump links -->
+                <aside class="ci-sidebar" aria-label="On this page">
+                    <h2 class="ci-sidebar__title">On this page</h2>
+                    <ul>
+                        <li><a href="#accreditation">Accreditation</a></li>
+                        <li><a href="#non-discrimination">Non-Discrimination &amp; Title IX</a></li>
+                        <li><a href="#privacy-ferpa">Privacy &amp; FERPA</a></li>
+                        <li><a href="#accessibility">Accessibility</a></li>
+                        <li><a href="#student-outcomes">Student Outcomes</a></li>
+                        <li><a href="#financial-aid">Financial Aid Disclosures</a></li>
+                        <li><a href="#sap">Satisfactory Academic Progress</a></li>
+                        <li><a href="#campus-security">Campus Security &amp; Clery</a></li>
+                        <li><a href="#drug-alcohol">Drug &amp; Alcohol Prevention</a></li>
+                        <li><a href="#copyright">Copyright &amp; File Sharing</a></li>
+                        <li><a href="#voter-reg">Voter Registration</a></li>
+                        <li><a href="#constitution-day">Constitution Day</a></li>
+                        <li><a href="#catalog-records">Catalog &amp; Records</a></li>
+                        <li><a href="#contact">Compliance Contacts</a></li>
+                    </ul>
+                </aside>
+
+                <!-- CONTENT -->
+                <div class="ci-content">
+
+                    <!-- Accreditation -->
+                    <article class="ci-section" id="accreditation">
+                        <h2 class="ci-section__heading"><i class="fas fa-award"></i> Accreditation</h2>
+                        <p>Pinellas Technical College is accredited by multiple external bodies. Students and prospective students are entitled to information about PTC's accreditation status, and may review accreditation documents on request.</p>
+                        <div class="accred-grid">
+                            <div class="accred-card">
+                                <h4>Council on Occupational Education (COE)</h4>
+                                <p>PTC's career and technical programs are accredited by COE, a national accrediting agency recognized by the U.S. Department of Education.</p>
+                                <a href="https://council.org" target="_blank" rel="noopener">Visit council.org <i class="fas fa-external-link-alt" style="font-size:0.75em;"></i></a>
+                            </div>
+                            <div class="accred-card">
+                                <h4>Cognia</h4>
+                                <p>As part of Pinellas County Schools, PTC is accredited by Cognia (formerly AdvancED / SACS CASI), covering K–12 and adult education.</p>
+                                <a href="https://www.cognia.org" target="_blank" rel="noopener">Visit cognia.org <i class="fas fa-external-link-alt" style="font-size:0.75em;"></i></a>
+                            </div>
+                        </div>
+                        <p style="margin-top:1rem;">To request a copy of the COE accreditation report or institutional self-study, please contact the compliance office listed at the bottom of this page.</p>
+                    </article>
+
+                    <!-- Non-Discrimination -->
+                    <article class="ci-section" id="non-discrimination">
+                        <h2 class="ci-section__heading"><i class="fas fa-balance-scale"></i> Non-Discrimination &amp; Title IX</h2>
+                        <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, gender identity, pregnancy, or disability in its educational programs, services, activities, or employment.</p>
+                        <p><strong>Title IX</strong> of the Education Amendments of 1972 protects individuals from discrimination based on sex in any education program or activity receiving federal financial assistance. This includes sexual harassment and sexual violence.</p>
+                        <p><strong>Reporting a concern:</strong> Any student, employee, or visitor who believes they have experienced or witnessed discrimination or harassment is encouraged to report it promptly. Reports may be made to a campus administrator or directly to the district's Office of Equity.</p>
+                        <div class="compliance-contact">
+                            <div class="compliance-contact__title">Equity &amp; Title IX Coordinator (PCSB)</div>
+                            <p>Pinellas County Schools Administration Building<br>
+                            301 Fourth Street SW, Largo, FL 33770<br>
+                            Phone: 727.588.6000<br>
+                            Web: <a href="https://www.pcsb.org" target="_blank" rel="noopener" class="inline-link">pcsb.org</a></p>
+                        </div>
+                    </article>
+
+                    <!-- Privacy / FERPA -->
+                    <article class="ci-section" id="privacy-ferpa">
+                        <h2 class="ci-section__heading"><i class="fas fa-shield-alt"></i> Privacy &amp; FERPA</h2>
+                        <p>The Family Educational Rights and Privacy Act (FERPA) is a federal law that protects the privacy of student education records. Once a student turns 18 or enrolls in a postsecondary institution, FERPA rights transfer from the parent to the student.</p>
+                        <p><strong>Under FERPA, eligible students have the right to:</strong></p>
+                        <ul>
+                            <li>Inspect and review their own education records</li>
+                            <li>Request that inaccurate or misleading records be corrected</li>
+                            <li>Consent before personally identifiable information is disclosed, except where FERPA allows disclosure without consent</li>
+                            <li>File a complaint with the U.S. Department of Education concerning alleged failures by PTC to comply with FERPA</li>
+                        </ul>
+                        <p><strong>Directory information:</strong> PTC may disclose "directory information" without written consent unless a student has opted out. Directory information may include name, dates of attendance, credential earned, and participation in officially recognized activities. Students may request in writing that their directory information be withheld.</p>
+                        <p>For the full PCSB privacy policy, visit <a href="https://www.pcsb.org" target="_blank" rel="noopener" class="inline-link">pcsb.org</a>.</p>
+                    </article>
+
+                    <!-- Accessibility -->
+                    <article class="ci-section" id="accessibility">
+                        <h2 class="ci-section__heading"><i class="fas fa-universal-access"></i> Accessibility</h2>
+                        <p>PTC is committed to ensuring that its website, facilities, programs, and services are accessible to individuals with disabilities in accordance with Section 504 of the Rehabilitation Act, Title II of the Americans with Disabilities Act (ADA), and applicable state law.</p>
+                        <p><strong>Website accessibility:</strong> This website is being designed and developed to meet Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. We regularly audit pages and components for contrast, keyboard navigation, and screen reader compatibility.</p>
+                        <p><strong>Requesting an accommodation:</strong> Students who need academic accommodations, accessible materials, or physical accommodations should contact their campus Student Services office as early as possible, ideally before the start of a program. Accommodations are determined on an individual basis.</p>
+                        <p><strong>Reporting an accessibility barrier:</strong> If you encounter a page, document, or physical space that is not accessible to you, please let us know. We will work with you to provide the information or service in an alternate format.</p>
+                        <div class="compliance-contact">
+                            <div class="compliance-contact__title">Accessibility Contact</div>
+                            <p>Email: accessibility@pcsb.org (verify before publishing)<br>
+                            Phone: 727.538.7167 (Clearwater) · 727.893.2500 (St. Pete)</p>
+                        </div>
+                    </article>
+
+                    <!-- Student Outcomes -->
+                    <article class="ci-section" id="student-outcomes">
+                        <h2 class="ci-section__heading"><i class="fas fa-chart-line"></i> Student Outcomes &amp; Right to Know</h2>
+                        <p>COE-accredited institutions are required to publish data on program completion, job placement, and, where applicable, licensure pass rates. PTC publishes these figures annually and reports them to our accrediting agency.</p>
+                        <p><strong>Outcome data available on request includes:</strong></p>
+                        <ul>
+                            <li>Program completion rates</li>
+                            <li>Job placement rates in the field of study</li>
+                            <li>Licensure pass rates for programs leading to state-issued credentials (e.g., nursing, cosmetology, barbering)</li>
+                            <li>Retention rates</li>
+                        </ul>
+                        <div class="outcomes-note">
+                            <strong>Data refresh:</strong> The most recent COE Annual Report outcome data is posted when published by the agency. Contact the Distance Learning Coordinator or campus Student Services office to request the current report.
+                        </div>
+                    </article>
+
+                    <!-- Financial Aid Disclosures -->
+                    <article class="ci-section" id="financial-aid">
+                        <h2 class="ci-section__heading"><i class="fas fa-hand-holding-usd"></i> Financial Aid Disclosures</h2>
+                        <p>Detailed financial aid information is published on our <a href="tuition-aid.html" class="inline-link">Tuition &amp; Financial Aid</a> page. Required federal disclosures for Title IV participants include:</p>
+                        <ul>
+                            <li><strong>Cost of Attendance:</strong> Tuition rates are published at <a href="tuition-aid.html#rates" class="inline-link">tuition-aid.html#rates</a>. Florida Resident: $2.91/clock hour. Non-Resident: $11.64/clock hour.</li>
+                            <li><strong>Net Price Calculator:</strong> Campus-specific calculators are available on the <a href="tuition-aid.html#net-price" class="inline-link">Tuition &amp; Aid page</a>.</li>
+                            <li><strong>Refund Policy:</strong> Published in the PTC student handbook and summarized on the <a href="tuition-aid.html#faq" class="inline-link">Tuition &amp; Aid FAQ</a>.</li>
+                            <li><strong>Federal School Code:</strong> 013847 (for FAFSA filing).</li>
+                            <li><strong>Withdrawal and Return of Title IV Funds:</strong> Students who withdraw before completing more than 60% of the payment period may be required to return a portion of federal aid received. Full policy available on request.</li>
+                            <li><strong>Verification:</strong> Students selected for verification by the U.S. Department of Education will be notified and asked to provide supporting documentation before aid is finalized.</li>
+                        </ul>
+                    </article>
+
+                    <!-- SAP -->
+                    <article class="ci-section" id="sap">
+                        <h2 class="ci-section__heading"><i class="fas fa-tasks"></i> Satisfactory Academic Progress (SAP)</h2>
+                        <p>Students receiving federal or state financial aid must meet Satisfactory Academic Progress standards to maintain eligibility. SAP is evaluated on both qualitative (grades) and quantitative (pace of completion) measures.</p>
+                        <p><strong>Key standards include:</strong></p>
+                        <ul>
+                            <li>Minimum grade requirement per program</li>
+                            <li>Minimum pace of completion (measured as clock hours completed vs. attempted)</li>
+                            <li>Maximum timeframe to complete the program, not to exceed 150% of the published program length</li>
+                        </ul>
+                        <p>Students who fall below SAP standards may be placed on warning or suspended from aid, and may appeal with documented extenuating circumstances. Full SAP policy is available in the PTC student handbook and from campus financial aid offices.</p>
+                    </article>
+
+                    <!-- Campus Security -->
+                    <article class="ci-section" id="campus-security">
+                        <h2 class="ci-section__heading"><i class="fas fa-shield-alt"></i> Campus Security &amp; Clery Act</h2>
+                        <p>The Jeanne Clery Act requires postsecondary institutions participating in federal financial aid programs to disclose information about crime on and near campus and to publish an Annual Security Report.</p>
+                        <p><strong>PTC's Annual Security Report includes:</strong></p>
+                        <ul>
+                            <li>Crime statistics for the previous three calendar years for specified categories of offenses</li>
+                            <li>Campus policies related to emergency response, timely warnings, and sexual assault prevention</li>
+                            <li>Information about law enforcement authority and relationships with local agencies</li>
+                            <li>Drug and alcohol policies and prevention programs</li>
+                        </ul>
+                        <p>Printed copies of the Annual Security Report are available free of charge at the front desk of either campus. An electronic copy may be requested by emailing campus administration.</p>
+                    </article>
+
+                    <!-- Drug/Alcohol -->
+                    <article class="ci-section" id="drug-alcohol">
+                        <h2 class="ci-section__heading"><i class="fas fa-ban"></i> Drug &amp; Alcohol Abuse Prevention</h2>
+                        <p>Under the Drug-Free Schools and Communities Act, PTC prohibits the unlawful possession, use, or distribution of illicit drugs and alcohol by students and employees on PTC premises or as part of any PTC activity.</p>
+                        <p><strong>PTC's drug and alcohol policy addresses:</strong></p>
+                        <ul>
+                            <li>Standards of conduct for students and employees</li>
+                            <li>Legal sanctions under federal, state, and local law</li>
+                            <li>Health risks associated with substance abuse</li>
+                            <li>Counseling, treatment, and rehabilitation resources available</li>
+                            <li>Disciplinary sanctions for violations, up to and including dismissal and referral to law enforcement</li>
+                        </ul>
+                        <p>The full policy is published in the PTC student handbook and reviewed annually. Free prevention resources are available through PCSB Student Services.</p>
+                    </article>
+
+                    <!-- Copyright -->
+                    <article class="ci-section" id="copyright">
+                        <h2 class="ci-section__heading"><i class="fas fa-copyright"></i> Copyright &amp; Peer-to-Peer File Sharing</h2>
+                        <p>PTC and Pinellas County Schools comply with U.S. copyright law (Title 17, U.S. Code) and the Higher Education Opportunity Act's provisions regarding peer-to-peer (P2P) file sharing.</p>
+                        <p><strong>Unauthorized distribution of copyrighted material</strong>, including peer-to-peer file sharing of music, movies, software, or games, may subject students to civil and criminal liabilities. Penalties can include actual damages plus profits, or statutory damages between $750 and $30,000 per work infringed (up to $150,000 for willful infringement), plus attorneys' fees and potential criminal charges.</p>
+                        <p>PTC employs technical measures on campus networks to deter unauthorized P2P distribution and provides students with information about legal alternatives for obtaining music, video, and software.</p>
+                    </article>
+
+                    <!-- Voter Registration -->
+                    <article class="ci-section" id="voter-reg">
+                        <h2 class="ci-section__heading"><i class="fas fa-vote-yea"></i> Voter Registration</h2>
+                        <p>Under the Higher Education Act, institutions of higher education must make a good-faith effort to distribute voter registration forms to each enrolled student.</p>
+                        <p>Florida voter registration forms are available at both campuses at Student Services. Students may also register online at <a href="https://registertovoteflorida.gov" target="_blank" rel="noopener" class="inline-link">registertovoteflorida.gov</a>.</p>
+                    </article>
+
+                    <!-- Constitution Day -->
+                    <article class="ci-section" id="constitution-day">
+                        <h2 class="ci-section__heading"><i class="fas fa-landmark"></i> Constitution Day</h2>
+                        <p>Each year on or around September 17, PTC observes Constitution Day with programming that commemorates the signing of the U.S. Constitution in 1787. Educational resources are made available to students and staff during the observance.</p>
+                    </article>
+
+                    <!-- Catalog / Records -->
+                    <article class="ci-section" id="catalog-records">
+                        <h2 class="ci-section__heading"><i class="fas fa-book"></i> Institutional Catalog &amp; Records Requests</h2>
+                        <p>The PTC institutional catalog is published annually and contains detailed information on programs of study, admissions, academic policies, and student services. The current catalog is available on request.</p>
+                        <ul class="doc-links">
+                            <li>
+                                <i class="fas fa-file-pdf"></i>
+                                <div>
+                                    <strong>Current Institutional Catalog</strong>
+                                    <p>Available as a PDF. Contact campus Student Services to request the current-year catalog.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-file-alt"></i>
+                                <div>
+                                    <strong>Transcript Request</strong>
+                                    <p>Former and current students may request official transcripts through the campus Student Services office. Requests typically process within 5 business days.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-clipboard-list"></i>
+                                <div>
+                                    <strong>Student Handbook</strong>
+                                    <p>Includes the refund policy, SAP policy, conduct standards, and grievance procedures.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Compliance Contacts -->
+                    <article class="ci-section" id="contact">
+                        <h2 class="ci-section__heading"><i class="fas fa-envelope"></i> Compliance Contacts</h2>
+                        <p>To request paper copies of any document linked on this page, or to report a concern related to any of the disclosures above, please use one of the contacts below.</p>
+                        <div class="compliance-contact">
+                            <div class="compliance-contact__title">PTC Clearwater Campus</div>
+                            <p>6100 154th Ave N, Clearwater, FL 33760<br>
+                            Phone: 727.538.7167</p>
+                        </div>
+                        <div class="compliance-contact" style="margin-top:0.75rem;">
+                            <div class="compliance-contact__title">PTC St. Petersburg Campus</div>
+                            <p>901 34th St S, St. Petersburg, FL 33711<br>
+                            Phone: 727.893.2500</p>
+                        </div>
+                        <div class="compliance-contact" style="margin-top:0.75rem;">
+                            <div class="compliance-contact__title">Pinellas County Schools District</div>
+                            <p>301 Fourth Street SW, Largo, FL 33770<br>
+                            Phone: 727.588.6000 · Web: <a href="https://www.pcsb.org" target="_blank" rel="noopener" class="inline-link">pcsb.org</a></p>
+                        </div>
+                    </article>
+
+                </div><!-- /.ci-content -->
+            </div><!-- /.ci-layout -->
+        </section>
+
+    </main>
+
+    <!-- ============================================
+         FOOTER
+    ============================================= -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline">Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="admissions.html">Admissions</a></li>
+                            <li><a href="tuition-aid.html">Tuition &amp; Aid</a></li>
+                            <li><a href="#">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Campuses</h4>
+                        <ul>
+                            <li><a href="clearwater.html">Clearwater Campus</a></li>
+                            <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                            <li><a href="#">Campus Maps</a></li>
+                            <li><a href="admissions.html#campus-tours">Schedule a Tour</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="consumer-information.html#accreditation">Accreditation</a></li>
+                            <li><a href="#">Careers at PTC</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#privacy-ferpa">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="#">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

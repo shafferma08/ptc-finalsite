@@ -403,3 +403,101 @@ All six main content pillars now have a dedicated page. The main site nav is ful
 3. **Finalsite Composer annotation pass** — add a short annotation block to `docs/implementation_plan.md` for each homepage section documenting the exact Composer panel type and settings that correspond to each mockup section. This would make handoff to Composer significantly easier.
 4. **Homepage program grid expansion** — still shows only 6 of 8 taxonomy clusters (Business & Office and Arts, Media & Education are missing). Marianne to decide whether to expand to an 8-card grid.
 5. **Delete root `campus-template.html`** — once Marianne confirms it is superseded by `_templates/campus-landing.html`.
+
+---
+
+## April 17, 2026 — Consumer Information Page & Composer Annotation Pass
+
+### What was completed
+
+**`consumer-information.html` — new COE compliance disclosures hub (created)**
+- Full main-site page built from `_templates/shell-main.html`: utility bar, 6-pillar nav, footer with accreditation badges
+- Page hero with green gradient and breadcrumb (Home / Consumer Information)
+- Intro band explaining the purpose of the page and offering free paper copies on request
+- Two-column layout: sticky sidebar with jump-nav links on the left (260 px wide), stacked disclosure cards on the right (max 860 px)
+- 14 disclosure sections, each built as a bordered card with an icon heading and scoped anchor ID:
+  1. Accreditation (COE + Cognia, two-card grid with external links)
+  2. Non-Discrimination &amp; Title IX (PCSB Equity coordinator contact callout)
+  3. Privacy &amp; FERPA (student rights list, directory information opt-out guidance)
+  4. Accessibility (WCAG 2.1 AA claim, accommodation request process, accessibility contact callout)
+  5. Student Outcomes &amp; Right to Know (completion, placement, licensure, retention rates; COE annual report note in yellow callout)
+  6. Financial Aid Disclosures (cost of attendance, NPC, refund, Federal School Code 013847, R2T4, verification)
+  7. Satisfactory Academic Progress (SAP qualitative + quantitative measures, 150% max timeframe, appeals)
+  8. Campus Security &amp; Clery (ASR contents, how to obtain a printed copy)
+  9. Drug &amp; Alcohol Abuse Prevention (policy coverage, sanctions, counseling resources)
+  10. Copyright &amp; Peer-to-Peer File Sharing (HEOA P2P notice, penalty ranges, legal alternatives note)
+  11. Voter Registration (Florida online registration link + campus Student Services pickup)
+  12. Constitution Day (annual observance around Sept 17)
+  13. Institutional Catalog &amp; Records Requests (3 doc-link cards: Catalog, Transcript Request, Student Handbook)
+  14. Compliance Contacts (three contact cards: Clearwater, St. Pete, PCSB District)
+- All styles scoped in a page `<style>` block; responsive rules collapse to single column at ≤960 px
+- Compliance contact callouts use a green left-border, off-white background pattern for easy scanning
+- Yellow "outcomes-note" callout used for the data-refresh notice so it's visually distinct from the gray-toned contact callouts
+
+**Site-wide footer wire-up (16 files updated)**
+
+Replaced placeholder `<a href="#">Consumer Information</a>` with `<a href="consumer-information.html">Consumer Information</a>` and placeholder `<a href="#">Non-Discrimination</a>` with `<a href="consumer-information.html#non-discrimination">Non-Discrimination</a>` across:
+
+`index.html`, `about.html`, `admissions.html`, `programs.html`, `tuition-aid.html`, `contact.html`, `clearwater.html`, `stpete.html`, `welding-clearwater.html`, `schedule-clearwater.html`, `campus-template.html`, `_templates/shell-main.html`, `_templates/shell-clearwater.html`, `_templates/shell-stpete.html`, `_templates/campus-landing.html`, `mockups/main-site/index.html`
+
+Additionally, the footer-bottom `Privacy Policy | Accessibility | Sitemap` row was rewired on the same 16 files to link the first two items to the new anchors (`consumer-information.html#privacy-ferpa`, `consumer-information.html#accessibility`). Sitemap still points to `#` since no sitemap page exists yet.
+
+**`docs/implementation_plan.md` — full Finalsite Composer annotation pass**
+- Replaced the short original plan with an expanded, Composer-focused handoff document
+- Added a Design Tokens table mapping CSS custom properties to Theme Manager settings
+- Kept the original alternating panel hierarchy list
+- Added a "Finalsite Composer panel map (homepage)" section with 8 entries (Hero through Footer), each documenting the Layout Type (`100/`, `33/33/33`, `50/50`, `25/25/25/25`), Background setting, Elements to place, custom class requirements, and accessibility checks
+- Added "Page-level Composer notes" for `about.html`, `admissions.html`, `tuition-aid.html`, `contact.html`, `consumer-information.html`, and the campus pages — each showing the panel sequence in Composer terms
+- Added a per-panel Accessibility Checklist table for quick reference during Composer build
+- Document is now the single source of truth for Composer handoff and can be reviewed by Marianne before the Composer build begins
+
+### Decisions made
+
+- **All disclosures live on a single page with anchor navigation** rather than spreading them across multiple pages. Reasoning: COE reviewers and federal auditors expect a consolidated "Consumer Information" hub. A single page with a sticky in-page nav is easier to maintain than many stubs, and the sidebar anchors serve the same discovery purpose.
+- **Yellow "outcomes-note" callout** used sparingly for the one case where data freshness is a real concern (COE annual report timing). Other callouts use the green-border pattern so the yellow remains an attention-grabbing exception.
+- **Accessibility contact email `accessibility@pcsb.org`** is included as a best-guess formatted address with an explicit "verify before publishing" note. Same approach as the campus emails on `contact.html`.
+- **Accreditation footer link** on the main-site pages was left pointing to `about.html#accreditation` (not changed). The About page's accreditation section is the correct first stop for a general reader; the compliance deep-dive on `consumer-information.html#accreditation` is better reached from the footer Consumer Information link, the Campus Info nav dropdown, or the intra-page sidebar.
+- **No changes made to the Resources footer link structure** beyond the three wirings above. "Careers at PTC" and "Campus Maps" remain as-is until those pages exist.
+- **Composer annotation pass written as a handoff document**, not a checklist. Each panel entry is structured so a Finalsite consultant or a Marianne build session can follow it end-to-end without cross-referencing the mockup. The goal is to make Composer build time as deterministic as possible.
+
+### Issues or blockers
+
+- **Placeholder compliance contact details:** The Equity / Title IX contact, Accessibility contact email, and some of the phone numbers on `consumer-information.html` use the district's main number and a best-guess email. Marianne should verify each before the page goes live.
+- **Clery Act statistics placeholder:** The Campus Security section describes what the Annual Security Report contains but does not include the statistics themselves. For a live deployment, PTC must either embed the most recent three years of crime stats directly or link to a hosted PDF. Both options work in Composer.
+- **COE outcome data not embedded:** The Student Outcomes section explains what data is available but does not yet show completion, placement, or licensure rates. When Marianne has the current COE Annual Report figures, those can be dropped into the `#student-outcomes` section. A simple 4-stat row (`25/25/25/25`) with campus-level numbers would be the cleanest presentation.
+- **"Sitemap" still a placeholder link** in every footer. A basic sitemap page is quick to build (static list of all pages grouped by nav pillar) and would close one of the last `#` links in the global footer.
+- **Leadership names, Pay Tuition URL, and NPC URLs** from prior sessions are still open items awaiting Marianne's input.
+
+### Main site footer link coverage
+
+| Footer link | Destination | Status |
+|---|---|---|
+| Quick Links · Programs | programs.html | Wired |
+| Quick Links · Admissions | admissions.html | Wired |
+| Quick Links · Tuition & Aid | tuition-aid.html | Wired |
+| Quick Links · Student Resources | `#` | Awaiting target page |
+| Quick Links · About PTC | about.html | Wired |
+| Campuses · Clearwater | clearwater.html | Wired |
+| Campuses · St. Pete | stpete.html | Wired |
+| Campuses · Maps | `#` | Awaiting target page |
+| Campuses · Schedule a Tour | admissions.html#campus-tours | Wired |
+| Resources · Consumer Information | consumer-information.html | **Wired (this session)** |
+| Resources · Non-Discrimination | consumer-information.html#non-discrimination | **Wired (this session)** |
+| Resources · Accreditation | about.html#accreditation | Wired |
+| Resources · Careers at PTC | `#` | Awaiting target page |
+| Resources · Contact Us | contact.html | Wired |
+| Bottom · Privacy Policy | consumer-information.html#privacy-ferpa | **Wired (this session)** |
+| Bottom · Accessibility | consumer-information.html#accessibility | **Wired (this session)** |
+| Bottom · Sitemap | `#` | Awaiting target page |
+
+11 of the 17 main-site global footer links now resolve to real content. The remaining six (Student Resources, Campus Maps, Careers at PTC, Sitemap, and two sitemap-like targets) are marketing or utility pages that can be built as lightweight stubs when needed.
+
+### Next priorities
+
+1. **welding-stpete.html** — St. Pete equivalent of the welding program page; `programs.html` currently links only to the Clearwater version. With the compliance work out of the way, this is the next significant content gap.
+2. **Sitemap page** — a simple `sitemap.html` listing every page grouped by nav pillar would close one of the three remaining footer bottom-row placeholders and help search indexing. Easy win.
+3. **Verify placeholder contact details on `consumer-information.html`** — accessibility email, campus phone routing for compliance inquiries, Equity coordinator info. Best done directly with PCSB.
+4. **Embed or link COE outcome data** on `consumer-information.html#student-outcomes` once Marianne has the current Annual Report figures.
+5. **Homepage program grid expansion** (carried over) — 6 of 8 taxonomy clusters shown. Layout decision for Marianne.
+6. **Delete root `campus-template.html`** (carried over) — once confirmed it's superseded by `_templates/campus-landing.html`.
+

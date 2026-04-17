@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PTC Pattern Library — Brochure-Inspired Components</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&family=Caveat+Brush&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   PTC PATTERN LIBRARY — Brochure Translation
+   Companion to styles.css. Tokens added here for
+   signature brochure elements not yet in main CSS.
+   ============================================ */
+
+:root {
+  /* Brand per Brand Guide Sheet.pdf */
+  --green: #008142;
+  --green-dark: #005F31;
+  --green-deep: #003D1F;
+  --green-light: #E8F5EC;
+  --yellow: #FFCF01;
+  --yellow-soft: #FFE57A;
+  --accent-lime: #8DC63F;      /* OWI-BIS PMS 375 */
+  --red-accent: #C8102E;       /* brochure script red */
+  --ink: #1A1A1A;
+  --gray-600: #4B5563;
+  --gray-300: #D1D5DB;
+  --paper: #FFFFFF;
+
+  --font-heading: 'Roboto Slab', Georgia, serif;
+  --font-body: 'Roboto', system-ui, sans-serif;
+  --font-script: 'Caveat Brush', 'Permanent Marker', cursive;
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow-card: 0 10px 28px rgba(0, 60, 30, 0.12);
+  --shadow-hero: 0 30px 80px rgba(0, 0, 0, 0.25);
+
+  --container: 1200px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: #FAFAF8;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+
+/* ============================================
+   LAYOUT HELPERS
+   ============================================ */
+.wrap { max-width: var(--container); margin-inline: auto; padding-inline: 24px; }
+
+.section { padding-block: 72px; }
+.section--tight { padding-block: 40px; }
+
+/* Library chrome */
+.lib-toc {
+  background: var(--ink);
+  color: #fff;
+  padding: 14px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 13px;
+  position: sticky; top: 0; z-index: 50;
+}
+.lib-toc strong { color: var(--yellow); margin-right: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
+.lib-toc a { color: #fff; text-decoration: none; opacity: 0.85; }
+.lib-toc a:hover { opacity: 1; color: var(--yellow); }
+
+.lib-label {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 12px;
+  color: var(--green);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.lib-caption {
+  color: var(--gray-600);
+  font-size: 14px;
+  max-width: 640px;
+  margin-top: 8px;
+}
+
+/* ============================================
+   NETWORK PATTERN BACKGROUND
+   Recreates the brochure's signature dots + lines
+   motif as an inline SVG data URI. Sits behind dark
+   green sections and can be tinted via overlay.
+   ============================================ */
+.network-bg {
+  background-color: var(--green-deep);
+  background-image:
+    radial-gradient(ellipse at 75% 50%, rgba(141, 198, 63, 0.35) 0%, transparent 55%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><g fill='none' stroke='%23FFCF01' stroke-width='0.6' opacity='0.45'><line x1='80' y1='110' x2='170' y2='60'/><line x1='170' y1='60' x2='260' y2='140'/><line x1='260' y1='140' x2='180' y2='230'/><line x1='180' y1='230' x2='80' y2='110'/><line x1='260' y1='140' x2='360' y2='90'/><line x1='360' y1='90' x2='430' y2='170'/><line x1='430' y1='170' x2='500' y2='110'/><line x1='430' y1='170' x2='360' y2='260'/><line x1='360' y1='260' x2='260' y2='140'/><line x1='360' y1='260' x2='460' y2='320'/><line x1='460' y1='320' x2='540' y2='250'/><line x1='540' y1='250' x2='500' y2='110'/><line x1='180' y1='230' x2='90' y2='320'/><line x1='90' y1='320' x2='200' y2='380'/><line x1='200' y1='380' x2='300' y2='330'/><line x1='300' y1='330' x2='360' y2='260'/><line x1='300' y1='330' x2='360' y2='440'/><line x1='360' y1='440' x2='460' y2='320'/><line x1='360' y1='440' x2='270' y2='500'/><line x1='270' y1='500' x2='160' y2='470'/><line x1='160' y1='470' x2='90' y2='320'/><line x1='160' y1='470' x2='200' y2='380'/><line x1='270' y1='500' x2='380' y2='540'/><line x1='380' y1='540' x2='460' y2='470'/><line x1='460' y1='470' x2='360' y2='440'/><line x1='460' y1='470' x2='540' y2='400'/><line x1='540' y1='400' x2='460' y2='320'/></g><g fill='%23FFCF01'><circle cx='80' cy='110' r='2.5'/><circle cx='170' cy='60' r='3'/><circle cx='260' cy='140' r='2.5'/><circle cx='180' cy='230' r='3'/><circle cx='360' cy='90' r='2.5'/><circle cx='430' cy='170' r='3'/><circle cx='500' cy='110' r='2.5'/><circle cx='360' cy='260' r='3.5'/><circle cx='460' cy='320' r='2.5'/><circle cx='540' cy='250' r='3'/><circle cx='90' cy='320' r='3'/><circle cx='200' cy='380' r='2.5'/><circle cx='300' cy='330' r='3'/><circle cx='360' cy='440' r='2.5'/><circle cx='270' cy='500' r='3'/><circle cx='160' cy='470' r='2.5'/><circle cx='380' cy='540' r='3'/><circle cx='460' cy='470' r='2.5'/><circle cx='540' cy='400' r='3'/></g></svg>");
+  background-size: auto, 600px 600px;
+  background-position: center, left center;
+  background-repeat: no-repeat, repeat;
+  color: #fff;
+  position: relative;
+}
+
+/* ============================================
+   HERO — "Skilled. Certified. Employed."
+   Translates the brochure cover treatment.
+   ============================================ */
+.hero {
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.hero::before {
+  /* yellow swash on left edge, echoes brochure cover */
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 38%;
+  background: linear-gradient(90deg, var(--yellow) 0%, var(--yellow) 55%, transparent 100%);
+  z-index: 1;
+}
+.hero .wrap { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; padding-block: 80px; }
+.hero__eyebrow {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  margin-bottom: 18px;
+}
+.hero__title {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(48px, 7vw, 88px);
+  line-height: 0.95;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+.hero__title span { display: block; }
+.hero__script {
+  font-family: var(--font-script);
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--red-accent);
+  margin-top: 14px;
+  transform: rotate(-4deg) translateX(20px);
+  transform-origin: left center;
+  display: inline-block;
+}
+.hero__meta {
+  margin-top: 34px;
+  color: #fff;
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+.hero__meta span { display: block; font-size: 14px; opacity: 0.9; letter-spacing: 0.05em; }
+.hero__meta a { color: var(--yellow); text-decoration: none; font-size: 18px; }
+.hero__visual {
+  justify-self: end;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 4 / 5;
+  background:
+    radial-gradient(circle at 30% 45%, rgba(255, 207, 1, 0.7) 0%, transparent 55%),
+    linear-gradient(135deg, var(--green-dark) 0%, var(--green-deep) 80%);
+  border: 3px solid rgba(255, 207, 1, 0.25);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hero);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 30px;
+  position: relative;
+}
+.hero__visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='%23FFCF01' opacity='0.5'><circle cx='20' cy='30' r='0.8'/><circle cx='55' cy='15' r='1'/><circle cx='80' cy='40' r='0.8'/><circle cx='35' cy='55' r='1'/><circle cx='70' cy='70' r='0.8'/><circle cx='15' cy='80' r='1'/><circle cx='88' cy='85' r='0.8'/></g><g stroke='%23FFCF01' stroke-width='0.15' opacity='0.3' fill='none'><line x1='20' y1='30' x2='55' y2='15'/><line x1='55' y1='15' x2='80' y2='40'/><line x1='20' y1='30' x2='35' y2='55'/><line x1='35' y1='55' x2='70' y2='70'/><line x1='70' y1='70' x2='80' y2='40'/><line x1='15' y1='80' x2='35' y2='55'/><line x1='15' y1='80' x2='70' y2='70'/><line x1='88' y1='85' x2='70' y2='70'/></g></svg>") center/cover;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.hero__visual-label {
+  position: relative;
+  z-index: 1;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 8px 14px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+@media (max-width: 900px) {
+  .hero::before { width: 100%; opacity: 0.25; }
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero__visual { display: none; }
+}
+
+/* ============================================
+   SECTION BAND — Dark green header like
+   "GET AHEAD… TRAINING FOR THE WORKFORCE"
+   ============================================ */
+.band {
+  background: var(--green-deep);
+  color: #fff;
+  padding: 28px 0;
+  border-top: 4px solid var(--yellow);
+  border-bottom: 4px solid var(--yellow);
+  position: relative;
+  overflow: hidden;
+}
+.band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 80'><g fill='none' stroke='%238DC63F' stroke-width='0.6' opacity='0.4'><line x1='20' y1='40' x2='80' y2='20'/><line x1='80' y1='20' x2='140' y2='55'/><line x1='140' y1='55' x2='200' y2='30'/><line x1='200' y1='30' x2='260' y2='50'/><line x1='260' y1='50' x2='320' y2='25'/><line x1='320' y1='25' x2='380' y2='45'/></g><g fill='%238DC63F'><circle cx='20' cy='40' r='1.8'/><circle cx='80' cy='20' r='2'/><circle cx='140' cy='55' r='1.8'/><circle cx='200' cy='30' r='2'/><circle cx='260' cy='50' r='1.8'/><circle cx='320' cy='25' r='2'/><circle cx='380' cy='45' r='1.8'/></g></svg>") right center / 400px 80px no-repeat;
+  opacity: 0.8;
+  pointer-events: none;
+}
+.band__title {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: clamp(26px, 4vw, 40px);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #fff;
+  position: relative;
+}
+.band__title em {
+  color: var(--yellow);
+  font-style: normal;
+}
+
+/* ============================================
+   CATEGORY PILL LABEL
+   Yellow rounded pill with green text — used to
+   head each program cluster in the brochure.
+   ============================================ */
+.pill {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--green);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 10px 28px;
+  border-radius: 999px;
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08);
+}
+.pill--small { font-size: 13px; padding: 6px 16px; }
+
+/* ============================================
+   PROGRAM CARD — The repeating unit from the
+   brochure: rounded photo with yellow border,
+   program name, stacked info block, blurb.
+   ============================================ */
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px 28px;
+}
+.program-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 320px;
+  margin-inline: auto;
+}
+.program-card__photo {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  border: 4px solid var(--yellow);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  background: var(--gray-300);
+}
+.program-card__photo img { width: 100%; height: 100%; object-fit: cover; }
+.program-card__name {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.15;
+  color: var(--green);
+  margin-top: 18px;
+  letter-spacing: -0.005em;
+}
+.program-card__meta {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.6;
+  text-align: left;
+  align-self: stretch;
+}
+.program-card__meta strong { font-weight: 700; }
+.program-card__blurb {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--gray-600);
+  line-height: 1.55;
+  text-align: left;
+  align-self: stretch;
+}
+
+/* ============================================
+   GETTING STARTED — 3 circular steps
+   ============================================ */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  text-align: center;
+  max-width: 900px;
+  margin-inline: auto;
+}
+.step__circle {
+  width: 180px; height: 180px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background:
+    conic-gradient(from 180deg, var(--yellow) 0 50%, var(--green) 50% 100%);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-card);
+}
+.step__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+  color: var(--green);
+  padding-top: 18px;
+}
+.step__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #fff;
+  font-family: var(--font-heading);
+  padding-bottom: 18px;
+}
+.step__badge-label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.85; }
+.step__badge-num { font-size: 34px; font-weight: 900; }
+.step__label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1.3;
+  max-width: 220px;
+  margin-inline: auto;
+}
+.steps-heading {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(32px, 5vw, 52px);
+  color: var(--green);
+  text-align: center;
+  margin-bottom: 48px;
+}
+.steps-heading em {
+  font-family: var(--font-script);
+  color: var(--yellow);
+  font-style: normal;
+  -webkit-text-stroke: 2px var(--green);
+  text-stroke: 2px var(--green);
+  font-size: 1.1em;
+  margin-left: 8px;
+}
+@media (max-width: 720px) { .steps { grid-template-columns: 1fr; } }
+
+/* ============================================
+   QUOTE BLOCKS — Mission / Vision
+   Evokes the brochure's yellow sunburst-backed
+   italic quote blocks.
+   ============================================ */
+.quote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.quote {
+  background: var(--yellow-soft);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.quote::before {
+  /* sunburst rays behind the quote */
+  content: '';
+  position: absolute;
+  inset: -30%;
+  background: conic-gradient(from 0deg,
+    rgba(255, 207, 1, 0) 0deg, rgba(255, 255, 255, 0.6) 10deg, rgba(255, 207, 1, 0) 20deg,
+    rgba(255, 207, 1, 0) 30deg, rgba(255, 255, 255, 0.6) 40deg, rgba(255, 207, 1, 0) 50deg,
+    rgba(255, 207, 1, 0) 60deg, rgba(255, 255, 255, 0.6) 70deg, rgba(255, 207, 1, 0) 80deg,
+    rgba(255, 207, 1, 0) 90deg, rgba(255, 255, 255, 0.6) 100deg, rgba(255, 207, 1, 0) 110deg,
+    rgba(255, 207, 1, 0) 360deg);
+  opacity: 0.35;
+  z-index: -1;
+  animation: slow-rotate 120s linear infinite;
+}
+@keyframes slow-rotate { to { transform: rotate(360deg); } }
+.quote__kicker {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  border-bottom: 2px solid var(--green);
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.quote__text {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.35;
+}
+@media (max-width: 720px) { .quote-grid { grid-template-columns: 1fr; } }
+
+/* ============================================
+   HEADING ACCENT (the "60+ Programs" tagline look)
+   ============================================ */
+.tag-headline {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--green);
+  text-align: center;
+  line-height: 1.1;
+}
+.tag-headline em {
+  font-family: var(--font-script);
+  color: var(--yellow);
+  -webkit-text-stroke: 2px var(--green);
+  font-style: normal;
+  font-size: 1.15em;
+}
+
+/* ============================================
+   COLOR / TYPE SWATCHES — spec reference
+   ============================================ */
+.swatch-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+.swatch {
+  padding: 20px 18px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.45;
+  box-shadow: var(--shadow-card);
+}
+.swatch strong { display: block; font-family: var(--font-heading); font-size: 16px; margin-bottom: 4px; }
+.swatch code { font-family: ui-monospace, monospace; font-size: 12px; display: block; margin-top: 4px; opacity: 0.85; }
+
+.type-sample { margin-bottom: 24px; }
+.type-sample__label { font-family: var(--font-body); font-size: 12px; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+.type-sample--heading { font-family: var(--font-heading); font-weight: 800; font-size: 44px; color: var(--green); line-height: 1.05; }
+.type-sample--body { font-family: var(--font-body); font-size: 17px; color: var(--ink); max-width: 640px; line-height: 1.55; }
+.type-sample--script { font-family: var(--font-script); font-size: 40px; color: var(--red-accent); transform: rotate(-3deg); display: inline-block; }
+
+/* ============================================
+   FOOTNOTE (build notes)
+   ============================================ */
+.footnote {
+  background: var(--ink);
+  color: #d9d9d9;
+  padding: 40px 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.footnote h4 { color: var(--yellow); font-family: var(--font-heading); letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px; margin-bottom: 12px; }
+.footnote p + p { margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<nav class="lib-toc">
+  <strong>Pattern Library</strong>
+  <a href="#hero">Hero</a>
+  <a href="#band">Section band</a>
+  <a href="#pills">Category pills</a>
+  <a href="#cards">Program cards</a>
+  <a href="#steps">Getting started</a>
+  <a href="#quotes">Mission / Vision</a>
+  <a href="#tokens">Tokens</a>
+</nav>
+
+<!-- ============================================
+     HERO (brochure cover translated)
+     ============================================ -->
+<section id="hero" class="hero network-bg">
+  <div class="wrap">
+    <div>
+      <span class="hero__eyebrow">This is your future</span>
+      <h1 class="hero__title">
+        <span>Skilled.</span>
+        <span>Certified.</span>
+        <span>Employed.</span>
+      </h1>
+      <div class="hero__script">and it all starts now.</div>
+      <div class="hero__meta">
+        <div>
+          <span>Clearwater</span>
+          <a href="tel:7275387167">727.538.7167</a>
+        </div>
+        <div>
+          <span>St. Petersburg</span>
+          <a href="tel:7278932500">727.893.2500</a>
+        </div>
+        <div>
+          <span>Online</span>
+          <a href="https://myptc.edu">myptc.edu</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <span class="hero__visual-label">2025-26</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     SECTION BAND
+     ============================================ -->
+<div id="band" class="band">
+  <div class="wrap">
+    <h2 class="band__title">Get Ahead… <em>Training for the Workforce</em></h2>
+  </div>
+</div>
+
+<!-- ============================================
+     PROGRAM CARD GRID
+     ============================================ -->
+<section id="cards" class="section">
+  <div class="wrap">
+    <div class="lib-label">Component</div>
+    <h3 class="tag-headline">60+ Programs… <em>40+ Career Paths</em></h3>
+    <p class="lib-caption" style="margin-inline: auto; text-align: center;">The repeating program card: rounded photo with yellow border, program name in serif, stacked location/length/tuition block, short blurb.</p>
+
+    <div id="pills" style="margin-top: 56px; text-align: center;">
+      <span class="pill">Automotive &amp; Transportation</span>
+    </div>
+
+    <div class="program-grid" style="margin-top: 32px;">
+      <article class="program-card">
+        <div class="program-card__photo"><img src="assets/brochure-extracted/photo_p4_i5.jpeg" alt="Student in commercial truck cab"></div>
+        <h4 class="program-card__name">Commercial Vehicle Driving</h4>
+        <div class="program-card__meta">
+          <strong>Location:</strong> St. Petersburg<br>
+          <strong>Length:</strong> 320 hrs (approx 3 mos)<br>
+          <strong>Tuition:</strong> $935<br>
+          <strong>Other:</strong> $2,397* (bks, equip &amp; fees; estimate)
+        </div>
+        <p class="program-card__blurb">Learn the skills to become a Class A licensed tractor trailer truck driver with emphasis on D.O.T. regulations, cargo handling, trip planning, and vehicle inspection and operations regulations.</p>
+      </article>
+
+      <article class="program-card">
+        <div class="program-card__photo"><img src="assets/brochure-extracted/photo_p6_i4.jpeg" alt="Students at computers coding"></div>
+        <h4 class="program-card__name">Web Development</h4>
+        <div class="program-card__meta">
+          <strong>Location:</strong> Clearwater<br>
+          <strong>Length:</strong> 1050 hrs (approx 11 mos)<br>
+          <strong>Tuition:</strong> $3,066<br>
+          <strong>Other:</strong> $1,629 (bks, equip &amp; fees; estimate)
+        </div>
+        <p class="program-card__blurb">Craft sophisticated web solutions with a focus on modern web technologies. Our program delivers in-depth training in front-end and back-end development including HTML, CSS, JavaScript, and PHP.</p>
+      </article>
+
+      <article class="program-card">
+        <div class="program-card__photo"><img src="assets/brochure-extracted/photo_p7_i0.jpeg" alt="Students working on construction project"></div>
+        <h4 class="program-card__name">Building Trades &amp; Construction Design</h4>
+        <div class="program-card__meta">
+          <strong>Length:</strong> 900 hrs (approx 9 months)<br>
+          <strong>Tuition:</strong> $3,066<br>
+          <strong>Other:</strong> $1,300 (estimated)
+        </div>
+        <p class="program-card__blurb">Curriculum includes applying construction techniques, reading plans and specifications, and developing trade skills in carpentry, masonry, electricity, plumbing and air conditioning.</p>
+      </article>
+
+      <article class="program-card">
+        <div class="program-card__photo"><img src="assets/brochure-extracted/photo_p5_i5.jpeg" alt="Cosmetology student practicing techniques"></div>
+        <h4 class="program-card__name">Facials Specialty</h4>
+        <div class="program-card__meta">
+          <strong>Location:</strong> St. Petersburg<br>
+          <strong>Length:</strong> 220 hrs (approx 3 mos)<br>
+          <strong>Tuition:</strong> $642<br>
+          <strong>Other:</strong> $1,016* (bks, equip &amp; fees; estimate)
+        </div>
+        <p class="program-card__blurb">Program content includes communication, leadership, professional ethics, legal responsibilities, employability skills, safe and efficient work practices, and Florida cosmetology law and rules.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     GETTING STARTED — 3-STEP MODULE
+     ============================================ -->
+<section id="steps" class="section" style="background: var(--green-light);">
+  <div class="wrap">
+    <h3 class="steps-heading">Getting started <em>is Easy…</em></h3>
+    <div class="steps">
+      <div>
+        <div class="step__circle">
+          <div class="step__icon" aria-hidden="true">📝</div>
+          <div class="step__badge"><span class="step__badge-label">Step</span><span class="step__badge-num">1</span></div>
+        </div>
+        <p class="step__label">Take the State Literacy Test or provide a Qualifying Exemption</p>
+      </div>
+      <div>
+        <div class="step__circle">
+          <div class="step__icon" aria-hidden="true">💰</div>
+          <div class="step__badge"><span class="step__badge-label">Step</span><span class="step__badge-num">2</span></div>
+        </div>
+        <p class="step__label">Apply for Financial Aid</p>
+      </div>
+      <div>
+        <div class="step__circle">
+          <div class="step__icon" aria-hidden="true">🎓</div>
+          <div class="step__badge"><span class="step__badge-label">Step</span><span class="step__badge-num">3</span></div>
+        </div>
+        <p class="step__label">Apply &amp; Register Online</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     MISSION / VISION QUOTES
+     ============================================ -->
+<section id="quotes" class="section">
+  <div class="wrap">
+    <div class="lib-label" style="text-align: center;">Component</div>
+    <h3 class="tag-headline" style="margin-bottom: 40px;">Mission &amp; Vision Blocks</h3>
+    <div class="quote-grid">
+      <div class="quote">
+        <span class="quote__kicker">PTC Mission</span>
+        <p class="quote__text">"Provide students the opportunity to develop national workplace competencies to fill the needs of business and industry."</p>
+      </div>
+      <div class="quote">
+        <span class="quote__kicker">PTC's Vision</span>
+        <p class="quote__text">"To be our communities' first choice for workforce education."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TOKENS — colors and type reference
+     ============================================ -->
+<section id="tokens" class="section" style="background: #fff;">
+  <div class="wrap">
+    <div class="lib-label">Reference</div>
+    <h3 class="tag-headline" style="text-align: left; margin-bottom: 24px;">Design Tokens</h3>
+
+    <h4 style="font-family: var(--font-heading); font-weight: 700; font-size: 18px; color: var(--ink); margin: 24px 0 12px;">Brand colors</h4>
+    <div class="swatch-row">
+      <div class="swatch" style="background: var(--green); color: #fff;"><strong>Logo Green</strong>PMS 348<code>#008142</code></div>
+      <div class="swatch" style="background: var(--yellow); color: var(--ink);"><strong>Logo Yellow</strong>PMS 115<code>#FFCF01</code></div>
+      <div class="swatch" style="background: var(--accent-lime); color: var(--ink);"><strong>OWI-BIS</strong>PMS 375<code>#8DC63F</code></div>
+      <div class="swatch" style="background: var(--red-accent); color: #fff;"><strong>Script Accent</strong>Brochure red<code>#C8102E</code></div>
+    </div>
+
+    <h4 style="font-family: var(--font-heading); font-weight: 700; font-size: 18px; color: var(--ink); margin: 40px 0 12px;">Typography</h4>
+    <div class="type-sample">
+      <div class="type-sample__label">Headlines — Roboto Slab (free alt. for Elizeth)</div>
+      <div class="type-sample--heading">Skilled. Certified. Employed.</div>
+    </div>
+    <div class="type-sample">
+      <div class="type-sample__label">Body — Roboto (free alt. for Proxima Nova)</div>
+      <p class="type-sample--body">For decades, Pinellas Technical College has been the community's premier provider of career and technical education. It is our most critical objective to offer our students the skills and knowledge necessary for upward career mobility.</p>
+    </div>
+    <div class="type-sample">
+      <div class="type-sample__label">Script accent — Caveat Brush (suggested, not in brand guide)</div>
+      <div class="type-sample--script">and it all starts now.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     BUILD NOTES
+     ============================================ -->
+<footer class="footnote">
+  <div class="wrap">
+    <h4>Build notes</h4>
+    <p><strong>Brand-compliant:</strong> Colors, body font (Roboto), and headline font (Roboto Slab) match the Brand Guide Sheet's free Google Font alternatives. Swap to Elizeth + Proxima Nova where Adobe fonts are licensed.</p>
+    <p><strong>Script font flag:</strong> The brochure's hand-lettered accent ("and it all starts now.") isn't specified in the brand guide. Caveat Brush is the closest free Google approximation; worth confirming with your graphic designer or requesting the actual typeface.</p>
+    <p><strong>Network pattern:</strong> Recreated as inline SVG so it scales cleanly and ships with no image dependency. Designer's original vector would be a drop-in replacement.</p>
+    <p><strong>Photography:</strong> The four program cards use images extracted from the brochure PDF. For production, request source resolution from the designer.</p>
+    <p><strong>Finalsite port:</strong> Each component is a self-contained block with no layout dependencies beyond the shared tokens, so they should drop into Composer elements cleanly. Band, hero, pill, program card, and step module can each be a reusable Composer component.</p>
+  </div>
+</footer>
+
+</body>
+</html>
