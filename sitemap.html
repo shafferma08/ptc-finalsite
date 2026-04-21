@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap &mdash; Pinellas Technical College</title>
+    <meta name="description" content="Complete sitemap of the Pinellas Technical College website, grouped by main site sections, Clearwater Campus, and St. Petersburg Campus.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
+            color: #fff;
+            padding: 4rem 0 3rem;
+        }
+        .page-hero__breadcrumb {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            opacity: 0.85;
+        }
+        .page-hero__breadcrumb a {
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .page-hero__title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 0.75rem;
+        }
+        .page-hero__subtitle {
+            font-size: 1.1rem;
+            max-width: 720px;
+            opacity: 0.92;
+            line-height: 1.6;
+        }
+
+        .sitemap-section {
+            padding: 3rem 0;
+        }
+        .sitemap-section--alt {
+            background: var(--color-off-white, #F7F8FA);
+        }
+        .sitemap-section__header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .sitemap-section__header h2 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--color-gray-900);
+            margin: 0;
+        }
+        .sitemap-section__icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--color-green);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .sitemap-section__icon--stpete {
+            background: var(--color-green-dark);
+        }
+        .sitemap-section__icon--resources {
+            background: var(--color-gray-700);
+        }
+        .sitemap-section__lede {
+            color: var(--color-gray-700);
+            margin: 0 0 2rem;
+            max-width: 720px;
+            line-height: 1.6;
+        }
+
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .sitemap-card {
+            background: white;
+            border: 1px solid var(--color-gray-200);
+            border-radius: 10px;
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .sitemap-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--color-green-dark);
+            margin: 0 0 0.9rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid var(--color-green-light);
+        }
+        .sitemap-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+        .sitemap-card li {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .sitemap-card li a {
+            color: var(--color-gray-900);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .sitemap-card li a:hover {
+            color: var(--color-green);
+            text-decoration: underline;
+        }
+        .sitemap-card li a i {
+            font-size: 0.75rem;
+            color: var(--color-gray-400);
+            width: 10px;
+        }
+        .sitemap-card li .subnav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            padding-left: 1.1rem;
+            margin-top: 0.3rem;
+            border-left: 2px solid var(--color-gray-200);
+            padding-top: 0.2rem;
+        }
+        .sitemap-card li .subnav a {
+            font-size: 0.85rem;
+            color: var(--color-gray-700);
+        }
+        .sitemap-card li .pending {
+            font-size: 0.8rem;
+            color: var(--color-gray-500);
+            font-style: italic;
+        }
+        .sitemap-card li .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--color-gray-700);
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-200);
+            padding: 1px 7px;
+            border-radius: 10px;
+            margin-left: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .sitemap-card li .badge--new {
+            background: rgba(0, 129, 66, 0.1);
+            color: var(--color-green-dark);
+            border-color: rgba(0, 129, 66, 0.3);
+        }
+        .sitemap-card li .badge--todo {
+            background: #fef3c7;
+            color: #92400e;
+            border-color: #fde68a;
+        }
+
+        .sitemap-note {
+            background: white;
+            border: 1px solid var(--color-gray-200);
+            border-left: 4px solid var(--color-accent);
+            border-radius: 0 8px 8px 0;
+            padding: 1.25rem 1.5rem;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            color: var(--color-gray-700);
+            line-height: 1.6;
+        }
+
+        @media screen and (max-width: 900px) {
+            .sitemap-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .sitemap-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-hero__title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         UTILITY BAR
+    ============================================= -->
+    <div class="utility-bar">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
+                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
+                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
+                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MAIN HEADER / NAVIGATION
+    ============================================= -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
+                </div>
+            </a>
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item"><a href="programs.html" class="main-nav__link">Programs</a></li>
+                    <li class="main-nav__item"><a href="admissions.html" class="main-nav__link">Admissions</a></li>
+                    <li class="main-nav__item"><a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid</a></li>
+                    <li class="main-nav__item"><a href="clearwater.html" class="main-nav__link">Campuses</a></li>
+                    <li class="main-nav__item"><a href="about.html" class="main-nav__link">About PTC</a></li>
+                </ul>
+            </nav>
+            <div class="site-header__actions">
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- HERO -->
+        <section class="page-hero">
+            <div class="container">
+                <div class="page-hero__breadcrumb"><a href="index.html">Home</a> / Sitemap</div>
+                <h1 class="page-hero__title">Sitemap</h1>
+                <p class="page-hero__subtitle">A complete index of every page on the Pinellas Technical College website, grouped by main site, campus, and compliance resources. Use this as a quick way to find anything without the nav.</p>
+            </div>
+        </section>
+
+        <!-- MAIN SITE -->
+        <section class="sitemap-section">
+            <div class="container">
+                <div class="sitemap-section__header">
+                    <div class="sitemap-section__icon"><i class="fas fa-globe"></i></div>
+                    <h2>Main Site (myptc.edu)</h2>
+                </div>
+                <p class="sitemap-section__lede">District-level pages that apply to both campuses: programs overview, admissions, tuition and aid, About PTC, and the compliance hub.</p>
+
+                <div class="sitemap-grid">
+
+                    <!-- Programs -->
+                    <div class="sitemap-card">
+                        <h3>Programs</h3>
+                        <ul>
+                            <li><a href="index.html"><i class="fas fa-home"></i> Homepage</a></li>
+                            <li>
+                                <a href="programs.html"><i class="fas fa-list"></i> All Programs A&ndash;Z</a>
+                                <div class="subnav">
+                                    <a href="welding-clearwater.html">Welding Technology &mdash; Clearwater</a>
+                                    <a href="welding-stpete.html">Welding Technology &mdash; St. Petersburg <span class="badge badge--new">New</span></a>
+                                </div>
+                            </li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Program cluster pages</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Distance Learning</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Short Courses</span> <span class="badge badge--todo">Planned</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Admissions -->
+                    <div class="sitemap-card">
+                        <h3>Admissions</h3>
+                        <ul>
+                            <li><a href="admissions.html"><i class="fas fa-door-open"></i> Admissions Home</a></li>
+                            <li><a href="admissions.html#how-to-apply"><i class="fas fa-file-alt"></i> How to Apply</a></li>
+                            <li><a href="admissions.html#enrollment-steps"><i class="fas fa-list-ol"></i> Enrollment Steps</a></li>
+                            <li><a href="admissions.html#testing"><i class="fas fa-clipboard-check"></i> Testing &amp; Assessment</a></li>
+                            <li><a href="admissions.html#campus-tours"><i class="fas fa-walking"></i> Campus Tours</a></li>
+                            <li><a href="admissions.html#pathways"><i class="fas fa-route"></i> Transfer &amp; Readmission</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Tuition & Aid -->
+                    <div class="sitemap-card">
+                        <h3>Tuition &amp; Aid</h3>
+                        <ul>
+                            <li><a href="tuition-aid.html"><i class="fas fa-dollar-sign"></i> Tuition &amp; Aid Home</a></li>
+                            <li><a href="tuition-aid.html#rates"><i class="fas fa-tags"></i> Tuition &amp; Fee Rates</a></li>
+                            <li><a href="tuition-aid.html#pay"><i class="fas fa-credit-card"></i> Pay Tuition</a></li>
+                            <li><a href="tuition-aid.html#fafsa"><i class="fas fa-university"></i> FAFSA &amp; Eligibility</a></li>
+                            <li><a href="tuition-aid.html#federal-state"><i class="fas fa-landmark"></i> Federal &amp; State Funding</a></li>
+                            <li><a href="tuition-aid.html#scholarships"><i class="fas fa-award"></i> Scholarships</a></li>
+                            <li><a href="tuition-aid.html#veterans"><i class="fas fa-flag-usa"></i> Veterans Benefits</a></li>
+                            <li><a href="tuition-aid.html#net-price"><i class="fas fa-calculator"></i> Net Price Calculator</a></li>
+                            <li><a href="tuition-aid.html#faq"><i class="fas fa-question-circle"></i> Refund Policy &amp; FAQ</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- About -->
+                    <div class="sitemap-card">
+                        <h3>About PTC</h3>
+                        <ul>
+                            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Home</a></li>
+                            <li><a href="about.html#accreditation"><i class="fas fa-certificate"></i> Accreditation</a></li>
+                            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Staff Directory</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Employer Partnerships</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Careers at PTC</span> <span class="badge badge--todo">Planned</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Campuses (top-level links) -->
+                    <div class="sitemap-card">
+                        <h3>Campuses</h3>
+                        <ul>
+                            <li><a href="clearwater.html"><i class="fas fa-map-marker-alt"></i> Clearwater Campus</a></li>
+                            <li><a href="stpete.html"><i class="fas fa-map-marker-alt"></i> St. Petersburg Campus</a></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Campus Maps</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><a href="admissions.html#campus-tours"><i class="fas fa-walking"></i> Schedule a Tour</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Current Students (placeholders) -->
+                    <div class="sitemap-card">
+                        <h3>Current Students</h3>
+                        <ul>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Canvas Login</span> <span class="badge badge--todo">External</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Focus / SIS Portal</span> <span class="badge badge--todo">External</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Academic Calendar</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Transcript Request</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Tech Support</span> <span class="badge badge--todo">Planned</span></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CLEARWATER CAMPUS -->
+        <section class="sitemap-section sitemap-section--alt">
+            <div class="container">
+                <div class="sitemap-section__header">
+                    <div class="sitemap-section__icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h2>Clearwater Campus (clearwater.myptc.edu)</h2>
+                </div>
+                <p class="sitemap-section__lede">Campus-specific pages for PTC Clearwater at 6100 154th Ave N. All programs, schedule, and campus info.</p>
+
+                <div class="sitemap-grid">
+
+                    <div class="sitemap-card">
+                        <h3>Campus Pages</h3>
+                        <ul>
+                            <li><a href="clearwater.html"><i class="fas fa-home"></i> Clearwater Home</a></li>
+                            <li><a href="schedule-clearwater.html"><i class="fas fa-calendar"></i> Class Schedule 2026&ndash;27</a></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Campus Map &amp; Directions</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Staff Directory</span> <span class="badge badge--todo">Planned</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="sitemap-card">
+                        <h3>Clearwater Programs</h3>
+                        <ul>
+                            <li><a href="welding-clearwater.html"><i class="fas fa-fire"></i> Welding Technology</a></li>
+                            <li><a href="welding-advanced.html"><i class="fas fa-layer-group"></i> Welding Technology Advanced <span class="badge badge--new">New</span></a></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Electricity, HVAC/R, Plumbing</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Cabinetmaking, Machining</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Marine Service Tech</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Electronic Systems Integration</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Health Sciences cluster</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> IT cluster</span> <span class="badge badge--todo">Planned</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="sitemap-card">
+                        <h3>Clearwater Resources</h3>
+                        <ul>
+                            <li><a href="urgent-fixes/apprenticeships-clearwater.html"><i class="fas fa-hard-hat"></i> Apprenticeships</a></li>
+                            <li><a href="urgent-fixes/military-veteran-resources.html"><i class="fas fa-flag-usa"></i> Military &amp; Veteran Resources</a></li>
+                            <li><a href="urgent-fixes/community_resources_guide.html"><i class="fas fa-people-carry"></i> Community Resources Guide</a></li>
+                            <li><a href="urgent-fixes/short-courses-simple.html"><i class="fas fa-clock"></i> Short Courses</a></li>
+                            <li><a href="urgent-fixes/summer-camps-mockup.html"><i class="fas fa-sun"></i> Summer Camps</a></li>
+                            <li><a href="post-a-job-FINAL.html"><i class="fas fa-briefcase"></i> Post a Job</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ST. PETERSBURG CAMPUS -->
+        <section class="sitemap-section">
+            <div class="container">
+                <div class="sitemap-section__header">
+                    <div class="sitemap-section__icon sitemap-section__icon--stpete"><i class="fas fa-map-marker-alt"></i></div>
+                    <h2>St. Petersburg Campus (stpete.myptc.edu)</h2>
+                </div>
+                <p class="sitemap-section__lede">Campus-specific pages for PTC St. Petersburg at 901 34th St S. Programs, admissions, and campus info for the south county campus.</p>
+
+                <div class="sitemap-grid">
+
+                    <div class="sitemap-card">
+                        <h3>Campus Pages</h3>
+                        <ul>
+                            <li><a href="stpete.html"><i class="fas fa-home"></i> St. Petersburg Home</a></li>
+                            <li><a href="schedule-stpete.html"><i class="fas fa-calendar"></i> Class Schedule 2026&ndash;27 <span class="badge badge--new">New</span></a></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Campus Map &amp; Directions</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Staff Directory</span> <span class="badge badge--todo">Planned</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="sitemap-card">
+                        <h3>St. Petersburg Programs</h3>
+                        <ul>
+                            <li><a href="welding-stpete.html"><i class="fas fa-fire"></i> Welding Technology</a></li>
+                            <li><a href="welding-advanced.html"><i class="fas fa-layer-group"></i> Welding Technology Advanced <span class="badge badge--new">New</span></a></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Electricity, HVAC/R, Plumbing</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Building Trades &amp; Construction</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Public Works</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Health Sciences cluster</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Transportation &amp; Logistics</span> <span class="badge badge--todo">Planned</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="sitemap-card">
+                        <h3>St. Petersburg Resources</h3>
+                        <ul>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Employer Partnerships</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Post a Job for Students</span> <span class="badge badge--todo">Planned</span></li>
+                            <li><span class="pending"><i class="fas fa-hourglass-half"></i> Advisory Committees</span> <span class="badge badge--todo">Planned</span></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPLIANCE / RESOURCES -->
+        <section class="sitemap-section sitemap-section--alt">
+            <div class="container">
+                <div class="sitemap-section__header">
+                    <div class="sitemap-section__icon sitemap-section__icon--resources"><i class="fas fa-shield-alt"></i></div>
+                    <h2>Compliance &amp; Resources</h2>
+                </div>
+                <p class="sitemap-section__lede">Required disclosures and reference documents linked from the footer of every page.</p>
+
+                <div class="sitemap-grid">
+
+                    <div class="sitemap-card">
+                        <h3>Consumer Information</h3>
+                        <ul>
+                            <li><a href="consumer-information.html"><i class="fas fa-book"></i> Consumer Information Home</a></li>
+                            <li><a href="consumer-information.html#accreditation"><i class="fas fa-certificate"></i> Accreditation</a></li>
+                            <li><a href="consumer-information.html#non-discrimination"><i class="fas fa-balance-scale"></i> Non-Discrimination &amp; Title IX</a></li>
+                            <li><a href="consumer-information.html#privacy-ferpa"><i class="fas fa-user-shield"></i> Privacy &amp; FERPA</a></li>
+                            <li><a href="consumer-information.html#accessibility"><i class="fas fa-universal-access"></i> Accessibility</a></li>
+                            <li><a href="consumer-information.html#student-outcomes"><i class="fas fa-chart-line"></i> Student Outcomes</a></li>
+                            <li><a href="consumer-information.html#financial-aid"><i class="fas fa-dollar-sign"></i> Financial Aid Disclosures</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sitemap-card">
+                        <h3>Safety &amp; Conduct</h3>
+                        <ul>
+                            <li><a href="consumer-information.html#sap"><i class="fas fa-graduation-cap"></i> Satisfactory Academic Progress</a></li>
+                            <li><a href="consumer-information.html#clery"><i class="fas fa-shield-alt"></i> Campus Security &amp; Clery</a></li>
+                            <li><a href="consumer-information.html#drug-alcohol"><i class="fas fa-ban"></i> Drug &amp; Alcohol Prevention</a></li>
+                            <li><a href="consumer-information.html#copyright"><i class="fas fa-copyright"></i> Copyright &amp; P2P</a></li>
+                            <li><a href="consumer-information.html#voter"><i class="fas fa-vote-yea"></i> Voter Registration</a></li>
+                            <li><a href="consumer-information.html#constitution-day"><i class="fas fa-scroll"></i> Constitution Day</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sitemap-card">
+                        <h3>Catalog &amp; Contacts</h3>
+                        <ul>
+                            <li><a href="consumer-information.html#catalog"><i class="fas fa-book-open"></i> Institutional Catalog</a></li>
+                            <li><a href="consumer-information.html#catalog"><i class="fas fa-file-alt"></i> Student Handbook</a></li>
+                            <li><a href="consumer-information.html#catalog"><i class="fas fa-id-card"></i> Transcript Request</a></li>
+                            <li><a href="consumer-information.html#compliance-contacts"><i class="fas fa-phone"></i> Compliance Contacts</a></li>
+                            <li><a href="contact.html"><i class="fas fa-envelope"></i> General Contact</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="sitemap-note">
+                    <strong>Note:</strong> Pages marked <em>Planned</em> are part of the redesign sitemap but do not yet have a mockup. The <em>External</em> badge refers to tools (Canvas, Focus SIS) hosted outside the PTC website that will deep-link from the main nav once production URLs are finalized. Last updated for the April 18, 2026 redesign snapshot.
+                </div>
+            </div>
+        </section>
+
+        <!-- REFERENCE / PROJECT DOCS -->
+        <section class="sitemap-section">
+            <div class="container">
+                <div class="sitemap-section__header">
+                    <div class="sitemap-section__icon sitemap-section__icon--resources"><i class="fas fa-drafting-compass"></i></div>
+                    <h2>Project Reference &amp; Pattern Library</h2>
+                </div>
+                <p class="sitemap-section__lede">Internal reference pages used during the redesign. These are not linked from the public nav but are kept in the repository for Marianne, reviewers, and the Finalsite Composer build team.</p>
+
+                <div class="sitemap-grid">
+
+                    <div class="sitemap-card">
+                        <h3>Design References</h3>
+                        <ul>
+                            <li><a href="ptc_redesign_proposal.html"><i class="fas fa-file-invoice"></i> Redesign Proposal</a></li>
+                            <li><a href="pattern-library.html"><i class="fas fa-palette"></i> Pattern Library</a></li>
+                            <li><a href="_templates/shell-main.html"><i class="fas fa-layer-group"></i> Shell: Main Site</a></li>
+                            <li><a href="_templates/shell-clearwater.html"><i class="fas fa-layer-group"></i> Shell: Clearwater</a></li>
+                            <li><a href="_templates/shell-stpete.html"><i class="fas fa-layer-group"></i> Shell: St. Pete</a></li>
+                            <li><a href="_templates/campus-landing.html"><i class="fas fa-layer-group"></i> Shell: Campus Landing</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sitemap-card">
+                        <h3>Post a Job Variants</h3>
+                        <ul>
+                            <li><a href="post-a-job-FINAL.html"><i class="fas fa-check-circle"></i> Post a Job (Final)</a></li>
+                            <li><a href="post-a-job-mockup.html"><i class="fas fa-pencil-ruler"></i> Mockup</a></li>
+                            <li><a href="post-a-job-PART1.html"><i class="fas fa-puzzle-piece"></i> Part 1</a></li>
+                            <li><a href="post-a-job-PART2.html"><i class="fas fa-puzzle-piece"></i> Part 2</a></li>
+                            <li><a href="post-a-job-finalsite-embed.html"><i class="fas fa-code"></i> Finalsite Embed</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================
+         FOOTER
+    ============================================= -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline">Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="admissions.html">Admissions</a></li>
+                            <li><a href="tuition-aid.html">Tuition &amp; Aid</a></li>
+                            <li><a href="#">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Campuses</h4>
+                        <ul>
+                            <li><a href="clearwater.html">Clearwater Campus</a></li>
+                            <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                            <li><a href="#">Campus Maps</a></li>
+                            <li><a href="admissions.html#campus-tours">Schedule a Tour</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="#">Careers at PTC</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#privacy-ferpa">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

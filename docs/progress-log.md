@@ -501,3 +501,261 @@ Additionally, the footer-bottom `Privacy Policy | Accessibility | Sitemap` row w
 5. **Homepage program grid expansion** (carried over) — 6 of 8 taxonomy clusters shown. Layout decision for Marianne.
 6. **Delete root `campus-template.html`** (carried over) — once confirmed it's superseded by `_templates/campus-landing.html`.
 
+---
+
+## April 18, 2026 — welding-stpete.html + Site Sitemap Page
+
+### What was completed
+
+**`welding-stpete.html` — new St. Petersburg Welding Technology program page (created)**
+- Built from the same 6-section scaffold as `welding-clearwater.html` so both campus welding pages share an identical information architecture: Hero, Start Here yellow band, Jump Nav (sticky), See It In Action, About This Program (accordion course sequence), Credentials & Cost (AWS + FRTW + financial aid sidebar), and Ready to Get Started (counselor + apply CTA).
+- Swapped all Clearwater-specific chrome for St. Petersburg equivalents:
+  - Utility bar: 727.893.2500, 901 34th St S, St. Petersburg address
+  - Cross-campus switcher now points to `clearwater.html` instead of `stpete.html`
+  - Header uses the St. Petersburg 4-pillar campus nav (7-cluster Programs list per the Section 5.3 taxonomy; no Class Schedule item since `schedule-stpete.html` does not exist yet)
+  - Footer rewritten with St. Petersburg address, phone, and "St. Petersburg Links" column
+  - Breadcrumbs: Home / St. Petersburg Campus / Programs / Welding Technology
+- Content decisions unique to the St. Pete page:
+  - Hero uses the same 1,050-hour program metadata but Location stat is St. Petersburg
+  - Hero photo reused the existing `Welder.jpg` asset with a TODO comment to swap for a St. Pete welding shot when one is available
+  - Video grid replaced with four dark-themed placeholder cards ("Video coming soon") instead of the Clearwater-specific YouTube embeds; added a `.video-placeholder` style in the page CSS. This keeps the section visually consistent without advertising Clearwater content as St. Pete content
+  - AWS credential copy was softened: St. Pete students "may be referred to the Clearwater AWS-accredited testing facility for their performance qualification test" rather than claiming on-site AWS accreditation. Flagged for Marianne to confirm.
+  - Counselor card: used a neutral "St. Petersburg Counseling Office" placeholder with the campus main line and a TODO note ("Counselor name, direct email, and extension will be published once assigned for the upcoming term"). No fake PCSB email in the counselor button (used `counseling-stpete@pcsb.org` with a visible TODO); better to ship a placeholder than a wrong address.
+  - Instructor grid replaced with a single note directing users to the counseling office, since the St. Pete welding instructor roster was not on-hand for this session.
+  - Program flyer and cost sheet PDF cards point to `#` with "PDF coming soon" captions. Can be swapped to real `program-flyers/` PDFs once they exist.
+  - Added a new "program-sister-callout" component pointing to Welding Technology Advanced (also offered at St. Pete per the proposal's Skilled Trades list). Styled with a yellow left-border accent; responsive to single-column on mobile.
+
+**`programs.html` — Welding Technology card now links to both campus pages**
+- Replaced the single "Learn More" link with a two-link campus chooser inside the card (Clearwater → `welding-clearwater.html`, St. Petersburg → `welding-stpete.html`)
+- Advanced Welding card left unchanged; it still has no dedicated mockup on either campus
+
+**`sitemap.html` — new site sitemap / page index (created)**
+- Built on the main-site shell pattern: utility bar, simplified main nav (5 top-level items, no dropdowns to keep the sitemap compact), page hero with green gradient, and the standard global footer
+- Five major sections grouped by destination:
+  1. **Main Site (myptc.edu)** — 6 cards: Programs, Admissions, Tuition & Aid, About PTC, Campuses, Current Students
+  2. **Clearwater Campus** — 3 cards: Campus Pages, Clearwater Programs, Clearwater Resources (links to `urgent-fixes/` pages — apprenticeships, military/veteran resources, community resources guide, short courses, summer camps, Post a Job)
+  3. **St. Petersburg Campus** — 3 cards: Campus Pages, St. Petersburg Programs (with new welding page), St. Petersburg Resources (all placeholders since these pages do not exist yet)
+  4. **Compliance & Resources** — 3 cards: Consumer Information anchors, Safety & Conduct anchors, Catalog & Contacts. Each maps directly to the anchor IDs on `consumer-information.html`.
+  5. **Project Reference & Pattern Library** — 2 cards surfacing the non-public pages kept in the repo for the design team: Redesign Proposal, Pattern Library, the four shell templates, and the five Post a Job variants
+- Two status badges on the page: `New` (green, highlights pages shipped this session) and `Planned` (yellow, for sitemap entries that don't have mockups yet). A compact `.pending` style with an hourglass icon is used for planned entries so they're visible but visually subordinate.
+- A callout footnote at the end of the Compliance section explains what the badges mean and dates the snapshot to the April 18, 2026 build.
+
+**Footer Sitemap link wired across all 17 files with global footers**
+- Python pass replaced `<a href="#">Sitemap</a>` with `<a href="sitemap.html">Sitemap</a>` in: `index.html`, `about.html`, `admissions.html`, `programs.html`, `tuition-aid.html`, `contact.html`, `consumer-information.html`, `clearwater.html`, `stpete.html`, `welding-clearwater.html`, `schedule-clearwater.html`, `campus-template.html`, `_templates/shell-main.html`, `_templates/shell-clearwater.html`, `_templates/shell-stpete.html`, `_templates/campus-landing.html`, and `mockups/main-site/index.html` (mockup uses `../../sitemap.html` relative path)
+- Also pre-wired the new `welding-stpete.html` footer to `sitemap.html` directly at page creation time
+- All three bottom-row footer items (Privacy Policy, Accessibility, Sitemap) now resolve to real URLs on every main-site page
+
+### Decisions made
+
+- **Placeholder-first, not fake-data-first.** For St. Pete welding counselor, instructors, program flyers, and videos, I chose visible "coming soon" placeholders over carrying Clearwater content forward. A St. Pete page that shows the Clearwater counselor would be worse than one that shows a TODO — worse for accuracy and for prospective students.
+- **AWS copy hedged, not removed.** The Clearwater page asserts an on-site AWS-accredited testing facility. For St. Pete I rewrote to say students "may be referred to the Clearwater AWS-accredited testing facility" rather than dropping the credential entirely. This preserves the selling point while being accurate. If St. Pete also has its own AWS accreditation, Marianne can strengthen this later.
+- **Two-link card over a campus-chooser landing page.** On `programs.html`, the Welding Technology card could have pointed to a new `welding.html` campus chooser, but a two-link card is simpler, requires no extra page, and keeps the existing filter/search behavior intact. The `data-campus="clw stp"` attribute is unchanged, so filter chips still work.
+- **Sitemap uses anchor deep-links to `consumer-information.html`, not stub pages.** Compliance disclosures all live as anchor sections on one page (by design). The sitemap surfaces each anchor so users can land on the right disclosure directly. This keeps the compliance section searchable without forcing us to invent separate pages.
+- **Sitemap includes `_templates/` and `mockups/` reference pages in a dedicated "Project Reference" section.** Public-facing sitemaps normally don't include internal files, but this sitemap is also the working index for the design handoff. Separating them into their own labeled section keeps the main navigation honest while still making them findable.
+- **"Planned" badge instead of hiding missing pages.** Listing what's intentionally coming (cluster pages, schedule-stpete, campus maps) makes the gap visible to Marianne and the Finalsite consultant. Hiding them would obscure scope.
+
+### Issues or blockers
+
+- **St. Pete welding counselor + instructor roster.** I left visible TODOs in two spots on `welding-stpete.html`. Marianne (or the campus office) will need to fill these in before the page is public.
+- **AWS testing facility claim at St. Pete.** Verify whether St. Pete is also an AWS-accredited test facility or whether the referral-to-Clearwater wording is correct. The current copy errs toward the accurate-but-cautious version.
+- **Program flyer PDFs for St. Pete welding.** Only Clearwater versions exist in `program-flyers/`. When Marianne has the St. Pete equivalents, drop them into `program-flyers/` and update the two `href="#"` PDF cards at the bottom of the Credentials section.
+- **Video embeds for St. Pete welding.** Four placeholder cards are in place. If PTC Communications has any St. Pete welding video content (even phone footage from the shop floor), the placeholders can be swapped for real `<iframe>` embeds using the same markup as the Clearwater page.
+- **Advanced Welding mockup still missing for both campuses.** The sister-program callout on `welding-stpete.html` links to `#`. `programs.html` also shows the "Welding Technology - Advanced" card linking to `#`. This is the next natural program page to build because the infrastructure is now in place.
+- **`sitemap.html` simplified nav.** The sitemap page uses a pared-down top nav (5 links, no dropdowns) rather than the full 6-pillar dropdown nav. This was deliberate — a sitemap page with its own giant dropdown nav felt redundant. If Marianne would rather keep the full nav for consistency, swap it for the shell-main header.
+
+### Main-site footer link coverage (updated)
+
+| Footer link | Destination | Status |
+|---|---|---|
+| Quick Links · Programs | programs.html | Wired |
+| Quick Links · Admissions | admissions.html | Wired |
+| Quick Links · Tuition & Aid | tuition-aid.html | Wired |
+| Quick Links · Student Resources | `#` | Awaiting target page |
+| Quick Links · About PTC | about.html | Wired |
+| Campuses · Clearwater | clearwater.html | Wired |
+| Campuses · St. Pete | stpete.html | Wired |
+| Campuses · Maps | `#` | Awaiting target page |
+| Campuses · Schedule a Tour | admissions.html#campus-tours | Wired |
+| Resources · Consumer Information | consumer-information.html | Wired |
+| Resources · Non-Discrimination | consumer-information.html#non-discrimination | Wired |
+| Resources · Accreditation | about.html#accreditation | Wired |
+| Resources · Careers at PTC | `#` | Awaiting target page |
+| Resources · Contact Us | contact.html | Wired |
+| Bottom · Privacy Policy | consumer-information.html#privacy-ferpa | Wired |
+| Bottom · Accessibility | consumer-information.html#accessibility | Wired |
+| Bottom · Sitemap | sitemap.html | **Wired (this session)** |
+
+**12 of 17** main-site global footer links now resolve to real content (up from 11 last session). The remaining five (Student Resources, Campus Maps, Careers at PTC, and the two category indexes) are utility pages that can be added as lightweight stubs when they become priorities.
+
+### Next priorities
+
+1. **Welding Technology Advanced program page(s)** — now that the pattern is proven twice, a `welding-advanced.html` (shared page) or per-campus variants would close the last visible welding gap on `programs.html` and plug the sister-program callout on `welding-stpete.html`.
+2. **`schedule-stpete.html`** — mirror `schedule-clearwater.html` for the St. Pete campus so the "Class Schedule" item can be added to the St. Pete Programs nav.
+3. **Verify St. Pete welding placeholders** — counselor, instructors, AWS facility claim, program flyers. Easiest path: a single email to the St. Pete campus office listing the four open items.
+4. **Homepage program grid expansion** (carried over) — 6 of 8 taxonomy clusters shown. Layout decision for Marianne.
+5. **Delete root `campus-template.html`** (carried over) — once confirmed it's superseded by `_templates/campus-landing.html`.
+6. **Lightweight stub pages** for the remaining five `#` footer links (Student Resources, Campus Maps, Careers at PTC, and internal category indexes) would finish the global footer coverage.
+
+---
+
+## April 18, 2026 (Follow-up) — welding-stpete.html populated with real data
+
+### What was completed
+
+Marianne provided the live source content from `stpete.myptc.edu/programs/st-petersburg-full-time-programs/welding-technology`, so `welding-stpete.html` was updated from placeholder mode to production-ready:
+
+- **Counselor card:** Real info wired in. Cheri Ashwood, School Counselor, `ASHWOODC@pcsb.org`, (727) 893-2500 x2325. Avatar initials "CA" replace the generic user icon. TODO note removed.
+- **Program video:** YouTube embed `fc1uqOO1hFA` (Welding Technology at PTC St. Petersburg) now plays in the first video card. The four "Video coming soon" placeholders collapsed to a single live video + one "More Videos Coming Soon" placeholder for any additional content PTC Communications produces.
+- **AWS credential claim strengthened:** St. Petersburg campus confirmed as an AWS accredited testing facility per the source copy. The "may be referred to Clearwater" hedge was removed and replaced with the stronger claim.
+- **Course sequence expanded to all 5 courses (1,050 hours total):** Added Welder Assistant 1 (PMT0070, 150 hrs) as the opening accordion item. Now the math works (150+150+150+150+450 = 1,050). Copy for the other four courses was also tightened to match the source verbatim.
+- **Class schedule + program requirements block added** below the accordion. Two-column callout showing Day (Mon-Fri 7:00 AM - 12:15 PM), Evening (Mon-Thu 4:00 PM - 9:00 PM), SAP 80%, Attendance 90%, Basic Skills Math 9 / Reading 9. This is meaningful differentiation from Clearwater, which runs two daytime shifts instead.
+- **Industry certification note added:** "Distance Education: Traditional only. Industry Certification: AWS Certified Welder."
+- **Hero stat bar updated:** "Delivery: On-Campus" replaced with "Schedule: Day & Evening" to surface the fact that St. Pete offers an evening option (Clearwater does not).
+- **Shadowing links repointed:** Step 2 button and the footer shadowing link on the counselor section now point to `https://stpete.myptc.edu/admissions/admissions/shadowing-days-times` (the St. Pete equivalent of the Clearwater shadowing URL).
+- **Hero photo path reserved:** Swapped the Clearwater `Welder.jpg` reference for `assets/images/content/stpete-welding-lab.jpg` with an inline `onerror` fallback to `Welder.jpg` so the page doesn't show a broken image before the photo file lands. Marianne shared a real St. Pete welding shop photo (two students working, red safety curtains, gas cylinders). Dropping that file at the reserved path will activate it without any further code changes.
+
+### Remaining open items on this page
+
+- **St. Pete welding instructor roster** is still not published. The "Program Instructors" heading and intro copy were removed to avoid looking like an empty section; can be reinstated when Marianne has names.
+- **Program flyer and cost-sheet PDFs** for St. Pete Welding Technology still need to be dropped into `program-flyers/` and linked. The two PDF cards in the Credentials sidebar still point to `#` with "PDF coming soon" captions.
+- **Hero photo file** needs to be saved to `assets/images/content/stpete-welding-lab.jpg` to replace the fallback image.
+
+### Next priorities
+
+1. **Welding Technology Advanced page(s)** — the sister-program callout on `welding-stpete.html` still points to `#`. Same content exists for Clearwater. Good candidate for the next session.
+2. **`schedule-stpete.html`** — mirror `schedule-clearwater.html` for St. Pete so the Class Schedule item can be added to the nav.
+3. **Homepage program grid expansion** (carried over) — layout decision for Marianne.
+4. **Delete root `campus-template.html`** (carried over).
+5. **Lightweight stub pages** for the five remaining footer placeholders (carried over).
+
+---
+
+## April 19, 2026 — welding-advanced.html (shared dual-campus program page)
+
+### What was completed
+
+**`welding-advanced.html` — new Welding Technology - Advanced program page (created)**
+- Built as a **single shared page** using the main-site shell (utility bar, 6-pillar nav, standard footer with accreditation badges) rather than per-campus duplicates. The program is offered at both Clearwater and St. Petersburg with the same curriculum, so one page with a clear campus chooser avoids two near-identical files and is easier to maintain as the sister of welding-clearwater.html / welding-stpete.html.
+- 8-section layout mirroring the established welding page structure:
+  1. **Hero** — green gradient, dual-campus eyebrow, 5-stat bar (Format, Length 750 hrs, Locations, Delivery, Avg. Salary $47,540+ BLS 2023), counselor nudge
+  2. **Prerequisite banner** (yellow) — Explicitly flags the 1,050-hour Welding Technology prerequisite with a link back to `welding-clearwater.html` and a "Talk to a Counselor" CTA. This prerequisite is the single most important thing for a prospective student to understand, so it gets its own full-width band immediately after the hero.
+  3. **Sticky jump nav** — About, Campus Schedules, Course Sequence, Credentials, Career, Get Started (CTA)
+  4. **About This Program** — two-paragraph overview covering pipe welding, fabrication, quality inspection, and industry outcomes
+  5. **Campus Chooser** (`#campuses`) — two side-by-side cards. Clearwater card shows the real 1st-shift (7:00 AM - 12:15 PM) and 2nd-shift (12:15 PM - 5:30 PM) schedules pulled from `schedule-clearwater.html`. St. Pete card notes day/evening sections available and directs to the campus for current times (no published schedule data was available).
+  6. **Course Sequence** — 4-course accordion: Pipe Welder 1 (~150), Pipe Welder 2 (~150), Layout & Fabrication (~150), Advanced Welder (~300). Hour distribution is shown as approximate with a note that courses may vary by campus, so Marianne can swap in the exact state-plan figures without restructuring the page.
+  7. **Credentials & Cost** — two-up split. Left card reuses the AWS accredited-testing-facility copy (both campuses now qualify, per the St. Pete update from Apr 18) and Florida Ready to Work / BIG SIX callout. Right sidebar has the dark-green Financial Aid card (with the $2.91/clock hour note) and two "PDF coming soon" program-flyer/cost-sheet placeholders.
+  8. **Career Outlook** — 3-stat grid: BLS 2023 welder median pay, BLS 2022-2032 projected 2% job growth, and 42,600 annual U.S. openings. Followed by a narrative paragraph listing common job titles (Pipe Welder, Structural Welder, Welder-Fabricator, Combo Welder, entry-level Welding Inspector).
+  9. **Next Steps / Counselor** — Apply CTA + two counselor cards side-by-side: Valerie Santos for Clearwater (same contact as `welding-clearwater.html`) and Cheri Ashwood for St. Petersburg (same as `welding-stpete.html`). Each card includes a shadow-day link to the correct campus URL.
+- All styles scoped in a page `<style>` block (~280 lines), responsive down to 760 px
+- HTML validates cleanly (no tag mismatches, 947 total lines)
+
+**Cross-page wire-up (3 files)**
+- `programs.html` — Welding Technology - Advanced card "Learn More" link: `#` → `welding-advanced.html`. Also fixed a stray `<i class="arrow right">` markup bug to use the correct `<i class="fas fa-arrow-right">` Font Awesome icon consistent with the other cards.
+- `welding-stpete.html` — sister-program callout "Learn about Advanced Welding" link: `#` → `welding-advanced.html`
+- `sitemap.html` — two changes:
+  - Clearwater Programs card: added a new `<li>` for Welding Technology Advanced (linked, with New badge) between Welding Technology and the planned cluster entries
+  - St. Petersburg Programs card: converted the `Planned` / pending entry for Welding Technology Advanced into a live linked entry with the New badge. The St. Pete Welding Technology entry also had its New badge removed (it was carried over from its creation on Apr 18 but it's no longer the newest item)
+
+### Decisions made
+
+- **One shared page instead of two.** Writing `welding-advanced-clearwater.html` and `welding-advanced-stpete.html` would have duplicated ~1,700 lines of near-identical curriculum, credential, and career-outlook content. The curriculum does not differ by campus, so a shared page with explicit campus affordances (schedules, counselors, campus chooser cards) is more honest and easier to update when the state course plan changes.
+- **Main-site shell, not campus shell.** Because the page spans both campuses, the main-site nav and footer are the right frame. Users arriving from `programs.html` (main site) will continue with the main site nav; users arriving from `welding-stpete.html` will transition from the campus nav to the main site nav, but the Campus Chooser section immediately reorients them to their campus.
+- **Approximate course hours with an explicit disclaimer** rather than inventing Florida CIP state-plan numbers. The total hour count (750) and the four-course structure are drawn from schedule-clearwater.html and the Section 5.3 description, but the per-course hour split is the best-reasonable mapping and is marked "~" so it does not read as a hard claim. A note directs prospective students to confirm the current sequence with their counselor.
+- **Career outlook stats are BLS-only, cited.** The median pay ($47,540), 2% job growth, and 42,600 annual openings are all BLS figures for welders broadly (SOC 51-4121) from the 2023 OOH and 2022-2032 projections. Advanced welders (pipe, combo, structural) typically out-earn the median but PTC does not publish internal wage data, so the page notes "$47,540+" and qualifies the median as the broad-category floor rather than claiming higher numbers without a source.
+- **Prerequisite positioned immediately below the hero.** The most common counseling-office mistake on advanced welding is enrollment attempts from students who have not finished (or do not have equivalent experience for) the 1,050-hour Welding Technology program. The yellow prereq banner places that constraint before the jump nav so students self-qualify before diving into curriculum details.
+- **No videos section.** The welding-clearwater and welding-stpete pages carry video sections because they have program-specific YouTube content. PTC Communications has not published advanced-welding-specific video content yet; rather than reusing general welding videos under an "Advanced" heading (which would misrepresent the material), the section was omitted. It can be added later by following the existing `video-grid` / `video-card` pattern.
+
+### Issues or blockers
+
+- **Per-course hour distribution** — The ~150/150/150/300 split is a reasonable guess for a 750-hour pipe welding sequence. Marianne should replace with the actual Florida CIP state-plan hours and course codes (PMT numbers) when she has them. The accordion structure accepts any breakdown without layout changes.
+- **St. Pete advanced welding schedule** — Not published anywhere I could find. The campus card notes "day and evening sections available" and directs to campus contact. If the campus office shares specific shift times, the card's schedule block can be updated in seconds.
+- **Program flyer and cost-sheet PDFs** — Two placeholder PDF cards in the Credentials sidebar link to `#` with "PDF coming soon" captions, same pattern as the St. Pete Welding page. When `program-flyers/` receives a Welding-Advanced flyer and cost sheet, swap the two `href="#"` values.
+- **Counselor assignments for advanced welding** — I used the same counselors as the base Welding Technology pages (Santos for Clearwater, Ashwood for St. Pete). If the advanced program has a different assigned counselor at either campus, those cards need a simple swap.
+- **Hero photo** — Currently reuses `assets/images/content/Welder.jpg` (the Clearwater welder image). Acceptable for a dual-campus page but a more neutral or pipe-welding-specific shot would read more accurately as advanced.
+
+### Updated program page coverage
+
+| Program | Clearwater page | St. Pete page | Shared page |
+|---|---|---|---|
+| Welding Technology | `welding-clearwater.html` | `welding-stpete.html` | — |
+| Welding Technology - Advanced | (links to shared) | (links to shared) | **`welding-advanced.html` (this session)** |
+
+All three welding prototype pages in the proposal are now represented. The "Welding Technology - Advanced" card on `programs.html` and the sister-program callout on `welding-stpete.html`, both of which have pointed to `#` since their creation, are now wired.
+
+### Next priorities
+
+1. **`schedule-stpete.html`** — mirror `schedule-clearwater.html` for St. Pete so the Class Schedule item can be added to the St. Pete Programs nav. Would also let the new `welding-advanced.html` Campus Chooser link the St. Pete card's "View Class Schedule" alongside the Clearwater one.
+2. **Exact Florida CIP hours and course codes for Welding Technology - Advanced** — when Marianne has the state-plan numbers, the accordion in `welding-advanced.html` can be updated to replace the approximate figures.
+3. **Homepage program grid expansion** (carried over) — 6 of 8 taxonomy clusters shown. Layout decision for Marianne.
+4. **Lightweight stub pages** for the five remaining footer placeholders (Student Resources, Campus Maps, Careers at PTC, and two reference targets).
+5. **Delete root `campus-template.html`** (carried over) — once confirmed it's superseded by `_templates/campus-landing.html`.
+6. **Video content for advanced welding** — optional. If PTC Communications produces any pipe-welding or fabrication footage, the `video-grid` block from `welding-clearwater.html` can be pasted into the `welding-advanced.html` "About This Program" section with minimal styling changes.
+
+---
+
+## April 20, 2026 — schedule-stpete.html (St. Petersburg class schedule)
+
+### What was completed
+
+**`schedule-stpete.html` — new St. Petersburg 2026-27 class schedule (created)**
+- Built as the St. Pete counterpart to `schedule-clearwater.html`, mirroring the same visual structure: green page header, sticky filter bar with three chip groups (Category, Time of Day, Search), category-grouped table with day badges, time badges, location badges, results counter, and no-results state. The Finalsite Composer Custom HTML embed approach stays identical so both schedules can deploy the same way.
+- Campus chrome swapped for St. Petersburg: utility bar (727.893.2500, 901 34th St S), 4-pillar campus nav (no Pinellas High Innovation filter since St. Pete does not use the PHI shared-location model), and St. Pete footer with correct address + "St. Petersburg Links" column.
+- **35-row program table** built from two sources:
+  - 30 full-time programs derived from `programs.html` (every card tagged `data-campus="stp"` or `data-campus="clw stp"`) — a more complete list than the 26 distinct program cards since AM/PM Electricity, AM/PM Welding, AM/PM Advanced Welding, and Welding Tech 1 vs. 2 appear as separate schedule rows.
+  - 4 adult-education rows (ABE/GED/ASE daytime + evening, ESOL daytime + evening) matching the Clearwater pattern.
+  - 1 apprenticeship placeholder row directing students to call the campus for current offerings. St. Pete does not have a documented apprenticeship program list equivalent to Clearwater's BAEA/IEC/RACCA/Machining slate, so inventing rows would be dishonest.
+- **New "Status" column** (replaces Clearwater's "Start Date" column for now). Two values: `Confirmed` (green check, pulled from a verified source) and `Pending — confirm with counselor` (gray italic, typical PTC full-time block as a reasonable default).
+  - Welding Technology Day (Mon-Fri 7:00 AM - 12:15 PM) and Evening (Mon-Thu 4:00 PM - 9:00 PM) are marked **Confirmed** — both were verified against `welding-stpete.html` during the Apr 18 update.
+  - All 33 other rows are marked **Pending**. Their `timeLabel` values carry an explicit "(typical)" suffix so the page never misrepresents a placeholder as a confirmed time.
+- **Yellow "Draft" banner** below the page header makes the partial-verification state visible at the top of the page: "2026-2027 schedule in progress. Programs listed below are confirmed to be offered at the St. Petersburg campus. Specific days, times, and start dates are being finalized by the counseling office." Includes a live `tel:` link and a pointer to the St. Pete counseling office.
+- Footer note at the bottom of the table adds a cross-link to `schedule-clearwater.html` so visitors on the wrong campus page can jump to the other schedule in one click.
+
+**Nav wire-up across St. Pete chrome (4 files)**
+- `stpete.html`, `welding-stpete.html`, `_templates/shell-stpete.html` — each had the Programs dropdown's "Explore" section updated to insert a `<li><a href="schedule-stpete.html">Class Schedule</a></li>` between "All Programs A-Z" and "Distance Learning". This parallels the Clearwater Explore section exactly. The Class Schedule item is now consistently discoverable from every St. Pete main-site entry point.
+- `schedule-stpete.html` — its own Explore list already points to the new page (self-link), following the same pattern `schedule-clearwater.html` uses.
+
+**`welding-advanced.html` Campus Chooser updated**
+- St. Petersburg campus card's secondary button changed from "See Welding Technology (St. Pete)" to "View Class Schedule" pointing at `schedule-stpete.html`. Now both campus cards have the same action-pair (Explore Campus + View Class Schedule), matching the earlier design intent.
+
+**`sitemap.html` updated**
+- St. Petersburg "Campus Pages" card: the `Planned` entry "Class Schedule 2026-27" converted to a live `<a href="schedule-stpete.html">` entry with the `New` badge. The hourglass-icon / pending treatment was removed. Calendar icon (`fa-calendar`) used to match the Clearwater equivalent line in the Clearwater Campus card.
+
+### Decisions made
+
+- **Honest placeholder over fabricated times.** The biggest decision on this page. The Clearwater schedule is a transcription of an actual published document. St. Pete does not publish a comparable document in public form. Three options were on the table:
+  1. Copy Clearwater's times and swap the campus name — dishonest and dangerous for prospective students who would show up at the wrong time.
+  2. Leave all time cells blank — breaks the filter UX (time-of-day chips wouldn't work) and makes the page feel broken.
+  3. Use a "typical" default with an explicit "(typical)" suffix on the time label AND a Status column marking every unverified row as "Pending — confirm with counselor" AND a prominent yellow banner explaining the state. This is option 3, and it was chosen because it preserves the interactive filter UX, gives users real-world guidance on what PTC's typical blocks look like, and makes verification-pending state structurally explicit rather than hidden.
+- **Apprenticeships treated as a single "call the campus" row** rather than listing individual programs. Clearwater has a well-documented apprenticeship slate (BAEA, IEC, RACCA, Machining, Child Care, Facilities Maintenance, ABC Florida Gulf Coast offsite programs). Most of those run classroom sessions at the Clearwater campus regardless of which campus a student enrolls through. Rather than duplicating the Clearwater list under St. Pete and implying redundant sections, I kept the apprenticeship category present for filter completeness and pointed the single row at the campus phone number.
+- **No "Offsite" location or time filters.** Clearwater's "offsite" badges were tied to the ABC Florida Gulf Coast rows (which don't apply here without verified St. Pete-specific offsite offerings). Removing "offsite" from the filter chip list keeps the page tight and avoids the empty-filter trap. The `locLabel` helper was also simplified — Pinellas High Innovation (PHI) is Clearwater-only, so the `phi` case was dropped.
+- **Hour estimates for pending programs are reasonable but not cited.** For programs where `programs.html` doesn't publish the hour count, I used typical Florida CIP state-plan figures for the same program at other Florida technical colleges (e.g., Surgical Technology ~1330 hrs, Dental Assisting ~1230 hrs). These are reasonable and in the right neighborhood, and every pending row's Status column flags the whole line as unverified. When Marianne has the actual Florida DOE program-of-study hour counts for St. Pete, the numbers can be swapped without restructuring anything.
+- **Status column instead of Start Date for now.** The Clearwater page's 5th column shows "TBD — 2026/27" on every row because start dates aren't published yet either. For St. Pete, swapping that column to Status lets the page carry more useful information (verification state) without lying. If/when actual start dates become available, the column can be converted back or expanded to two columns.
+- **Nav parity with Clearwater.** Adding "Class Schedule" to the St. Pete Explore dropdown was called out in multiple previous progress-log entries (Apr 15, 17, 18, 19) as the natural next step once the page existed. Wiring the three copies of the Programs dropdown (stpete.html, welding-stpete.html, _templates/shell-stpete.html) closes that carried-over item and brings both campus navs to feature parity.
+
+### Issues or blockers
+
+- **Confirmation of "Pending" rows is the biggest open item.** 33 of 35 rows need verified times, days, and start dates from the St. Pete counseling office. Suggested path: a single email to the campus counseling office with the program list and asking for the 2026-27 schedule as published, or a shared Google Sheet. When the data comes back, updating `programs` array entries in the `<script>` block takes minutes.
+- **Adult Education specifics.** ABE/GED/ASE and ESOL are district-wide offerings through PCSB, but St. Pete campus-specific section times were not available. The 4 rows are generic daytime/evening blocks. The district's adult education office likely maintains the canonical schedule and could be linked as the source of truth.
+- **Apprenticeship list.** If St. Pete campus does host any apprenticeship classroom sessions (e.g., trades-specific evening courses), they should be broken out into individual rows to match the Clearwater page. Otherwise the single placeholder row can stay.
+- **EMT evening default.** Emergency Medical Technician is commonly offered as an evening intensive (250 hours, accelerated). The default row was set to Evening (M-R) as a reasonable guess. Verify against actual PTC scheduling.
+- **Welding Technology Advanced Day/Evening.** The two Advanced rows are flagged Pending because `welding-advanced.html` notes "Day and evening sections available" but doesn't publish exact shift times. If St. Pete runs the same 1st/2nd-shift pattern as Welding Technology, those can be moved to Confirmed with the same times.
+- **Apply Now button link.** Header CTA still points to `#`. Already an existing state on every other page; not a regression.
+
+### Updated link coverage
+
+| St. Pete nav entry | Before | After |
+|---|---|---|
+| Programs › Explore › Class Schedule | Not present | `schedule-stpete.html` (new) |
+| `welding-advanced.html` Campus Chooser › St. Pete › secondary button | `welding-stpete.html` | `schedule-stpete.html` |
+| Sitemap › St. Petersburg › Campus Pages › Class Schedule 2026-27 | Pending (Planned badge) | Live (New badge) |
+
+### Next priorities
+
+1. **Populate confirmed times on `schedule-stpete.html`** — either through a single outreach to the St. Pete counseling office or by mining any internal Focus/SIS export that lists St. Pete's 2026-27 offerings. Update the `programs` array in place; no layout changes needed.
+2. **Exact Florida CIP hours and course codes for Welding Technology Advanced** (carried over from Apr 19) — still the cleanest next content polish.
+3. **Homepage program grid expansion** (carried over) — 6 of 8 taxonomy clusters shown.
+4. **Lightweight stub pages** (carried over) — five remaining `#` footer placeholders (Student Resources, Campus Maps, Careers at PTC, and two category indexes).
+5. **Delete root `campus-template.html`** (carried over).
+6. **Add a breadcrumb row to `schedule-stpete.html` and `schedule-clearwater.html`** (suggested in the Apr 15 current-student agent review). Both pages currently launch straight into the green header with no "Home / Campus / Class Schedule" trail. A 5-minute addition.
+7. **Pinellas High Innovation campus affiliation.** Clearwater's schedule has several Phlebotomy and ESOL rows at PHI. If St. Pete also shares programs with a third location, the `location` enum in both schedule pages could be extended to cover that.
+

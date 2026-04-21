@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026–2027 Class Schedule — PTC Clearwater</title>
+    <title>2026–2027 Class Schedule — PTC St. Petersburg</title>
+    <meta name="description" content="2026-2027 class schedule for Pinellas Technical College St. Petersburg. Browse full-time programs, adult education, and apprenticeship offerings with days, times, and locations.">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -40,6 +41,35 @@
             padding: 0.4rem 1rem;
             font-size: 0.875rem;
             font-weight: 600;
+        }
+
+        /* ---- Draft Banner ---- */
+        .draft-banner {
+            background: #fef9c3;
+            border-bottom: 3px solid var(--color-yellow);
+            padding: 1rem 0;
+        }
+        .draft-banner__inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            color: #713f12;
+        }
+        .draft-banner__icon {
+            font-size: 1.3rem;
+            color: #b45309;
+            margin-top: 0.15rem;
+            flex-shrink: 0;
+        }
+        .draft-banner__text {
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+        .draft-banner__text strong { color: #78350f; }
+        .draft-banner__text a {
+            color: var(--color-green-dark);
+            font-weight: 700;
+            text-decoration: underline;
         }
 
         /* ---- Filter Bar ---- */
@@ -282,22 +312,22 @@
             background: #dcfce7;
             color: #166534;
         }
-        .loc-badge--phi {
-            background: #fef9c3;
-            color: #854d0e;
-        }
         .loc-badge--offsite {
             background: var(--color-gray-100);
             color: var(--color-gray-600);
         }
 
-        /* Start date */
-        .start-date {
+        /* Status badge (replaces the start-date column) */
+        .status {
             font-size: 0.82rem;
-            color: var(--color-gray-500);
         }
-        .start-date.coming-soon {
-            color: var(--color-accent);
+        .status--confirmed {
+            color: #166534;
+            font-weight: 600;
+        }
+        .status--confirmed i { margin-right: 0.3rem; }
+        .status--pending {
+            color: var(--color-gray-500);
             font-style: italic;
         }
 
@@ -326,7 +356,7 @@
         @media (max-width: 768px) {
             .filters-inner { gap: 1rem; }
             .schedule-table thead th:nth-child(5),
-            .schedule-table tbody td:nth-child(5) { display: none; } /* hide start date on mobile */
+            .schedule-table tbody td:nth-child(5) { display: none; } /* hide status on mobile */
         }
     </style>
 </head>
@@ -338,9 +368,9 @@
     <div class="utility-bar utility-bar--campus">
         <div class="container utility-bar__inner">
             <div class="utility-bar__left">
-                <a href="tel:7275387167"><i class="fas fa-phone"></i> 727.538.7167</a>
+                <a href="tel:7278932500"><i class="fas fa-phone"></i> 727.893.2500</a>
                 <span class="utility-bar__divider">|</span>
-                <a href="#"><i class="fas fa-map-marker-alt"></i> 6100 154th Ave N, Clearwater, FL</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> 901 34th St S, St. Petersburg, FL</a>
             </div>
             <div class="utility-bar__right">
                 <a href="#"><i class="fas fa-desktop"></i> Canvas Login</a>
@@ -349,22 +379,22 @@
                 <span class="utility-bar__divider">|</span>
                 <a href="index.html"><i class="fas fa-home"></i> PTC Main Site</a>
                 <span class="utility-bar__divider">|</span>
-                <a href="stpete.html"><i class="fas fa-exchange-alt"></i> St. Pete Campus</a>
+                <a href="clearwater.html"><i class="fas fa-exchange-alt"></i> Clearwater Campus</a>
                 <a href="#" class="btn btn--primary btn--sm" style="margin-left: 1rem;"><i class="fas fa-search"></i></a>
             </div>
         </div>
     </div>
 
     <!-- ============================================
-         CAMPUS HEADER (5-Pillar Structure)
+         CAMPUS HEADER (4-Pillar Structure)
     ============================================= -->
     <header class="site-header" id="site-header">
         <div class="container site-header__inner">
-            <a href="clearwater.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+            <a href="stpete.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
                 <img src="assets/logos/ptc-circle-logo.png" alt="PTC Logo" style="height: 60px;">
                 <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
                     <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
-                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Clearwater Campus</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">St. Petersburg Campus</span>
                 </div>
             </a>
 
@@ -384,13 +414,12 @@
                                         <li><a href="#">Transportation &amp; Logistics</a></li>
                                         <li><a href="#">Culinary &amp; Hospitality</a></li>
                                         <li><a href="#">Cosmetology &amp; Barbering</a></li>
-                                        <li><a href="#">Business &amp; Office</a></li>
                                         <li><a href="#">Arts, Media &amp; Education</a></li>
                                     </ul>
                                     <h4>Explore</h4>
                                     <ul>
                                         <li><a href="programs.html">All Programs A&ndash;Z</a></li>
-                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
                                         <li><a href="#">Distance Learning</a></li>
                                     </ul>
                                 </div>
@@ -471,13 +500,30 @@
     <!-- Page Header -->
     <div class="schedule-page-header">
         <div class="container">
-            <p style="text-transform:uppercase;letter-spacing:2px;color:var(--color-accent);font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;">Clearwater Campus</p>
+            <p style="text-transform:uppercase;letter-spacing:2px;color:var(--color-accent);font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;">St. Petersburg Campus</p>
             <h1>2026–2027 Class Schedule</h1>
-            <p>Browse all programs, adult education courses, and apprenticeships offered at the Clearwater campus. Use the filters below to find the schedule that fits your life.</p>
+            <p>Browse full-time programs, adult education, and apprenticeships offered at the St. Petersburg campus. Use the filters below to narrow your search.</p>
             <div class="schedule-page-header__meta">
-                <span class="schedule-page-header__badge"><i class="fas fa-map-marker-alt"></i> 6100 154th Ave N, Clearwater, FL 33760</span>
+                <span class="schedule-page-header__badge"><i class="fas fa-map-marker-alt"></i> 901 34th St S, St. Petersburg, FL 33711</span>
                 <span class="schedule-page-header__badge"><i class="fas fa-calendar-alt"></i> Academic Year 2026–2027</span>
                 <span class="schedule-page-header__badge"><i class="fas fa-info-circle"></i> Start dates subject to change</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Draft Banner: honest status for 2026-27 while campus confirms final times -->
+    <div class="draft-banner">
+        <div class="container">
+            <div class="draft-banner__inner">
+                <i class="fas fa-exclamation-triangle draft-banner__icon"></i>
+                <p class="draft-banner__text">
+                    <strong>2026–2027 schedule in progress.</strong>
+                    Programs listed below are confirmed to be offered at the St. Petersburg campus. Specific days, times, and start dates are being finalized by the counseling office. Rows marked with
+                    <span class="status status--confirmed"><i class="fas fa-check-circle"></i>Confirmed</span>
+                    reflect current published information; other rows show typical time ranges and should be verified before registration. Call
+                    <a href="tel:7278932500">(727) 893-2500</a> or contact the
+                    <a href="#">St. Petersburg counseling office</a> to confirm your program's current schedule.
+                </p>
             </div>
         </div>
     </div>
@@ -503,7 +549,6 @@
                         <button class="chip" data-value="afternoon">Afternoon</button>
                         <button class="chip" data-value="evening">Evening</button>
                         <button class="chip" data-value="online">Online</button>
-                        <button class="chip" data-value="offsite">Offsite</button>
                     </div>
                 </div>
                 <div class="search-wrap">
@@ -532,7 +577,7 @@
                             <th>Days</th>
                             <th>Time</th>
                             <th>Location</th>
-                            <th>Start Date</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody id="schedule-body">
@@ -551,9 +596,10 @@
             <div class="schedule-note">
                 <div class="container" style="padding:0;">
                     <p><strong>R = Thursday</strong> in the days column (standard academic notation).</p>
-                    <p><strong>Pinellas High Innovation</strong> is a separate PTC campus location.</p>
+                    <p><strong>"Typical"</strong> times reflect common PTC full-time daytime blocks. Confirm your program's actual schedule with the counseling office before registration.</p>
                     <p>Program lengths and start dates are approximate and subject to change. Contact your counselor for current enrollment availability.</p>
-                    <p style="margin-top:0.75rem;"><strong>Questions?</strong> Call <a href="tel:7275387167" style="color:var(--color-green);font-weight:600;">727.538.7167</a> or <a href="#" style="color:var(--color-green);font-weight:600;">apply online</a>.</p>
+                    <p style="margin-top:0.75rem;"><strong>Questions?</strong> Call <a href="tel:7278932500" style="color:var(--color-green);font-weight:600;">727.893.2500</a> or <a href="#" style="color:var(--color-green);font-weight:600;">apply online</a>.</p>
+                    <p style="margin-top:0.75rem;"><strong>Looking for Clearwater campus programs?</strong> <a href="schedule-clearwater.html" style="color:var(--color-green);font-weight:600;">View the Clearwater class schedule →</a></p>
                 </div>
             </div>
 
@@ -568,8 +614,8 @@
             <div class="footer__top">
                 <div class="footer__brand">
                     <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
-                    <p class="footer__tagline"><strong>6100 154th Ave N, Clearwater, FL 33760</strong><br>
-                    Phone: 727.538.7167<br>
+                    <p class="footer__tagline"><strong>901 34th St S, St. Petersburg, FL 33711</strong><br>
+                    Phone: 727.893.2500<br>
                     Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
                     <div class="footer__social">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -583,17 +629,17 @@
                     <div class="footer__col">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="#">Programs</a></li>
-                            <li><a href="#">Admissions</a></li>
-                            <li><a href="#">Tuition &amp; Aid</a></li>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="admissions.html">Admissions</a></li>
+                            <li><a href="tuition-aid.html">Tuition &amp; Aid</a></li>
                             <li><a href="#">Student Resources</a></li>
-                            <li><a href="#">About PTC</a></li>
+                            <li><a href="about.html">About PTC</a></li>
                         </ul>
                     </div>
                     <div class="footer__col">
-                        <h4>Clearwater Links</h4>
+                        <h4>St. Petersburg Links</h4>
                         <ul>
-                            <li><a href="clearwater.html">Clearwater Campus Home</a></li>
+                            <li><a href="stpete.html">St. Petersburg Campus Home</a></li>
                             <li><a href="programs.html">All Programs A&ndash;Z</a></li>
                             <li><a href="#">Campus Map &amp; Directions</a></li>
                             <li><a href="#">Academic Calendar</a></li>
@@ -605,7 +651,7 @@
                         <ul>
                             <li><a href="consumer-information.html">Consumer Information</a></li>
                             <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
-                            <li><a href="#">Accreditation</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
                             <li><a href="#">Careers at PTC</a></li>
                             <li><a href="contact.html">Contact Us</a></li>
                         </ul>
@@ -636,86 +682,70 @@
 
     <script>
     // ============================================================
-    // SCHEDULE DATA
+    // SCHEDULE DATA — St. Petersburg Campus
+    //
+    // Programs list derived from programs.html (data-campus="stp" or
+    // "clw stp" cards). Schedule times fall into two buckets:
+    //
+    //   status: "confirmed"  -> pulled from a verified source
+    //                           (e.g. welding-stpete.html for Welding Tech)
+    //   status: "pending"    -> typical full-time PTC block; counselor
+    //                           confirmation required before registration
+    //
+    // Replace pending entries with verified times as the St. Pete
+    // counseling office publishes the 2026-27 schedule.
     // ============================================================
     const programs = [
 
         // ---- FULL-TIME PROGRAMS ----
-        { name: "Accounting Operations", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Baking & Pastry Arts", hours: "600 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Barbering (AM)", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Barbering (PM)", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "2:15 PM – 9:00 PM", timeOfDay: "afternoon", location: "main", startDate: "", category: "fulltime" },
-        { name: "Cabinetmaking", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Child Care Center Operations", hours: "45 hrs", days: [], timeLabel: "Distance Education", timeOfDay: "online", location: "main", startDate: "", category: "fulltime" },
-        { name: "Computer Systems & Information Technology", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Diesel Systems Maintenance Technician", hours: "600 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Diesel Systems Technician 1", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Diesel Systems Technician 2", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Electricity (AM)", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Electricity (PM)", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "12:30 PM – 5:45 PM", timeOfDay: "afternoon", location: "main", startDate: "", category: "fulltime" },
-        { name: "Electronic Systems Integration & Automation", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Fundamental Foodservice Skills", hours: "600 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Heating, Ventilation, Air Conditioning/Refrigeration (HVAC/R) 1 – IET", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Interior Decorating Services", hours: "1250 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Machining Technologies", hours: "1500 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Marine Service Technologies", hours: "1350 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Master Automotive Service Technology 1", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Master Automotive Service Technology 2", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Medical Administrative Specialist", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Network Support Systems", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Phlebotomy", hours: "165 hrs", days: ["M","W"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "phi", startDate: "", category: "fulltime" },
-        { name: "Practical Nursing", hours: "1350 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Professional Culinary Arts & Hospitality", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Professional Nursing (LPN to RN)", hours: "900 hrs", days: ["T","W"], timeLabel: "Hybrid – Tues & Wed face-to-face", timeOfDay: "hybrid", location: "main", startDate: "", category: "fulltime" },
-        { name: "Stage Production", hours: "300 hrs", days: ["M","T","W","R"], timeLabel: "8:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Welding Technology (1st Shift)", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Welding Technology (2nd Shift)", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "12:15 PM – 5:30 PM", timeOfDay: "afternoon", location: "main", startDate: "", category: "fulltime" },
-        { name: "Welding Technology Advanced (1st Shift)", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "", category: "fulltime" },
-        { name: "Welding Technology Advanced (2nd Shift)", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "12:15 PM – 5:30 PM", timeOfDay: "afternoon", location: "main", startDate: "", category: "fulltime" },
+        { name: "Automotive Collision Technology", hours: "1400 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Automotive Service Technology 1", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Automotive Service Technology 2", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Barbering", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Building Trades & Construction Design", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Child Care Center Operations", hours: "45 hrs", days: [], timeLabel: "Distance Education", timeOfDay: "online", location: "main", status: "pending", category: "fulltime" },
+        { name: "Commercial Class B Driving", hours: "320 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 3:30 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Commercial Vehicle Driving (CDL Class A)", hours: "320 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 3:30 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Computer-Aided Drawing & Modeling", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Computer Systems & Information Technology", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Cosmetology", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Dental Assisting", hours: "1230 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Early Childhood Education", hours: "600 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Electricity (AM)", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Electricity (PM)", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "12:30 PM – 5:45 PM (typical)", timeOfDay: "afternoon", location: "main", status: "pending", category: "fulltime" },
+        { name: "Emergency Medical Technician", hours: "250 hrs", days: ["M","T","W","R"], timeLabel: "Evenings (typical)", timeOfDay: "evening", location: "main", status: "pending", category: "fulltime" },
+        { name: "Facials Specialty", hours: "260 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Heating, Ventilation, Air Conditioning/Refrigeration (HVAC/R) 1", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Medical Coder/Biller", hours: "1110 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Nails Specialty", hours: "240 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Plumbing", hours: "600 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Practical Nursing", hours: "1350 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Professional Culinary Arts & Hospitality", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Public Works", hours: "600 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "School Age Professional Certificate", hours: "150 hrs", days: [], timeLabel: "Distance Education", timeOfDay: "online", location: "main", status: "pending", category: "fulltime" },
+        { name: "Surgical Technology", hours: "1330 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Welding Technology (Day)", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", status: "confirmed", category: "fulltime" },
+        { name: "Welding Technology (Evening)", hours: "1050 hrs", days: ["M","T","W","R"], timeLabel: "4:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", status: "confirmed", category: "fulltime" },
+        { name: "Welding Technology Advanced (Day)", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "Day section (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "fulltime" },
+        { name: "Welding Technology Advanced (Evening)", hours: "750 hrs", days: ["M","T","W","R"], timeLabel: "Evening section (typical)", timeOfDay: "evening", location: "main", status: "pending", category: "fulltime" },
 
         // ---- ADULT EDUCATION ----
-        { name: "ABE / GED / ASB – Daytime", hours: "", days: ["M","T","W","R","F"], timeLabel: "8:00 AM – 1:00 PM", timeOfDay: "morning", location: "main", startDate: "", category: "adult" },
-        { name: "ABE / GED / ASB – Evening", hours: "", days: ["M","T","W","R"], timeLabel: "5:30 PM – 8:30 PM", timeOfDay: "evening", location: "main", startDate: "", category: "adult" },
-        { name: "ESOL – Daytime", hours: "", days: ["M","T","W","R"], timeLabel: "8:00 AM – 1:00 PM", timeOfDay: "morning", location: "main", startDate: "", category: "adult" },
-        { name: "ESOL – Evening", hours: "", days: ["M","T","W","R"], timeLabel: "4:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "adult" },
-        { name: "ESOL – Evening", hours: "", days: ["M","T","W","R"], timeLabel: "3:30 PM – 8:30 PM", timeOfDay: "evening", location: "phi", startDate: "", category: "adult" },
+        { name: "ABE / GED / ASE – Daytime", hours: "", days: ["M","T","W","R","F"], timeLabel: "Morning session (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "adult" },
+        { name: "ABE / GED / ASE – Evening", hours: "", days: ["M","T","W","R"], timeLabel: "Evening session (typical)", timeOfDay: "evening", location: "main", status: "pending", category: "adult" },
+        { name: "ESOL – Daytime", hours: "", days: ["M","T","W","R"], timeLabel: "Morning session (typical)", timeOfDay: "morning", location: "main", status: "pending", category: "adult" },
+        { name: "ESOL – Evening", hours: "", days: ["M","T","W","R"], timeLabel: "Evening session (typical)", timeOfDay: "evening", location: "main", status: "pending", category: "adult" },
 
         // ---- APPRENTICESHIPS ----
-        { name: "Bay Area Electrical Apprenticeship (BAEA) – 1st Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Bay Area Electrical Apprenticeship (BAEA) – 2nd Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Bay Area Electrical Apprenticeship (BAEA) – 3rd Year", hours: "", days: ["T","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Bay Area Electrical Apprenticeship (BAEA) – 4th Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Independent Electrical Contractors (IEC) – 1st Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Independent Electrical Contractors (IEC) – 1st Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Independent Electrical Contractors (IEC) – 2nd Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Independent Electrical Contractors (IEC) – 3rd Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Independent Electrical Contractors (IEC) – 4th Year", hours: "", days: ["M"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "RACCA (Refrigeration & AC) – 1st Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "RACCA (Refrigeration & AC) – 1st Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "RACCA (Refrigeration & AC) – 2nd Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "RACCA (Refrigeration & AC) – 2nd Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "RACCA (Refrigeration & AC) – 3rd Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "RACCA (Refrigeration & AC) – 3rd Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "RACCA (Refrigeration & AC) – 4th Year", hours: "", days: ["M","W"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "RACCA (Refrigeration & AC) – 4th Year", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Tampa Bay Machining Apprenticeship", hours: "", days: ["M","W"], timeLabel: "5:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Child Care Apprenticeship", hours: "", days: ["T","R"], timeLabel: "5:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Electrical & Electronics / Hybrid-EV Systems Technician", hours: "", days: ["T","R"], timeLabel: "6:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Facilities Maintenance Apprenticeship", hours: "", days: ["T","R"], timeLabel: "5:30 PM – 8:30 PM", timeOfDay: "evening", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "Facilities Maintenance Apprenticeship", hours: "", days: ["F"], timeLabel: "7:00 AM – 12:00 PM", timeOfDay: "morning", location: "main", startDate: "", category: "apprenticeship" },
-        { name: "ABC Florida Gulf Coast – Sprinkler Fitter", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
-        { name: "ABC Florida Gulf Coast – Electricity", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
-        { name: "ABC Florida Gulf Coast – Structural Steel", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
-        { name: "ABC Florida Gulf Coast – Boilermaker", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
-        { name: "Pinellas Suncoast Transit Authority (PSTA)", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
-        { name: "Florida Trade Association Apprenticeship (FTA)", hours: "", days: [], timeLabel: "Offsite", timeOfDay: "offsite", location: "offsite", startDate: "", category: "apprenticeship" },
+        // Pinellas-area apprenticeships are shared district-wide; many classroom
+        // sessions run at Clearwater. Verify St. Pete-specific offerings with
+        // the counseling office. Placeholder row keeps the category visible.
+        { name: "Apprenticeship Program Offerings", hours: "Contact campus", days: [], timeLabel: "Call 727.893.2500 for current apprenticeship schedule", timeOfDay: "evening", location: "main", status: "pending", category: "apprenticeship" },
     ];
 
     // ============================================================
     // RENDER & FILTER
     // ============================================================
     const ALL_DAYS = ["M","T","W","R","F","S"];
-    const DAY_LABELS = { M:"M", T:"T", W:"W", R:"R", F:"F", S:"S" };
 
     const CATEGORY_LABELS = {
         fulltime: "Full-Time Programs",
@@ -735,8 +765,11 @@
     }
     function locLabel(l) {
         if (l === "main") return '<span class="loc-badge loc-badge--main">Main</span>';
-        if (l === "phi") return '<span class="loc-badge loc-badge--phi">Pinellas High Innovation</span>';
         return '<span class="loc-badge loc-badge--offsite">Offsite</span>';
+    }
+    function statusLabel(s) {
+        if (s === "confirmed") return '<span class="status status--confirmed"><i class="fas fa-check-circle"></i>Confirmed</span>';
+        return '<span class="status status--pending">Pending — confirm with counselor</span>';
     }
 
     function buildRows() {
@@ -745,7 +778,7 @@
 
         let lastCategory = null;
 
-        programs.forEach((p, i) => {
+        programs.forEach((p) => {
             // Category heading row
             if (p.category !== lastCategory) {
                 const headingRow = document.createElement("tr");
@@ -773,7 +806,7 @@
                 <td><div class="days-list">${p.days.length ? daysHtml : '<span style="color:var(--color-gray-400);font-size:0.8rem;">See notes</span>'}</div></td>
                 <td><span class="time-badge time-badge--${timeBadgeClass(p.timeOfDay)}"><i class="fas ${timeIcon(p.timeOfDay)}" style="font-size:0.7rem;"></i>${p.timeLabel}</span></td>
                 <td>${locLabel(p.location)}</td>
-                <td><span class="start-date coming-soon">TBD – 2026/27</span></td>
+                <td>${statusLabel(p.status)}</td>
             `;
             tbody.appendChild(tr);
         });
