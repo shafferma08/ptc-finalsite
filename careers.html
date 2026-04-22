@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at PTC — Pinellas Technical College</title>
+    <meta name="description" content="Join the Pinellas Technical College team. Open positions, hiring process, and benefits for instructional and staff roles across both campuses.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
+            color: #fff;
+            padding: 4rem 0 3rem;
+        }
+        .page-hero__breadcrumb { font-size: 0.875rem; margin-bottom: 1rem; opacity: 0.85; }
+        .page-hero__breadcrumb a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+        .page-hero__title { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; margin: 0 0 0.75rem; }
+        .page-hero__subtitle { font-size: 1.15rem; max-width: 720px; opacity: 0.92; line-height: 1.6; }
+
+        .careers-section { padding: 4rem 0; }
+        .careers-section--alt { background: var(--color-off-white, #F7F8FA); }
+        .careers-section h2 {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.5rem;
+        }
+        .careers-section .section-intro {
+            color: var(--color-gray-700);
+            max-width: 720px;
+            margin: 0 0 2rem;
+            line-height: 1.6;
+        }
+
+        .pcsb-apply-card {
+            background: #fff;
+            border: 1px solid var(--color-gray-200);
+            border-top: 5px solid var(--color-green);
+            border-radius: 10px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+        .pcsb-apply-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.5rem;
+        }
+        .pcsb-apply-card p {
+            color: var(--color-gray-700);
+            line-height: 1.55;
+            margin: 0 0 1rem;
+        }
+        .pcsb-apply-card .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--color-green);
+            color: #fff;
+            padding: 0.75rem 1.4rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .pcsb-apply-card .btn:hover { background: var(--color-green-dark, #004d29); }
+        .pcsb-apply-card__aside {
+            background: var(--color-off-white, #F7F8FA);
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-yellow);
+        }
+        .pcsb-apply-card__aside h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.5rem;
+        }
+        .pcsb-apply-card__aside ul {
+            margin: 0;
+            padding: 0 0 0 1.1rem;
+            color: var(--color-gray-700);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+        @media (max-width: 820px) {
+            .pcsb-apply-card { grid-template-columns: 1fr; }
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        .role-card {
+            background: #fff;
+            border: 1px solid var(--color-gray-200);
+            border-left: 4px solid var(--color-light-green, #8DC63F);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        .role-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.5rem;
+        }
+        .role-card p {
+            color: var(--color-gray-700);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        .role-card__type {
+            display: inline-block;
+            background: var(--color-off-white, #F7F8FA);
+            color: var(--color-gray-700);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        .benefit-card {
+            background: #fff;
+            border: 1px solid var(--color-gray-200);
+            border-radius: 8px;
+            padding: 1.25rem;
+            text-align: left;
+        }
+        .benefit-card__icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-light-green, #8DC63F);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+        }
+        .benefit-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.4rem;
+        }
+        .benefit-card p {
+            color: var(--color-gray-700);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .process-list {
+            max-width: 760px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            counter-reset: step;
+        }
+        .process-list li {
+            counter-increment: step;
+            padding: 1rem 0 1rem 3.5rem;
+            border-bottom: 1px solid var(--color-gray-200);
+            position: relative;
+            color: var(--color-gray-700);
+            line-height: 1.55;
+        }
+        .process-list li:last-child { border-bottom: 0; }
+        .process-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            background: var(--color-green);
+            color: #fff;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .process-list strong { color: var(--color-gray-900); display: block; margin-bottom: 0.25rem; }
+
+        .inline-note {
+            background: #fef9c3;
+            border-left: 4px solid var(--color-yellow);
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            color: #713f12;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+        .inline-note strong { color: #78350f; }
+
+        @media (max-width: 640px) {
+            .page-hero__title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- UTILITY BAR -->
+    <div class="utility-bar">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
+                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
+                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
+                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER / NAVIGATION -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College — Opportunity Starts Here" id="header-logo" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
+                </div>
+            </a>
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item"><a href="programs.html" class="main-nav__link">Programs</a></li>
+                    <li class="main-nav__item"><a href="admissions.html" class="main-nav__link">Admissions</a></li>
+                    <li class="main-nav__item"><a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid</a></li>
+                    <li class="main-nav__item"><a href="clearwater.html" class="main-nav__link">Campuses</a></li>
+                    <li class="main-nav__item"><a href="student-resources.html" class="main-nav__link">Current Students</a></li>
+                    <li class="main-nav__item main-nav__item--active"><a href="about.html" class="main-nav__link">About PTC</a></li>
+                </ul>
+            </nav>
+            <div class="site-header__actions">
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- PAGE HERO -->
+        <section class="page-hero">
+            <div class="container">
+                <div class="page-hero__breadcrumb">
+                    <a href="index.html">Home</a> / <a href="about.html">About PTC</a> / Careers at PTC
+                </div>
+                <h1 class="page-hero__title">Careers at PTC</h1>
+                <p class="page-hero__subtitle">Help shape the careers of adult learners in Pinellas County. PTC hires instructors, counselors, and support staff who care about hands-on, industry-aligned education.</p>
+            </div>
+        </section>
+
+        <!-- APPLY CARD -->
+        <section class="careers-section">
+            <div class="container">
+                <div class="inline-note">
+                    <strong>How PTC hiring works:</strong> All PTC positions are posted through the Pinellas County Schools (PCSB) district careers system. PTC does not accept applications directly through this site. Select an open position in the district portal to apply.
+                </div>
+
+                <div class="pcsb-apply-card">
+                    <div>
+                        <h3>Apply through Pinellas County Schools</h3>
+                        <p>PTC is part of Pinellas County Schools. Every instructional and support position is posted, reviewed, and filled through the PCSB careers system. Use the district portal to search for PTC openings by campus, category, or keyword.</p>
+                        <a class="btn" href="https://www.pcsb.org/careers" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Browse PCSB Careers</a>
+                    </div>
+                    <div class="pcsb-apply-card__aside">
+                        <h4>What to search for</h4>
+                        <ul>
+                            <li>"Pinellas Technical College"</li>
+                            <li>"PTC Clearwater" or "PTC St. Petersburg"</li>
+                            <li>Specific program (e.g., "Welding Instructor")</li>
+                            <li>Category (Instructor, Counselor, Staff)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROLE TYPES -->
+        <section class="careers-section careers-section--alt">
+            <div class="container">
+                <h2>Types of Positions</h2>
+                <p class="section-intro">PTC hires for three main categories of roles. Actual open postings change frequently and are the authoritative source of current opportunities.</p>
+
+                <div class="roles-grid">
+                    <div class="role-card">
+                        <span class="role-card__type">Instructional</span>
+                        <h3>Program Instructors</h3>
+                        <p>Lead a full-time or short-course program. Industry experience and relevant certifications are typically required; teaching certification can often be earned on the job.</p>
+                    </div>
+                    <div class="role-card">
+                        <span class="role-card__type">Instructional</span>
+                        <h3>Adult Education Instructors</h3>
+                        <p>Teach ABE, GED, ASE preparation, or ESOL to adult learners preparing for a high school equivalency diploma or improving basic skills.</p>
+                    </div>
+                    <div class="role-card">
+                        <span class="role-card__type">Support</span>
+                        <h3>Counselors &amp; Advisors</h3>
+                        <p>Guide students through program selection, enrollment, financial aid, and completion. Master's in counseling or related field typically required.</p>
+                    </div>
+                    <div class="role-card">
+                        <span class="role-card__type">Support</span>
+                        <h3>Distance Learning &amp; Technology</h3>
+                        <p>Support online course delivery, Canvas administration, and student-facing technology systems across both campuses.</p>
+                    </div>
+                    <div class="role-card">
+                        <span class="role-card__type">Staff</span>
+                        <h3>Administrative &amp; Operations</h3>
+                        <p>Registrar, financial aid, student records, communications, and facilities roles that keep the campus running.</p>
+                    </div>
+                    <div class="role-card">
+                        <span class="role-card__type">Part-Time</span>
+                        <h3>Adjunct &amp; Substitute Instructors</h3>
+                        <p>Teach evening or short-course sections on a part-time schedule. A good entry point for industry professionals new to teaching.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="careers-section">
+            <div class="container">
+                <h2>Hiring Process</h2>
+                <p class="section-intro">Every PTC hire follows the PCSB district hiring workflow. Here's what to expect.</p>
+                <ol class="process-list">
+                    <li><strong>Browse open positions</strong>Search the PCSB careers portal by keyword ("Pinellas Technical College" or a program name) and filter to the role type you want.</li>
+                    <li><strong>Submit a district application</strong>Complete the PCSB application with work history, certifications, and references. Uploads typically include a résumé and relevant licenses.</li>
+                    <li><strong>Screening and interviews</strong>Qualified candidates are invited to interview with the hiring manager and the PTC campus leadership team. Instructional roles may include a teaching demonstration.</li>
+                    <li><strong>Background check and offer</strong>PCSB conducts fingerprinting and reference verification. Offers are extended through the district HR office.</li>
+                    <li><strong>Onboarding</strong>PTC onboarding covers campus orientation, Canvas access, and instructional mentorship for new faculty.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- BENEFITS -->
+        <section class="careers-section careers-section--alt">
+            <div class="container">
+                <h2>Why Work at PTC</h2>
+                <p class="section-intro">PTC employees receive Pinellas County Schools district benefits plus the opportunity to teach in an adult-focused, career-technical setting.</p>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <span class="benefit-card__icon"><i class="fas fa-heart-pulse"></i></span>
+                        <h3>Health &amp; Wellness</h3>
+                        <p>District-sponsored medical, dental, and vision coverage with options for employees and families.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <span class="benefit-card__icon"><i class="fas fa-piggy-bank"></i></span>
+                        <h3>Florida Retirement System</h3>
+                        <p>Participation in the FRS Pension or Investment plan, plus voluntary 403(b) and 457 options.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <span class="benefit-card__icon"><i class="fas fa-calendar-check"></i></span>
+                        <h3>Paid Time Off</h3>
+                        <p>Sick leave, personal days, and paid holidays aligned with the PCSB school-year calendar.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <span class="benefit-card__icon"><i class="fas fa-book-open"></i></span>
+                        <h3>Professional Development</h3>
+                        <p>Ongoing PLN courses, tuition reimbursement options, and industry certification support.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <span class="benefit-card__icon"><i class="fas fa-users"></i></span>
+                        <h3>Adult Education Focus</h3>
+                        <p>Work with motivated adult learners in a hands-on, career-track environment — no K-12 classroom management.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <span class="benefit-card__icon"><i class="fas fa-handshake"></i></span>
+                        <h3>Employer Partnerships</h3>
+                        <p>Connected to the local workforce through active advisory boards across every program category.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUESTIONS / CONTACT -->
+        <section class="careers-section">
+            <div class="container" style="text-align: center;">
+                <h2>Questions About a Posting?</h2>
+                <p class="section-intro" style="margin-left: auto; margin-right: auto;">The PCSB HR office handles applicant questions, technical issues with the portal, and status updates. For questions specific to teaching at PTC or a particular program, contact the campus directly.</p>
+                <a class="btn btn--primary" href="contact.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-green); color: #fff; padding: 0.75rem 1.4rem; border-radius: 6px; font-weight: 700; text-decoration: none;"><i class="fas fa-envelope"></i> Contact PTC</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline">Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="admissions.html">Admissions</a></li>
+                            <li><a href="tuition-aid.html">Tuition &amp; Aid</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Campuses</h4>
+                        <ul>
+                            <li><a href="clearwater.html">Clearwater Campus</a></li>
+                            <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                            <li><a href="campus-maps.html">Campus Maps</a></li>
+                            <li><a href="admissions.html#campus-tours">Schedule a Tour</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#privacy-ferpa">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Resources — Pinellas Technical College</title>
+    <meta name="description" content="Resources for current PTC students: Canvas, Focus SIS, academic calendar, transcripts, tech support, counseling, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
+            color: #fff;
+            padding: 4rem 0 3rem;
+        }
+        .page-hero__breadcrumb {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            opacity: 0.85;
+        }
+        .page-hero__breadcrumb a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+        .page-hero__title { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; margin: 0 0 0.75rem; }
+        .page-hero__subtitle { font-size: 1.15rem; max-width: 700px; opacity: 0.92; line-height: 1.6; }
+
+        .resources-section { padding: 4rem 0; }
+        .resources-section--alt { background: var(--color-off-white, #F7F8FA); }
+        .resources-section h2 {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.5rem;
+        }
+        .resources-section .section-intro {
+            color: var(--color-gray-700);
+            max-width: 720px;
+            margin: 0 0 2rem;
+            line-height: 1.6;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .resource-card {
+            background: #fff;
+            border: 1px solid var(--color-gray-200);
+            border-left: 4px solid var(--color-green);
+            border-radius: 8px;
+            padding: 1.5rem 1.5rem 1.25rem;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .resource-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        .resource-card__icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            background: var(--color-green);
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+        }
+        .resource-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.5rem;
+        }
+        .resource-card p {
+            color: var(--color-gray-700);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0 0 1rem;
+        }
+        .resource-card__cta {
+            margin-top: auto;
+            color: var(--color-green);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        .resource-card__cta:hover { text-decoration: underline; }
+        .resource-card--placeholder {
+            border-left-color: var(--color-gray-400, #9ca3af);
+            background: #fafafa;
+        }
+        .resource-card--placeholder .resource-card__icon { background: var(--color-gray-400, #9ca3af); }
+        .resource-card--placeholder .resource-card__cta { color: var(--color-gray-600, #6b7280); font-style: italic; font-weight: 500; }
+
+        .inline-note {
+            background: #fef9c3;
+            border-left: 4px solid var(--color-yellow);
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
+            color: #713f12;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+        .inline-note strong { color: #78350f; }
+
+        @media (max-width: 640px) {
+            .page-hero__title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- UTILITY BAR -->
+    <div class="utility-bar">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
+                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
+                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
+                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
+                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER / NAVIGATION -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College — Opportunity Starts Here" id="header-logo" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
+                </div>
+            </a>
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item"><a href="programs.html" class="main-nav__link">Programs</a></li>
+                    <li class="main-nav__item"><a href="admissions.html" class="main-nav__link">Admissions</a></li>
+                    <li class="main-nav__item"><a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid</a></li>
+                    <li class="main-nav__item"><a href="clearwater.html" class="main-nav__link">Campuses</a></li>
+                    <li class="main-nav__item main-nav__item--active"><a href="student-resources.html" class="main-nav__link">Current Students</a></li>
+                    <li class="main-nav__item"><a href="about.html" class="main-nav__link">About PTC</a></li>
+                </ul>
+            </nav>
+            <div class="site-header__actions">
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- PAGE HERO -->
+        <section class="page-hero">
+            <div class="container">
+                <div class="page-hero__breadcrumb">
+                    <a href="index.html">Home</a> / Student Resources
+                </div>
+                <h1 class="page-hero__title">Student Resources</h1>
+                <p class="page-hero__subtitle">Everything you need as a current PTC student — from logging into Canvas to requesting a transcript, finding support services, or planning your next term.</p>
+            </div>
+        </section>
+
+        <!-- ACADEMIC TOOLS -->
+        <section class="resources-section">
+            <div class="container">
+                <h2>Academic Tools</h2>
+                <p class="section-intro">Day-to-day tools you'll use as a PTC student.</p>
+
+                <div class="inline-note">
+                    <strong>Heads up:</strong> Several links below point to external district systems (PCSB Canvas, Focus) that will open in the existing portal when authenticated. Placeholder cards are clearly labeled "Coming soon" while the live integrations are finalized for the new site.
+                </div>
+
+                <div class="resources-grid">
+                    <div class="resource-card resource-card--placeholder">
+                        <span class="resource-card__icon"><i class="fas fa-chalkboard-teacher"></i></span>
+                        <h3>Canvas</h3>
+                        <p>Access course content, assignments, grades, and announcements through the PCSB Canvas instance.</p>
+                        <span class="resource-card__cta">Coming soon</span>
+                    </div>
+                    <div class="resource-card resource-card--placeholder">
+                        <span class="resource-card__icon"><i class="fas fa-id-card"></i></span>
+                        <h3>Focus / SIS Portal</h3>
+                        <p>Check grades, attendance, schedule, and account balances in the district Student Information System.</p>
+                        <span class="resource-card__cta">Coming soon</span>
+                    </div>
+                    <div class="resource-card resource-card--placeholder">
+                        <span class="resource-card__icon"><i class="fas fa-calendar-alt"></i></span>
+                        <h3>Academic Calendar</h3>
+                        <p>Term start and end dates, holidays, exam windows, and graduation dates for 2026-27.</p>
+                        <span class="resource-card__cta">Coming soon</span>
+                    </div>
+                    <div class="resource-card">
+                        <span class="resource-card__icon"><i class="fas fa-file-alt"></i></span>
+                        <h3>Transcript Requests</h3>
+                        <p>Request an official transcript for employment, transfer, or personal records through the district office.</p>
+                        <a href="contact.html" class="resource-card__cta">Contact the registrar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card resource-card--placeholder">
+                        <span class="resource-card__icon"><i class="fas fa-headset"></i></span>
+                        <h3>Tech Support</h3>
+                        <p>Help with Canvas, email, district logins, and classroom technology issues.</p>
+                        <span class="resource-card__cta">Coming soon</span>
+                    </div>
+                    <div class="resource-card">
+                        <span class="resource-card__icon"><i class="fas fa-calendar-week"></i></span>
+                        <h3>Class Schedules</h3>
+                        <p>View the current-year class schedule for your campus.</p>
+                        <a href="schedule-clearwater.html" class="resource-card__cta">Clearwater <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUPPORT SERVICES -->
+        <section class="resources-section resources-section--alt">
+            <div class="container">
+                <h2>Support &amp; Services</h2>
+                <p class="section-intro">Counseling, financial aid, accessibility, and career support are available to every enrolled student.</p>
+
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <span class="resource-card__icon"><i class="fas fa-user-graduate"></i></span>
+                        <h3>Academic Counseling</h3>
+                        <p>Program planning, progress reviews, and support for completing your occupational completion points (OCPs).</p>
+                        <a href="contact.html" class="resource-card__cta">Contact counseling <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <span class="resource-card__icon"><i class="fas fa-dollar-sign"></i></span>
+                        <h3>Tuition &amp; Financial Aid</h3>
+                        <p>Pay tuition, apply for FAFSA, explore scholarships, and find veterans benefits.</p>
+                        <a href="tuition-aid.html" class="resource-card__cta">Tuition &amp; Aid <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <span class="resource-card__icon"><i class="fas fa-universal-access"></i></span>
+                        <h3>Accessibility &amp; Accommodations</h3>
+                        <p>Request disability accommodations and learn about available support services and resources.</p>
+                        <a href="consumer-information.html#accessibility" class="resource-card__cta">Accessibility info <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <span class="resource-card__icon"><i class="fas fa-medal"></i></span>
+                        <h3>Veterans Services</h3>
+                        <p>Dedicated support for active duty, veterans, and military family members pursuing education at PTC.</p>
+                        <a href="tuition-aid.html#veterans" class="resource-card__cta">Veterans benefits <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <span class="resource-card__icon"><i class="fas fa-briefcase"></i></span>
+                        <h3>Career Services &amp; Job Board</h3>
+                        <p>Résumé support, interview prep, and current job postings from employer partners.</p>
+                        <a href="post-a-job-FINAL.html" class="resource-card__cta">Employer partners <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card resource-card--placeholder">
+                        <span class="resource-card__icon"><i class="fas fa-users"></i></span>
+                        <h3>Student Organizations</h3>
+                        <p>Professional student organizations tied to your program, including SkillsUSA and NTHS.</p>
+                        <span class="resource-card__cta">Coming soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- POLICIES & FORMS -->
+        <section class="resources-section">
+            <div class="container">
+                <h2>Policies &amp; Forms</h2>
+                <p class="section-intro">Official consumer information, required disclosures, and student-facing policies.</p>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <span class="resource-card__icon"><i class="fas fa-file-shield"></i></span>
+                        <h3>Consumer Information</h3>
+                        <p>COE-required disclosures on outcomes, accreditation, and policies.</p>
+                        <a href="consumer-information.html" class="resource-card__cta">Read disclosures <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <span class="resource-card__icon"><i class="fas fa-balance-scale"></i></span>
+                        <h3>Non-Discrimination</h3>
+                        <p>PTC's and PCSB's commitments and contact information for reporting concerns.</p>
+                        <a href="consumer-information.html#non-discrimination" class="resource-card__cta">View policy <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="resource-card">
+                        <span class="resource-card__icon"><i class="fas fa-user-shield"></i></span>
+                        <h3>Privacy &amp; FERPA</h3>
+                        <p>Your rights under the Family Educational Rights and Privacy Act.</p>
+                        <a href="consumer-information.html#privacy-ferpa" class="resource-card__cta">Privacy info <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline">Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="admissions.html">Admissions</a></li>
+                            <li><a href="tuition-aid.html">Tuition &amp; Aid</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Campuses</h4>
+                        <ul>
+                            <li><a href="clearwater.html">Clearwater Campus</a></li>
+                            <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                            <li><a href="campus-maps.html">Campus Maps</a></li>
+                            <li><a href="admissions.html#campus-tours">Schedule a Tour</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#privacy-ferpa">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

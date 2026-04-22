@@ -13,6 +13,8 @@
 </head>
 <body>
 
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- ============================================
          UTILITY BAR (Top-most bar)
     ============================================= -->
@@ -170,7 +172,7 @@
             </nav>
             <div class="site-header__actions">
                 <button class="search-toggle" id="search-toggle" aria-label="Search">
-                    <i class="fas fa-search"></i>
+                    <i class="fas fa-search" aria-hidden="true"></i>
                 </button>
                 <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
                     <span class="mobile-toggle__bar"></span>
@@ -183,9 +185,10 @@
         <div class="search-overlay" id="search-overlay">
             <div class="container">
                 <form class="search-form" role="search" aria-label="Site Search">
+                    <label for="search-input" class="sr-only">Search</label>
                     <input type="search" placeholder="Search programs, courses, and more..." class="search-form__input" id="search-input">
-                    <button type="submit" class="search-form__btn" id="search-submit"><i class="fas fa-search"></i></button>
-                    <button type="button" class="search-form__close" id="search-close"><i class="fas fa-times"></i></button>
+                    <button type="submit" class="search-form__btn" id="search-submit"><i class="fas fa-search" aria-hidden="true"></i><span class="sr-only">Submit search</span></button>
+                    <button type="button" class="search-form__close" id="search-close"><i class="fas fa-times" aria-hidden="true"></i><span class="sr-only">Close search</span></button>
                 </form>
             </div>
         </div>
@@ -231,7 +234,7 @@
             </div>
             <div class="hero__scroll-indicator">
                 <a href="#quick-links" aria-label="Scroll to content">
-                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-chevron-down" aria-hidden="true"></i>
                 </a>
             </div>
         </section>
@@ -334,41 +337,53 @@
                     <p class="section-header__desc">From healthcare to skilled trades, find the program that fits your career goals. Graduate job-ready with industry certifications.</p>
                 </div>
                 <div class="programs-grid">
-                    <a href="#" class="program-card" id="prog-health">
-                        <div class="program-card__icon"><i class="fas fa-heartbeat"></i></div>
+                    <a href="programs.html?cluster=health" class="program-card" id="prog-health">
+                        <div class="program-card__icon"><i class="fas fa-heartbeat" aria-hidden="true"></i></div>
                         <h3 class="program-card__title">Health Sciences</h3>
                         <p class="program-card__desc">Nursing, Medical Assisting, Pharmacy Tech, Patient Care, and more.</p>
-                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
+                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </a>
-                    <a href="#" class="program-card" id="prog-it">
-                        <div class="program-card__icon"><i class="fas fa-laptop-code"></i></div>
+                    <a href="programs.html?cluster=it" class="program-card" id="prog-it">
+                        <div class="program-card__icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
                         <h3 class="program-card__title">Information Technology</h3>
                         <p class="program-card__desc">Computer Systems and Information Technology, Network Support Services, Computer-Aided Drawing, and Television Production.</p>
-                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
+                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </a>
-                    <a href="#" class="program-card" id="prog-trades">
-                        <div class="program-card__icon"><i class="fas fa-hard-hat"></i></div>
+                    <a href="programs.html?cluster=trades" class="program-card" id="prog-trades">
+                        <div class="program-card__icon"><i class="fas fa-hard-hat" aria-hidden="true"></i></div>
                         <h3 class="program-card__title">Skilled Trades &amp; Construction</h3>
                         <p class="program-card__desc">Welding, Electrical, HVAC/R, Plumbing, and Construction Technology.</p>
-                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
+                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </a>
-                    <a href="#" class="program-card" id="prog-auto">
-                        <div class="program-card__icon"><i class="fas fa-car"></i></div>
+                    <a href="programs.html?cluster=transportation" class="program-card" id="prog-auto">
+                        <div class="program-card__icon"><i class="fas fa-car" aria-hidden="true"></i></div>
                         <h3 class="program-card__title">Transportation &amp; Logistics</h3>
                         <p class="program-card__desc">Automotive Service, Collision Repair, Diesel Technology, and Marine.</p>
-                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
+                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </a>
-                    <a href="#" class="program-card" id="prog-culinary">
-                        <div class="program-card__icon"><i class="fas fa-utensils"></i></div>
+                    <a href="programs.html?cluster=culinary" class="program-card" id="prog-culinary">
+                        <div class="program-card__icon"><i class="fas fa-utensils" aria-hidden="true"></i></div>
                         <h3 class="program-card__title">Culinary &amp; Hospitality</h3>
                         <p class="program-card__desc">Professional Culinary Arts, Baking &amp; Pastry, and Hospitality Management.</p>
-                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
+                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </a>
-                    <a href="#" class="program-card" id="prog-cosmo">
-                        <div class="program-card__icon"><i class="fas fa-cut"></i></div>
+                    <a href="programs.html?cluster=cosmo" class="program-card" id="prog-cosmo">
+                        <div class="program-card__icon"><i class="fas fa-cut" aria-hidden="true"></i></div>
                         <h3 class="program-card__title">Cosmetology &amp; Barbering</h3>
                         <p class="program-card__desc">Cosmetology, Barbering, Facials Specialty, and Nail Technology.</p>
-                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right"></i></span>
+                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </a>
+                    <a href="programs.html?cluster=business" class="program-card" id="prog-business">
+                        <div class="program-card__icon"><i class="fas fa-briefcase" aria-hidden="true"></i></div>
+                        <h3 class="program-card__title">Business &amp; Office</h3>
+                        <p class="program-card__desc">Accounting Operations, Administrative Office Specialist, and other office career pathways.</p>
+                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </a>
+                    <a href="programs.html?cluster=arts" class="program-card" id="prog-arts">
+                        <div class="program-card__icon"><i class="fas fa-palette" aria-hidden="true"></i></div>
+                        <h3 class="program-card__title">Arts, Media &amp; Education</h3>
+                        <p class="program-card__desc">Early Childhood Education, Child Care Operations, Interior Decorating, and Stage Production.</p>
+                        <span class="program-card__link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </a>
                 </div>
                 <div class="programs-section__cta">
@@ -404,7 +419,8 @@
                                 <span class="tag">Welding</span>
                                 <span class="tag">+12 More</span>
                             </div>
-                            <a href="clearwater.html" class="btn btn--primary btn--block" id="visit-clearwater-btn">Visit Clearwater Campus <i class="fas fa-arrow-right"></i></a>
+                            <a href="clearwater.html" class="btn btn--primary btn--block" id="visit-clearwater-btn">Visit Clearwater Campus <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <a href="schedule-clearwater.html" class="campus-card__schedule" id="schedule-clearwater-link"><i class="fas fa-calendar-alt" aria-hidden="true"></i> View Class Schedule</a>
                         </div>
                     </div>
                     <div class="campus-card" id="campus-stpete">
@@ -423,7 +439,8 @@
                                 <span class="tag">IT</span>
                                 <span class="tag">+10 More</span>
                             </div>
-                            <a href="stpete.html" class="btn btn--primary btn--block" id="visit-stpete-btn">Visit St. Pete Campus <i class="fas fa-arrow-right"></i></a>
+                            <a href="stpete.html" class="btn btn--primary btn--block" id="visit-stpete-btn">Visit St. Pete Campus <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <a href="schedule-stpete.html" class="campus-card__schedule" id="schedule-stpete-link"><i class="fas fa-calendar-alt" aria-hidden="true"></i> View Class Schedule</a>
                         </div>
                     </div>
                 </div>
@@ -522,22 +539,22 @@
                     <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
                     <p class="footer__tagline">Preparing students for high-demand careers through hands-on, industry-certified training since 1961.</p>
                     <div class="footer__social">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="footer__nav">
                     <div class="footer__col">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="#">Programs</a></li>
-                            <li><a href="#">Admissions</a></li>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="admissions.html">Admissions</a></li>
                             <li><a href="tuition-aid.html">Tuition &amp; Aid</a></li>
-                            <li><a href="#">Student Resources</a></li>
-                            <li><a href="#">About PTC</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
                         </ul>
                     </div>
                     <div class="footer__col">
@@ -545,7 +562,7 @@
                         <ul>
                             <li><a href="clearwater.html">Clearwater Campus</a></li>
                             <li><a href="stpete.html">St. Petersburg Campus</a></li>
-                            <li><a href="#">Campus Maps</a></li>
+                            <li><a href="campus-maps.html">Campus Maps</a></li>
                             <li><a href="admissions.html#campus-tours">Schedule a Tour</a></li>
                         </ul>
                     </div>
@@ -554,8 +571,8 @@
                         <ul>
                             <li><a href="consumer-information.html">Consumer Information</a></li>
                             <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
-                            <li><a href="#">Accreditation</a></li>
-                            <li><a href="#">Careers at PTC</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
                             <li><a href="contact.html">Contact Us</a></li>
                         </ul>
                     </div>

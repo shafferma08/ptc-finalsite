@@ -1,0 +1,116 @@
+FINALSITE CMS FEASIBILITY REVIEW — 2026-04-22
+================================================
+
+OVERALL ASSESSMENT: 75% Composer-ready
+
+KEY FINDINGS:
+=============
+
+BUILDABLE AS-IS (95%+ confidence):
+- All header/navigation (6-level dropdowns, search overlay, mobile menu)
+- All page hero sections (except carousel)
+- All card layouts (program, campus, news, step cards)
+- Table pages (schedules with responsive sizing)
+- Footer (provided as self-contained embed)
+- All button styles, typography, spacing systems
+- Scroll-reveal animations, counter animations, sticky header
+
+NEEDS CUSTOM CODE EMBEDS (Buildable with testing):
+- Hero image carousel (M11) — Requires JS testing in Composer
+- Search overlay — LOW risk custom code
+- Mobile menu accordions — LOW risk custom code
+- Animated counters — LOW risk custom code
+- Sticky header shadow — TRIVIAL custom code
+
+NEEDS SIMPLIFICATION (Before Finalsite implementation):
+- H8: Dynamic program filtering — CRITICAL BLOCKER
+  * Current: JavaScript-driven dropdown filters on programs.html
+  * Problem: Composer cannot maintain form-driven filtering logic; non-technical staff cannot update program data safely
+  * Solution: Replace with static category landing pages OR use Finalsite marketplace plugin
+  * Timeline: Decision needed by April 25; implementation in Phase 2
+
+- M11: Hero carousel — HIGH MAINTENANCE RISK
+  * Current: setInterval + opacity transitions, 6-second rotation
+  * Problem: Custom JS may not execute properly in Composer; non-technical editors cannot fix if broken
+  * Solution: Option A (best): Simplify to single static hero. Option B: Test carousel in Composer sandbox first.
+  * Timeline: Test this week; decision by April 25
+
+- M4: Negative margin quick-links hack — MEDIUM-HIGH RISK
+  * Current: margin-top: -40px overlaps hero section
+  * Problem: Finalsite may strip negative margins on re-saves; will break layout without developer
+  * Solution: Refactor to CSS Grid overlap or remove margin (keep normal spacing)
+  * Timeline: Low-effort fix; schedule for Phase 2 CSS cleanup
+
+CANNOT BE BUILT IN COMPOSER:
+- Program filtering (H8) — See "Needs Simplification" above
+- No other fundamental incompatibilities identified
+
+CRITICAL PRIOR ISSUES STATUS:
+=============================
+From 2026-04-15 review (issues-tracker.md):
+
+C1-C7 (Critical):
+- All content/workflow issues, not CMS-specific
+- C5: Dropdown keyboard accessibility — CSS has focus-within; verify Composer doesn't strip it
+- C6: Skip link missing — Add to header custom code embed (1 line of HTML)
+
+H1-H13 (High):
+- H1: 35+ program pages — Recommend using Composer "Clone & Customize" template feature
+- H7: Mobile responsiveness — CSS uses clamp() and media queries; should be fine; test
+- **H8: Dynamic filtering — CRITICAL BLOCKER (see above)**
+- **H10, H11, H12, H13: Accessibility gaps** — Add focus indicators, labels, aria attributes in CSS/HTML; not CMS-specific
+
+M1-M12 (Medium):
+- **M4: Negative margin — FLAGGED for refactor (see above)**
+- M5-M6: CSS cleanup (duplicate styles, fragmented cards) — LOW priority; refactor in Phase 3
+- **M11: Hero carousel — FLAGGED for testing/simplification (see above)**
+
+L1-L10 (Low):
+- All content-related; no CMS blockers
+
+COMPOSER CONFIGURATION CHECKLIST:
+==================================
+Before implementation:
+- [ ] Confirm Google Fonts (Roboto, Roboto Slab) in global site settings
+- [ ] Confirm Font Awesome 6.5.1 enabled
+- [ ] Test CSS custom properties preservation
+- [ ] Test media queries (@media) not stripped on save
+- [ ] Test custom code embed execution (<script> tags, DOMContentLoaded)
+- [ ] Test responsive grid layouts on tablet/mobile
+- [ ] Test Composer form elements with email routing
+- [ ] Paste footer-embed.html into footer custom code
+- [ ] Enable Composer accessibility checker
+- [ ] Verify all hardcoded image URLs exist in Finalsite Resource Manager
+- [ ] Build top navigation with mega-menu element
+- [ ] Test hamburger/mobile menu on real devices
+
+TOP RISKS (Ranked by implementation impact):
+=============================================
+1. H8 — Program filtering JavaScript (CRITICAL) — Must redesign before Finalsite build
+2. M11 — Hero carousel custom code (HIGH) — Must test in Composer or simplify
+3. M4 — Negative margin hack (MEDIUM-HIGH) — Refactor for robustness
+
+RECOMMENDATION:
+================
+Proceed to Phase 2 with priority fixes for H8, M11, M4. All other sections are ready for Composer implementation.
+
+Suggested Timeline:
+- April 22-25: Stakeholder decision on H8 (filtering vs. static category pages)
+- April 22-25: Test carousel in Composer sandbox; decision between simplification or complex embed
+- April 26-29: CSS refactor for M4 (negative margin removal/restructuring)
+- April 29 onwards: Begin Composer implementation (header, footer, hero sections, content pages)
+- May 13-20: Full UAT in Finalsite staging environment
+- May 27: Production deployment to clearwater.myptc.edu
+
+FULL REVIEW:
+=============
+See /sessions/hopeful-blissful-cray/mnt/ptc-finalsite/docs/reviews/2026-04-22/agent-finalsite-cms.md (587 lines)
+
+Covers:
+- Page-by-page CMS mapping table
+- Section-by-section buildability assessment
+- Detailed recommendations for each problem area
+- JavaScript functions assessment
+- CSS technique risk analysis
+- Appendix with configuration checklist
+- Escalation path if Composer testing fails

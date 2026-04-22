@@ -120,6 +120,70 @@ ul {
 }
 
 
+/* ---- ACCESSIBILITY UTILITIES ---- */
+/* Visually hidden but available to screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip-to-main-content link (hidden until focused) */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    z-index: 10000;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-green-dark);
+    color: var(--color-white);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 0 var(--border-radius) 0;
+    transition: top var(--transition-fast);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+    top: 0;
+    color: var(--color-white);
+    outline: 3px solid var(--color-yellow);
+    outline-offset: 2px;
+}
+
+/* Global keyboard-focus indicator — WCAG 2.1 AA (2.4.7)
+   Uses :focus-visible so mouse clicks don't trigger the outline */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible,
+.btn:focus-visible {
+    outline: 3px solid var(--color-yellow);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Honor users who have requested reduced motion — WCAG 2.3.3 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
 /* ---- BUTTONS ---- */
 .btn {
     display: inline-flex;
@@ -327,7 +391,8 @@ ul {
     transition: transform var(--transition-fast);
 }
 
-.main-nav__item--has-dropdown:hover .main-nav__link i {
+.main-nav__item--has-dropdown:hover .main-nav__link i,
+.main-nav__item--has-dropdown:focus-within .main-nav__link i {
     transform: rotate(180deg);
 }
 
@@ -356,7 +421,8 @@ ul {
     position: relative;
 }
 
-.main-nav__item--has-dropdown:hover .main-nav__dropdown {
+.main-nav__item--has-dropdown:hover .main-nav__dropdown,
+.main-nav__item--has-dropdown:focus-within .main-nav__dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
@@ -1133,6 +1199,26 @@ ul {
     margin-bottom: var(--space-xl);
 }
 
+.campus-card__schedule {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: var(--space-md);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-green-dark);
+    text-decoration: none;
+}
+
+.campus-card__schedule:hover {
+    color: var(--color-green);
+    text-decoration: underline;
+}
+
+.campus-card__schedule i {
+    font-size: 0.9em;
+}
+
 .tag {
     background: var(--color-green-light);
     color: var(--color-green-dark);
@@ -1776,8 +1862,9 @@ ul {
         border-radius: var(--border-radius);
     }
 
-    /* Disable desktop hover state on mobile */
-    .main-nav__item--has-dropdown:hover .main-nav__dropdown {
+    /* Disable desktop hover/focus state on mobile */
+    .main-nav__item--has-dropdown:hover .main-nav__dropdown,
+    .main-nav__item--has-dropdown:focus-within .main-nav__dropdown {
         opacity: 0;
         visibility: hidden;
         transform: none;

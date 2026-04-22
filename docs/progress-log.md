@@ -759,3 +759,252 @@ All three welding prototype pages in the proposal are now represented. The "Weld
 6. **Add a breadcrumb row to `schedule-stpete.html` and `schedule-clearwater.html`** (suggested in the Apr 15 current-student agent review). Both pages currently launch straight into the green header with no "Home / Campus / Class Schedule" trail. A 5-minute addition.
 7. **Pinellas High Innovation campus affiliation.** Clearwater's schedule has several Phlebotomy and ESOL rows at PHI. If St. Pete also shares programs with a third location, the `location` enum in both schedule pages could be extended to cover that.
 
+---
+
+## April 21, 2026 — Footer placeholder cleanup + schedule breadcrumbs
+
+### What was completed
+
+**Three new stub pages shipped to fix long-standing footer placeholders:**
+
+- **`student-resources.html` (new, ~390 lines)** — Current Students hub. Three sections: Academic Tools (Canvas, Focus/SIS, Academic Calendar, Transcripts, Tech Support, Class Schedules), Support & Services (Counseling, Tuition & Aid, Accessibility, Veterans, Career Services, Student Orgs), and Policies & Forms (Consumer Info, Non-Discrimination, Privacy/FERPA). Cards that depend on district systems (Canvas, Focus, Academic Calendar, Tech Support, Student Orgs) are marked with a gray "Coming soon" treatment so the page stays honest about what is live vs. pending. Cards that point to existing pages (Transcripts, Tuition & Aid, Accessibility info, Veterans benefits, Employer partners, Class Schedule, Consumer Info, Non-Discrimination, Privacy) are wired to real destinations. Includes the main-site shell (utility bar, simplified flat nav without mega-menus, footer with accreditation badges).
+
+- **`campus-maps.html` (new, ~340 lines)** — Campus Maps & Directions. Two full campus cards (Clearwater and St. Pete) with embedded Google Maps iframes (`q=ADDRESS&output=embed`), clickable directions buttons that open Google Maps in a new tab, phone/hours/parking/accessibility bullets, and a link back to each campus page. Visitor Information grid with Check-In, Parking, Public Transit (PSTA), and Campus Safety cards. Trailing "Schedule a Campus Tour" CTA pointing at `admissions.html#campus-tours`.
+
+- **`careers.html` (new, ~430 lines)** — Careers at PTC. Lead card explains that all hiring goes through the PCSB district careers portal with a clear "Browse PCSB Careers" CTA linking to `https://www.pcsb.org/careers` and a sidebar of search tips. Types of Positions grid covers Program Instructors, Adult Education Instructors, Counselors & Advisors, Distance Learning & Technology, Administrative & Operations, and Adjunct & Substitute. 5-step Hiring Process numbered list (browse → apply → screen → background → onboard). Why Work at PTC benefits grid (6 cards: Health & Wellness, FRS, PTO, PD, Adult Ed Focus, Employer Partnerships). Page ends with a Contact PTC CTA.
+
+**Footer wire-up across the entire site (20 files, 107 link changes)**
+
+Replaced seven placeholder footer links with real destinations everywhere the main-site footer appears. Script-driven to keep the 20 files consistent:
+
+| Footer label | Before | After |
+|---|---|---|
+| Programs | `#` | `programs.html` |
+| Admissions | `#` | `admissions.html` |
+| Student Resources | `#` | `student-resources.html` (new) |
+| About PTC | `#` | `about.html` |
+| Campus Maps | `#` | `campus-maps.html` (new) |
+| Accreditation | `#` | `about.html#accreditation` |
+| Careers at PTC | `#` | `careers.html` (new) |
+
+Files touched: `index.html`, `programs.html`, `clearwater.html`, `stpete.html`, `welding-clearwater.html`, `welding-stpete.html`, `welding-advanced.html`, `admissions.html`, `tuition-aid.html`, `contact.html`, `consumer-information.html`, `sitemap.html`, `schedule-clearwater.html`, `schedule-stpete.html`, `about.html`, `_templates/shell-main.html`, `_templates/shell-clearwater.html`, `_templates/shell-stpete.html`, `_templates/campus-landing.html`, `mockups/main-site/index.html`.
+
+**Schedule page breadcrumbs (`schedule-clearwater.html`, `schedule-stpete.html`)**
+
+Added a breadcrumb row to both schedule pages' green headers, matching the main-site `page-hero__breadcrumb` pattern used on `about.html` and other inner pages. Clearwater shows `Home / Clearwater / Class Schedule` and St. Pete shows `Home / St. Petersburg / Class Schedule`. Both are wired to `index.html` and the corresponding campus landing page. Styled as `.schedule-page-header__breadcrumb` with white underlined links and `aria-current="page"` on the terminal span. Closes the carried-over item from the Apr 15 current-student agent review.
+
+**Sitemap updates (`sitemap.html`)**
+
+- About PTC card: "Careers at PTC" row converted from `pending` placeholder to `<a href="careers.html">` with `badge--new`.
+- Campuses card: "Campus Maps" row converted from `pending` to `<a href="campus-maps.html">` with `badge--new` and `fa-map` icon. Label expanded to "Campus Maps & Directions" to match the new page title.
+- Current Students card: added a new "Student Resources" top row linking to `student-resources.html` with `badge--new`, positioned above the existing external/planned placeholders (Canvas Login, Focus/SIS, Academic Calendar, Transcript Request, Tech Support) since those still depend on external district systems.
+
+### Decisions made
+
+- **One Student Resources page, not five separate stubs.** The carried-over TODO said "five remaining footer placeholders", but the actual footer had three categories of placeholders (Student Resources, Campus Maps, Careers at PTC). Building five tiny stubs for every Current Students dropdown item would have created a lot of almost-empty pages that would need to be filled in again once district systems are wired. Consolidating into a single Student Resources hub gives those items a real home now, and the individual cards can link out when the PCSB integrations land.
+- **Be honest about district system dependencies.** Canvas, Focus/SIS, Tech Support, Academic Calendar, and Student Orgs are all things PTC doesn't own — they live in PCSB systems that will need actual URLs or SSO integration when the site goes live in Finalsite Composer. Rather than link them to `#` on the new page, they get a visible gray "Coming soon" treatment with a yellow banner at the top of the Academic Tools section explaining why. This maintains the "credibility-first" flow the proposal calls for: don't fake working features.
+- **Google Maps via iframe embeds, not screenshots.** The `?q=ADDRESS&output=embed` pattern on `campus-maps.html` avoids baking a static image that would go stale if addresses or business data change, gives users native pan/zoom, and uses loading="lazy" + referrerpolicy="no-referrer-when-downgrade" to keep it snappy and privacy-respecting. The directions buttons use the stable `google.com/maps/dir/?api=1&destination=` deep link that works on both desktop and mobile without requiring the Maps Embed API key.
+- **Careers page routes to PCSB, not a fake PTC portal.** PTC does not run its own applicant tracking system — it's part of PCSB, which uses the district careers site. The honest answer is to explain the routing clearly (lead card has an info banner + a prominent "Browse PCSB Careers" button with search tips), not to build a form that would need to be integrated with Workday or similar. The rest of the page provides context (role types, process, benefits) that the PCSB portal doesn't cover at the PTC level.
+- **Simplified flat nav on the three stubs.** The full main-site nav uses mega-menu dropdowns with campus-specific links that are themselves still `#` placeholders in many places. To avoid propagating the dropdown-placeholder problem to the new pages, the three stubs use a flat 6-item nav (Programs, Admissions, Tuition & Aid, Campuses, Current Students, About PTC) with each item linking to its primary landing page. The active-page item uses `main-nav__item--active`. When the dropdowns are finalized site-wide, these stubs can be updated to match.
+- **Did not delete root `campus-template.html`.** Carried-over TODO says "once Marianne confirms it's superseded by `_templates/campus-landing.html`." Verification confirms nothing live references the root file — only progress-log entries, the proposal doc, and the review-panel skill list mention it. Preserving the file until Marianne confirms is the safe default for an autonomous run since this is a destructive action.
+
+### Issues or blockers
+
+- **District system URLs still needed.** The five "Coming soon" cards on `student-resources.html` (Canvas, Focus/SIS, Academic Calendar, Tech Support, Student Orgs) all need real URLs once confirmed. Canvas and Focus typically point to PCSB SSO endpoints; the academic calendar likely lives on a district page. Straightforward to update once Marianne has the links.
+- **Google Maps iframe contrast/branding.** The iframes use Google's default styling, which doesn't match PTC brand. Acceptable for a stub, but a future polish could use the Maps JavaScript API with custom styling if Marianne wants stronger brand alignment. Would require a Google Cloud project and API key; overkill for this iteration.
+- **Schedule footer page link parity.** The new breadcrumbs on both schedule pages resolve a carried-over UX review item. No new blockers surfaced from that change.
+- **Utility bar links still placeholder.** Student Portal, Apply Now, and Events in the utility bar are still `#` across every page. Not in scope for this round (would need real URLs or hooks) but worth flagging as the next big cleanup pass after today's footer work.
+- **Careers page copy is generic.** Benefits and role descriptions are reasonable inferences from PCSB/PTC norms but have not been verified by the district HR office. Marianne may want to have PCSB HR review the Hiring Process and Why Work at PTC copy before this page goes live on the production site. Adding a "Last reviewed" note or a contact attribution would make that traceable.
+
+### Updated link coverage
+
+| Area | Before today | After today |
+|---|---|---|
+| Footer Quick Links (Programs, Admissions, Student Resources, About PTC) | `#` placeholders across 20 files | Real destinations across 20 files |
+| Footer Campuses (Campus Maps) | `#` placeholder across 20 files | `campus-maps.html` across 20 files |
+| Footer Resources (Accreditation, Careers at PTC) | `#` placeholders across 20 files | Real destinations across 20 files |
+| Schedule page breadcrumbs | None on either campus page | `Home / Campus / Class Schedule` on both |
+| Sitemap Current Students entry | No Student Resources row | Linked `student-resources.html` at top of card |
+| Sitemap Campuses › Campus Maps | `pending` placeholder | Live link with `New` badge |
+| Sitemap About PTC › Careers at PTC | `pending` placeholder | Live link with `New` badge |
+
+### Next priorities
+
+1. **Populate confirmed times on `schedule-stpete.html`** — 33 of 35 rows still need verified times from the St. Pete counseling office (carried over from Apr 20).
+2. **Replace "Coming soon" cards on `student-resources.html` with real URLs** — Canvas, Focus/SIS, Academic Calendar, Tech Support, Student Orgs. Once Marianne has the PCSB SSO/district endpoints, each card's `href` and CTA swap in.
+3. **PCSB HR review of `careers.html` copy** — benefits, hiring process, and role types are reasonable but unverified. A 15-minute review pass before the page goes live would catch anything specific to how PCSB describes these roles officially.
+4. **Exact Florida CIP hours and course codes for Welding Technology Advanced** (carried over from Apr 19).
+5. **Homepage program grid expansion** (carried over) — 6 of 8 taxonomy clusters shown.
+6. **Delete root `campus-template.html`** (carried over) — verified safe to delete, pending Marianne's explicit confirmation. Nothing live references it.
+7. **Utility bar placeholder cleanup** — Student Portal, Apply Now, and Events are still `#` sitewide. Next bulk cleanup candidate after today's footer pass.
+8. **Pinellas High Innovation campus affiliation on St. Pete schedule** (carried over) — minor, only if PHI actually hosts St. Pete-affiliated programs.
+
+
+---
+
+## April 22, 2026 — Accessibility hardening + homepage polish
+
+### What was completed
+
+This session worked through the highest-impact, lowest-risk launch-blockers from the multi-agent review panel run on `2026-04-22`. Five Critical/High accessibility items in the consolidated report were closed in one bundled CSS/HTML pass, and two homepage polish items (L6, L10) were knocked out at the same time.
+
+**Global CSS (`styles.css`) — 5 accessibility additions**
+
+A new "Accessibility Utilities" block was added near the top of the stylesheet (just below the `.container` rule). It introduces:
+
+- **`.sr-only`** visually-hidden helper for screen-reader-only text. Standard `clip: rect(0,0,0,0)` pattern. Used by the new search input label and the icon-button text labels added below.
+- **`.skip-link`** style for the skip-to-main-content anchor (closes **C6**). Hidden off-screen at `top: -100px` until focused, then slides into the top-left corner with a green-dark background, white text, yellow focus outline, and rounded right edge. Z-index 10000 keeps it above sticky headers.
+- **Global `:focus-visible` indicator** (closes **H10**) on `a`, `button`, `input`, `select`, `textarea`, `[tabindex]:not([tabindex="-1"])`, and `.btn`. Uses `outline: 3px solid var(--color-yellow)` with `outline-offset: 2px`. Mouse-only clicks do not trigger the outline thanks to `:focus-visible` semantics; only keyboard/AT focus does.
+- **`prefers-reduced-motion` media query** (closes **M10**) at the end of the same block. Collapses all animations, transitions, and `scroll-behavior: smooth` to ~0ms for users who have requested reduced motion at the OS level. Required for vestibular-disorder users; 8-line addition that needed no per-page changes.
+
+The dropdown nav rules at lines 330-364 and 1782 were extended to include `:focus-within` selectors alongside `:hover` (closes **C5**). Now keyboard users tabbing into the Programs / Admissions / Tuition / Campuses / Current Students / About menu items see the dropdown panel open and the chevron rotate the same way mouse users do. The mobile-disable rule (1782) was extended to also cancel the focus-within state on small screens so the JS accordion logic stays in charge there.
+
+**Search form accessibility — `H11` + `H12` pass**
+
+Closed `H11` (search form missing label) and the search-input portion of `H12` (icon-only buttons need `aria-hidden`) across all 7 files that carry the header search form (`about.html`, `admissions.html`, `contact.html`, `index.html`, `programs.html`, `tuition-aid.html`, `_templates/shell-main.html`):
+
+- Added a `<label for="search-input" class="sr-only">Search</label>` immediately before the input.
+- Added `aria-hidden="true"` to the magnifier and close-X icons inside the submit and close buttons.
+- Wrapped each button with a `.sr-only` span ("Submit search" / "Close search") so screen readers get a real button label rather than just the icon font character.
+
+**`H12` system-wide pass — 125 icon hardenings across 23 files**
+
+Wrote a regex pass that finds any `<a>` or `<button>` element with an `aria-label` attribute and adds `aria-hidden="true"` to the immediately-following `<i class="...">` icon if it doesn't already have one. This catches:
+
+- Header search-toggle and mobile-toggle buttons
+- Footer social icons (Facebook, Instagram, Twitter/X, YouTube, LinkedIn) on every page
+- Hero scroll-down arrow links
+- Various other icon-only buttons across the site
+
+Total: 125 icon attribute additions across 19 root HTML pages + 4 templates. Screen readers will now announce "Submit search, button" instead of "ef-002, button" or similar Font Awesome character noise.
+
+**Skip-to-main-content link — `C6` system-wide**
+
+Inserted `<a href="#main-content" class="skip-link">Skip to main content</a>` as the first focusable element of the body on all 19 production pages and all 4 shell templates. Verified beforehand that every production page already has `<main id="main-content">` so the anchor target works without further changes. The skip link only renders visually when focused (per the `.skip-link:focus` rule), so visual UX is unchanged for mouse users.
+
+**Homepage Featured Programs grid expanded to 8 clusters (`L6`)**
+
+`index.html` Featured Programs section now shows all 8 career clusters from `programs.html`'s `data-cluster` taxonomy, not 6:
+
+| Cluster | Icon | Slug | Card # |
+|---|---|---|---|
+| Health Sciences | `fa-heartbeat` | health | 1 |
+| Information Technology | `fa-laptop-code` | it | 2 |
+| Skilled Trades & Construction | `fa-hard-hat` | trades | 3 |
+| Transportation & Logistics | `fa-car` | transportation | 4 |
+| Culinary & Hospitality | `fa-utensils` | culinary | 5 |
+| Cosmetology & Barbering | `fa-cut` | cosmo | 6 |
+| **Business & Office** (new) | `fa-briefcase` | business | 7 |
+| **Arts, Media & Education** (new) | `fa-palette` | arts | 8 |
+
+The 3-column grid handles 8 cards as 3+3+2 on desktop, 2+2+2+2 on tablet, and 1×8 on mobile. No CSS changes were needed.
+
+While editing, I also rewired all 8 card `href`s from `#` to `programs.html?cluster=<slug>`. The catalog page's filter JS already reads `?cluster=` from `URLSearchParams` (lines 595-601 of `programs.html`), so clicking any homepage cluster card now lands on the catalog with that cluster pre-filtered. Eight cards × `#` → real URL closes a tiny but visible part of `C7` (dead links on the homepage) without needing the H8 architectural decision about static category landing pages.
+
+**Homepage campus cards — "View Class Schedule" secondary link (`L10`)**
+
+Added a small, focused secondary link below each "Visit Campus" CTA on both homepage campus cards. Links go to `schedule-clearwater.html` and `schedule-stpete.html` respectively. New `.campus-card__schedule` style (~20 lines added at line 1202 of `styles.css`) gives it a calendar icon, green-dark text color, and underline-on-hover treatment that reads as clearly secondary. Resolves `L10` from the panel review.
+
+### Decisions made
+
+- **Bundled accessibility fixes into one session.** The Apr 22 review listed five immediate-priority a11y items (C5, C6, H10, H11, H12) plus M10 as a Medium. Each is small in isolation but together they meaningfully shift the launch readiness needle, and they all touch the same files (`styles.css` and the page bodies) so doing them serially in one pass is cleaner than spreading across multiple sessions. Five of the six items in this session are launch-blockers per the consolidated report.
+- **`:focus-visible` over `:focus`.** A blanket `:focus { outline: ... }` would draw the yellow outline on every mouse click, which designers tend to dislike. `:focus-visible` only fires for keyboard / AT focus, so the visual reads correctly for both audiences. All evergreen browsers support it; the few users on legacy Edge or older WebKit lose the outline but keep the underlying focusability — graceful degradation.
+- **Yellow outline color, not green.** Brand green (#008142) on a green button (the primary CTA color) wouldn't have enough contrast to register as a focus state. PTC yellow (#FFCF01) gives a reliable 3px ring against every background the site uses (white, light gray, green panels, dark green hero). Outline offset of 2px keeps the ring visible without overlapping the element border.
+- **Skip link inserted via Python regex, not Edit tool, on 23 files.** Hand-editing 23 files is error-prone and time-consuming. The regex matches `<body[^>]*>\n` exactly once per file (HTML allows only one body) and inserts the anchor right after — verified post-hoc that all 23 files now contain `skip-link` and that `<main id="main-content">` already existed on every production page so the anchor target resolves.
+- **Wired the new homepage cluster cards to `programs.html?cluster=<slug>` rather than placeholder `#`.** The catalog filter already reads the cluster query param. This is a one-character change per `href` that turns dead navigation into a working flow without prejudging the H8 architectural decision (static category landing pages vs. plugin vs. JS catalog). When dedicated category landing pages eventually exist, the `href`s can be repointed in seconds.
+- **Did not touch the utility bar `Student Portal` / `Apply Now` / `Events` placeholders.** Those are listed in the carried-over priorities but they need real PCSB endpoints and the Apply Now URL is the most-watched item in `C2` / `C7`. Routing them to wrong destinations would be worse than leaving them as `#`. Held for a session with explicit URLs in hand.
+- **Did not auto-fix all `H13` breadcrumb semantics.** `admissions.html`, the schedule pages, and the program detail pages use a text "/" separator. Replacing each with `<nav aria-label="Breadcrumb"><ol><li>...</ol></nav>` is a meaningful refactor with per-page CSS implications (the welding pages use a custom breadcrumb style; the schedule pages already shipped a `.schedule-page-header__breadcrumb` class on Apr 21). Better as a focused single-session pass with the right CSS context loaded than mixed in with this batch.
+- **Did not delete `campus-template.html`** (carried over). Still pending explicit confirmation.
+
+### Issues or blockers
+
+- **`:focus-visible` browser coverage.** Universally supported in evergreen Chrome/Edge/Firefox/Safari since ~2021. Older PCSB district workstations on locked-down legacy browsers (rare) may not see the focus ring. Not worth a polyfill for a school-district intranet audience but worth flagging if accessibility audit hits.
+- **Panel review `C7` "Student Portal" item is partially closed.** The homepage's two homepage cluster cards no longer route to `#` (they go to `programs.html?cluster=...`), but the utility bar's "Student Portal" link is still `#`. The fix needs Marianne's PCSB SSO URL.
+- **Eight clusters changes the visual rhythm of the homepage.** With 8 cards, the bottom row has 2 cards while the top two rows have 3 each. Visually balanced but slightly asymmetric. If the design team prefers a uniform 4-column grid, the CSS at line 887 can switch to `repeat(4, 1fr)` and the cards will sit 4+4 on desktop. Left at 3-col since that matches the existing rhythm and the original mockup.
+- **Homepage `cluster` query string only works once `programs.html` is the actual landing target.** When PTC moves these to Finalsite Composer, the URL pattern will need to be re-validated against whatever URL Composer assigns to the catalog page. Should be a one-line update to the 8 `href`s if the path changes.
+- **125 icon-aria-hidden additions were a regex pass, not a hand-audit.** The pattern matches `<a|button ... aria-label="..."` followed by an inner `<i class="...">`. This is conservative — it only adds `aria-hidden` where there's already an `aria-label` to take the announcement role, so it can't accidentally hide meaningful content. But icons inside aria-labeled buttons that have multiple `<i>` elements (e.g., a button with both a leading and trailing icon) would only get the first one hardened. Worth a quick spot-check on any custom button patterns in the welding pages or schedule filter chips.
+
+### What's now closed from the Apr 22 review panel
+
+| Issue | Severity | Status after this session |
+|---|---|---|
+| **C5** — `:focus-within` for keyboard dropdown access | Critical | ✅ Closed |
+| **C6** — Skip-to-main-content link | Critical | ✅ Closed (23 files) |
+| **C7** — Dead Student Portal / utility links | Critical | ⚠️ Partial — homepage cluster cards now route correctly; utility bar still `#` |
+| **H10** — `:focus-visible` indicators | High | ✅ Closed (global) |
+| **H11** — Search form missing label | High | ✅ Closed (7 files) |
+| **H12** — Icons need `aria-hidden` | High | ✅ Closed (125 icons / 23 files) |
+| **M10** — `prefers-reduced-motion` | Medium | ✅ Closed |
+| **L6** — Homepage shows 6 of 8 clusters | Low | ✅ Closed (now 8) |
+| **L10** — No "View Class Schedule" from campus cards | Low | ✅ Closed (both campus cards) |
+
+### Next priorities
+
+1. **`H13` breadcrumb semantics pass** — replace text "/" separators with `<nav aria-label="Breadcrumb"><ol>...` markup on `admissions.html`, both schedule pages, and the welding pages. Keep visual style intact; just upgrade the underlying HTML. Estimated 30-45 minutes, single-session bundled like today's a11y batch.
+2. **Utility bar placeholder cleanup** — `Student Portal`, `Apply Now`, and `Events` still `#` sitewide (closes the last part of `C7` and `C2`). Blocked on Marianne providing the real PCSB SSO/applicant portal URLs.
+3. **Populate confirmed times on `schedule-stpete.html`** — 33 of 35 rows still need verified times from the St. Pete counseling office (carried over from Apr 20).
+4. **Replace "Coming soon" cards on `student-resources.html` with real URLs** — Canvas, Focus/SIS, Academic Calendar, Tech Support, Student Orgs (carried from Apr 21).
+5. **PCSB HR review of `careers.html` copy** (carried from Apr 21).
+6. **Exact Florida CIP hours and course codes for Welding Technology Advanced** (carried from Apr 19).
+7. **`M11` hero carousel decision** — Single static hero vs. Finalsite native rotation vs. custom code. Marianne's call. Listed in panel report as a By-April-25 decision item.
+8. **`H8` programs catalog architecture decision** — 8 static category landing pages (Option A, recommended) vs. Finalsite plugin vs. JS-driven catalog. Today's homepage rewire to `programs.html?cluster=` is compatible with all three options, but the eventual landing pages would let those `href`s point at proper category pages.
+9. **Delete root `campus-template.html`** (carried over) — verified safe; pending Marianne's explicit confirmation.
+10. **Pinellas High Innovation campus affiliation on St. Pete schedule** (carried over) — minor.
+
+---
+
+## 2026-04-22 (afternoon) — St. Pete 2026-27 schedule wired to authoritative PDF
+
+### Context
+Marianne received the official 2026-27 Full-Time Class Schedule PDF from the St. Pete counseling office and uploaded it (`ST Pete Class Schedule.pdf`). Goal: replace the "pending — confirm with counselor" placeholder rows on `schedule-stpete.html` with real program rows straight from the PDF. This closes priority #3 from this morning's list.
+
+### What shipped
+
+**`schedule-stpete.html` — full data refresh**
+
+Banner: swapped the yellow "Draft — in progress" banner for a green `.source-banner` that reads "Confirmed by St. Pete counseling office · 2026-27". The draft framing no longer applies; these are real times.
+
+Column rename: the fifth column changed from **Status** to **Start Terms**. The PDF assigns every full-time program to one or more term codes (1-5 = six-week blocks across the school year). That's more useful to students than a generic "Confirmed" pill.
+
+Programs array: rewrote the entire `programs` array (was 35 placeholder rows, now 32 rows reflecting the PDF exactly):
+- 29 full-time programs with real day/time/term data
+- 2 Adult Education placeholder rows (Adult Basic Ed / GED / ASE and ESOL) flagged `unverified: true` because the PDF is full-time only — Adult Ed schedules live elsewhere and the filter UI still needs the category
+- 1 Apprenticeship placeholder row, also `unverified: true`, pointing students to call (727) 893-2500
+
+New location code `cvaec` for the IT IET program, which per the PDF runs at Clearwater Adult Education Center. Added a `.loc-badge--cvaec` pill (amber on dark amber, matching #fef3c7 / #92400e) so the offsite distinction is visible.
+
+New `.terms` CSS styles: bold dark for confirmed term codes (e.g., "1, 2, 3, 4"), italic gray for `See program page` and `Contact campus` fallbacks.
+
+JS render updates:
+- `locLabel()` gained a `cvaec` case
+- `statusLabel(s)` retired; `termsLabel(terms, unverified)` is the replacement. Confirmed terms render in the dark style; `unverified: true` rows or phrases matching `See program page` / `contact` render italic gray
+- `buildRows()` now reads `p.terms` and `p.unverified` instead of `p.status`
+
+Notes block under the table: rewrote to explain the Term Code numbering (1-5 blocks), CVAEC offsite badge, and the EMT prerequisite asterisk.
+
+JS parses cleanly (`new Function(scriptBody)` succeeds); brace balance 137/137; tags 324/310 with 14 void-element tags accounting for the difference. File now 946 lines.
+
+### Discrepancy flagged, not silently changed — `welding-stpete.html`
+
+The program page advertises Welding Technology as **Day** (Mon-Fri 7:00 AM - 12:15 PM) AND **Evening** (Mon-Thu 4:00 PM - 9:00 PM). The 2026-27 PDF lists Welding Technology as **Evening only, Mon-Fri 4:00 PM - 9:00 PM**. Two different evening day patterns, and a day section that may or may not still run.
+
+Rather than silently edit the live welding page, I added an HTML comment above the Class Schedule block flagging the discrepancy for Marianne to reconcile with Cheri Ashwood before any visible change. The comment includes both source dates (2026-04-18 page populate vs. 2026-04-22 PDF).
+
+### Sources consulted
+- `ST Pete Class Schedule.pdf` (2026-04-22 upload, counseling office) — authoritative for the full-time schedule
+- Existing `schedule-stpete.html` banner + column structure (from 2026-04-20 build)
+- `welding-stpete.html` Class Schedule block (from 2026-04-18 counselor data) — flagged as conflicting
+
+### Files touched today (afternoon)
+- `schedule-stpete.html` (banner, `.source-banner` CSS, `.loc-badge--cvaec`, `.terms` CSS, column header rename, notes rewrite, full `programs` array rewrite, `locLabel()`, `termsLabel()`, `buildRows()` render update)
+- `welding-stpete.html` (HTML comment only, no visible change; flags the day-vs-evening discrepancy)
+- `docs/progress-log.md` (this entry)
+
+### Decisions
+- **PDF is authoritative over prior counselor input when they conflict** — but only for rows the PDF explicitly covers. Categories outside the PDF (Adult Ed, Apprenticeships) keep their placeholder treatment with `unverified: true`.
+- **Don't silently overwrite a program page even from an authoritative source** — flag and let Marianne make the call with the counselor. Program pages have more advertising gravity than the schedule listing.
+- **Keep legacy `.status` CSS in place** — marked `/* kept for legacy references */` so other pages that still reference the class don't break.
+
+### Carry-over for tomorrow (or next Marianne session)
+- Confirm Welding Tech schedule with Cheri Ashwood (flagged in `welding-stpete.html` comment)
+- Remaining priorities from this morning's list are still open (H13 breadcrumbs, utility bar placeholders, student-resources real URLs, careers HR review, Welding Advanced CIP hours, M11 hero decision, H8 catalog architecture, campus-template.html delete, High Innovation affiliation note)
