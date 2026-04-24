@@ -22,6 +22,9 @@
             margin-bottom: 1rem;
             opacity: 0.85;
         }
+        .page-hero__breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+        .page-hero__breadcrumb li { display: inline-flex; align-items: center; }
+        .page-hero__breadcrumb li:not(:last-child)::after { content: "\203A"; padding-left: 0.35rem; opacity: 0.7; }
         .page-hero__breadcrumb a {
             color: #fff;
             text-decoration: underline;
@@ -708,7 +711,10 @@
         <section class="page-hero">
             <div class="container">
                 <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
-                    <a href="index.html">Home</a> &rsaquo; Tuition &amp; Financial Aid
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li aria-current="page">Tuition &amp; Financial Aid</li>
+                    </ol>
                 </nav>
                 <h1 class="page-hero__title">Tuition &amp; Financial Aid</h1>
                 <p class="page-hero__subtitle">PTC is one of Florida's most affordable pathways to a career-ready credential. Explore our tuition rates, payment options, and financial aid resources to find the support that fits your situation.</p>

@@ -22,6 +22,21 @@
             margin-bottom: 1rem;
             opacity: 0.85;
         }
+        .page-hero__breadcrumb ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .page-hero__breadcrumb li { display: inline-flex; align-items: center; }
+        .page-hero__breadcrumb li:not(:last-child)::after {
+            content: "/";
+            padding-left: 0.35rem;
+            opacity: 0.7;
+        }
         .page-hero__breadcrumb a {
             color: #fff;
             text-decoration: underline;
@@ -449,9 +464,12 @@
         ============================================= -->
         <section class="page-hero">
             <div class="container">
-                <div class="page-hero__breadcrumb">
-                    <a href="index.html">Home</a> / Admissions
-                </div>
+                <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li aria-current="page">Admissions</li>
+                    </ol>
+                </nav>
                 <h1 class="page-hero__title">Admissions</h1>
                 <p class="page-hero__subtitle">Getting started at PTC is straightforward. Whether you are a first-time student, transferring from another school, or returning after a break, we will guide you through every step.</p>
             </div>

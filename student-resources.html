@@ -21,6 +21,9 @@
             margin-bottom: 1rem;
             opacity: 0.85;
         }
+        .page-hero__breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+        .page-hero__breadcrumb li { display: inline-flex; align-items: center; }
+        .page-hero__breadcrumb li:not(:last-child)::after { content: "/"; padding-left: 0.35rem; opacity: 0.7; }
         .page-hero__breadcrumb a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
         .page-hero__title { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; margin: 0 0 0.75rem; }
         .page-hero__subtitle { font-size: 1.15rem; max-width: 700px; opacity: 0.92; line-height: 1.6; }
@@ -170,9 +173,12 @@
         <!-- PAGE HERO -->
         <section class="page-hero">
             <div class="container">
-                <div class="page-hero__breadcrumb">
-                    <a href="index.html">Home</a> / Student Resources
-                </div>
+                <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li aria-current="page">Student Resources</li>
+                    </ol>
+                </nav>
                 <h1 class="page-hero__title">Student Resources</h1>
                 <p class="page-hero__subtitle">Everything you need as a current PTC student — from logging into Canvas to requesting a transcript, finding support services, or planning your next term.</p>
             </div>

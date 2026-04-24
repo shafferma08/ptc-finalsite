@@ -1008,3 +1008,110 @@ Rather than silently edit the live welding page, I added an HTML comment above t
 ### Carry-over for tomorrow (or next Marianne session)
 - Confirm Welding Tech schedule with Cheri Ashwood (flagged in `welding-stpete.html` comment)
 - Remaining priorities from this morning's list are still open (H13 breadcrumbs, utility bar placeholders, student-resources real URLs, careers HR review, Welding Advanced CIP hours, M11 hero decision, H8 catalog architecture, campus-template.html delete, High Innovation affiliation note)
+
+---
+
+## April 23, 2026 — Accessibility semantics round 2 (H13, M3) + nav consistency (L3)
+
+### What was completed
+
+This session closed the H13 breadcrumb-semantics priority that was the top carry-over from yesterday, plus three adjacent items that fell out of the same review (M3 hero alt/aria contradiction, L3 nav naming inconsistency on programs.html, and verification that M12 program count is already accurate). All work was scoped to items Marianne does not need external data or decisions for.
+
+**H13 — Breadcrumb semantic markup pass (13 pages, ~2 breadcrumb patterns)**
+
+Every breadcrumb on the site now uses the canonical WAI pattern: `<nav aria-label="Breadcrumb"><ol><li>...</li></ol></nav>`, with the current page as the last `<li aria-current="page">`. Visual separators moved to CSS `::after` pseudo-elements so the design is identical to before.
+
+Three different style patterns needed three corresponding CSS approaches:
+
+| Pattern | Files | Separator approach |
+|---|---|---|
+| `.page-hero__breadcrumb` (main-site page hero, white on green) | admissions, about, campus-maps, careers, consumer-information, contact, sitemap, student-resources, tuition-aid | `content: "/"` (or `"\203A"` for tuition-aid / contact which previously used `&rsaquo;`) |
+| `.schedule-page-header__breadcrumb` (schedule pages) | schedule-clearwater, schedule-stpete | `content: "/"` |
+| `.breadcrumb-bar__inner` (welding pages, chevron icon) | welding-clearwater, welding-stpete, welding-advanced | `content: "\f054"` with Font Awesome font-family so the chevron icon renders identically |
+| `.breadcrumb` (post-a-job-mockup) | post-a-job-mockup | `content: "/"` |
+
+Each converted file got four lines of CSS added (the `ol`/`li`/`li::after` rules) and the breadcrumb HTML swapped for a semantic list. Files that previously had `<nav>` with anchors + text separators (tuition-aid, contact, schedule pages) kept the `<nav>` and gained the list structure. Files that were still using `<div>` containers got promoted to `<nav>`.
+
+Verification ran `grep <div class=\"[^\"]*breadcrumb` across the site and found zero lingering divs; the only remaining matches are the outer `.breadcrumb-bar` wrappers on the welding pages, which hold the background bar styling and now contain a `<nav>` child — the correct nesting.
+
+**M3 — Hero slide alt/aria-hidden contradiction**
+
+`index.html` line 204-207 had four hero slides with both descriptive `alt="Students graduating"` style text AND `aria-hidden="true"`. Screen readers would announce the alt text on tab-through, then the aria-hidden would try to hide the image — an assistive tech contradiction. Cleared all four `alt` attributes to empty strings, keeping `aria-hidden="true"`. The hero message lives in the `<h1>` and subtitle, so the images are purely decorative.
+
+**L3 — programs.html nav split to match the rest of the main site**
+
+Every main-site page except programs.html already uses the split Admissions / Tuition & Aid pillars (per the Apr 14 UX Recommendation #4). programs.html was still running the old combined "Admissions & Aid" single dropdown. Replaced it with the two-pillar pattern used on index.html:
+
+- **Admissions** dropdown (6 items): How to Apply, Enrollment Steps, Transfer Students, Readmission, Testing & Assessment, Campus Tours
+- **Tuition & Aid** dropdown (8 items): Tuition & Fee Rates, Pay Tuition, FAFSA & Eligibility, Federal & State Funding, Scholarships, Veterans Benefits, Net Price Calculator, Refund Policy
+
+Main-site nav is now uniformly 6 pillars across every main-site page. Campus-site pages continue to use the intentional 4-pillar campus nav with combined "Admissions & Aid" per the Apr 14 Session 3 design decision.
+
+**M12 — Program count accuracy verified**
+
+Checked whether "claims 40+, lists 35-38" still held. Current state: programs.html has 41 `.prog-card` entries; homepage and About page both claim "over 40" / "40+". The claim matches the data. Marking M12 resolved without a code change.
+
+**issues-tracker.md refresh**
+
+Moved H13, M3, M12, and L3 into the Resolved Issues table (which was previously empty), alongside the Apr 22 items (C5, C6, H10, H11, H12, M10, L6, L10) that had only been noted in the progress log. Updated total open count from 42 → 30 and the key-stats block. Downgraded Legal/Compliance Risk from HIGH to MEDIUM given that the structural a11y items (skip link, focus indicators, breadcrumb semantics, search form label, icon aria-hidden, reduced-motion) are all now in place — the remaining a11y items are incremental contrast/color issues, not blockers.
+
+### Decisions made
+
+- **One consistent pattern across three visually different breadcrumb styles.** Rather than inventing three CSS strategies, the same `<nav><ol><li>` shell goes everywhere and only the separator character in `li::after` changes. Makes future style tweaks a one-line update per pattern.
+- **Font Awesome chevron via `\f054` in CSS on welding pages instead of `<i>` elements inside list items.** Putting the icon `<i>` inside a separate `<li>` would have required `aria-hidden` on every separator item and inflated the markup by 50%. FA font is already loaded on those pages; the `::after` pseudo-element with the icon's unicode codepoint renders identically without polluting the DOM.
+- **Empty alt on hero images, not a descriptive alt.** A rotating hero is purely decorative — the message is in the `<h1>` and subtitle that sit on top. Screen readers announcing "Students graduating" on each 6-second rotation would be noise, not information. `alt=""` + `aria-hidden="true"` is the canonical pattern for decorative images and it resolves the contradiction cleanly.
+- **Didn't touch the campus-site "Admissions & Aid" pattern.** That combined label is an intentional design choice from the Apr 14 Session 3 decision — campus context is simpler so the split isn't needed. L3 is closed for the main site while the campus nav stays consistent with its own taxonomy.
+- **Issues tracker now drives a single source of truth on what's open.** Previously the Resolved Issues table had `(none)` even after a week of work. Moved Apr 22's closed items into the Resolved table at the same time as today's, so the tracker finally reflects actual progress and the 30 remaining items are all genuinely open.
+
+### Issues or blockers
+
+- **Welding page chevron separator depends on Font Awesome loading.** If the CDN hiccups, the `\f054` glyph won't render and the breadcrumb will show a blank space where the chevron should be. Acceptable risk since the rest of the welding pages also depend on FA for icons throughout; if FA is down, the breadcrumb is the least of the problems.
+- **No visual regression test performed.** The breadcrumb conversion is a significant HTML restructure. I checked the CSS maps 1:1 to the previous visual (list-flex-gap matches the prior flex-gap spacing, separator characters are unchanged), but ideally Marianne should eyeball each converted page at least once before Finalsite Composer migration. The pages to spot-check are: admissions, about, campus-maps, careers, consumer-information, contact, sitemap, student-resources, tuition-aid, schedule-clearwater, schedule-stpete, welding-clearwater, welding-stpete, welding-advanced. I don't expect visual changes, but a quick visual sweep is cheap insurance.
+- **`.breadcrumb-bar__sep` and `.breadcrumb-bar__current` CSS classes are still in the welding stylesheet blocks but no longer applied in the HTML (the `__current` class was kept on the `<li>` for continuity, but `__sep` was removed with the old `<span>` separators).** Harmless but dead code. Can be pruned in a future CSS cleanup pass (M6 open issue).
+
+### Updated issue closure count
+
+| Session | Issues closed this session |
+|---|---|
+| Apr 22 (morning) | C5, C6, H10, H11, H12, M10, L6, L10 |
+| Apr 23 (today) | H13, M3, M12, L3 |
+| **Cumulative resolved (out of 42 original)** | **12 (29%)** |
+
+The remaining 30 issues split: 5 Critical (content/integration-gated), 9 High, 9 Medium, 7 Low.
+
+### Next priorities
+
+1. **Utility bar placeholder cleanup** — `Student Portal`, `Apply Now`, and `Events` still `#` sitewide (closes the remainder of C7 and C2). Blocked on Marianne providing real PCSB SSO / applicant portal URLs.
+2. **H9 color contrast audit** — utility bar links and testimonial card text flagged by the Apr 15 accessibility audit. Should be a focused CSS-only session once we have a current contrast-ratio scan; tooling like axe DevTools will surface specific offenders.
+3. **M1 section header description contrast** — paired with H9 and probably resolvable in the same pass.
+4. **Replace "Coming soon" cards on `student-resources.html` with real URLs** — Canvas, Focus/SIS, Academic Calendar, Tech Support, Student Orgs (carried from Apr 21, blocked on Marianne).
+5. **PCSB HR review of `careers.html` copy** (carried from Apr 21, blocked externally).
+6. **Exact Florida CIP hours and course codes for Welding Technology Advanced** (carried from Apr 19, blocked on external data).
+7. **M11 hero carousel decision** — Marianne's call between single static, Finalsite native rotation, or custom code.
+8. **H8 programs catalog architecture decision** — Marianne's call.
+9. **Confirm Welding Tech schedule with Cheri Ashwood** (carried from yesterday afternoon; `welding-stpete.html` has an HTML comment flagging the Day-vs-Evening discrepancy with the PDF).
+10. **Delete root `campus-template.html`** (carried over; pending explicit confirmation).
+11. **L4 abbr audit** — if we want full spell-outs, wrap remaining standalone "COE" text in `<abbr title="Council on Occupational Education">COE</abbr>`. About page and consumer-information already spell it out, so this is polish not compliance. Safe to defer.
+12. **M4 negative-margin refactor** — quick-links `margin-top: -40px` on homepage; CMS review flagged as maintenance risk for Finalsite Composer. Can convert to CSS Grid overlap in a single targeted session.
+
+### Files touched today
+
+- `admissions.html` (breadcrumb)
+- `about.html` (breadcrumb)
+- `campus-maps.html` (breadcrumb)
+- `careers.html` (breadcrumb)
+- `consumer-information.html` (breadcrumb)
+- `contact.html` (breadcrumb)
+- `sitemap.html` (breadcrumb)
+- `student-resources.html` (breadcrumb)
+- `tuition-aid.html` (breadcrumb)
+- `schedule-clearwater.html` (breadcrumb)
+- `schedule-stpete.html` (breadcrumb)
+- `welding-clearwater.html` (breadcrumb + CSS for `::after` chevron)
+- `welding-stpete.html` (breadcrumb + CSS for `::after` chevron)
+- `welding-advanced.html` (breadcrumb + CSS for `::after` chevron)
+- `post-a-job-mockup.html` (breadcrumb)
+- `index.html` (hero slide alt text → empty)
+- `programs.html` (nav split: Admissions + Tuition & Aid)
+- `docs/reviews/issues-tracker.md` (12 items moved to Resolved, stats updated, date stamp)
+- `docs/progress-log.md` (this entry)

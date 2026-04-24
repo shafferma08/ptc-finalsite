@@ -23,6 +23,21 @@
             margin-bottom: 1rem;
             opacity: 0.85;
         }
+        .page-hero__breadcrumb ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .page-hero__breadcrumb li { display: inline-flex; align-items: center; }
+        .page-hero__breadcrumb li:not(:last-child)::after {
+            content: "/";
+            padding-left: 0.35rem;
+            opacity: 0.7;
+        }
         .page-hero__breadcrumb a {
             color: #fff;
             text-decoration: underline;
@@ -450,9 +465,12 @@
         ============================================= -->
         <section class="page-hero">
             <div class="container">
-                <div class="page-hero__breadcrumb">
-                    <a href="index.html">Home</a> / About PTC
-                </div>
+                <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li aria-current="page">About PTC</li>
+                    </ol>
+                </nav>
                 <h1 class="page-hero__title">About Pinellas Technical College</h1>
                 <p class="page-hero__subtitle">For over 60 years, PTC has been Pinellas County's trusted source for career and technical education, preparing students for high-demand jobs through hands-on, industry-certified training.</p>
             </div>

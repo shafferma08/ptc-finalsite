@@ -19,13 +19,16 @@
             margin-bottom: 1rem;
             opacity: 0.9;
         }
+        .schedule-page-header__breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+        .schedule-page-header__breadcrumb li { display: inline-flex; align-items: center; }
+        .schedule-page-header__breadcrumb li:not(:last-child)::after { content: "/"; padding-left: 0.35rem; opacity: 0.7; }
         .schedule-page-header__breadcrumb a {
             color: #fff;
             text-decoration: underline;
             text-underline-offset: 2px;
         }
         .schedule-page-header__breadcrumb a:hover { opacity: 0.8; }
-        .schedule-page-header__breadcrumb span[aria-current] {
+        .schedule-page-header__breadcrumb [aria-current] {
             opacity: 0.85;
         }
         .schedule-page-header h1 {
@@ -488,7 +491,11 @@
     <div class="schedule-page-header">
         <div class="container">
             <nav class="schedule-page-header__breadcrumb" aria-label="Breadcrumb">
-                <a href="index.html">Home</a> / <a href="clearwater.html">Clearwater</a> / <span aria-current="page">Class Schedule</span>
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="clearwater.html">Clearwater</a></li>
+                    <li aria-current="page">Class Schedule</li>
+                </ol>
             </nav>
             <p style="text-transform:uppercase;letter-spacing:2px;color:var(--color-accent);font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;">Clearwater Campus</p>
             <h1>2026–2027 Class Schedule</h1>
@@ -573,6 +580,7 @@
                     <p><strong>Pinellas High Innovation</strong> is a separate PTC campus location.</p>
                     <p>Program lengths and start dates are approximate and subject to change. Contact your counselor for current enrollment availability.</p>
                     <p style="margin-top:0.75rem;"><strong>Questions?</strong> Call <a href="tel:7275387167" style="color:var(--color-green);font-weight:600;">727.538.7167</a> or <a href="#" style="color:var(--color-green);font-weight:600;">apply online</a>.</p>
+                    <p style="margin-top:0.75rem;"><strong>Looking for St. Petersburg campus programs?</strong> <a href="schedule-stpete.html" style="color:var(--color-green);font-weight:600;">View the St. Petersburg class schedule →</a></p>
                 </div>
             </div>
 

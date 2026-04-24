@@ -395,6 +395,30 @@
             flex-wrap: wrap;
         }
 
+        .breadcrumb-bar__inner ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .breadcrumb-bar__inner li {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .breadcrumb-bar__inner li:not(:last-child)::after {
+            content: "\f054";
+            font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome";
+            font-weight: 900;
+            font-size: 0.65rem;
+            color: var(--color-gray-400);
+            margin-left: 0.4rem;
+        }
+
         .breadcrumb-bar__inner a {
             color: var(--color-green);
             text-decoration: none;
@@ -696,15 +720,14 @@
 
         <!-- BREADCRUMBS -->
         <div class="breadcrumb-bar">
-            <div class="container breadcrumb-bar__inner">
-                <a href="index.html">Home</a>
-                <span class="breadcrumb-bar__sep"><i class="fas fa-chevron-right" style="font-size: 0.65rem;"></i></span>
-                <a href="stpete.html">St. Petersburg Campus</a>
-                <span class="breadcrumb-bar__sep"><i class="fas fa-chevron-right" style="font-size: 0.65rem;"></i></span>
-                <a href="programs.html">Programs</a>
-                <span class="breadcrumb-bar__sep"><i class="fas fa-chevron-right" style="font-size: 0.65rem;"></i></span>
-                <span class="breadcrumb-bar__current">Welding Technology</span>
-            </div>
+            <nav class="container breadcrumb-bar__inner" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li class="breadcrumb-bar__current" aria-current="page">Welding Technology</li>
+                </ol>
+            </nav>
         </div>
 
         <!-- ============================
