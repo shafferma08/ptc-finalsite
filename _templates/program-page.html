@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+================================================================================
+  PTC PROGRAM PAGE  ·  CANONICAL TEMPLATE  ·  v1.0  ·  2026-04-24
+================================================================================
+
+  PURPOSE
+    Single-template-with-pluggable-modules approach. Copy this file for each
+    program×campus combination (e.g., practical-nursing-stpete.html), then
+    REMOVE any optional sections that don't apply and fill in the placeholders.
+
+  ARCHITECTURE DECISION (2026-04-24)
+    Program pages are SEPARATE per campus. welding-stpete.html and
+    welding-clearwater.html are distinct pages. Welding Advanced (shared
+    dual-campus page) is the exception, not the default.
+
+  REQUIRED SECTIONS  (always present — do not remove)
+    1.  Campus Utility Bar
+    2.  Campus Site Header
+    3.  Breadcrumbs
+    4.  Program Hero (with flex stat bar)
+    5.  Start Here yellow bar (configurable steps)
+    6.  Jump Nav (sticky)
+    7.  See It In Action (videos)
+    8.  Program Overview + Course Sequence
+    9.  Credentials & Licensure (accepts 1-N cards)
+    10. Next Steps / Counselor (accepts 1-N counselors)
+    11. Site Footer
+
+  OPTIONAL SECTIONS  (include ONLY if applicable, otherwise delete the block)
+    A. Admission Requirements          — for selective or prereq programs
+    B. Cohort Schedule                  — for programs with fixed cohort starts
+    C. Career Ladder / Exit Points      — for programs with multiple exit OCPs
+    D. Clinical / Practicum             — for programs with external placements
+    E. State Licensure Disclosure       — for state-licensed programs
+    F. Required Materials / Tool Kit    — for trades with student-supplied gear
+    G. Apprenticeship Pathway callout   — for programs feeding apprenticeships
+    H. Sister / Advanced Program        — for programs with an advanced track
+    I. Continuing Ed Bridge             — for programs that articulate up
+    J. Online / Distance Ed Details     — when distance ed IS available
+
+  PLACEHOLDER TOKENS (find-and-replace per program)
+    [PROGRAM_NAME]          e.g., "Practical Nursing"
+    [PROGRAM_SHORT]         e.g., "LPN"
+    [CAMPUS]                e.g., "St. Petersburg" or "Clearwater"
+    [CAMPUS_SLUG]           e.g., "stpete" or "clearwater"
+    [PROGRAM_CODE]          e.g., "H170606"
+    [TOTAL_HOURS]           e.g., "1,350"
+    [MISSION_STATEMENT]     the 1-2 sentence program mission
+    [COUNSELOR_NAME]        e.g., "Cheri Ashwood"
+    [COUNSELOR_INITIALS]    e.g., "CA"
+    [COUNSELOR_EMAIL]       e.g., "ASHWOODC@pcsb.org"
+    [COUNSELOR_PHONE_EXT]   e.g., "2325"
+    [HERO_IMAGE_PATH]       e.g., "assets/images/content/stpete-nursing-lab.jpg"
+    [HERO_IMAGE_ALT]        descriptive alt text
+
+  WORKFLOW
+    1. COPY this file to the site root (not _templates/) as
+       [program-slug]-[campus-slug].html. Paths to styles.css,
+       script.js, and assets/ are root-relative, so the template
+       won't render correctly if previewed from _templates/ directly.
+    2. Find-and-replace all [BRACKETED_TOKENS]
+    3. Delete any OPTIONAL sections that don't apply
+    4. Fill in course accordions, credential cards, counselor cards
+    5. Verify all links resolve (no stray href="#")
+    6. Accessibility check: alt text, headings in order, aria labels
+
+  CHANGE LOG
+    v1.0  2026-04-24  Initial canonical template after Welding stress test
+                      against Practical Nursing, Child Care, Electricity.
+                      Addresses 9 cross-cutting issues identified in review.
+================================================================================
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[PROGRAM_NAME] - [CAMPUS] Campus &mdash; Pinellas Technical College</title>
+    <meta name="description" content="[PROGRAM_NAME] at PTC [CAMPUS]: [ONE_SENTENCE_DESCRIPTION]">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ========================================================================
+           PROGRAM PAGE SPECIFIC STYLES
+           All template-specific CSS lives here. Global tokens come from styles.css.
+           ======================================================================== */
+
+        /* --- HERO --- */
+        .program-hero {
+            background: linear-gradient(135deg, var(--color-green-dark) 0%, #004d29 100%);
+            color: white;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .program-hero__inner {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            min-height: 480px;
+        }
+
+        .program-hero__text {
+            padding: 4rem 0 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .program-hero__image {
+            overflow: hidden;
+        }
+
+        .program-hero__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- STAT BAR (flex: show only stats that apply) --- */
+        .stat-bar {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-bar__item strong {
+            display: block;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-bar__item span {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .stat-bar__item span.unavailable {
+            color: #fca5a5;
+        }
+
+        .stat-bar__item span.available {
+            color: #86efac;
+        }
+
+        .stat-bls {
+            font-size: 0.7em;
+            opacity: 0.6;
+            font-weight: 400;
+        }
+
+        .hero-counselor-nudge {
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .hero-counselor-nudge a {
+            color: var(--color-yellow);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .hero-counselor-nudge a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- START HERE YELLOW BAR (configurable steps) --- */
+        .start-steps {
+            background: var(--color-yellow);
+            padding: 1.25rem 0;
+        }
+
+        .start-steps__inner {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .start-steps__label {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            color: var(--color-gray-900);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .start-steps__links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .step-btn {
+            padding: 0.55rem 1.15rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .step-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .step-btn--dark {
+            background: var(--color-green-dark);
+            color: white;
+        }
+
+        .step-btn--outline {
+            background: white;
+            color: var(--color-green-dark);
+            border: 2px solid var(--color-green-dark);
+        }
+
+        /* --- JUMP NAV --- */
+        .jump-nav {
+            background: white;
+            border-bottom: 2px solid var(--color-gray-200);
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .jump-nav__inner {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .jump-nav__inner::-webkit-scrollbar {
+            display: none;
+        }
+
+        .jump-nav__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.9rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-gray-600);
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .jump-nav__link:hover {
+            color: var(--color-green);
+            border-bottom-color: var(--color-green);
+        }
+
+        .jump-nav__link--cta {
+            margin-left: auto;
+            color: var(--color-green);
+            border-left: 1px solid var(--color-gray-200);
+            padding-left: 1.5rem;
+        }
+
+        .jump-nav__link--cta:hover {
+            background: var(--color-green-light);
+            border-bottom-color: var(--color-green);
+        }
+
+        /* --- VIDEOS --- */
+        .video-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 860px;
+        }
+
+        .video-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-card__embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-card__link {
+            position: absolute;
+            inset: 0;
+            display: block;
+            overflow: hidden;
+            text-decoration: none;
+            background: #000;
+        }
+
+        .video-card__link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, opacity 0.3s ease;
+        }
+
+        .video-card__link:hover img,
+        .video-card__link:focus-visible img {
+            transform: scale(1.03);
+            opacity: 0.85;
+        }
+
+        .video-card__play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            padding-left: 6px;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .video-card__link:hover .video-card__play,
+        .video-card__link:focus-visible .video-card__play {
+            background: var(--color-accent, #FFCF01);
+            color: #111;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        .video-card__caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0.9rem 1.1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* --- COURSE ACCORDION --- */
+        .accordion-item {
+            border: 1px solid var(--color-gray-300);
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            transition: box-shadow 0.2s;
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .accordion-item summary {
+            padding: 1.25rem 1.75rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            background: var(--color-gray-100);
+            border-bottom: 1px solid var(--color-gray-200);
+            gap: 1rem;
+        }
+
+        .accordion-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .accordion-item summary .course-name {
+            font-weight: 700;
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--color-green-dark);
+            flex: 1;
+        }
+
+        .accordion-item .hours-badge {
+            background: var(--color-green);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .accordion-item .accordion-body {
+            padding: 2rem;
+        }
+
+        /* Optional: mark an OCP exit badge on a course summary */
+        .accordion-item .ocp-exit-badge {
+            background: var(--color-accent);
+            color: var(--color-gray-900);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            margin-right: 0.5rem;
+        }
+
+        /* --- REQUIREMENT / INFO CARDS (used by Schedule, Program Reqs, Admission Reqs, Cohort) --- */
+        .info-card {
+            background: white;
+            border: 1px solid var(--color-gray-200);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .info-card--green {
+            border-left: 4px solid var(--color-green);
+        }
+
+        .info-card--accent {
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .info-card--red {
+            border-left: 4px solid #dc2626;
+        }
+
+        .info-card h4 {
+            font-family: var(--font-heading);
+            color: var(--color-green-dark);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .info-card ul {
+            font-size: 0.95rem;
+            color: var(--color-gray-700);
+            line-height: 1.7;
+            margin: 0;
+            padding-left: 1.25rem;
+        }
+
+        .info-card-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .info-card-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        /* --- CREDENTIAL STACK (flex: N cards) --- */
+        .credential-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .credential-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--color-accent);
+        }
+
+        .credential-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--color-gray-900);
+        }
+
+        .credential-card p {
+            color: var(--color-gray-700);
+            line-height: 1.7;
+            margin: 0 0 1rem 0;
+        }
+
+        .credential-card img {
+            max-width: 180px;
+            margin-top: 0.5rem;
+        }
+
+        .credential-card__type {
+            display: inline-block;
+            background: var(--color-green-light);
+            color: var(--color-green-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .credential-card__type--licensure {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .credential-card__type--certification {
+            background: var(--color-green-light);
+            color: var(--color-green-dark);
+        }
+
+        .credential-card__type--preparatory {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
+        /* --- FL READY TO WORK BLOCK --- */
+        .flrtw-block {
+            background: rgba(0, 129, 66, 0.05);
+            border-left: 4px solid var(--color-green);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
+        }
+
+        .flrtw-block h4 {
+            color: var(--color-green);
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .flrtw-block p {
+            font-size: 0.95rem;
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        /* --- PDF CARDS --- */
+        .pdf-card {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--color-gray-200);
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .pdf-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .pdf-icon {
+            width: 50px;
+            height: 50px;
+            background: #fee2e2;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pdf-icon i {
+            color: #dc2626;
+            font-size: 1.5rem;
+        }
+
+        /* --- COUNSELOR CARD (flex: 1-N counselors) --- */
+        .counselor-card {
+            background: var(--color-gray-100);
+            padding: 3rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-gray-200);
+            text-align: center;
+        }
+
+        .counselor-card--dual {
+            padding: 2.5rem;
+        }
+
+        .counselor-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--color-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .counselor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .counselor-grid .counselor-entry {
+            padding: 1rem;
+        }
+
+        .counselor-grid .counselor-entry h3 {
+            font-size: 1.25rem;
+            font-family: var(--font-heading);
+            color: var(--color-green-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .counselor-grid .counselor-entry .counselor-role {
+            color: var(--color-gray-500);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- CONTENT SPLIT (used by credentials + cost sidebar) --- */
+        .content-split {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: stretch;
+        }
+
+        /* --- ACTION BUTTONS --- */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3.5rem;
+        }
+
+        /* --- BREADCRUMBS --- */
+        .breadcrumb-bar {
+            background: var(--color-off-white);
+            border-bottom: 1px solid var(--color-gray-200);
+            padding: 0.6rem 0;
+        }
+
+        .breadcrumb-bar__inner {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            color: var(--color-gray-600);
+            flex-wrap: wrap;
+        }
+
+        .breadcrumb-bar__inner ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .breadcrumb-bar__inner li {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .breadcrumb-bar__inner li:not(:last-child)::after {
+            content: "\f054";
+            font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", "FontAwesome";
+            font-weight: 900;
+            font-size: 0.65rem;
+            color: var(--color-gray-400);
+            margin-left: 0.4rem;
+        }
+
+        .breadcrumb-bar__inner a {
+            color: var(--color-green);
+            text-decoration: none;
+        }
+
+        .breadcrumb-bar__inner a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-bar__current {
+            color: var(--color-gray-700);
+            font-weight: 500;
+        }
+
+        /* --- RELATED-PROGRAM CALLOUT (used by Sister, Apprenticeship, Continuing Ed) --- */
+        .program-related-callout {
+            background: var(--color-off-white);
+            border: 1px solid var(--color-gray-200);
+            border-left: 4px solid var(--color-accent);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .program-related-callout i {
+            color: var(--color-green);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .program-related-callout strong {
+            color: var(--color-gray-900);
+        }
+
+        .program-related-callout a {
+            color: var(--color-green);
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .program-related-callout a:hover {
+            text-decoration: underline;
+        }
+
+        /* Apprenticeship variant uses blue accent */
+        .program-related-callout--apprenticeship {
+            border-left-color: #2563eb;
+        }
+
+        .program-related-callout--apprenticeship i {
+            color: #2563eb;
+        }
+
+        /* --- CAREER LADDER --- */
+        .career-ladder {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0;
+            margin-top: 2rem;
+            counter-reset: ladder-step;
+        }
+
+        .ladder-step {
+            background: white;
+            border: 1px solid var(--color-gray-200);
+            border-right: none;
+            padding: 1.5rem;
+            position: relative;
+            counter-increment: ladder-step;
+        }
+
+        .ladder-step:last-child {
+            border-right: 1px solid var(--color-gray-200);
+        }
+
+        .ladder-step:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        .ladder-step:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+
+        .ladder-step__hours {
+            display: inline-block;
+            background: var(--color-green-light);
+            color: var(--color-green-dark);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .ladder-step__title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--color-gray-900);
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .ladder-step__role {
+            font-size: 0.85rem;
+            color: var(--color-gray-600);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .career-ladder {
+                grid-template-columns: 1fr;
+            }
+            .ladder-step {
+                border-right: 1px solid var(--color-gray-200);
+                border-radius: 0 !important;
+            }
+            .ladder-step:first-child {
+                border-radius: 8px 8px 0 0 !important;
+            }
+            .ladder-step:last-child {
+                border-radius: 0 0 8px 8px !important;
+            }
+        }
+
+        /* --- CLINICAL / PRACTICUM SECTION --- */
+        .clinical-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .clinical-requirements-list {
+            background: var(--color-gray-100);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .clinical-requirements-list h4 {
+            font-family: var(--font-heading);
+            color: var(--color-green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .clinical-requirements-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .clinical-requirements-list li {
+            padding: 0.5rem 0 0.5rem 1.75rem;
+            position: relative;
+            color: var(--color-gray-700);
+            line-height: 1.5;
+        }
+
+        .clinical-requirements-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--color-green);
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .clinical-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- STATE LICENSURE DISCLOSURE --- */
+        .licensure-disclosure {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem 2rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 2rem;
+        }
+
+        .licensure-disclosure h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .licensure-disclosure p {
+            font-size: 0.9rem;
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media screen and (max-width: 768px) {
+            .program-hero__inner {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .program-hero__text {
+                padding: 3rem 1.5rem;
+            }
+
+            .program-hero__image {
+                min-height: 250px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-buttons .btn {
+                width: 100%;
+            }
+
+            .stat-bar {
+                gap: 1.5rem;
+            }
+
+            .jump-nav__link--cta {
+                margin-left: 0;
+            }
+
+            .program-related-callout {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .info-card-grid-2,
+            .info-card-grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ============================================================
+         CAMPUS UTILITY BAR
+         Swap phone, address, and campus-switch link per campus.
+         St. Pete:  727.893.2500  |  901 34th St S, St. Petersburg, FL
+         Clearwater: 727.893.2790  |  6100 154th Ave N, Clearwater, FL
+    ============================================================= -->
+    <div class="utility-bar utility-bar--campus">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                <a href="tel:[CAMPUS_PHONE]"><i class="fas fa-phone"></i> [CAMPUS_PHONE_DISPLAY]</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> [CAMPUS_ADDRESS]</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="#"><i class="fas fa-desktop"></i> Canvas Login</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="#"><i class="fas fa-user-graduate"></i> SIS Portal / Focus</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="index.html"><i class="fas fa-home"></i> PTC Main Site</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="[OTHER_CAMPUS_SLUG].html"><i class="fas fa-exchange-alt"></i> [OTHER_CAMPUS] Campus</a>
+                <a href="#" class="btn btn--primary btn--sm" style="margin-left: 1rem;"><i class="fas fa-search"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CAMPUS SITE HEADER (4-pillar nav + Apply CTA)
+         This block is identical to welding-[campus].html. Swap campus
+         title and campus-specific dropdown links only.
+    ============================================================= -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="[CAMPUS_SLUG].html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="PTC Logo" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">[CAMPUS] Campus</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <h4>By Career Cluster</h4>
+                                    <ul>
+                                        <li><a href="#">Health Sciences</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                        <li><a href="#">Skilled Trades &amp; Construction</a></li>
+                                        <li><a href="#">Transportation &amp; Logistics</a></li>
+                                        <li><a href="#">Culinary &amp; Hospitality</a></li>
+                                        <li><a href="#">Cosmetology &amp; Barbering</a></li>
+                                        <li><a href="#">Arts, Media &amp; Education</a></li>
+                                    </ul>
+                                    <h4>Explore</h4>
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="schedule-[CAMPUS_SLUG].html">Class Schedule</a></li>
+                                        <li><a href="#">Distance Learning</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="admissions.html#enrollment-steps">Enrollment Steps</a></li>
+                                        <li><a href="tuition-aid.html">Tuition &amp; Fees</a></li>
+                                        <li><a href="tuition-aid.html">Financial Aid &amp; FAFSA</a></li>
+                                        <li><a href="#">Scholarships</a></li>
+                                        <li><a href="admissions.html#testing">Testing &amp; Assessment</a></li>
+                                        <li><a href="#">Veterans Benefits</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">Academic Calendar</a></li>
+                                        <li><a href="#">Canvas Login</a></li>
+                                        <li><a href="student-resources.html">Student Services</a></li>
+                                        <li><a href="#">Campus Bookstore</a></li>
+                                        <li><a href="#">Record Request</a></li>
+                                        <li><a href="#">Tech Support</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Campus Info <i class="fas fa-chevron-down"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="#">About This Campus</a></li>
+                                        <li><a href="campus-maps.html">Map &amp; Directions</a></li>
+                                        <li><a href="#">Staff Directory</a></li>
+                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="post-a-job-FINAL.html">Post a Job for Students</a></li>
+                                        <li><a href="#">Advisory Committees</a></li>
+                                        <li><a href="consumer-information.html">Consumer Information</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a href="#" class="btn btn--primary btn--sm site-header__cta">Apply Now</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- =================================================
+             BREADCRUMBS
+        ================================================== -->
+        <div class="breadcrumb-bar">
+            <nav class="container breadcrumb-bar__inner" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="[CAMPUS_SLUG].html">[CAMPUS] Campus</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li class="breadcrumb-bar__current" aria-current="page">[PROGRAM_NAME]</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- =================================================
+             1. PROGRAM HERO
+             Stat bar flex: include ONLY stats that apply.
+             Available stats: Format, Location, Schedule, Length,
+             Distance Ed, Avg. Salary, Salary Range, Program Code,
+             Next Cohort, Application Deadline.
+        ================================================== -->
+        <section class="program-hero">
+            <div class="container">
+                <div class="program-hero__inner">
+                    <div class="program-hero__text">
+                        <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--color-accent); font-weight: 700; font-size: 0.9rem;">
+                            [CAMPUS] Campus</p>
+                        <h1 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 3.75rem); margin-bottom: 1rem; line-height: 1.1;">
+                            [PROGRAM_NAME]</h1>
+                        <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.9; max-width: 520px; margin-bottom: 0;">
+                            [MISSION_STATEMENT]</p>
+
+                        <div class="stat-bar">
+                            <div class="stat-bar__item">
+                                <strong>Format</strong>
+                                <span>[FULL_TIME_OR_PART_TIME]</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Location</strong>
+                                <span>[CAMPUS]</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Schedule</strong>
+                                <span>[DAY_EVENING_OR_BOTH]</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Length</strong>
+                                <span>[TOTAL_HOURS] Hours</span>
+                            </div>
+                            <!--
+                              Distance Ed stat: Use "Not Available" OR "Available" OR "Hybrid".
+                              If Available/Hybrid, include Section J (Online/Distance Ed Details) below.
+                            -->
+                            <div class="stat-bar__item">
+                                <strong>Distance Ed</strong>
+                                <span class="unavailable">Not Available</span>
+                            </div>
+                            <!--
+                              Salary: choose ONE of the two patterns below.
+                              Pattern A: Single BLS average (simple programs, one exit role).
+                              Pattern B: Range (programs with multiple exit roles / career ladder).
+                              Delete the pattern you don't use.
+                            -->
+                            <div class="stat-bar__item">
+                                <strong>Avg. Salary</strong>
+                                <span>$[SALARY]/yr <span class="stat-bls">&#x2022; BLS 2023</span></span>
+                            </div>
+                            <!--
+                            <div class="stat-bar__item">
+                                <strong>Salary Range</strong>
+                                <span>$[LOW]&ndash;$[HIGH]/yr <span class="stat-bls">&#x2022; BLS 2023</span></span>
+                            </div>
+                            -->
+                            <!--
+                              OPTIONAL: Next Cohort stat (for selective/cohort-start programs).
+                              Uncomment if program has fixed cohort starts.
+                            -->
+                            <!--
+                            <div class="stat-bar__item">
+                                <strong>Next Cohort</strong>
+                                <span>[NEXT_START_DATE]</span>
+                            </div>
+                            -->
+                        </div>
+                        <p class="hero-counselor-nudge"><i class="fas fa-user-tie"></i> Have questions? <a href="#counselor">Talk to your counselor</a> before you apply.</p>
+                    </div>
+                    <div class="program-hero__image">
+                        <img src="[HERO_IMAGE_PATH]"
+                            onerror="this.onerror=null; this.src='assets/images/content/placeholder-program.jpg';"
+                            alt="[HERO_IMAGE_ALT]">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             2. START HERE (yellow bar, configurable steps)
+             Choose ONE variant below and delete the others.
+             Variant A: Rolling admissions + Shadow Day (most trades programs)
+             Variant B: Rolling admissions + Info Session (no shadow day)
+             Variant C: Selective/cohort admissions (deadline-driven)
+        ================================================== -->
+        <div class="start-steps">
+            <div class="container">
+                <div class="start-steps__inner">
+                    <span class="start-steps__label"><i class="fas fa-bolt" style="margin-right: 0.4rem;"></i> New to PTC? Start Here:</span>
+
+                    <!-- VARIANT A: Apply + Shadow Day + Counselor (default for trades) -->
+                    <div class="start-steps__links">
+                        <a href="https://www.myptc.edu/admissions" target="_blank" class="step-btn step-btn--dark"><i class="fas fa-file-alt"></i> Step 1: Apply Online</a>
+                        <a href="https://[CAMPUS_SLUG].myptc.edu/admissions/admissions/shadowing-days-times" target="_blank" class="step-btn step-btn--outline"><i class="fas fa-calendar-check"></i> Step 2: Schedule a Shadow Day</a>
+                        <a href="#counselor" class="step-btn step-btn--outline"><i class="fas fa-user-tie"></i> Step 3: Meet Your Counselor</a>
+                    </div>
+
+                    <!-- VARIANT B: Apply + Info Session + Counselor (uncomment to use)
+                    <div class="start-steps__links">
+                        <a href="https://www.myptc.edu/admissions" target="_blank" class="step-btn step-btn--dark"><i class="fas fa-file-alt"></i> Step 1: Apply Online</a>
+                        <a href="#" class="step-btn step-btn--outline"><i class="fas fa-users"></i> Step 2: Attend an Info Session</a>
+                        <a href="#counselor" class="step-btn step-btn--outline"><i class="fas fa-user-tie"></i> Step 3: Meet Your Counselor</a>
+                    </div>
+                    -->
+
+                    <!-- VARIANT C: Selective/cohort admissions (uncomment to use)
+                    <div class="start-steps__links">
+                        <a href="#admission-requirements" class="step-btn step-btn--dark"><i class="fas fa-clipboard-check"></i> Step 1: Review Admission Requirements</a>
+                        <a href="#" class="step-btn step-btn--outline"><i class="fas fa-users"></i> Step 2: Attend an Info Session</a>
+                        <a href="https://www.myptc.edu/admissions" target="_blank" class="step-btn step-btn--outline"><i class="fas fa-file-alt"></i> Step 3: Submit Application by [DEADLINE]</a>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+
+        <!-- =================================================
+             3. JUMP NAV (sticky)
+             Add a jump link for every section you include below.
+        ================================================== -->
+        <nav class="jump-nav" id="jump-nav" aria-label="Page sections">
+            <div class="container">
+                <div class="jump-nav__inner">
+                    <a href="#program-videos" class="jump-nav__link">See It In Action</a>
+                    <!-- Uncomment if OPTIONAL section A is included -->
+                    <!-- <a href="#admission-requirements" class="jump-nav__link">Admission Requirements</a> -->
+                    <a href="#program-courses" class="jump-nav__link">Course Sequence</a>
+                    <!-- Uncomment if OPTIONAL section D is included -->
+                    <!-- <a href="#clinical" class="jump-nav__link">Clinical Placement</a> -->
+                    <a href="#program-credentials" class="jump-nav__link">Credentials &amp; Cost</a>
+                    <a href="#counselor" class="jump-nav__link">Get Started</a>
+                    <a href="#counselor" class="jump-nav__link jump-nav__link--cta"><i class="fas fa-user-tie"></i> Talk to a Counselor</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- =================================================
+             4. SEE IT IN ACTION (videos)
+             If no video exists yet, you can either omit this section
+             or use a static photo grid. Do not leave with placeholder.
+        ================================================== -->
+        <section id="program-videos" style="padding: 5rem 0; background: var(--color-gray-900);">
+            <div class="container">
+                <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--color-accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">See It In Action</p>
+                <h2 style="font-family: var(--font-heading); font-size: 2.25rem; color: white; margin-bottom: 0.75rem;">What It&rsquo;s Really Like</h2>
+                <p style="color: rgba(255,255,255,0.65); margin-bottom: 3rem; font-size: 1.05rem; max-width: 600px;">Get a real look at our facility, hear from students and instructors, and see the kind of work you&rsquo;ll be doing.</p>
+
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-card__embed">
+                            <a class="video-card__link"
+                                href="https://www.youtube.com/watch?v=[VIDEO_ID]"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Watch: [PROGRAM_NAME] at PTC [CAMPUS] on YouTube (opens in new tab)">
+                                <img src="https://img.youtube.com/vi/[VIDEO_ID]/maxresdefault.jpg"
+                                    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/[VIDEO_ID]/hqdefault.jpg';"
+                                    alt="[PROGRAM_NAME] at PTC [CAMPUS] video thumbnail">
+                                <span class="video-card__play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                                <span class="video-card__caption">
+                                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                                    Watch: [PROGRAM_NAME] at PTC [CAMPUS]
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             OPTIONAL SECTION A: ADMISSION REQUIREMENTS
+             INCLUDE IF: program has real entrance gates (prereqs,
+             entrance exam, background check, immunizations, etc.)
+             REMOVE IF: program is open-enrollment with only "apply online"
+             EXAMPLES:
+               Practical Nursing, Dental Assisting, Medical Assisting,
+               Massage Therapy (anything selective or health-regulated)
+        ================================================== -->
+        <section id="admission-requirements" style="padding: 5rem 0; background: white;">
+            <div class="container" style="max-width: 900px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Admission Requirements</h2>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 3rem; font-size: 1.05rem;">
+                    [PROGRAM_NAME] has specific entrance requirements. Please review them before applying.
+                </p>
+
+                <div class="info-card info-card--green">
+                    <h4><i class="fas fa-clipboard-check" style="margin-right: 0.4rem;"></i> Prerequisites</h4>
+                    <ul>
+                        <li>[High school diploma or equivalent]</li>
+                        <li>[Entrance exam, e.g., TEAS VII with minimum score]</li>
+                        <li>[Prerequisite courses or certifications, e.g., CNA]</li>
+                        <li>[Additional requirement]</li>
+                    </ul>
+                </div>
+
+                <div class="info-card info-card--accent" style="margin-top: 1.5rem;">
+                    <h4><i class="fas fa-user-shield" style="margin-right: 0.4rem;"></i> Background & Health Requirements</h4>
+                    <ul>
+                        <li>[Level 2 background screening]</li>
+                        <li>[Drug screen]</li>
+                        <li>[Immunizations: e.g., MMR, TDaP, Varicella, Hep B, TB]</li>
+                        <li>[CPR / BLS certification before clinical start]</li>
+                    </ul>
+                </div>
+
+                <div class="info-card info-card--red" style="margin-top: 1.5rem;">
+                    <h4><i class="fas fa-exclamation-circle" style="margin-right: 0.4rem;"></i> Important Notes</h4>
+                    <p>[Meeting the minimum requirements does not guarantee admission. Admission is competitive and cohort-based. See your counselor for the current year's application window and cutoff scores.]</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             OPTIONAL SECTION B: COHORT SCHEDULE
+             INCLUDE IF: program has fixed cohort starts (not rolling).
+             REMOVE IF: program has rolling admissions (can start any month).
+             EXAMPLES: Practical Nursing, Dental Assisting
+        ================================================== -->
+        <section id="cohort-schedule" style="padding: 4rem 0; background: var(--color-off-white);">
+            <div class="container" style="max-width: 900px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Upcoming Cohort Starts</h2>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 2.5rem;">
+                    This program starts as a cohort. Applications close before each start date.
+                </p>
+
+                <div class="info-card-grid-2">
+                    <div class="info-card info-card--green">
+                        <h4><i class="fas fa-calendar-day" style="margin-right: 0.4rem;"></i> [COHORT_1_TERM]</h4>
+                        <p>
+                            <strong>Start Date:</strong> [DATE]<br>
+                            <strong>Application Deadline:</strong> [DATE]<br>
+                            <strong>Seats Available:</strong> [NUMBER]
+                        </p>
+                    </div>
+                    <div class="info-card info-card--accent">
+                        <h4><i class="fas fa-calendar-day" style="margin-right: 0.4rem;"></i> [COHORT_2_TERM]</h4>
+                        <p>
+                            <strong>Start Date:</strong> [DATE]<br>
+                            <strong>Application Deadline:</strong> [DATE]<br>
+                            <strong>Seats Available:</strong> [NUMBER]
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             5. PROGRAM OVERVIEW + COURSE SEQUENCE
+             Always present. Course accordion can have any number of
+             items. Use ocp-exit-badge to mark OCP exit points (programs
+             with multiple exits) — see optional Career Ladder below.
+        ================================================== -->
+        <section id="program-courses" style="padding: 5rem 0; background-color: white;">
+            <div class="container" style="max-width: 900px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">About This Program</h2>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 3rem; font-size: 1.1rem;">
+                    Program [PROGRAM_CODE] consists of a planned sequence of courses totaling [TOTAL_HOURS] clock hours.
+                </p>
+                <p style="font-size: 1.1rem; color: var(--color-gray-700); line-height: 1.8; margin-bottom: 2rem;">
+                    [PROGRAM_DESCRIPTION — 1-2 paragraphs describing what students will learn and the career outcomes.]
+                </p>
+
+                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-gray-900);">Course Sequence</h3>
+                <p style="color: var(--color-gray-500); margin-bottom: 2rem; font-size: 0.95rem;">Click each phase to see what you&rsquo;ll learn. Courses must be completed in order.</p>
+
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <details class="accordion-item" open>
+                        <summary>
+                            <span class="course-name">[COURSE_1_NAME] ([COURSE_1_CODE])</span>
+                            <span class="hours-badge">[HOURS] Hours</span>
+                        </summary>
+                        <div class="accordion-body">
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">
+                                [Course description.]
+                            </p>
+                        </div>
+                    </details>
+                    <details class="accordion-item">
+                        <summary>
+                            <span class="ocp-exit-badge">OCP Exit</span>
+                            <span class="course-name">[COURSE_2_NAME] ([COURSE_2_CODE])</span>
+                            <span class="hours-badge">[HOURS] Hours</span>
+                        </summary>
+                        <div class="accordion-body">
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">
+                                [Course description. Remove the ocp-exit-badge span from the summary if this course is not an OCP exit point.]
+                            </p>
+                        </div>
+                    </details>
+                    <!-- Repeat accordion-item blocks as needed -->
+                </div>
+
+                <!-- Class Schedule + Program Requirements cards -->
+                <div class="info-card-grid-2">
+                    <div class="info-card info-card--green">
+                        <h4><i class="fas fa-clock" style="margin-right: 0.4rem;"></i> Class Schedule</h4>
+                        <p>
+                            <strong>Day:</strong> [DAYS, TIMES]<br>
+                            <strong>Evening:</strong> [DAYS, TIMES]
+                        </p>
+                    </div>
+                    <div class="info-card info-card--accent">
+                        <h4><i class="fas fa-check-square" style="margin-right: 0.4rem;"></i> Program Requirements</h4>
+                        <p>
+                            <strong>Satisfactory Academic Progress:</strong> [%]<br>
+                            <strong>Attendance:</strong> [%]<br>
+                            <strong>Basic Skills Exit Levels:</strong> Math [#], Reading [#], Language [#]
+                        </p>
+                    </div>
+                </div>
+
+                <p style="font-size: 0.85rem; color: var(--color-gray-500); margin-top: 1.5rem; text-align: center;">
+                    Distance Education: [Traditional only / Hybrid / Online Available]. Industry Credential: [CREDENTIAL_SHORT_NAME].
+                </p>
+            </div>
+        </section>
+
+        <!-- =================================================
+             OPTIONAL SECTION C: CAREER LADDER / EXIT POINTS
+             INCLUDE IF: program has multiple OCP exits, each tied
+             to a different job role.
+             REMOVE IF: program has one linear path to one exit credential.
+             EXAMPLES: Child Care Center Operations, Cosmetology
+        ================================================== -->
+        <section id="career-ladder" style="padding: 5rem 0; background: var(--color-off-white);">
+            <div class="container" style="max-width: 1100px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Career Ladder</h2>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 1rem; font-size: 1.05rem;">
+                    This program has multiple exit points. You can earn a credential and enter the workforce at each step, or continue all the way through.
+                </p>
+
+                <div class="career-ladder">
+                    <div class="ladder-step">
+                        <span class="ladder-step__hours">[HOURS] hrs</span>
+                        <div class="ladder-step__title">[EXIT_1_TITLE]</div>
+                        <p class="ladder-step__role">[Role description and typical job title: e.g., "Child Care Worker: assist lead teachers in daily classroom care."]</p>
+                    </div>
+                    <div class="ladder-step">
+                        <span class="ladder-step__hours">[HOURS] hrs</span>
+                        <div class="ladder-step__title">[EXIT_2_TITLE]</div>
+                        <p class="ladder-step__role">[Role description.]</p>
+                    </div>
+                    <div class="ladder-step">
+                        <span class="ladder-step__hours">[HOURS] hrs</span>
+                        <div class="ladder-step__title">[EXIT_3_TITLE]</div>
+                        <p class="ladder-step__role">[Role description.]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             OPTIONAL SECTION D: CLINICAL / PRACTICUM
+             INCLUDE IF: program has external supervised placements.
+             REMOVE IF: all training is on-campus.
+             EXAMPLES: Practical Nursing, Medical Assisting, Dental
+             Assisting, Child Care (practicum at licensed center),
+             Electricity apprenticeship-hour component.
+        ================================================== -->
+        <section id="clinical" style="padding: 5rem 0; background: white;">
+            <div class="container" style="max-width: 1100px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">[Clinical Placement / Practicum / Externship]</h2>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 2rem; font-size: 1.05rem;">
+                    Hands-on training at a partner [hospital / center / site] is a required part of this program.
+                </p>
+
+                <div class="clinical-grid">
+                    <div>
+                        <h3 style="font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 1rem;">What to expect</h3>
+                        <p style="color: var(--color-gray-700); line-height: 1.7; margin-bottom: 1rem;">
+                            [Description of the clinical experience: when in the program it happens, how many hours, supervision model.]
+                        </p>
+                        <p style="color: var(--color-gray-700); line-height: 1.7; margin-bottom: 1rem;">
+                            [Partner sites, if public. Otherwise: "Students are placed at one of our partner sites in the Tampa Bay area."]
+                        </p>
+                    </div>
+                    <div class="clinical-requirements-list">
+                        <h4>Before clinical begins</h4>
+                        <ul>
+                            <li>Level 2 background screening cleared</li>
+                            <li>Drug screen passed</li>
+                            <li>All required immunizations up to date</li>
+                            <li>CPR / BLS certification current</li>
+                            <li>Uniform and ID badge obtained</li>
+                            <li>Liability insurance paid</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             6. CREDENTIALS & LICENSURE
+             Always present. Accepts 1-N credential cards.
+             Use the --type-- class on credential-card__type to
+             color-code by credential type:
+               certification, licensure, preparatory (exam prep),
+               industry, state.
+             Keep FL Ready to Work block (all PTC programs).
+        ================================================== -->
+        <section id="program-credentials" style="padding: 5rem 0; background-color: var(--color-gray-100);">
+            <div class="container">
+                <div class="content-split">
+                    <div>
+                        <h2 style="color: var(--color-green-dark); margin-bottom: 2rem; font-family: var(--font-heading);">Credentials &amp; Licensure</h2>
+
+                        <!-- CREDENTIAL STACK: add a .credential-card for each credential. -->
+                        <div class="credential-stack">
+
+                            <!-- Card 1 — primary industry credential or licensure -->
+                            <div class="credential-card">
+                                <span class="credential-card__type credential-card__type--certification">Industry Certification</span>
+                                <h3>[CREDENTIAL_1_NAME]</h3>
+                                <p>[Description of the credential, who awards it, how students earn it, testing fees if any.]</p>
+                                <!-- Optional logo -->
+                                <!-- <img src="assets/images/content/[credential-logo].jpg" alt="[Credential name]"> -->
+                            </div>
+
+                            <!-- Card 2 — state licensure (only if program leads to licensure) -->
+                            <!--
+                            <div class="credential-card">
+                                <span class="credential-card__type credential-card__type--licensure">State Licensure</span>
+                                <h3>[LICENSURE_NAME, e.g., NCLEX-PN]</h3>
+                                <p>[Description of the licensure pathway, state board name, exam details.]</p>
+                            </div>
+                            -->
+
+                            <!-- Card 3 — secondary/supporting credential -->
+                            <!--
+                            <div class="credential-card">
+                                <span class="credential-card__type credential-card__type--certification">Supporting Certification</span>
+                                <h3>[CREDENTIAL_NAME, e.g., OSHA 10]</h3>
+                                <p>[Description.]</p>
+                            </div>
+                            -->
+
+                            <!-- Card 4 — exam prep -->
+                            <!--
+                            <div class="credential-card">
+                                <span class="credential-card__type credential-card__type--preparatory">Exam Preparation</span>
+                                <h3>[EXAM_NAME]</h3>
+                                <p>[Program prepares students to sit for this exam after graduation. Not awarded by PTC.]</p>
+                            </div>
+                            -->
+
+                            <!-- FL Ready to Work block — keep on every program page -->
+                            <div class="flrtw-block">
+                                <h4><i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i> Florida Ready to Work</h4>
+                                <p>
+                                    The goal of Pinellas Technical College&rsquo;s career and technical programs is for each student to achieve an industry-recognized credential or professional license. It is an expectation that students will earn the <strong>FL Ready to Work Soft Skills</strong> credential before graduating. The <strong>Digital Skills</strong> credential is also highly recommended as all careers use technology. The <strong>Employability Skills</strong> credential reviews basic reading and math skills used on the job.
+                                </p>
+                                <p style="font-size: 0.9rem; color: var(--color-gray-700); margin: 0;">
+                                    These credentials align with our <strong>BIG SIX initiative</strong>: professionalism, pride, focus, success, ownership, and excellence. <a href="https://www.myfloridareadytowork.com" target="_blank" style="color: var(--color-green); font-weight: 600;">myfloridareadytowork.com &rarr;</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- =================================================
+                             OPTIONAL SECTION E: STATE LICENSURE DISCLOSURE
+                             INCLUDE IF: program leads to state licensure.
+                             Federal state-authorization disclosure requirement.
+                             Check with institutional research / compliance.
+                        ================================================== -->
+                        <div class="licensure-disclosure">
+                            <h4><i class="fas fa-info-circle"></i> State Licensure Disclosure</h4>
+                            <p>
+                                Pinellas Technical College&rsquo;s [PROGRAM_NAME] program is approved by the [FLORIDA_BOARD_NAME] and meets the educational requirements for licensure in the State of Florida. Licensure requirements vary by state; students who plan to work outside Florida should review licensure requirements in their intended state of practice. Contact your counselor for more information.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Cost + Financial Aid sidebar -->
+                    <div style="display: flex; flex-direction: column; gap: 2rem;">
+                        <div style="background: var(--color-green-dark); border-radius: 12px; padding: 3rem; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; flex: 1; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                            <div style="color: var(--color-accent); font-size: 3rem; margin-bottom: 1.5rem;">
+                                <i class="fas fa-circle-dollar-to-slot"></i>
+                            </div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; font-family: var(--font-heading);">Financial Aid &amp; Costs</h3>
+                            <p style="margin-bottom: 2rem; opacity: 0.9; line-height: 1.6; font-size: 0.95rem;">
+                                Program length and costs are approximate, and subject to change. Financial assistance is available to those who qualify.
+                            </p>
+                            <a href="tuition-aid.html" class="btn btn--accent" style="width: 100%;">Explore Financial Aid</a>
+                        </div>
+
+                        <a href="#" class="pdf-card">
+                            <div class="pdf-icon"><i class="fas fa-file-pdf"></i></div>
+                            <div>
+                                <strong style="display: block; color: var(--color-gray-900); font-size: 1rem; margin-bottom: 0.2rem;">Program Flyer</strong>
+                                <span style="font-size: 0.85rem; color: var(--color-gray-500);">[FORMAT] &middot; [CAMPUS] &middot; PDF</span>
+                            </div>
+                        </a>
+                        <a href="#" class="pdf-card">
+                            <div class="pdf-icon"><i class="fas fa-file-pdf"></i></div>
+                            <div>
+                                <strong style="display: block; color: var(--color-gray-900); font-size: 1rem; margin-bottom: 0.2rem;">Program Costs</strong>
+                                <span style="font-size: 0.85rem; color: var(--color-gray-500);">[PROGRAM_NAME] &middot; [CAMPUS] &middot; PDF</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- =================================================
+                     OPTIONAL SECTION F: REQUIRED MATERIALS / TOOL KIT
+                     INCLUDE IF: students must purchase tools, uniforms,
+                     or kits beyond tuition.
+                     REMOVE IF: no student-supplied materials required.
+                     EXAMPLES: Electricity (tools), Cosmetology (kit),
+                     Culinary (uniforms, knives), Nursing (uniforms, stethoscope)
+                ================================================== -->
+                <div style="background: white; padding: 2rem; border-radius: 12px; margin-top: 3rem; border: 1px solid var(--color-gray-200);">
+                    <h3 style="font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 1rem; font-size: 1.25rem;">
+                        <i class="fas fa-toolbox" style="margin-right: 0.4rem;"></i> Required Materials
+                    </h3>
+                    <p style="color: var(--color-gray-700); line-height: 1.7; margin-bottom: 1rem;">
+                        Students are responsible for purchasing the following beyond program tuition:
+                    </p>
+                    <ul style="color: var(--color-gray-700); line-height: 1.8; margin: 0; padding-left: 1.25rem;">
+                        <li>[Tool/equipment item] &mdash; approx. $[COST]</li>
+                        <li>[Uniform / PPE] &mdash; approx. $[COST]</li>
+                        <li>[Textbook or workbook] &mdash; approx. $[COST]</li>
+                    </ul>
+                    <p style="color: var(--color-gray-500); font-size: 0.85rem; margin-top: 1rem; margin-bottom: 0;">
+                        Your counselor can provide a full materials list and guidance on approved vendors.
+                    </p>
+                </div>
+
+                <!-- =================================================
+                     OPTIONAL SECTION G: APPRENTICESHIP PATHWAY CALLOUT
+                     INCLUDE IF: program feeds into a registered
+                     apprenticeship (IBEW, NECA, Plumbers Local, etc.)
+                     REMOVE IF: not applicable.
+                     EXAMPLES: Electricity, Plumbing, HVAC
+                ================================================== -->
+                <div class="program-related-callout program-related-callout--apprenticeship">
+                    <i class="fas fa-hammer"></i>
+                    <div style="flex: 1;">
+                        <strong>Continue into an apprenticeship</strong>
+                        Graduates of this program are eligible to apply to registered apprenticeships in the Tampa Bay area. Apprenticeship credits may transfer toward journeyman exam requirements.
+                    </div>
+                    <a href="apprenticeships-[CAMPUS_SLUG].html">Learn about apprenticeships <i class="fas fa-arrow-right" style="font-size: 0.85em;"></i></a>
+                </div>
+
+                <!-- =================================================
+                     OPTIONAL SECTION H: SISTER / ADVANCED PROGRAM
+                     INCLUDE IF: a companion advanced program exists.
+                     REMOVE IF: no advanced track.
+                     EXAMPLES: Welding → Welding Advanced
+                ================================================== -->
+                <div class="program-related-callout">
+                    <i class="fas fa-layer-group"></i>
+                    <div style="flex: 1;">
+                        <strong>Ready for the next level?</strong>
+                        [ADVANCED_PROGRAM_NAME] ([HOURS] hours) is offered at the [CAMPUS] campus for students who have completed [PROGRAM_NAME] or have equivalent experience.
+                    </div>
+                    <a href="[ADVANCED_PROGRAM_SLUG].html">Learn about [ADVANCED_PROGRAM_SHORT] <i class="fas fa-arrow-right" style="font-size: 0.85em;"></i></a>
+                </div>
+
+                <!-- =================================================
+                     OPTIONAL SECTION I: CONTINUING ED BRIDGE
+                     INCLUDE IF: program articulates to a degree or
+                     higher credential (LPN-to-RN, AA transfer, etc.)
+                     REMOVE IF: no transfer/articulation pathway.
+                ================================================== -->
+                <div class="program-related-callout">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div style="flex: 1;">
+                        <strong>Continue your education</strong>
+                        [PROGRAM_NAME] graduates can bridge to [NEXT_CREDENTIAL] through articulation agreements with [PARTNER_INSTITUTION(S)].
+                    </div>
+                    <a href="#">See articulation details <i class="fas fa-arrow-right" style="font-size: 0.85em;"></i></a>
+                </div>
+
+                <!-- =================================================
+                     OPTIONAL SECTION J: ONLINE / DISTANCE ED DETAILS
+                     INCLUDE IF: Distance Ed stat bar says "Available"
+                     or "Hybrid" (not "Not Available").
+                     REMOVE IF: program is traditional only.
+                ================================================== -->
+                <div style="background: white; padding: 2rem; border-radius: 12px; margin-top: 3rem; border: 1px solid var(--color-gray-200); border-left: 4px solid var(--color-green);">
+                    <h3 style="font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 1rem; font-size: 1.25rem;">
+                        <i class="fas fa-laptop" style="margin-right: 0.4rem;"></i> Distance Learning Format
+                    </h3>
+                    <p style="color: var(--color-gray-700); line-height: 1.7; margin-bottom: 1rem;">
+                        [Describe the online/hybrid format: synchronous vs asynchronous, required campus visits, proctored exams, software/hardware requirements.]
+                    </p>
+                    <ul style="color: var(--color-gray-700); line-height: 1.8; margin: 0; padding-left: 1.25rem;">
+                        <li><strong>Format:</strong> [Fully online / Hybrid with X required campus days]</li>
+                        <li><strong>Technology requirements:</strong> [Computer, webcam, reliable internet]</li>
+                        <li><strong>Proctored assessments:</strong> [On-campus / Online proctor]</li>
+                        <li><strong>Required campus visits:</strong> [None / X visits for skills labs]</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             7. NEXT STEPS / COUNSELOR
+             Supports 1-N counselors. Use .counselor-grid with
+             .counselor-entry for 2+ counselors (dual-campus or
+             dual-counselor programs).
+        ================================================== -->
+        <section id="counselor" style="padding: 5rem 0; background-color: white; scroll-margin-top: 100px;">
+            <div class="container" style="max-width: 900px; text-align: center;">
+                <h2 class="section-title" style="margin-bottom: 0.75rem;">Ready to Get Started?</h2>
+                <p style="color: var(--color-gray-600); font-size: 1.1rem; line-height: 1.6; margin-bottom: 3rem;">
+                    The first step is to <strong>apply online</strong>. Then connect with your program counselor to discuss enrollment, financial aid, or [schedule a shadowing day / attend an info session] on the [CAMPUS] campus.
+                </p>
+
+                <!-- Apply CTA -->
+                <div class="action-buttons">
+                    <a href="https://www.myptc.edu/admissions" target="_blank" class="btn btn--accent" style="padding: 1.1rem 3rem; font-size: 1.15rem;"><i class="fas fa-file-alt"></i> Apply Online Now</a>
+                </div>
+
+                <!-- ===== SINGLE COUNSELOR (default) ===== -->
+                <div class="counselor-card">
+                    <div class="counselor-avatar">[COUNSELOR_INITIALS]</div>
+                    <h3 style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 0.25rem;">
+                        [COUNSELOR_NAME]</h3>
+                    <p style="color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 2rem;">
+                        School Counselor</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; max-width: 320px; margin: 0 auto;">
+                        <a href="mailto:[COUNSELOR_EMAIL]" class="btn btn--primary" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-envelope"></i> [COUNSELOR_EMAIL]
+                        </a>
+                        <a href="tel:[CAMPUS_PHONE]" class="btn" style="width: 100%; justify-content: center; border: 2px solid var(--color-green); color: var(--color-green);">
+                            <i class="fas fa-phone"></i> [CAMPUS_PHONE_DISPLAY] x[COUNSELOR_PHONE_EXT]
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ===== DUAL COUNSELORS (uncomment if program has 2 counselors) =====
+                <div class="counselor-card counselor-card--dual">
+                    <div class="counselor-grid">
+                        <div class="counselor-entry">
+                            <div class="counselor-avatar">[COUNSELOR_1_INITIALS]</div>
+                            <h3>[COUNSELOR_1_NAME]</h3>
+                            <p class="counselor-role">[Role, e.g., "St. Petersburg Campus"]</p>
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <a href="mailto:[COUNSELOR_1_EMAIL]" class="btn btn--primary" style="width: 100%; justify-content: center;">
+                                    <i class="fas fa-envelope"></i> [COUNSELOR_1_EMAIL]
+                                </a>
+                                <a href="tel:[CAMPUS_1_PHONE]" class="btn" style="width: 100%; justify-content: center; border: 2px solid var(--color-green); color: var(--color-green);">
+                                    <i class="fas fa-phone"></i> [PHONE] x[EXT]
+                                </a>
+                            </div>
+                        </div>
+                        <div class="counselor-entry">
+                            <div class="counselor-avatar">[COUNSELOR_2_INITIALS]</div>
+                            <h3>[COUNSELOR_2_NAME]</h3>
+                            <p class="counselor-role">[Role, e.g., "Clearwater Campus"]</p>
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <a href="mailto:[COUNSELOR_2_EMAIL]" class="btn btn--primary" style="width: 100%; justify-content: center;">
+                                    <i class="fas fa-envelope"></i> [COUNSELOR_2_EMAIL]
+                                </a>
+                                <a href="tel:[CAMPUS_2_PHONE]" class="btn" style="width: 100%; justify-content: center; border: 2px solid var(--color-green); color: var(--color-green);">
+                                    <i class="fas fa-phone"></i> [PHONE] x[EXT]
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                ============================================================ -->
+
+                <div style="margin-top: 2.5rem;">
+                    <a href="https://[CAMPUS_SLUG].myptc.edu/admissions/admissions/shadowing-days-times" target="_blank" style="color: var(--color-green); font-weight: 600; text-decoration: underline; font-size: 1.05rem;">
+                        <i class="fas fa-calendar-check" style="margin-right: 0.4rem;"></i> View Program Shadowing Schedule &rarr;
+                    </a>
+                    <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--color-gray-400);">
+                        Specific certification and license requirements are available from PTC school counselors and program instructors.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================================
+         SITE FOOTER
+         Campus-specific address/phone block in footer__brand.
+         Keep accreditation row consistent across all pages.
+    ============================================================= -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline">
+                        <strong>[CAMPUS_ADDRESS]</strong><br>
+                        Phone: [CAMPUS_PHONE_DISPLAY]<br>
+                        Preparing students for high-demand careers through hands-on, industry-certified training since 1961.
+                    </p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="admissions.html">Admissions</a></li>
+                            <li><a href="tuition-aid.html">Tuition &amp; Aid</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>[CAMPUS] Links</h4>
+                        <ul>
+                            <li><a href="[CAMPUS_SLUG].html">[CAMPUS] Campus Home</a></li>
+                            <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                            <li><a href="campus-maps.html">Campus Map &amp; Directions</a></li>
+                            <li><a href="#">Academic Calendar</a></li>
+                            <li><a href="#">Staff Directory</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#privacy-ferpa">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
