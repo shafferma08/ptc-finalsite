@@ -83,42 +83,38 @@ Before spawning agents, do these things:
 
 ### Step 2: Spawn Review Agents
 
-Read `references/agent-personas.md` for the full persona definitions and review criteria for each agent.
+Dispatch the 8 named persona subagents in parallel using the Task tool, in a SINGLE MESSAGE with one Task call per subagent. Each subagent already has its full persona, review criteria, and output format defined in its own file under `.claude/agents/` — do NOT re-inline that content here.
 
-Spawn all 8 agents in parallel using the Agent tool. Each agent should:
-- Receive the full project context (brand, platform, institution type)
-- Read the HTML mockup files assigned to them
-- Evaluate from their persona's perspective using their specific review criteria
-- Write their feedback to their designated output file
-- Reference the issues tracker to note whether prior issues have been addressed
+**The 8 subagents to dispatch:**
 
-**The 8 agents are:**
+| subagent_type | Persona | Primary Focus |
+|---------------|---------|---------------|
+| `persona-prospective-student` | 19-year-old exploring trade programs | Can I find a program, understand costs, and apply? |
+| `persona-current-student` | Enrolled student needing daily resources | Can I access my portal, schedule, and support services? |
+| `persona-parent-guardian` | Parent of a 17-year-old considering PTC | Is this school trustworthy? Can I find safety, cost, and outcome info? |
+| `persona-faculty` | Instructor who needs to direct students to resources | Can I find what I need to help my students? |
+| `persona-director` | Campus director reviewing the site for accuracy | Does this represent our institution correctly and completely? |
+| `persona-designer` | UI/UX designer evaluating design quality | Is the visual hierarchy clear, consistent, and professional? |
+| `persona-accessibility` | WCAG 2.1 AA compliance specialist | Does this meet accessibility standards for a public institution? |
+| `persona-finalsite-cms` | Finalsite Composer implementation expert | Can every element in these mockups be built in Composer? |
 
-| Agent | Persona | Primary Focus |
-|-------|---------|---------------|
-| Prospective Student | 19-year-old exploring trade programs | Can I find a program, understand costs, and apply? |
-| Current Student | Enrolled student needing daily resources | Can I access my portal, schedule, and support services? |
-| Parent/Guardian | Parent of a 17-year-old considering PTC | Is this school trustworthy? Can I find safety, cost, and outcome info? |
-| Faculty Member | Instructor who needs to direct students to resources | Can I find what I need to help my students? |
-| Director/Admin | Campus director reviewing the site for accuracy | Does this represent our institution correctly and completely? |
-| Visual Designer | UI/UX designer evaluating design quality | Is the visual hierarchy clear, consistent, and professional? |
-| Accessibility Auditor | WCAG 2.1 AA compliance specialist | Does this meet accessibility standards for a public institution? |
-| Finalsite CMS Specialist | Finalsite Composer implementation expert | Can every element in these mockups be built in Composer? |
+**What to pass each subagent in the prompt** (and only this — the persona file handles the rest):
+
+- The list of HTML files to review (absolute paths)
+- The output file path the subagent should write to (e.g., `docs/reviews/YYYY-MM-DD/agent-prospective-student.md`)
+- Today's date
+- The previous issues tracker content if `docs/reviews/issues-tracker.md` exists, or "No previous reviews" if it doesn't
+- For live site mode only: a note that they should use Chrome MCP (`tabs_context_mcp` → `navigate` → `read_page`/`get_page_text`) instead of reading local files
 
 ### Step 3: Project Manager Synthesis
 
-After all agents complete, spawn one more agent as the **Project Manager**. This agent:
+After all 8 persona subagents complete, dispatch the `review-pm` subagent (one Task call) to synthesize. Pass it:
 
-1. Reads all 8 agent feedback files
-2. Reads the previous issues tracker (if it exists)
-3. Creates `consolidated-report.md` with:
-   - **Priority issues** (things that block launch or violate compliance)
-   - **High-value improvements** (things that significantly improve UX)
-   - **Nice-to-haves** (polish items)
-   - **What's working well** (so we know what NOT to change)
-   - Cross-references between agents (e.g., if both the student and parent flagged the same navigation issue)
-4. Updates `issues-tracker.md` with new issues and marks resolved ones
-5. Creates `review-metadata.json` with run details
+- The path to the review folder (`docs/reviews/YYYY-MM-DD/`) so it can read all 8 agent feedback files
+- The path to the previous issues tracker (`docs/reviews/issues-tracker.md`) if it exists
+- Today's date
+
+The `review-pm` subagent's own file defines what it produces (consolidated report, updated issues tracker, review metadata) and the structure of each output.
 
 ### Step 4: Present Results
 
@@ -126,42 +122,6 @@ After the PM agent completes:
 1. Give Marianne a brief summary of the top 3-5 findings
 2. Link to the consolidated report
 3. Note any critical/blocking issues that need immediate attention
-
-## Agent Prompt Template
-
-When spawning each agent, use this structure in the prompt:
-
-```
-You are [PERSONA NAME], reviewing the Pinellas Technical College website redesign.
-
-CONTEXT:
-- PTC is a career and technical college in Pinellas County, FL with campuses in Clearwater and St. Petersburg
-- The site runs on Finalsite Composer (a panel-based CMS)
-- Brand colors: green #008142, light green #8DC63F, yellow #FFCF01
-- Fonts: Roboto (body) and Roboto Slab (headings)
-- Content follows AP style
-- This is a higher education institution under the Pinellas County School Board
-
-YOUR PERSONA:
-[Insert persona details from references/agent-personas.md]
-
-YOUR TASK:
-1. Read each HTML mockup file listed below
-2. Evaluate from your persona's perspective using your review criteria
-3. For each page, note: what works well, what needs improvement, and any blockers
-4. Write your findings to: [output path]
-
-PAGES TO REVIEW:
-[List of HTML file paths]
-
-PREVIOUS ISSUES (address whether these have been resolved):
-[Content from issues-tracker.md or "No previous reviews"]
-
-OUTPUT FORMAT:
-Use the format defined in references/agent-personas.md for your agent type.
-Write your review file directly. Be specific - reference exact sections, elements, and line numbers when possible.
-Keep feedback actionable. Every issue should suggest a fix.
-```
 
 ## Partial Reviews
 

@@ -51,17 +51,19 @@ For every URL in inventory: navigate, wait, extract content with the JS in `refe
 
 ### Stage 3 — Parallel subagent analysis (~10-15 min wall-clock)
 
-Dispatch 4 subagents in a SINGLE MESSAGE (each with its own Agent tool call) so they truly run in parallel. See `references/subagent-prompts.md` for the exact prompts. The 4 agents:
+Dispatch the 4 named audit subagents in parallel, in a SINGLE MESSAGE with one Task call per subagent so they truly run in parallel. Each subagent's full instructions, output format, and analysis approach live in its own file under `.claude/agents/` — do NOT re-inline the prompts here. Pass each one only: the cluster slug and the redesign file paths for this cluster.
 
-1. **Content Mapper** → produces `OVERLAP-MATRIX.md`. Topic-by-topic comparison across www/clearwater/stpete. Identifies identical-content groups, campus asymmetries, PDF wrappers, IA red flags.
+The 4 subagents and the file each one produces:
 
-2. **Redesign Comparator** → produces `REDESIGN-COMPARISON.md`. Reads our redesign page(s) for this cluster + all extracts. Classifies every claim as VERBATIM / REWORDED-OK / REWORDED-DRIFT / MISSING / FABRICATED / OUTDATED-LIVE / OUTDATED-REDESIGN. Ranked priority list.
+1. **`audit-mapper`** → produces `OVERLAP-MATRIX.md`. Topic-by-topic comparison across www/clearwater/stpete. Identifies identical-content groups, campus asymmetries, PDF wrappers, IA red flags.
 
-3. **IA Recommender** → produces `IA-RECOMMENDATION.md`. Reads inventory + extracts + redesign sitemap. Recommends one-page vs split, what to consolidate, what to demote/promote, concrete sitemap proposal.
+2. **`audit-comparator`** → produces `REDESIGN-COMPARISON.md`. Reads our redesign page(s) for this cluster + all extracts. Classifies every claim as VERBATIM / REWORDED-OK / REWORDED-DRIFT / MISSING / FABRICATED / OUTDATED-LIVE / OUTDATED-REDESIGN. Ranked priority list.
 
-4. **Verifier** → produces `VERIFICATION.md`. Independently re-checks every FABRICATED / MISSING / REWORDED-DRIFT row from the Comparator by re-reading the source files. Spot-checks 3 random VERBATIM rows. Reports CONFIRM / FLIP / NEEDS-MORE-RESEARCH per row.
+3. **`audit-ia-recommender`** → produces `IA-RECOMMENDATION.md`. Reads inventory + extracts + redesign sitemap. Recommends one-page vs split, what to consolidate, what to demote/promote, concrete sitemap proposal.
 
-**Important:** Each subagent gets only file access. None should touch Chrome MCP — that's why we extracted to disk in Stage 2.
+4. **`audit-verifier`** → produces `VERIFICATION.md`. Independently re-checks every FABRICATED / MISSING / REWORDED-DRIFT row from the Comparator by re-reading the source files. Spot-checks 3 random VERBATIM rows. Reports CONFIRM / FLIP / NEEDS-MORE-RESEARCH per row.
+
+**Important:** Each subagent gets only file access. None should touch Chrome MCP — that's why we extracted to disk in Stage 2. (`references/subagent-prompts.md` is retained for archival reference but is no longer the source of these prompts; the agent files in `.claude/agents/` are.)
 
 ### Stage 4 — Synthesis (~15 min, you do it)
 
