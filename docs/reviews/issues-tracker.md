@@ -1,5 +1,5 @@
 # PTC Website Redesign - Issues Tracker
-Last updated: 2026-04-27 (post-fix session)
+Last updated: 2026-04-27 (sweep session — M19, M22, M24, M27, M31, L11, L12, M15 sitewide closed)
 
 ## Open Issues
 | # | Issue | Priority | Flagged By | Pages | Date Found | Status | Last Review |
@@ -24,28 +24,20 @@ Last updated: 2026-04-27 (post-fix session)
 | M8 | Missing accreditation report links & program outcomes data. Campus pages now link out broadly; about.html accreditation cards still doc-less; program-level outcomes still missing institution-wide | Medium | Director, CMS Review | about.html, footer | 2026-04-15 | Partially Addressed (campus level improved) | 2026-04-27 |
 | M9 | Application timeline not clear to prospects (vague dates/turnaround times) | Medium | Prospective Student | admissions.html | 2026-04-15 | Open | 2026-04-22 |
 | M11 | Hero image carousel requires testing in Finalsite Composer (maintenance risk) | Medium | CMS Review, Designer | index.html | 2026-04-15 | Open (Design Decision Pending) | 2026-04-22 |
-| M15 | Decorative `<i>` icons inside utility-bar links and main-nav chevrons not aria-hidden — sitewide pattern | Medium | Accessibility | Sitewide (About cluster closed 2026-04-27) | 2026-04-27 | Partially Addressed (3 About pages closed; sitewide sweep still pending) | 2026-04-27 |
 | M17 | SIP year asymmetry: Clearwater links 2024-25 SIP, St. Pete links 2025-26 SIP. PCSB-board-visible inconsistency | Medium | Director | clearwater-about.html line 217, stpete-about.html line 216 | 2026-04-27 | Open — gating live-side fix; logged in `docs/audit/follow-ups.md` for CLW campus admin to publish 2025-26 SIP | 2026-04-27 |
-| M19 | about.html Campuses dropdown does not link to the new clearwater-about.html / stpete-about.html sub-pages, only to campus homepages. New About pages undiscoverable from institutional hub nav | Medium | Current Student | about.html Campuses dropdown | 2026-04-27 | Open (new) | 2026-04-27 |
 | M20 | "Two Campuses, One Mission" paragraph on about.html names specific programs per campus and omits CNC Machining and Welding-Advanced (both at St. Pete). List reads as authoritative but is incomplete | Medium | Faculty, Director | about.html line 719 | 2026-04-27 | Open (new) | 2026-04-27 |
 | M21 | St. Pete Programs nav dropdown lists 7 career clusters; Clearwater nav lists 8. STP missing "Business & Office". Either intentional campus-offering difference or equity gap | Medium | Prospective Student, Current Student, Director | stpete-about.html nav lines 65-72 | 2026-04-27 | Open (new) | 2026-04-27 |
-| M22 | "60+ Programs across 40+ Career Areas" stat on about.html conflicts with homepage / programs.html "41 programs across 8 career clusters" framing. Reads as contradictory to a prospect | Medium | Prospective Student, Director | about.html line 564 | 2026-04-27 | Open (new) | 2026-04-27 |
 | M23 | History timeline on about.html reduced to two entries (1962 and Today) after audit pruning. Visually reads as broken / missing data | Medium | Prospective Student, Current Student, Director, Designer | about.html lines 593-607 | 2026-04-27 | Open (new) | 2026-04-27 |
-| M24 | Campus header logo alt = "PTC Logo" on both campus About pages. about.html uses descriptive form. Inconsistent and non-descriptive | Medium | Director, Accessibility | clearwater-about.html line 48, stpete-about.html line 48 | 2026-04-27 | Open (new) | 2026-04-27 |
 | M25 | Linked PDFs (catalogs, SIPs, Code of Conduct, Annual Impact Report) accessibility unverified. Section 508 + WCAG 1.1.1 require linked non-HTML content to be accessible | Medium | Accessibility | All three About pages (all PDF links) | 2026-04-27 | Open (new) | 2026-04-27 |
 | M26 | No ADA / Section 504 statement on the institutional About page itself. Footer link points to consumer-information.html#accessibility but About page has no inline statement | Medium | Director | about.html | 2026-04-27 | Open (new) | 2026-04-27 |
-| M27 | No PCSB Compliance Officer / Title IX contact named on the About page. PCSB Office of Equal Opportunity (727-588-6285, complianceofficer@pcsb.org) is the canonical contact | Medium | Director | about.html | 2026-04-27 | Open (new) | 2026-04-27 |
 | M28 | Records request cards use bare email addresses with no contact name or title. Functional but impersonal | Medium | Director | clearwater-about.html line 235, stpete-about.html line 240 | 2026-04-27 | Open (new) | 2026-04-27 |
 | M29 | External-link new-tab opening not announced to assistive tech. All compliance card links open `target="_blank"` with aria-hidden icons; SR users get no warning | Medium | Accessibility | clearwater-about.html, stpete-about.html (all compliance card links) | 2026-04-27 | Open (new) | 2026-04-27 |
 | M30 | Repeated link text "View reports" / "Download PDF" / "View plan" on compliance cards. Programmatic context (article > h3) provides AA-compliant disambiguation but links-list navigation hears duplicates | Medium | Accessibility | clearwater-about.html, stpete-about.html | 2026-04-27 | Open (new) | 2026-04-27 |
-| M31 | Footer social link aria-label "Twitter/X" reads as compound to screen readers. Sloppy compound on a public-institution social affordance | Medium | Accessibility | All three About pages (sitewide pattern) | 2026-04-27 | Open (new) | 2026-04-27 |
 | M32 | Navigation dropdown column headings use `<h4>` ("By Career Cluster", "Quick Links", etc.) which appear before any document h2/h3 in heading outline, polluting screen-reader heading navigation | Medium | Accessibility | All three About pages (sitewide pattern) | 2026-04-27 | Open (new) | 2026-04-27 |
 | L2 | Student Portal quick link appears before students apply (low priority ordering) | Low | Prospective Student | Homepage quick links | 2026-04-15 | Open | 2026-04-22 |
 | L5 | No program reviews or student testimonials | Low | Prospective Student | Programs page | 2026-04-15 | Open | 2026-04-22 |
 | L8 | Campus-specific program visuals missing | Low | Parent/Guardian | Campus pages | 2026-04-15 | Open | 2026-04-22 |
 | L9 | News section shows same 3 items on both campus pages (not campus-specific) | Low | Faculty, Current Student | clearwater.html, stpete.html | 2026-04-15 | Open | 2026-04-22 |
-| L11 | Hero breadcrumb wrapper opacity 0.85 puts breadcrumb link at borderline contrast on green gradient | Low | Accessibility | about.html line 24 (CSS) | 2026-04-27 | Open (new) | 2026-04-27 |
-| L12 | stpete-about.html School Improvement Plan card uses fa-external-link-alt icon but link copy says "Download PDF". Code of Conduct card directly below correctly uses fa-file-pdf | Low | Designer | stpete-about.html line 217 | 2026-04-27 | Open (new) | 2026-04-27 |
 | L13 | Campus About pages have no bottom-of-page CTA band. After compliance grid the page just ends. Missed conversion moment | Low | Prospective Student, Director | clearwater-about.html, stpete-about.html | 2026-04-27 | Open (new) | 2026-04-27 |
 | L14 | Campus About hero subtitle ("Campus accreditation, catalog, written plans, safety reports, and other compliance documents") is jargon-heavy for a 19-year-old prospect landing here from "About This Campus" nav | Low | Prospective Student | clearwater-about.html line 167, stpete-about.html line 166 | 2026-04-27 | Open (new) | 2026-04-27 |
 | L15 | CVAEC (Clearview Adult Education Center) used by St. Pete IT IET program is not surfaced on St. Pete About page | Low | Faculty | stpete-about.html | 2026-04-27 | Open (new) | 2026-04-27 |
@@ -81,6 +73,14 @@ Last updated: 2026-04-27 (post-fix session)
 | M16 | Breadcrumb separator inline span without aria-hidden on campus pages | Medium | 2026-04-27 | 2026-04-27 | Added `aria-hidden="true"` to the breadcrumb "/" separator span on clearwater-about.html and stpete-about.html so screen readers no longer announce "slash" between crumbs. about.html already uses CSS `::after` and was unaffected. | 2026-04-27 session |
 | M18 | STP About footer missing Class Schedule link | Medium | 2026-04-27 | 2026-04-27 | Added `<li><a href="schedule-stpete.html">Class Schedule</a></li>` as first item in stpete-about.html footer "St. Petersburg Links" column, matching CLW footer pattern. | 2026-04-27 session |
 | H7 (About cluster) | Hard-coded 2.5rem hero font, no mobile override | High | 2026-04-15 | 2026-04-27 | about.html `.page-hero__title` rule converted to `font-size: clamp(1.85rem, 4vw, 2.5rem)`; redundant 2rem mobile override removed. clearwater-about.html and stpete-about.html inline `font-size: 2.5rem` on the page hero h1 replaced with the same clamp(). admissions.html still pending; H7 stays partially addressed sitewide. | 2026-04-27 session |
+| M15 | Decorative `<i>` icons missing aria-hidden — sitewide pattern | Medium | 2026-04-27 | 2026-04-27 | Sitewide perl regex sweep added `aria-hidden="true"` to ~600 decorative Font Awesome `<i>` elements across 17 production HTML pages plus 5 templates (`shell-main`, `shell-clearwater`, `shell-stpete`, `program-page`, `campus-landing`). Schedule pages had two JS-template icons fixed manually. Verified zero remaining; no double-attributions. | 2026-04-27 sweep session |
+| M19 | about.html Campuses dropdown didn't link to campus About sub-pages | Medium | 2026-04-27 | 2026-04-27 | Restructured Campuses dropdown into 2 columns (Clearwater / St. Petersburg) with home + About + Schedule per campus. Removed `--narrow` modifier so dropdown uses default 500px min-width. New sub-pages now reachable from institutional hub nav. | 2026-04-27 sweep session |
+| M22 | "60+ Programs across 40+ Career Areas" stat reads as contradictory vs "41 programs / 8 clusters" framing | Medium | 2026-04-27 | 2026-04-27 | Split single ambiguous stat into two stats matching live verbatim: "60+ Career and Technical Programs" + "40+ Career Areas." Dropped "2 Campuses + Extension Sites" stat to keep clean 4-up grid. Logged delta between live "60+" framing and our actual programs.html (41 cards) to docs/audit/follow-ups.md for resolution during Programs cluster audit. | 2026-04-27 sweep session |
+| M24 | Campus About logo alt non-descriptive ("PTC Logo") | Medium | 2026-04-27 | 2026-04-27 | Replaced `alt="PTC Logo"` with descriptive form: `alt="Pinellas Technical College, Clearwater Campus"` and `alt="Pinellas Technical College, St. Petersburg Campus"`. Same sweep replaced em-dash form `Pinellas Technical College — Opportunity Starts Here` with comma form across 14 production pages + footer-embed + shell-main template (house rule: no em dashes). | 2026-04-27 sweep session |
+| M27 | No PCSB Compliance Officer / Title IX contact on About page | Medium | 2026-04-27 | 2026-04-27 | Added "Non-Discrimination & Title IX" section between Two Campuses and CTA Band on about.html. Includes verbatim non-discrimination paragraph from live `pinellas-county-schoolsctae-compliance-statements`, full Compliance Officer contact block (Office of Equal Opportunity, 301 4th St SW Largo, 727-588-6285, complianceofficer@pcsb.org), and link to full statement on consumer-information.html#non-discrimination. Also addresses M26 in passing (institutional context for ADA/Section 504 statement). | 2026-04-27 sweep session |
+| M31 | Footer social aria-label "Twitter/X" read as compound | Medium | 2026-04-27 | 2026-04-27 | Sed sweep replaced `aria-label="Twitter/X"` with `aria-label="X (formerly Twitter)"` across all redesign HTML files (29 occurrences) including templates. Screen readers now announce the natural form. | 2026-04-27 sweep session |
+| L11 | Hero breadcrumb wrapper opacity 0.85 borderline contrast | Low | 2026-04-27 | 2026-04-27 | Removed `opacity: 0.85` from `.page-hero__breadcrumb` rule in about.html `<style>` block. Breadcrumb separator (`::after`) keeps its own 0.7 opacity since it's decorative. White text now full-opacity on green gradient (~5:1 contrast). | 2026-04-27 sweep session |
+| L12 | STP SIP card icon mismatch (fa-external-link-alt vs "Download PDF" copy) | Low | 2026-04-27 | 2026-04-27 | Changed icon to `fa-file-pdf` to match Code of Conduct card pattern directly below it. clearwater-about.html spot-checked for similar mismatches; none found. | 2026-04-27 sweep session |
 
 ## Deferred Issues
 | # | Issue | Priority | Reason for Deferral | Target Phase |
@@ -92,13 +92,16 @@ Last updated: 2026-04-27 (post-fix session)
 
 ## Key Statistics
 
-**Total Open Issues:** 45 (4 Critical, 8 High, 28 Medium, 5 Low)
+**Total Open Issues:** 37 (4 Critical, 8 High, 22 Medium, 3 Low)
 **Critical Issues:** C1, C2, C4 (substantially addressed at campus level), C7 (partial)
 **High Issues:** H1, H2, H3, H4, H5, H6, H7 (admissions.html only), H8, H15 (live-side gated)
-**Medium Issues:** M2, M5, M6, M7, M8, M9, M11, M15 (sitewide sweep), M17 (live-side gated), M19–M32
-**Low Issues:** L2, L5, L8, L9, L11–L15
+**Medium Issues:** M2, M5, M6, M7, M8, M9, M11, M17 (live-side gated), M20, M21, M23, M25, M26 (partially addressed by M27 close), M28, M29, M30, M32
+**Low Issues:** L2, L5, L8, L9, L13, L14, L15
 
-**Resolved Issues:** 29 (C3, C5, C6, H7-aboutcluster, H9, H10, H11, H11-r, H12, H13, H14, H16, H17, M1, M3, M4, M10, M12, M13, M14, M16, M18, L1, L3, L4, L6, L7, L10)
+**Resolved Issues:** 37 (C3, C5, C6, H7-aboutcluster, H9, H10, H11, H11-r, H12, H13, H14, H16, H17, M1, M3, M4, M10, M12, M13, M14, M15, M16, M18, M19, M22, M24, M27, M31, L1, L3, L4, L6, L7, L10, L11, L12)
+
+**Status Summary (2026-04-27 Sweep Session):**
+- Sweep session closed 8 additional items: M15 (sitewide aria-hidden, ~600 icons across 17 pages + 5 templates), M19 (about.html Campuses dropdown wired to campus About sub-pages), M22 (program count stat split into "60+ Programs" + "40+ Career Areas" verbatim from live), M24 (campus About logo alt text + sitewide em-dash sweep across 14 pages), M27 (Non-Discrimination & Title IX section with PCSB Compliance Officer contact added to about.html), M31 (Twitter/X aria-label sweep, 29 occurrences), L11 (about.html breadcrumb opacity), L12 (STP SIP card icon corrected). Closure rate: 29/66 → 37/66 (44% → 56%).
 
 **Status Summary (2026-04-27 About Cluster Review + Fix Session):**
 - About cluster reviewed by 8-persona panel covering about.html, clearwater-about.html, stpete-about.html. Same-day fix session closed 11 items.
@@ -129,9 +132,9 @@ Last updated: 2026-04-27 (post-fix session)
 
 **Total Issues Found Across All Reviews:** 66 (42 original + 24 added 2026-04-27)
 **Critical:** 7 | **High:** 17 | **Medium:** 32 | **Low:** 15
-**Closure rate:** 29 of 66 = 44% (up from 27%)
+**Closure rate:** 37 of 66 = 56% (up from 44%)
 
 ---
 
-**Last Updated:** April 27, 2026 (post-fix session)
-**Next Review Cycle:** Move to Compliance cluster. Sitewide M15 sweep + Apply Now wire-up are sitewide tasks that can ride alongside upcoming cluster work.
+**Last Updated:** April 27, 2026 (sweep session)
+**Next Review Cycle:** Move to Compliance cluster. Apply Now / Request Info wire-up sitewide (C2/C7 remainder) is the highest-impact remaining sitewide task and can ride alongside upcoming cluster work.

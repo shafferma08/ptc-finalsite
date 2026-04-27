@@ -75,16 +75,16 @@
     <div class="utility-bar">
         <div class="container utility-bar__inner">
             <div class="utility-bar__left">
-                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
+                <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> Clearwater: 727.538.7167</a>
                 <span class="utility-bar__divider">|</span>
-                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+                <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> St. Pete: 727.893.2500</a>
             </div>
             <div class="utility-bar__right">
-                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
-                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
-                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
-                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
-                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building" aria-hidden="true"></i> District Home</a>
+                <a href="#"><i class="fas fa-user" aria-hidden="true"></i> Student Portal</a>
+                <a href="#"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Apply Now</a>
+                <a href="#"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Events</a>
+                <a href="#" class="utility-bar__lang"><i class="fas fa-globe" aria-hidden="true"></i> Español</a>
             </div>
         </div>
     </div>
@@ -93,20 +93,137 @@
     <header class="site-header" id="site-header">
         <div class="container site-header__inner">
             <a href="index.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
-                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College — Opportunity Starts Here" id="header-logo" style="height: 60px;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Opportunity Starts Here" id="header-logo" style="height: 60px;">
                 <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
                     <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
                     <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
                 </div>
             </a>
-            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                        <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
                 <ul class="main-nav__list">
-                    <li class="main-nav__item"><a href="programs.html" class="main-nav__link">Programs</a></li>
-                    <li class="main-nav__item"><a href="admissions.html" class="main-nav__link">Admissions</a></li>
-                    <li class="main-nav__item"><a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid</a></li>
-                    <li class="main-nav__item"><a href="clearwater.html" class="main-nav__link">Campuses</a></li>
-                    <li class="main-nav__item main-nav__item--active"><a href="student-resources.html" class="main-nav__link">Current Students</a></li>
-                    <li class="main-nav__item"><a href="about.html" class="main-nav__link">About PTC</a></li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <h4>By Category</h4>
+                                    <ul>
+                                        <li><a href="#">Health Sciences</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                        <li><a href="#">Skilled Trades &amp; Construction</a></li>
+                                        <li><a href="#">Transportation &amp; Logistics</a></li>
+                                        <li><a href="#">Culinary &amp; Hospitality</a></li>
+                                        <li><a href="#">Cosmetology &amp; Barbering</a></li>
+                                        <li><a href="#">Business &amp; Office</a></li>
+                                        <li><a href="#">Arts, Media &amp; Education</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <h4>Explore</h4>
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="#">Evening &amp; Part-Time</a></li>
+                                        <li><a href="#">Apprenticeships</a></li>
+                                        <li><a href="#">Dual Enrollment</a></li>
+                                        <li><a href="#">Distance Learning</a></li>
+                                        <li><a href="#">ABE / GED / ESOL</a></li>
+                                        <li><a href="#">Student Orgs</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="admissions.html" class="main-nav__link">Admissions <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="admissions.html#enrollment-steps">Enrollment Steps</a></li>
+                                        <li><a href="admissions.html#pathways">Transfer Students</a></li>
+                                        <li><a href="admissions.html#pathways">Readmission</a></li>
+                                        <li><a href="admissions.html#testing">Testing &amp; Assessment</a></li>
+                                        <li><a href="admissions.html#campus-tours">Campus Tours</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="tuition-aid.html#rates">Tuition &amp; Fee Rates</a></li>
+                                        <li><a href="tuition-aid.html#pay">Pay Tuition</a></li>
+                                        <li><a href="tuition-aid.html#fafsa">FAFSA &amp; Eligibility</a></li>
+                                        <li><a href="tuition-aid.html#federal-state">Federal &amp; State Funding</a></li>
+                                        <li><a href="tuition-aid.html#scholarships">Scholarships</a></li>
+                                        <li><a href="tuition-aid.html#veterans">Veterans Benefits</a></li>
+                                        <li><a href="tuition-aid.html#net-price">Net Price Calculator</a></li>
+                                        <li><a href="tuition-aid.html#faq">Refund Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Campuses <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <h4>Clearwater</h4>
+                                    <ul>
+                                        <li><a href="clearwater.html">Clearwater Campus Home</a></li>
+                                        <li><a href="clearwater-about.html">About the Clearwater Campus</a></li>
+                                        <li><a href="schedule-clearwater.html">Clearwater Schedule</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <h4>St. Petersburg</h4>
+                                    <ul>
+                                        <li><a href="stpete.html">St. Petersburg Campus Home</a></li>
+                                        <li><a href="stpete-about.html">About the St. Petersburg Campus</a></li>
+                                        <li><a href="schedule-stpete.html">St. Pete Schedule</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener">Focus / SIS Portal</a></li>
+                                        <li><a href="schedule-clearwater.html">Clearwater Schedule</a></li>
+                                        <li><a href="schedule-stpete.html">St. Pete Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/about-us/welcome-to-ptc/how-to-request-your-student-records-from-ptc" target="_blank" rel="noopener">Transcript Request</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="about.html" class="main-nav__link">About PTC <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="about.html">Welcome &amp; History</a></li>
+                                        <li><a href="about.html#accreditation">Accreditation</a></li>
+                                        <li><a href="#">Staff Directory</a></li>
+                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </nav>
             <div class="site-header__actions">
@@ -147,25 +264,25 @@
 
                 <div class="card-grid">
                     <div class="card card--accent card--lift card--placeholder">
-                        <span class="card__icon"><i class="fas fa-chalkboard-teacher"></i></span>
+                        <span class="card__icon"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></span>
                         <h3 class="card__title">Canvas</h3>
                         <p class="card__body">Access course content, assignments, grades, and announcements through the PCSB Canvas instance.</p>
                         <span class="card__cta">Coming soon</span>
                     </div>
                     <div class="card card--accent card--lift card--placeholder">
-                        <span class="card__icon"><i class="fas fa-id-card"></i></span>
+                        <span class="card__icon"><i class="fas fa-id-card" aria-hidden="true"></i></span>
                         <h3 class="card__title">Focus / SIS Portal</h3>
                         <p class="card__body">Check grades, attendance, schedule, and account balances in the district Student Information System.</p>
                         <span class="card__cta">Coming soon</span>
                     </div>
                     <div class="card card--accent card--lift card--placeholder">
-                        <span class="card__icon"><i class="fas fa-calendar-alt"></i></span>
+                        <span class="card__icon"><i class="fas fa-calendar-alt" aria-hidden="true"></i></span>
                         <h3 class="card__title">Academic Calendar</h3>
                         <p class="card__body">Term start and end dates, holidays, exam windows, and graduation dates for 2026-27.</p>
                         <span class="card__cta">Coming soon</span>
                     </div>
                     <div class="card card--accent card--lift">
-                        <span class="card__icon"><i class="fas fa-file-alt"></i></span>
+                        <span class="card__icon"><i class="fas fa-file-alt" aria-hidden="true"></i></span>
                         <h3 class="card__title">Transcript &amp; Record Requests</h3>
                         <p class="card__body">Complete the Request for School Records and Release Authorization Form, then mail or email it to the campus where you attended.</p>
                         <p style="font-size:0.85rem; line-height:1.5; margin-top:0.5rem; color: var(--color-gray-600);">
@@ -175,16 +292,16 @@
                         </p>
                     </div>
                     <div class="card card--accent card--lift card--placeholder">
-                        <span class="card__icon"><i class="fas fa-headset"></i></span>
+                        <span class="card__icon"><i class="fas fa-headset" aria-hidden="true"></i></span>
                         <h3 class="card__title">Tech Support</h3>
                         <p class="card__body">Help with Canvas, email, district logins, and classroom technology issues.</p>
                         <span class="card__cta">Coming soon</span>
                     </div>
                     <div class="card card--accent card--lift">
-                        <span class="card__icon"><i class="fas fa-calendar-week"></i></span>
+                        <span class="card__icon"><i class="fas fa-calendar-week" aria-hidden="true"></i></span>
                         <h3 class="card__title">Class Schedules</h3>
                         <p class="card__body">View the current-year class schedule for your campus.</p>
-                        <a href="schedule-clearwater.html" class="card__cta">Clearwater <i class="fas fa-arrow-right"></i></a>
+                        <a href="schedule-clearwater.html" class="card__cta">Clearwater <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -198,37 +315,37 @@
 
                 <div class="card-grid">
                     <div class="card card--accent card--lift">
-                        <span class="card__icon"><i class="fas fa-user-graduate"></i></span>
+                        <span class="card__icon"><i class="fas fa-user-graduate" aria-hidden="true"></i></span>
                         <h3 class="card__title">Academic Counseling</h3>
                         <p class="card__body">Program planning, progress reviews, and support for completing your occupational completion points (OCPs).</p>
-                        <a href="contact.html" class="card__cta">Contact counseling <i class="fas fa-arrow-right"></i></a>
+                        <a href="contact.html" class="card__cta">Contact counseling <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="card card--accent card--lift">
-                        <span class="card__icon"><i class="fas fa-dollar-sign"></i></span>
+                        <span class="card__icon"><i class="fas fa-dollar-sign" aria-hidden="true"></i></span>
                         <h3 class="card__title">Tuition &amp; Financial Aid</h3>
                         <p class="card__body">Pay tuition, apply for FAFSA, explore scholarships, and find veterans benefits.</p>
-                        <a href="tuition-aid.html" class="card__cta">Tuition &amp; Aid <i class="fas fa-arrow-right"></i></a>
+                        <a href="tuition-aid.html" class="card__cta">Tuition &amp; Aid <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="card card--accent card--lift">
-                        <span class="card__icon"><i class="fas fa-universal-access"></i></span>
+                        <span class="card__icon"><i class="fas fa-universal-access" aria-hidden="true"></i></span>
                         <h3 class="card__title">Accessibility &amp; Accommodations</h3>
                         <p class="card__body">Request disability accommodations and learn about available support services and resources.</p>
-                        <a href="consumer-information.html#accessibility" class="card__cta">Accessibility info <i class="fas fa-arrow-right"></i></a>
+                        <a href="consumer-information.html#accessibility" class="card__cta">Accessibility info <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="card card--accent card--lift">
-                        <span class="card__icon"><i class="fas fa-medal"></i></span>
+                        <span class="card__icon"><i class="fas fa-medal" aria-hidden="true"></i></span>
                         <h3 class="card__title">Veterans Services</h3>
                         <p class="card__body">Dedicated support for active duty, veterans, and military family members pursuing education at PTC.</p>
-                        <a href="tuition-aid.html#veterans" class="card__cta">Veterans benefits <i class="fas fa-arrow-right"></i></a>
+                        <a href="tuition-aid.html#veterans" class="card__cta">Veterans benefits <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="card card--accent card--lift">
-                        <span class="card__icon"><i class="fas fa-briefcase"></i></span>
+                        <span class="card__icon"><i class="fas fa-briefcase" aria-hidden="true"></i></span>
                         <h3 class="card__title">Career Services &amp; Job Board</h3>
                         <p class="card__body">Résumé support, interview prep, and current job postings from employer partners.</p>
-                        <a href="post-a-job-FINAL.html" class="card__cta">Employer partners <i class="fas fa-arrow-right"></i></a>
+                        <a href="post-a-job-FINAL.html" class="card__cta">Employer partners <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="card card--accent card--lift card--placeholder">
-                        <span class="card__icon"><i class="fas fa-users"></i></span>
+                        <span class="card__icon"><i class="fas fa-users" aria-hidden="true"></i></span>
                         <h3 class="card__title">Student Organizations</h3>
                         <p class="card__body">Professional student organizations tied to your program, including SkillsUSA and NTHS.</p>
                         <span class="card__cta">Coming soon</span>
@@ -244,22 +361,22 @@
                 <p class="section-intro">Official consumer information, required disclosures, and student-facing policies.</p>
                 <div class="card-grid">
                     <div class="card card--accent card--lift">
-                        <span class="card__icon"><i class="fas fa-file-shield"></i></span>
+                        <span class="card__icon"><i class="fas fa-file-shield" aria-hidden="true"></i></span>
                         <h3 class="card__title">Consumer Information</h3>
                         <p class="card__body">COE-required disclosures on outcomes, accreditation, and policies.</p>
-                        <a href="consumer-information.html" class="card__cta">Read disclosures <i class="fas fa-arrow-right"></i></a>
+                        <a href="consumer-information.html" class="card__cta">Read disclosures <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="card card--accent card--lift">
-                        <span class="card__icon"><i class="fas fa-balance-scale"></i></span>
+                        <span class="card__icon"><i class="fas fa-balance-scale" aria-hidden="true"></i></span>
                         <h3 class="card__title">Non-Discrimination</h3>
                         <p class="card__body">PTC's and PCSB's commitments and contact information for reporting concerns.</p>
-                        <a href="consumer-information.html#non-discrimination" class="card__cta">View policy <i class="fas fa-arrow-right"></i></a>
+                        <a href="consumer-information.html#non-discrimination" class="card__cta">View policy <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                     <div class="card card--accent card--lift">
-                        <span class="card__icon"><i class="fas fa-user-shield"></i></span>
+                        <span class="card__icon"><i class="fas fa-user-shield" aria-hidden="true"></i></span>
                         <h3 class="card__title">Privacy &amp; FERPA</h3>
                         <p class="card__body">Your rights under the Family Educational Rights and Privacy Act.</p>
-                        <a href="consumer-information.html#privacy-ferpa" class="card__cta">Privacy info <i class="fas fa-arrow-right"></i></a>
+                        <a href="consumer-information.html#privacy-ferpa" class="card__cta">Privacy info <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -277,7 +394,7 @@
                     <div class="footer__social">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                     </div>

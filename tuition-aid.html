@@ -535,16 +535,16 @@
     <div class="utility-bar">
         <div class="container utility-bar__inner">
             <div class="utility-bar__left">
-                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
+                <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> Clearwater: 727.538.7167</a>
                 <span class="utility-bar__divider">|</span>
-                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+                <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> St. Pete: 727.893.2500</a>
             </div>
             <div class="utility-bar__right">
-                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
-                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
-                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
-                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
-                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building" aria-hidden="true"></i> District Home</a>
+                <a href="#"><i class="fas fa-user" aria-hidden="true"></i> Student Portal</a>
+                <a href="#"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Apply Now</a>
+                <a href="#"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Events</a>
+                <a href="#" class="utility-bar__lang"><i class="fas fa-globe" aria-hidden="true"></i> Español</a>
             </div>
         </div>
     </div>
@@ -553,17 +553,16 @@
     <header class="site-header" id="site-header">
         <div class="container site-header__inner">
             <a href="index.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
-                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College — Opportunity Starts Here" id="header-logo" style="height: 60px;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Opportunity Starts Here" id="header-logo" style="height: 60px;">
                 <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
                     <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
                     <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
                 </div>
             </a>
-            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                        <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
                 <ul class="main-nav__list">
-                    <!-- PROGRAMS -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="programs.html" class="main-nav__link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
@@ -582,7 +581,7 @@
                                 <div class="dropdown__column">
                                     <h4>Explore</h4>
                                     <ul>
-                                        <li><a href="programs.html">All Programs A–Z</a></li>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
                                         <li><a href="#">Evening &amp; Part-Time</a></li>
                                         <li><a href="#">Apprenticeships</a></li>
                                         <li><a href="#">Dual Enrollment</a></li>
@@ -594,9 +593,8 @@
                             </div>
                         </div>
                     </li>
-                    <!-- ADMISSIONS -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="admissions.html" class="main-nav__link">Admissions <i class="fas fa-chevron-down"></i></a>
+                        <a href="admissions.html" class="main-nav__link">Admissions <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
@@ -612,9 +610,8 @@
                             </div>
                         </div>
                     </li>
-                    <!-- TUITION & AID (active) -->
-                    <li class="main-nav__item main-nav__item--has-dropdown main-nav__item--active">
-                        <a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid <i class="fas fa-chevron-down"></i></a>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
@@ -632,40 +629,47 @@
                             </div>
                         </div>
                     </li>
-                    <!-- CAMPUSES -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Campuses <i class="fas fa-chevron-down"></i></a>
-                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                        <a href="#" class="main-nav__link">Campuses <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
+                                    <h4>Clearwater</h4>
                                     <ul>
-                                        <li><a href="clearwater.html">Clearwater Campus</a></li>
-                                        <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                                        <li><a href="clearwater.html">Clearwater Campus Home</a></li>
+                                        <li><a href="clearwater-about.html">About the Clearwater Campus</a></li>
+                                        <li><a href="schedule-clearwater.html">Clearwater Schedule</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <h4>St. Petersburg</h4>
+                                    <ul>
+                                        <li><a href="stpete.html">St. Petersburg Campus Home</a></li>
+                                        <li><a href="stpete-about.html">About the St. Petersburg Campus</a></li>
+                                        <li><a href="schedule-stpete.html">St. Pete Schedule</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <!-- CURRENT STUDENTS -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down"></i></a>
+                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="#">Canvas Login</a></li>
-                                        <li><a href="#">Focus / SIS Portal</a></li>
-                                        <li><a href="#">Academic Calendar</a></li>
-                                        <li><a href="#">Transcript Request</a></li>
-                                        <li><a href="#">Tech Support</a></li>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener">Focus / SIS Portal</a></li>
+                                        <li><a href="schedule-clearwater.html">Clearwater Schedule</a></li>
+                                        <li><a href="schedule-stpete.html">St. Pete Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/about-us/welcome-to-ptc/how-to-request-your-student-records-from-ptc" target="_blank" rel="noopener">Transcript Request</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <!-- ABOUT PTC -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="about.html" class="main-nav__link">About PTC <i class="fas fa-chevron-down"></i></a>
+                        <a href="about.html" class="main-nav__link">About PTC <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
@@ -728,7 +732,7 @@
                 <!-- Pay Tuition Banner -->
                 <div class="pay-tuition-banner" id="pay">
                     <div class="pay-tuition-banner__text">
-                        <h3><i class="fas fa-credit-card" style="margin-right: 0.5rem;"></i> Ready to Pay Your Tuition?</h3>
+                        <h3><i class="fas fa-credit-card" style="margin-right: 0.5rem;" aria-hidden="true"></i> Ready to Pay Your Tuition?</h3>
                         <p>Current students can pay online through the Focus student portal. Questions? Contact the Business Office at your campus.</p>
                     </div>
                     <a href="#" class="btn-secondary">Pay Tuition Online</a>
@@ -784,35 +788,35 @@
 
                 <div class="aid-grid">
                     <div class="aid-card">
-                        <div class="aid-card__icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="aid-card__icon"><i class="fas fa-file-alt" aria-hidden="true"></i></div>
                         <div class="aid-card__content">
                             <h3>FAFSA &amp; Federal Aid</h3>
                             <p>Filing the FAFSA is the first step toward most financial aid. PTC's Federal School Code is <strong>013847</strong>. Many students qualify for Federal Pell Grants, which do not need to be repaid.</p>
-                            <a href="#" class="aid-card__link" id="federal-state">Complete the FAFSA at studentaid.gov <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" class="aid-card__link" id="federal-state">Complete the FAFSA at studentaid.gov <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="aid-card" id="scholarships">
-                        <div class="aid-card__icon"><i class="fas fa-award"></i></div>
+                        <div class="aid-card__icon"><i class="fas fa-award" aria-hidden="true"></i></div>
                         <div class="aid-card__content">
                             <h3>Scholarships</h3>
                             <p>PTC and Pinellas County Schools offer a variety of scholarships for enrolled students, including industry-specific awards and general merit scholarships. Applications open each fall semester.</p>
-                            <a href="#" class="aid-card__link">Browse Available Scholarships <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" class="aid-card__link">Browse Available Scholarships <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="aid-card">
-                        <div class="aid-card__icon"><i class="fas fa-hand-holding-usd"></i></div>
+                        <div class="aid-card__icon"><i class="fas fa-hand-holding-usd" aria-hidden="true"></i></div>
                         <div class="aid-card__content">
                             <h3>State &amp; Workforce Funding</h3>
                             <p>Florida residents may qualify for additional state programs including Workforce Innovation and Opportunity Act (WIOA) grants, which can cover tuition, books, and supplies for eligible students in high-demand programs.</p>
-                            <a href="#" class="aid-card__link">Learn About State Programs <i class="fas fa-arrow-right"></i></a>
+                            <a href="#" class="aid-card__link">Learn About State Programs <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="aid-card">
-                        <div class="aid-card__icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="aid-card__icon"><i class="fas fa-dollar-sign" aria-hidden="true"></i></div>
                         <div class="aid-card__content">
                             <h3>Payment Plans</h3>
                             <p>PTC's Business Office offers installment payment plans to help students manage costs semester by semester. Contact your campus Business Office to set up a payment arrangement before the term begins.</p>
-                            <a href="contact.html" class="aid-card__link">Contact the Business Office <i class="fas fa-arrow-right"></i></a>
+                            <a href="contact.html" class="aid-card__link">Contact the Business Office <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -824,7 +828,7 @@
             <div class="container">
                 <div class="npc-callout">
                     <div>
-                        <h3><i class="fas fa-calculator" style="color: var(--color-green); margin-right: 0.5rem;"></i> Net Price Calculator</h3>
+                        <h3><i class="fas fa-calculator" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i> Net Price Calculator</h3>
                         <p>Not sure what PTC will actually cost you after grants and aid? Use our Net Price Calculator to get a personalized estimate based on your income and situation. Each campus has its own calculator because tuition rates and available aid can vary.</p>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center;">
@@ -872,23 +876,23 @@
                     </div>
                     <ul class="veterans-list">
                         <li>
-                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
                             <span><strong>GI Bill Approved</strong> — PTC is approved for Chapter 30, 33 (Post-9/11), 35, and 1606 benefits</span>
                         </li>
                         <li>
-                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
                             <span><strong>MyCAA Scholarships</strong> — Eligible military spouses can receive up to $4,000 toward education costs</span>
                         </li>
                         <li>
-                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
                             <span><strong>Vocational Rehabilitation</strong> — Chapter 31 VR&amp;E benefits can cover tuition, fees, and supplies for eligible veterans</span>
                         </li>
                         <li>
-                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
                             <span><strong>Veterans Resource Coordinator</strong> — Dedicated on-campus support at Clearwater campus for benefits navigation and referrals</span>
                         </li>
                         <li>
-                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-check-circle" aria-hidden="true"></i>
                             <span><strong>Tuition Assistance (TA)</strong> — Active-duty military members can use federal Tuition Assistance to cover program costs</span>
                         </li>
                     </ul>
@@ -903,13 +907,13 @@
                 <p class="ta-section__subtext">Each campus has its own financial aid office and net price calculator. Connect with the right team for your campus.</p>
                 <div class="campus-aid-grid">
                     <div class="campus-aid-card">
-                        <div class="campus-aid-card__icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="campus-aid-card__icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
                         <h3>Clearwater Campus</h3>
                         <p>6100 154th Ave N, Clearwater, FL 33760<br>Phone: (727) 538-7167</p>
                         <a href="clearwater.html">Go to Clearwater Campus</a>
                     </div>
                     <div class="campus-aid-card">
-                        <div class="campus-aid-card__icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="campus-aid-card__icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
                         <h3>St. Petersburg Campus</h3>
                         <p>901 34th St S, St. Petersburg, FL 33711<br>Phone: (727) 893-2500</p>
                         <a href="stpete.html">Go to St. Pete Campus</a>
@@ -927,7 +931,7 @@
                     <li class="faq-item">
                         <button class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');" aria-expanded="false">
                             Do I have to repay financial aid?
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer">
                             Grants (such as Federal Pell Grants and state grants) do not need to be repaid as long as you remain enrolled and maintain satisfactory academic progress. Scholarships are also generally not repaid. Student loans are a different story and do require repayment, so always prioritize grants and scholarships first. PTC's financial aid counselors can walk you through the difference.
@@ -936,7 +940,7 @@
                     <li class="faq-item">
                         <button class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');" aria-expanded="false">
                             What is PTC's Federal School Code for the FAFSA?
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer">
                             PTC's Federal School Code is <strong>013847</strong>. Enter this on your FAFSA to ensure your aid eligibility information is sent to our financial aid office. If you are applying for aid at both campuses, use the same school code — PTC is one institution with two locations.
@@ -945,7 +949,7 @@
                     <li class="faq-item">
                         <button class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');" aria-expanded="false">
                             Are there fees beyond tuition?
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer">
                             Yes. In addition to per-hour tuition, most programs have lab fees, and you may need to purchase uniforms, tools, textbooks, or testing materials. Some certification exams also have separate fees. Ask your program advisor for a full cost breakdown before enrolling so there are no surprises.
@@ -954,7 +958,7 @@
                     <li class="faq-item">
                         <button class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');" aria-expanded="false">
                             What is the refund policy if I withdraw?
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer">
                             Tuition refund eligibility depends on when you withdraw relative to the start of the term. Generally, a full refund is available during the first week of instruction. After that, refunds are prorated. If you received financial aid and withdraw, a portion of that aid may need to be returned. Contact the Business Office at your campus for the current refund schedule before making any decisions.
@@ -963,7 +967,7 @@
                     <li class="faq-item">
                         <button class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');" aria-expanded="false">
                             Can I get aid for a short-term or non-credit program?
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </button>
                         <div class="faq-answer">
                             Federal financial aid (including Pell Grants) is available for most of PTC's full-length career certificate programs. Short-term, non-credit, or community education courses are generally not eligible for federal aid. Workforce funding programs such as WIOA may cover some short-term training. Ask a financial aid counselor about your specific program.
@@ -997,7 +1001,7 @@
                     <div class="footer__social">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                     </div>

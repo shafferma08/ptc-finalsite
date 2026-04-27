@@ -291,16 +291,16 @@
     <div class="utility-bar">
         <div class="container utility-bar__inner">
             <div class="utility-bar__left">
-                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
+                <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> Clearwater: 727.538.7167</a>
                 <span class="utility-bar__divider">|</span>
-                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+                <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> St. Pete: 727.893.2500</a>
             </div>
             <div class="utility-bar__right">
-                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
-                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
-                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
-                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
-                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building" aria-hidden="true"></i> District Home</a>
+                <a href="#"><i class="fas fa-user" aria-hidden="true"></i> Student Portal</a>
+                <a href="#"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Apply Now</a>
+                <a href="#"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Events</a>
+                <a href="#" class="utility-bar__lang"><i class="fas fa-globe" aria-hidden="true"></i> Español</a>
             </div>
         </div>
     </div>
@@ -311,16 +311,16 @@
     <header class="site-header" id="site-header">
         <div class="container site-header__inner">
             <a href="index.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
-                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College — Opportunity Starts Here" id="header-logo" style="height: 60px;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Opportunity Starts Here" id="header-logo" style="height: 60px;">
                 <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
                     <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
                     <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
                 </div>
             </a>
-            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                        <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
                 <ul class="main-nav__list">
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down"></i></a>
+                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
@@ -352,24 +352,24 @@
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="admissions.html" class="main-nav__link">Admissions <i class="fas fa-chevron-down"></i></a>
+                        <a href="admissions.html" class="main-nav__link">Admissions <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="#how-to-apply">How to Apply</a></li>
-                                        <li><a href="#enrollment-steps">Enrollment Steps</a></li>
-                                        <li><a href="#pathways">Transfer Students</a></li>
-                                        <li><a href="#pathways">Readmission</a></li>
-                                        <li><a href="#testing">Testing &amp; Assessment</a></li>
-                                        <li><a href="#campus-tours">Campus Tours</a></li>
+                                        <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="admissions.html#enrollment-steps">Enrollment Steps</a></li>
+                                        <li><a href="admissions.html#pathways">Transfer Students</a></li>
+                                        <li><a href="admissions.html#pathways">Readmission</a></li>
+                                        <li><a href="admissions.html#testing">Testing &amp; Assessment</a></li>
+                                        <li><a href="admissions.html#campus-tours">Campus Tours</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid <i class="fas fa-chevron-down"></i></a>
+                        <a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
@@ -388,36 +388,46 @@
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Campuses <i class="fas fa-chevron-down"></i></a>
-                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                        <a href="#" class="main-nav__link">Campuses <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
+                                    <h4>Clearwater</h4>
                                     <ul>
-                                        <li><a href="clearwater.html">Clearwater Campus</a></li>
-                                        <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                                        <li><a href="clearwater.html">Clearwater Campus Home</a></li>
+                                        <li><a href="clearwater-about.html">About the Clearwater Campus</a></li>
+                                        <li><a href="schedule-clearwater.html">Clearwater Schedule</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <h4>St. Petersburg</h4>
+                                    <ul>
+                                        <li><a href="stpete.html">St. Petersburg Campus Home</a></li>
+                                        <li><a href="stpete-about.html">About the St. Petersburg Campus</a></li>
+                                        <li><a href="schedule-stpete.html">St. Pete Schedule</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down"></i></a>
+                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="#">Canvas Login</a></li>
-                                        <li><a href="#">Focus / SIS Portal</a></li>
-                                        <li><a href="#">Academic Calendar</a></li>
-                                        <li><a href="#">Transcript Request</a></li>
-                                        <li><a href="#">Tech Support</a></li>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener">Focus / SIS Portal</a></li>
+                                        <li><a href="schedule-clearwater.html">Clearwater Schedule</a></li>
+                                        <li><a href="schedule-stpete.html">St. Pete Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/about-us/welcome-to-ptc/how-to-request-your-student-records-from-ptc" target="_blank" rel="noopener">Transcript Request</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="about.html" class="main-nav__link">About PTC <i class="fas fa-chevron-down"></i></a>
+                        <a href="about.html" class="main-nav__link">About PTC <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
@@ -503,7 +513,7 @@
                     </div>
                 </div>
                 <p style="text-align: center; margin-top: 2rem;">
-                    <a href="#" class="btn btn--accent btn--lg">Start Your Application <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="btn btn--accent btn--lg">Start Your Application <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 </p>
             </div>
         </section>
@@ -520,17 +530,17 @@
                 </div>
                 <div class="steps-grid">
                     <div class="step-card">
-                        <div class="step-card__number"><i class="fas fa-file-alt" style="font-size: 1rem;"></i></div>
+                        <div class="step-card__number"><i class="fas fa-file-alt" style="font-size: 1rem;" aria-hidden="true"></i></div>
                         <h3 class="step-card__title">Complete Required Testing</h3>
                         <p class="step-card__desc">Some programs require placement testing (CASAS or TEAS). Your counselor will let you know what testing is needed for your program.</p>
                     </div>
                     <div class="step-card">
-                        <div class="step-card__number"><i class="fas fa-dollar-sign" style="font-size: 1rem;"></i></div>
+                        <div class="step-card__number"><i class="fas fa-dollar-sign" style="font-size: 1rem;" aria-hidden="true"></i></div>
                         <h3 class="step-card__title">Arrange Financial Aid</h3>
                         <p class="step-card__desc">Complete your FAFSA and meet with the financial aid office to explore grants, scholarships, veterans benefits, and payment plans.</p>
                     </div>
                     <div class="step-card">
-                        <div class="step-card__number"><i class="fas fa-calendar-check" style="font-size: 1rem;"></i></div>
+                        <div class="step-card__number"><i class="fas fa-calendar-check" style="font-size: 1rem;" aria-hidden="true"></i></div>
                         <h3 class="step-card__title">Register for Classes</h3>
                         <p class="step-card__desc">Work with your counselor to select your start date and register for your program. Attend new student orientation to get set up for day one.</p>
                     </div>
@@ -549,35 +559,35 @@
                 </div>
                 <div class="info-cards">
                     <div class="info-card">
-                        <div class="info-card__icon"><i class="fas fa-exchange-alt"></i></div>
+                        <div class="info-card__icon"><i class="fas fa-exchange-alt" aria-hidden="true"></i></div>
                         <div class="info-card__content">
                             <h3>Transfer Students</h3>
                             <p>Transferring from another technical school or college? You may be able to receive credit for prior coursework. Bring your official transcripts to your admissions meeting.</p>
-                            <a href="#">Learn about transfer credit <i class="fas fa-arrow-right"></i></a>
+                            <a href="#">Learn about transfer credit <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="info-card">
-                        <div class="info-card__icon"><i class="fas fa-redo"></i></div>
+                        <div class="info-card__icon"><i class="fas fa-redo" aria-hidden="true"></i></div>
                         <div class="info-card__content">
                             <h3>Readmission</h3>
                             <p>Took a break and want to come back? If you were previously enrolled at PTC, you can apply for readmission. Contact your campus admissions office to get started.</p>
-                            <a href="#">Readmission process <i class="fas fa-arrow-right"></i></a>
+                            <a href="#">Readmission process <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="info-card">
-                        <div class="info-card__icon"><i class="fas fa-user-graduate"></i></div>
+                        <div class="info-card__icon"><i class="fas fa-user-graduate" aria-hidden="true"></i></div>
                         <div class="info-card__content">
                             <h3>Dual Enrollment</h3>
                             <p>High school students can get a head start on their career by enrolling in PTC programs while still in high school. Talk to your high school counselor to see if you qualify.</p>
-                            <a href="#">Dual enrollment details <i class="fas fa-arrow-right"></i></a>
+                            <a href="#">Dual enrollment details <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="info-card">
-                        <div class="info-card__icon"><i class="fas fa-medal"></i></div>
+                        <div class="info-card__icon"><i class="fas fa-medal" aria-hidden="true"></i></div>
                         <div class="info-card__content">
                             <h3>Veterans</h3>
                             <p>PTC proudly serves veterans and active-duty military. We accept VA education benefits and have dedicated veterans resources on both campuses.</p>
-                            <a href="#">Veterans benefits info <i class="fas fa-arrow-right"></i></a>
+                            <a href="#">Veterans benefits info <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -596,17 +606,17 @@
                 </div>
                 <div class="testing-types">
                     <div class="testing-type">
-                        <div class="testing-type__icon"><i class="fas fa-clipboard-check"></i></div>
+                        <div class="testing-type__icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></div>
                         <h3 class="testing-type__name">CASAS</h3>
                         <p class="testing-type__desc">Comprehensive Adult Student Assessment System. Required for most career and technical programs. Measures reading, math, and listening skills.</p>
                     </div>
                     <div class="testing-type">
-                        <div class="testing-type__icon"><i class="fas fa-stethoscope"></i></div>
+                        <div class="testing-type__icon"><i class="fas fa-stethoscope" aria-hidden="true"></i></div>
                         <h3 class="testing-type__name">TEAS</h3>
                         <p class="testing-type__desc">Test of Essential Academic Skills. Required for health science programs including Practical Nursing, Patient Care Technician, and Surgical Technology.</p>
                     </div>
                     <div class="testing-type">
-                        <div class="testing-type__icon"><i class="fas fa-book-reader"></i></div>
+                        <div class="testing-type__icon"><i class="fas fa-book-reader" aria-hidden="true"></i></div>
                         <h3 class="testing-type__name">ABE / GED / ESOL</h3>
                         <p class="testing-type__desc">If you need to complete your GED or improve your English language skills, PTC offers Adult Basic Education and ESOL programs at both campuses.</p>
                     </div>
@@ -621,11 +631,11 @@
             <div class="container">
                 <div class="tour-banner">
                     <div class="tour-banner__content">
-                        <h2><i class="fas fa-map-marker-alt"></i> Visit Our Campuses</h2>
+                        <h2><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Visit Our Campuses</h2>
                         <p>See our labs, meet instructors, and learn about programs firsthand. Campus tours and shadowing days are available at both locations.</p>
                     </div>
                     <div class="tour-banner__cta">
-                        <a href="#" class="btn btn--accent btn--lg">Schedule a Tour <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="btn btn--accent btn--lg">Schedule a Tour <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -644,7 +654,7 @@
                     <div class="faq-item">
                         <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
                             Is there an application fee?
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </div>
                         <div class="faq-item__answer">
                             No. Applying to PTC is completely free. There are no application or enrollment fees.
@@ -653,7 +663,7 @@
                     <div class="faq-item">
                         <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
                             Do I need a high school diploma or GED?
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </div>
                         <div class="faq-item__answer">
                             Most career and technical programs require a high school diploma or GED equivalent. However, PTC also offers Adult Basic Education (ABE) and GED preparation programs if you need to complete that requirement first.
@@ -662,7 +672,7 @@
                     <div class="faq-item">
                         <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
                             When can I start?
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </div>
                         <div class="faq-item__answer">
                             Many PTC programs have multiple start dates throughout the year. Your admissions counselor can provide specific start dates for the program you are interested in. Some programs have rolling enrollment.
@@ -671,7 +681,7 @@
                     <div class="faq-item">
                         <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
                             Is financial aid available?
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </div>
                         <div class="faq-item__answer">
                             Yes. PTC participates in federal and state financial aid programs, including Pell Grants, Florida Student Assistance Grants, scholarships, and veterans benefits. Complete your FAFSA to find out what you qualify for.
@@ -680,7 +690,7 @@
                     <div class="faq-item">
                         <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
                             Can I attend part-time or in the evening?
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
                         </div>
                         <div class="faq-item__answer">
                             Some programs offer evening and part-time scheduling options. Availability varies by program and campus. Check the program page or ask your counselor for details.
@@ -722,7 +732,7 @@
                     <div class="footer__social">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                     </div>

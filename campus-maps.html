@@ -182,16 +182,16 @@
     <div class="utility-bar">
         <div class="container utility-bar__inner">
             <div class="utility-bar__left">
-                <a href="tel:7275387167"><i class="fas fa-phone"></i> Clearwater: 727.538.7167</a>
+                <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> Clearwater: 727.538.7167</a>
                 <span class="utility-bar__divider">|</span>
-                <a href="tel:7278932500"><i class="fas fa-phone"></i> St. Pete: 727.893.2500</a>
+                <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> St. Pete: 727.893.2500</a>
             </div>
             <div class="utility-bar__right">
-                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building"></i> District Home</a>
-                <a href="#"><i class="fas fa-user"></i> Student Portal</a>
-                <a href="#"><i class="fas fa-graduation-cap"></i> Apply Now</a>
-                <a href="#"><i class="fas fa-calendar-alt"></i> Events</a>
-                <a href="#" class="utility-bar__lang"><i class="fas fa-globe"></i> Español</a>
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building" aria-hidden="true"></i> District Home</a>
+                <a href="#"><i class="fas fa-user" aria-hidden="true"></i> Student Portal</a>
+                <a href="#"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Apply Now</a>
+                <a href="#"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Events</a>
+                <a href="#" class="utility-bar__lang"><i class="fas fa-globe" aria-hidden="true"></i> Español</a>
             </div>
         </div>
     </div>
@@ -200,20 +200,137 @@
     <header class="site-header" id="site-header">
         <div class="container site-header__inner">
             <a href="index.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
-                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College — Opportunity Starts Here" id="header-logo" style="height: 60px;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Opportunity Starts Here" id="header-logo" style="height: 60px;">
                 <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
                     <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
                     <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
                 </div>
             </a>
-            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                        <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
                 <ul class="main-nav__list">
-                    <li class="main-nav__item"><a href="programs.html" class="main-nav__link">Programs</a></li>
-                    <li class="main-nav__item"><a href="admissions.html" class="main-nav__link">Admissions</a></li>
-                    <li class="main-nav__item"><a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid</a></li>
-                    <li class="main-nav__item main-nav__item--active"><a href="clearwater.html" class="main-nav__link">Campuses</a></li>
-                    <li class="main-nav__item"><a href="student-resources.html" class="main-nav__link">Current Students</a></li>
-                    <li class="main-nav__item"><a href="about.html" class="main-nav__link">About PTC</a></li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <h4>By Category</h4>
+                                    <ul>
+                                        <li><a href="#">Health Sciences</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                        <li><a href="#">Skilled Trades &amp; Construction</a></li>
+                                        <li><a href="#">Transportation &amp; Logistics</a></li>
+                                        <li><a href="#">Culinary &amp; Hospitality</a></li>
+                                        <li><a href="#">Cosmetology &amp; Barbering</a></li>
+                                        <li><a href="#">Business &amp; Office</a></li>
+                                        <li><a href="#">Arts, Media &amp; Education</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <h4>Explore</h4>
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="#">Evening &amp; Part-Time</a></li>
+                                        <li><a href="#">Apprenticeships</a></li>
+                                        <li><a href="#">Dual Enrollment</a></li>
+                                        <li><a href="#">Distance Learning</a></li>
+                                        <li><a href="#">ABE / GED / ESOL</a></li>
+                                        <li><a href="#">Student Orgs</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="admissions.html" class="main-nav__link">Admissions <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="admissions.html#enrollment-steps">Enrollment Steps</a></li>
+                                        <li><a href="admissions.html#pathways">Transfer Students</a></li>
+                                        <li><a href="admissions.html#pathways">Readmission</a></li>
+                                        <li><a href="admissions.html#testing">Testing &amp; Assessment</a></li>
+                                        <li><a href="admissions.html#campus-tours">Campus Tours</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="tuition-aid.html#rates">Tuition &amp; Fee Rates</a></li>
+                                        <li><a href="tuition-aid.html#pay">Pay Tuition</a></li>
+                                        <li><a href="tuition-aid.html#fafsa">FAFSA &amp; Eligibility</a></li>
+                                        <li><a href="tuition-aid.html#federal-state">Federal &amp; State Funding</a></li>
+                                        <li><a href="tuition-aid.html#scholarships">Scholarships</a></li>
+                                        <li><a href="tuition-aid.html#veterans">Veterans Benefits</a></li>
+                                        <li><a href="tuition-aid.html#net-price">Net Price Calculator</a></li>
+                                        <li><a href="tuition-aid.html#faq">Refund Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Campuses <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <h4>Clearwater</h4>
+                                    <ul>
+                                        <li><a href="clearwater.html">Clearwater Campus Home</a></li>
+                                        <li><a href="clearwater-about.html">About the Clearwater Campus</a></li>
+                                        <li><a href="schedule-clearwater.html">Clearwater Schedule</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <h4>St. Petersburg</h4>
+                                    <ul>
+                                        <li><a href="stpete.html">St. Petersburg Campus Home</a></li>
+                                        <li><a href="stpete-about.html">About the St. Petersburg Campus</a></li>
+                                        <li><a href="schedule-stpete.html">St. Pete Schedule</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener">Focus / SIS Portal</a></li>
+                                        <li><a href="schedule-clearwater.html">Clearwater Schedule</a></li>
+                                        <li><a href="schedule-stpete.html">St. Pete Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/about-us/welcome-to-ptc/how-to-request-your-student-records-from-ptc" target="_blank" rel="noopener">Transcript Request</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="about.html" class="main-nav__link">About PTC <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="about.html">Welcome &amp; History</a></li>
+                                        <li><a href="about.html#accreditation">Accreditation</a></li>
+                                        <li><a href="#">Staff Directory</a></li>
+                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </nav>
             <div class="site-header__actions">
@@ -259,12 +376,12 @@
                             Clearwater, FL 33760
                         </p>
                         <div class="campus-card__meta">
-                            <div class="campus-card__meta-item"><i class="fas fa-phone"></i> <a href="tel:7275387167">727.538.7167</a></div>
-                            <div class="campus-card__meta-item"><i class="fas fa-clock"></i> Mon-Thu 7:00 AM - 9:00 PM, Fri 7:00 AM - 2:30 PM</div>
-                            <div class="campus-card__meta-item"><i class="fas fa-parking"></i> Free parking available on campus. Visitor spots are near the main entrance.</div>
-                            <div class="campus-card__meta-item"><i class="fas fa-universal-access"></i> ADA accessible entrances at Buildings 1 and 4; accessible parking in front of each building.</div>
+                            <div class="campus-card__meta-item"><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:7275387167">727.538.7167</a></div>
+                            <div class="campus-card__meta-item"><i class="fas fa-clock" aria-hidden="true"></i> Mon-Thu 7:00 AM - 9:00 PM, Fri 7:00 AM - 2:30 PM</div>
+                            <div class="campus-card__meta-item"><i class="fas fa-parking" aria-hidden="true"></i> Free parking available on campus. Visitor spots are near the main entrance.</div>
+                            <div class="campus-card__meta-item"><i class="fas fa-universal-access" aria-hidden="true"></i> ADA accessible entrances at Buildings 1 and 4; accessible parking in front of each building.</div>
                         </div>
-                        <a class="campus-card__cta" href="https://www.google.com/maps/dir/?api=1&destination=6100+154th+Ave+N,+Clearwater,+FL+33760" target="_blank" rel="noopener"><i class="fas fa-directions"></i> Get Directions</a>
+                        <a class="campus-card__cta" href="https://www.google.com/maps/dir/?api=1&destination=6100+154th+Ave+N,+Clearwater,+FL+33760" target="_blank" rel="noopener"><i class="fas fa-directions" aria-hidden="true"></i> Get Directions</a>
                         <a class="campus-card__cta campus-card__cta--outline" href="clearwater.html">View Campus Page</a>
                     </div>
                     <div>
@@ -289,12 +406,12 @@
                             St. Petersburg, FL 33711
                         </p>
                         <div class="campus-card__meta">
-                            <div class="campus-card__meta-item"><i class="fas fa-phone"></i> <a href="tel:7278932500">727.893.2500</a></div>
-                            <div class="campus-card__meta-item"><i class="fas fa-clock"></i> Mon-Thu 7:00 AM - 9:00 PM, Fri 7:00 AM - 2:30 PM</div>
-                            <div class="campus-card__meta-item"><i class="fas fa-parking"></i> Free parking along 34th Street and in campus lots. Visitor parking near the main office.</div>
-                            <div class="campus-card__meta-item"><i class="fas fa-universal-access"></i> ADA accessible entrances and elevators in all student buildings.</div>
+                            <div class="campus-card__meta-item"><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:7278932500">727.893.2500</a></div>
+                            <div class="campus-card__meta-item"><i class="fas fa-clock" aria-hidden="true"></i> Mon-Thu 7:00 AM - 9:00 PM, Fri 7:00 AM - 2:30 PM</div>
+                            <div class="campus-card__meta-item"><i class="fas fa-parking" aria-hidden="true"></i> Free parking along 34th Street and in campus lots. Visitor parking near the main office.</div>
+                            <div class="campus-card__meta-item"><i class="fas fa-universal-access" aria-hidden="true"></i> ADA accessible entrances and elevators in all student buildings.</div>
                         </div>
-                        <a class="campus-card__cta" href="https://www.google.com/maps/dir/?api=1&destination=901+34th+St+S,+St.+Petersburg,+FL+33711" target="_blank" rel="noopener"><i class="fas fa-directions"></i> Get Directions</a>
+                        <a class="campus-card__cta" href="https://www.google.com/maps/dir/?api=1&destination=901+34th+St+S,+St.+Petersburg,+FL+33711" target="_blank" rel="noopener"><i class="fas fa-directions" aria-hidden="true"></i> Get Directions</a>
                         <a class="campus-card__cta campus-card__cta--outline" href="stpete.html">View Campus Page</a>
                     </div>
                     <div>
@@ -321,19 +438,19 @@
                 </div>
                 <div class="info-grid">
                     <div class="info-card">
-                        <h3><i class="fas fa-id-badge" style="color:var(--color-green);margin-right:0.5rem;"></i>Check-In</h3>
+                        <h3><i class="fas fa-id-badge" style="color:var(--color-green);margin-right:0.5rem;" aria-hidden="true"></i>Check-In</h3>
                         <p>All visitors sign in at the main office and receive a visitor badge. Please allow a few extra minutes on your first visit.</p>
                     </div>
                     <div class="info-card">
-                        <h3><i class="fas fa-car" style="color:var(--color-green);margin-right:0.5rem;"></i>Parking</h3>
+                        <h3><i class="fas fa-car" style="color:var(--color-green);margin-right:0.5rem;" aria-hidden="true"></i>Parking</h3>
                         <p>Parking is free for visitors. Avoid spaces marked "Reserved" or "Staff Only." Accessible spaces are near each entrance.</p>
                     </div>
                     <div class="info-card">
-                        <h3><i class="fas fa-bus" style="color:var(--color-green);margin-right:0.5rem;"></i>Public Transit</h3>
+                        <h3><i class="fas fa-bus" style="color:var(--color-green);margin-right:0.5rem;" aria-hidden="true"></i>Public Transit</h3>
                         <p>Both campuses are served by PSTA bus routes. Plan your trip at <a href="https://www.psta.net" target="_blank" rel="noopener">psta.net</a>.</p>
                     </div>
                     <div class="info-card">
-                        <h3><i class="fas fa-shield-alt" style="color:var(--color-green);margin-right:0.5rem;"></i>Campus Safety</h3>
+                        <h3><i class="fas fa-shield-alt" style="color:var(--color-green);margin-right:0.5rem;" aria-hidden="true"></i>Campus Safety</h3>
                         <p>PTC campuses follow district-wide PCSB safety procedures. In an emergency, dial 911 and then contact the main office.</p>
                     </div>
                 </div>
@@ -345,7 +462,7 @@
             <div class="container" style="text-align: center;">
                 <h2 style="font-family: var(--font-heading); font-size: 1.75rem; color: var(--color-gray-900); margin-bottom: 0.75rem;">Schedule a Campus Tour</h2>
                 <p style="max-width: 620px; margin: 0 auto 1.5rem; color: var(--color-gray-700); line-height: 1.6;">The best way to get a feel for PTC is to see it in person. Tours let you walk the labs, meet instructors, and ask questions before you apply.</p>
-                <a class="campus-card__cta" href="admissions.html#campus-tours"><i class="fas fa-calendar-plus"></i> Request a Tour</a>
+                <a class="campus-card__cta" href="admissions.html#campus-tours"><i class="fas fa-calendar-plus" aria-hidden="true"></i> Request a Tour</a>
             </div>
         </section>
 
@@ -361,7 +478,7 @@
                     <div class="footer__social">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" aria-label="Twitter/X"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
                     </div>
