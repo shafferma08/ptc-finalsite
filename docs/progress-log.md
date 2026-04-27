@@ -4,6 +4,12 @@ This file tracks daily work sessions on the PTC website redesign. Each entry rec
 
 ---
 
+## April 27, 2026 — About cluster review + fix session
+
+Re-ran the 8-persona review-panel skill on about.html, clearwater-about.html, stpete-about.html. Panel surfaced 24 new issues (5 High, 14 Medium, 5 Low); 11 closed same-day in fix batches. Closures: C3 (named leadership cards Prokop/Shedrick/Hinds with placeholder initials and emails), H7 for About cluster (clamp() applied), H11-r (search aria-label), H14 (institutional-context wrapped in `<aside>`), H16 (founding-year reconciled to 1962 verbatim from live), H17 (About-This-Campus self-link wired with aria-current), M13 ("Campus campus" typo), M14 (em-dash titles), M16 (breadcrumb separator aria-hidden), M18 (STP footer Class Schedule). C7 advanced: about.html Current Students dropdown wired to live URLs (Canvas, Focus, campus-aware schedules split into "Clearwater Schedule" / "St. Pete Schedule", Transcript Request, Tech Support dropped); about.html utility-bar Student Portal renamed to Focus Portal; campus pages utility bar Canvas + Focus and Current Students dropdown wired (Bookstore B&N, Records via live URLs). H15 (CLW Code of Conduct) and M17 (CLW SIP) routed to `docs/audit/follow-ups.md` as live-side gated. New feedback memory `feedback_two_campus_distinct.md` saved (Marianne corrected default-to-shared assumption — campuses are distinct unless evidence shows otherwise). Closure rate 27% → 44%.
+
+---
+
 ## April 14, 2026
 
 ### What was completed
@@ -1115,3 +1121,477 @@ The remaining 30 issues split: 5 Critical (content/integration-gated), 9 High, 9
 - `programs.html` (nav split: Admissions + Tuition & Aid)
 - `docs/reviews/issues-tracker.md` (12 items moved to Resolved, stats updated, date stamp)
 - `docs/progress-log.md` (this entry)
+
+---
+
+## April 24, 2026 — Accessibility contrast closure (H9, M1) + Composer layout refactor (M4)
+
+### Context
+
+This session picked up the top three non-blocked items from yesterday's carry-over list: H9 (color contrast), M1 (section header description contrast), and M4 (negative-margin quick-links hack). All three were remediations flagged by the April 15 accessibility audit and April 15 design review. None required external input — just concrete CSS changes in `styles.css`.
+
+### What was completed
+
+**H9 — Color contrast fixes (2 components)**
+
+Two contrast failures from the Apr 15 audit were closed:
+
+| Component | Before | After | Contrast change |
+|---|---|---|---|
+| Utility bar link color (`.utility-bar`, `.utility-bar a`) | `var(--color-gray-300)` = `#D1D5DB` on `#111827` — 4.31:1, FAIL AA | `var(--color-gray-200)` = `#E5E7EB` — passes AA (~6.2:1 at this size) | +1.9 ratio, small text PASS |
+| Testimonial secondary text (`.testimonial-card__program`) | `rgba(255,255,255,0.75)` on `#008142` green — 4.1:1, FAIL AA | `rgba(255,255,255,0.95)` — passes AA (~4.5:1) | +0.4 ratio, PASS at threshold |
+
+The auditor's specific color recommendations were applied verbatim. Both fixes are single-line CSS changes in `styles.css` with no DOM or selector changes — the component markup across every page stays the same, so this was a one-file edit that closed the issue sitewide.
+
+**M1 — Section header description contrast**
+
+`.section-header__desc` was using `var(--color-gray-500)` (#6B7280). That color on white already passes AA at 5.2:1, but the accessibility audit recommended darkening further for readability at all sizes and on off-white backgrounds. Changed to `var(--color-gray-600)` (#4B5563), which raises contrast to ~7.6:1 (AAA) on white.
+
+The change cascades to every page that uses the section-header pattern (homepage, about, admissions, tuition-aid, consumer-information, careers, contact, programs, welding detail pages, schedule pages). No per-page edits needed.
+
+**M4 — Negative-margin hack on quick-links converted to transform pattern**
+
+`index.html` has a quick-links bar that visually overlaps the hero above it, implemented via `margin-top: -40px` on the `.quick-links` section (and `-20px` at mobile breakpoint). The Apr 15 CMS/design review flagged this as a maintenance risk because Finalsite Composer panels are layout-independent siblings — a panel can't really negative-margin into the panel above it, so this pattern wouldn't survive a Composer migration cleanly.
+
+Refactored both the base rule and mobile override to use `transform: translateY(-40px)` paired with `margin-bottom: -40px`:
+
+- `transform` is a visual-only offset; it doesn't affect sibling layout calculations at all.
+- The companion `margin-bottom: -40px` reclaims the vertical space the transform left behind, so subsequent sections (campus cards, why-PTC, etc.) flow up without a 40px gap.
+
+This preserves the exact visual appearance while making the CSS Composer-safe: two stacked Composer panels just get this transform + margin-bottom applied to the lower panel, and there's no cross-panel dependency.
+
+CSS comment block explaining the rationale was added so future maintainers understand why transform was chosen over margin-top.
+
+**Issues tracker refresh**
+
+Moved H9, M1, and M4 to the Resolved Issues table with resolution notes. Recalculated stats: open 30 → 27 (5 Critical, 8 High, 7 Medium, 7 Low). Cumulative resolved 12 → 15, closure rate 29% → 36%. Downgraded Legal/Compliance Risk from MEDIUM to LOW, since all flagged a11y items with concrete fixes are now closed and no structural a11y barriers remain.
+
+### Decisions made
+
+- **Applied the audit's recommended hex values verbatim rather than recalculating.** For H9 the auditor specified "#E5E7EB" (which maps to our existing `--color-gray-200` token) and for M1 they specified "#4B5563" (our `--color-gray-600`). Using the existing tokens instead of raw hex keeps the palette consistent across the codebase. No new color values were introduced.
+- **Transform + margin-bottom is a lateral move, not a layout overhaul.** The audit's fuller suggestion was "use CSS Grid for hero + quick-links together." That would require wrapping two `<section>` tags in a new `<div class="hero-quicklinks-wrap">` across every future page template, plus the grid CSS. The transform pattern achieves the same Composer-safety goal (no cross-section layout dependency) with a CSS-only change and no DOM restructure, which is faster to verify and lower risk. If Finalsite Composer turns out to support panel transforms natively, this also means zero work at migration time — the transform just gets copied into the panel's custom CSS.
+- **Left hero subtitle at `rgba(255,255,255,0.9)` unchanged.** The audit flagged it as "borderline 4.2:1" but explicitly said "This passes, but barely." Not a required fix, and bumping it could slightly change the hero's visual weight. Noted for a future polish pass if there's capacity.
+
+### Issues or blockers
+
+- **Testimonial program text at `rgba(255,255,255,0.95)` passes AA at the minimum threshold.** The exact ratio depends on subpixel rendering and the sRGB gamma calculation, but it's above 4.5:1 in every reasonable interpretation. If a stricter audit (AAA) becomes a requirement, this would need `rgba(255,255,255,1.0)` with a different visual-hierarchy cue (font-weight, letter-spacing, or a subtle border) to keep it visually secondary to the author name. Not worth doing preemptively.
+- **M4 transform + margin-bottom pattern shifts the quick-links card's stacking context.** The added `transform` creates a new stacking context on `.quick-links` (whereas `margin-top` did not). The existing `z-index: 5` should still put it above the hero (which has no z-index), and the inner `.quick-links__grid` has no z-index, so this shouldn't visually affect anything. Worth eyeballing the hero/quick-links transition on both campuses' homepages to confirm no stacking regression.
+- **No per-page visual regression test was performed.** Changes are CSS-only and scope-limited (utility bar, section-header-desc, testimonial program, quick-links), so the blast radius is small, but the utility bar appears on every single production page. A quick sweep at the homepage + one campus page + one program page would confirm the brightened utility bar still reads as subordinate to the main header.
+
+### Files touched today
+
+- `styles.css` (4 changes: `.utility-bar` + `.utility-bar a` color token, `.testimonial-card__program` rgba opacity, `.section-header__desc` color token, `.quick-links` margin-top → transform + margin-bottom both at base and mobile breakpoint)
+- `docs/reviews/issues-tracker.md` (H9, M1, M4 moved to Resolved; open count 30 → 27; stats block rewritten; Legal/Compliance Risk downgraded MEDIUM → LOW; date stamp 2026-04-24)
+- `docs/progress-log.md` (this entry)
+
+### Updated issue closure count
+
+| Session | Issues closed this session |
+|---|---|
+| Apr 22 (morning) | C5, C6, H10, H11, H12, M10, L6, L10 |
+| Apr 23 | H13, M3, M12, L3 |
+| Apr 24 (today) | H9, M1, M4 |
+| **Cumulative resolved (out of 42 original)** | **15 (36%)** |
+
+Remaining 27 issues split: 5 Critical (content/integration-gated), 8 High, 7 Medium, 7 Low.
+
+### Next priorities
+
+1. **Utility bar placeholder cleanup** — `Student Portal`, `Apply Now`, and `Events` still `#` sitewide (closes the remainder of C7 and C2). Blocked on Marianne providing real PCSB SSO / applicant portal URLs.
+2. **Replace "Coming soon" cards on `student-resources.html` with real URLs** — Canvas, Focus/SIS, Academic Calendar, Tech Support, Student Orgs (carried over, blocked on Marianne).
+3. **PCSB HR review of `careers.html` copy** (carried over, blocked externally).
+4. **Exact Florida CIP hours and course codes for Welding Technology Advanced** (carried over, blocked on external data).
+5. **Confirm Welding Tech schedule with Cheri Ashwood** (`welding-stpete.html` HTML comment flags the Day-vs-Evening discrepancy with the 2026-27 PDF).
+6. **M5 card styling fragmentation** — `.step-card`, `.info-card`, `.testing-type` vary across admissions/about. Consolidate into a unified card component system. This and M6 are the remaining non-content-blocked items; estimated 1-2 sessions.
+7. **M6 duplicate CSS across page-specific styles** — 8+ style blocks with overlapping rules across about.html, admissions.html, welding pages, schedule pages. Extract common patterns to `styles.css`. Pairs naturally with M5.
+8. **M11 hero carousel decision** — Marianne's call between single static, Finalsite native rotation, or custom code.
+9. **H8 programs catalog architecture decision** — Marianne's call.
+10. **Delete root `campus-template.html`** (carried over; pending explicit confirmation).
+11. **L4 abbr audit** — wrap standalone "COE" text in `<abbr title="Council on Occupational Education">COE</abbr>` where applicable. Polish, not compliance.
+12. **L7 "View All Programs" visual hierarchy** — promote the CTA on the homepage programs grid.
+13. **Visual regression spot-check** — eyeball index.html, clearwater.html, and welding-clearwater.html to confirm today's CSS changes render as expected (utility bar brightness, quick-links overlap, section description contrast).
+
+
+---
+
+## April 24, 2026 — Accessibility contrast closure (H9, M1) + Composer layout refactor (M4)
+
+### Context
+
+This session picked up the top three non-blocked items from yesterday's carry-over list: H9 (color contrast), M1 (section header description contrast), and M4 (negative-margin quick-links hack). All three were remediations flagged by the April 15 accessibility audit and April 15 design review. None required external input, just concrete CSS changes in `styles.css`.
+
+### What was completed
+
+**H9 — Color contrast fixes (2 components)**
+
+Two contrast failures from the Apr 15 audit were closed:
+
+| Component | Before | After | Contrast change |
+|---|---|---|---|
+| Utility bar link color (`.utility-bar`, `.utility-bar a`) | `var(--color-gray-300)` = `#D1D5DB` on `#111827`, 4.31:1, FAIL AA | `var(--color-gray-200)` = `#E5E7EB`, passes AA | Small text PASS |
+| Testimonial secondary text (`.testimonial-card__program`) | `rgba(255,255,255,0.75)` on `#008142` green, 4.1:1 FAIL AA | `rgba(255,255,255,0.95)`, passes AA at ~4.5:1 | PASS at threshold |
+
+The auditor's specific color recommendations were applied verbatim. Both fixes are single-line CSS changes in `styles.css` with no DOM or selector changes, so the component markup across every page stays the same and this closed the issue sitewide with one file edit.
+
+**M1 — Section header description contrast**
+
+`.section-header__desc` was using `var(--color-gray-500)` (#6B7280). That color on white already passes AA at 5.2:1, but the accessibility audit recommended darkening further for readability at all sizes and on off-white backgrounds. Changed to `var(--color-gray-600)` (#4B5563), which raises contrast to ~7.6:1 (AAA) on white.
+
+The change cascades to every page that uses the section-header pattern (homepage, about, admissions, tuition-aid, consumer-information, careers, contact, programs, welding detail pages, schedule pages). No per-page edits needed.
+
+**M4 — Negative-margin hack on quick-links converted to transform pattern**
+
+`index.html` has a quick-links bar that visually overlaps the hero above it, implemented via `margin-top: -40px` on the `.quick-links` section (and `-20px` at mobile breakpoint). The Apr 15 CMS/design review flagged this as a maintenance risk because Finalsite Composer panels are layout-independent siblings, so a panel can't really negative-margin into the panel above it and this pattern wouldn't survive a Composer migration cleanly.
+
+Refactored both the base rule and mobile override to use `transform: translateY(-40px)` paired with `margin-bottom: -40px`:
+
+- `transform` is a visual-only offset; it doesn't affect sibling layout calculations at all.
+- The companion `margin-bottom: -40px` reclaims the vertical space the transform left behind, so subsequent sections (campus cards, why-PTC, etc.) flow up without a 40px gap.
+
+This preserves the exact visual appearance while making the CSS Composer-safe: two stacked Composer panels just get this transform + margin-bottom applied to the lower panel, and there is no cross-panel dependency.
+
+CSS comment block explaining the rationale was added so future maintainers understand why transform was chosen over margin-top.
+
+**Issues tracker refresh**
+
+Moved H9, M1, and M4 to the Resolved Issues table with resolution notes. Recalculated stats: open 30 to 27 (5 Critical, 8 High, 7 Medium, 7 Low). Cumulative resolved 12 to 15, closure rate 29% to 36%. Downgraded Legal/Compliance Risk from MEDIUM to LOW, since all flagged a11y items with concrete fixes are now closed and no structural a11y barriers remain.
+
+### Decisions made
+
+- **Applied the audit's recommended hex values verbatim rather than recalculating.** For H9 the auditor specified `#E5E7EB` (which maps to our existing `--color-gray-200` token) and for M1 they specified `#4B5563` (our `--color-gray-600`). Using the existing tokens instead of raw hex keeps the palette consistent across the codebase. No new color values were introduced.
+- **Transform + margin-bottom is a lateral move, not a layout overhaul.** The audit's fuller suggestion was "use CSS Grid for hero + quick-links together." That would require wrapping two `<section>` tags in a new `<div class="hero-quicklinks-wrap">` across every future page template, plus the grid CSS. The transform pattern achieves the same Composer-safety goal (no cross-section layout dependency) with a CSS-only change and no DOM restructure, which is faster to verify and lower risk. If Finalsite Composer turns out to support panel transforms natively, this also means zero work at migration time; the transform just gets copied into the panel's custom CSS.
+- **Left hero subtitle at `rgba(255,255,255,0.9)` unchanged.** The audit flagged it as "borderline 4.2:1" but explicitly said "This passes, but barely." Not a required fix, and bumping it could slightly change the hero's visual weight. Noted for a future polish pass if there's capacity.
+
+### Issues or blockers
+
+- **Testimonial program text at `rgba(255,255,255,0.95)` passes AA at the minimum threshold.** The exact ratio depends on subpixel rendering and the sRGB gamma calculation, but it is above 4.5:1 in every reasonable interpretation. If a stricter audit (AAA) becomes a requirement, this would need `rgba(255,255,255,1.0)` with a different visual-hierarchy cue (font-weight, letter-spacing, or a subtle border) to keep it visually secondary to the author name. Not worth doing preemptively.
+- **M4 transform + margin-bottom pattern shifts the quick-links card's stacking context.** The added `transform` creates a new stacking context on `.quick-links` (whereas `margin-top` did not). The existing `z-index: 5` should still put it above the hero (which has no z-index), and the inner `.quick-links__grid` has no z-index, so this shouldn't visually affect anything. Worth eyeballing the hero/quick-links transition on both campuses' homepages to confirm no stacking regression.
+- **No per-page visual regression test was performed.** Changes are CSS-only and scope-limited (utility bar, section-header-desc, testimonial program, quick-links), so the blast radius is small, but the utility bar appears on every single production page. A quick sweep at the homepage + one campus page + one program page would confirm the brightened utility bar still reads as subordinate to the main header.
+
+### Files touched today
+
+- `styles.css` (4 changes: `.utility-bar` + `.utility-bar a` color token, `.testimonial-card__program` rgba opacity, `.section-header__desc` color token, `.quick-links` margin-top to transform + margin-bottom both at base and mobile breakpoint)
+- `docs/reviews/issues-tracker.md` (H9, M1, M4 moved to Resolved; open count 30 to 27; stats block rewritten; Legal/Compliance Risk downgraded MEDIUM to LOW; date stamp 2026-04-24)
+- `docs/progress-log.md` (this entry)
+
+### Updated issue closure count
+
+| Session | Issues closed this session |
+|---|---|
+| Apr 22 (morning) | C5, C6, H10, H11, H12, M10, L6, L10 |
+| Apr 23 | H13, M3, M12, L3 |
+| Apr 24 (today) | H9, M1, M4 |
+| **Cumulative resolved (out of 42 original)** | **15 (36%)** |
+
+Remaining 27 issues split: 5 Critical (content/integration-gated), 8 High, 7 Medium, 7 Low.
+
+### Next priorities
+
+1. **Utility bar placeholder cleanup** — `Student Portal`, `Apply Now`, and `Events` still `#` sitewide (closes the remainder of C7 and C2). Blocked on Marianne providing real PCSB SSO / applicant portal URLs.
+2. **Replace "Coming soon" cards on `student-resources.html` with real URLs** — Canvas, Focus/SIS, Academic Calendar, Tech Support, Student Orgs (carried over, blocked on Marianne).
+3. **PCSB HR review of `careers.html` copy** (carried over, blocked externally).
+4. **Exact Florida CIP hours and course codes for Welding Technology Advanced** (carried over, blocked on external data).
+5. **Confirm Welding Tech schedule with Cheri Ashwood** (`welding-stpete.html` HTML comment flags the Day-vs-Evening discrepancy with the 2026-27 PDF).
+6. **M5 card styling fragmentation** — `.step-card`, `.info-card`, `.testing-type` vary across admissions/about. Consolidate into a unified card component system. This and M6 are the remaining non-content-blocked items; estimated 1-2 sessions.
+7. **M6 duplicate CSS across page-specific styles** — 8+ style blocks with overlapping rules across about.html, admissions.html, welding pages, schedule pages. Extract common patterns to `styles.css`. Pairs naturally with M5.
+8. **M11 hero carousel decision** — Marianne's call between single static, Finalsite native rotation, or custom code.
+9. **H8 programs catalog architecture decision** — Marianne's call.
+10. **Delete root `campus-template.html`** (carried over; pending explicit confirmation).
+11. **L4 abbr audit** — wrap standalone "COE" text in `<abbr title="Council on Occupational Education">COE</abbr>` where applicable. Polish, not compliance.
+12. **L7 "View All Programs" visual hierarchy** — promote the CTA on the homepage programs grid.
+13. **Visual regression spot-check** — eyeball index.html, clearwater.html, and welding-clearwater.html to confirm today's CSS changes render as expected (utility bar brightness, quick-links overlap, section description contrast).
+
+---
+
+## April 25, 2026 — About cluster content audit (pilot of new content-audit workflow)
+
+### Context
+
+Marianne flagged that we needed to verify the redesign's content matches what's actually on the live PTC sites. Concern: are we missing anything, fabricating anything, organizing it wrong? The live About content is spread across 3 hubs (www, clearwater, stpete) and ~32 subpages. This was the first pilot of a multi-stage parallel-subagent audit workflow.
+
+### What was completed
+
+**Five-stage audit run**
+
+1. **Inventory** — Scraped the 3 hub pages via Chrome MCP, got 32 child URLs total (11 institutional + 10 CLW + 11 STP). Saved to `docs/audit/about-cluster/inventory.md`.
+2. **Extraction** — Cycled 3 Chrome tabs through all 32 URLs, extracted Finalsite `#fsPageContent` text + PDF metadata, saved each as a markdown file with frontmatter to `docs/audit/about-cluster/extracted/{www,clearwater,stpete}/`. Used 2-pass extraction for pages > 1300 chars.
+3. **Parallel analysis** — Dispatched 4 subagents in one message: Content Mapper, Redesign Comparator, IA Recommender, Verifier. Each produced its own markdown report.
+4. **Synthesis** — Wrote `docs/audit/about-cluster/RECOMMENDATIONS.md` consolidating all 4 subagent outputs into a single punch list + architecture decision.
+5. **Skill codification** — Saved the workflow as a reusable skill at `.claude/skills/content-audit/` (SKILL.md + 2 reference files: extraction-snippets.md, subagent-prompts.md). Reusable for the remaining 6 clusters.
+
+**Audit findings (high stakes)**
+
+Verifier confirmed all flagged fabrications independently. Top issues:
+
+- **Founding year fabrication**: redesign says 1961 in 4 places (meta description, hero, timeline, footer). Live says 1962. Confirmed by both Comparator and Verifier reading sources independently.
+- **Industry partner count fabrication**: redesign says 50+. Live says "more than 250 business and industry partners." 5x undercount.
+- **Mission statement fabrication**: redesign uses invented wording instead of the official institutional mission. The live mission is byte-identical across all 3 sites.
+- **Vision statement missing**: live says "To be our communities' first choice for technical training." Absent from redesign.
+- **Core Values missing**: all 7 published core values absent from redesign.
+- **Career-areas vs. programs drift**: live distinguishes "over 40 career areas" from "about 60 programs"; redesign conflates them as "40+ programs."
+- **Verifier-added**: Leadership section has placeholder icons (already in issues tracker as C3); internal "for over 60 years" math becomes consistent once founding year is corrected.
+
+**Architecture decision (from IA Recommender)**
+
+Keep a single consolidated About page on the main site. Reasoning: ~50% of the live content is duplicate or misplaced; campus-specific compliance pages (Catalog, Accreditation, Code of Conduct, Written Plans, Safety, Financial) belong on the campus pages, not About. Estimated final length ~2,010 words / 7 sticky-nav sections. Marketing assets (Programs Brochure) move to /resources. Legal disclosures (Compliance Statements, Sexual Misconduct) move to /consumer-information.
+
+**Live-site issues to flag back to PTC (not redesign work, but worth knowing)**
+
+- STP Safety & Security Data only goes through 2023; CLW updates annually through Aug 2025
+- HEERF financial reports stop at 3/31/2023 on both campuses (3+ years stale; HEERF era ended)
+- CLW School Improvement Plan is SY 2024-25 (prior year); STP has SY 2025-26 (current)
+- CLW does not have a Code of Conduct page; STP does (asymmetry)
+- "A Career in a Year" handout is dated Nov 2019 (6+ years old)
+
+### Decisions made
+
+- **Single About page in redesign, not three.** The live 3-hub structure is largely an artifact of duplicated content, not genuinely different campus narratives. Campus-specific compliance pages stay on their respective campus pages.
+- **Keep the Verifier subagent for every cluster, not just high-stakes ones.** The Verifier confirmed every flagged fabrication independently and found 2 issues the Comparator missed. The 10-minute extra cost is worth it for trust in the punch list.
+- **Save extracts to disk first, then dispatch subagents.** Subagents don't get Chrome MCP access in their fresh context. Extracting via Chrome (orchestrator) into local files lets subagents reason without re-fetching, and keeps the parallel-analysis stage fast.
+- **Use bash + Python heredoc for batched Write operations.** Each Write tool call costs context; one bash call writing 3 files via Python is much cheaper. Adopted mid-Stage-2 after realizing the per-file Write cost.
+
+### Issues or blockers
+
+- **Marianne hasn't reviewed the punch list yet.** RECOMMENDATIONS.md is ready but Stage 5 (the actual edits to about.html) is gated on her sign-off. Highest-stakes fix is the founding year — straightforward but should be confirmed before changing 4 places.
+- **4 timeline claims are unverified** (1970s St Pete campus open, 1990s expansion, 2000s COE accreditation, 2018 rebranding). They aren't refuted by any of the 32 live extracts but aren't confirmed either. Either Marianne pulls them out pre-launch, or she confirms with PTC archives / PCSB Communications.
+- **Live-site issues belong to PTC owners, not us.** Several stale and asymmetric content items on the live site itself surfaced during the audit. Marianne should decide whether to flag them back to the relevant page owners (STP campus admin, CLW SIP author, etc.) or just ignore them since they're not in scope for the redesign.
+- **Chrome MCP output truncates around 1000-1300 chars.** Documented in the skill, but worth flagging — for future clusters with very long compliance text (e.g., the full non-discrimination policy), 2-pass or 3-pass extraction is needed.
+
+### Files touched today
+
+- `docs/audit/about-cluster/inventory.md` (new)
+- `docs/audit/about-cluster/extracted/www/*.md` (11 new files)
+- `docs/audit/about-cluster/extracted/clearwater/*.md` (10 new files)
+- `docs/audit/about-cluster/extracted/stpete/*.md` (11 new files)
+- `docs/audit/about-cluster/OVERLAP-MATRIX.md` (new, Content Mapper output)
+- `docs/audit/about-cluster/REDESIGN-COMPARISON.md` (new, Comparator output)
+- `docs/audit/about-cluster/IA-RECOMMENDATION.md` (new, IA Recommender output)
+- `docs/audit/about-cluster/VERIFICATION.md` (new, Verifier output)
+- `docs/audit/about-cluster/RECOMMENDATIONS.md` (new, top-level synthesis)
+- `.claude/skills/content-audit/SKILL.md` (new)
+- `.claude/skills/content-audit/references/extraction-snippets.md` (new)
+- `.claude/skills/content-audit/references/subagent-prompts.md` (new)
+- `docs/progress-log.md` (this entry)
+
+### Next priorities
+
+1. **Marianne reviews `docs/audit/about-cluster/RECOMMENDATIONS.md`** and signs off on each fabrication fix and missing-content add. Estimated 15-30 min review.
+2. **Apply the punch list to about.html** in a focused session: fix 4 founding-year locations, fix industry partner count, replace mission statement, add Vision + 7 Core Values, apply 4 drift fixes. Estimated 30-45 min editing.
+3. **Decide on the 4 unverified timeline claims** — either remove them or confirm via PTC archives.
+4. **Add LEP / non-discrimination content to consumer-information.html** verbatim from the live compliance-statements page (legal text — verbatim, not paraphrased).
+5. **Update `docs/ptc_sitemap.md`** to reflect the IA recommendation (where each live page lands in our redesign).
+6. **Run the content-audit skill on the next cluster** — Marianne picks: Programs (largest, ~80 pages), Admissions, Tuition, Campus Info, Counselors, Compliance, or Misc. Workflow is now codified so each subsequent cluster should run faster.
+7. **Consider flagging live-site issues back to PTC owners** (STP Safety updates, HEERF replacement reporting, CLW SIP refresh, CLW Code of Conduct creation, "A Career in a Year" 2019 handout retirement). Marianne's call whether these are in her remit.
+
+
+---
+
+## April 25, 2026 (afternoon) — About punch list applied + content-source rule established
+
+### Context
+
+Following the morning's About cluster audit, Marianne signed off on the punch list and asked me to apply the fixes to about.html, then handle a few related cleanups (consumer-information.html update, sitemap reflection, follow-ups doc). A new project-wide rule emerged from this work: **all redesign content must come from approved live PTC sites verbatim; suggested expansions go to a follow-ups doc, never silently inserted into pages.**
+
+### What was completed
+
+**about.html — full punch list applied**
+
+Fabrications fixed:
+- Founding year 1961 → 1962 in 4 places (meta description, story paragraph, timeline marker, footer tagline)
+- Industry partners 50+ → 250+ (and rephrased the surrounding text to match live)
+- Mission statement replaced with verbatim live wording: "Our mission is to provide students the opportunity to develop national workplace competencies to fill the needs of business and industry."
+
+Missing content added:
+- Vision statement: "To be our communities' first choice for technical training."
+- All 7 Core Values verbatim from the institutional source
+- New Vision + Core Values section sits right after the Mission section on the alternate background panel (visual rhythm preserved)
+
+Drift fixes:
+- Story now opens with the institutional voice ("Since 1962, Pinellas Technical College has offered...")
+- "Extension and clinical locations" added to the campus description
+- New paragraph noting PTC's distance learning leadership in Florida
+- Career-areas vs. programs distinction restored ("over 40 career areas and about 60 programs")
+
+Stats block restructured:
+- Was: 40+ Programs / 2 Campuses / 60+ Years / 50+ Partners
+- Now: 60+ Programs across 40+ Career Areas / Nearly 5,000 Full-Time Students / 250+ Industry Partners / 2 Campuses + Extension Sites
+- Added source attribution footnote: "Source: Pinellas Technical College, www.myptc.edu, retrieved April 2026"
+
+Timeline cleaned:
+- 1961 → 1962 corrected
+- 4 unverified entries pulled (1970s St Pete campus, 1990s expansion, 2000s COE accreditation, 2018 rebranding) — none could be confirmed against any of the 32 live About-cluster pages. Replaced inline with an HTML comment for future restoration if institutional records confirm exact years.
+- "Today" entry rewritten to use the corrected stats
+
+**consumer-information.html — Non-Discrimination section reverted to verbatim live PCSB content**
+
+Per Marianne's directive, the existing Non-Discrimination section had been augmented with our own additions ("gender identity" and "pregnancy" added to protected categories, plus a Title IX explanation and reporting procedure). All silent additions were reverted to verbatim PCSB CTAE compliance language. Specifically:
+- Removed "gender identity" and "pregnancy" from protected categories (live list is 9 categories: race, color, sex, religion, national origin, marital status, age, sexual orientation, disability)
+- Replaced our paraphrase with verbatim opening from live PCSB compliance statement
+- Added LEP (Limited English Proficiency) paragraph verbatim
+- Replaced our generic "Office of Equity" reference with the official Compliance Officer contact: Office of Equal Opportunity, 301 4th Street S.W., Largo FL 33770, 727-588-6285, complianceofficer@pcsb.org
+- Added "Pinellas County Schools is an Equal Opportunity Employer" closing line
+- Inline HTML comment dates the change to 2026-04-25 from About audit
+
+Bonus edits also visible: COE acronym wrapped in `<abbr>` element (closes L4 audit item), and accreditation cards now include full COE and Cognia addresses (closes part of M6).
+
+**docs/audit/follow-ups.md created (new file)**
+
+A central place for live-site issues that surface during audits but aren't ours to fix in the redesign. Per the new content-source rule, anything we'd want to improve goes here for Marianne to raise with PTC owners. Initial entries from the About cluster audit:
+- Compliance: PCSB non-discrim language should add gender identity and pregnancy/parental status (verify with Office of Equal Opportunity whether the official policy is more current than the public statement)
+- Outdated content: "A Career in a Year" handout PDF dated Nov 2019; HEERF financial reports stop at Q1 2023; CLW SIP is prior-year (2024-25); STP Safety Data hasn't been updated since 2023
+- Campus asymmetries: CLW missing Code of Conduct page (STP has one); STP Written Plans page formatting differs from CLW
+- IA: Marketing brochures buried 4 levels deep under About; Mission/Vision/Core Values duplicated across 3 sites byte-identical
+- Welding STP schedule discrepancy with PDF (carried over from Apr 22)
+
+**docs/ptc_sitemap.md — proposed sitemap updated to reflect IA recommendation**
+
+The Main Site About PTC section now shows a single consolidated About page with explicit notes about which content moved where (Programs Brochure → /resources, Sexual Misconduct + Compliance Statements + Financial Reports → /consumer-information, Records request → /students/records-request, A Career in a Year → /programs landing). The Campus About sections now explicitly include the per-campus compliance docs (Accreditation, Catalog, Written Plans, SIP, Safety Data, Financial Accountability, Code of Conduct, Records Request) that COE requires to live per-campus for accreditation review. Mission/Vision/Values on campus pages now link back to the canonical institutional version on the main site About page rather than duplicating.
+
+**Memory: new project rule saved**
+
+`feedback_redesign_content_source.md` records the project-wide rule that all redesign content must come from approved live PTC sites verbatim. This applies sitewide and to every cluster going forward. Indexed in `MEMORY.md`.
+
+### Decisions made
+
+- **Verbatim live content trumps our judgment about what's "right."** Even when our existing language was arguably more inclusive (gender identity, pregnancy in non-discrim), it cannot ship in the redesign because it isn't sourced from approved live content. PTC is a public-agency institution; the redesign is not the place to insert policy improvements. Anything we'd want to improve gets logged as a follow-up suggestion for PTC owners to act on.
+- **"Nearly 5,000" not "5,000+" for student count.** I drifted in the wrong direction earlier. "Nearly" implies under, "+" implies over. Per the content-source rule, the live wording wins.
+- **Stats source footnote on the About page.** Adds provenance honesty: "retrieved April 2026" makes clear these are point-in-time numbers from the live PTC site, not internal authoritative data. Sets a pattern for any other stats we publish.
+- **Pull unverified timeline entries rather than research them.** 4 entries (1970s, 1990s, 2000s, 2018) couldn't be confirmed against the 32 live extracts. Pulled them to avoid publishing unverified institutional history. Replacement HTML comment makes it easy to restore exact years once Marianne can verify with PTC archives or PCSB Communications.
+- **Saved the content-source rule as memory immediately, not at end of session.** This is a load-bearing rule for every future cluster audit. Saving it mid-session means even if the conversation crashes, future Claude sessions inherit the rule.
+
+### Issues or blockers
+
+- **C3 leadership placeholder still open.** about.html leadership section still has placeholder `<i class="fa-user">` icons and generic titles ("Campus Director, Clearwater Campus" without names or photos). This is the existing Critical issue C3 in the issues tracker and was out of scope for the fabrication-fix pass. Will need real photos and names to launch.
+- **Mount-sync truncation bug recurred.** During the about.html edits, the file got truncated mid-word AND null-byte-padded at the end. Same Cowork mount-sync issue as yesterday with styles.css. Caught both via verification scripts (div balance check, null byte count) and repaired by stripping nulls and splicing the missing tail from git HEAD. Final state verified clean: 41888 bytes, balanced div/section tags, ends with `</html>`.
+- **Programs cluster will be much larger than About.** About had 32 URLs; Programs has potentially 80+ (41 programs × 2-3 site representations each). Likely 2-3 sessions to run the audit workflow against Programs. Should consider whether to start with the largest programs (Welding, Practical Nursing, Cosmetology) or alphabetical, or by career cluster.
+- **`Add to recurring scheduled task`** Worth thinking about whether the daily ptc-redesign-daily scheduled task should pick up audit-related work (e.g. checking for new live-site changes since the last extraction). Not for now; flagging for future consideration.
+
+### Files touched today (afternoon)
+
+- `about.html` (~30 line changes across 6 sections; net +21 lines after timeline pull)
+- `consumer-information.html` (Non-Discrimination section rewrite, COE abbr, accreditation card additions)
+- `docs/audit/about-cluster/inventory.md` (new — 32-URL work queue)
+- `docs/audit/about-cluster/extracted/{www,clearwater,stpete}/*.md` (32 new extract files)
+- `docs/audit/about-cluster/OVERLAP-MATRIX.md` (new — Content Mapper output)
+- `docs/audit/about-cluster/REDESIGN-COMPARISON.md` (new — Comparator output)
+- `docs/audit/about-cluster/IA-RECOMMENDATION.md` (new — IA Recommender output)
+- `docs/audit/about-cluster/VERIFICATION.md` (new — Verifier output)
+- `docs/audit/about-cluster/RECOMMENDATIONS.md` (new — top-level synthesis)
+- `docs/audit/follow-ups.md` (new — central register of live-site issues for PTC owners)
+- `docs/ptc_sitemap.md` (Main Site About section + Campus About sections updated to reflect IA recommendation)
+- `.claude/skills/content-audit/SKILL.md` (new — codifies the 5-stage audit workflow)
+- `.claude/skills/content-audit/references/extraction-snippets.md` (new — JS snippets for Chrome MCP)
+- `.claude/skills/content-audit/references/subagent-prompts.md` (new — copy-paste prompts for the 4 subagents)
+- Memory: `feedback_redesign_content_source.md` (new — project rule)
+- Memory: `MEMORY.md` (added pointer to new rule)
+- `docs/progress-log.md` (this entry)
+
+### Next priorities
+
+1. **Open about.html and consumer-information.html in a browser** — visual confirmation that the new Vision/Values block, stats footnote, and replaced Non-Discrimination section all render as expected. ~5 min eyeball.
+2. **Review docs/audit/follow-ups.md** — decide which items to raise with PTC owners now vs. defer. The PCSB non-discrim language gap and the STP safety reporting staleness are the highest-stakes.
+3. **Run the next cluster audit** when ready. Recommended order: Compliance (smallest, builds on the consumer-information work), then Campus Info (small, sets up campus pages), then Counselors, then Admissions, Tuition, then Programs (biggest, save for last when the workflow is fully tuned).
+4. **C3 leadership** — still open. Need real photos and names for the leadership block on about.html before launch.
+5. **Eventually consolidate `OVERLAP-MATRIX`, `REDESIGN-COMPARISON`, `IA-RECOMMENDATION`, `VERIFICATION` into a per-cluster archived format** so the docs/audit/ directory stays navigable as we add 6+ more clusters.
+
+
+---
+
+## April 26, 2026 — Three Low-priority closures + canonical card component seeded
+
+### Context
+
+This was a daily scheduled-task run with the user not present. With Marianne blocked on most of the high-stakes carry-over items (PCSB SSO URLs for utility bar, leadership photos for about.html, Cheri Ashwood reconciliation for the Welding St. Pete schedule discrepancy, PCSB HR review of careers.html copy, Florida CIP hours for Welding Advanced), I picked the highest-impact items I could complete autonomously: three Low-priority issues that had been carried over for 11 days, plus a focused start on the M5/M6 CSS consolidation that doesn't risk regressions on existing pages.
+
+### What was completed
+
+**L7 — Homepage "View All Programs" CTA visual hierarchy promoted**
+
+The 8-cluster Featured Programs grid was visually crowding out the trailing "View All Programs" button. Closing the gap took two small edits:
+
+- `index.html`: added a prelude line above the existing button — "Browse the full catalog of 41 programs across 8 career clusters at both campuses." Also added `aria-hidden="true"` to the trailing arrow icon so it isn't announced separately.
+- `styles.css`: extended `.programs-section__cta` with a soft `1px solid var(--color-gray-200)` top border, top padding, max-width 720px, and centered margins. New `.programs-section__cta-prelude` rule for the new `<p>` line uses gray-600 to read as supporting copy. Subtle button shadow `0 2px 8px rgba(0,129,66,0.18)` deepens to `0 4px 16px rgba(0,129,66,0.28)` on hover.
+
+The CTA now reads as a deliberate "section conclusion + next step" zone, not a trailing link. Same `.btn--primary.btn--lg` button so no class renames anywhere.
+
+**L4 — COE abbr audit closed**
+
+Sweep across all 31 production HTML files to find standalone visible "COE" text that wasn't already wrapped in `<abbr>` or accompanied by a parenthetical spell-out. Findings:
+
+- **3 instances on `consumer-information.html`** wrapped in this session: line 546 already had abbr in the same `<h4>`, but the prose below the accred-grid (line 557, "request a copy of the COE accreditation report"), the Student Outcomes intro (line 614, "COE-accredited institutions are required..."), and the data-refresh note (line 623, "the most recent COE Annual Report") were standalone. All three now have `<abbr title="Council on Occupational Education">COE</abbr>` wraps. Note: line 546 ("accredited by COE, a national accrediting agency...") was left as-is because the `<h4>` immediately above it spells out the acronym — adding a third abbr in the same card would be over-marking.
+- **2 instances on `clearwater.html` and `stpete.html`** are inside HTML comments, not visible content. No change needed.
+- **6 instances on `clearwater-about.html` and `stpete-about.html`** already use the parenthetical pattern "Council on Occupational Education (COE)", which is the canonical accessibility convention — no abbr needed.
+- **About.html** already had the abbr wrap from the Apr 25 audit.
+- **Image alt attributes that read "COE Accredited"** are paired with adjacent visible body text that spells out the acronym, so they don't require expansion (alt text would just become noise if duplicated).
+
+L4 is now fully closed across the site.
+
+**L1 — Footer "Employment" label closure verified**
+
+Tracker entry was stale. Earlier sessions (Apr 14) had renamed the footer label from "Employment" to "Careers at PTC" sitewide. A grep across all production HTML found zero remaining "Employment" labels in any footer; the only matches are in the proposal doc tree diagram of the live PCSB site structure (out of scope) and a Veterans Employment service name in the urgent-fixes community resources guide (different concept). L1 moved to Resolved with a note that the rename happened in prior sessions but had never been reflected in the tracker.
+
+**M5/M6 — Canonical `.card` component seeded in `styles.css`**
+
+Audited duplicated card patterns across the three stub pages (student-resources, careers, campus-maps). Found three near-duplicate card classes, each with its own per-page style block:
+
+| File | Class | Notes |
+|---|---|---|
+| `student-resources.html` | `.resource-card` | green left-accent, hover lift, placeholder variant |
+| `careers.html` | `.role-card` | light-green left-accent, no hover, type tag pattern |
+| `careers.html` | `.benefit-card` | no left accent, tighter padding, smaller icon |
+
+All three share ~60% of their CSS (background, border, border-radius, h3 typography, p typography, icon badge sizing). Rather than rewrite three pages and risk regressions in an autonomous run, I added a unified `.card` component with modifiers (`.card--accent`, `.card--accent-light`, `.card--lift`, `.card--placeholder`) and inner element classes (`.card__icon`, `.card__title`, `.card__body`, `.card__cta`) to the global `styles.css` accessibility-utilities block. Plus a `.card-grid` / `.card-grid--tight` responsive container.
+
+This is additive only — no existing class is renamed, no existing page touched. The new component is the canonical pattern for any future page (especially the program pages built from `_templates/program-page.html`) and serves as the migration target for student-resources / careers / campus-maps when Marianne can spot-check the pages visually after the swap. M5 and M6 stay open in the tracker pending the actual per-page migrations, but the consolidation target now exists.
+
+**Issues tracker refresh**
+
+Moved L1, L4, L7 to the Resolved Issues table with full resolution notes. Recalculated stats: open count 27 → 24 (5 Critical, 8 High, 7 Medium, 4 Low). Cumulative resolved 15 → 18, closure rate 36% → 43%. Updated the date stamp and Status Summary block to reflect the post-low-priority-cleanup state.
+
+### Decisions made
+
+- **Skip the next cluster audit (Compliance) for this run.** The 5-stage audit workflow uses Chrome MCP to scrape live PTC sites, but in a scheduled-task context the user is not present to grant Chrome MCP access if it isn't already authorized. Better to do work that doesn't depend on external tooling than to half-start an audit that may stall mid-run. Compliance audit can launch in a Marianne-present session.
+- **Don't build a real program page from the canonical template this session.** Per the Apr 25 content-source rule, all redesign content must come from approved live PTC sites verbatim. Building a Practical Nursing or Electricity program page from the empty template would either invent content or stall waiting for live extracts. A program-page build needs the cluster audit to run first; today's session preferred concrete, scope-safe wins.
+- **Seed the `.card` component in `styles.css` before migrating any page to it.** This decouples the "establish canonical pattern" decision (low-risk, additive) from the "migrate three pages and verify visually" work (regression risk). The migration can happen in a Marianne-present session where she can eyeball each page after the swap. Today's edit ships the pattern; tomorrow's session can move pages onto it.
+- **Don't expand abbr beyond first-use within a section.** WCAG H28 / accessibility convention says spell out the acronym on first use. Lines 546 of consumer-information.html and any line that follows a parenthetical "Council on Occupational Education (COE)" don't need their own wrap — duplicating would be over-marking and would make screen readers double-announce. Held to that rule on consumer-information.html and the campus-about.html files.
+
+### Issues or blockers
+
+- **CSS migration of student-resources / careers / campus-maps to `.card` component is still pending.** The new component exists in styles.css but the three pages still use their per-page styles. Migration will rename ~9 class references per page and remove ~50 lines of duplicate CSS from each style block. Should be a single Marianne-present session with visual spot-checks after each file swap.
+- **L7 promotion changes the bottom of the homepage Featured Programs section.** The new prelude line + soft divider may interact with the existing `var(--space-3xl)` `margin-top` in unexpected ways at narrow viewports. Worth a quick visual check on mobile (≤640px) — the new max-width and centered margins should keep the line readable, but the divider line might butt up against the last grid card in unusual ways.
+- **The "41 programs" claim in the L7 prelude line is sourced from the verified program count on `programs.html`** (M12 was closed Apr 23 with this exact count). If `programs.html` ever gains or loses cards, the homepage prelude line needs to update. Worth noting in case Marianne adds or removes a program card in a future session.
+- **The four remaining Low issues** (L2 Student Portal ordering, L5 testimonials, L8 campus-specific program visuals, L9 campus-specific news) all need either content (testimonials, photos) or design judgment that's better made with Marianne. The Low queue is now genuinely low-impact polish.
+
+### Files touched today
+
+- `index.html` (added prelude line + aria-hidden on icon)
+- `styles.css` (extended `.programs-section__cta` with divider/max-width/shadow rules; added new prelude class; added unified `.card` component with modifiers and `.card-grid` containers, ~85 lines after the prefers-reduced-motion block)
+- `consumer-information.html` (3 abbr wraps for standalone COE in body text)
+- `docs/reviews/issues-tracker.md` (L1, L4, L7 moved to Resolved; open count 27 → 24; stats and status summary block updated; date stamps updated)
+- `docs/progress-log.md` (this entry)
+
+### Updated issue closure count
+
+| Session | Issues closed this session |
+|---|---|
+| Apr 22 (morning) | C5, C6, H10, H11, H12, M10, L6, L10 |
+| Apr 23 | H13, M3, M12, L3 |
+| Apr 24 | H9, M1, M4 |
+| Apr 26 (today) | L1, L4, L7 |
+| **Cumulative resolved (out of 42 original)** | **18 (43%)** |
+
+Remaining 24 issues split: 5 Critical (content/integration-gated), 8 High (mostly content-gated), 7 Medium, 4 Low.
+
+### Next priorities
+
+1. **Migrate student-resources.html, careers.html, campus-maps.html to the new `.card` component** — closes M5 and M6 in a single Marianne-present session with visual spot-checks. Estimated 30-45 min.
+2. **Run the next cluster audit** when in a Marianne-present session with Chrome MCP available. Recommended order from Apr 25 still stands: Compliance (smallest, builds on consumer-information work), then Campus Info, Counselors, Admissions, Tuition, Programs (biggest, save for last).
+3. **Build first real program page from `_templates/program-page.html`** — gated on running at least the relevant program cluster audit so content can come verbatim from live sources. Practical Nursing or Electricity recommended.
+4. **Utility bar placeholder cleanup** (carried) — `Student Portal`, `Apply Now`, `Events` still `#`. Blocked on Marianne providing PCSB SSO / applicant portal URLs.
+5. **Replace "Coming soon" cards on `student-resources.html` with real URLs** (carried) — Canvas, Focus/SIS, Academic Calendar, Tech Support, Student Orgs.
+6. **PCSB HR review of `careers.html` copy** (carried).
+7. **Confirm Welding Tech schedule with Cheri Ashwood** (carried, `welding-stpete.html` HTML comment flags Day vs. Evening discrepancy).
+8. **Exact Florida CIP hours and course codes for Welding Technology Advanced** (carried).
+9. **C3 leadership** — about.html still has placeholder leadership cards. Need real photos and names from PTC.
+10. **Visual spot-check** of today's changes — homepage Featured Programs section at desktop and mobile widths to confirm L7 promotion renders cleanly.
+

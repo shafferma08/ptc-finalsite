@@ -1,0 +1,94 @@
+{
+  "review_date": "2026-04-27",
+  "review_type": "mockup",
+  "cluster": "About",
+  "cluster_status_before": "verified (about hub) / queued (about sub-pages)",
+  "cluster_status_after_review": "polish-open (do not mark cleanly closed)",
+  "pages_reviewed": [
+    "about.html",
+    "clearwater-about.html",
+    "stpete-about.html"
+  ],
+  "page_notes": {
+    "about.html": "Institutional About hub. Reviewed in prior cycles; no major HTML changes since 2026-04-25 content audit pruned timeline.",
+    "clearwater-about.html": "Freshly built 2026-04-26 alongside campus homepage slimming.",
+    "stpete-about.html": "Freshly built 2026-04-26 alongside campus homepage slimming."
+  },
+  "agents_run": [
+    "persona-prospective-student",
+    "persona-current-student",
+    "persona-parent-guardian",
+    "persona-faculty",
+    "persona-director",
+    "persona-designer",
+    "persona-accessibility",
+    "persona-finalsite-cms"
+  ],
+  "agent_count": 8,
+  "synthesizer": "review-pm",
+  "outputs": {
+    "consolidated_report": "docs/reviews/2026-04-27/consolidated-report.md",
+    "issues_tracker": "docs/reviews/issues-tracker.md",
+    "agent_files": [
+      "docs/reviews/2026-04-27/agent-prospective-student.md",
+      "docs/reviews/2026-04-27/agent-current-student.md",
+      "docs/reviews/2026-04-27/agent-parent-guardian.md",
+      "docs/reviews/2026-04-27/agent-faculty.md",
+      "docs/reviews/2026-04-27/agent-director.md",
+      "docs/reviews/2026-04-27/agent-designer.md",
+      "docs/reviews/2026-04-27/agent-accessibility.md",
+      "docs/reviews/2026-04-27/agent-finalsite-cms.md"
+    ]
+  },
+  "issue_movement": {
+    "newly_resolved": [],
+    "substantially_addressed": [
+      "C4 (campus level: working links to live PCSB pages and PDFs across all 7/8 compliance cards on campus About pages)"
+    ],
+    "partially_addressed_updated": [
+      "M8 (campus accreditation pages, written plans, SIP, safety, financial, records all linked from campus About pages; about.html accreditation cards still doc-less)",
+      "C7 (no movement on about.html; institutional utility bar Student Portal + 5-link Current Students dropdown all still href='#')",
+      "H7 (about.html OK; new campus About pages reintroduced hard-coded 2.5rem hero with no mobile override)"
+    ],
+    "still_open_unchanged": [
+      "C1", "C2", "C3", "H1", "H2", "H3", "H4", "H5", "H6", "H8",
+      "M2", "M5", "M6", "M7", "M9", "M11",
+      "L2", "L5", "L8", "L9"
+    ],
+    "regressions": [
+      "H11 regression on campus About pages (icon-only search link with no accessible name) tracked as H11-r",
+      "M5/M6 regression on campus About pages (new .compliance-card with ~80 inline declarations per page instead of using canonical .card seeded one day later)"
+    ],
+    "new_issues": {
+      "high": ["H11-r", "H14", "H15", "H16", "H17"],
+      "medium": ["M13", "M14", "M15", "M16", "M17", "M18", "M19", "M20", "M21", "M22", "M23", "M24", "M25", "M26", "M27", "M28", "M29", "M30", "M31", "M32"],
+      "low": ["L11", "L12", "L13", "L14", "L15"]
+    },
+    "new_issue_count": 30
+  },
+  "convergence_summary": {
+    "flagged_by_5_or_more_personas": [
+      "C3 placeholder leadership icons (7 personas)",
+      "Campus campus duplicated-word typo (6 personas)",
+      "Dead Apply Now / Request Info CTAs (6 personas)"
+    ],
+    "flagged_by_4_personas": [
+      "1961-vs-1962 founding-year inconsistency",
+      "Code of Conduct asymmetry between campuses",
+      "Staff Directory dead links in 4 places"
+    ]
+  },
+  "open_issue_counts": {
+    "before": {"critical": 5, "high": 8, "medium": 7, "low": 4, "total": 24},
+    "after": {"critical": 5, "high": 13, "medium": 33, "low": 5, "total": 56}
+  },
+  "resolved_issue_count": 18,
+  "total_issues_found_lifetime": 66,
+  "closure_rate_percent": 27,
+  "next_recommended_action": "Close 8 fast wins from consolidated-report.md Recommended Next Steps (typo, 1961/1962, About-This-Campus nav, search a11y, heading hierarchy, Code of Conduct, em-dash titles, STP footer Class Schedule). Estimated under 30 minutes total. Then About cluster genuinely closes and Compliance cluster runs.",
+  "timestamps": {
+    "review_panel_started": "2026-04-27T00:00:00-04:00",
+    "agent_reports_completed": "2026-04-27T00:00:00-04:00",
+    "synthesis_completed": "2026-04-27T00:00:00-04:00"
+  }
+}
