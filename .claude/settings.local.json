@@ -6,7 +6,16 @@
       "WebFetch(domain:stpete.myptc.edu)",
       "WebFetch(domain:www.pcsb.org)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(start clearwater-about.html)",
+      "Bash(start stpete-about.html)",
+      "Bash(awk '/<nav class=\"main-nav\" id=\"main-nav\" aria-label=\"Main Navigation\">/,/<\\\\/nav>/' about.html)",
+      "Read(//tmp/**)",
+      "Bash(awk 'NR==50' index.html)",
+      "Bash(awk '{ match\\($0, /^ */\\); print \"leading_spaces:\" RLENGTH }')",
+      "Bash(start index.html)",
+      "Bash(start admissions.html)",
+      "Bash(start tuition-aid.html)"
     ]
   }
 }

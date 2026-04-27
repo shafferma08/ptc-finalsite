@@ -86,7 +86,7 @@ Stages: `queued` → `inventory` → `extracting` → `analyzing` → `synthesiz
 ## What lives outside this repo
 
 - Top-level `C:\Users\mshaf\Documents\CLAUDE.md` has Marianne's full project portfolio (other roles, freelance work, finance, etc.). When Claude Code is run from anywhere under `C:\Users\mshaf\Documents`, that file is also loaded.
-- The Project Manager agent at `C:\Users\mshaf\Documents\project-manager\` runs daily at 6:55 AM as a separate cross-project watchdog. It's not part of this repo.
+- The Project Manager agent at `C:\Users\mshaf\Documents\project-manager\` runs daily at ~6:45 AM as a separate cross-project watchdog. It's not part of this repo.
 
 ## House rules for edits
 
