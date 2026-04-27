@@ -347,15 +347,22 @@ myptc.edu/
 │   ├── Net Price Calculator
 │   └── Refund Policy
 │
-├── 🏛 ABOUT PTC
-│   ├── Welcome / History
-│   ├── Mission, Vision & Values
-│   ├── Leadership & Administration
-│   ├── Accreditation (COE + Cognia)
-│   ├── School Advisory Committee
-│   ├── School Improvement Plans
-│   ├── Annual Reports / Financial Reports
+├── 🏛 ABOUT PTC  ← Single consolidated page (per About cluster audit, 2026-04-25)
+│   ├── Welcome / History (verbatim from www.myptc.edu/about-us/welcome-to-ptc — "Since 1962...")
+│   ├── Mission, Vision & Values (verbatim from .../mission-vision-core-values; identical across all 3 live sites)
+│   ├── By the Numbers (live stats: nearly 5,000 students, 60+ programs, 250+ partners, 2 campuses + extension sites)
+│   ├── Accreditation (COE + Cognia overview; campus-specific accreditation pages live on campus sites)
+│   ├── Leadership & Administration  ← C3 still open: needs real photos + names (placeholder icons currently)
+│   ├── Annual Impact Report (link to live PDF)
 │   └── Workforce Innovation / CTAE / OWI-BIS
+│
+│   Pages MOVED OUT of About in the redesign (audit decision):
+│     • Programs Brochure (EN + ES) → /resources (marketing asset, not About)
+│     • Sexual Misconduct / Sexual Predators policy → /consumer-information (sitewide legal disclosure)
+│     • PCS/CTAE Compliance Statements → /consumer-information (verbatim from live, applied 2026-04-25)
+│     • PCS School Financial Reports → /consumer-information
+│     • Records request → /students/records-request (not About; with both campus contacts)
+│     • A Career in a Year → /programs landing (program marketing; live PDF is 2019 — see follow-ups.md)
 │
 ├── 🏫 CAMPUSES
 │   ├── Clearwater Campus → clearwater.myptc.edu
@@ -481,11 +488,18 @@ clearwater.myptc.edu/
 │   ├── School Improvement Plan
 │   └── Consumer Information / Disclosures
 │
-├── 🏛 ABOUT THIS CAMPUS
-│   ├── Campus History & Overview
-│   ├── Mission, Vision & Values
+├── 🏛 ABOUT THIS CAMPUS  ← Thin per-campus block (per About cluster audit, 2026-04-25)
+│   ├── Campus History & Overview (campus-specific narrative; mission/vision/values link back to main site About)
 │   ├── Faculty & Staff Directory
 │   ├── Campus Map & Directions
+│   ├── Campus Accreditation page (COE — required to live per-campus for COE review)
+│   ├── Campus Catalog (current 2025-26 PDF)
+│   ├── Written Plans (10 COE-required plans — per-campus disclosure)
+│   ├── School Improvement Plan (current SY)
+│   ├── Safety & Security Data (annual reports)
+│   ├── Financial Accountability (current period; HEERF reports may be archived)
+│   ├── Code of Conduct (currently STP only — see follow-ups.md for CLW gap)
+│   ├── Records Request (campus-specific contact)
 │   ├── Food Pantry
 │   └── Lunch Menu
 │

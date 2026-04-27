@@ -42,63 +42,14 @@
             margin: 0 0 2rem;
             line-height: 1.6;
         }
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .resource-card {
-            background: #fff;
-            border: 1px solid var(--color-gray-200);
-            border-left: 4px solid var(--color-green);
-            border-radius: 8px;
-            padding: 1.5rem 1.5rem 1.25rem;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .resource-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
-        .resource-card__icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 8px;
-            background: var(--color-green);
-            color: #fff;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.15rem;
-            margin-bottom: 1rem;
-        }
-        .resource-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.15rem;
-            color: var(--color-gray-900);
-            margin: 0 0 0.5rem;
-        }
-        .resource-card p {
-            color: var(--color-gray-700);
-            font-size: 0.95rem;
+        /* Card styles now use the canonical .card component from styles.css.
+           Page-local override: secondary fine-print paragraph inside a card. */
+        .card .card__fineprint {
+            font-size: 0.85rem;
             line-height: 1.5;
-            margin: 0 0 1rem;
+            margin: 0;
+            color: var(--color-gray-600);
         }
-        .resource-card__cta {
-            margin-top: auto;
-            color: var(--color-green);
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-decoration: none;
-        }
-        .resource-card__cta:hover { text-decoration: underline; }
-        .resource-card--placeholder {
-            border-left-color: var(--color-gray-400, #9ca3af);
-            background: #fafafa;
-        }
-        .resource-card--placeholder .resource-card__icon { background: var(--color-gray-400, #9ca3af); }
-        .resource-card--placeholder .resource-card__cta { color: var(--color-gray-600, #6b7280); font-style: italic; font-weight: 500; }
 
         .inline-note {
             background: #fef9c3;
@@ -194,42 +145,46 @@
                     <strong>Heads up:</strong> Several links below point to external district systems (PCSB Canvas, Focus) that will open in the existing portal when authenticated. Placeholder cards are clearly labeled "Coming soon" while the live integrations are finalized for the new site.
                 </div>
 
-                <div class="resources-grid">
-                    <div class="resource-card resource-card--placeholder">
-                        <span class="resource-card__icon"><i class="fas fa-chalkboard-teacher"></i></span>
-                        <h3>Canvas</h3>
-                        <p>Access course content, assignments, grades, and announcements through the PCSB Canvas instance.</p>
-                        <span class="resource-card__cta">Coming soon</span>
+                <div class="card-grid">
+                    <div class="card card--accent card--lift card--placeholder">
+                        <span class="card__icon"><i class="fas fa-chalkboard-teacher"></i></span>
+                        <h3 class="card__title">Canvas</h3>
+                        <p class="card__body">Access course content, assignments, grades, and announcements through the PCSB Canvas instance.</p>
+                        <span class="card__cta">Coming soon</span>
                     </div>
-                    <div class="resource-card resource-card--placeholder">
-                        <span class="resource-card__icon"><i class="fas fa-id-card"></i></span>
-                        <h3>Focus / SIS Portal</h3>
-                        <p>Check grades, attendance, schedule, and account balances in the district Student Information System.</p>
-                        <span class="resource-card__cta">Coming soon</span>
+                    <div class="card card--accent card--lift card--placeholder">
+                        <span class="card__icon"><i class="fas fa-id-card"></i></span>
+                        <h3 class="card__title">Focus / SIS Portal</h3>
+                        <p class="card__body">Check grades, attendance, schedule, and account balances in the district Student Information System.</p>
+                        <span class="card__cta">Coming soon</span>
                     </div>
-                    <div class="resource-card resource-card--placeholder">
-                        <span class="resource-card__icon"><i class="fas fa-calendar-alt"></i></span>
-                        <h3>Academic Calendar</h3>
-                        <p>Term start and end dates, holidays, exam windows, and graduation dates for 2026-27.</p>
-                        <span class="resource-card__cta">Coming soon</span>
+                    <div class="card card--accent card--lift card--placeholder">
+                        <span class="card__icon"><i class="fas fa-calendar-alt"></i></span>
+                        <h3 class="card__title">Academic Calendar</h3>
+                        <p class="card__body">Term start and end dates, holidays, exam windows, and graduation dates for 2026-27.</p>
+                        <span class="card__cta">Coming soon</span>
                     </div>
-                    <div class="resource-card">
-                        <span class="resource-card__icon"><i class="fas fa-file-alt"></i></span>
-                        <h3>Transcript Requests</h3>
-                        <p>Request an official transcript for employment, transfer, or personal records through the district office.</p>
-                        <a href="contact.html" class="resource-card__cta">Contact the registrar <i class="fas fa-arrow-right"></i></a>
+                    <div class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-file-alt"></i></span>
+                        <h3 class="card__title">Transcript &amp; Record Requests</h3>
+                        <p class="card__body">Complete the Request for School Records and Release Authorization Form, then mail or email it to the campus where you attended.</p>
+                        <p style="font-size:0.85rem; line-height:1.5; margin-top:0.5rem; color: var(--color-gray-600);">
+                            <strong>Clearwater:</strong> <a href="mailto:canfieldj@pcsb.org">canfieldj@pcsb.org</a><br>
+                            <strong>St. Petersburg:</strong> <a href="mailto:kilpatrickc@pcsb.org">kilpatrickc@pcsb.org</a><br>
+                            Records older than 5 years: PCS Central Records, <a href="tel:7277932701">727-793-2701</a>
+                        </p>
                     </div>
-                    <div class="resource-card resource-card--placeholder">
-                        <span class="resource-card__icon"><i class="fas fa-headset"></i></span>
-                        <h3>Tech Support</h3>
-                        <p>Help with Canvas, email, district logins, and classroom technology issues.</p>
-                        <span class="resource-card__cta">Coming soon</span>
+                    <div class="card card--accent card--lift card--placeholder">
+                        <span class="card__icon"><i class="fas fa-headset"></i></span>
+                        <h3 class="card__title">Tech Support</h3>
+                        <p class="card__body">Help with Canvas, email, district logins, and classroom technology issues.</p>
+                        <span class="card__cta">Coming soon</span>
                     </div>
-                    <div class="resource-card">
-                        <span class="resource-card__icon"><i class="fas fa-calendar-week"></i></span>
-                        <h3>Class Schedules</h3>
-                        <p>View the current-year class schedule for your campus.</p>
-                        <a href="schedule-clearwater.html" class="resource-card__cta">Clearwater <i class="fas fa-arrow-right"></i></a>
+                    <div class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-calendar-week"></i></span>
+                        <h3 class="card__title">Class Schedules</h3>
+                        <p class="card__body">View the current-year class schedule for your campus.</p>
+                        <a href="schedule-clearwater.html" class="card__cta">Clearwater <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -241,42 +196,42 @@
                 <h2>Support &amp; Services</h2>
                 <p class="section-intro">Counseling, financial aid, accessibility, and career support are available to every enrolled student.</p>
 
-                <div class="resources-grid">
-                    <div class="resource-card">
-                        <span class="resource-card__icon"><i class="fas fa-user-graduate"></i></span>
-                        <h3>Academic Counseling</h3>
-                        <p>Program planning, progress reviews, and support for completing your occupational completion points (OCPs).</p>
-                        <a href="contact.html" class="resource-card__cta">Contact counseling <i class="fas fa-arrow-right"></i></a>
+                <div class="card-grid">
+                    <div class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-user-graduate"></i></span>
+                        <h3 class="card__title">Academic Counseling</h3>
+                        <p class="card__body">Program planning, progress reviews, and support for completing your occupational completion points (OCPs).</p>
+                        <a href="contact.html" class="card__cta">Contact counseling <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="resource-card">
-                        <span class="resource-card__icon"><i class="fas fa-dollar-sign"></i></span>
-                        <h3>Tuition &amp; Financial Aid</h3>
-                        <p>Pay tuition, apply for FAFSA, explore scholarships, and find veterans benefits.</p>
-                        <a href="tuition-aid.html" class="resource-card__cta">Tuition &amp; Aid <i class="fas fa-arrow-right"></i></a>
+                    <div class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-dollar-sign"></i></span>
+                        <h3 class="card__title">Tuition &amp; Financial Aid</h3>
+                        <p class="card__body">Pay tuition, apply for FAFSA, explore scholarships, and find veterans benefits.</p>
+                        <a href="tuition-aid.html" class="card__cta">Tuition &amp; Aid <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="resource-card">
-                        <span class="resource-card__icon"><i class="fas fa-universal-access"></i></span>
-                        <h3>Accessibility &amp; Accommodations</h3>
-                        <p>Request disability accommodations and learn about available support services and resources.</p>
-                        <a href="consumer-information.html#accessibility" class="resource-card__cta">Accessibility info <i class="fas fa-arrow-right"></i></a>
+                    <div class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-universal-access"></i></span>
+                        <h3 class="card__title">Accessibility &amp; Accommodations</h3>
+                        <p class="card__body">Request disability accommodations and learn about available support services and resources.</p>
+                        <a href="consumer-information.html#accessibility" class="card__cta">Accessibility info <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="resource-card">
-                        <span class="resource-card__icon"><i class="fas fa-medal"></i></span>
-                        <h3>Veterans Services</h3>
-                        <p>Dedicated support for active duty, veterans, and military family members pursuing education at PTC.</p>
-                        <a href="tuition-aid.html#veterans" class="resource-card__cta">Veterans benefits <i class="fas fa-arrow-right"></i></a>
+                    <div class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-medal"></i></span>
+                        <h3 class="card__title">Veterans Services</h3>
+                        <p class="card__body">Dedicated support for active duty, veterans, and military family members pursuing education at PTC.</p>
+                        <a href="tuition-aid.html#veterans" class="card__cta">Veterans benefits <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="resource-card">
-                        <span class="resource-card__icon"><i class="fas fa-briefcase"></i></span>
-                        <h3>Career Services &amp; Job Board</h3>
-                        <p>Résumé support, interview prep, and current job postings from employer partners.</p>
-                        <a href="post-a-job-FINAL.html" class="resource-card__cta">Employer partners <i class="fas fa-arrow-right"></i></a>
+                    <div class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-briefcase"></i></span>
+                        <h3 class="card__title">Career Services &amp; Job Board</h3>
+                        <p class="card__body">Résumé support, interview prep, and current job postings from employer partners.</p>
+                        <a href="post-a-job-FINAL.html" class="card__cta">Employer partners <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="resource-card resource-card--placeholder">
-                        <span class="resource-card__icon"><i class="fas fa-users"></i></span>
-                        <h3>Student Organizations</h3>
-                        <p>Professional student organizations tied to your program, including SkillsUSA and NTHS.</p>
-                        <span class="resource-card__cta">Coming soon</span>
+                    <div class="card card--accent card--lift card--placeholder">
+                        <span class="card__icon"><i class="fas fa-users"></i></span>
+                        <h3 class="card__title">Student Organizations</h3>
+                        <p class="card__body">Professional student organizations tied to your program, including SkillsUSA and NTHS.</p>
+                        <span class="card__cta">Coming soon</span>
                     </div>
                 </div>
             </div>
@@ -287,24 +242,24 @@
             <div class="container">
                 <h2>Policies &amp; Forms</h2>
                 <p class="section-intro">Official consumer information, required disclosures, and student-facing policies.</p>
-                <div class="resources-grid">
-                    <div class="resource-card">
-                        <span class="resource-card__icon"><i class="fas fa-file-shield"></i></span>
-                        <h3>Consumer Information</h3>
-                        <p>COE-required disclosures on outcomes, accreditation, and policies.</p>
-                        <a href="consumer-information.html" class="resource-card__cta">Read disclosures <i class="fas fa-arrow-right"></i></a>
+                <div class="card-grid">
+                    <div class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-file-shield"></i></span>
+                        <h3 class="card__title">Consumer Information</h3>
+                        <p class="card__body">COE-required disclosures on outcomes, accreditation, and policies.</p>
+                        <a href="consumer-information.html" class="card__cta">Read disclosures <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="resource-card">
-                        <span class="resource-card__icon"><i class="fas fa-balance-scale"></i></span>
-                        <h3>Non-Discrimination</h3>
-                        <p>PTC's and PCSB's commitments and contact information for reporting concerns.</p>
-                        <a href="consumer-information.html#non-discrimination" class="resource-card__cta">View policy <i class="fas fa-arrow-right"></i></a>
+                    <div class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-balance-scale"></i></span>
+                        <h3 class="card__title">Non-Discrimination</h3>
+                        <p class="card__body">PTC's and PCSB's commitments and contact information for reporting concerns.</p>
+                        <a href="consumer-information.html#non-discrimination" class="card__cta">View policy <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="resource-card">
-                        <span class="resource-card__icon"><i class="fas fa-user-shield"></i></span>
-                        <h3>Privacy &amp; FERPA</h3>
-                        <p>Your rights under the Family Educational Rights and Privacy Act.</p>
-                        <a href="consumer-information.html#privacy-ferpa" class="resource-card__cta">Privacy info <i class="fas fa-arrow-right"></i></a>
+                    <div class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-user-shield"></i></span>
+                        <h3 class="card__title">Privacy &amp; FERPA</h3>
+                        <p class="card__body">Your rights under the Family Educational Rights and Privacy Act.</p>
+                        <a href="consumer-information.html#privacy-ferpa" class="card__cta">Privacy info <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
