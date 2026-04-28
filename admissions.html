@@ -44,7 +44,7 @@
         }
         .page-hero__title {
             font-family: var(--font-heading);
-            font-size: 2.5rem;
+            font-size: clamp(1.85rem, 4vw, 2.5rem);
             font-weight: 700;
             margin: 0 0 0.75rem;
         }
@@ -275,9 +275,6 @@
                 text-align: center;
                 padding: 2rem;
             }
-            .page-hero__title {
-                font-size: 2rem;
-            }
         }
     </style>
 </head>
@@ -324,7 +321,7 @@
                         <div class="main-nav__dropdown">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
-                                    <h4>By Category</h4>
+                                    <p class="dropdown__column-title">By Category</p>
                                     <ul>
                                         <li><a href="#">Health Sciences</a></li>
                                         <li><a href="#">Information Technology</a></li>
@@ -337,7 +334,7 @@
                                     </ul>
                                 </div>
                                 <div class="dropdown__column">
-                                    <h4>Explore</h4>
+                                    <p class="dropdown__column-title">Explore</p>
                                     <ul>
                                         <li><a href="programs.html">All Programs A&ndash;Z</a></li>
                                         <li><a href="#">Evening &amp; Part-Time</a></li>
@@ -392,7 +389,7 @@
                         <div class="main-nav__dropdown">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
-                                    <h4>Clearwater</h4>
+                                    <p class="dropdown__column-title">Clearwater</p>
                                     <ul>
                                         <li><a href="clearwater.html">Clearwater Campus Home</a></li>
                                         <li><a href="clearwater-about.html">About the Clearwater Campus</a></li>
@@ -400,7 +397,7 @@
                                     </ul>
                                 </div>
                                 <div class="dropdown__column">
-                                    <h4>St. Petersburg</h4>
+                                    <p class="dropdown__column-title">St. Petersburg</p>
                                     <ul>
                                         <li><a href="stpete.html">St. Petersburg Campus Home</a></li>
                                         <li><a href="stpete-about.html">About the St. Petersburg Campus</a></li>
@@ -739,7 +736,7 @@
                 </div>
                 <div class="footer__nav">
                     <div class="footer__col">
-                        <h4>Quick Links</h4>
+                        <p class="footer__col-title">Quick Links</p>
                         <ul>
                             <li><a href="programs.html">Programs</a></li>
                             <li><a href="admissions.html">Admissions</a></li>
@@ -749,7 +746,7 @@
                         </ul>
                     </div>
                     <div class="footer__col">
-                        <h4>Campuses</h4>
+                        <p class="footer__col-title">Campuses</p>
                         <ul>
                             <li><a href="clearwater.html">Clearwater Campus</a></li>
                             <li><a href="stpete.html">St. Petersburg Campus</a></li>
@@ -758,7 +755,7 @@
                         </ul>
                     </div>
                     <div class="footer__col">
-                        <h4>Resources</h4>
+                        <p class="footer__col-title">Resources</p>
                         <ul>
                             <li><a href="consumer-information.html">Consumer Information</a></li>
                             <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>

@@ -37,6 +37,7 @@ These are non-negotiable. Read them before you write or edit anything in this re
 - `.claude/agents/` — formal Claude Code subagents (8 review personas + 1 PM + 4 audit subagents)
 - `.claude/skills/review-panel/` — orchestrates the persona panel
 - `.claude/skills/content-audit/` — orchestrates the cluster audit pipeline
+- `assets/marketing-library/INDEX.md` — index of OWI Marketing photo/video library on the external My Passport drive at `F:\I-Drive\_Photos-Videos_OWI_\`. Read this before searching the drive for any imagery; it maps available assets to current open redesign issues. We pull a small Tier 1 batch into `assets/` per session, never the whole drive.
 
 ## Subagents available
 
