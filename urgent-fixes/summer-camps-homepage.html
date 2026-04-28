@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summer Camps Homepage Embed — PTC Live Site</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<!--
+  ============================================================
+  SUMMER CAMPS HOMEPAGE EMBED
+  ============================================================
+  Paste into Finalsite's embed/code-snippet widget on the
+  homepage. The <head> section above is for local preview only;
+  in Finalsite, paste only the <style> block + the
+  <div class="ptc-fix-summer-camps">...</div> block from <body>.
+  The font link can be omitted because the live site already
+  loads Roboto via its own stylesheet.
+
+  Suggested placement on the homepage, in order of preference:
+    1. Above News & Announcements as a featured banner
+    2. Below News & Announcements
+    3. Between Campus Contact Cards and News & Announcements
+
+  CTA target:
+    https://www.myptc.edu/workforce-innovation/office-of-workforce-innovation/ptc-short-courses-evening-classes#summer-camps
+
+  All CSS is scoped to .ptc-fix-summer-camps so it cannot bleed
+  into the rest of the Finalsite page.
+  ============================================================
+-->
+<style>
+  /* =====================================================
+     Scope reset: defensive baseline, all descendants only
+     ===================================================== */
+  .ptc-fix-summer-camps {
+    font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+    color: #1A1A1A;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+  }
+  .ptc-fix-summer-camps *,
+  .ptc-fix-summer-camps *::before,
+  .ptc-fix-summer-camps *::after {
+    box-sizing: border-box;
+  }
+
+  /* =====================================================
+     Card container — side-panel layout
+     Green hero panel on left, white tile body on right
+     ===================================================== */
+  .ptc-fix-summer-camps__card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #d4d4d4;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+  }
+
+  /* =====================================================
+     Left panel — bold PTC Green gradient with white text
+     ===================================================== */
+  .ptc-fix-summer-camps__panel {
+    background: linear-gradient(160deg, #008142 0%, #006633 100%);
+    color: #ffffff;
+    padding: 2.25rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.85rem;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Subtle decorative yellow corner accent */
+  .ptc-fix-summer-camps__panel::after {
+    content: "";
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 207, 1, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  /* Vertical gradient border between panel and body
+     yellow -> OWI-BIS green -> PTC dark green */
+  .ptc-fix-summer-camps__panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, #FFCF01 0%, #8DC63F 50%, #008142 100%);
+    z-index: 2;
+  }
+
+  /* =====================================================
+     Now Enrolling badge
+     ===================================================== */
+  .ptc-fix-summer-camps__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: #FFCF01;
+    color: #1A1A1A;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 13px;
+    border-radius: 4px;
+    z-index: 1;
+  }
+  .ptc-fix-summer-camps__badge::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #008142;
+    border-radius: 50%;
+  }
+
+  /* =====================================================
+     Count callout in side panel
+     ===================================================== */
+  .ptc-fix-summer-camps__count {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 500;
+    z-index: 1;
+  }
+  .ptc-fix-summer-camps__count strong {
+    display: block;
+    font-size: 2.5rem;
+    color: #FFCF01;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  /* =====================================================
+     Heading inside side panel
+     ===================================================== */
+  .ptc-fix-summer-camps__heading {
+    font-family: 'Roboto Slab', Georgia, serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.2;
+    z-index: 1;
+  }
+  .ptc-fix-summer-camps__heading::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #FFCF01;
+    margin-top: 0.65rem;
+    border-radius: 2px;
+  }
+
+  /* =====================================================
+     Body — intro, tiles, CTA on white
+     ===================================================== */
+  .ptc-fix-summer-camps__body {
+    padding: 2rem 2.25rem;
+  }
+  .ptc-fix-summer-camps__intro {
+    font-size: 1.1rem;
+    color: #2c2c2c;
+    margin: 0 0 1.75rem;
+    line-height: 1.55;
+  }
+
+  /* =====================================================
+     Camp tile grid — green-outlined tiles for separation
+     ===================================================== */
+  .ptc-fix-summer-camps__tiles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.85rem;
+    margin: 0 0 1.75rem;
+  }
+  .ptc-fix-summer-camps__tile {
+    background: #ffffff;
+    border: 2px solid #8DC63F;
+    border-radius: 8px;
+    padding: 0.95rem 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100px;
+  }
+  .ptc-fix-summer-camps__tile:hover {
+    transform: translateY(-2px);
+    border-color: #008142;
+    box-shadow: 0 6px 14px rgba(0, 129, 66, 0.18);
+  }
+  .ptc-fix-summer-camps__tile-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: #1A1A1A;
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
+  }
+  .ptc-fix-summer-camps__pill {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 10px;
+    align-self: flex-start;
+  }
+  .ptc-fix-summer-camps__pill--clw {
+    background: #008142;
+    color: #ffffff;
+  }
+  .ptc-fix-summer-camps__pill--stp {
+    background: #FFCF01;
+    color: #1A1A1A;
+  }
+
+  /* =====================================================
+     CTA button
+     ===================================================== */
+  .ptc-fix-summer-camps__cta {
+    display: inline-block;
+    background: #008142;
+    color: #ffffff !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    padding: 0.85rem 1.65rem;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .ptc-fix-summer-camps__cta:hover,
+  .ptc-fix-summer-camps__cta:focus {
+    background: #006633 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 129, 66, 0.25);
+  }
+  .ptc-fix-summer-camps__cta-arrow {
+    display: inline-block;
+    margin-left: 0.4rem;
+    transition: transform 0.2s ease;
+  }
+  .ptc-fix-summer-camps__cta:hover .ptc-fix-summer-camps__cta-arrow {
+    transform: translateX(3px);
+  }
+
+  /* =====================================================
+     Tablet (under 1024px): 2-column tile grid still
+     side-by-side panel layout
+     ===================================================== */
+  @media (max-width: 1024px) {
+    .ptc-fix-summer-camps__card {
+      grid-template-columns: 220px 1fr;
+    }
+    .ptc-fix-summer-camps__tiles {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .ptc-fix-summer-camps__panel {
+      padding: 2rem 1.5rem;
+    }
+  }
+
+  /* =====================================================
+     Small tablet / large phone (under 768px): stack
+     panel on top, body below
+     ===================================================== */
+  @media (max-width: 768px) {
+    .ptc-fix-summer-camps__card {
+      grid-template-columns: 1fr;
+    }
+    .ptc-fix-summer-camps__panel {
+      padding: 1.75rem 1.5rem;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.75rem 1.25rem;
+    }
+    /* Gradient border becomes horizontal (bottom of panel) */
+    .ptc-fix-summer-camps__panel::before {
+      top: auto;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: auto;
+      height: 5px;
+      background: linear-gradient(90deg, #FFCF01 0%, #8DC63F 50%, #008142 100%);
+    }
+    .ptc-fix-summer-camps__heading {
+      flex-basis: 100%;
+      font-size: 1.5rem;
+    }
+    .ptc-fix-summer-camps__count strong {
+      display: inline;
+      font-size: 1.4rem;
+      margin-right: 0.4rem;
+    }
+    .ptc-fix-summer-camps__count {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* =====================================================
+     Mobile (under 560px): tighter padding
+     ===================================================== */
+  @media (max-width: 560px) {
+    .ptc-fix-summer-camps__body {
+      padding: 1.5rem 1.25rem;
+    }
+    .ptc-fix-summer-camps__intro {
+      font-size: 1rem;
+    }
+    .ptc-fix-summer-camps__tiles {
+      gap: 0.7rem;
+    }
+    .ptc-fix-summer-camps__tile {
+      min-height: 88px;
+      padding: 0.8rem 0.9rem;
+    }
+    .ptc-fix-summer-camps__cta {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  /* =====================================================
+     Local preview chrome only (REMOVE before pasting)
+     ===================================================== */
+  body.preview-chrome {
+    background: #f5f5f5;
+    margin: 0;
+    padding: 2rem 0;
+    font-family: 'Roboto', sans-serif;
+  }
+  body.preview-chrome .preview-banner {
+    max-width: 1200px;
+    margin: 0 auto 1rem;
+    padding: 0.75rem 1.5rem;
+    background: #1A1A1A;
+    color: #FFCF01;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body class="preview-chrome">
+
+<div class="preview-banner">PREVIEW ONLY · paste only the &lt;style&gt; block + the .ptc-fix-summer-camps div into Finalsite</div>
+
+<!-- =================================================== -->
+<!-- BEGIN EMBED — paste this block into Finalsite       -->
+<!-- =================================================== -->
+
+<div class="ptc-fix-summer-camps">
+  <div class="ptc-fix-summer-camps__card">
+
+    <div class="ptc-fix-summer-camps__panel">
+      <span class="ptc-fix-summer-camps__badge">Now Enrolling</span>
+      <div class="ptc-fix-summer-camps__count"><strong>8</strong>one-week camps</div>
+      <h2 class="ptc-fix-summer-camps__heading">Summer Camps for Youth (2026)</h2>
+    </div>
+
+    <div class="ptc-fix-summer-camps__body">
+      <p class="ptc-fix-summer-camps__intro">
+        Hands-on career exploration camps for teens. Each camp gives students a real taste of a professional trade before they graduate.
+      </p>
+
+      <div class="ptc-fix-summer-camps__tiles">
+        <div class="ptc-fix-summer-camps__tile">
+          <div class="ptc-fix-summer-camps__tile-name">Automotive Technology</div>
+          <span class="ptc-fix-summer-camps__pill ptc-fix-summer-camps__pill--clw">Clearwater</span>
+        </div>
+        <div class="ptc-fix-summer-camps__tile">
+          <div class="ptc-fix-summer-camps__tile-name">Barbering</div>
+          <span class="ptc-fix-summer-camps__pill ptc-fix-summer-camps__pill--stp">St. Pete</span>
+        </div>
+        <div class="ptc-fix-summer-camps__tile">
+          <div class="ptc-fix-summer-camps__tile-name">Construction</div>
+          <span class="ptc-fix-summer-camps__pill ptc-fix-summer-camps__pill--stp">St. Pete</span>
+        </div>
+        <div class="ptc-fix-summer-camps__tile">
+          <div class="ptc-fix-summer-camps__tile-name">Cosmetology Summer Braiding</div>
+          <span class="ptc-fix-summer-camps__pill ptc-fix-summer-camps__pill--stp">St. Pete</span>
+        </div>
+        <div class="ptc-fix-summer-camps__tile">
+          <div class="ptc-fix-summer-camps__tile-name">CPR for Teens</div>
+          <span class="ptc-fix-summer-camps__pill ptc-fix-summer-camps__pill--stp">St. Pete</span>
+        </div>
+        <div class="ptc-fix-summer-camps__tile">
+          <div class="ptc-fix-summer-camps__tile-name">Crazy Hot Culinary</div>
+          <span class="ptc-fix-summer-camps__pill ptc-fix-summer-camps__pill--stp">St. Pete</span>
+        </div>
+        <div class="ptc-fix-summer-camps__tile">
+          <div class="ptc-fix-summer-camps__tile-name">Nails Specialty</div>
+          <span class="ptc-fix-summer-camps__pill ptc-fix-summer-camps__pill--stp">St. Pete</span>
+        </div>
+        <div class="ptc-fix-summer-camps__tile">
+          <div class="ptc-fix-summer-camps__tile-name">Skin Care is Self Care</div>
+          <span class="ptc-fix-summer-camps__pill ptc-fix-summer-camps__pill--stp">St. Pete</span>
+        </div>
+      </div>
+
+      <a class="ptc-fix-summer-camps__cta" href="https://www.myptc.edu/workforce-innovation/office-of-workforce-innovation/ptc-short-courses-evening-classes#summer-camps">
+        Explore the Camps
+        <span class="ptc-fix-summer-camps__cta-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- =================================================== -->
+<!-- END EMBED                                           -->
+<!-- =================================================== -->
+
+</body>
+</html>
