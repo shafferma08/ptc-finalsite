@@ -15,7 +15,11 @@
       "Bash(awk '{ match\\($0, /^ */\\); print \"leading_spaces:\" RLENGTH }')",
       "Bash(start index.html)",
       "Bash(start admissions.html)",
-      "Bash(start tuition-aid.html)"
+      "Bash(start tuition-aid.html)",
+      "WebFetch(domain:claude.com)",
+      "Skill(schedule)",
+      "mcp__claude_ai_Slack__slack_send_message",
+      "mcp__claude_ai_Slack__slack_read_channel"
     ]
   }
 }
