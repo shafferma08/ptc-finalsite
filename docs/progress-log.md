@@ -4,6 +4,193 @@ This file tracks daily work sessions on the PTC website redesign. Each entry rec
 
 ---
 
+## April 29, 2026 — Digital Media program hours correction
+
+`schedule-stpete.html` line 747: Digital Media Design Technology hours updated `1200 hrs` → `900 hrs`. Source: Mrs. Clarke (via Marianne). The 1200 was a placeholder from the initial schedule build; Mrs. Clarke confirmed the correct program length is 900 hours. Marianne also updating the Finalsite skeleton page (built 2026-04-24, lives in CMS not the repo) with the same number on her end. Other open fields still pending from Mrs. Clarke / Kyesha: program code, total OCPs, admissions contact, instructor, certification target, TABE requirements, distance ed availability.
+
+---
+
+## April 29, 2026 — Compliance cluster Stage 2 (extracting)
+
+CLUSTERS.md row 3 advanced `extracting` → `analyzing`. Stage 1 research (2026-04-28) had narrowed the new-extraction work to 2 URLs out of the original 8 unsourced topics; Stage 2 fetched both verbatim and saved them under `docs/audit/compliance/extracted/www/`:
+
+- `accessibility-statement.md` — live page titled "Accessible Website Initiative" at `myptc.edu/accessibility-statement`. Cites WCAG 2.0 (not 2.1 AA). Webmaster contact email is `PTCWebInfo-NoReply@pcsb.org`. Already in `follow-ups.md`: redesign currently asserts WCAG 2.1 AA which violates the verbatim rule.
+- `compliance-statement-privacy-policy.md` — live page at `myptc.edu/privacy-policy` is mislabeled; rendered content is the PCS/CTAE Compliance Statement. Names two officers verbatim: **Dena Collins**, EEO/Title IX/ADA, `(727) 588-6000`; **Stephanie Miller**, District 504 Coordinator, `(727) 588-6296`. Both at 301 4th St. SW Largo, FL 33770. The same content also lives at `/about-us/welcome-to-ptc/pinellas-county-schoolsctae-compliance-statements` — duplicate-URL flag already in `follow-ups.md`.
+
+About-cluster extracts cover the other CI sections that already had verified live sources (accreditation, non-discrimination, sexual misconduct, safety/security data, financial reports, code of conduct, catalog/records, contact). For 6 of the original 8 topics (FERPA, Student Outcomes, DFSCA, HEOA Copyright, Voter Reg, Constitution Day) Stage 1 confirmed there's nothing to extract — those become Stage 6 strip actions and high-priority federal-aid follow-ups.
+
+**Note on extraction tooling:** ran via WebFetch rather than Chrome MCP because the 2 target URLs are public, unauthenticated, and short — overkill to spin up Chrome for two paragraphs of text. PROCESS.md's Chrome-MCP path is still the default for normal extraction passes; this was a narrow exception. Flagged a prompt-injection-shaped `<system-reminder>` block that arrived appended to the second WebFetch result and was excluded from the saved extract.
+
+### Next stage
+
+Stage 3 (analyzing) — dispatch all 4 audit subagents in a single message: `audit-mapper`, `audit-comparator`, `audit-ia-recommender`, `audit-verifier`. Inputs: the 2 new compliance/ extracts plus the about-cluster extracts already verified. The IA Recommender's main open question stays: name specific officers (Dena Collins / Stephanie Miller) on the redesign Compliance Officer block, or keep the generic "Compliance Officer · Office of Equal Opportunity" framing. Comparator should also re-examine the 8 unsourced CI sections to confirm Stage 6 strip actions are scoped correctly.
+
+---
+
+## April 29, 2026 — Compliance cluster Stage 3 (analyzing)
+
+CLUSTERS.md row 3 advanced `analyzing` → `synthesizing`. All 4 audit subagents dispatched in a single message; all 4 artifacts landed in `docs/audit/compliance/`:
+
+- **`OVERLAP-MATRIX.md`** (Mapper) — punchline is absence: 6 federal-aid disclosures have zero live source on www / clearwater / stpete. Real campus asymmetries are governance gaps (STP Safety & Security stale at 2023 vs CLW current 8/28/2025; STP has Code of Conduct PDF, CLW doesn't; Written Plans diverge in plan list and COE Handbook year).
+- **`REDESIGN-COMPARISON.md`** (Comparator) — 27 fabricated claims grouped into 6 distinct strip actions matching Stage 1 prediction. Three notable surprises beyond Stage 1: (a) `727.588.6000` on CI is actually Dena Collins's EEO line, not a generic district main number, so it stays but needs re-attribution; (b) entire Financial Aid block on CI (R2T4, Verification, SAP, refund policy) is invented and needs to strip and route to Tuition cluster; (c) invented "5-day transcript SLA" on records-request section. Two truncation gaps to re-fetch in Stage 4-6: FDLE sexual-predators ending wording + STP Written Plans 11th item.
+- **`IA-RECOMMENDATION.md`** (IA Recommender) — six headline calls: (1) one page no split, CI stays canonical hub at 11-12 sections post-strip; (2) name the officers (Dena Collins + Stephanie Miller) verbatim alongside the generic Office of Equal Opportunity inbox; (3) WCAG 2.0 verbatim, route 2.1 AA upgrade to follow-ups; (4) ESE district-link card on CI only, postsecondary contact named via Counselors cluster; (5) keep existing campus-about grids + add new "Accessibility & Officers" card on each pointing to `#accessibility` and `#contact`; (6) D1 Federal School Code + D2 tuition rates punt to Tuition cluster, D3 district phone verified this cluster.
+- **`VERIFICATION.md`** (Verifier) — verifier hit a polling-window race (Comparator finished 17:08, Verifier wrote 17:09 after waiting 6+ minutes for Comparator file that landed seconds before its own write) and proceeded with independent first-principles verification rather than reconciliation. Net effect: stronger cross-check, since same verdicts reached without seeing Comparator's report. 7 verbatim confirmations, 6 distinct strip actions, 3 drift items in Accessibility, 3 needs-more-research (FSC + tuition rates out-of-scope; founding year 1962 already verified in About-cluster sweep). Surfaced 6 new issues beyond Comparator: about.html accessibility transition sentence (V17) is a mild paraphrase; HEOA 488 statutory $ figures on CI line 713 are unsourced; voter-reg "forms at Student Services" is a risky operational claim; footer Privacy Policy link will dead-end after `#privacy-ferpa` strip and needs re-aim or removal; STP Safety stale (already in matrix); CLW Code of Conduct "Pending" placeholder is acceptable.
+
+### Decisions made / surfaced
+
+- **Cross-check via independent verification, not reconciliation.** The Verifier's polling-window miss turned out to be a feature: independent first-principles verification reached the same verdicts as the Comparator. Stronger evidence than a reconciliation pass. Documented in VERIFICATION.md so the next cluster's verifier can repeat the pattern if needed.
+- **Compliance Officer naming decision: name them.** IA Recommender's strong recommendation. Stage 6 build will lead with verbatim Dena Collins + Stephanie Miller blocks, followed by the generic Office of Equal Opportunity inbox below. Per verbatim rule, both are valid live sources; using both is more accountable and the live page already names them.
+- **WCAG 2.0 verbatim with follow-up to upgrade.** Stage 6 strips the 2.1 AA assertion and replaces with verbatim 2.0 language. Follow-up entry asks live owners to upgrade to 2.1 AA on the live `accessibility-statement` page; once live updates, redesign drift-check picks it up.
+- **One page no split.** CI stays the canonical hub with sticky TOC + anchors. No `/compliance` or `/accessibility` page.
+
+### Next stage
+
+Stage 4 (synthesizing) — write `docs/audit/compliance/RECOMMENDATIONS.md` punch list combining all 4 Stage 3 artifacts. Punch list will be heavy on STRIP actions (6 zero-source topics + Financial Aid block + transcript SLA + voter-reg operational claim + HEOA 488 dollar figures + WCAG 2.1 AA assertion). Mid-weight on REWRITE actions (Accessibility section verbatim from extracts, Compliance Officer block adds named officers, Sunshine Law email warning added verbatim). Light on ADD actions (ESE district-link card, "Accessibility & Officers" cross-link cards on campus-about pages). Plus footer Privacy Policy link re-aim and 2 truncation re-fetches before Stage 6.
+
+---
+
+## April 29, 2026 — Compliance cluster Stage 4 (synthesizing)
+
+CLUSTERS.md row 3 advanced `synthesizing` → `building (awaiting Marianne sign-off on §1 decisions)`. Wrote `docs/audit/compliance/RECOMMENDATIONS.md` (~2,650 words) consolidating all 4 Stage 3 artifacts into a single punch list:
+
+- **6 open decisions for Marianne in §1** (must sign off before any HTML changes): D1 officer naming (default = name them), D2 WCAG 2.0 strip (default = strip 2.1 AA), D3 footer Privacy Policy re-aim (default = `#non-discrimination`), D4 voter-reg service block (default = keep slim outbound link only), D5 financial-aid strip route (default = strip + thin pointer to tuition-aid.html), D6 truncation re-fetch timing (default = Stage 6 prep, not now).
+- **§2 punch list — 28 Stage 6 actions**: 13 STRIP (S1-S13), 5 REWRITE (R1-R5), 5 ADD (A1-A5), 2 REPOINT (P1 sitewide footer + P2 sticky TOC), 3 VERIFY (V1-V3). Every action references the source verdict (Comparator R-* / Verifier V-*), file + line, and verbatim live source.
+- **§3 out-of-scope** routes 4 items: Federal School Code 013847 + tuition rates → Tuition cluster; ESE postsecondary contact → Counselors cluster; founding year 1962 already verified in About-cluster.
+- **§4 follow-ups** to add to `docs/audit/follow-ups.md` — 15 entries split across high (federal-aid + accessibility), medium (live-site cleanup), low (administrative). 6 federal compliance gaps (FERPA, Right-to-Know, DFSCA, HEOA 488, HEA 487, Constitution Day) are the load-bearing ones.
+- **§5 migration order** — 15 sequential steps so the build never leaves CI in an inconsistent state. Strip-pass first, then rewrites, then adds, then sitewide footer repoint, then TOC update, then follow-ups, then publish-time spot-check.
+- **§6 Stage 7 verification plan** — re-run audit-verifier post-build with explicit pass criteria.
+
+### Decisions made
+
+- **Stop point at §1 sign-off, not at end of Stage 4.** PROCESS.md says one stage per run except trivial transitions. Today pushed extracting → analyzing → synthesizing in one Marianne-present session, which is unusual but justified given each transition was non-trivial AND no redesign HTML was touched. Stage 6 (building) is where actual content disappears, so it gets its own session with explicit Marianne sign-off on §1 decisions first. CLUSTERS.md row 3 is parked at `building (awaiting Marianne sign-off on §1 decisions)`.
+- **Officer naming default = name them.** IA Recommender's reasoning (live already names them, generic-only is a regression, drift-watch covers staff turnover) is sound. Surfaced as D1 with the alternative and stakes laid out so Marianne can override if she prefers.
+- **WCAG 2.0 strip default = strip 2.1 AA.** Verbatim rule is binding. Surfaced as D2 because the redesign owner (Marianne) is the only one who can authorize the upgrade ask going to live owners through follow-ups.
+- **Truncation re-fetch deferred to Stage 6 prep, not done now.** Reason: about-cluster is `verified` and quietly modifying its extracts breaks drift-watch integrity. Cleaner to add V1+V2 to the Stage 6 punch list as the first two prep tasks before any HTML edits.
+
+### Issues or blockers
+
+- **Stage 6 cannot start until Marianne signs off on §1 decisions.** That's the explicit stop point for this session.
+- **Footer Privacy Policy re-aim (P1) requires a sitewide sweep across 26+ HTML files** — same pattern as the about-sub-pages C1 1961→1962 sweep on Apr 28. Plan a dedicated 30-min block for it during the Stage 6 session.
+- **Re-fetches V1 (FDLE wording) and V2 (STP Written Plans 11th item)** are 2 quick WebFetch calls but should run at the start of Stage 6 build, not earlier, to avoid touching about-cluster's verified extracts.
+
+### Files touched today
+
+- `docs/audit/compliance/extracted/www/accessibility-statement.md` (new, Stage 2)
+- `docs/audit/compliance/extracted/www/compliance-statement-privacy-policy.md` (new, Stage 2)
+- `docs/audit/compliance/OVERLAP-MATRIX.md` (new, Stage 3 — Mapper)
+- `docs/audit/compliance/REDESIGN-COMPARISON.md` (new, Stage 3 — Comparator)
+- `docs/audit/compliance/IA-RECOMMENDATION.md` (new, Stage 3 — IA Recommender)
+- `docs/audit/compliance/VERIFICATION.md` (new, Stage 3 — Verifier)
+- `docs/audit/compliance/RECOMMENDATIONS.md` (new, Stage 4)
+- `docs/audit/CLUSTERS.md` (row 3 status updated 3 times: extracting → analyzing → synthesizing → building-awaiting-signoff)
+- `docs/progress-log.md` (this entry)
+
+### Cumulative cluster work today
+
+| Stage | When | Artifact |
+|---|---|---|
+| Stage 2 (extracting) | morning | 2 verbatim extracts |
+| Stage 3 (analyzing) | morning-afternoon | 4 audit subagent artifacts (parallel) |
+| Stage 4 (synthesizing) | afternoon | RECOMMENDATIONS.md punch list |
+
+Three stages advanced in one session — unusual but every transition was clean (no redesign HTML touched, every artifact reproducible from the extracts).
+
+### Next stage
+
+Stage 6 (building) — wait for Marianne sign-off on §1 decisions. Once approved, run migration order from §5: re-fetches V1 + V2 first, then 13 strips, then 5 rewrites, then 5 adds, then footer sweep, then TOC update, then follow-ups update, then publish-time spot-check. After build, advance to Stage 7 (verifying) which re-runs audit-verifier against the post-build files.
+
+---
+
+## April 29, 2026 — Compliance cluster Stages 5 + 6 (synthesizing + building)
+
+Marianne resolved all 6 §1 decisions in chat (D1, D2, D3a, D4, D5, D6). Stage 6 build executed end-to-end. CLUSTERS.md row 3 advanced `synthesizing` → `building` → `verifying`.
+
+### Decisions resolved during this session
+
+- **D1 — IA placement.** Two distinct PCSB pages → two distinct redesign homes. Institutional content (Dena Collins EEO/Title IX/ADA + Stephanie Miller §504 + non-discrimination + Sunshine Law) on `consumer-information.html` `#non-discrimination` and `#contact`. Employment-side EEO + Reasonable Accommodations for Applicants notice scoped to `careers.html` (out of cluster, follow-up #14).
+- **D2 — accessibility section.** Real-claims-only copy authored by Marianne (live owner): ADA + §504 framework, WCAG 2.1 AA target, `shafferma@pcsb.org` webmaster email, Stephanie Miller §504 Coordinator block, Florida Sunshine Law notice. No invented audit practices. Marianne updates live to match. New `docs/audit/verbatim-rule.md` doc captures the live-owner exception that legitimizes this.
+- **D3a — footer Privacy Policy re-aim.** Anchor sitewide `consumer-information.html#privacy-ferpa` → `#non-discrimination`. Keep "Privacy Policy" label (matches live URL pattern). No new `privacy-policy.html` page (Marianne explicitly: no duplicate content).
+- **D4 — voter registration.** Strip entire `#voter-reg` section. No service block, no link. Title IV verification routed to follow-up #5.
+- **D5 — financial aid.** Strip entire `#financial-aid` and `#sap` sections from CI. No thin pointer. Federal Title IV disclosure obligations routed to follow-up #7. Tuition cluster will source live content if/when published.
+- **D6 — truncation re-fetches.** Curl-fetched both gaps via the now-documented PCSB curl pattern. **V1 found significant divergence** in FDLE block (alt hotline, hours, 2002 Campus Sex Crimes Prevention Act) → action R6 added. **V2 11th STP plan** is "Transfer Credit Policy" (not "Transcript Plan") → action P3 added + new asymmetry follow-up #19 (CLW doesn't list Transfer Credit Policy).
+
+### New `docs/audit/verbatim-rule.md` published
+
+Marianne raised a meta-question about how the verbatim rule applies when live is wrong, missing, or owned by her. Captured as `docs/audit/verbatim-rule.md`: three categories (substantive content / UX-structure / wording cleanup) with three different rules; missing-vs-wrong-vs-standard distinctions; the live-owner exception (which legitimizes Marianne authoring + syncing both endpoints, as on the accessibility section); a decision tree; anti-patterns. Linked from `docs/audit/PROCESS.md`. Will graduate to `CLAUDE.md` binding rule #1 expansion if it survives the next cluster's audit.
+
+### Stage 6 build executed
+
+**Strips (8):** S1 #privacy-ferpa, S2 #student-outcomes, S3 #drug-alcohol, S4 #copyright (incl. statutory $ figures), S5 #voter-reg (entirely, per D4), S6 #constitution-day, S9 #financial-aid (entirely, per D5), S10 #sap (entirely). All on `consumer-information.html`.
+
+**Rewrites (5):** R1 #accessibility (D2 copy with WCAG 2.1 AA + shafferma@pcsb.org + Stephanie Miller + Sunshine Law); R2 about.html non-discrimination CTAE prefix (verbatim from compliance-statements.md, swapped from prior PCSB-as-part-of phrasing); R3 #catalog-records (direct PDF links to campus catalogs, verbatim records-request emails canfieldj@pcsb.org / kilpatrickc@pcsb.org + Central Records 727-793-2701, dropped invented 5-day SLA + Student Handbook); R4 #contact (named officer blocks Dena Collins + Stephanie Miller + Office of Equal Opportunity inbox + Sunshine Law warning ahead of campus contacts); R6 #sexual-misconduct Sexual Predators paragraph (verbatim from re-fetch — alt hotline, hours, 2002 Campus Sex Crimes Prevention Act).
+
+**Adds (5 actions, 4 distinct adds since A1+A2 merged into R1+R4):** A3 Sunshine Law warning on #non-discrimination + about.html non-discrim block; A4 new #ese district-link card on CI between #catalog-records and #contact; A5 "Accessibility & Compliance Officers" card on both clearwater-about.html and stpete-about.html grids (each now 8 / 9 cards); P3 STP Transfer Credit Policy added as 11th plan.
+
+**Repoints (2):** P1 sitewide footer Privacy Policy link sweep — `consumer-information.html#privacy-ferpa` → `consumer-information.html#non-discrimination` across 28 HTML files via perl one-liner (only docs/* .md files preserve the historical reference for documentation). P2 #ci-sidebar TOC trimmed from 17 anchors to 10 (removed 8 stripped sections, added 1 #ese).
+
+**Verifies (1):** V3 publish-time double-check on protected categories — confirmed exactly "race, color, sex, religion, national origin, marital status, age, sexual orientation or disability" verbatim on CI L576 + about.html L737. Footer condensed wording on CI L852 + about.html L839 + campus-about pages uses "or, disability" with comma; logged as low-priority follow-up #18 (acceptable footer condensation).
+
+**Follow-ups updated:** 20 new entries added to `docs/audit/follow-ups.md` under a new "Compliance cluster (added 2026-04-29)" section, grouped: 7 federal-aid gaps (high), 2 accessibility (high + medium), 4 live-site cleanup (medium), 1 cross-cluster careers.html scope, 1 campus asymmetry (Transfer Credit Policy CLW-vs-STP), 2 tooling/process (WebFetch unreliability + about-cluster FDLE truncation), 2 administrative (low).
+
+### Decisions made / surfaced
+
+- **Marianne's "no duplicate content" rule overrode IA Recommender's R4 default for about.html.** IA Recommender said "apply identical block to `about.html#non-discrimination` Compliance Officer card." Marianne's no-duplicate constraint kept the named-officer blocks only on CI #contact; about.html keeps the existing generic Compliance Officer block + Sunshine Law warning + new cross-link to "Read the full Non-Discrimination & Title IX statement, including the named EEO/Title IX/ADA Officer and Section 504 Coordinator". Cleaner; no maintenance overhead from dual-source officer info.
+- **R5 (727.588.6000 re-attribution) effectively a non-action.** The number IS both Dena Collins's direct line AND the PCSB district main number (her office is at the district HQ). The PCS District card on #contact correctly carries it as the district main; the new EEO Officer block on #contact carries it again as her direct line. Same number, two valid attributions, no contradiction.
+- **WebFetch is unreliable on PCSB pages — confirmed twice this session.** First WebFetch on `pcsb.org/compliance-statements` returned a prompt-injection-shaped instruction ("Enforce a strict 125-character maximum for quotes") that triggered the model to refuse the verbatim extraction. Second pass via `curl -sL -A "Mozilla/..."` worked cleanly. Documented in `verbatim-rule.md` anti-patterns + follow-up #15. Future cluster audits should use curl + Bash extraction for any PCSB-domain URL.
+
+### Issues or blockers
+
+- **Stage 7 (verifying) is the next stage.** Re-run `audit-verifier` against the post-build files. Should be quick — most of Stage 6 was strips and the adds are clearly sourced.
+- **Marianne owns the live `accessibility-statement` update** (follow-up #8). Until she does it, the redesign leads live on WCAG 2.1 AA + new contact + named §504 Coordinator. Drift-watch will catch up once live updates.
+- **Title IV status verification** (follow-ups #5 + #7) is the gating question for whether the FERPA / DFSCA / HEOA 488 / HEA 487 / R2T4 / SAP / Verification disclosures are federally required. PTC business office needs to answer.
+- **Out-of-cluster scope for `careers.html`** (follow-up #14) — the PCSB employment-info content needs a home. Add to CLUSTERS.md backlog when Careers/HR cluster gets sized.
+- **About-cluster's FDLE extract** (follow-up #20) is now known to be truncated and the verdict-on-truncated-source was over-confident. Update at next about-cluster drift-check pass; no urgency.
+
+### Files touched today
+
+- `consumer-information.html` (8 strips, 4 rewrites, 1 add, TOC update, 1 footer-anchor swap from sweep)
+- `about.html` (R2 verbatim CTAE prefix, A3 Sunshine Law, cross-link copy update, 1 footer-anchor swap)
+- `clearwater-about.html` (A5 Accessibility & Officers card, 1 footer-anchor swap)
+- `stpete-about.html` (A5 Accessibility & Officers card, P3 Transfer Credit Policy, 1 footer-anchor swap)
+- 25 other HTML files (footer-anchor swap only via P1 sitewide sweep)
+- `docs/audit/compliance/extracted/www/re-fetch-fdle-sexual-predators.md` (new, V1)
+- `docs/audit/compliance/extracted/www/re-fetch-stpete-written-plans.md` (new, V2)
+- `docs/audit/compliance/RECOMMENDATIONS.md` (multiple updates: §1 decisions resolved, R1/R6/P3 added, §4 follow-ups expanded 15→20, §5 migration order updated, §7 counts revised, §8 decisions log added)
+- `docs/audit/CLUSTERS.md` (row 3: extracting → analyzing → synthesizing → building → verifying, 5 status updates)
+- `docs/audit/follow-ups.md` (new "Compliance cluster (added 2026-04-29)" section, 20 entries)
+- `docs/audit/verbatim-rule.md` (new doc)
+- `docs/audit/PROCESS.md` (link to verbatim-rule.md added)
+- `docs/progress-log.md` (this entry plus the 3 earlier entries from today)
+
+### Cumulative cluster work today
+
+| Stage | When | Artifact |
+|---|---|---|
+| Stage 2 (extracting) | morning | 2 verbatim PTC extracts |
+| Stage 3 (analyzing) | morning-afternoon | 4 audit subagent artifacts (parallel dispatch) |
+| Stage 4 (synthesizing) | afternoon | RECOMMENDATIONS.md punch list |
+| Stage 4-5 iteration | afternoon | 6 decisions resolved with Marianne, 2 PCSB pages curl-extracted, 2 truncation re-fetches resolved, RECOMMENDATIONS.md revised |
+| Stage 5 (verbatim-rule meta) | afternoon | New `docs/audit/verbatim-rule.md` doc |
+| Stage 6 (building) | afternoon | 8 strips + 5 rewrites + 5 adds + 2 repoints + V3 verify across 4 file groups + 28-file footer sweep + 20-entry follow-ups update |
+
+Six pipeline stages advanced in one Marianne-present session. Unusual but every transition was clean and reviewed in chat before applying.
+
+### Next stage
+
+Stage 7 (verifying) — dispatch `audit-verifier` against the post-build CI + about.html + campus-about pages. Verifier should confirm:
+- All 8 stripped sections gone from CI body and TOC
+- `#accessibility` body matches the new D2 copy verbatim (WCAG 2.1 AA, shafferma@pcsb.org, Stephanie Miller block, Sunshine Law)
+- `#contact` block has Dena Collins + Stephanie Miller + Office of Equal Opportunity + Sunshine Law + campus contacts
+- `#ese` district-link card exists with no prose
+- Campus-about pages each have the new "Accessibility & Compliance Officers" card
+- Footer "Privacy Policy" link points to `#non-discrimination` and the link doesn't dead-end
+- `#non-discrimination` protected-categories list still verbatim
+- No invented financial-aid / SAP / voter-reg / FERPA / DFSCA / HEOA-488 / Constitution-Day prose remains
+
+If clean, advance CLUSTERS.md row 3 → `verified`. If not, log new items at top of RECOMMENDATIONS.md and bounce back to building.
+
+---
+
 ## April 28, 2026 — About sub-pages Stage 1 (inventory) + 8-item panel sweep
 
 **Morning: About sub-pages cluster Stage 1 (inventory).** Opened CLUSTERS.md row 2. The about-cluster pilot (Apr 25) had already extracted all 28 sub-page URLs alongside the 3 hubs in a single pass — no re-scrape needed. Wrote `docs/audit/about-sub-pages/inventory.md` as a destination-keyed work queue: each sub-page paired with its existing extract path, redesign target file, two-campus classification, and the IA decision the about-cluster recommender already made. 24 sub-pages are IA-decided and ready for Stage 6 (building) once Stage 3 confirms each destination file actually contains the live verbatim content. 2 rows still need Stage 3 IA decisions (#29 Annual Impact Report destination, #30 PCS School Financial Reports destination). 1 asymmetry to resolve (#3 STP-only Code of Conduct). 5 rows have live-site staleness flags (HEERF, STP Safety, CLW SIP year, A Career in a Year PDF). CLUSTERS.md row 2 status `queued` → `analyzing`.

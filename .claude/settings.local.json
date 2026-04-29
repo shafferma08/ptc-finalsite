@@ -31,7 +31,15 @@
       "Bash(ffmpeg -version)",
       "Bash(winget --version)",
       "Bash(choco --version)",
-      "Bash(scoop --version)"
+      "Bash(scoop --version)",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://www.pcsb.org/jobs/employment-info/employment-information\" -o docs/audit/compliance/extracted/pcsb-tmp/employment-info-raw.html)",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://www.pcsb.org/compliance-statements\" -o docs/audit/compliance/extracted/pcsb-tmp/compliance-statements-raw.html)",
+      "Bash(curl -sL -A \"Mozilla/5.0\" \"https://www.pcsb.org/compliance-statements/accessible-website-initiative\" -o docs/audit/compliance/extracted/pcsb-tmp/accessible-website-initiative-raw.html)",
+      "Bash(awk '/<div class=\"fsElementContent\"/,/<\\\\/div>/' docs/audit/compliance/extracted/pcsb-tmp/accessible-website-initiative-raw.html)",
+      "Bash(curl -sL -A \"Mozilla/5.0\" \"https://www.myptc.edu/about-us/welcome-to-ptc/sexual-misconduct-sexual-predators\" -o /tmp/v1-fdle.html)",
+      "Bash(curl -sL -A \"Mozilla/5.0\" \"https://stpete.myptc.edu/school-information/about-us/pinellas-technical-college-st-petersburg-campus-written-plans\" -o /tmp/v2-stpete-plans.html)",
+      "Bash(awk '/<div class=\"fsElementContent\"/,/<\\\\/div>/' /tmp/v1-fdle.html)",
+      "Bash(grep -v -E \"^[[:space:]]*$\")"
     ]
   }
 }

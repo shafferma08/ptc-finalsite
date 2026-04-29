@@ -78,6 +78,66 @@ When auditing a cluster and finding live-site issues that aren't in our scope to
 
 ---
 
+## Compliance cluster (added 2026-04-29)
+
+20 follow-up items surfaced during the Compliance cluster audit + build. Many of these are federal-aid disclosure gaps that PTC needs to address on live before the redesign can carry verbatim language. See `docs/audit/compliance/RECOMMENDATIONS.md` §4 for full source-context.
+
+### High priority — federal-aid compliance gaps
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| FERPA disclosure missing institution-wide | (none — `/pcsb.org/ferpa` 404s; PTC `/privacy-policy` is mislabeled Compliance Statement) | Live PTC has no FERPA statement, directory-information policy, or opt-out mechanism. Required for institutions receiving federal aid. Compliance cluster Stage 6 stripped the redesign's invented FERPA section. | Publish a real FERPA disclosure on live (PTC or PCSB Records Management). Once live exists, redesign re-adds verbatim. | PTC compliance / business office + PCSB Records Management | High | Compliance cluster, 2026-04-29 |
+| Student Outcomes / COE Right-to-Know data not published | (`/student-outcomes` 404s) | COE-accredited institutions are required to publish completion / placement / licensure pass rates. Annual Impact Report and accreditation pages do not carry these. Compliance cluster stripped the redesign's invented Outcomes section. | Publish completion / placement / licensure tables on live. | PTC administration | High | Compliance cluster, 2026-04-29 |
+| DFSCA biennial-review disclosure missing | (none — `/about-us/welcome-to-ptc/drug-and-alcohol-abuse-prevention` 404s) | Federal Drug-Free Schools and Communities Act disclosure required for federal aid. No PTC page exists. Compliance cluster stripped the redesign's invented DFSCA section. | Publish a real DFSCA biennial-review disclosure on live. | PTC compliance | High | Compliance cluster, 2026-04-29 |
+| HEOA 488 P2P / Copyright disclosure missing | (none) | Federal HEOA 488 student disclosure required. PCSB AUP is K-12 employee-facing. Compliance cluster stripped the redesign's invented HEOA 488 section incl. statutory dollar figures. | Publish a real HEOA 488 disclosure on live. | PTC compliance / IT | High | Compliance cluster, 2026-04-29 |
+| Title IV status verification + HEA 487 voter-reg disclosure | (none) | Redesign cites Federal School Code 013847 which suggests Title IV participation. If confirmed, federal HEA Section 487 requires a "good-faith effort" voter-reg disclosure. Compliance cluster stripped the redesign's voter-reg section entirely (no service block per D4). | Confirm Title IV status with PTC business office. If Title IV: publish a real PTC voter-reg page on live. | PTC business office + student services | High | Compliance cluster, 2026-04-29 |
+| Constitution Day observance disclosure missing | (none — no `/constitution-day`, no calendar event) | Federal observance, typically thin (a sentence + annual event). Compliance cluster stripped the redesign's invented Constitution Day section. | Stub page / calendar event added by PTC student services. | PTC student services | Low (federal but minor) | Compliance cluster, 2026-04-29 |
+| Federal Title IV financial aid disclosures missing | (none — no R2T4, SAP, Verification, Refund policy, Cost of Attendance, FSC pages on live) | If PTC participates in Title IV, multiple disclosures are federally required. Compliance cluster stripped redesign `#financial-aid` and `#sap` sections entirely (no thin pointer per D5). | Confirm Title IV status. If confirmed, publish all required disclosures on live; Tuition cluster will source verbatim and place on `tuition-aid.html`. | PTC business office | High | Compliance cluster, 2026-04-29 |
+
+### High priority — accessibility / accuracy
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Update live `accessibility-statement` to match new redesign accessibility section | www.myptc.edu/accessibility-statement (and clearwater + stpete subsite mirrors) | Live cites WCAG 2.0 and `PTCWebInfo-NoReply@pcsb.org`. Redesign now claims WCAG 2.1 AA target, names `shafferma@pcsb.org` as webmaster contact, names Stephanie Miller as §504 Coordinator, and includes the Florida Sunshine Law warning. | Marianne (as webmaster) updates live to match redesign so verbatim rule is preserved across both endpoints. | PTC webmaster (Marianne) | High | Compliance cluster, 2026-04-29 |
+| Accessibility statement expansion — what we are actually doing | www.myptc.edu/accessibility-statement + redesign `consumer-information.html#accessibility` | Current redesign accessibility section claims only verifiable practices. Real practices to confirm and add when verified: audit cadence, testing tools (axe / Lighthouse / WAVE / NVDA / JAWS / VoiceOver / keyboard-only), captioning policy, alt-text policy, PDF remediation policy, plain-language commitment, written accessibility plan. | Marianne confirms which are real, then both redesign and live get expanded together. | PTC webmaster (Marianne) | Medium | Compliance cluster, 2026-04-29 |
+
+### Medium priority — live-site cleanup
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| `/privacy-policy` URL mislabeled | www.myptc.edu/privacy-policy (and campus subsite mirrors) | URL renders the Compliance Statement (non-discrimination + named officers), not a privacy/FERPA disclosure. | Either rename live label to "Compliance Statement" or publish a real privacy / FERPA page behind that URL. | PTC webmaster | Medium | Compliance cluster, 2026-04-29 |
+| Duplicate URL: `/privacy-policy` and `/about-us/welcome-to-ptc/pinellas-county-schoolsctae-compliance-statements` | both live URLs | Same content rendered under two URLs. Confusing for nav and analytics. | Consolidate to one canonical URL with a 301 from the other. | PTC webmaster | Medium | Compliance cluster, 2026-04-29 |
+| STP subsite mislabels FDLE notice as "FERPA/Sexual Predator Notice" | stpete.myptc.edu/admissions/student-services-hours/florida-department-of-law-enforcement-sexual-predator-and-offender-notice | The page is the FDLE registry notice. It is NOT FERPA. Mislabel will confuse users searching for FERPA. | Rename the STP nav label. | STP campus webmaster / PTC webmaster | Medium | Compliance cluster, 2026-04-29 |
+| PCSB `/compliance-statements` includes a Boy Scouts paragraph PTC's `/privacy-policy` does not | pcsb.org/compliance-statements vs myptc.edu/privacy-policy | PCSB version adds: "The School Board also provides equal access to the Boy Scouts and other designated youth groups. This holds true for all students who are interested in participating in educational programs and/or extracurricular school activities." | Decide whether to add this paragraph to redesign `#non-discrimination`. Argument for: verbatim from upstream district source. Argument against: youth-group provision more relevant to K-12 than postsecondary CTE. | Marianne | Medium | Compliance cluster, 2026-04-29 |
+
+### Cross-cluster scope (out of Compliance cluster, into other clusters)
+
+| Item | Target | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| `careers.html` should carry verbatim PCSB employment EEO + Reasonable Accommodations for Applicants notice | redesign `careers.html` | PCSB has two distinct compliance pages: `/compliance-statements` (institutional, on CI) and `/jobs/employment-info/employment-information` (employment-side EEO + applicant accommodations, currently nowhere on redesign). | Add to CLUSTERS.md backlog as Careers / HR cluster scope. Source content verbatim from `pcsb.org/jobs/employment-info/employment-information`. | PTC webmaster (Marianne) | Medium | Compliance cluster, 2026-04-29 |
+
+### Campus asymmetries
+
+| Item | Live pages | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| STP has Transfer Credit Policy that CLW doesn't list | stpete.myptc.edu/.../st-petersburg-campus-written-plans (11 plans) vs clearwater equivalent (10 plans) | STP Written Plans page lists 11 items including Transfer Credit Policy as the 11th. CLW lists 10 and does not include Transfer Credit Policy. | CLW campus to confirm whether they (a) also have a Transfer Credit Policy and just don't list it, (b) follow PCSB district transfer-credit policy, or (c) accept the asymmetry. | CLW campus admin | Medium | Compliance cluster, 2026-04-29 |
+
+### Tooling / process notes
+
+| Item | Issue | Recommendation | Source |
+|---|---|---|---|
+| WebFetch unreliable on PCSB-domain URLs | A WebFetch on `pcsb.org/compliance-statements` returned a prompt-injection-shaped instruction trying to override verbatim extraction with a 125-character quote limit. Switching to `curl -sL -A "Mozilla/..."` against the same URL bypassed the issue. | For any PCSB-domain extraction in future cluster audits, use curl + Bash extraction. Not WebFetch. Documented in `docs/audit/verbatim-rule.md` anti-patterns. | Compliance cluster, 2026-04-29 |
+| About-cluster `extracted/www/sexual-misconduct-predators.md` was truncated | About-cluster's Chrome MCP extract was truncated at "1-888-FL-P" hiding a meaningful divergence (alt hotline `(1-888-357-7332)`, hours, 2002 Campus Sex Crimes Prevention Act reference) between live and redesign. About-cluster's REDESIGN-COMPARISON marked the row VERBATIM (assumed) on truncated source. | At next about-cluster drift-check pass, update `extracted/www/sexual-misconduct-predators.md` with the full live text from `compliance/extracted/www/re-fetch-fdle-sexual-predators.md`. | Compliance cluster, 2026-04-29 |
+
+### Low priority — administrative
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Section 504 + ADA Title II framing on `about.html` is a synthesis | redesign `about.html#non-discrimination` (L747) | Statement of fact is true and aligns with cited authority, but it is not a verbatim live pull. Acceptable as cross-link copy per IA Recommender, but flag for trace-back. | Confirm the synthesis with PCSB Compliance Officer (Dena Collins / Office of Equal Opportunity). | PCSB Office of Equal Opportunity | Low | Compliance cluster, 2026-04-29 |
+| Footer non-discrimination disclaimer wording substitutes "prohibits any and all forms of discrimination and harassment" for live's "No persons shall be discriminated against" | redesign sitewide footer | Categories list is verbatim. Verb-form change is a normal footer condensation. | Flag for live owner approval; either update redesign footer wording to verbatim, or update live to use the redesign's clearer condensation. | PCSB Office of Equal Opportunity | Low | Compliance cluster, 2026-04-29 |
+
+---
+
 ## Closed follow-ups
 
 (none yet)

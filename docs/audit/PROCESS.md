@@ -45,6 +45,8 @@ Invoke `content-audit` skill, Stage 4. Read all 4 subagent outputs, produce a si
 
 This is the only stage where redesign files actually change. For each item in the RECOMMENDATIONS punch list:
 
+For practical interpretation of the verbatim rule when live is missing, wrong, or owned by Marianne, see `docs/audit/verbatim-rule.md`.
+
 - **Fabrications** — replace fabricated wording with verbatim live wording. Always.
 - **Missing** — add the live content if the IA decision says it belongs on the redesign page; otherwise skip and link to live.
 - **Drift** — replace reworded-drift wording with verbatim live wording.
