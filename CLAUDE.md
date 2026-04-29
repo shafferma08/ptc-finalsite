@@ -74,7 +74,7 @@ The repo runs a queue-driven daily pipeline that reconciles live → redesign on
 
 Stages: `queued` → `inventory` → `extracting` → `analyzing` → `synthesizing` → `building` → `verifying` → `verified` (drift-watched). Never advance more than one stage per run unless it's trivial.
 
-**Current cluster status (2026-04-27):** About hubs `verified`. About sub-pages `queued`, runs next per Marianne. Then Compliance → Counselors → Admissions → Tuition → Programs.
+**Current cluster status (2026-04-28):** About hubs `verified`. About sub-pages `verified` (closed 2026-04-28: 13/13 punch list items applied, 21/21 Comparator verdicts confirmed). Both drift-watched. Compliance runs next.
 
 ## Review panel workflow
 
