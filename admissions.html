@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admissions — Pinellas Technical College</title>
+    <title>Admissions | Pinellas Technical College</title>
     <meta name="description" content="Learn how to apply to Pinellas Technical College. Explore enrollment steps, transfer options, testing requirements, and campus tour information.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -260,11 +260,326 @@
             transform: rotate(180deg);
         }
 
+        /* In-page TOC strip (Stage 6 build 2026-04-30, A11) */
+        .admissions-toc {
+            background: #fff;
+            border-bottom: 1px solid #e8ecf1;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+        .admissions-toc .container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 0.6rem;
+            padding-bottom: 0.6rem;
+            overflow-x: auto;
+        }
+        .admissions-toc__label {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-gray-700, #4a5568);
+            margin: 0;
+            white-space: nowrap;
+        }
+        .admissions-toc__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: nowrap;
+        }
+        .admissions-toc__list a {
+            display: inline-block;
+            padding: 0.35rem 0.6rem;
+            font-size: 0.875rem;
+            color: var(--color-gray-900);
+            text-decoration: none;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+        .admissions-toc__list a:hover {
+            background: rgba(0, 129, 66, 0.08);
+            color: var(--color-green);
+        }
+
+        /* Apply Steps (vertical 8-step list, Stage 6 build) */
+        .apply-steps {
+            list-style: none;
+            counter-reset: none;
+            padding: 0;
+            margin: 2rem 0 0;
+            max-width: 860px;
+        }
+        .apply-step {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #eef0f4;
+        }
+        .apply-step:last-child {
+            border-bottom: none;
+        }
+        .apply-step__number {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--color-green);
+            color: #fff;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .apply-step__body {
+            flex: 1;
+            min-width: 0;
+        }
+        .apply-step__title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem;
+            color: var(--color-gray-900);
+        }
+        .apply-step__body p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-gray-700, #4a5568);
+            margin: 0 0 0.75rem;
+        }
+        .apply-step__sublinks {
+            font-size: 0.9rem;
+        }
+        .apply-step__sublinks a {
+            color: var(--color-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .apply-step__sublinks a:hover {
+            text-decoration: underline;
+        }
+
+        /* FAFSA Campus Code Token (per-campus mini cards inside step 3) */
+        .campus-token-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1rem 0 1.25rem;
+            max-width: 520px;
+        }
+        .campus-token {
+            background: var(--color-off-white, #F7F8FA);
+            border: 1px solid #e8ecf1;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+        }
+        .campus-token__campus {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-green);
+            margin: 0 0 0.25rem;
+        }
+        .campus-token__label {
+            font-size: 0.8rem;
+            color: var(--color-gray-700, #4a5568);
+            margin: 0;
+        }
+        .campus-token__value {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: var(--color-gray-900);
+            margin: 0.15rem 0 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Section helpers */
+        .lead {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: var(--color-gray-700, #4a5568);
+            margin: 1rem 0 1.5rem;
+        }
+        .centered-callout {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--color-gray-700, #4a5568);
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+        .info-cards--two-col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .info-card__bullets {
+            margin: 0.5rem 0 0;
+            padding-left: 1.25rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--color-gray-700, #4a5568);
+        }
+        .info-card__bullets li {
+            margin-bottom: 0.4rem;
+        }
+        .pathways-related {
+            margin-top: 2rem;
+            padding: 1rem 1.25rem;
+            background: var(--color-off-white, #F7F8FA);
+            border-left: 3px solid var(--color-green);
+            font-size: 0.95rem;
+            color: var(--color-gray-700, #4a5568);
+        }
+        .pathways-related a {
+            color: var(--color-green);
+            font-weight: 600;
+        }
+
+        /* Enrollment Options grid */
+        .enrollment-options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .enrollment-option {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #e8ecf1;
+        }
+        .enrollment-option h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 0 0 0.75rem;
+            color: var(--color-gray-900);
+        }
+        .enrollment-option p {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--color-gray-700, #4a5568);
+            margin: 0 0 0.75rem;
+        }
+        .enrollment-option p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Statute list */
+        .statute-list {
+            list-style: none;
+            padding: 0;
+            margin: 0.75rem 0 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.5rem 1.5rem;
+        }
+        .statute-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dotted #e8ecf1;
+        }
+        .statute-list a {
+            color: var(--color-green);
+            font-weight: 600;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+        }
+        .statute-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Testing section helpers */
+        .testing-subhead {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin: 2.5rem 0 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-green);
+            display: inline-block;
+        }
+        .testing-other-tests {
+            margin-top: 2rem;
+            padding: 1rem 1.25rem;
+            background: rgba(0, 129, 66, 0.05);
+            border-left: 3px solid var(--color-green);
+            font-size: 0.95rem;
+            color: var(--color-gray-700, #4a5568);
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* Per-campus card pairs (Testing schedules + Campus visits) */
+        .campus-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.25rem 0 0;
+        }
+        .campus-card {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #e8ecf1;
+            padding: 1.5rem;
+        }
+        .campus-card__campus {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--color-green);
+            margin: 0 0 0.75rem;
+        }
+        .campus-card__campus i {
+            margin-right: 0.4rem;
+        }
+        .campus-card__heading {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.6rem;
+        }
+        .campus-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--color-gray-700, #4a5568);
+            margin: 0 0 0.75rem;
+        }
+        .campus-card a {
+            color: var(--color-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .campus-card a:hover {
+            text-decoration: underline;
+        }
+        .campus-card__contact {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed #e8ecf1;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
             .steps-grid {
                 grid-template-columns: 1fr;
             }
-            .info-cards {
+            .info-cards,
+            .info-cards--two-col {
                 grid-template-columns: 1fr;
             }
             .testing-types {
@@ -274,6 +589,22 @@
                 flex-direction: column;
                 text-align: center;
                 padding: 2rem;
+            }
+            .apply-step {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .campus-token-grid {
+                grid-template-columns: 1fr;
+            }
+            .campus-cards {
+                grid-template-columns: 1fr;
+            }
+            .admissions-toc .container {
+                gap: 0.5rem;
+            }
+            .admissions-toc__label {
+                display: none;
             }
         }
     </style>
@@ -356,10 +687,12 @@
                                     <ul>
                                         <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
                                         <li><a href="admissions.html#enrollment-steps">Enrollment Steps</a></li>
+                                        <li><a href="admissions.html#enrollment-options">Enrollment Options</a></li>
+                                        <li><a href="admissions.html#residency">Acceptable Proofs of Residency</a></li>
                                         <li><a href="admissions.html#pathways">Transfer Students</a></li>
                                         <li><a href="admissions.html#pathways">Readmission</a></li>
                                         <li><a href="admissions.html#testing">Testing &amp; Assessment</a></li>
-                                        <li><a href="admissions.html#campus-tours">Campus Tours</a></li>
+                                        <li><a href="admissions.html#campus-tours">Campus Visits &amp; Shadowing</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -468,6 +801,8 @@
 
         <!-- ============================================
              PAGE HERO
+             Stage 6 build 2026-04-30: subtitle rewritten from www admissions
+             page institutional framing (was fabricated marketing copy).
         ============================================= -->
         <section class="page-hero">
             <div class="container">
@@ -478,75 +813,230 @@
                     </ol>
                 </nav>
                 <h1 class="page-hero__title">Admissions</h1>
-                <p class="page-hero__subtitle">Getting started at PTC is straightforward. Whether you are a first-time student, transferring from another school, or returning after a break, we will guide you through every step.</p>
+                <p class="page-hero__subtitle">Most PTC programs start five times per school year. Apply, meet with a counselor, and complete your enrollment steps to begin training for a career.</p>
             </div>
         </section>
 
         <!-- ============================================
-             HOW TO APPLY (3 Steps)
+             IN-PAGE TOC (Stage 6 add A11)
+             Sticky on desktop, scrolls horizontally on mobile.
+        ============================================= -->
+        <nav class="admissions-toc" aria-label="On this page">
+            <div class="container">
+                <p class="admissions-toc__label">On this page:</p>
+                <ul class="admissions-toc__list">
+                    <li><a href="#how-to-apply">How to Apply</a></li>
+                    <li><a href="#enrollment-steps">Enrollment Steps</a></li>
+                    <li><a href="#enrollment-options">Enrollment Options</a></li>
+                    <li><a href="#residency">Residency</a></li>
+                    <li><a href="#pathways">Pathways</a></li>
+                    <li><a href="#testing">Testing</a></li>
+                    <li><a href="#campus-tours">Campus Visits</a></li>
+                    <li><a href="#accommodations">Accommodations</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- ============================================
+             HOW TO APPLY
+             Stage 6 build 2026-04-30: rewritten verbatim from
+             www.myptc.edu/resources/future-students/admissions-process-requirements-and-criteria
+             (institutional 7-step ordered list) + CLW/STP admissions hubs.
+             Stripped: "40+ career programs" stat (no live source),
+             "no application fee" (no live source), "high school diploma
+             or GED equivalent" requirement (CONTRADICTS live's "16+, not
+             currently enrolled in HS"), "single visit" claim (no source).
         ============================================= -->
         <section class="admissions-section" id="how-to-apply">
             <div class="container">
                 <div class="section-header section-header--center">
                     <p class="section-header__tag">Get Started</p>
                     <h2 class="section-header__title">How to Apply</h2>
-                    <p class="section-header__desc">Applying to PTC is free and takes just a few steps. Most students can complete the process in a single visit.</p>
+                    <p class="section-header__desc">Students must be at least 16 years of age and not currently enrolled in high school. Most of our programs start five times per school year: August, October, January, March/April, and June.</p>
                 </div>
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-card__number">1</div>
-                        <h3 class="step-card__title">Choose Your Program</h3>
-                        <p class="step-card__desc">Browse our 40+ career programs to find the one that matches your goals. Check campus availability, schedule options, and program length.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-card__number">2</div>
-                        <h3 class="step-card__title">Submit Your Application</h3>
-                        <p class="step-card__desc">Complete the online application. You will need proof of residency, a valid ID, and your high school diploma or equivalent. There is no application fee.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-card__number">3</div>
-                        <h3 class="step-card__title">Meet with a Counselor</h3>
-                        <p class="step-card__desc">If needed, meet with a school counselor (admissions contact) to discuss program interests and requirements. You can connect with a counselor before or after applying.</p>
-                    </div>
-                </div>
-                <p style="text-align: center; margin-top: 2rem;">
-                    <a href="#" class="btn btn--accent btn--lg">Start Your Application <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                </p>
+                <ol class="apply-steps">
+                    <li class="apply-step">
+                        <div class="apply-step__number">1</div>
+                        <div class="apply-step__body">
+                            <h3 class="apply-step__title">Meet with a counselor</h3>
+                            <p>If needed, meet with a school counselor (admissions contact) to discuss program interests and requirements.</p>
+                            <p class="apply-step__sublinks">
+                                <a href="clearwater-counselors.html">Clearwater counselors</a>
+                                <span aria-hidden="true">&middot;</span>
+                                <a href="stpete-counselors.html">St. Petersburg counselors</a>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="apply-step">
+                        <div class="apply-step__number">2</div>
+                        <div class="apply-step__body">
+                            <h3 class="apply-step__title">Apply online</h3>
+                            <p>Create your account and complete the application. Be sure to view and complete your checklist (for example, upload your photo identification, complete basic skills testing if necessary). For in-state tuition, applicants must upload proof of Florida residency when they apply.</p>
+                            <p>
+                                <a href="https://apply.myptc.edu" class="btn btn--accent" target="_blank" rel="noopener">Start your application <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="apply-step">
+                        <div class="apply-step__number">3</div>
+                        <div class="apply-step__body">
+                            <h3 class="apply-step__title">Apply for financial aid, if needed</h3>
+                            <p>To apply online, visit <a href="https://www.fafsa.gov" target="_blank" rel="noopener">www.fafsa.gov</a>. The School Codes for PTC are listed below. Students can also obtain an application from the Financial Aid office.</p>
+                            <div class="campus-token-grid">
+                                <div class="campus-token">
+                                    <p class="campus-token__campus">Clearwater</p>
+                                    <p class="campus-token__label">FAFSA School Code</p>
+                                    <p class="campus-token__value">005605</p>
+                                </div>
+                                <div class="campus-token">
+                                    <p class="campus-token__campus">St. Petersburg</p>
+                                    <p class="campus-token__label">FAFSA School Code</p>
+                                    <p class="campus-token__value">013917</p>
+                                </div>
+                            </div>
+                            <p>Financial aid may not cover all expenses; students may have to pay out of pocket for some fees. Once notification of eligibility is received (typically 3-5 business days), speak with a financial aid specialist. <a href="tuition-aid.html#fafsa">More on FAFSA and financial aid</a>.</p>
+                        </div>
+                    </li>
+                    <li class="apply-step">
+                        <div class="apply-step__number">4</div>
+                        <div class="apply-step__body">
+                            <h3 class="apply-step__title">Complete required testing if necessary</h3>
+                            <p>Take TABE, Wonderlic, CASAS, or TEAS if your program requires it. Some health science programs require TEAS taken at a PTC campus testing center.</p>
+                            <p><a href="#testing">See testing details below</a>.</p>
+                        </div>
+                    </li>
+                    <li class="apply-step">
+                        <div class="apply-step__number">5</div>
+                        <div class="apply-step__body">
+                            <h3 class="apply-step__title">Review essential functions and accommodations</h3>
+                            <p>Review the essential functions for the occupation you wish to study. These functions describe the requirements for being successful once you complete your training. Accommodations are available during the instructional program for students with documented learning or physical challenges. Please see a counselor for further information.</p>
+                            <p><a href="#accommodations">More on accommodations</a>.</p>
+                        </div>
+                    </li>
+                    <li class="apply-step">
+                        <div class="apply-step__number">6</div>
+                        <div class="apply-step__body">
+                            <h3 class="apply-step__title">Complete program interview or shadowing</h3>
+                            <p>Some programs have specific days and/or dress codes for shadowing, so please speak with a counselor before coming in.</p>
+                            <p><a href="#campus-tours">Campus visits and shadowing</a>.</p>
+                        </div>
+                    </li>
+                    <li class="apply-step">
+                        <div class="apply-step__number">7</div>
+                        <div class="apply-step__body">
+                            <h3 class="apply-step__title">If using outside funding, complete agency paperwork</h3>
+                            <p>If using an outside funding agency (Career Source, Voc. Rehab, etc.) provide all paperwork to the agency.</p>
+                        </div>
+                    </li>
+                    <li class="apply-step">
+                        <div class="apply-step__number">8</div>
+                        <div class="apply-step__body">
+                            <h3 class="apply-step__title">Register and pay applicable fees</h3>
+                            <p>Complete the online registration form. Pay all applicable fees. Students must provide two forms of documentation for proof of Florida residency when they register (driver license, state-issued ID, voter registration card, vehicle registration, etc.).</p>
+                            <p><a href="#residency">Acceptable proofs of residency</a>.</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </section>
 
         <!-- ============================================
-             ENROLLMENT STEPS (Detailed)
+             ENROLLMENT STEPS (now: General Information block)
+             Stage 6 build 2026-04-30: section repurposed. The old
+             3-step "after acceptance" framing was a fabricated process
+             model. Live treats these as concurrent application items
+             (now in How to Apply above). This section now carries the
+             "General information" block from the www admissions page
+             verbatim, plus a counselor reminder.
         ============================================= -->
         <section class="admissions-section admissions-section--alt" id="enrollment-steps">
             <div class="container">
                 <div class="section-header section-header--center">
-                    <p class="section-header__tag">What to Expect</p>
-                    <h2 class="section-header__title">Enrollment Steps</h2>
-                    <p class="section-header__desc">After your application is accepted, here is what comes next.</p>
+                    <p class="section-header__tag">General Information</p>
+                    <h2 class="section-header__title">Who Can Apply and When</h2>
                 </div>
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-card__number"><i class="fas fa-file-alt" style="font-size: 1rem;" aria-hidden="true"></i></div>
-                        <h3 class="step-card__title">Complete Required Testing</h3>
-                        <p class="step-card__desc">Some programs require placement testing (CASAS or TEAS). Your counselor will let you know what testing is needed for your program.</p>
+                <div class="info-cards info-cards--two-col">
+                    <div class="info-card">
+                        <div class="info-card__icon"><i class="fas fa-user-check" aria-hidden="true"></i></div>
+                        <div class="info-card__content">
+                            <h3>Age requirement</h3>
+                            <p>Students must be at least 16 years of age and not currently enrolled in high school.</p>
+                        </div>
                     </div>
-                    <div class="step-card">
-                        <div class="step-card__number"><i class="fas fa-dollar-sign" style="font-size: 1rem;" aria-hidden="true"></i></div>
-                        <h3 class="step-card__title">Arrange Financial Aid</h3>
-                        <p class="step-card__desc">Complete your FAFSA and meet with the financial aid office to explore grants, scholarships, veterans benefits, and payment plans.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-card__number"><i class="fas fa-calendar-check" style="font-size: 1rem;" aria-hidden="true"></i></div>
-                        <h3 class="step-card__title">Register for Classes</h3>
-                        <p class="step-card__desc">Work with your counselor to select your start date and register for your program. Attend new student orientation to get set up for day one.</p>
+                    <div class="info-card">
+                        <div class="info-card__icon"><i class="fas fa-calendar-alt" aria-hidden="true"></i></div>
+                        <div class="info-card__content">
+                            <h3>Program start dates</h3>
+                            <p>Most of our programs start five times per school year: August, October, January, March/April, and June.</p>
+                        </div>
                     </div>
                 </div>
+                <p class="centered-callout">Please speak with a counselor for further information.</p>
+            </div>
+        </section>
+
+        <!-- ============================================
+             ENROLLMENT OPTIONS (NEW Stage 6 add A4)
+             Verbatim from extracted/{clw,stp}/admissions-enrollment-options.md
+             (byte-identical CLW=STP, 2675 chars).
+        ============================================= -->
+        <section class="admissions-section" id="enrollment-options">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-header__tag">Adult Student Status</p>
+                    <h2 class="section-header__title">Enrollment Options</h2>
+                </div>
+                <p class="lead">Students who are at least 16 years of age and not currently enrolled in a secondary education program in the Pinellas County School System are considered adult students. Students are expected to enroll on a full-time basis each fee period. With prior approval, a student may be eligible to enroll on a half-time basis for a fee period.</p>
+
+                <div class="enrollment-options-grid">
+                    <div class="enrollment-option">
+                        <h3>Course Intent / Definition</h3>
+                        <p>Programs consist of a planned sequence of instruction consisting of several Occupational Completion Points (OCPs). The structure will allow students to complete specified portions of the program for employment or to remain for advanced training. A student who completes the applicable competencies at any occupational completion point may either continue with the training (working toward the Certificate of Program Completion) or become an occupational completer. The intent for all career technical students is to be employed in a job-related field within the first six months after completion.</p>
+                    </div>
+                    <div class="enrollment-option">
+                        <h3>Career Technical Certificate Program</h3>
+                        <p>Students who complete all required Occupational Completion Points for a state-identified job preparatory program and meet state literacy requirements will be awarded a Certificate of Program Completion.</p>
+                        <p>Students receive grades, transcripts and certificates. Upon request, students who exit prior to program completion may be given a certificate to verify completion points mastered.</p>
+                        <p>An OCP completer must meet state literacy requirements for all terminal completion points. (Terminal completion points are identified with an asterisk (*) on each program listing.)</p>
+                    </div>
+                    <div class="enrollment-option">
+                        <h3>Continuing Workforce Education</h3>
+                        <p>Courses are designed to provide students with instruction that do not result in a career technical certificate. The content may vary as a result of industry and student needs. Instruction in these courses is for students training for license or certificate renewal, new or expanding businesses, retraining of employees whose occupations are changing so rapidly because of the products or services the employers offer, or for students who are enhancing occupational skills necessary to maintain current employment, cross train, or upgrade employment. Students who require confirmation for employment must submit their request in writing to the Records Office, while still enrolled in the course. Records will verify completed courses and issue official documentation. Continuing workforce education courses are noncredit, nontransferable and no transcripts are maintained by this school.</p>
+                        <p>The intent of the course/instruction determines whether a student is enrolled as a vocational certificate student or a continuing workforce education student.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             RESIDENCY (NEW Stage 6 add A5)
+             Verbatim from extracted/{clw,stp}/admissions-acceptable-proofs-of-residency.md
+             (byte-identical CLW=STP, 1328 chars). 5 Florida-statute links preserved.
+        ============================================= -->
+        <section class="admissions-section admissions-section--alt" id="residency">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-header__tag">In-State Tuition</p>
+                    <h2 class="section-header__title">Acceptable Proofs of Residency</h2>
+                </div>
+                <p class="lead"><strong>Determination of Dependent/Independent Student Status &amp; Acceptable Forms of Documentation for Residency Classification</strong></p>
+                <p>Florida Statute 1009.21 Determination of resident status for tuition purposes. Students shall be classified as residents or nonresidents for the purpose of assessing tuition in postsecondary educational programs offered by charter technical career centers or career centers operated by school districts, in Florida College System institutions, and in state universities.</p>
+                <p>For more information, see the following Florida Statutes:</p>
+                <ul class="statute-list">
+                    <li><a href="http://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&amp;Search_String=proof%20of%20residency&amp;URL=1000-1099/1002/Sections/1002.34.html" target="_blank" rel="noopener">Florida Statute 1002.34</a></li>
+                    <li><a href="http://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&amp;Search_String=proof%20of%20residency&amp;URL=1000-1099/1001/Sections/1001.44.html" target="_blank" rel="noopener">Florida Statute 1001.44</a></li>
+                    <li><a href="http://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&amp;Search_String=proof%20of%20residency&amp;URL=1000-1099/1000/Sections/1000.21.html" target="_blank" rel="noopener">Florida Statute 1000.21</a></li>
+                    <li><a href="http://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&amp;Search_String=proof%20of%20residency&amp;URL=0200-0299/0222/Sections/0222.17.html" target="_blank" rel="noopener">Florida Statute 222.17</a></li>
+                </ul>
             </div>
         </section>
 
         <!-- ============================================
              ADMISSION PATHWAYS
+             Stage 6 build 2026-04-30: rewritten Transfer + Readmission
+             cards verbatim from extracted/{clw,stp}/admissions-{transfer,readmission}.md
+             (both byte-identical CLW=STP). Stripped Dual Enrollment + Veterans cards
+             (no admissions-cluster live source; cross-cluster pointers below).
         ============================================= -->
         <section class="admissions-section" id="pathways">
             <div class="container">
@@ -554,165 +1044,168 @@
                     <p class="section-header__tag">Your Path to PTC</p>
                     <h2 class="section-header__title">Admission Pathways</h2>
                 </div>
-                <div class="info-cards">
+                <div class="info-cards info-cards--two-col">
                     <div class="info-card">
                         <div class="info-card__icon"><i class="fas fa-exchange-alt" aria-hidden="true"></i></div>
                         <div class="info-card__content">
                             <h3>Transfer Students</h3>
-                            <p>Transferring from another technical school or college? You may be able to receive credit for prior coursework. Bring your official transcripts to your admissions meeting.</p>
-                            <a href="#">Learn about transfer credit <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <p>The programs offered at Pinellas Technical College are primarily designed to prepare students for entry into the job market or to give students the opportunity to improve skills and prepare for advancement in their current employment. An incoming student who has previously attended another accredited postsecondary institution may provide an official transcript for credit evaluation. Acceptance of credit completed at another institution will be appropriately awarded provided it occurred during the past three (3) years. A student must present an official transcript from an accredited postsecondary institution and have the credits accepted toward the current program prior to enrollment.</p>
+                            <p>Additionally, credit may be given for work experience after evaluation and documentation of skills. Documentation of work experience that occurred during the past three (3) years must be done prior to enrollment. Documentation of work experience may take many forms and is best if clearly related to and identified with course objectives. The following are examples of good documentation:</p>
+                            <ul class="info-card__bullets">
+                                <li>Current license in the field of enrollment, supported by performance standards for acquiring the license.</li>
+                                <li>Current certification in the field of enrollment.</li>
+                                <li>Samples of work produced.</li>
+                                <li>Evidence of training undertaken and completed with description of objectives achieved and learning outcomes.</li>
+                                <li>Documented and validated volunteer work.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="info-card">
                         <div class="info-card__icon"><i class="fas fa-redo" aria-hidden="true"></i></div>
                         <div class="info-card__content">
                             <h3>Readmission</h3>
-                            <p>Took a break and want to come back? If you were previously enrolled at PTC, you can apply for readmission. Contact your campus admissions office to get started.</p>
-                            <a href="#">Readmission process <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-card__icon"><i class="fas fa-user-graduate" aria-hidden="true"></i></div>
-                        <div class="info-card__content">
-                            <h3>Dual Enrollment</h3>
-                            <p>High school students can get a head start on their career by enrolling in PTC programs while still in high school. Talk to your high school counselor to see if you qualify.</p>
-                            <a href="#">Dual enrollment details <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-card__icon"><i class="fas fa-medal" aria-hidden="true"></i></div>
-                        <div class="info-card__content">
-                            <h3>Veterans</h3>
-                            <p>PTC proudly serves veterans and active-duty military. We accept VA education benefits and have dedicated veterans resources on both campuses.</p>
-                            <a href="#">Veterans benefits info <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <p>Students must meet with a guidance counselor who will assist with registration forms and literacy testing. (Test scores are valid for a two-year period, provided there have been no changes in the literacy levels mandated by state guidelines.) A meeting with the instructor may be required before re-entering a program.</p>
+                            <p><strong>Note:</strong> Course credit toward program completion is valid for a period of three years from initial entry date.</p>
                         </div>
                     </div>
                 </div>
+                <p class="pathways-related">
+                    <strong>Related:</strong>
+                    Looking for <a href="#">Dual Enrollment</a> (Programs section) or <a href="tuition-aid.html#veterans">Veterans Benefits</a> (Tuition &amp; Aid)? Each is covered under its own section.
+                </p>
             </div>
         </section>
 
         <!-- ============================================
              TESTING & ASSESSMENT
+             Stage 6 build 2026-04-30: rewritten verbatim. CASAS card now
+             matches live "mathematics and communication" (was fabricated
+             "listening skills"). TEAS card lists only Practical Nursing
+             (was fabricated to add Patient Care Technician + Surgical
+             Technology). ABE/GED/ESOL card stripped (Programs cluster owns).
+             Per-campus testing-center cards added per D4 + D5.
         ============================================= -->
         <section class="admissions-section admissions-section--alt" id="testing">
             <div class="container">
                 <div class="section-header section-header--center">
                     <p class="section-header__tag">Placement Testing</p>
                     <h2 class="section-header__title">Testing &amp; Assessment</h2>
-                    <p class="section-header__desc">Some programs require a placement test before enrollment. Your admissions counselor will confirm which test, if any, applies to your program.</p>
+                    <p class="section-header__desc">Career and technical certificate students must be tested within the first six weeks of program enrollment. Continuing workforce education students, apprentices, and students enrolled in programs of less than 600 hours are not required to take placement tests.</p>
                 </div>
-                <div class="testing-types">
-                    <div class="testing-type">
-                        <div class="testing-type__icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></div>
-                        <h3 class="testing-type__name">CASAS</h3>
-                        <p class="testing-type__desc">Comprehensive Adult Student Assessment System. Required for most career and technical programs. Measures reading, math, and listening skills.</p>
+
+                <h3 class="testing-subhead">CASAS</h3>
+                <p>The Comprehensive Adult Student Assessment System (CASAS) is an instrument used to process new applicants. This is a standardized academic achievement test measuring achievement in mathematics and communication. The primary purpose of this test is for successful placement, student progression, and completion of state-mandated exit requirements.</p>
+                <p>Students must meet state literacy requirements for computation (mathematics) and communication (reading/language arts), as well as program-specific requirements, in order to receive either a certificate of program completion or terminal completion points.</p>
+                <p>Students interested in enrolling in ESOL (English for Speakers of Other Languages) classes must take the CASAS before being placed.</p>
+
+                <div class="campus-cards">
+                    <div class="campus-card">
+                        <p class="campus-card__campus"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Clearwater</p>
+                        <p class="campus-card__heading">CASAS testing schedule</p>
+                        <p>By appointment only. Call <a href="tel:7275387167">(727) 538-7167 ext 2006</a> to schedule.</p>
+                        <p>Monday through Thursday, testing schedule starts at 8:00 a.m.<br>
+                        Twice a month on Wednesday evenings, beginning at 4:30 p.m.</p>
+                        <p>Please be 15 minutes early to register. Sign in at Administration, Building #2, front desk.</p>
                     </div>
-                    <div class="testing-type">
-                        <div class="testing-type__icon"><i class="fas fa-stethoscope" aria-hidden="true"></i></div>
-                        <h3 class="testing-type__name">TEAS</h3>
-                        <p class="testing-type__desc">Test of Essential Academic Skills. Required for health science programs including Practical Nursing, Patient Care Technician, and Surgical Technology.</p>
-                    </div>
-                    <div class="testing-type">
-                        <div class="testing-type__icon"><i class="fas fa-book-reader" aria-hidden="true"></i></div>
-                        <h3 class="testing-type__name">ABE / GED / ESOL</h3>
-                        <p class="testing-type__desc">If you need to complete your GED or improve your English language skills, PTC offers Adult Basic Education and ESOL programs at both campuses.</p>
+                    <div class="campus-card">
+                        <p class="campus-card__campus"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Petersburg</p>
+                        <p class="campus-card__heading">CASAS testing schedule</p>
+                        <p>Morning arrival times: Monday through Friday, 8:00 a.m. to 11:00 a.m.</p>
+                        <p>Please arrive at least 30 minutes before your scheduled testing time to comply with the campus sign-in procedure.</p>
+                        <p><a href="https://www.pcsb.org/cms/lib/fl01903687/centricity/domain/134/1programfiles%202023-24/casastestingschedstp_04012024.pdf" target="_blank" rel="noopener">St. Petersburg CASAS testing schedule (PDF)</a></p>
                     </div>
                 </div>
+
+                <h3 class="testing-subhead">TEAS, Version 7</h3>
+                <p>The Practical Nursing programs offered at Pinellas Technical College only accept TEAS test scores taken at a PTC campus testing center.</p>
+
+                <div class="campus-cards">
+                    <div class="campus-card">
+                        <p class="campus-card__campus"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Clearwater</p>
+                        <p class="campus-card__heading">TEAS testing schedule</p>
+                        <p>By appointment only. Call <a href="tel:7275387167">(727) 538-7167 ext 2006</a> to schedule.</p>
+                        <p>The TEAS test is required to be taken in-person on the Clearwater campus, for Clearwater PN applicants.</p>
+                        <p><strong>Monday through Thursday, 8:00 a.m.</strong><br>
+                        Please arrive by 7:30 a.m. No late TEAS testers admitted after 8:00 a.m.<br>
+                        Sign in at Administration, Building #2, front desk.</p>
+                        <p><strong>Wednesday (PM), 4:30 p.m.</strong><br>
+                        Please arrive by 4:00 p.m. No testers admitted after 5:00 p.m.<br>
+                        Sign in at Student Services, Building #1, front desk.</p>
+                        <p class="campus-card__contact">
+                            <strong>TEAS Contact:</strong> Merritt Scott, PTC-Clearwater PN Counselor<br>
+                            <a href="tel:7275387167">(727) 538-7167 x2032</a> &middot;
+                            <a href="mailto:scottme@pcsb.org">scottme@pcsb.org</a>
+                        </p>
+                    </div>
+                    <div class="campus-card">
+                        <p class="campus-card__campus"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Petersburg</p>
+                        <p class="campus-card__heading">TEAS testing schedule</p>
+                        <p>Monday through Friday, 8:00 a.m.</p>
+                        <p>NCCER &amp; ESCO arrive-by times: Monday through Friday, 7:30 a.m. to noon.</p>
+                        <p><a href="https://www.pcsb.org/cms/lib/fl01903687/centricity/domain/134/1programfiles%202023-24/teas%20testing%20schedule_sp_08252023.pdf" target="_blank" rel="noopener">St. Petersburg TEAS testing schedule (PDF)</a></p>
+                    </div>
+                </div>
+
+                <p class="testing-other-tests">Other placement assessments: TABE and Wonderlic may be required for some programs. Speak with a counselor about which test applies to your program of interest.</p>
             </div>
         </section>
 
         <!-- ============================================
-             CAMPUS TOURS
+             CAMPUS VISITS & SHADOWING
+             Stage 6 build 2026-04-30: rewritten per D1. Stripped fabricated
+             "campus tours and shadowing days are available at both locations"
+             claim (STP shadowing page returns 404). Per-campus cards: CLW
+             links current April 2026 PDF; STP routes to counselor inquiry
+             per Marianne's call.
         ============================================= -->
         <section class="admissions-section" id="campus-tours">
             <div class="container">
-                <div class="tour-banner">
-                    <div class="tour-banner__content">
-                        <h2><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Visit Our Campuses</h2>
-                        <p>See our labs, meet instructors, and learn about programs firsthand. Campus tours and shadowing days are available at both locations.</p>
-                    </div>
-                    <div class="tour-banner__cta">
-                        <a href="#" class="btn btn--accent btn--lg">Schedule a Tour <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================
-             FAQ
-        ============================================= -->
-        <section class="admissions-section admissions-section--alt" id="admissions-faq">
-            <div class="container">
                 <div class="section-header section-header--center">
-                    <p class="section-header__tag">Questions?</p>
-                    <h2 class="section-header__title">Frequently Asked Questions</h2>
+                    <p class="section-header__tag">Visit a Campus</p>
+                    <h2 class="section-header__title">Campus Visits &amp; Program Shadowing</h2>
+                    <p class="section-header__desc">Some programs have specific days and/or dress codes for shadowing, so please speak with a counselor before coming in.</p>
                 </div>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
-                            Is there an application fee?
-                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </div>
-                        <div class="faq-item__answer">
-                            No. Applying to PTC is completely free. There are no application or enrollment fees.
-                        </div>
+                <div class="campus-cards">
+                    <div class="campus-card">
+                        <p class="campus-card__campus"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Clearwater</p>
+                        <p class="campus-card__heading">Shadowing Days &amp; Times</p>
+                        <p>By appointment only. Call <a href="tel:7275387167">(727) 538-7167</a>.</p>
+                        <p><a href="https://resources.finalsite.net/images/v1776443397/myptecorg/fhzgtdgopbm2pwibfvcg/ShadowSchedule04-16-26.pdf" target="_blank" rel="noopener">Current shadowing schedule (PDF, April 2026)</a></p>
+                        <p><a href="clearwater-counselors.html">Meet Clearwater counselors</a></p>
                     </div>
-                    <div class="faq-item">
-                        <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
-                            Do I need a high school diploma or GED?
-                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </div>
-                        <div class="faq-item__answer">
-                            Most career and technical programs require a high school diploma or GED equivalent. However, PTC also offers Adult Basic Education (ABE) and GED preparation programs if you need to complete that requirement first.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
-                            When can I start?
-                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </div>
-                        <div class="faq-item__answer">
-                            Many PTC programs have multiple start dates throughout the year. Your admissions counselor can provide specific start dates for the program you are interested in. Some programs have rolling enrollment.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
-                            Is financial aid available?
-                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </div>
-                        <div class="faq-item__answer">
-                            Yes. PTC participates in federal and state financial aid programs, including Pell Grants, Florida Student Assistance Grants, scholarships, and veterans benefits. Complete your FAFSA to find out what you qualify for.
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-item__question" onclick="this.parentElement.classList.toggle('active')">
-                            Can I attend part-time or in the evening?
-                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </div>
-                        <div class="faq-item__answer">
-                            Some programs offer evening and part-time scheduling options. Availability varies by program and campus. Check the program page or ask your counselor for details.
-                        </div>
+                    <div class="campus-card">
+                        <p class="campus-card__campus"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Petersburg</p>
+                        <p class="campus-card__heading">Schedule a Program Shadow</p>
+                        <p>Contact your campus counselor to inquire about shadowing your program of interest. Some programs have specific days and dress codes.</p>
+                        <p>Call <a href="tel:7278932500">(727) 893-2500</a>.</p>
+                        <p><a href="stpete-counselors.html">Meet St. Petersburg counselors</a></p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ============================================
-             ACCOMMODATIONS NOTICE (added 2026-04-30 from Counselors cluster M1)
-             Verbatim from clearwater.myptc.edu/admissions/admissions
+             ACCOMMODATIONS NOTICE
+             Stage 6 build 2026-04-30: kept as-is. Already verbatim from
+             clearwater.myptc.edu/admissions/admissions L40 (Counselors M1).
+             Cross-link to consumer-information.html#accessibility added (A10).
         ============================================= -->
         <section class="admissions-section admissions-section--alt" id="accommodations" style="padding: 3rem 0;">
             <div class="container" style="max-width: 800px;">
                 <div style="background: var(--color-white); padding: 2rem; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-green); box-shadow: var(--shadow-sm);">
                     <h2 style="font-family: var(--font-heading); font-size: 1.4rem; margin: 0 0 1rem; color: var(--color-gray-900);"><i class="fas fa-universal-access" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>Accommodations</h2>
                     <p style="font-size: 1rem; line-height: 1.6; margin: 0 0 0.75rem; color: var(--color-gray-700);">Accommodations are available during the instructional program for students with documented physical or mental impairments. Please see a school counselor for further information.</p>
-                    <p style="font-size: 0.95rem; margin: 0;"><a href="clearwater-counselors.html" style="color: var(--color-green); font-weight: 600;">Meet Clearwater counselors</a> &middot; <a href="stpete-counselors.html" style="color: var(--color-green); font-weight: 600;">Meet St. Petersburg counselors</a></p>
+                    <p style="font-size: 0.95rem; margin: 0 0 0.75rem;"><a href="clearwater-counselors.html" style="color: var(--color-green); font-weight: 600;">Meet Clearwater counselors</a> &middot; <a href="stpete-counselors.html" style="color: var(--color-green); font-weight: 600;">Meet St. Petersburg counselors</a></p>
+                    <p style="font-size: 0.9rem; margin: 0; color: var(--color-gray-700);">For the formal accessibility policy and ADA / Section 504 information, see <a href="consumer-information.html#accessibility" style="color: var(--color-green); font-weight: 600;">Accessibility</a> on the Consumer Information page.</p>
                 </div>
             </div>
         </section>
 
         <!-- ============================================
              CTA BAND
+             Stage 6 build 2026-04-30: re-aimed Apply Now to apply.myptc.edu;
+             Contact Admissions to inforequest.myptc.edu (per IA-Recommender:
+             "Apply or contact us with questions" maps to the inquiry CRM).
         ============================================= -->
         <section class="cta-band" id="cta-section">
             <div class="container">
@@ -722,8 +1215,8 @@
                         <p>Take the first step. Apply today or contact us with questions.</p>
                     </div>
                     <div class="cta-band__actions">
-                        <a href="#" class="btn btn--accent btn--lg">Apply Now</a>
-                        <a href="#" class="btn btn--outline-white btn--lg">Contact Admissions</a>
+                        <a href="https://apply.myptc.edu" class="btn btn--accent btn--lg" target="_blank" rel="noopener">Apply Now</a>
+                        <a href="https://inforequest.myptc.edu" class="btn btn--outline-white btn--lg" target="_blank" rel="noopener">Request Info</a>
                     </div>
                 </div>
             </div>

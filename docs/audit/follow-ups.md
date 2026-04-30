@@ -170,6 +170,36 @@ When auditing a cluster and finding live-site issues that aren't in our scope to
 
 ---
 
+## Admissions cluster (added 2026-04-30)
+
+9 follow-up items surfaced during the Admissions cluster audit + build. The most consequential is one large institutional infrastructure issue (sitemap.xml not published on any subsite, which forced the audit to do per-cluster brute-force URL discovery and led to Stage 1 missing the canonical www admissions page), and one stale federal-aid-adjacent PDF on STP.
+
+### High priority
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| STP TEAS testing schedule PDF is 2.5 years stale | stpete.myptc.edu/admissions/testing/teas (`teas testing schedule_sp_08252023.pdf`) | PDF dated August 25, 2023. Federal-aid-adjacent (TEAS is required for the Practical Nursing Title-IV-eligible program). Linked from STP testing page; redesign mirrors verbatim. | Refresh the PDF for 2026-27 academic year and republish. | STP campus admin / PN program coordinator | High | Admissions cluster, 2026-04-30 |
+| www admissions page duplicates the FAFSA School Code paragraph | www.myptc.edu/resources/future-students/admissions-process-requirements-and-criteria | Bullet 2 of the 7-step process repeats the FAFSA School Code copy as its own bullet AND as a sub-bullet inside the parent. Cosmetic but worth cleaning. | Marianne (as webmaster) tightens to one bullet during May polish window. | PTC webmaster (Marianne) | High (live-site polish window) | Admissions cluster, 2026-04-30 |
+
+### Medium priority — live-site cleanup
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| STP testing-hub copy is ~60% shorter than CLW's | stpete.myptc.edu/admissions/testing | CLW testing hub publishes scheduling phone (x2006), AM/PM session breakdown, sign-in building locations, named TEAS contact (Merritt Scott, x2032), and the 15-minute pre-arrival rule. STP publishes none of those. STP version is 812 chars vs CLW's 1368. | Either ask STP to mirror CLW's testing-hub structure, or document the asymmetry as intentional (if STP genuinely runs testing differently). | STP campus admin | Medium | Admissions cluster, 2026-04-30 |
+| Admissions FAQ needs to be authored on live so redesign can mirror | both campus admissions hubs (no FAQ section currently exists) | Per D2, redesign stripped its 5-row FAQ (all 5 were fabricated, including a contradiction of live's age requirement). Marianne approved a deferred plan: author 4-6 verbatim Q/A on both campus hubs first, then redesign mirrors verbatim under the live-owner exception (`verbatim-rule.md`). | Marianne authors during May 2026 live-site polish window. Suggested topics: age requirement, residency proofs, transfer-credit window, readmission process, financial-aid timeline. | PTC webmaster (Marianne) | Medium | Admissions cluster, 2026-04-30 |
+| www admissions page is at `/resources/future-students/...` not `/admissions` | www.myptc.edu | Top-level `www.myptc.edu/admissions` returns 404. Canonical institutional admissions page is buried 3 levels deep. Stage 1 of the admissions audit missed this URL because the obvious slug 404s. | Either add a 301 redirect from `/admissions` to the canonical page, or move the page to `/admissions` and 301 the long URL forward. | PTC webmaster (Marianne) | Medium | Admissions cluster, 2026-04-30 |
+
+### Low priority
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| STP shadowing parity tracking | stpete.myptc.edu/admissions/admissions/shadowing-days-times (404) | Per D1, STP runs shadowing through counselor inquiry rather than a published schedule (CLW publishes schedule). Acceptable as-is. Track in case STP changes operating model and starts publishing a schedule. | No action; flag for next drift-check pass. | STP campus admin | Low | Admissions cluster, 2026-04-30 |
+| STP TEAS contact not named on live | stpete.myptc.edu/admissions/testing | CLW names Merritt Scott (PN Counselor) as TEAS contact. STP names no equivalent contact. Redesign mirrors the asymmetry (CLW card has named contact, STP card does not). | Confirm whether STP has a named TEAS contact who should be published, or document that STP routes TEAS questions through general counselor contact. | STP campus admin | Low | Admissions cluster, 2026-04-30 |
+| Tuition Stage 1 hand-off note: institutional financial-aid page exists at `/resources/future-students/financial-aid` | www.myptc.edu | Cluster #6 Tuition's Stage 1 inventory should pick up this URL. Don't repeat the Admissions Stage 1 mistake of inferring "no www financial-aid content" from a 404 on the obvious slug. | Tuition cluster Stage 1: probe `/resources/future-students/financial-aid` (returns 200) before declaring www has no aid content. | (cluster pipeline) | Low (process note) | Admissions cluster, 2026-04-30 |
+| Finalsite sitemap.xml returns 404 on all 3 PTC subsites | www.myptc.edu/sitemap.xml, clearwater.myptc.edu/sitemap.xml, stpete.myptc.edu/sitemap.xml | All three return 404. Finalsite supports sitemap.xml generation; this is presumably a config toggle. Enabling it would unblock cleaner Stage 1 discovery for every future cluster audit and would help search engines. | Ask Addison Richard (Finalsite Virtual Webmaster) whether sitemap.xml is a per-site setting and enable it on all three subsites. | PTC webmaster (Marianne) + Finalsite | Low (large infra payoff) | Admissions cluster, 2026-04-30 |
+
+---
+
 ## Closed follow-ups
 
 (none yet)
@@ -180,3 +210,4 @@ When auditing a cluster and finding live-site issues that aren't in our scope to
 
 - [docs/audit/about-cluster/RECOMMENDATIONS.md](about-cluster/RECOMMENDATIONS.md) — original About cluster audit that surfaced most of these items
 - Memory: `feedback_redesign_content_source.md` — the project rule that all content comes from approved live site only
+- Memory: `feedback_live_site_url_inference_unreliable.md` — Stage 1 binding rule established 2026-04-30 (don't infer URLs; do per-subsite search/sitemap/probe pass)

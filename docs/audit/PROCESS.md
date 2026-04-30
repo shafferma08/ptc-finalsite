@@ -29,6 +29,15 @@ Each stage maps to specific work the daily can do. The `content-audit` skill des
 
 Invoke the `content-audit` skill, Stage 1. Output: `docs/audit/<cluster>/inventory.md`. Update `CLUSTERS.md` row to `extracting` and record live hub URLs found.
 
+**Stage 1 binding rule (added 2026-04-30):** Do not infer live-site URLs from logical hierarchy or campus parallels. The PTC live site has chaotic Finalsite URLs. A 404 on a guessed URL is not evidence the content is absent — it's evidence the guess was wrong. Every Stage 1 must include a per-subsite discovery pass (www + clearwater + stpete) before declaring "no [topic] content on [subsite]." Discovery toolkit, in order of effectiveness:
+
+1. **Per-subsite Google `site:` search** with cluster keywords (e.g., `site:www.myptc.edu admissions OR enrollment OR FAFSA`). Note: `site:` filter is fuzzy on subdomains, so even when scoping to www the results often surface campus-subdomain pages too. Use it as a starting list, not a complete list.
+2. **`sitemap.xml`** on each subsite. All three PTC subsites return 404 on `sitemap.xml` as of 2026-04-30, so this is currently zero-yield, but check each cluster in case it changes.
+3. **Brute-force slug probing** with `curl -sI -A "Mozilla/..." -o /dev/null -w "%{http_code}"` against likely topical slugs under `/resources/`, `/resources/future-students/`, `/about-us/welcome-to-ptc/`, and any URL the redesign sitemap or another cluster's extracts reference.
+4. **Marianne pointer** — if Marianne knows a specific URL exists, that's the highest-confidence input. Stage 1 should explicitly ask if she has any in mind for the cluster.
+
+The cost of this rule: ~5 minutes per cluster, vs. the cost of getting it wrong (Admissions cluster 2026-04-30 had to be patched mid-Stage-4 when Marianne pointed to a www admissions page Stage 1 had missed; many Comparator FABRICATED verdicts had to be re-reconciled against the new source).
+
 ### `extracting` → run extraction
 
 Invoke `content-audit` skill, Stage 2 (Chrome MCP extraction). Save to `docs/audit/<cluster>/extracted/{www,clearwater,stpete}/<slug>.md`. If Chrome MCP is unavailable in the scheduled-task environment, set status to `blocked` with note `"awaiting Chrome MCP — needs an interactive session"` and stop. Otherwise, update to `analyzing`.

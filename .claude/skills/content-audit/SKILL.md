@@ -34,9 +34,18 @@ Don't use for:
 
 ## The 5 stages
 
-### Stage 1 — Inventory (~10 min, you do it)
+### Stage 1 — Inventory (~10-15 min, you do it)
 
-Navigate to each hub URL via Chrome MCP. Extract the full link list using the JS in `references/extraction-snippets.md`. Save deduplicated URLs to `docs/audit/<cluster>/inventory.md` with a table per hub plus pattern observations (likely duplicates across hubs, likely PDF wrappers, likely stale).
+Navigate to each hub URL via Chrome MCP (or WebFetch + curl probing if Chrome MCP unavailable). Extract the full link list using the JS in `references/extraction-snippets.md`. Save deduplicated URLs to `docs/audit/<cluster>/inventory.md` with a table per hub plus pattern observations (likely duplicates across hubs, likely PDF wrappers, likely stale).
+
+**Binding rule (added 2026-04-30):** Don't infer URLs from logical hierarchy or campus parallels. PTC URLs on Finalsite are chaotic — a 404 on a guessed slug is not evidence of content absence, only of a wrong guess. Every Stage 1 must include a discovery pass before declaring "no [topic] on [subsite]":
+
+1. Per-subsite Google `site:` search with cluster keywords.
+2. `sitemap.xml` on each subsite (all three return 404 as of 2026-04-30, so currently zero-yield, but check).
+3. Brute-force `curl` probing of likely slugs under `/resources/`, `/resources/future-students/`, `/about-us/welcome-to-ptc/`, and any URLs the redesign sitemap or another cluster's extracts reference.
+4. Ask Marianne if she has any URL pointers for this cluster. Marianne pointers are highest-confidence.
+
+See `docs/audit/PROCESS.md` for the full discovery toolkit and the 2026-04-30 Admissions cluster precedent.
 
 ### Stage 2 — Extraction (~30-45 min, you do it via Chrome MCP)
 

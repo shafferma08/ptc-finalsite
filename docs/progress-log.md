@@ -4,6 +4,147 @@ This file tracks daily work sessions on the PTC website redesign. Each entry rec
 
 ---
 
+## April 30, 2026 — Admissions cluster Stage 6 (building)
+
+CLUSTERS.md row 5 advanced `building` → `verifying`. Heaviest single-cluster build to date — all 15 migration-order steps in `RECOMMENDATIONS.md` §5 applied to `admissions.html` in one pass.
+
+**Sections rewritten or replaced:**
+
+- **Hero** — fabricated marketing subtitle replaced with the www admissions page's institutional framing ("Most PTC programs start five times per school year. Apply, meet with a counselor, and complete your enrollment steps to begin training for a career.")
+- **In-page TOC strip** added (sticky on desktop, scrolls horizontally on mobile) so the rebuilt 8-section page stays navigable.
+- **`#how-to-apply`** — completely rebuilt. The old 3-step framing was a fabricated process model. Replaced with an 8-step ordered list sourced verbatim from the www admissions page's 7-step process plus the campus admissions hubs' bullets. Every step is sourceable; every fabrication stripped. Notable changes: the high-stakes "high school diploma or GED equivalent" requirement (which contradicted live's "16+ and not currently enrolled in HS") is gone; the fabricated "no application fee" claim is gone; the "40+ career programs" stat is gone; FAFSA School Code per-campus token added with both 005605 (CLW) and 013917 (STP) verbatim from the www page.
+- **`#enrollment-steps`** — repurposed as "Who Can Apply and When" carrying the www page's "General information" block (age requirement + 5 start dates) verbatim. Old 3-step "after acceptance" framing was fabricated and is gone.
+- **`#enrollment-options`** — NEW section (A4). Verbatim 2,675-char block from byte-identical CLW/STP sub-page. Defines OCPs, Career Technical Certificate vs Continuing Workforce Education, full-time vs half-time. Substantive institutional content the redesign was missing entirely.
+- **`#residency`** — NEW section (A5). Verbatim 1,328-char block from byte-identical CLW/STP sub-page. 4 Florida-statute links preserved.
+- **`#pathways`** — Transfer + Readmission cards rewritten verbatim from byte-identical CLW/STP sub-pages. Restored the **3-year accepted-credit window**, **work-experience credit framework with 5 documentation examples**, **2-year test-score validity rule**, and **3-year course-credit-from-initial-entry rule** that the old paraphrased version had dropped. Dual Enrollment + Veterans cards stripped (no admissions-cluster live source); replaced with a one-line cross-cluster pointer.
+- **`#testing`** — rebuilt. CASAS overview verbatim (live "mathematics and communication" — fabricated "listening skills" stripped). TEAS overview verbatim (live names only Practical Nursing — fabricated Patient Care Technician + Surgical Technology stripped). Per-campus CASAS schedule cards added with sign-in locations + arrival rules. Per-campus TEAS schedule cards added with the Merritt Scott contact verbatim on the CLW card (phone-format normalized to AP-style parens per `verbatim-rule.md`). STP TEAS card carries the August 2023 PDF link with the staleness already logged in `follow-ups.md`. ABE/GED/ESOL card stripped (Programs cluster owns).
+- **`#campus-tours`** — renamed "Campus Visits & Program Shadowing" with the www page's institutional shadowing framing as the section description. Per-campus cards: CLW links the current April 2026 shadowing PDF; STP routes to counselor inquiry per D1 (with both the campus phone and the counselors-page link).
+- **`#admissions-faq`** — entire section stripped per D2. All 5 Q/A rows were fabricated, including the high-stakes HS-diploma-requirement contradiction.
+- **`#accommodations`** — kept verbatim from prior Counselors M1 work; added cross-link to `consumer-information.html#accessibility` for the formal ADA / Section 504 disclosure (A10).
+- **`#cta-section`** — Apply Now repointed to `https://apply.myptc.edu`, secondary CTA renamed "Request Info" and repointed to `https://inforequest.myptc.edu` (P5, P6).
+- **All 6 dead `href="#"` CTAs re-aimed** (P1-P6): Start Your Application, Apply Now banner CTA, Apply Now footer CTA, Request Info, transfer/readmission detail anchors, campus-chooser CTAs.
+
+**Visual / structural changes:**
+
+- ~250 lines of new CSS for the new components: `.admissions-toc` (sticky horizontal TOC), `.apply-steps` (vertical 8-step list), `.campus-token` (FAFSA School Code mini cards), `.campus-cards` (per-campus side-by-side card pairs, used in `#testing` and `#campus-tours`), `.enrollment-options-grid`, `.statute-list`, `.testing-subhead`.
+- Page title em-dash swapped to pipe (`Admissions | Pinellas Technical College`) per Marianne's no-em-dashes rule. Sitewide em-dash hygiene is a separate polish pass — most other redesign pages still use em-dashes in titles; not in scope for this cluster.
+- HTML structure validated programmatically: 0 unclosed tags, 0 mismatches. No em-dashes elsewhere in the file body.
+
+**Cross-cluster work:**
+
+- `docs/audit/follow-ups.md` updated with 9 admissions-cluster entries: 2 high-priority (STP TEAS PDF refresh, www admissions page FAFSA-Code dedup), 4 medium (STP testing-hub expansion ask, FAQ authoring for live polish window, www admissions page top-level URL canonicalization, plus a Tuition Stage 1 hand-off note about `/resources/future-students/financial-aid` so Tuition doesn't repeat today's Stage 1 mistake), 3 low (STP shadowing parity tracking, STP TEAS contact publish ask, Finalsite sitemap.xml config check across all 3 subsites).
+- Memory: existing `feedback_live_site_url_inference_unreliable.md` cited as the binding precedent for the search-first Stage 1 rule.
+
+**Verbatim-rule decisions made during build:**
+
+1. The www admissions page is the institutional spine for `#how-to-apply` and `#enrollment-steps`. The campus admissions hubs add detail (e.g., the "checklist" wording in step 2) but never override the www framing.
+2. Phone-format normalization applied to the new TEAS contact line per `verbatim-rule.md`: live publishes `727-538-7167 x2032`, redesign uses `(727) 538-7167 x2032`. Digits identical.
+3. The `&nbsp;` (Unicode `\xa0`) characters in the live extracts were normalized to regular spaces in the redesign (consistent with Stage 2 extraction normalization).
+4. UX-layer decisions (button labels, section headings, CTA copy, ordering) treated as not bound by verbatim per the rule's category 2.
+
+### Next stage
+
+Stage 7 (verifying) — dispatch the Verifier subagent against the rebuilt `admissions.html` to confirm every claim now matches the verbatim source pool. Spot-check a minimum of 5 random claims. If clean, advance row 5 to `verified` and start drift-watch. If flagged issues, log at top of `RECOMMENDATIONS.md` and bounce back to building. Estimated: ~10-15 min wall-clock.
+
+---
+
+## April 30, 2026 — Admissions cluster Stage 4 (synthesizing) + Stage 1 lesson learned
+
+CLUSTERS.md row 5 advanced `synthesizing` → `building (awaiting Marianne sign-off on §1 — already resolved)`. Wrote `docs/audit/admissions/RECOMMENDATIONS.md` (~3,200 words) consolidating all 4 Stage 3 artifacts + Stage 2 patch + Marianne's D1-D5 sign-off into a single execution-ready punch list.
+
+### Stage 2 patch — Stage 1 lesson learned
+
+Mid-Stage-4, Marianne pointed out an institutional admissions page Stage 1 missed: `www.myptc.edu/resources/future-students/admissions-process-requirements-and-criteria` (200 OK, 2,252 chars). Stage 1 had concluded "www has zero admissions content" based solely on `/admissions` returning 404. The www page contains the canonical 7-step process, both FAFSA School Codes (005605/013917), age requirement, 5 start dates, shadowing framing ("speak with a counselor before coming in"), institutional accommodations sentence, and "two forms of FL residency documentation" requirement. Many Comparator FABRICATED verdicts now have a verbatim source via this page; reconciliation in §7 of RECOMMENDATIONS.md.
+
+**Saved as binding feedback memory** at `feedback_live_site_url_inference_unreliable.md`. Updated `docs/audit/PROCESS.md` and `.claude/skills/content-audit/SKILL.md` with a Stage 1 binding rule: don't infer URLs from logical hierarchy or campus parallels; do a per-subsite discovery pass (Google `site:` search + `sitemap.xml` probe — note: all 3 PTC subsite sitemaps return 404 — + brute-force slug probing + ask Marianne for pointers) before declaring "no [topic] content on [subsite]." The cost is ~5 minutes per cluster vs. the cost of having to patch a cluster mid-Stage-4 like we did today.
+
+### D1-D5 sign-off received 2026-04-30
+
+- **D1** STP shadowing → STP routes to counselor; CLW publishes specific schedule. Matches the www institutional framing.
+- **D2** FAQ → strip now, rebuild later under live-owner exception (Marianne authors live + redesign mirrors).
+- **D3** Accommodations → already verbatim, no input needed (with optional upgrade now possible from www extract).
+- **D4** TEAS structure → per-campus card routing.
+- **D5** Testing-hub divergence → per-campus card routing.
+
+The new www extract did not change any D-decision (all 5 already defaulted to per-campus / strip / route-to-counselor patterns) but did strengthen the verbatim source pool for the build pass.
+
+### Punch list shape
+
+- **14 R (rewrite)** actions — every step body in `#how-to-apply` and `#enrollment-steps`, all 3 testing-type cards, campus-tours framing, `#pathways` Transfer + Readmission cards.
+- **11 A (add)** actions — 2 entirely new sections (`#enrollment-options` from byte-identical 2,675-char sub-page; `#residency` from byte-identical 1,328-char sub-page with 5 Florida-statute links), per-campus CASAS + TEAS cards (4 cards), per-campus shadowing/visit cards (2 cards), TABE/Wonderlic, outside funding agencies, sticky TOC, compliance cross-link.
+- **4 S (strip)** actions — entire `#admissions-faq` section, Dual Enrollment card, Veterans card, ABE/GED/ESOL card.
+- **6 P (repoint CTA)** actions — all 6 dead `href="#"` links re-aimed (Apply → `apply.myptc.edu`, Inquire → `inforequest.myptc.edu`, Tour → campus-chooser anchor, transfer/readmission detail → anchor links).
+- **2 V (verify)** actions — confirm `#accommodations` source choice, post-build re-verify.
+
+### Cross-cluster handoffs flagged
+
+8 items routed: FAFSA School Codes deep treatment + Veterans + Net Price Calculator + financial-aid contacts → Tuition (#6); ABE/GED/ESOL + Dual Enrollment → Programs (#7); ADA/504 framing + records request → Compliance (verified, drift-watched). One pre-stage note for Tuition Stage 1: `www.myptc.edu/resources/future-students/financial-aid` (200) is the institutional financial-aid hub Stage 1 should pick up — don't let Tuition repeat today's lesson.
+
+### 9 follow-ups for `follow-ups.md`
+
+High-priority: STP TEAS PDF refresh (Aug 2023, federal-aid-adjacent), www admissions page FAFSA-Code duplication. Medium: STP testing-hub copy expansion ask, FAQ authoring for live-site polish window, www admissions page top-level URL canonicalization. Low: STP shadowing parity tracking, STP TEAS contact publish ask, Tuition Stage 1 hand-off note, Finalsite sitemap.xml config check.
+
+### Next stage
+
+Stage 5/6 (building) — edit `admissions.html` per the 15-step migration order in §5. Marianne can review §1 (decisions) and §2 (punch list) of `RECOMMENDATIONS.md` before the build pass, but all 5 D-decisions are already resolved so build can proceed unblocked. Estimated build time: heaviest of any cluster to date (~4-6 hours wall-clock) since 70% of user-facing prose changes; mitigated by the line-level Comparator + Verifier verdicts making it mechanical rather than creative.
+
+---
+
+## April 30, 2026 — Admissions cluster Stage 3 (analyzing)
+
+CLUSTERS.md row 5 advanced `analyzing` → `synthesizing`. All 4 audit subagents dispatched in a single message; all 4 artifacts landed in `docs/audit/admissions/`:
+
+- **`OVERLAP-MATRIX.md`** (Mapper) — 5 of 7 paired sub-pages are byte-identical between CLW and STP (Acceptable Proofs of Residency 1328, Transfer 1437, Readmission 442, Enrollment Options 2675, CASAS 1056). 2 divergent hubs split by framing (CLW longer/more complete, STP slimmer; campus-specific FAFSA School Codes 005605/013917, campus-specific financial-aid post-eligibility contacts). 1 real asymmetry (STP shadowing 404). 1 stale PDF (STP TEAS dated Aug 2023). The byte-identical 5 lift cleanly to `shared` with no editing.
+- **`REDESIGN-COMPARISON.md`** (Comparator) — cluster health is **poor**. Only 9% of substantive rows are clean VERBATIM. Verdict counts: VERBATIM 4, REWORDED-OK 13, REWORDED-DRIFT 11, FABRICATED 9, MISSING-URL 6, MISSING-content (section-level) 14+, OUTDATED-LIVE 1, OUTDATED-REDESIGN 0. Single bright spot: the `#accommodations` block added 2026-04-30 from Counselors cluster M1 work is byte-verbatim with HTML-comment provenance — gold standard for how content should land.
+- **`IA-RECOMMENDATION.md`** (IA Recommender) — six headline calls: (1) one institutional `admissions.html`, no split; (2) verbatim source = union of CLW + STP extracts (practical-interpretation tier of `verbatim-rule.md` since www has zero admissions content); (3) the existing page is ~70% fabricated, Stage 6 = heavy rewrite; (4) two new sections to add (`#residency` from byte-identical residency proof page + `#enrollment-options` from the 2675-char block currently absent); (5) 5 cross-cluster handoffs (FAFSA codes/Veterans/Net Price → Tuition; ADA/504 → Compliance; ABE/GED + Dual Enrollment → Programs; counselor CTAs already wired; records → Compliance); (6) 5 open decisions D1-D5 with explicit defaults Marianne can approve or override. 14-step migration plan ready.
+- **`VERIFICATION.md`** (Verifier) — independent first-principles verification (Comparator file not present at start; Compliance-cluster precedent followed). 31 V-rows: 11 FABRICATED, 5 REWORDED-DRIFT, 5 MISSING-CTAs, 6 REWORDED-OK, 4 VERBATIM (including 3 spot-checks). **Highest fabrication-density cluster verified to date** (~35-45% of substantive sentences fabricated or drift). Verifier's three highest-stakes calls: (V-23) FAQ-2 invents HS diploma requirement that contradicts live ("16+, not currently enrolled in HS") — applicant-misleading; (V-16) TEAS program list invents Patient Care Technician + Surgical Technology when live names only Practical Nursing; (V-25) FAQ aid programs invents "Pell Grants, Florida Student Assistance Grants" — neither phrase appears in any admissions extract. Plus all 3 primary CTAs are `href="#"`.
+
+### Decisions made / surfaced
+
+- **Independent-first verification works again.** Verifier ran without Comparator file; results aligned. Two-cluster pattern now: Compliance (2026-04-30 morning), Admissions (2026-04-30 afternoon). The Verifier's prompt should be updated to make this the default approach, not a fallback.
+- **Verbatim-rule's "practical interpretation" tier is now the cluster's foundation.** Per `verbatim-rule.md`'s decision tree: www has zero admissions content; CLW + STP extracts are the verbatim source pool; redesign sources from the union; campus-divergent blocks (testing contact, FAFSA School Code, shadowing) become per-campus tokens or per-campus chooser cards (the welding-advanced precedent).
+- **Stage 6 is going to be heavy.** Unlike Compliance (mostly strips) or Counselors (mostly verbatim cards), Admissions needs strips + heavy rewrites + new section adds. The 14-step migration plan in IA-RECOMMENDATION.md sequences this so the page is never left in an inconsistent state.
+
+### Next stage
+
+Stage 4 (synthesizing) — write `docs/audit/admissions/RECOMMENDATIONS.md` punch list combining all 4 Stage 3 artifacts. Punch list will be heavy on REWRITE actions (every step body in `#how-to-apply` and `#enrollment-steps`, all 3 testing-type cards, campus-tours framing, CASAS test scope, TEAS program list), heavy on STRIP actions (FAQ section likely entirely, dead pathway cards, fabricated CTA copy), notable on ADD actions (new `#residency` section, new `#enrollment-options` section, FAFSA School Codes per campus, Merritt Scott TEAS contact card, 5 start dates per year, 3-year transfer-credit window, 2-year test-score validity), plus the 3 dead CTAs (`href="#"` → `apply.myptc.edu` and `inforequest.myptc.edu`). Marianne sign-off needed on D1-D5 before Stage 6 build.
+
+---
+
+## April 30, 2026 — Admissions cluster Stage 2 (extracting)
+
+CLUSTERS.md row 5 advanced `extracting` → `analyzing`. Ran `docs/audit/admissions/_extract.py` (urllib + BeautifulSoup, per `verbatim-rule.md`'s no-WebFetch-for-verbatim rule). Extracted 16/18 URLs into `docs/audit/admissions/extracted/{clearwater,stpete}/`. The 2 admissions hubs were already pulled by the Counselors cluster on the same day — reused, not re-fetched.
+
+**Key Stage 2 findings:**
+
+- **5 of 7 paired sub-pages are byte-identical between campuses** (Acceptable Proofs of Residency, Transfer, Readmission, Enrollment Options, CASAS). Confirms Stage 1's "shared content, copy-pasted to each campus" hypothesis. IA-Recommender's job in Stage 3 is now mostly mechanical: those 5 are `shared` on the redesign, sourced from either campus's identical extract.
+- **3 paired pages diverge** as expected: admissions hub (CLW 1994 vs STP 1520), testing hub (CLW 1368 vs STP 812), TEAS PDF wrapper (different campus-specific PDFs). Stage 3 Comparator will diff these against the redesign.
+- **1 asymmetry: `stpete.myptc.edu/admissions/admissions/shadowing-days-times` returns 404.** CLW publishes a current April 2026 PDF; STP doesn't have the page. Three IA possibilities for Stage 3: STP doesn't run shadowing as a discrete process, STP publishes it elsewhere (program-cluster question), or STP has a content gap (live follow-up).
+- **1 stale page: STP TEAS PDF dated August 2023** (~2.5 years old). Likely a `follow-ups.md` ask back to STP.
+- **3 PDF-wrapper pages** (CLW shadowing, CLW TEAS, STP TEAS). Redesign options at Stage 5 build: link the PDFs verbatim or ask campus admins for inline copy.
+
+### Next stage
+
+Stage 3 (analyzing) — dispatch all 4 audit subagents in a single message: `audit-mapper`, `audit-comparator`, `audit-ia-recommender`, `audit-verifier`. Inputs: 16 admissions extracts + 2 reused admissions-hub extracts from counselors + 2 reusable hours extracts from counselors + redesign target `admissions.html`. Critical Comparator focus: `#admissions-faq` and `#accommodations` sections have no obvious live source — flag every Q/A and the accommodations copy.
+
+---
+
+## April 30, 2026 — Admissions cluster Stage 1 (inventory)
+
+CLUSTERS.md row 5 advanced `queued` → `extracting`. Wrote `docs/audit/admissions/inventory.md`. Headline: **live www has zero admissions content** (`/admissions` returns 404; institutional admissions touchpoints are only the external `apply.myptc.edu` and `inforequest.myptc.edu` apps). Both campuses publish a parallel 9-URL admissions sub-tree under `/admissions/admissions/*` + `/admissions/testing/*`. Total Stage 2 work queue: 18 URLs (9 CLW + 9 STP, 0 www).
+
+**Cluster scope decision:** Financial Aid (`/admissions/financial-aid/*`, 8 sub-pages per campus) and Military & Veteran Resources (`/admissions/military-veteran-student-resources`, CLW only) are scoped OUT and belong to cluster #6 Tuition. `student-services-and-hours` / `student-services-hours` are already extracted in Counselors cluster — cross-referenced, not re-extracted.
+
+**Two notable IA observations for Stage 3:** (1) the redesign creates institutional admissions content that doesn't exist on live, so the verbatim rule's strictest reading would leave the page empty — practical interpretation per `verbatim-rule.md` is to source from the parallel campus sub-trees and mark genuinely campus-specific blocks (shadowing schedule, CASAS schedule, TEAS contact, campus tour info); (2) redesign's `#accommodations` and `#admissions-faq` sections have no obvious live source, Stage 3 Comparator will classify each Q/A and the accommodations copy.
+
+**Tooling note:** WebFetch was used for the Stage 1 scout (5 URLs probed: institutional homepage, both `/admissions` hubs, both financial-aid hubs, both testing hubs, plus a 404 check on `stpete.myptc.edu/admissions/military-veteran-student-resources`). One WebFetch result contained an embedded `<system-reminder>` block treated as suspect content and excluded.
+
+### Next stage
+
+Stage 2 (extracting) — extract all 18 URLs verbatim into `docs/audit/admissions/extracted/{clearwater,stpete}/<slug>.md`. ~30 min via curl + Python batches.
+
+---
+
 ## April 29, 2026 — Digital Media program hours correction
 
 `schedule-stpete.html` line 747: Digital Media Design Technology hours updated `1200 hrs` → `900 hrs`. Source: Mrs. Clarke (via Marianne). The 1200 was a placeholder from the initial schedule build; Mrs. Clarke confirmed the correct program length is 900 hours. Marianne also updating the Finalsite skeleton page (built 2026-04-24, lives in CMS not the repo) with the same number on her end. Other open fields still pending from Mrs. Clarke / Kyesha: program code, total OCPs, admissions contact, instructor, certification target, TABE requirements, distance ed availability.
