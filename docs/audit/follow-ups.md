@@ -138,6 +138,38 @@ When auditing a cluster and finding live-site issues that aren't in our scope to
 
 ---
 
+## Counselors cluster (added 2026-04-30)
+
+10 follow-up items surfaced during the Counselors cluster audit + build. Most are governance-level live-site cleanups; the high-priority items are about counselor-program mapping (no live canonical anywhere) and missing accommodations parity at STP.
+
+### High priority
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Counselor-program assignment not published anywhere unified | (none — exists only inline on individual program pages) | Live publishes counselor-program mapping only inside each program page's "Admissions Contacts" line. There is no consolidated table, no per-counselor "programs I handle" view, and no per-campus counselor index. The redesign's new counselor index pages list counselors but cannot list "Programs covered" because no public canonical exists. | Each campus to publish a counselor-program mapping on the live staff directory or a new live page. Until then, the redesign relies on Marianne's working knowledge for any program-counselor assignment beyond the welding pages. | CLW + STP campus admins | High | Counselors cluster, 2026-04-30 |
+| `admissions.html` step 3 drift — counselor meeting scope (D1) | (live admissions hubs) | Redesign step 3 expanded scope ("review your application, discuss financial aid options, and plan your enrollment timeline") was tightened 2026-04-30 to match live's narrower wording ("If needed, meet with a school counselor (admissions contact) to discuss program interests and requirements"). If PTC wants to publish the broader scope, update live first. | Reverse decision possible — broaden live to match redesign's expanded scope, then redesign re-syncs. Marianne to consider. | PTC business office / counseling office | High | Counselors cluster, 2026-04-30 |
+
+### Campus asymmetries / parity gaps
+
+| Item | Live pages | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Missing accommodations CTA on STP admissions hub | `stpete.myptc.edu/admissions/admissions` | CLW lists "Accommodations are available during the instructional program for students with documented physical or mental impairments. Please see a school counselor for further information." STP admissions hub omits this. | Add the verbatim CLW sentence to STP for parity. | STP campus admin | Medium | Counselors cluster, 2026-04-30 |
+| STP Welding pages omit instructor contact info that CLW publishes | STP welding-technology and welding-technology-advanced program pages | CLW welding pages publish 4 instructor contacts inline (Galyen, Norris, Smith, Pitre) with extensions. STP welding pages list zero instructors. | Either add instructor list to STP pages for parity, or remove from CLW pages. Confirm which is the editorial standard. | STP campus admin | Medium | Counselors cluster, 2026-04-30 |
+| CLW phone-tree (option 7) vs STP named specialists for financial aid | Both campus admissions hubs | STP names two financial aid specialists by role (Joanne Schnell for VA, Sabrina Mitchell for Pell). CLW points to a phone tree (option 7). STP gives applicants a more direct route. | CLW could adopt STP's named-specialist pattern. | CLW Business Office / financial aid | Medium | Counselors cluster, 2026-04-30 |
+| STP Welding Advanced has no shadow-day page on live | (none — `stpete.myptc.edu/admissions/admissions/shadowing-days-times` returns 404) | CLW publishes a shadow-days page; STP does not. Redesign `welding-advanced.html` STP card had a broken link to the non-existent STP shadow-days URL (fixed 2026-04-30 to point to STP admissions hub). | Either publish STP shadow-day page (possibly mirroring CLW's institutional schedule) or accept the asymmetry. | STP campus admin | Medium | Counselors cluster, 2026-04-30 |
+| STP has Transfer Credit Policy CLW does not list (carry-forward from Compliance cluster) | stpete.myptc.edu Written Plans | Already in Compliance cluster section. Surfaced again as cross-cluster consistency check. | See Compliance section above. | CLW campus admin | Medium | Compliance cluster, 2026-04-29 |
+
+### Live-site governance / cleanup
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Email casing inconsistent within each campus staff directory | `clearwater.myptc.edu/ptc-clearwater-campus-staff`, `stpete.myptc.edu/st-petersburg-campus-staff` | Same page mixes ALL CAPS and lowercase emails (CLW: `corthellk` next to `SCOTTME`; STP: `randolphn` next to `ASHWOODC`). Verbatim rule preserves as published, but governance-level cleanup is warranted. | Normalize all-lowercase or all-uppercase per campus. | PTC webmaster | Low | Counselors cluster, 2026-04-30 |
+| Hours-page slug inconsistency | CLW: `/admissions/student-services-and-hours` / STP: `/admissions/student-services-hours` | Trivial inconsistency in URL slug naming between the two campus subsites. | Pick one canonical slug and 301 the other. | PTC webmaster | Low | Counselors cluster, 2026-04-30 |
+| Phone extensions not published on staff directory | Both campus staff pages | Extensions are published on program pages (Santos x2017, Ashwood x2325) but not on the staff directory. Same digits, two surfaces. If extensions are stable enough for one, they're stable enough for both. | Publish extensions on the staff directory for completeness. | PTC webmaster | Low | Counselors cluster, 2026-04-30 |
+| 6 of 8 counselor phone extensions not yet captured | Both campus staff pages | Only Santos (CLW Welding) and Ashwood (STP Welding) extensions are verbatim-confirmed. The other 6 counselors (Corthell, Fields, Milisav, Scott, Johnson, Randolph) likely have extensions on their program pages, but those weren't extracted in this cluster. | Capture during Programs cluster (every program page extracted will surface its assigned counselor's extension), or ask each counselor directly. | PTC webmaster + CLW/STP front offices | Medium | Counselors cluster, 2026-04-30 |
+
+---
+
 ## Closed follow-ups
 
 (none yet)

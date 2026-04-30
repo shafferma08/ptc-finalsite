@@ -39,7 +39,8 @@
       "Bash(curl -sL -A \"Mozilla/5.0\" \"https://www.myptc.edu/about-us/welcome-to-ptc/sexual-misconduct-sexual-predators\" -o /tmp/v1-fdle.html)",
       "Bash(curl -sL -A \"Mozilla/5.0\" \"https://stpete.myptc.edu/school-information/about-us/pinellas-technical-college-st-petersburg-campus-written-plans\" -o /tmp/v2-stpete-plans.html)",
       "Bash(awk '/<div class=\"fsElementContent\"/,/<\\\\/div>/' /tmp/v1-fdle.html)",
-      "Bash(grep -v -E \"^[[:space:]]*$\")"
+      "Bash(grep -v -E \"^[[:space:]]*$\")",
+      "Bash(curl *)"
     ]
   }
 }

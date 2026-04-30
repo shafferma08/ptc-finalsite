@@ -95,6 +95,22 @@ When in doubt about whether something can go in the redesign:
 
 ---
 
+## Phone-number formatting normalization (permitted)
+
+Live PTC pages use a hyphenated phone format: `727-538-7167 x2017`. The redesign uses AP-style parens around area code: `(727) 538-7167 x2017`.
+
+**Rule: phone-number formatting normalization is permitted as long as digits are identical.** This is a UX-layer house style choice, not a substantive change. The verbatim rule binds the digits, not the punctuation between them.
+
+This applies to:
+- Hyphens vs parens around area code
+- Spaces around the area code
+- "x" vs "ext." vs "ext" for extensions
+- "1-888-..." vs "(888) ..." for toll-free
+
+If digits differ — even by one character — that's a verbatim violation. Surfaced 2026-04-30 during the Counselors cluster verifier pass when Santos x2017 and Ashwood x2325 numbers were correctly identical between live (`727-538-7167 x2017`) and redesign (`(727) 538-7167 x2017`) but the format had been quietly normalized.
+
+---
+
 ## Anti-patterns (don't do these)
 
 - **Inventing federal-law boilerplate** because "everyone has a FERPA statement, surely we can write one." No.

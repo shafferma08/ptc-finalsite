@@ -1877,3 +1877,71 @@ Remaining 24 issues split: 5 Critical (content/integration-gated), 8 High (mostl
 9. **C3 leadership** — about.html still has placeholder leadership cards. Need real photos and names from PTC.
 10. **Visual spot-check** of today's changes — homepage Featured Programs section at desktop and mobile widths to confirm L7 promotion renders cleanly.
 
+
+---
+
+## April 30, 2026 — Compliance cluster Stage 7 (verifying) complete
+
+audit-verifier re-ran against post-build files. All 21 pre-build high-stakes verdicts resolve cleanly: 10 CONFIRMED-RESOLVED, 1 OVERRIDE-DOCUMENTED (V1 WCAG 2.1 AA per D2), 8 PASS-THROUGH (verbatim before and after), 2 PASS-THROUGH out-of-scope (V12-V13 → Tuition cluster). 0 STILL-DRIFT, 0 NEW-DRIFT-INTRODUCED. Spot-checks SC-1 through SC-5 (Dena Collins, Stephanie Miller, FDLE paragraph, CTAE prefix, records-request emails) all verbatim. Stripped-section confirmation: 8/8 anchors gone from both body and TOC. Footer repoint confirmed across 28 HTML files (5 sampled, all point to `#non-discrimination`). One new low-priority follow-up #21 surfaced (generic Compliance Officer card duplicated on CI `#non-discrimination` and `#contact` — candidate for future polish consolidation). VERIFICATION.md overwritten with Stage 7 doc; pre-build Stage 3 verdicts preserved as appendix. **Recommendation to orchestrator: advance CLUSTERS.md row 3 `verifying` → `verified`. Cluster ready to close.**
+
+---
+
+## 2026-04-30 (evening) — Compliance closed, Counselors Stage 1 done
+
+### Compliance cluster → `verified`
+
+Stage 7 verifier (audit-verifier) ran post-build. All 21 pre-build verdicts resolve cleanly: 10 CONFIRMED-RESOLVED (V2-V11 fabrication strips + drift rewrites), 1 OVERRIDE-DOCUMENTED (V1 WCAG 2.1 AA per Marianne's D2), 8 PASS-THROUGH (V14-V21 verbatim before and after), 2 PASS-THROUGH out-of-scope (V12-V13 deferred to Tuition cluster). 0 still-drift, 0 new-drift-introduced. 5 spot-checks on post-build content (Collins, Miller, FDLE, CTAE prefix, records-request) all verbatim. 8/8 strips gone from CI body and sticky TOC, 28-file footer Privacy Policy `#privacy-ferpa` → `#non-discrimination` repoint confirmed across sampled files. One new low-priority follow-up: generic Office of Equal Opportunity card duplicated on CI #non-discrimination and #contact (consolidation candidate). CLUSTERS.md row 3 advanced from `verifying` → `verified`. Drift-watched.
+
+### Counselors cluster → `extracting`
+
+Stage 1 inventory complete. WebFetch scout of www / clearwater / stpete hubs confirmed counselors do not have dedicated pages on live — they appear as rows in each campus's collapsible staff directory under a "Student Services" section. Total counselors identified: CLW 5 (Corthell, Fields, Milisav, Santos, Scott), STP 3 (Ashwood, Johnson, Randolph). Email-only contacts; no phone extensions, no programs-they-handle mapping, no photos or bios published.
+
+6 Stage 2 URLs queued: per-campus staff directory + admissions + student-services-and-hours. No www URLs (institutional level has no counselor page). myptc.edu returns clean WebFetch data so Stage 2 can use curl + parse instead of Chrome MCP — small cluster, ~3-5K chars per page max.
+
+Key IA questions surfaced for Stage 3: (a) should the redesign add a counselor index page that live doesn't have? (b) per-campus or per-program placement? (c) where does the program-counselor mapping come from since live doesn't publish it? (d) does the dual-counselor pattern (Welding Advanced uses Cheri + Valerie) extend to other cross-campus programs? (e) publish phone extensions or stay email-only?
+
+Two-campus classification preliminary: counselor lists `campus-specific`, counselor-program mapping `campus-specific` with one `asymmetric` sub-case (Welding Advanced), "talk to a counselor" CTAs `shared`.
+
+CLUSTERS.md row 4 advanced from `queued` → `extracting`. Marianne approval needed on Stage 2 tooling choice (curl vs Chrome MCP) before extraction starts.
+
+### Counselors cluster Stages 2-4 (continued evening 2026-04-30)
+
+10 URLs extracted via curl + Python parse to `docs/audit/counselors/extracted/{clearwater,stpete}/*.md`. Stage 3 dispatched 4 subagents in parallel; all completed cleanly.
+
+**Comparator-vs-Verifier disagreement resolved.** Comparator marked the `welding-advanced.html` "dual-counselor layout" as a high-priority FABRICATED finding (F1). Verifier independently flipped the verdict to CONFIRM-WITH-CAVEAT, observing the section uses a per-campus chooser pattern with each card explicitly labeled "Clearwater Counselor" / "St. Petersburg Counselor" surfacing that campus's single counselor verbatim. Direct file inspection (welding-advanced.html L856-891) confirmed Verifier was right. The "known fabrication" framing in CLUSTERS.md row 4 and counselors/inventory.md was a misread on my part during Stage 1, validated by Marianne's quick agreement without her looking at the file. Cleaned up both files; no Stage 6 strip needed.
+
+**Stage 4 RECOMMENDATIONS.md written.** Architecture decision: per-campus counselor index pages (`clearwater-counselors.html` + `stpete-counselors.html`) + inline counselor cards on program pages remain primary. No institutional www counselor page. Generic "Talk to a Counselor" CTAs route to campus index instead of contact.html.
+
+**Counts:** 0 fabrications confirmed, 10 missing items (8 dissolve when index pages are built; 2 standalone adds for accommodations referral M1 and "school counselor (admissions contact)" phrasing M4), 1 high-priority drift (D1 admissions step 3 scope), 6 light drift items kept as institutional voice, 10 follow-ups for live-site owners.
+
+**5 decisions waiting on Marianne** (DEC-1 through DEC-5): canonical title (Counselor vs School Counselor), D1 drift resolution direction, program-counselor mapping deferral, photos, light drift treatment.
+
+CLUSTERS.md row 4 advanced from `analyzing` → `building` (awaiting Marianne approval on DEC-1 through DEC-5 before any redesign HTML changes).
+
+### Counselors cluster Stage 6 build (continued 2026-04-30 evening)
+
+Marianne approved all 5 default decisions (DEC-1 through DEC-5). Stage 6 build executed in one pass:
+
+**New files (2):**
+- `clearwater-counselors.html` — 5 counselor cards (Corthell, Fields, Milisav, Santos w/ x2017, Scott) verbatim from CLW staff Student Services. Hours block + general inquiries block + CTA band.
+- `stpete-counselors.html` — 3 counselor cards (Ashwood w/ x2325, Johnson, Randolph) verbatim from STP staff Student Services. Counseling Department Hours block + general inquiries block + CTA band.
+
+**File edits (10):**
+- `admissions.html` step 3 (D1 fix + M4 phrasing): tightened to live wording with "school counselor (admissions contact)" parenthetical.
+- `admissions.html` accommodations notice (M1): new section before CTA band, verbatim from CLW live, with links to both campus counselor pages.
+- `clearwater-about.html` + `stpete-about.html` Admissions & Aid nav dropdowns: added "Meet Your Counselors" link.
+- `contact.html` L805 CTA band: kept verbatim sentence, added two campus chooser links inline. Added `id="counselors"` anchor for tuition-aid button target.
+- `tuition-aid.html` L987 "Talk to a Counselor" button: repointed from `contact.html` to `contact.html#counselors`.
+- `welding-advanced.html` L888: replaced broken STP shadow-day URL (404 on live) with STP admissions hub URL. Logged FU about STP shadow-day page gap.
+- `consumer-information.html` L725 stale "via the Counselors cluster when sized" comment: refreshed with the actual finding (school counselors are local accommodations referral path, links to both new index pages).
+- `verbatim-rule.md`: added phone-format normalization rule (parens vs hyphens permitted, digits must match).
+- `follow-ups.md`: appended Counselors cluster section with 10 items (FU1-FU10).
+- `ptc_sitemap.md` Part 3: added "Meet Your Counselors" under Admissions on both campus blocks.
+
+**STP shadow-day URL discovery during build:** curl probe revealed `stpete.myptc.edu/admissions/admissions/shadowing-days-times` returns 404. Live STP doesn't publish a shadow-days page. CLW does. Redesign welding-advanced.html had been linking to the non-existent STP URL. Fix: link to STP admissions hub generally (matches what live publishes); follow-up logged for STP campus to publish a shadow-days page if they have shadowing program.
+
+CLUSTERS.md row 4 advanced from `building` → `verifying`. Stage 7 verifier next session.
+
+## 2026-04-30 (Stage 7 verifier — Counselors)
+
+Stage 7 post-build verification of Counselors cluster: all 50 integrity checks PASS (8 counselor cards verbatim, both hours blocks verbatim, admissions step 3 D1 drift fix matches live verbatim, accommodations section M1 verbatim, welding-advanced STP URL replacement returns HTTP 200, all cross-page wiring confirmed). Zero fabrications, zero regressions on Stage 3 spot-checks. Recommendation: cluster ready to close — advance row 4 from `verifying` to `verified` and add to drift-watch.

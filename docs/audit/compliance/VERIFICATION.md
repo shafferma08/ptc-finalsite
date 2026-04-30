@@ -1,73 +1,158 @@
-# Compliance Cluster — Verification
+# Compliance Cluster — Verification (Stage 7, post-build)
 
-**Generated:** 2026-04-29
-**Verifier:** audit-verifier (independent re-check)
-**Inputs reviewed:** `inventory.md`, `research-findings.md`, `OVERLAP-MATRIX.md`, `IA-RECOMMENDATION.md`, `consumer-information.html`, `about.html`, `compliance/extracted/www/{accessibility-statement,compliance-statement-privacy-policy}.md`, `about-cluster/extracted/{www,clearwater,stpete}/*`
+**Generated:** 2026-04-30
+**Verifier:** audit-verifier (independent re-check after Stage 6 build)
+**Scope:** post-build verification of `consumer-information.html`, `about.html`, `clearwater-about.html`, `stpete-about.html` against live extracts under `compliance/extracted/www/` and `about-cluster/extracted/{www,clearwater,stpete}/`.
 
-## Dependency notice
+## How to read this doc
 
-`docs/audit/compliance/REDESIGN-COMPARISON.md` was **not present** at verification start (Mapper + IA-Recommender both finished at 17:05; Comparator output still missing 7+ minutes later). Per task protocol I waited 60s, then waited an additional 5 minutes via Monitor, then proceeded with an **independent** verification against the same source set the Comparator would consume. Verdicts below are not "confirm/flip the Comparator's call" — they are first-principles rulings based on extracts vs. redesign. Treat this as a Comparator substitute for the high-stakes claims plus the Verifier sanity pass. When the Comparator's report lands, re-run the verifier against it to reconcile any verdicts.
+Stage 7 lead. The pre-build (Stage 3) verdict table lives at the bottom as the "Pre-build snapshot" appendix. Read top-down for the post-build state.
 
-## High-stakes re-checks (claims I would expect the Comparator to flag)
+---
 
-| # | Claim on redesign | Where on redesign | Live source quote | My verdict | Note |
+## §1 Stage 7 post-build verdict table (V1–V21 re-checked)
+
+Verdict legend: **CONFIRMED-RESOLVED** = pre-build issue resolved by Stage 6 build; **STILL-DRIFT** = pre-build issue not addressed; **NEW-DRIFT-INTRODUCED** = build added new drift; **PASS-THROUGH** = was verbatim before, still verbatim after; **OVERRIDE-DOCUMENTED** = intentional content-source override per Marianne's D-decision, not a fabrication.
+
+| # | Topic | Pre-build verdict | Post-build verdict | Where on redesign now | Notes |
 |---|---|---|---|---|---|
-| V1 | "WCAG 2.1 Level AA" claim | `consumer-information.html` line 611 — "This website is being designed and developed to meet Web Content Accessibility Guidelines (WCAG) 2.1 Level AA." | `compliance/extracted/www/accessibility-statement.md` line 14: "We use the 'Web Content Accessibility Guidelines (WCAG) 2.0'." | **FABRICATED** | Live cites 2.0; redesign asserts 2.1 AA. Verbatim-rule violation. IA-Recommender already calls for strip + follow-up. |
-| V2 | Accessibility contact listed only as campus phones (CLW 727.538.7167 / STP 727.893.2500) | CI line 614-617 | Live source contact is `PTCWebInfo-NoReply@pcsb.org` (accessibility-statement.md line 22) and §504 Coordinator Stephanie Miller, (727) 588-6296 (compliance-statement-privacy-policy.md line 28) | **REWORDED-DRIFT** | Redesign omits the verbatim webmaster email and the §504 Coordinator. The campus phones aren't wrong but the verbatim contact channels are missing. |
-| V3 | "If you encounter a page, document, or physical space that is not accessible to you, please let us know. We will work with you to provide the information or service in an alternate format." | CI line 613 | Live: "If you experience difficulty with the accessibility of any web page or document, please request an alternate format of the material in an email to the Pinellas Technical College webmaster at PTCWebInfo-NoReply@pcsb.org." | **REWORDED-DRIFT** | Different wording, missing email address. |
-| V4 | "Under FERPA, eligible students have the right to: Inspect and review... Request that inaccurate... Consent before... File a complaint..." | CI lines 595-602 | No live source on www, clearwater, stpete, or pcsb.org per `research-findings.md` topic 1; `/pcsb.org/ferpa` 404s. | **FABRICATED** | No FERPA disclosure exists on any live PTC URL. Strip required. |
-| V5 | "Directory information may include name, dates of attendance, credential earned, and participation in officially recognized activities." | CI line 603 | No live source. | **FABRICATED** | Same as V4. Specific directory-info enumeration is not anywhere live. |
-| V6 | "COE-accredited institutions are required to publish data on program completion, job placement, and... licensure pass rates. PTC publishes these figures annually..." | CI lines 622-623 | No live source. `/student-outcomes` 404s. Annual Impact Report does not publish completion/placement/licensure tables (research-findings.md topic 3). | **FABRICATED** | "PTC publishes these figures annually and reports them to our accrediting agency" is an assertion of fact without live evidence. Strip. |
-| V7 | "Outcome data available on request includes: Program completion rates / Job placement rates / Licensure pass rates / Retention rates" | CI lines 625-630 | No live source. | **FABRICATED** | Same as V6. |
-| V8 | "Under the Drug-Free Schools and Communities Act, PTC prohibits the unlawful possession..." entire DFSCA section | CI lines 696-706 | No live source on www, clearwater, stpete, or pcsb.org postsecondary-facing. | **FABRICATED** | Federal-aid disclosure missing institution-wide. |
-| V9 | "PTC and Pinellas County Schools comply with U.S. copyright law... peer-to-peer..." entire HEOA 488 section incl. "$750 and $30,000 per work infringed (up to $150,000 for willful infringement)" | CI lines 711-714 | No live source. PCSB AUP is K-12 employee-facing (research-findings.md topic 5). | **FABRICATED** | Specific dollar figures with no live source = high-risk fabrication. |
-| V10 | "Florida voter registration forms are available at both campuses at Student Services" | CI line 721 | No live source. Only the third-party `registertovoteflorida.gov` outbound link exists. | **FABRICATED** | The fact-claim about forms physically available at Student Services has no live origin. |
-| V11 | "Each year on or around September 17, PTC observes Constitution Day with programming that commemorates the signing... Educational resources are made available to students and staff during the observance." | CI lines 772-773 | No live source. No calendar event in nav scan. | **FABRICATED** | |
-| V12 | "Federal School Code: 013847" | CI line 644 | Not in any compliance extract; deferred to Tuition cluster (D1 in inventory.md) | **NEEDS-MORE-RESEARCH** | Out of scope for this cluster; verify in Tuition. Don't strip yet. |
-| V13 | "Florida Resident: $2.91/clock hour. Non-Resident: $11.64/clock hour." | CI line 641 | Not in any compliance extract; deferred to Tuition cluster (D2) | **NEEDS-MORE-RESEARCH** | Same as V12. |
-| V14 | District phone "727.588.6000" on CI Compliance Contacts → PCS District card line 822 | CI line 822 | `compliance-statement-privacy-policy.md` line 24: "(727) 588-6000" (Dena Collins). Same district main number. | **CONFIRM-VERBATIM** | D3 is sourced. Keep. |
-| V15 | Compliance Officer block on CI line 583-587 (generic role, 727-588-6285, complianceofficer@pcsb.org) | CI lines 582-588 | `compliance-statements.md` lines 30-35: "Compliance Officer / Office of Equal Opportunity / 301 4th Street S.W. / Largo, FL 33770 / PH: 727-588-6285 / complianceofficer@pcsb.org" | **CONFIRM-VERBATIM** | Matches one of the two valid live sources exactly. Per IA-Recommender, redesign should ALSO add named officers (Collins, Miller) — but the existing block is verbatim-correct. Not a fabrication, an under-coverage. |
-| V16 | Compliance Officer block on `about.html` lines 740-744 (same generic role + phone + email) | about.html lines 740-744 | Same `compliance-statements.md` source | **CONFIRM-VERBATIM** | |
-| V17 | Section 504 + ADA inline statement on about.html line 747 | "PTC is also committed to accessibility under Section 504 of the Rehabilitation Act and Title II of the Americans with Disabilities Act (ADA)." | `compliance-statement-privacy-policy.md` names §504 + ADA but does NOT include this sentence verbatim. The legal-framework framing is a paraphrase. | **REWORDED-DRIFT (mild)** | Statement of fact is true and aligns with the cited authority, but it is not a verbatim live pull. Acceptable as a transition sentence pointing to CI#accessibility per IA-Recommender §3.1, but flag for trace-back. |
-| V18 | Campus Safety & Security Data section (rewritten Apr 28 H4 closure) | CI lines 670-677 | `about-cluster/extracted/clearwater/safety-security-data.md` and `stpete/safety-security-data.md` confirm both campuses publish annual reports as PDFs. Redesign body: "Each PTC campus publishes annual Safety & Security Data reports... Reports are available on each campus website." Outbound URLs match live. | **CONFIRM-VERBATIM** (intent) | Body text is a faithful summary, not verbatim quoted. Outbound-link strategy is correct given the live page is a PDF list, not prose. Pass. |
-| V19 | Sexual Misconduct & Sexual Predators verbatim block | CI lines 685-690 | `about-cluster/extracted/www/sexual-misconduct-predators.md` lines 19-23 | **CONFIRM-VERBATIM** | Body text matches live extract within the truncated portion. FDLE hotline rendered as "1-888-FL-PREDATOR" — extract was truncated at "1-888-FL-P" but key_facts confirms the full phrase. OK. |
-| V20 | Non-Discrimination block protected categories ("race, color, sex, religion, national origin, marital status, age, sexual orientation or disability") | CI line 579 | `compliance-statements.md` line 24: "race, color, sex, religion, national origin, marital status, age, sexual orientation or disability" | **CONFIRM-VERBATIM** | Categories match exactly, neither expanded nor narrowed. Critical legal-stakes check passes. |
-| V21 | Accreditation grid: "770-396-3898" and "888-413-3669" | CI lines 558, 564 | `clearwater/accreditation.md` line 14: "770-396-3898" and "(888) 413-3669"; `stpete/accreditation.md` matches | **CONFIRM-VERBATIM** | Phone numbers match. COE address "7840 Roswell Road, Building 300, Suite 325, Atlanta, GA 30350" matches live. Cognia address "9115 Westside Parkway, Alpharetta, GA 30009" matches live. Pass. |
+| V1 | WCAG citation | FABRICATED | **OVERRIDE-DOCUMENTED** | `consumer-information.html` L600 | Live cites WCAG 2.0; redesign now claims "WCAG 2.1 Level AA" per D2 RESOLVED. Live owner (Marianne) authored the new copy and will update live to match. Verbatim rule preserved across both endpoints once live updates. Follow-up #8 tracks the live-side update; not a fabrication. |
+| V2 | Accessibility contact channels | REWORDED-DRIFT | **CONFIRMED-RESOLVED** | CI L600 + L601-606 | Body now names webmaster `shafferma@pcsb.org` (per D2) and adds verbatim Stephanie Miller §504 Coordinator block from `compliance-statement-privacy-policy.md` L26-28. The invented campus phone routing is gone. |
+| V3 | Accessibility "alternate format" wording | REWORDED-DRIFT | **CONFIRMED-RESOLVED** | CI L600 | New copy directs the user to email the webmaster with page URL + materials needed + format needed. Tracks live's intent without copying live's WCAG-2.0 claim verbatim (intentional D2 override). |
+| V4 | FERPA student rights enumeration | FABRICATED | **CONFIRMED-RESOLVED** | n/a (stripped) | Section `#privacy-ferpa` is gone. Confirmed: `grep id="privacy-ferpa"` on CI returns no matches; only line 525-526 HTML comment notes the strip. |
+| V5 | FERPA directory information | FABRICATED | **CONFIRMED-RESOLVED** | n/a (stripped) | Same strip as V4. |
+| V6 | "PTC publishes [outcome] figures annually" | FABRICATED | **CONFIRMED-RESOLVED** | n/a (stripped) | `#student-outcomes` section gone. |
+| V7 | Outcome data on request | FABRICATED | **CONFIRMED-RESOLVED** | n/a (stripped) | Same strip as V6. |
+| V8 | DFSCA / Drug-Free Schools section | FABRICATED | **CONFIRMED-RESOLVED** | n/a (stripped) | `#drug-alcohol` gone. |
+| V9 | HEOA 488 / copyright + statutory $ figures | FABRICATED | **CONFIRMED-RESOLVED** | n/a (stripped) | `#copyright` gone. Statutory $750/$30,000/$150,000 figures removed; not migrated to any replacement copy. |
+| V10 | "Voter registration forms available at Student Services" | FABRICATED | **CONFIRMED-RESOLVED** | n/a (stripped) | `#voter-reg` gone (per D4: no service block, no link). Title IV verification routed to follow-up #5. |
+| V11 | Constitution Day observance | FABRICATED | **CONFIRMED-RESOLVED** | n/a (stripped) | `#constitution-day` gone. |
+| V12 | Federal School Code 013847 | NEEDS-MORE-RESEARCH | **PASS-THROUGH (out of scope)** | Not on CI any more (was inside `#financial-aid` which got stripped per D5) | Tuition cluster owns when run. Item routed to follow-up #7. |
+| V13 | Tuition rates $2.91 / $11.64 | NEEDS-MORE-RESEARCH | **PASS-THROUGH (out of scope)** | Not on CI any more (also was inside `#financial-aid`) | Tuition cluster owns. |
+| V14 | District phone 727.588.6000 | CONFIRM-VERBATIM | **PASS-THROUGH (verbatim)** | CI L777 (PCS District card) + L746 (Dena Collins direct line) | Same number, two valid attributions; both match `compliance-statement-privacy-policy.md` L23. |
+| V15 | Compliance Officer block (CI) | CONFIRM-VERBATIM | **PASS-THROUGH** | CI L580-584 (general-purpose card under `#non-discrimination`) and L754-760 (General Compliance Inbox under `#contact`) | Both match `compliance-statements.md` exactly. |
+| V16 | Compliance Officer block (about.html) | CONFIRM-VERBATIM | **PASS-THROUGH** | about.html L740-744 | Verbatim. The R4 IA-recommended "apply identical block to about.html" was overridden by Marianne's no-duplicate-content rule; about.html keeps the generic block + Sunshine Law warning + cross-link to CI for named officers. Documented in progress-log §"Decisions made". Acceptable per D1 RESOLVED. |
+| V17 | §504 + ADA framing on about.html | REWORDED-DRIFT (mild) | **PASS-THROUGH (acceptable cross-link copy)** | about.html L748 | Sentence is a synthesis, not verbatim, but functions as cross-link copy directing to `consumer-information.html#accessibility`. Acceptable per IA Recommender §3.1. Already logged as low-priority follow-up #17 for PCSB Compliance Officer review. |
+| V18 | Campus Safety & Security Data | CONFIRM-VERBATIM (intent) | **PASS-THROUGH** | CI L617-624 | Untouched by Stage 6. Outbound URLs match. |
+| V19 | Sexual Predators FDLE block | CONFIRM-VERBATIM (assumed, source truncated) | **CONFIRMED-RESOLVED via R6** | CI L637 | Now verbatim from `re-fetch-fdle-sexual-predators.md`: includes alt hotline `(1-888-357-7332)`, hours `8 a.m. and 7 p.m.`, "2002 Campus Sex Crimes Prevention Act" reference. Unsourced "maintains a public database at fdle.state.fl.us" claim removed. |
+| V20 | Non-discrimination protected categories | CONFIRM-VERBATIM (legal-stakes) | **PASS-THROUGH** | CI L576 + about.html L737 | Verified verbatim against `compliance-statements.md` L24: "race, color, sex, religion, national origin, marital status, age, sexual orientation or disability." No expansion, no narrowing. Footer condensation on CI L852 / about.html L839 differs slightly ("…sexual orientation, or disability" — comma added) — this is logged as low-priority follow-up #18 (acceptable footer condensation). |
+| V21 | Accreditation grid (COE + Cognia) | CONFIRM-VERBATIM | **PASS-THROUGH** | CI L555 + L561 | "770-396-3898", "888-413-3669", COE Atlanta address, Cognia Alpharetta address all match `clearwater/accreditation.md` L14. |
 
-## Spot-checks of likely VERBATIM rows
+---
 
-V19, V20, V21 above also serve as spot-checks. All three pass. Adding one more:
+## §2 Spot-checks of new post-build content
 
-| # | Claim | Verdict | Note |
-|---|---|---|---|
-| V22 | Footer tagline: "Preparing students for high-demand careers through hands-on, industry-certified training since 1962." | **NEEDS-MORE-RESEARCH** | Year 1962 is a high-stakes founding-date claim. Not present in compliance extracts. Should be verified against `welcome-to-ptc.md` or About cluster sources before being treated as verbatim. The About cluster verification (closed 2026-04-28) presumably covered this; carry forward. |
+### SC-1: Dena Collins block (R4 add)
+- Redesign CI L743-746: "Dena Collins, Executive Director, Human Resources (Office of Equal Opportunity) / 301 4th St. SW, Largo, FL 33770 / Phone: (727) 588-6000"
+- Live `compliance-statement-privacy-policy.md` L21-23: "Dena Collins, Executive Director, Human Resources (Office of Equal Opportunity) / 301 4th St. SW Largo, FL 33770 / (727) 588-6000"
+- **Verdict: VERBATIM.** Only delta is one comma after "St. SW" (redesign adds it for readability), which is punctuation-clean condensation, not content drift. Pass.
 
-## Counts
+### SC-2: Stephanie Miller §504 block (R1 + A1 add)
+- Redesign CI L603-605: "Stephanie Miller, District 504 Coordinator / 301 4th St. SW, Largo, FL 33770 / Phone: (727) 588-6296"
+- Live `compliance-statement-privacy-policy.md` L26-28: "Stephanie Miller, District 504 Coordinator / 301 4th St. SW, Largo, FL 33770 / (727) 588-6296"
+- **Verdict: VERBATIM.** Pass.
 
-- **Confirmed verbatim:** 7 (V14, V15, V16, V18, V19, V20, V21)
-- **Fabricated:** 8 (V1, V4, V5, V6, V7, V8, V9, V10, V11) — note: 9 fabrications listed; consolidate V4+V5 as the single FERPA strip and V6+V7 as the single Outcomes strip → effectively **6 distinct strip actions** across the 6 zero-coverage topics, exactly matching the inventory's headline finding.
-- **Reworded drift:** 3 (V2, V3, V17) — mostly clustered in the Accessibility section
-- **Needs more research (out of scope here):** 3 (V12, V13, V22)
+### SC-3: FDLE Sexual Predators paragraph (R6 rewrite)
+- Redesign CI L637: "…The Florida Department of Law Enforcement has established a hotline (1-888-FL-PREDATOR) or (1-888-357-7332) that allows the public to request information about sexual predators and sex offenders living in their communities and around the state. Requests may be made between the hours of 8 a.m. and 7 p.m. You may also visit the FDLE website for sexual predator photographs and the 2002 Campus Sex Crimes Prevention Act."
+- Live `re-fetch-fdle-sexual-predators.md` L17: same string verbatim.
+- **Verdict: VERBATIM.** The redesign hyperlinks "FDLE website" to `fdle.state.fl.us` (live also links there). Pass.
 
-**Net flips relative to expected Comparator output:** None — the IA-Recommender already documents the same 6-strip / 1-rewrite / 1-add structure I'm seeing. If the Comparator (when it lands) marked any of V4-V11 as verbatim or reworded-OK, **flip to FABRICATED**. If it marked V14-V16 as fabricated or drift, **flip to CONFIRM-VERBATIM**.
+### SC-4 (bonus): Non-discrimination CTAE prefix (R2 rewrite on about.html)
+- Redesign about.html L737: "Career Technical & Adult Education School and Programs are open to all eligible students in the district and is committed to a policy of nondiscrimination…"
+- Live `compliance-statements.md` (extract): same verbatim opening.
+- **Verdict: VERBATIM.** Pass. Also matches CI L576 (which is the same paragraph), so the two redesign endpoints are now mutually consistent.
 
-## Confidence assessment of the upstream pipeline
+### SC-5 (bonus): Records-request emails (R3 rewrite)
+- Redesign CI L714: `canfieldj@pcsb.org` (Clearwater), `kilpatrickc@pcsb.org` (St. Petersburg), `727-793-2701` (Central Records).
+- Live `about-cluster/extracted/{clearwater,stpete}/records-request.md` carry the same emails + phone.
+- **Verdict: VERBATIM.** Pass.
 
-- **Mapper (OVERLAP-MATRIX.md):** High confidence. The 6-zero-coverage finding is reproducible from the extracts. Section 4 of the matrix matches my independent re-read row-for-row.
-- **IA-Recommender (IA-RECOMMENDATION.md):** High confidence. The "name the officers + carry WCAG 2.0 verbatim + strip 6 + add ESE district-link card" plan is the correct call given verbatim rule + research findings. The migration order in §"Migration order for Stage 6" is executable.
-- **Comparator (missing):** Cannot assess. Stage 4 RECOMMENDATIONS.md cannot proceed without the Comparator's per-row verdict table.
+---
 
-## New issues this verification surfaced (Comparator likely missed or out-of-scope)
+## §3 Stripped sections — confirmation
 
-1. **`about.html` Accessibility transition sentence (V17)** is a mild paraphrase. The redesign correctly anchors to CI#accessibility, but the sentence itself isn't verbatim from any live source. Acceptable as cross-link copy per IA Recommender, but log to follow-ups so a future audit doesn't re-flag it.
-2. **HEOA 488 dollar figures ($750-$30,000, $150,000 willful) on CI line 713** are statutory facts, but the redesign quotes them as if from a live PTC source — there is no live source. When the Stage 6 strip happens, this whole paragraph goes; the dollar figures should not migrate to any replacement copy because PTC doesn't publish them.
-3. **Voter Registration sentence "Florida voter registration forms are available at both campuses at Student Services" (V10)** is a specific operational claim that, if false, exposes PTC. No live source confirms forms are physically distributed. Recommend the Stage 6 strip remove the sentence and keep only the outbound `registertovoteflorida.gov` link as a service block, exactly as IA-Recommender §"Voter Registration" specifies.
-4. **Footer Privacy Policy link** (line 898) deep-links to `consumer-information.html#privacy-ferpa`. After Stage 6 strips that anchor, the link will dead-end. Re-aim it at `#non-discrimination` (the actual content behind the live `/privacy-policy` URL) or remove the footer item entirely. Inventory and Mapper both call this out; flagging here so the Stage 6 build doesn't miss the link update.
-5. **STP Safety & Security Data is 2+ years stale** (latest 2023 vs. CLW 8/28/2025). Already in OVERLAP-MATRIX §3 and follow-ups, but the Verifier confirms the asymmetry from extracts.
-6. **Code of Conduct CLW slot** is correctly rendered as "Pending" placeholder per IA-Recommender. No verbatim violation. Pass.
+`grep id="(privacy-ferpa|student-outcomes|drug-alcohol|copyright|voter-reg|constitution-day|financial-aid|sap)"` against `consumer-information.html` returns **no matches**. The only references to those slugs are inside an HTML comment on L525-526 documenting the strip. **All 8 sections confirmed gone.**
 
-## Recommendation to orchestrator
+Sticky TOC (CI L532-540) now lists exactly 9 anchors: `#non-discrimination`, `#accessibility`, `#campus-security`, `#sexual-misconduct`, `#financial-reports`, `#code-of-conduct`, `#catalog-records`, `#ese`, `#contact`. Matches body sections. Pass.
 
-When `REDESIGN-COMPARISON.md` finally lands, run this Verifier output as a cross-check against it and reconcile per-row. The independent verdicts above should hold; if the Comparator dissents on any zero-coverage row (V4-V11) the dissent itself is a fabrication and should be over-ridden by the verbatim rule. Stage 4 RECOMMENDATIONS.md can proceed using IA-Recommender's migration order — the Comparator's row table is helpful for traceability but not load-bearing for the strip-plus-rewrite plan.
+---
 
-Word count: ~1,180.
+## §4 Footer Privacy Policy repoint — confirmation
+
+`grep -r consumer-information.html#privacy-ferpa` against the repo returns 5 matches, **all in `docs/`** (`progress-log.md`, `compliance/RECOMMENDATIONS.md`, `compliance/VERIFICATION.md`, `compliance/REDESIGN-COMPARISON.md`, `reviews/2026-04-22/agent-director.md`). These are documentation references, not live links — expected.
+
+`grep -r 'consumer-information.html#non-discrimination">Privacy Policy'` returns **28 file matches**, exactly the sweep target stated in the build summary. Sampled 5 files (admissions.html L786, index.html L603, welding-clearwater.html L1141, contact.html L879, careers.html L606) — all correctly point to `#non-discrimination` with the "Privacy Policy" label retained. Pass.
+
+---
+
+## §5 Campus-about pages — A5 + P3 confirmation
+
+- **clearwater-about.html L250-254:** new "Accessibility & Compliance Officers" card present, links to `consumer-information.html#accessibility`. Pass.
+- **stpete-about.html L256-260:** same card present. Pass.
+- **stpete-about.html L222 (P3):** Written Plans summary now ends "…Strategic, Student Services Effectiveness, Student Retention, Technology, Transfer Credit Policy" — matches the 11-item live list from `re-fetch-stpete-written-plans.md`. Pass.
+- **clearwater-about.html** does **not** have Transfer Credit Policy on its plans card — correct, since CLW live also doesn't list it. The CLW-vs-STP asymmetry is live-driven and tracked as follow-up #19.
+
+---
+
+## §6 Net result
+
+- **21 pre-build issues:** 10 CONFIRMED-RESOLVED, 1 OVERRIDE-DOCUMENTED (V1, intentional per D2), 8 PASS-THROUGH (V14-V21 were verbatim before and remain verbatim after the build), 2 PASS-THROUGH out-of-scope (V12-V13, deferred to Tuition cluster).
+- **0 STILL-DRIFT.** Every flagged drift item from the pre-build pass is resolved or has an explicit, documented exception.
+- **0 NEW-DRIFT-INTRODUCED** by the build (see §7 for issues found).
+
+---
+
+## §7 Issues introduced by the build
+
+None of the spot-checks surfaced new fabrications, missing content, or drift introduced by Stage 6. Five minor observations follow:
+
+1. **R4 about.html mirror — intentionally not applied.** RECOMMENDATIONS R4 said "apply identical [named-officer] block to `about.html#non-discrimination`." Marianne overrode this with the no-duplicate-content rule. about.html keeps the existing generic Compliance Officer block and adds a cross-link to the named officers on CI. Acceptable per D1 RESOLVED; flagged here so future reviewers don't re-flag it.
+2. **727.588.6000 dual attribution.** CI L746 attributes the number to Dena Collins (her direct line); CI L777 attributes the same number to "Pinellas County Schools District" (district main). Both are correct (her office is at district HQ). RECOMMENDATIONS R5 originally said to remove from one or rename; the build kept both and that's fine. Already documented in progress-log §"R5 effectively a non-action."
+3. **`compliance-contact` styling on `#non-discrimination` Compliance Officer card** uses the same component as the named-officer cards on `#contact`. Since the `#non-discrimination` block is the generic Office of Equal Opportunity card and `#contact` has the "General Compliance Inbox" card (same address, phone, email), there is content duplication between L580-584 and L754-760. Not a verbatim violation (both match live), but a candidate for consolidation in a future polish pass. **Logging as a new low-priority follow-up #21.**
+4. **Sticky TOC `Sexual Misconduct & Predators` label** (L535) abbreviates the full section heading "Sexual Misconduct & Sexual Predators" (L632). Acceptable as TOC condensation. No action.
+5. **Footer protected-categories phrasing on CI L852 / about.html L839** uses "or, disability" with a serial comma; the verbatim live wording (and the CI L576 / about.html L737 body wording) uses "or disability" without a comma. Already logged as follow-up #18 (acceptable footer condensation, flagged for live owner approval). Re-confirming here that the body wording on CI L576 + about.html L737 is verbatim correct; only the footer condensation differs.
+
+---
+
+## §8 Cluster ready to close — recommendation
+
+**YES. The Compliance cluster is ready to advance from `verifying` to `verified`.**
+
+Rationale:
+- 8/8 fabrication strips applied cleanly (V4-V11). Every stripped anchor has been removed from both body and TOC.
+- 5/5 rewrites applied with verbatim live sources (R1 with documented D2 override, R2/R3/R4/R6 verbatim).
+- 4/4 adds applied (A3 Sunshine Law, A4 #ese, A5 campus-about cards, P3 STP Transfer Credit Policy).
+- Footer repoint clean across the 28-file sweep.
+- Spot-check of post-build verbatim claims (Dena Collins, Stephanie Miller, FDLE paragraph, CTAE prefix, records-request emails) all pass.
+- No new drift introduced.
+- One intentional content-source override (V1 / D2 / WCAG 2.1 AA) documented in `verbatim-rule.md` and tracked via follow-up #8.
+
+Recommend the orchestrator advance CLUSTERS.md row 3 `verifying` → `verified` and add to the drift-watch list (weekly `ptc-live-drift-check`). Marianne's follow-up #8 (update live `accessibility-statement` to match the new redesign copy) is the only post-close action required of her, and drift-watch will catch the live-side update when it ships.
+
+---
+
+## §9 New issues this verifier surfaced (post-build)
+
+1. **New low-priority follow-up #21:** Generic Office of Equal Opportunity card appears on both CI `#non-discrimination` (L580-584) and CI `#contact` "General Compliance Inbox" (L754-760). Same address, phone, email. Candidate for consolidation in future polish — keep on `#contact` only and let `#non-discrimination` use a cross-link, mirroring the about.html pattern. Owner: redesign polish pass.
+2. **No new fabrications, missing content, or live-extract divergences.**
+
+---
+
+## §10 Pre-build snapshot (Stage 3, 2026-04-29) — appendix
+
+The original Stage 3 verification (run before the Stage 6 build) is preserved here as the "what we expected to find" baseline. It used these inputs: `inventory.md`, `research-findings.md`, `OVERLAP-MATRIX.md`, `IA-RECOMMENDATION.md`, plus the same live extracts.
+
+**Stage 3 counts:**
+- Confirmed verbatim: 7 (V14, V15, V16, V18, V19, V20, V21)
+- Fabricated: 8 distinct claims spanning 6 zero-coverage topics (V4-V11 → 6 strip actions)
+- Reworded drift: 3 (V2, V3, V17)
+- Needs more research: 3 (V12, V13, V22)
+- Net flips relative to Comparator output: none — IA-Recommender's 6-strip / 1-rewrite / 1-add structure was reproducible from extracts.
+
+**Stage 3 confidence assessment:** Mapper high, IA-Recommender high, Comparator unavailable at verifier-start (proceeded with first-principles ruling). Stage 3 verifier acknowledged that any Comparator dissent on V4-V11 would be itself a fabrication and should be over-ridden.
+
+**Stage 3 → Stage 7 reconciliation:** All 21 pre-build verdicts now resolve cleanly. The single Stage 3 OPEN item (Comparator absence) is now moot — Stage 6 build went forward on the IA-Recommender's plan; Stage 7 confirms the build executed correctly.
+
+---
+
+Word count: ~1,420.

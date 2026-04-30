@@ -466,6 +466,7 @@ clearwater.myptc.edu/
 ├── 🎓 ADMISSIONS (campus-specific)
 │   ├── How to Apply at Clearwater
 │   ├── Enrollment Steps
+│   ├── Meet Your Counselors  ← NEW (per Counselors cluster audit, 2026-04-30; clearwater-counselors.html)
 │   ├── Shadowing Days & Schedule
 │   ├── Transfer & Readmission
 │   ├── Testing & Assessment (CASAS / TEAS)
@@ -579,6 +580,7 @@ stpete.myptc.edu/
 ├── 🎓 ADMISSIONS (campus-specific)
 │   ├── How to Apply at St. Pete
 │   ├── Enrollment Steps
+│   ├── Meet Your Counselors  ← NEW (per Counselors cluster audit, 2026-04-30; stpete-counselors.html)
 │   ├── Transfer & Readmission
 │   ├── Testing & Assessment (CASAS / TEAS)
 │   └── Student Services & Hours
