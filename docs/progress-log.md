@@ -2086,3 +2086,48 @@ CLUSTERS.md row 4 advanced from `building` → `verifying`. Stage 7 verifier nex
 ## 2026-04-30 (Stage 7 verifier — Counselors)
 
 Stage 7 post-build verification of Counselors cluster: all 50 integrity checks PASS (8 counselor cards verbatim, both hours blocks verbatim, admissions step 3 D1 drift fix matches live verbatim, accommodations section M1 verbatim, welding-advanced STP URL replacement returns HTTP 200, all cross-page wiring confirmed). Zero fabrications, zero regressions on Stage 3 spot-checks. Recommendation: cluster ready to close — advance row 4 from `verifying` to `verified` and add to drift-watch.
+
+---
+
+## 2026-05-01 — Admissions cluster closed
+
+### Admissions cluster → `verified`
+
+Stage 7 verifier (audit-verifier) ran post-build against the rewritten `admissions.html`. Results: **24 CONFIRMED-RESOLVED, 5 OVERRIDE-DOCUMENTED, 4 PASS-THROUGH, 0 STILL-DRIFT, 0 NEW-DRIFT-INTRODUCED.**
+
+The 5 OVERRIDE-DOCUMENTED verdicts: V-7 (single override) + the entire 5-row FAQ block (V-22 through V-26) stripped per Marianne's D2 with re-mirror deferred to a future live polish window where she authors the FAQ on live first, then redesign mirrors verbatim under the live-owner exception in `verbatim-rule.md`.
+
+6 spot-checks on new content (claims not in the original Stage 3 verdict pool) all came back VERBATIM:
+1. `#how-to-apply` step 7 outside funding agencies — byte-identical to www extract L23
+2. `#enrollment-options` Course Intent paragraph — byte-identical to byte-identical CLW=STP sub-page L22-30
+3. `#residency` Florida Statute 1009.21 lead — digits identical, only live em-dash dropped per CLAUDE.md §3 binding rule
+4. `#how-to-apply` step 8 residency proofs — verbatim with permitted AP-style "state-issued" hyphenation under verbatim-rule §3
+5. `#campus-tours` CLW Shadowing PDF link — byte-identical PDF URL
+6. Merritt Scott TEAS phone format normalization — digits identical
+
+The high-stakes strips all confirmed gone: HS-diploma claim out of step 2 / FAQ-2 / Dual Enrollment card; "40+ career programs" / "free" / "single visit" out of step 1; "no application fee" out; "After your application is accepted" framing out of `#enrollment-steps`; FAQ section absent; DE + Veterans cards stripped from `#pathways`.
+
+The high-stakes adds confirmed verbatim: per-campus FAFSA codes 005605 / 013917; full `#enrollment-options` section; full `#residency` section with Florida-statute links; CASAS overview without the fabricated "listening skills"; TEAS overview without the fabricated PCT/SST programs; Merritt Scott contact verbatim with phone-format normalization.
+
+CTA repoint check: Apply Now → apply.myptc.edu confirmed; Request Info → inforequest.myptc.edu confirmed; all four primary CTAs no longer `href="#"`.
+
+CLUSTERS.md row 5 advanced from `verifying` → `verified`. Drift-watched.
+
+### Follow-ups updated
+
+The 9 RECOMMENDATIONS §4 follow-ups were already migrated to `docs/audit/follow-ups.md` during Stage 6. Stage 7 added 2 new low-priority items:
+
+1. **(low) Sitewide utility-bar Apply Now placeholder still `href="#"`** — the page-level button was repointed during Stage 6 build, but the global utility-bar Apply Now in the chrome is still placeholder. Affects every redesign page. Belongs in a sitewide chrome pass alongside the carried review-panel utility-bar items (Student Portal, Events).
+2. **(low) AP-style hyphenation pair on live** — Stage 6 normalized "state issued ID" / "state identified" to AP-style "state-issued" / "state-identified" under verbatim-rule §3. When live updates next, mirror the redesign's hyphenation.
+
+### Cluster status snapshot
+
+5 of 7 active queue rows now closed: About hubs ✓, About sub-pages ✓, Compliance ✓, Counselors ✓, Admissions ✓. Two remain: Tuition (`queued`, next up), Programs (`queued`, largest cluster, save for last).
+
+### Next priorities
+
+1. **Tuition cluster Stage 1 inventory** — next pipeline run picks this up. Pre-stage notes already in place: pick up the www financial-aid hub at `/resources/future-students/financial-aid` (Admissions follow-up #8) so Tuition Stage 1 doesn't repeat the Admissions Stage 1 mistake of inferring "no www content" from a 404 on the obvious slug. Two Compliance verdicts (V12-V13) deferred to Tuition.
+2. **Sitewide utility-bar chrome pass** (carried) — repoint Apply Now / Student Portal / Events placeholders sitewide. Marianne-present session, needs PCSB SSO + applicant portal URLs.
+3. **`.card` component migration** of `student-resources.html`, `careers.html`, `campus-maps.html` (carried) — closes M5/M6 from the review panel tracker. Marianne-present session for visual spot-checks.
+4. **First real program page from `_templates/program-page.html`** (carried) — gated on Programs cluster Stage 1+ running first so content can come verbatim.
+5. **Compliance follow-up #8** (live-site accessibility-statement update) — needs Marianne, not pipeline.
