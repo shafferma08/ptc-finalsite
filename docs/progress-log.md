@@ -4,6 +4,112 @@ This file tracks daily work sessions on the PTC website redesign. Each entry rec
 
 ---
 
+## May 3, 2026 — Sitewide utility-bar repoint pass (scheduled task `ptc-redesign-daily`)
+
+Continuation of the morning's homepage CTA work. This afternoon's run executes the rest of follow-up #200 — the same Apply Now / Student Portal / Events repointing that landed on `index.html` this morning, applied to every other top-level page that carries the standard prospective-student utility bar. After this pass, follow-up #200 is fully closed.
+
+**Files updated (11 total):**
+
+- **8 standard pages — full 3-link repoint** (Student Portal + Apply Now + Events): `admissions.html`, `consumer-information.html`, `tuition-aid.html`, `contact.html`, `student-resources.html`, `programs.html`, `careers.html`, `campus-maps.html`. Each had exactly one occurrence of each old `href="#"` pattern; replacement was clean and idempotent.
+- **`about.html` — partial repoint** (Apply Now + Events only). About already had a "Focus Portal" link to PCSB Focus SIS (`pinellas.focusschoolsoftware.com/focus/`) instead of the standard "Student Portal → www.myptc.edu/student-links" used everywhere else. The Focus Portal link is functional and goes somewhere real, just to a different destination than the rest of the site. Left as-is rather than silently swap; documented in the resolution note.
+- **`welding-advanced.html` — full 3-link repoint plus URL correction**. This page had Student Portal and Events still dead, plus an Apply Now link that pre-existed pointing to `https://www.myptc.edu/admissions` (a 404 — the institutional admissions URL doesn't exist on www, that's the lesson the Admissions cluster Stage 1 patch caught two days ago). Both dead links repointed to the standard URLs; the Apply Now corrected to `apply.myptc.edu` for consistency with the other 9 pages and the canonical apply target.
+- **`_templates/shell-main.html`** — same 3-link repoint, so any future top-level page generated from the canonical shell template inherits the verified URLs rather than reintroducing the dead pattern.
+
+**Out of scope (different utility-bar structure):**
+
+The campus-prefixed pages (`clearwater.html`, `stpete.html`, `welding-clearwater.html`, `welding-stpete.html`, `schedule-clearwater.html`, `schedule-stpete.html`) carry a *different* utility bar tailored to current-student/staff audience: Canvas Login, SIS Portal / Focus, PTC Main Site link, opposite-campus link, and a search button. None of those three URLs match the prospective-student bar's URLs, so the same sed-style replacement wouldn't apply. Those campus utility bars also have three dead links of their own (Canvas Login, SIS Portal/Focus, search) — surfaced today and added to `follow-ups.md` as a separate medium-priority chrome item with proposed URLs (Canvas → `pcsb.instructure.com`, SIS Portal/Focus → the same `pinellas.focusschoolsoftware.com/focus/` `about.html` already uses).
+
+**Decisions made:**
+
+1. **`about.html` Focus Portal kept, not standardized.** The about page is the only top-level page using "Focus Portal → PCSB Focus SIS" instead of "Student Portal → myptc.edu/student-links". Both target current students but at different platforms (Focus is the PCSB K-12 SIS gradebook; Student Portal is PTC's collection of student links / Canvas / etc). Without a verbatim source mandating one over the other, silently reskinning About's link could break a workflow we don't see. Logged in #200 resolution note as a chrome inconsistency for Marianne to align when she has a moment.
+2. **`welding-advanced.html` Apply Now corrected to canonical URL.** The pre-existing `myptc.edu/admissions` link was a 404 (per Admissions Stage 1 findings, www has no admissions hub). Even though this is technically not a `href="#"` change, leaving the broken URL in place would have been the wrong outcome of a chrome cleanup pass. Documented in the resolution note.
+3. **Campus utility bars left alone in this pass.** They carry different content for a different audience and adding them mid-pass would have widened scope unpredictably. Logged as its own follow-up so the work is tracked rather than forgotten.
+4. **Shell template updated alongside live pages.** `_templates/shell-main.html` is the canonical scaffold for new top-level pages. Updating it now means we won't reintroduce the dead pattern when the Programs cluster build (cluster #7) starts spawning new pages from it.
+
+**Files audited (verification pass after edits):**
+
+Re-grepped all `*.html` and `_templates/*.html` for the three old dead patterns (`href="#"><i class="fas fa-user" ...> Student Portal`, `href="#"><i class="fas fa-graduation-cap" ...> Apply Now`, `href="#"><i class="fas fa-calendar-alt" ...> Events`). Zero matches remaining. Confirms the pass was complete and idempotent.
+
+**Issues / blockers:**
+
+- None on this work.
+- Admissions cluster still on `drift` status pending Marianne's decision on FL Statute 1009.21 framing (unchanged from this morning).
+
+**Follow-up register changes:**
+
+- **#200 (sitewide utility-bar Apply Now):** flipped from PARTIALLY RESOLVED → RESOLVED, with the full 11-file scope documented in the resolution note (which pages got which treatment, and which pages were correctly excluded).
+- **NEW (campus-page utility-bar dead links):** added under "Homepage CTA cleanup → Medium priority". Three dead links across 6 campus-prefixed pages with proposed real URLs.
+
+**Next priorities (unchanged from this morning, plus one new):**
+
+1. **Marianne reviews Admissions drift** — still the top blocker; ~15 min decision on FL Statute framing.
+2. **Tuition cluster Stage 1 inventory** — owned by `ptc-content-pipeline-daily` task; Stage 1 starting URL `myptc.edu/resources/future-students/financial-aid` already flagged in admissions hand-off note.
+3. **Hero stats reconciliation** — "50+ Industry Partners" has no live source; needs institutional comms ask. "40+ Career Programs" needs to reconcile with about.html's verbatim "60+" during Programs cluster.
+4. **Campus utility-bar repoint** (new) — Canvas Login + SIS Portal/Focus across 6 campus-prefixed pages. Mechanical, ~15 min.
+5. **Sitewide em-dash hygiene pass** — surfaced during Admissions Stage 6: `admissions.html` got the `Admissions | Pinellas Technical College` title fix, but other pages still use em-dashes in titles. Per Marianne's no-em-dashes rule, worth a quick global sed.
+
+---
+
+## May 3, 2026 — Homepage CTA rewiring + Bookstore Quick Link (scheduled task `ptc-redesign-daily`)
+
+Companion pass to the Admissions Stage 7 sitewide-chrome work. The Admissions cluster build had repointed page-level Apply / Inquire buttons to verified live URLs and surfaced a sitewide chrome ask (follow-up #200) for the same treatment everywhere else. This pass executes that on `index.html` and clears the Bookstore Quick Link follow-up (#68) at the same time.
+
+**Files updated:**
+
+- **`index.html`** — 20 dead `href="#"` CTAs repointed in one pass:
+  - Utility bar: Apply Now → `apply.myptc.edu`, Student Portal → `myptc.edu/student-links`, Events → `myptc.edu/about-us/all-ptc-news` (all `target="_blank" rel="noopener"`).
+  - Hero: "Apply Today" outline button → `apply.myptc.edu`.
+  - Quick Links grid: Apply → `apply.myptc.edu`, Tuition & Aid → `tuition-aid.html`, Visit Campus → `admissions.html#campus-tours` (matching footer pattern), Student Portal → `myptc.edu/student-links`, Contact Us → `contact.html`.
+  - **NEW: Bookstore Quick Link** added as 7th card (book icon, → `bncvirtual.com/ptc`). Closes follow-up #68. Card sits between Student Portal and Contact Us so the prospect-then-current-student flow reads cleanly left-to-right.
+  - Programs main-nav parent: `#` → `programs.html` (was inconsistent with Admissions / Tuition / About parents which all carry their hub URL).
+  - Programs "By Category" dropdown: all 8 categories → `programs.html?cluster=health|it|trades|transportation|culinary|cosmo|business|arts`, matching the program-card href pattern already in use lower on the page.
+  - CTA Band: "Apply Now" → `apply.myptc.edu`, "Request Info" → `inforequest.myptc.edu`.
+
+- **`styles.css`** — `.quick-links__grid` desktop columns expanded `repeat(6, 1fr)` → `repeat(7, 1fr)` to accommodate the new Bookstore card. Tablet override (768px) bumped `repeat(3, 1fr)` → `repeat(4, 1fr)` so 7 items split 4+3 cleanly instead of 3+3+1 with an orphan. Narrow-mobile `repeat(2, 1fr)` left as is (2+2+2+1 has one orphan, acceptable, logged as low-priority polish).
+
+- **`docs/audit/follow-ups.md`** — 2 existing items resolved + 7 new items logged:
+  - **Resolved:** #68 Bookstore link (added today). #200 sitewide utility-bar Apply Now (partially resolved on `index.html`; same pass still needed on every other top-level page — about, campus, programs, contact, schedule, program pages).
+  - **New high-priority:** "50+ Industry Partners" hero stat has no live source (verbatim-rule violation, customer-facing). "41 programs across 8 career clusters" preamble inconsistent with about.html's verbatim "60+ Career and Technical Programs" (cross-references existing row #55 — the Programs cluster owns the reconciliation).
+  - **New medium-priority:** Employer Hook "Post a Job" still `href="#"` (no employer-partnerships landing page exists; routing to `inforequest.myptc.edu` would be a category mismatch — leave dead until built); social-media footer links all dead (PTC handles unsourced); Programs dropdown "Explore" column has 6 dead links (Evening, Apprenticeships, Dual Enrollment, Distance Learning, ABE/GED/ESOL, Student Orgs — Programs cluster Stage 1 sources each); About PTC dropdown placeholders (Staff Directory + Employer Partnerships).
+  - **New low-priority:** Spanish utility-bar link decision (drop or build hub); Quick Links mobile-orphan watch for an 8th-card opportunity.
+
+**Decisions made:**
+
+1. **Bookstore added as 7th Quick Link, not as a swap.** Both options were on the table. The follow-up note said "add card or link"; the existing Quick Links grid was already balanced (3 prospect + 1 dual + 2 current-student-friendly post the previous pass) and removing any of them weakens a real user lane. Adding capacity is the right call. Trade-off is the 7-card grid creates one mobile orphan at the narrowest breakpoint; logged as low-priority polish.
+2. **Two `href="#"` placeholders kept intentionally.** Employer Hook "Post a Job" and the 5 social-media icons stay dead because routing them to a wrong destination is worse than no destination. Both are now logged as medium-priority follow-ups with the unblocking action specified (build employer page; verify PTC's actual social handles).
+3. **Programs By-Category dropdown gets the cluster filter URLs.** The lower-page program cards already use `programs.html?cluster=*`; matching the dropdown to that pattern keeps a single canonical URL shape and means the eventual Programs cluster build only has one `?cluster=` filter to wire up. No fabrication risk: these are URL parameters within the redesign, not externally-sourced content.
+4. **Programs dropdown "Explore" column left dead.** Six items (Evening & Part-Time, Apprenticeships, Dual Enrollment, Distance Learning, ABE/GED/ESOL, Student Orgs) need real destinations sourced cluster-by-cluster. Inventing them now would violate the verbatim rule. Logged as medium-priority for the Programs cluster to handle in Stage 1.
+
+**Net effect on `index.html` dead links:** 36 → 16. Of the remaining 16, 10 are dropdown parents / placeholder dropdown items that the cluster pipeline owns, 5 are social media, 1 is the Spanish placeholder. All 16 are tracked.
+
+**Issues / blockers:**
+
+- None blocking this work.
+- Admissions cluster is on `drift` status (caught 2026-05-03 by the live-drift-check task) — both campus mirrors of `acceptable-proofs-of-residency` now inline FL Statute 1009.21. Pipeline pauses cluster 5 reconciliation pending Marianne's review; details in `docs/audit/admissions/DRIFT-LOG.md`.
+
+**Next priorities:**
+
+1. **Marianne reviews Admissions drift** — single-page change, ~15 minutes. Decision: mirror live's inline-statute approach in the redesign, link out to FL stat instead, or keep current intro+links framing (oldest matches "we don't republish FL statute text" pattern the redesign already follows). Then unblock Admissions back to `verified`.
+2. **Tuition cluster Stage 1 (cluster #6)** — already noted as the next pipeline cluster. Stage 1 inventory should be cheap because admissions Stage 4 already flagged the institutional FA hub at `myptc.edu/resources/future-students/financial-aid` as a starting URL (don't repeat the Admissions Stage 1 lesson of inferring URLs).
+3. **Sitewide chrome pass** — follow-up #200 still open for every non-index top-level page (about.html, clearwater.html, stpete.html, programs.html, contact.html, schedule pages, program pages). Same Apply/Portal/Events repointing as today; mechanical. Could be scripted with a sed pass against the `href="#"` patterns identified for the Apply/Portal/Events utility-bar copies.
+4. **Hero stats reconciliation** — high-priority follow-up logged today. "50+ Industry Partners" needs a real number from institutional comms or replacement; "40+ Career Programs" needs reconciliation with the verbatim "60+" already on about.html. Programs cluster owns the reconciliation but a one-off ask to PTC institutional comms could close it sooner.
+
+---
+
+## May 3, 2026 — Live drift-check (scheduled task `ptc-live-drift-check`)
+
+Re-fetched all live URLs across the 5 verified clusters (About hubs, About sub-pages, Compliance, Counselors, Admissions) via Chrome MCP and compared `innerText` body content against saved `extracted/*.md` snapshots. 60 unique URLs checked.
+
+- **About hubs:** clean (32 URLs, all match within whitespace tolerance)
+- **About sub-pages:** clean (reuses About-hub extracts; no separate pull needed)
+- **Compliance:** clean (2 new URLs `accessibility-statement` + `privacy-policy`; markdown-formatted extracts compared as plain text matched live content exactly)
+- **Counselors:** clean (10 URLs; campus-staff directory pages required `textContent` instead of `innerText` to capture content rendered into hidden collapsibles — values matched within 2%)
+- **Admissions: drift on 2 URLs** — both campus mirrors of `acceptable-proofs-of-residency` now embed the full text of Florida Statute 1009.21 inline (1328 → 15319 chars). Saved snapshot had only the intro paragraph + 5 statute reference links. Other size deltas in the same admissions run are cosmetic (markdown-link overhead in the 2026-04-30 BeautifulSoup extracts vs. `innerText` extraction; the new `innerText` method produces leaner numbers without changing content). Details + per-URL verdict table in `docs/audit/admissions/DRIFT-LOG.md`.
+
+CLUSTERS.md row 5 (Admissions) flipped `verified` → `drift`. Pipeline holds reconciliation until Marianne reviews. Other 4 cluster rows untouched (still `verified`, drift-watched).
+
+---
+
 ## April 30, 2026 — Admissions cluster Stage 6 (building)
 
 CLUSTERS.md row 5 advanced `building` → `verifying`. Heaviest single-cluster build to date — all 15 migration-order steps in `RECOMMENDATIONS.md` §5 applied to `admissions.html` in one pass.

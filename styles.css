@@ -886,7 +886,7 @@ textarea:focus-visible,
 
 .quick-links__grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     gap: var(--space-md);
     background: var(--color-white);
     border-radius: var(--border-radius-lg);
@@ -2078,7 +2078,8 @@ textarea:focus-visible,
     }
 
     .quick-links__grid {
-        grid-template-columns: repeat(3, 1fr);
+        /* 7 items: 4-col layout splits 4+3 cleanly without an orphan */
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .programs-grid {
