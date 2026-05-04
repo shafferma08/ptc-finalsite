@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Petersburg Campus Staff Directory | Pinellas Technical College</title>
+    <meta name="description" content="Full staff directory for the Pinellas Technical College St. Petersburg campus: administrators, faculty, student services, business office, and OWI staff.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-hero { background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%); color: #fff; padding: 4rem 0 3rem; }
+        .page-hero__breadcrumb { font-size: 0.875rem; margin-bottom: 1rem; opacity: 0.85; }
+        .page-hero__breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+        .page-hero__breadcrumb li { display: inline-flex; align-items: center; }
+        .page-hero__breadcrumb li:not(:last-child)::after { content: "/"; padding-left: 0.35rem; opacity: 0.7; }
+        .page-hero__breadcrumb a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+        .page-hero__title { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; margin: 0 0 0.75rem; }
+        .page-hero__subtitle { font-size: 1.15rem; max-width: 700px; opacity: 0.92; line-height: 1.6; }
+
+        .directory-section { padding: 3rem 0; }
+        .directory-section--alt { background: var(--color-off-white, #F7F8FA); }
+        .directory-wrap { max-width: 1100px; margin: 0 auto; }
+
+        .directory-toc {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #e8ecf1;
+            padding: 1.5rem 2rem;
+            margin: 0 auto 2rem;
+            max-width: 900px;
+        }
+        .directory-toc h2 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-gray-900);
+            margin: 0 0 0.75rem;
+        }
+        .directory-toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.5rem 1.5rem;
+        }
+        .directory-toc a {
+            color: var(--color-green);
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .directory-toc a:hover { text-decoration: underline; }
+        .directory-toc i { color: var(--color-green); font-size: 0.9em; }
+
+        .directory-group {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #e8ecf1;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+        }
+        .directory-group__header {
+            padding: 1.25rem 1.75rem;
+            border-bottom: 2px solid var(--color-green);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .directory-group__header h2 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin: 0;
+        }
+        .directory-group__header i { color: var(--color-green); font-size: 1.2rem; }
+        .directory-group__count { font-size: 0.85rem; color: var(--color-gray-700); font-weight: 400; margin-left: 0.5rem; }
+
+        .directory-group__note {
+            padding: 0.85rem 1.75rem;
+            background: #FFF8E1;
+            border-bottom: 1px solid #e8ecf1;
+            font-size: 0.9rem;
+            color: var(--color-gray-800);
+        }
+        .directory-group__note a { color: var(--color-green); font-weight: 500; }
+
+        .directory-table-wrap { overflow-x: auto; }
+        .directory-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        .directory-table th, .directory-table td {
+            padding: 0.75rem 1.25rem;
+            text-align: left;
+            line-height: 1.45;
+        }
+        .directory-table thead th {
+            background: var(--color-off-white, #F7F8FA);
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-gray-700);
+            border-bottom: 1px solid #e8ecf1;
+            white-space: nowrap;
+        }
+        .directory-table tbody tr { border-bottom: 1px solid #f1f3f5; }
+        .directory-table tbody tr:last-child { border-bottom: none; }
+        .directory-table tbody tr:hover { background: var(--color-off-white, #F7F8FA); }
+        .directory-table td.directory-name { font-weight: 600; color: var(--color-gray-900); white-space: nowrap; }
+        .directory-table td.directory-email a { color: var(--color-green); text-decoration: none; }
+        .directory-table td.directory-email a:hover { text-decoration: underline; }
+        .directory-table td.directory-email .email-pending { color: var(--color-gray-500, #9CA3AF); font-style: italic; font-size: 0.88rem; }
+        .directory-table td.directory-role { color: var(--color-gray-700); }
+
+        @media (max-width: 600px) {
+            .directory-table th, .directory-table td { padding: 0.6rem 0.85rem; font-size: 0.9rem; }
+            .directory-group__header { padding: 1rem 1.25rem; }
+            .directory-group__header h2 { font-size: 1.1rem; }
+        }
+
+        .back-link { margin: 3rem 0 0; padding: 1.5rem 0 0; border-top: 1px solid var(--color-gray-200, #E5E7EB); text-align: center; }
+        .back-link a { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-green); font-weight: 500; text-decoration: none; }
+        .back-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ============================================
+         CAMPUS UTILITY BAR
+    ============================================= -->
+    <div class="utility-bar utility-bar--campus">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                 <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> 727.893.2500</a>
+                 <span class="utility-bar__divider">|</span>
+                 <a href="#"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 901 34th St S, St. Petersburg, FL</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener"><i class="fas fa-desktop" aria-hidden="true"></i> Canvas Login</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener"><i class="fas fa-user-graduate" aria-hidden="true"></i> SIS Portal / Focus</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> PTC Main Site</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="clearwater.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Clearwater Campus</a>
+                <a href="#" class="btn btn--primary btn--sm" aria-label="Search" style="margin-left: 1rem;"><i class="fas fa-search" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         CAMPUS HEADER (5-Pillar Structure)
+    ============================================= -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="stpete.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, St. Petersburg Campus" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">St. Petersburg Campus</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <p class="dropdown__column-title">By Career Cluster</p>
+                                    <ul>
+                                        <li><a href="#">Health Sciences</a></li>
+                                        <li><a href="#">Information Technology</a></li>
+                                        <li><a href="#">Skilled Trades &amp; Construction</a></li>
+                                        <li><a href="#">Transportation &amp; Logistics</a></li>
+                                        <li><a href="#">Culinary &amp; Hospitality</a></li>
+                                        <li><a href="#">Cosmetology &amp; Barbering</a></li>
+                                        <li><a href="#">Arts, Media &amp; Education</a></li>
+                                    </ul>
+                                    <p class="dropdown__column-title">Explore</p>
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                                        <li><a href="#">Distance Learning</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="admissions.html#enrollment-steps">Enrollment Steps</a></li>
+                                        <li><a href="#">Tuition &amp; Fees</a></li>
+                                        <li><a href="#">Financial Aid &amp; FAFSA</a></li>
+                                        <li><a href="#">Scholarships</a></li>
+                                        <li><a href="admissions.html#testing">Testing &amp; Assessment</a></li>
+                                        <li><a href="#">Veterans Benefits</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="#">Student Services</a></li>
+                                        <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
+                                        <li><a href="stpete-records-request.html">Record Request</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="#" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="stpete-about.html">About This Campus</a></li>
+                                        <li><a href="#">Map &amp; Directions</a></li>
+                                        <li><a href="stpete-staff-directory.html" aria-current="page">Staff Directory</a></li>
+                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="#">Post a Job for Students</a></li>
+                                        <li><a href="#">Advisory Committees</a></li>
+                                        <li><a href="consumer-information.html">Consumer Information</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a href="https://apply.myptc.edu/" class="btn btn--primary btn--sm site-header__cta" target="_blank" rel="noopener">Apply Now</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="page-hero">
+            <div class="container">
+                <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="stpete.html">St. Petersburg Home</a></li>
+                        <li><a href="stpete-about.html">About This Campus</a></li>
+                        <li aria-current="page">Staff Directory</li>
+                    </ol>
+                </nav>
+                <h1 class="page-hero__title">PTC St. Petersburg Campus Staff Directory</h1>
+                <p class="page-hero__subtitle">Administrators, faculty, student services, and support staff at our St. Petersburg campus.</p>
+            </div>
+        </section>
+
+        <section class="directory-section directory-section--alt">
+            <div class="container">
+
+                <!-- TABLE OF CONTENTS -->
+                <nav class="directory-toc" aria-label="Directory sections">
+                    <h2>Jump to a section</h2>
+                    <ul>
+                        <li><a href="#administrators"><i class="fas fa-user-tie" aria-hidden="true"></i> Administrators</a></li>
+                        <li><a href="#student-services"><i class="fas fa-hands-helping" aria-hidden="true"></i> Student Services</a></li>
+                        <li><a href="#business-office"><i class="fas fa-calculator" aria-hidden="true"></i> Business Office</a></li>
+                        <li><a href="#owi"><i class="fas fa-briefcase" aria-hidden="true"></i> Office of Workforce Innovation</a></li>
+                        <li><a href="#faculty-staff"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> Faculty &amp; Staff</a></li>
+                    </ul>
+                </nav>
+
+                <!-- ADMINISTRATORS -->
+                <article class="directory-group" id="administrators">
+                    <header class="directory-group__header">
+                        <i class="fas fa-user-tie" aria-hidden="true"></i>
+                        <h2>St. Petersburg Administrators</h2>
+                        <span class="directory-group__count">7 staff</span>
+                    </header>
+                    <div class="directory-table-wrap">
+                        <table class="directory-table" aria-label="St. Petersburg administrators">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Job Title</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="directory-name">Shedrick, Dr. Jason</td><td class="directory-email"><a href="mailto:SHEDRICKJ@pcsb.org">SHEDRICKJ@pcsb.org</a></td><td class="directory-role">Director - St. Petersburg Campus</td></tr>
+                                <tr><td class="directory-name">Bingham, Dawn</td><td class="directory-email"><a href="mailto:binghamd@pcsb.org">binghamd@pcsb.org</a></td><td class="directory-role">Assistant Director - St. Petersburg Campus</td></tr>
+                                <tr><td class="directory-name">Clarke, Ann-Marie</td><td class="directory-email"><a href="mailto:CLARKEM@pcsb.org">CLARKEM@pcsb.org</a></td><td class="directory-role">Assistant Director - St. Petersburg Campus</td></tr>
+                                <tr><td class="directory-name">Wilson, Nicole</td><td class="directory-email"><a href="mailto:WILSONNI@pcsb.org">WILSONNI@pcsb.org</a></td><td class="directory-role">Assistant Director - St. Petersburg Campus</td></tr>
+                                <tr><td class="directory-name">Cassidy, Jacqueline</td><td class="directory-email"><a href="mailto:CASSIDYJ@pcsb.org">CASSIDYJ@pcsb.org</a></td><td class="directory-role">PTC-Up Coordinator | Principal on Assignment</td></tr>
+                                <tr><td class="directory-name">Hammons, Sarah</td><td class="directory-email"><a href="mailto:HAMMONSS@pcsb.org">HAMMONSS@pcsb.org</a></td><td class="directory-role">Secretary to the Assistant Directors</td></tr>
+                                <tr><td class="directory-name">Santiago, Valerie</td><td class="directory-email"><a href="mailto:santiagov@pcsb.org">santiagov@pcsb.org</a></td><td class="directory-role">Secretary to the Director</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <!-- STUDENT SERVICES -->
+                <article class="directory-group" id="student-services">
+                    <header class="directory-group__header">
+                        <i class="fas fa-hands-helping" aria-hidden="true"></i>
+                        <h2>Student Services</h2>
+                        <span class="directory-group__count">13 staff</span>
+                    </header>
+                    <div class="directory-table-wrap">
+                        <table class="directory-table" aria-label="Student services staff">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Job Title</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="directory-name">Ashwood, Cheri</td><td class="directory-email"><a href="mailto:ASHWOODC@pcsb.org">ASHWOODC@pcsb.org</a></td><td class="directory-role">Counselor</td></tr>
+                                <tr><td class="directory-name">Borbon, Marcela</td><td class="directory-email"><a href="mailto:borbonm@pcsb.org">borbonm@pcsb.org</a></td><td class="directory-role">Clerk Specialist</td></tr>
+                                <tr><td class="directory-name">Cook, Cary</td><td class="directory-email"><a href="mailto:cookca@pcsb.org">cookca@pcsb.org</a></td><td class="directory-role">Bookstore Clerk</td></tr>
+                                <tr><td class="directory-name">Falk, Donna</td><td class="directory-email"><a href="mailto:falkd@pcsb.org">falkd@pcsb.org</a></td><td class="directory-role">Financial Aid Supervisor</td></tr>
+                                <tr><td class="directory-name">Hayes, Nicole</td><td class="directory-email"><a href="mailto:HAYESNI@pcsb.org">HAYESNI@pcsb.org</a></td><td class="directory-role">Library/Media Assistant</td></tr>
+                                <tr><td class="directory-name">Johnson, Jeromy</td><td class="directory-email"><a href="mailto:JOHNSONJER@pcsb.org">JOHNSONJER@pcsb.org</a></td><td class="directory-role">Counselor</td></tr>
+                                <tr><td class="directory-name">Kilpatrick, Carolyn</td><td class="directory-email"><a href="mailto:kilpatrickc@pcsb.org">kilpatrickc@pcsb.org</a></td><td class="directory-role">Student Information Specialist</td></tr>
+                                <tr><td class="directory-name">Mediavilla-Thackrah, Maria</td><td class="directory-email"><a href="mailto:MEDIAVILLAM@pcsb.org">MEDIAVILLAM@pcsb.org</a></td><td class="directory-role">Placement Coordinator</td></tr>
+                                <tr><td class="directory-name">Mitchell, Sabrina</td><td class="directory-email"><a href="mailto:MITCHELLSA@pcsb.org">MITCHELLSA@pcsb.org</a></td><td class="directory-role">Financial Aid Specialist</td></tr>
+                                <tr><td class="directory-name">Myles, Sander</td><td class="directory-email"><a href="mailto:myless@pcsb.org">myless@pcsb.org</a></td><td class="directory-role">Student Records Clerk</td></tr>
+                                <tr><td class="directory-name">Randolph, Nancy</td><td class="directory-email"><a href="mailto:randolphn@pcsb.org">randolphn@pcsb.org</a></td><td class="directory-role">Counselor</td></tr>
+                                <tr><td class="directory-name">Schnell, Joanne</td><td class="directory-email"><a href="mailto:schnellj@pcsb.org">schnellj@pcsb.org</a></td><td class="directory-role">Financial Aid Specialist</td></tr>
+                                <tr><td class="directory-name">Tucker, Robert</td><td class="directory-email"><a href="mailto:TUCKERRO@pcsb.org">TUCKERRO@pcsb.org</a></td><td class="directory-role">Resource Officer</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <!-- BUSINESS OFFICE -->
+                <article class="directory-group" id="business-office">
+                    <header class="directory-group__header">
+                        <i class="fas fa-calculator" aria-hidden="true"></i>
+                        <h2>Business Office</h2>
+                        <span class="directory-group__count">5 staff</span>
+                    </header>
+                    <div class="directory-table-wrap">
+                        <table class="directory-table" aria-label="Business office staff">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Job Title</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="directory-name">Baldwin, Krisie</td><td class="directory-email"><a href="mailto:BALDWINKR@pcsb.org">BALDWINKR@pcsb.org</a></td><td class="directory-role">School Bookkeeper II</td></tr>
+                                <tr><td class="directory-name">Feraca, Joseph</td><td class="directory-email"><a href="mailto:FERACAJR@pcsb.org">FERACAJR@pcsb.org</a></td><td class="directory-role">Clerk Specialist I</td></tr>
+                                <tr><td class="directory-name">Miller, Dionne</td><td class="directory-email"><a href="mailto:MILLERDIO@pcsb.org">MILLERDIO@pcsb.org</a></td><td class="directory-role">Clerk Specialist I</td></tr>
+                                <tr><td class="directory-name">Morrill, Kimberly</td><td class="directory-email"><a href="mailto:MORRILLK@pcsb.org">MORRILLK@pcsb.org</a></td><td class="directory-role">School Office Clerk II</td></tr>
+                                <tr><td class="directory-name">Rush, Edward</td><td class="directory-email"><a href="mailto:rushe@pcsb.org">rushe@pcsb.org</a></td><td class="directory-role">Financial Specialist</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <!-- OWI -->
+                <article class="directory-group" id="owi">
+                    <header class="directory-group__header">
+                        <i class="fas fa-briefcase" aria-hidden="true"></i>
+                        <h2>Office of Workforce Innovation</h2>
+                        <span class="directory-group__count">3 staff</span>
+                    </header>
+                    <div class="directory-table-wrap">
+                        <table class="directory-table" aria-label="Office of Workforce Innovation staff">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Job Title</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="directory-name">Robinson, Kyesha</td><td class="directory-email"><a href="mailto:ROBINSONKY@pcsb.org">ROBINSONKY@pcsb.org</a></td><td class="directory-role">Managing Officer</td></tr>
+                                <tr><td class="directory-name">Blackwell, Chris</td><td class="directory-email"><a href="mailto:blackwellc@pcsb.org">blackwellc@pcsb.org</a></td><td class="directory-role">Occupational Specialist</td></tr>
+                                <tr><td class="directory-name">Ortiz, Lymari</td><td class="directory-email"><a href="mailto:ORTIZFIGUEROAL@pcsb.org">ORTIZFIGUEROAL@pcsb.org</a></td><td class="directory-role">Occupational Specialist</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <!-- FACULTY & STAFF -->
+                <article class="directory-group" id="faculty-staff">
+                    <header class="directory-group__header">
+                        <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
+                        <h2>Faculty &amp; Staff</h2>
+                        <span class="directory-group__count">92 staff</span>
+                    </header>
+                    <div class="directory-table-wrap">
+                        <table class="directory-table" aria-label="Faculty and staff">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Program/Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="directory-name">Anderson, Darrin</td><td class="directory-email"><a href="mailto:andersondar@pcsb.org">andersondar@pcsb.org</a></td><td class="directory-role">Fire Fighter CPAT</td></tr>
+                                <tr><td class="directory-name">Anderson, William</td><td class="directory-email"><a href="mailto:ANDERSONWIL@pcsb.org">ANDERSONWIL@pcsb.org</a></td><td class="directory-role">Barbering</td></tr>
+                                <tr><td class="directory-name">Ayuso, James</td><td class="directory-email"><a href="mailto:AYUSOJ@pcsb.org">AYUSOJ@pcsb.org</a></td><td class="directory-role">Barbering</td></tr>
+                                <tr><td class="directory-name">Ball, Charles</td><td class="directory-email"><a href="mailto:BALLCH@pcsb.org">BALLCH@pcsb.org</a></td><td class="directory-role">Computer-Aided Drawing and Modeling</td></tr>
+                                <tr><td class="directory-name">Beard, Angela</td><td class="directory-email"><a href="mailto:beardan@pcsb.org">beardan@pcsb.org</a></td><td class="directory-role">GED Testing</td></tr>
+                                <tr><td class="directory-name">Bench, Daniel</td><td class="directory-email"><a href="mailto:BENCHD@pcsb.org">BENCHD@pcsb.org</a></td><td class="directory-role">Electricity</td></tr>
+                                <tr><td class="directory-name">Blackwell, Chris</td><td class="directory-email"><a href="mailto:blackwellc@pcsb.org">blackwellc@pcsb.org</a></td><td class="directory-role">Workforce Innovations</td></tr>
+                                <tr><td class="directory-name">Bolt, Billy</td><td class="directory-email"><a href="mailto:BOLTB@pcsb.org">BOLTB@pcsb.org</a></td><td class="directory-role">OWI Short Courses</td></tr>
+                                <tr><td class="directory-name">Bosse, Deborah</td><td class="directory-email"><a href="mailto:BOSSED@pcsb.org">BOSSED@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Cabezas, Ana</td><td class="directory-email"><a href="mailto:CABEZASA@pcsb.org">CABEZASA@pcsb.org</a></td><td class="directory-role">Child Care Apprenticeship</td></tr>
+                                <tr><td class="directory-name">Capra, Bonnie</td><td class="directory-email"><a href="mailto:caprab@pcsb.org">caprab@pcsb.org</a></td><td class="directory-role">Medical Coder/Biller</td></tr>
+                                <tr><td class="directory-name">Carter, Vanetti</td><td class="directory-email"><a href="mailto:CARTERV@pcsb.org">CARTERV@pcsb.org</a></td><td class="directory-role">Commercial Vehicle Driving</td></tr>
+                                <tr><td class="directory-name">Cianca, Frank</td><td class="directory-email"><a href="mailto:ciancaf@pcsb.org">ciancaf@pcsb.org</a></td><td class="directory-role">IT Support</td></tr>
+                                <tr><td class="directory-name">Colvin, Joshua</td><td class="directory-email"><a href="mailto:COLVINJ@pcsb.org">COLVINJ@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Corning, Kristen</td><td class="directory-email"><a href="mailto:CORNINGK@pcsb.org">CORNINGK@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Cribb, Victoria</td><td class="directory-email"><a href="mailto:cribbv@pcsb.org">cribbv@pcsb.org</a></td><td class="directory-role">Child Care Apprenticeship</td></tr>
+                                <tr><td class="directory-name">Crum, Tenise</td><td class="directory-email"><a href="mailto:crumt@pcsb.org">crumt@pcsb.org</a></td><td class="directory-role">Cosmetology</td></tr>
+                                <tr><td class="directory-name">Culbreth, Sheila</td><td class="directory-email"><a href="mailto:culbreths@pcsb.org">culbreths@pcsb.org</a></td><td class="directory-role">School Age Professional Certificate</td></tr>
+                                <tr><td class="directory-name">Dammiller, Melissa</td><td class="directory-email"><a href="mailto:DAMMILLERM@pcsb.org">DAMMILLERM@pcsb.org</a></td><td class="directory-role">Professional Culinary Arts &amp; Hospitality</td></tr>
+                                <tr><td class="directory-name">Desseau, Shakitha</td><td class="directory-email"><a href="mailto:DESSEAUS@pcsb.org">DESSEAUS@pcsb.org</a></td><td class="directory-role">Cosmetology</td></tr>
+                                <tr><td class="directory-name">Dowdell, De'ja</td><td class="directory-email"><a href="mailto:DOWDELLD@pcsb.org">DOWDELLD@pcsb.org</a></td><td class="directory-role">Emergency Medical Technician</td></tr>
+                                <tr><td class="directory-name">Erickson, Evan</td><td class="directory-email"><a href="mailto:ericksone@pcsb.org">ericksone@pcsb.org</a></td><td class="directory-role">Welding Technology</td></tr>
+                                <tr><td class="directory-name">Faz Rivera, Luis</td><td class="directory-email"><a href="mailto:FAZRIVERAL@pcsb.org">FAZRIVERAL@pcsb.org</a></td><td class="directory-role">Emergency Medical Technician</td></tr>
+                                <tr><td class="directory-name">Flick, Dan</td><td class="directory-email"><a href="mailto:FLICKD@pcsb.org">FLICKD@pcsb.org</a></td><td class="directory-role">Professional Culinary Arts &amp; Hospitality</td></tr>
+                                <tr><td class="directory-name">Flores, Jafet</td><td class="directory-email"><a href="mailto:FLORESMORALESJ@pcsb.org">FLORESMORALESJ@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Ford, Darryl</td><td class="directory-email"><a href="mailto:forddar@pcsb.org">forddar@pcsb.org</a></td><td class="directory-role">Plant Operations</td></tr>
+                                <tr><td class="directory-name">Garcia, Dawn</td><td class="directory-email"><a href="mailto:garciad@pcsb.org">garciad@pcsb.org</a></td><td class="directory-role">Dental Assisting</td></tr>
+                                <tr><td class="directory-name">Green, Carlton</td><td class="directory-email"><a href="mailto:GREENCARL@pcsb.org">GREENCARL@pcsb.org</a></td><td class="directory-role">Emergency Medical Technician</td></tr>
+                                <tr><td class="directory-name">Greene, Rayford</td><td class="directory-email"><a href="mailto:GREENERA@pcsb.org">GREENERA@pcsb.org</a></td><td class="directory-role">Emergency Medical Technician</td></tr>
+                                <tr><td class="directory-name">Hales, Kevin</td><td class="directory-email"><a href="mailto:halesk@pcsb.org">halesk@pcsb.org</a></td><td class="directory-role">Heating, Ventilation, Air-Conditioning/Refrigeration (HVAC/R) 1</td></tr>
+                                <tr><td class="directory-name">Harlan, Dawn</td><td class="directory-email"><a href="mailto:HARLANDA@pcsb.org">HARLANDA@pcsb.org</a></td><td class="directory-role">Cosmetology</td></tr>
+                                <tr><td class="directory-name">Harper, Lauren</td><td class="directory-email"><a href="mailto:HARPERLA@pcsb.org">HARPERLA@pcsb.org</a></td><td class="directory-role">Nails Specialty</td></tr>
+                                <tr><td class="directory-name">Hart, Linda</td><td class="directory-email"><a href="mailto:HARTL@pcsb.org">HARTL@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Haverfield, Mark</td><td class="directory-email"><a href="mailto:haverfieldm@pcsb.org">haverfieldm@pcsb.org</a></td><td class="directory-role">ABE-GED</td></tr>
+                                <tr><td class="directory-name">Henderson, Christopher</td><td class="directory-email"><a href="mailto:HENDERSONCH@pcsb.org">HENDERSONCH@pcsb.org</a></td><td class="directory-role">Emergency Medical Technician</td></tr>
+                                <tr><td class="directory-name">Howard, Charles</td><td class="directory-email"><a href="mailto:HOWARDCHA@pcsb.org">HOWARDCHA@pcsb.org</a></td><td class="directory-role">Commercial Vehicle Driving</td></tr>
+                                <tr><td class="directory-name">Jackson, Allison</td><td class="directory-email"><a href="mailto:JACKSONALL@pcsb.org">JACKSONALL@pcsb.org</a></td><td class="directory-role">Commercial Vehicle Driving</td></tr>
+                                <tr><td class="directory-name">Jackson, Dr. Dallas</td><td class="directory-email"><a href="mailto:JACKSONDA@pcsb.org">JACKSONDA@pcsb.org</a></td><td class="directory-role">Public Works</td></tr>
+                                <tr><td class="directory-name">Johnson, Leo</td><td class="directory-email"><a href="mailto:JOHNSONLEO@pcsb.org">JOHNSONLEO@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Johnston, Ronald</td><td class="directory-email"><a href="mailto:johnstonro@pcsb.org">johnstonro@pcsb.org</a></td><td class="directory-role">Auto Body</td></tr>
+                                <tr><td class="directory-name">Jones, Sara</td><td class="directory-email"><a href="mailto:jonessar@pcsb.org">jonessar@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Kershaw, Rebekah</td><td class="directory-email"><a href="mailto:KERSHAWR@pcsb.org">KERSHAWR@pcsb.org</a></td><td class="directory-role">Curriculum</td></tr>
+                                <tr><td class="directory-name">Kinard, James</td><td class="directory-email"><a href="mailto:KINARDJ@pcsb.org">KINARDJ@pcsb.org</a></td><td class="directory-role">Apprenticeship</td></tr>
+                                <tr><td class="directory-name">Lambert, John</td><td class="directory-email"><a href="mailto:lambertjo@pcsb.org">lambertjo@pcsb.org</a></td><td class="directory-role">Heating, Ventilation, Air-Conditioning/Refrigeration (HVAC/R) 1</td></tr>
+                                <tr><td class="directory-name">Landis, Brian</td><td class="directory-email"><span class="email-pending">Email pending</span></td><td class="directory-role">Business Entrepreneurial Principles</td></tr>
+                                <tr><td class="directory-name">Lanning, Greg</td><td class="directory-email"><a href="mailto:lanningg@pcsb.org">lanningg@pcsb.org</a></td><td class="directory-role">Fire Fighter CPAT</td></tr>
+                                <tr><td class="directory-name">Lopez, Perry</td><td class="directory-email"><a href="mailto:LOPEZPE@pcsb.org">LOPEZPE@pcsb.org</a></td><td class="directory-role">Roadway Apprenticeship</td></tr>
+                                <tr><td class="directory-name">Lowe, Jennifer</td><td class="directory-email"><a href="mailto:loweje@pcsb.org">loweje@pcsb.org</a></td><td class="directory-role">Surgical Technology</td></tr>
+                                <tr><td class="directory-name">Lucas, Ronette</td><td class="directory-email"><a href="mailto:LUCASR@pcsb.org">LUCASR@pcsb.org</a></td><td class="directory-role">Commercial Vehicle Driving</td></tr>
+                                <tr><td class="directory-name">Maristany, Sarah</td><td class="directory-email"><a href="mailto:MARISTANYS@pcsb.org">MARISTANYS@pcsb.org</a></td><td class="directory-role">Child Care Apprenticeship</td></tr>
+                                <tr><td class="directory-name">Miller, Sarah</td><td class="directory-email"><a href="mailto:millersarah@pcsb.org">millersarah@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Minkin, Brian</td><td class="directory-email"><a href="mailto:minkinb@pcsb.org">minkinb@pcsb.org</a></td><td class="directory-role">Professional Culinary Arts &amp; Hospitality</td></tr>
+                                <tr><td class="directory-name">Mojado, Janine</td><td class="directory-email"><a href="mailto:MOJADOJ@pcsb.org">MOJADOJ@pcsb.org</a></td><td class="directory-role">Commercial Vehicle Driving</td></tr>
+                                <tr><td class="directory-name">Moore, Anthony</td><td class="directory-email"><a href="mailto:MOOREANT@pcsb.org">MOOREANT@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Murillo, Juan</td><td class="directory-email"><a href="mailto:murilloj@pcsb.org">murilloj@pcsb.org</a></td><td class="directory-role">Heating, Ventilation, Air-Conditioning/Refrigeration (HVAC/R) 1</td></tr>
+                                <tr><td class="directory-name">Okeefe, Mary</td><td class="directory-email"><a href="mailto:okeefem@pcsb.org">okeefem@pcsb.org</a></td><td class="directory-role">Commercial Vehicle Driving</td></tr>
+                                <tr><td class="directory-name">Passley, Leo</td><td class="directory-email"><a href="mailto:PASSLEYLE@pcsb.org">PASSLEYLE@pcsb.org</a></td><td class="directory-role">Commercial Vehicle Driving</td></tr>
+                                <tr><td class="directory-name">Patterson, Greg</td><td class="directory-email"><a href="mailto:pattersongr@pcsb.org">pattersongr@pcsb.org</a></td><td class="directory-role">Plumbing</td></tr>
+                                <tr><td class="directory-name">Peak, Robert</td><td class="directory-email"><a href="mailto:PEAKRO@pcsb.org">PEAKRO@pcsb.org</a></td><td class="directory-role">Public Works</td></tr>
+                                <tr><td class="directory-name">Prime-Sayles, Judy</td><td class="directory-email"><a href="mailto:prime-saylesj@pcsb.org">prime-saylesj@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Ray, Katrina</td><td class="directory-email"><a href="mailto:RAYKAT@pcsb.org">RAYKAT@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Reyes, Silvio</td><td class="directory-email"><a href="mailto:reyess@pcsb.org">reyess@pcsb.org</a></td><td class="directory-role">Computer Systems &amp; Information Technology (CSIT)-IET @ CVAEC</td></tr>
+                                <tr><td class="directory-name">Richardson, Devin</td><td class="directory-email"><a href="mailto:RICHARDSONDEV@pcsb.org">RICHARDSONDEV@pcsb.org</a></td><td class="directory-role">Emergency Medical Technician</td></tr>
+                                <tr><td class="directory-name">Rodney, Tameka</td><td class="directory-email"><a href="mailto:RODNEYT@pcsb.org">RODNEYT@pcsb.org</a></td><td class="directory-role">Early Childhood Education</td></tr>
+                                <tr><td class="directory-name">Rogers, Ibin</td><td class="directory-email"><a href="mailto:rogersib@pcsb.org">rogersib@pcsb.org</a></td><td class="directory-role">IT Support</td></tr>
+                                <tr><td class="directory-name">Romain, Rob</td><td class="directory-email"><a href="mailto:ROMAINR@pcsb.org">ROMAINR@pcsb.org</a></td><td class="directory-role">Drone Certification</td></tr>
+                                <tr><td class="directory-name">Rose, Carolyn</td><td class="directory-email"><a href="mailto:rosecar@pcsb.org">rosecar@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Ruth, Jida</td><td class="directory-email"><a href="mailto:ruthj@pcsb.org">ruthj@pcsb.org</a></td><td class="directory-role">Front Desk</td></tr>
+                                <tr><td class="directory-name">Santiago, Angela</td><td class="directory-email"><a href="mailto:SANTIAGOAN@pcsb.org">SANTIAGOAN@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Schlensker, Jeremy</td><td class="directory-email"><a href="mailto:SCHLENSKERJ@pcsb.org">SCHLENSKERJ@pcsb.org</a></td><td class="directory-role">Master Automotive Service Technology</td></tr>
+                                <tr><td class="directory-name">Schneider, Chad (David)</td><td class="directory-email"><a href="mailto:schneiderch@pcsb.org">schneiderch@pcsb.org</a></td><td class="directory-role">Television Production Technology</td></tr>
+                                <tr><td class="directory-name">Sherwood, Mark</td><td class="directory-email"><a href="mailto:SHERWOODMAR@pcsb.org">SHERWOODMAR@pcsb.org</a></td><td class="directory-role">Emergency Medical Technician (PT)</td></tr>
+                                <tr><td class="directory-name">Slate, Danielle</td><td class="directory-email"><a href="mailto:SLATED@pcsb.org">SLATED@pcsb.org</a></td><td class="directory-role">Jewelry Design and Repair</td></tr>
+                                <tr><td class="directory-name">Smith, Halle</td><td class="directory-email"><a href="mailto:SMITHHAL@pcsb.org">SMITHHAL@pcsb.org</a></td><td class="directory-role">Emergency Medical Technician</td></tr>
+                                <tr><td class="directory-name">Solomon, Shereka</td><td class="directory-email"><a href="mailto:solomons@pcsb.org">solomons@pcsb.org</a></td><td class="directory-role">Facials Specialty</td></tr>
+                                <tr><td class="directory-name">Stepanovsky, Nerina</td><td class="directory-email"><a href="mailto:stepanovskyn@pcsb.org">stepanovskyn@pcsb.org</a></td><td class="directory-role">Emergency Medical Technician</td></tr>
+                                <tr><td class="directory-name">Stoltz, Denise</td><td class="directory-email"><a href="mailto:STOLTZD@pcsb.org">STOLTZD@pcsb.org</a></td><td class="directory-role">Nails Specialty</td></tr>
+                                <tr><td class="directory-name">Tenhagen, Jackie</td><td class="directory-email"><a href="mailto:tenhagenj@pcsb.org">tenhagenj@pcsb.org</a></td><td class="directory-role">Surgical Technology</td></tr>
+                                <tr><td class="directory-name">Terramagra, Philip</td><td class="directory-email"><a href="mailto:TERRAMAGRAP@pcsb.org">TERRAMAGRAP@pcsb.org</a></td><td class="directory-role">Electricity (PT)</td></tr>
+                                <tr><td class="directory-name">Thompson, Deborah</td><td class="directory-email"><a href="mailto:THOMPSONDEB@pcsb.org">THOMPSONDEB@pcsb.org</a></td><td class="directory-role">Medical Coder/Biller</td></tr>
+                                <tr><td class="directory-name">Thorbin, Patricia</td><td class="directory-email"><a href="mailto:THORBINP@pcsb.org">THORBINP@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Vanderveen, Dianne</td><td class="directory-email"><a href="mailto:vanderveend@pcsb.org">vanderveend@pcsb.org</a></td><td class="directory-role">Front Desk</td></tr>
+                                <tr><td class="directory-name">Vanhook, Paula</td><td class="directory-email"><a href="mailto:VANHOOKP@pcsb.org">VANHOOKP@pcsb.org</a></td><td class="directory-role">Practical Nursing</td></tr>
+                                <tr><td class="directory-name">Vrakas, Nicholas</td><td class="directory-email"><a href="mailto:VRAKASN@pcsb.org">VRAKASN@pcsb.org</a></td><td class="directory-role">Master Automotive Service Technology</td></tr>
+                                <tr><td class="directory-name">Walker, Crystal</td><td class="directory-email"><a href="mailto:WALKERCR@pcsb.org">WALKERCR@pcsb.org</a></td><td class="directory-role">Cosmetology</td></tr>
+                                <tr><td class="directory-name">Wallace, Katherine</td><td class="directory-email"><a href="mailto:WALLACEKAT@pcsb.org">WALLACEKAT@pcsb.org</a></td><td class="directory-role">Child Care Apprenticeship</td></tr>
+                                <tr><td class="directory-name">Whiteley, Keith</td><td class="directory-email"><a href="mailto:whiteleyk@pcsb.org">whiteleyk@pcsb.org</a></td><td class="directory-role">Master Automotive Service Technology</td></tr>
+                                <tr><td class="directory-name">Woods, Jacqueline</td><td class="directory-email"><a href="mailto:WOODSJA@pcsb.org">WOODSJA@pcsb.org</a></td><td class="directory-role">Front Desk</td></tr>
+                                <tr><td class="directory-name">Wright, Steve</td><td class="directory-email"><a href="mailto:WRIGHTSTE@pcsb.org">WRIGHTSTE@pcsb.org</a></td><td class="directory-role">Public Works</td></tr>
+                                <tr><td class="directory-name">Young, Brian</td><td class="directory-email"><a href="mailto:youngbria@pcsb.org">youngbria@pcsb.org</a></td><td class="directory-role">Electricity</td></tr>
+                                <tr><td class="directory-name">Young, John</td><td class="directory-email"><a href="mailto:YOUNGJOH@pcsb.org">YOUNGJOH@pcsb.org</a></td><td class="directory-role">Emergency Medical Technician</td></tr>
+                                <tr><td class="directory-name">Zachem, Steven</td><td class="directory-email"><a href="mailto:ZACHEMS@pcsb.org">ZACHEMS@pcsb.org</a></td><td class="directory-role">Computer Systems and Information Technology</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+
+                <div class="back-link">
+                    <a href="stpete-about.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to About This Campus</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline"><strong>901 34th St S, St. Petersburg, FL 33711</strong><br>
+                    Phone: 727.893.2500<br>
+                    Preparing students for high-demand careers through hands-on, industry-certified training since 1962.</p>
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <p class="footer__col-title">Quick Links</p>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="admissions.html">Admissions</a></li>
+                            <li><a href="#">Tuition &amp; Aid</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">St. Petersburg Links</p>
+                        <ul>
+                            <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                            <li><a href="#">Campus Map &amp; Directions</a></li>
+                            <li><a href="#">Academic Calendar</a></li>
+                            <li><a href="#">Schedule a Visit</a></li>
+                            <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Resources</p>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#non-discrimination">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

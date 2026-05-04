@@ -109,6 +109,15 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-gray-900);
 }
 
+/* Page hero: white text on green gradient. Overrides the global heading color. */
+.page-hero,
+.page-hero h1,
+.page-hero h2,
+.page-hero h3,
+.page-hero p {
+    color: #fff;
+}
+
 ul {
     list-style: none;
 }

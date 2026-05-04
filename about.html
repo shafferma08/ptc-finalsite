@@ -93,31 +93,85 @@
             box-shadow: 0 4px 24px rgba(0,0,0,0.1);
         }
 
-        /* Mission Statement */
-        .mission-statement {
-            background: var(--color-green);
-            color: #fff;
-            padding: 4rem 0;
-            text-align: center;
+        /* Our Story slideshow — CSS-only crossfade, 7 slides, 6s each (42s cycle) */
+        .story-slideshow {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            background: var(--color-off-white, #F7F8FA);
         }
-        .mission-statement__icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            opacity: 0.8;
+        .story-slideshow__slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: storySlideFade 42s infinite;
         }
-        .mission-statement__text {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 400;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
+        .story-slideshow__slide:nth-child(1) { animation-delay: 0s; }
+        .story-slideshow__slide:nth-child(2) { animation-delay: 6s; }
+        .story-slideshow__slide:nth-child(3) { animation-delay: 12s; }
+        .story-slideshow__slide:nth-child(4) { animation-delay: 18s; }
+        .story-slideshow__slide:nth-child(5) { animation-delay: 24s; }
+        .story-slideshow__slide:nth-child(6) { animation-delay: 30s; }
+        .story-slideshow__slide:nth-child(7) { animation-delay: 36s; }
+
+        @keyframes storySlideFade {
+            0% { opacity: 0; }
+            2% { opacity: 1; }
+            12.28% { opacity: 1; }
+            14.28% { opacity: 0; }
+            100% { opacity: 0; }
         }
-        .mission-statement__label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.75;
+
+        /* Slideshow dots indicator */
+        .story-slideshow__dots {
+            position: absolute;
+            bottom: 0.85rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 2;
+            padding: 0.4rem 0.8rem;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 999px;
+        }
+        .story-slideshow__dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.55);
+            animation: storyDotActive 42s infinite;
+            transition: transform 0.3s ease;
+        }
+        .story-slideshow__dot:nth-child(1) { animation-delay: 0s; }
+        .story-slideshow__dot:nth-child(2) { animation-delay: 6s; }
+        .story-slideshow__dot:nth-child(3) { animation-delay: 12s; }
+        .story-slideshow__dot:nth-child(4) { animation-delay: 18s; }
+        .story-slideshow__dot:nth-child(5) { animation-delay: 24s; }
+        .story-slideshow__dot:nth-child(6) { animation-delay: 30s; }
+        .story-slideshow__dot:nth-child(7) { animation-delay: 36s; }
+
+        @keyframes storyDotActive {
+            0%, 14.28% { background: var(--color-yellow, #FFCF01); transform: scale(1.3); }
+            16%, 100% { background: rgba(255, 255, 255, 0.55); transform: scale(1); }
+        }
+
+        .story-slideshow:hover .story-slideshow__slide,
+        .story-slideshow:hover .story-slideshow__dot,
+        .story-slideshow:focus-within .story-slideshow__slide,
+        .story-slideshow:focus-within .story-slideshow__dot {
+            animation-play-state: paused;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .story-slideshow__slide { animation: none; opacity: 1; }
+            .story-slideshow__slide:nth-child(n+2) { display: none; }
+            .story-slideshow__dots { display: none; }
         }
 
         /* Accreditation Section */
@@ -291,6 +345,172 @@
             }
             /* page-hero__title now uses clamp() above; mobile override no longer needed */
         }
+
+        /* Guiding Principles — single-column rows, matching live myptc.edu */
+        .guiding-principles {
+            max-width: 900px;
+            margin: 2rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .principle-row {
+            background: var(--color-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.75rem;
+        }
+        .principle-row__img {
+            height: 64px;
+            width: 64px;
+            object-fit: contain;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+        .principle-row__content { flex: 1; }
+        .principle-row__title {
+            color: var(--color-green);
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin: 0 0 0.5rem;
+        }
+        .principle-row__text {
+            color: var(--color-gray-700, #374151);
+            font-size: 1rem;
+            line-height: 1.7;
+            font-weight: 400;
+            margin: 0;
+        }
+        .principle-row__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.25rem 2rem;
+        }
+        .principle-row__list li {
+            padding: 0.3rem 0 0.3rem 1.2rem;
+            position: relative;
+            font-size: 1rem;
+            color: var(--color-gray-700, #374151);
+            line-height: 1.5;
+        }
+        .principle-row__list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: calc(0.3rem + 0.75em);
+            transform: translateY(-50%);
+            width: 7px;
+            height: 7px;
+            background: var(--color-yellow, #FFCF01);
+            border-radius: 50%;
+        }
+        @media (max-width: 600px) {
+            .principle-row__list { grid-template-columns: 1fr; }
+            .principle-row { padding: 1.25rem; gap: 1.25rem; }
+            .principle-row__img { height: 48px; width: 48px; }
+        }
+
+        /* Two Campuses 2-up card grid */
+        .campus-pair {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        .campus-pair__card {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            border: 1px solid #e8ecf1;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .campus-pair__card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        }
+        .campus-pair__photo {
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: var(--color-off-white, #F7F8FA);
+        }
+        .campus-pair__photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .campus-pair__body {
+            padding: 1.5rem 1.75rem 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .campus-pair__name {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+            color: var(--color-gray-900);
+        }
+        .campus-pair__address {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--color-gray-700);
+            margin: 0 0 0.5rem;
+        }
+        .campus-pair__phone {
+            font-size: 0.95rem;
+            color: var(--color-gray-700);
+            margin: 0 0 1.25rem;
+        }
+        .campus-pair__phone a {
+            color: var(--color-green);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .campus-pair__cta {
+            margin-top: auto;
+            align-self: flex-start;
+        }
+        @media (max-width: 720px) {
+            .campus-pair { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+
+        /* Green band variant — used for By the Numbers to add visual rhythm.
+           Logo green gradient with yellow stat numbers; each stat sits on a
+           semi-transparent glass tile so they read as individual callouts. */
+        .about-section--green {
+            background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
+            color: #fff;
+        }
+        .about-section--green .section-header__tag { color: rgba(255,255,255,0.85); }
+        .about-section--green .section-header__title { color: #fff; }
+        .about-section--green .section-header__desc { color: rgba(255,255,255,0.92); }
+        .about-section--green .about-stat {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: var(--border-radius-lg);
+            padding: 1.75rem 1rem;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .about-section--green .about-stat:hover {
+            background: rgba(255,255,255,0.14);
+            transform: translateY(-2px);
+        }
+        .about-section--green .about-stat__number { color: var(--color-yellow, #FFCF01); }
+        .about-section--green .about-stat__label { color: rgba(255,255,255,0.92); }
     </style>
 </head>
 <body>
@@ -310,7 +530,7 @@
             <div class="utility-bar__right">
                 <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building" aria-hidden="true"></i> District Home</a>
                 <a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener"><i class="fas fa-user" aria-hidden="true"></i> Focus Portal</a>
-                <a href="https://apply.myptc.edu" target="_blank" rel="noopener"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Apply Now</a>
+                <a href="https://apply.myptc.edu/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Apply Now</a>
                 <a href="https://www.myptc.edu/about-us/all-ptc-news" target="_blank" rel="noopener"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Events</a>
                 <a href="#" class="utility-bar__lang"><i class="fas fa-globe" aria-hidden="true"></i> Español</a>
             </div>
@@ -374,7 +594,7 @@
                                         <li><a href="admissions.html#pathways">Transfer Students</a></li>
                                         <li><a href="admissions.html#pathways">Readmission</a></li>
                                         <li><a href="admissions.html#testing">Testing &amp; Assessment</a></li>
-                                        <li><a href="admissions.html#campus-tours">Campus Tours</a></li>
+                                        <li><a href="admissions.html#campus-tours">Campus Visits &amp; Shadowing</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -484,7 +704,7 @@
         <!-- ============================================
              PAGE HERO
         ============================================= -->
-        <section class="page-hero">
+        <section class="page-hero" style="background: linear-gradient(135deg, rgba(0,129,66,0.92) 0%, rgba(0,102,52,0.88) 100%), url('assets/images/PTCAutoMechanicgirls-0593copy.png') center/cover no-repeat; padding: 5rem 0 4rem;">
             <div class="container">
                 <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
                     <ol>
@@ -494,46 +714,6 @@
                 </nav>
                 <h1 class="page-hero__title">About Pinellas Technical College</h1>
                 <p class="page-hero__subtitle">For over 60 years, PTC has been Pinellas County's trusted source for career and technical education, preparing students for high-demand jobs through hands-on, industry-certified training.</p>
-            </div>
-        </section>
-
-        <!-- ============================================
-             MISSION STATEMENT
-        ============================================= -->
-        <section class="mission-statement">
-            <div class="container">
-                <p class="mission-statement__label">Our Mission</p>
-                <p class="mission-statement__text">"Our mission is to provide students the opportunity to develop national workplace competencies to fill the needs of business and industry."</p>
-            </div>
-        </section>
-
-        <!-- ============================================
-             VISION + CORE VALUES
-             (Added 2026-04-25 from About audit; verbatim from
-              www.myptc.edu/about-us/welcome-to-ptc/mission-vision-core-values)
-        ============================================= -->
-        <section class="about-section about-section--alt">
-            <div class="container">
-                <div class="vision-values-grid" style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start;">
-                    <div class="vision-block">
-                        <p class="section-header__tag">What We Aspire To</p>
-                        <h2 style="font-family: var(--font-heading); font-size: 1.85rem; margin: 0 0 1rem;">Our Vision</h2>
-                        <p style="font-size: 1.15rem; line-height: 1.7; color: var(--color-gray-700);">To be our communities' first choice for technical training.</p>
-                    </div>
-                    <div class="values-block">
-                        <p class="section-header__tag">What Guides Us</p>
-                        <h2 style="font-family: var(--font-heading); font-size: 1.85rem; margin: 0 0 1rem;">Our Core Values</h2>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem;">
-                            <li style="display: flex; gap: 0.75rem; align-items: flex-start;"><i class="fas fa-check-circle" style="color: var(--color-green); margin-top: 0.3rem;" aria-hidden="true"></i><span>Focus on attracting and retaining students.</span></li>
-                            <li style="display: flex; gap: 0.75rem; align-items: flex-start;"><i class="fas fa-check-circle" style="color: var(--color-green); margin-top: 0.3rem;" aria-hidden="true"></i><span>Implement and maintain systems to enable all students to succeed.</span></li>
-                            <li style="display: flex; gap: 0.75rem; align-items: flex-start;"><i class="fas fa-check-circle" style="color: var(--color-green); margin-top: 0.3rem;" aria-hidden="true"></i><span>Deliver customized employer-driven training.</span></li>
-                            <li style="display: flex; gap: 0.75rem; align-items: flex-start;"><i class="fas fa-check-circle" style="color: var(--color-green); margin-top: 0.3rem;" aria-hidden="true"></i><span>Be accountable for our students' learning outcomes.</span></li>
-                            <li style="display: flex; gap: 0.75rem; align-items: flex-start;"><i class="fas fa-check-circle" style="color: var(--color-green); margin-top: 0.3rem;" aria-hidden="true"></i><span>Provide learning experiences when and where necessary to meet our customers' needs.</span></li>
-                            <li style="display: flex; gap: 0.75rem; align-items: flex-start;"><i class="fas fa-check-circle" style="color: var(--color-green); margin-top: 0.3rem;" aria-hidden="true"></i><span>Maintain a safe environment conducive to learning.</span></li>
-                            <li style="display: flex; gap: 0.75rem; align-items: flex-start;"><i class="fas fa-check-circle" style="color: var(--color-green); margin-top: 0.3rem;" aria-hidden="true"></i><span>Recruit and develop quality staff.</span></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -551,118 +731,77 @@
                         <p>As part of Pinellas County Schools, PTC combines the resources of a public school system with the focused, career-driven mission of a technical college. Students benefit from affordable tuition, financial aid, and direct connections to local employers.</p>
                     </div>
                     <div class="about-grid__media">
-                        <img src="assets/images/PTC1Graduation2025-1536.jpg" alt="PTC graduation ceremony" loading="lazy">
+                        <div class="story-slideshow" aria-roledescription="carousel" aria-label="PTC over the years">
+                            <img src="assets/more-pictures/60-anniversary-clwr.JPG" alt="PTC celebrating its 60th anniversary" class="story-slideshow__slide" loading="lazy">
+                            <img src="assets/more-pictures/diesel-clwr.jpg" alt="PTC Clearwater Diesel program in action" class="story-slideshow__slide" loading="lazy">
+                            <img src="assets/more-pictures/public-works-stp.jpg" alt="PTC St. Petersburg Public Works program in action" class="story-slideshow__slide" loading="lazy">
+                            <img src="assets/more-pictures/signing-day-clwr.jpg" alt="National Signing Day at PTC Clearwater" class="story-slideshow__slide" loading="lazy">
+                            <img src="assets/more-pictures/signing-day-stp.jpg" alt="National Signing Day at PTC St. Petersburg" class="story-slideshow__slide" loading="lazy">
+                            <img src="assets/more-pictures/graduation2-clwr.jpg" alt="PTC Clearwater graduation" class="story-slideshow__slide" loading="lazy">
+                            <img src="assets/more-pictures/graduation2-stp.jpg" alt="PTC St. Petersburg graduation" class="story-slideshow__slide" loading="lazy">
+                            <div class="story-slideshow__dots" aria-hidden="true">
+                                <span class="story-slideshow__dot"></span>
+                                <span class="story-slideshow__dot"></span>
+                                <span class="story-slideshow__dot"></span>
+                                <span class="story-slideshow__dot"></span>
+                                <span class="story-slideshow__dot"></span>
+                                <span class="story-slideshow__dot"></span>
+                                <span class="story-slideshow__dot"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ============================================
-             BY THE NUMBERS
+             TWO CAMPUSES, ONE MISSION
+             Moved up to position #2 so the opening reads:
+             Hero → Our Story → Two Campuses → Guiding Principles → ...
+             Rebuilt 2026-05-04 as a 2-up campus card grid showing both
+             campus exteriors with address, phone, and CTA per campus.
         ============================================= -->
-        <section class="about-section about-section--alt">
+        <section class="about-section about-section--alt" id="campuses">
             <div class="container">
                 <div class="section-header section-header--center">
-                    <p class="section-header__tag">PTC at a Glance</p>
-                    <h2 class="section-header__title">By the Numbers</h2>
+                    <p class="section-header__tag">Where We Are</p>
+                    <h2 class="section-header__title">Two Campuses, One Mission</h2>
+                    <p class="section-header__desc">PTC's Clearwater and St. Petersburg campuses each offer a unique mix of industry-aligned programs, but both share the same commitment to preparing students for rewarding careers. No matter which campus you choose, you will have access to modern labs, experienced instructors, and direct connections to Tampa Bay employers.</p>
                 </div>
-                <div class="about-stats">
-                    <div class="about-stat">
-                        <span class="about-stat__number">60+</span>
-                        <span class="about-stat__label">Career and Technical Programs</span>
-                    </div>
-                    <div class="about-stat">
-                        <span class="about-stat__number">40+</span>
-                        <span class="about-stat__label">Career Areas</span>
-                    </div>
-                    <div class="about-stat">
-                        <span class="about-stat__number">5,000</span>
-                        <span class="about-stat__label">Full-Time Students</span>
-                    </div>
-                    <div class="about-stat">
-                        <span class="about-stat__number">250+</span>
-                        <span class="about-stat__label">Industry Partners</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- History Timeline section removed 2026-04-28 (M23 close). The post-Apr-25
-             audit pruning had reduced it to two entries (1962 + Today), which read as
-             a broken or missing timeline. Pulling the section pending a future content
-             pass that can source dated milestones from PTC archives / PCSB Communications
-             (those four 1970s/1990s/2000s/2018 entries previously removed). The 1962
-             founding fact is preserved verbatim from live in the meta description, hero,
-             By the Numbers stats, and footer tagline, so no institutional fact is lost. -->
-
-        <!-- ============================================
-             ACCREDITATION
-        ============================================= -->
-        <section class="about-section about-section--alt" id="accreditation">
-            <div class="container">
-                <div class="section-header section-header--center">
-                    <p class="section-header__tag">Quality You Can Trust</p>
-                    <h2 class="section-header__title">Accreditation</h2>
-                    <p class="section-header__desc">PTC's accreditation status ensures that our programs meet rigorous quality standards and that your credentials are recognized by employers and institutions.</p>
-                </div>
-                <div class="accred-cards">
-                    <div class="accred-card">
-                        <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="Council on Occupational Education" class="accred-card__logo">
-                        <h3 class="accred-card__name">Council on Occupational Education</h3>
-                        <p class="accred-card__desc">Both the Clearwater and St. Petersburg campuses are individually accredited by <abbr title="Council on Occupational Education">COE</abbr>, the nationally recognized accrediting body for career and technical education institutions.</p>
-                        <p class="accred-card__contact">
-                            7840 Roswell Road, Building 300, Suite 325<br>
-                            Atlanta, GA 30350<br>
-                            Phone: <a href="tel:7703963898">770-396-3898</a>
-                        </p>
-                    </div>
-                    <div class="accred-card">
-                        <img src="assets/logos/Cognia.png" alt="Cognia" class="accred-card__logo" style="max-height: 50px;">
-                        <h3 class="accred-card__name">Cognia (formerly the Southern Association of Colleges)</h3>
-                        <p class="accred-card__desc">As part of Pinellas County Schools, PTC benefits from district-wide accreditation by Cognia, ensuring continuous improvement in educational quality.</p>
-                        <p class="accred-card__contact">
-                            9115 Westside Parkway<br>
-                            Alpharetta, GA 30009<br>
-                            Phone: <a href="tel:8884133669">888-413-3669</a>
-                        </p>
-                    </div>
-                    <div class="accred-card">
-                        <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="accred-card__logo">
-                        <h3 class="accred-card__name">Pinellas County Schools</h3>
-                        <p class="accred-card__desc">PTC operates under the governance of the Pinellas County School Board, providing institutional stability and resources.</p>
-                        <p class="accred-card__contact">
-                            301 Fourth Street SW<br>
-                            Largo, FL 33770<br>
-                            Web: <a href="https://www.pcsb.org" target="_blank" rel="noopener">pcsb.org</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ============================================
-             ANNUAL IMPACT REPORT
-             Added 2026-04-25 from About cluster audit. Links to live PDF
-             on resources.finalsite.net (sourced from
-             www.myptc.edu/about-us/welcome-to-ptc/ptc-annual-impact-report). -->
-        <section class="about-section" id="annual-impact-report">
-            <div class="container">
-                <div class="section-header section-header--center">
-                    <p class="section-header__tag">Our Impact</p>
-                    <h2 class="section-header__title">Annual Impact Report</h2>
-                    <p class="section-header__desc">Each year, PTC publishes an Annual Impact Report summarizing student outcomes, program highlights, and our contribution to Pinellas County's workforce.</p>
-                </div>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="https://resources.finalsite.net/images/v1771517242/myptecorg/qrjgqccj1srpkytehfrr/AnnualReportSinglePage.pdf" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
-                        <i class="fas fa-file-pdf" aria-hidden="true"></i> View Annual Impact Report (PDF)
-                    </a>
+                <div class="campus-pair">
+                    <article class="campus-pair__card">
+                        <div class="campus-pair__photo">
+                            <img src="assets/images/PTC-CLW.jpg" alt="PTC Clearwater Campus exterior" loading="lazy">
+                        </div>
+                        <div class="campus-pair__body">
+                            <h3 class="campus-pair__name">Clearwater Campus</h3>
+                            <p class="campus-pair__address">6100 154th Avenue North<br>Clearwater, FL 33760</p>
+                            <p class="campus-pair__phone">Phone: <a href="tel:7275387167">(727) 538-7167</a></p>
+                            <a href="clearwater.html" class="btn btn--primary campus-pair__cta">Visit Clearwater Campus <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
+                    <article class="campus-pair__card">
+                        <div class="campus-pair__photo">
+                            <img src="assets/images/PTC_STP.jpg" alt="PTC St. Petersburg Campus exterior" loading="lazy">
+                        </div>
+                        <div class="campus-pair__body">
+                            <h3 class="campus-pair__name">St. Petersburg Campus</h3>
+                            <p class="campus-pair__address">901 34th Street South<br>St. Petersburg, FL 33711</p>
+                            <p class="campus-pair__phone">Phone: <a href="tel:7278932500">(727) 893-2500</a></p>
+                            <a href="stpete.html" class="btn btn--primary campus-pair__cta">Visit St. Pete Campus <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!-- ============================================
-             LEADERSHIP
+             CAMPUS LEADERSHIP
+             Moved up from slot #8 to slot #4 (2026-05-04) so the "who runs it"
+             answer comes right after the campus geography is established.
+             Letter-avatar placeholders (JP/JS/DH) pending real headshots from
+             the campuses + PCSB district office. Tracked in
+             assets/marketing-library/INDEX.md as a known gap.
         ============================================= -->
         <section class="about-section" id="leadership">
             <div class="container">
@@ -692,64 +831,136 @@
                     </div>
                 </div>
                 <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
-                    <a href="clearwater.html" class="btn btn--primary">Clearwater Staff Directory <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                    <a href="stpete.html" class="btn btn--primary">St. Petersburg Staff Directory <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="clearwater-staff-directory.html" class="btn btn--primary">Clearwater Staff Directory <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="stpete-staff-directory.html" class="btn btn--primary">St. Petersburg Staff Directory <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </section>
 
         <!-- ============================================
-             CAMPUSES OVERVIEW
+             OUR GUIDING PRINCIPLES
+             Single-column rows, matching live myptc.edu structure.
+             Mission/Vision/Core Values verbatim from live.
         ============================================= -->
-        <section class="about-section about-section--alt">
-            <div class="container">
-                <div class="about-grid about-grid--reverse">
-                    <div class="about-grid__content">
-                        <h2>Two Campuses, One Mission</h2>
-                        <p>PTC's Clearwater and St. Petersburg campuses each offer a unique mix of industry-aligned programs, but both share the same commitment to preparing students for rewarding careers.</p>
-                        <p>The <strong>Clearwater Campus</strong> sits at 6100 154th Ave N, and the <strong>St. Petersburg Campus</strong> sits at 901 34th St S. For the full list of programs offered at each campus, see the campus pages below.</p>
-                        <p>No matter which campus you choose, you will have access to modern labs, experienced instructors, and direct connections to Tampa Bay employers.</p>
-                        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
-                            <a href="clearwater.html" class="btn btn--primary">Clearwater Campus <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                            <a href="stpete.html" class="btn btn--primary">St. Pete Campus <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="about-grid__media">
-                        <img src="assets/images/PTC-CLW.jpg" alt="PTC Clearwater Campus" loading="lazy">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================
-             NON-DISCRIMINATION & EQUAL OPPORTUNITY
-             Source: www.myptc.edu/about-us/welcome-to-ptc/pinellas-county-schoolsctae-compliance-statements
-             Verbatim non-discrimination paragraph + Compliance Officer contact.
-             Full LEP language and complaints process live on consumer-information.html#non-discrimination.
-        ============================================= -->
-        <section class="about-section about-section--alt" id="non-discrimination" aria-labelledby="non-discrimination-heading">
+        <section class="about-section about-section--alt" id="guiding-principles">
             <div class="container">
                 <div class="section-header section-header--center">
-                    <p class="section-header__tag">Equal Opportunity</p>
-                    <h2 class="section-header__title" id="non-discrimination-heading">Non-Discrimination &amp; Title IX</h2>
+                    <p class="section-header__tag">Who We Are</p>
+                    <h2 class="section-header__title">Our Guiding Principles</h2>
                 </div>
-                <div style="max-width: 760px; margin: 1.5rem auto 0; font-size: 1rem; line-height: 1.7; color: var(--color-gray-700);">
-                    <p>Career Technical &amp; Adult Education School and Programs are open to all eligible students in the district and is committed to a policy of nondiscrimination in employment and educational opportunity. No persons shall be discriminated against or harassed in any educational program, services or activities on the basis of race, color, sex, religion, national origin, marital status, age, sexual orientation or disability.</p>
-                    <p>Questions, complaints, or requests for additional information regarding discrimination or harassment may be directed to the PCSB Compliance Officer:</p>
-                    <p style="background: #fff; border-left: 4px solid var(--color-green); padding: 1rem 1.25rem; margin-top: 1rem;">
-                        <strong>Compliance Officer &middot; Office of Equal Opportunity</strong><br>
-                        Pinellas County Schools<br>
-                        301 4th Street S.W., Largo, FL 33770<br>
-                        Phone: <a href="tel:7275886285" style="color: var(--color-green);">727-588-6285</a><br>
-                        Email: <a href="mailto:complianceofficer@pcsb.org" style="color: var(--color-green);">complianceofficer@pcsb.org</a>
-                    </p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-gray-600); font-style: italic;">Under Florida law, email content and addresses are public records. If you do not want your email released in response to a public records request, do not send electronic mail to this entity. Instead, contact us by phone.</p>
-                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--color-gray-600); font-style: italic;">Pinellas County Schools is an Equal Opportunity Employer.</p>
-                    <p style="margin-top: 1.5rem;">PTC is also committed to accessibility under Section 504 of the Rehabilitation Act and Title II of the Americans with Disabilities Act (ADA). To request an accommodation, report an accessibility barrier, or read PTC's full accessibility statement, visit <a href="consumer-information.html#accessibility" style="color: var(--color-green); font-weight: 600;">Accessibility &amp; ADA / Section 504</a>.</p>
-                    <p style="margin-top: 1rem;"><a href="consumer-information.html#non-discrimination" style="color: var(--color-green); font-weight: 600;">Read the full Non-Discrimination &amp; Title IX statement, including the named EEO/Title IX/ADA Officer and Section 504 Coordinator <i class="fas fa-arrow-right" aria-hidden="true" style="font-size: 0.85em;"></i></a></p>
+                <div class="guiding-principles">
+                    <!-- MISSION -->
+                    <div class="principle-row">
+                        <img src="assets/logos/Mission.png" alt="" class="principle-row__img" aria-hidden="true">
+                        <div class="principle-row__content">
+                            <h3 class="principle-row__title">Mission</h3>
+                            <p class="principle-row__text">To provide students the opportunity to develop national workplace competencies to fill the needs of business and industry.</p>
+                        </div>
+                    </div>
+                    <!-- VISION -->
+                    <div class="principle-row">
+                        <img src="assets/logos/Vision.png" alt="" class="principle-row__img" aria-hidden="true">
+                        <div class="principle-row__content">
+                            <h3 class="principle-row__title">Vision</h3>
+                            <p class="principle-row__text">To be our communities' first choice for technical training.</p>
+                        </div>
+                    </div>
+                    <!-- CORE VALUES -->
+                    <div class="principle-row">
+                        <img src="assets/logos/CoreValue.png" alt="" class="principle-row__img" aria-hidden="true">
+                        <div class="principle-row__content">
+                            <h3 class="principle-row__title">Core Values</h3>
+                            <ul class="principle-row__list">
+                                <li>Focus on attracting and retaining students.</li>
+                                <li>Implement and maintain systems to enable all students to succeed.</li>
+                                <li>Deliver customized employer-driven training.</li>
+                                <li>Be accountable for our students' learning outcomes.</li>
+                                <li>Provide learning experiences when and where necessary.</li>
+                                <li>Maintain a safe environment conducive to learning.</li>
+                                <li>Recruit and develop quality staff.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- ============================================
+             BY THE NUMBERS
+             Green band (brand color) for visual rhythm. Yellow stat numbers
+             on green = on-brand high-contrast.
+        ============================================= -->
+        <section class="about-section about-section--green">
+            <div class="container">
+                <div class="section-header section-header--center">
+                    <p class="section-header__tag">PTC at a Glance</p>
+                    <h2 class="section-header__title">By the Numbers</h2>
+                </div>
+                <div class="about-stats">
+                    <div class="about-stat">
+                        <span class="about-stat__number">60+</span>
+                        <span class="about-stat__label">Career and Technical Programs</span>
+                    </div>
+                    <div class="about-stat">
+                        <span class="about-stat__number">40+</span>
+                        <span class="about-stat__label">Career Areas</span>
+                    </div>
+                    <div class="about-stat">
+                        <span class="about-stat__number">5,000+</span>
+                        <span class="about-stat__label">Full-Time Students</span>
+                    </div>
+                    <div class="about-stat">
+                        <span class="about-stat__number">250+</span>
+                        <span class="about-stat__label">Industry Partners</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 2.5rem;">
+                    <a href="https://resources.finalsite.net/images/v1771517242/myptecorg/qrjgqccj1srpkytehfrr/AnnualReportSinglePage.pdf" target="_blank" rel="noopener" class="btn btn--accent btn--lg" style="background: var(--color-yellow, #FFCF01); color: var(--color-gray-900);"><i class="fas fa-file-pdf" aria-hidden="true"></i> View Annual Impact Report (PDF)</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Timeline section removed 2026-04-28 (M23 close). The post-Apr-25
+             audit pruning had reduced it to two entries (1962 + Today), which read as
+             a broken or missing timeline. Pulling the section pending a future content
+             pass that can source dated milestones from PTC archives / PCSB Communications
+             (those four 1970s/1990s/2000s/2018 entries previously removed). The 1962
+             founding fact is preserved verbatim from live in the meta description, hero,
+             By the Numbers stats, and footer tagline, so no institutional fact is lost. -->
+
+        <!-- ============================================
+             ACCREDITATION
+             Condensed 2026-05-04 from a 3-card block to a single intro + CTAs.
+             Full COE + Cognia details (addresses, phones, compliance documents)
+             live on the campus-specific accreditation pages. The "Pinellas County
+             Schools" card was removed because PCSB is the governing body, not an
+             accrediting agency.
+        ============================================= -->
+        <section class="about-section about-section--alt" id="accreditation">
+            <div class="container">
+                <div class="section-header section-header--center">
+                    <p class="section-header__tag">Quality You Can Trust</p>
+                    <h2 class="section-header__title">Accreditation</h2>
+                    <p class="section-header__desc">PTC is accredited by the <strong>Council on Occupational Education (COE)</strong> and <strong>Cognia</strong>. Each campus is individually accredited by COE; both share Cognia accreditation through Pinellas County Schools. View campus-specific accreditor details, the campus catalog, and COE compliance documents.</p>
+                </div>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+                    <a href="clearwater-accreditation.html" class="btn btn--primary">Clearwater Accreditation <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="stpete-accreditation.html" class="btn btn--primary">St. Petersburg Accreditation <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Annual Impact Report standalone section removed 2026-05-04.
+             The PDF CTA now lives at the bottom of By the Numbers (above)
+             so the stats and the source report sit together. -->
+
+        <!-- Leadership moved to position #4 right after Two Campuses (2026-05-04). -->
+
+        <!-- Non-Discrimination & Title IX section removed 2026-05-04. The full
+             statement (with LEP language, named Title IX/EEO/ADA officer, and
+             Section 504 coordinator) lives on consumer-information.html#non-discrimination.
+             The protected-categories paragraph also appears in every page footer. -->
 
         <!-- ============================================
              CTA BAND
@@ -762,8 +973,8 @@
                         <p>Take the first step. Apply today or request information to learn more about our programs.</p>
                     </div>
                     <div class="cta-band__actions">
-                        <a href="#" class="btn btn--accent btn--lg">Apply Now</a>
-                        <a href="#" class="btn btn--outline-white btn--lg">Request Info</a>
+                        <a href="https://apply.myptc.edu/" class="btn btn--accent btn--lg" target="_blank" rel="noopener">Apply Now</a>
+                        <a href="https://inforequest.myptc.edu/" class="btn btn--outline-white btn--lg" target="_blank" rel="noopener">Request Info</a>
                     </div>
                 </div>
             </div>
@@ -805,7 +1016,7 @@
                             <li><a href="clearwater.html">Clearwater Campus</a></li>
                             <li><a href="stpete.html">St. Petersburg Campus</a></li>
                             <li><a href="campus-maps.html">Campus Maps</a></li>
-                            <li><a href="admissions.html#campus-tours">Schedule a Tour</a></li>
+                            <li><a href="admissions.html#campus-tours">Schedule a Visit</a></li>
                         </ul>
                     </div>
                     <div class="footer__col">

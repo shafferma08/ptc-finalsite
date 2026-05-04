@@ -177,64 +177,77 @@
             flex-wrap: wrap;
         }
 
-        /* Guiding Principles — 3-column layout matching live stpete.myptc.edu */
+        /* Guiding Principles — single-column rows, matching live myptc.edu */
         .guiding-principles {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-            margin-top: 2.5rem;
-            align-items: start;
+            max-width: 900px;
+            margin: 2rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
-        .principle {
-            text-align: center;
-            padding: 0 0.5rem;
+        .principle-row {
+            background: var(--color-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.75rem;
         }
-        .principle__icon {
-            width: 96px;
-            height: 96px;
+        .principle-row__img {
+            height: 64px;
+            width: 64px;
             object-fit: contain;
-            margin: 0 auto 1.25rem;
-            display: block;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
         }
-        .principle__heading {
+        .principle-row__content { flex: 1; }
+        .principle-row__title {
+            color: var(--color-green);
             font-family: var(--font-heading);
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--color-gray-900);
-            margin: 0 0 1rem;
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin: 0 0 0.5rem;
         }
-        .principle__body {
-            font-size: 0.98rem;
-            line-height: 1.65;
-            color: var(--color-gray-800);
-        }
-        .principle__body p { margin: 0; }
-        .principle__body ul {
+        .principle-row__text {
+            color: var(--color-gray-700, #374151);
+            font-size: 1rem;
+            line-height: 1.7;
+            font-weight: 400;
             margin: 0;
-            padding: 0;
+        }
+        .principle-row__list {
             list-style: none;
-            text-align: left;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.25rem 2rem;
         }
-        .principle__body li {
+        .principle-row__list li {
+            padding: 0.3rem 0 0.3rem 1.2rem;
             position: relative;
-            padding-left: 1.25rem;
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: var(--color-gray-700, #374151);
             line-height: 1.5;
-            font-size: 0.92rem;
         }
-        .principle__body li::before {
+        .principle-row__list li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 0.6em;
-            width: 6px;
-            height: 6px;
-            background: var(--color-green);
+            top: calc(0.3rem + 0.75em);
+            transform: translateY(-50%);
+            width: 7px;
+            height: 7px;
+            background: var(--color-yellow, #FFCF01);
             border-radius: 50%;
         }
-        @media (max-width: 900px) {
-            .guiding-principles { grid-template-columns: 1fr; gap: 2.5rem; }
-            .principle { padding: 0; }
+        @media (max-width: 600px) {
+            .principle-row__list { grid-template-columns: 1fr; }
+            .principle-row { padding: 1.25rem; gap: 1.25rem; }
+            .principle-row__img { height: 48px; width: 48px; }
         }
 
         /* Admin / leadership cards — clean white-bg with hover */
@@ -419,7 +432,6 @@
                                     <ul>
                                         <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
                                         <li><a href="admissions.html#enrollment-steps">Enrollment Steps</a></li>
-                                        <li><a href="clearwater-counselors.html">Meet Your Counselors</a></li>
                                         <li><a href="#">Tuition &amp; Fees</a></li>
                                         <li><a href="#">Financial Aid &amp; FAFSA</a></li>
                                         <li><a href="#">Scholarships</a></li>
@@ -471,7 +483,7 @@
             </nav>
 
             <div class="site-header__actions">
-                <a href="#" class="btn btn--primary btn--sm site-header__cta">Apply Now</a>
+                <a href="https://apply.myptc.edu/" class="btn btn--primary btn--sm site-header__cta" target="_blank" rel="noopener">Apply Now</a>
                 <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
                     <span class="mobile-toggle__bar"></span>
                     <span class="mobile-toggle__bar"></span>
@@ -497,50 +509,9 @@
             </div>
         </section>
 
-        <!-- ============================================
-             OUR GUIDING PRINCIPLES
-             3-column layout matching live stpete.myptc.edu structure.
-             Mission/Vision/Core Values verbatim from live mission-vision-core-values page.
-             Icons sourced by Marianne, in assets/logos/.
-        ============================================= -->
-        <section class="guiding-principles-section" style="padding: 4rem 0; background: var(--color-white);">
-            <div class="container">
-                <div class="section-header section-header--center" style="margin-bottom: 1rem;">
-                    <h2 class="section-header__title">Our Guiding Principles</h2>
-                </div>
-                <div class="guiding-principles">
-                    <div class="principle">
-                        <img src="assets/logos/Mission.png" alt="" class="principle__icon" aria-hidden="true">
-                        <h3 class="principle__heading">Mission</h3>
-                        <div class="principle__body">
-                            <p>Our mission is to provide students the opportunity to develop national workplace competencies to fill the needs of business and industry.</p>
-                        </div>
-                    </div>
-                    <div class="principle">
-                        <img src="assets/logos/Vision.png" alt="" class="principle__icon" aria-hidden="true">
-                        <h3 class="principle__heading">Vision</h3>
-                        <div class="principle__body">
-                            <p>To be our communities' first choice for technical training.</p>
-                        </div>
-                    </div>
-                    <div class="principle">
-                        <img src="assets/logos/CoreValue.png" alt="" class="principle__icon" aria-hidden="true">
-                        <h3 class="principle__heading">Core Values</h3>
-                        <div class="principle__body">
-                            <ul>
-                                <li>Focus on attracting and retaining students.</li>
-                                <li>Implement and maintain systems to enable all students to succeed.</li>
-                                <li>Deliver customized employer-driven training.</li>
-                                <li>Be accountable for our students' learning outcomes.</li>
-                                <li>Provide learning experiences when and where necessary to meet our customers' needs.</li>
-                                <li>Maintain a safe environment conducive to learning.</li>
-                                <li>Recruit and develop quality staff.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Guiding Principles section removed 2026-05-04. Mission/Vision/Core
+             Values are PTC-wide content; canonical home is the main about.html
+             page. Campus pages now lead with campus-specific content. -->
 
         <!-- ============================================
              CAMPUS ADMINISTRATION
@@ -563,12 +534,6 @@
                         <p class="admin-card-clean__email"><a href="mailto:PROKOPJ@pcsb.org">PROKOPJ@pcsb.org</a></p>
                     </article>
                     <article class="admin-card-clean">
-                        <div class="admin-card-clean__photo" aria-hidden="true">RF</div>
-                        <h3 class="admin-card-clean__name">Raylee Fleisch</h3>
-                        <p class="admin-card-clean__title">Assistant Director</p>
-                        <p class="admin-card-clean__email"><a href="mailto:FLEISCHR@pcsb.org">FLEISCHR@pcsb.org</a></p>
-                    </article>
-                    <article class="admin-card-clean">
                         <div class="admin-card-clean__photo" aria-hidden="true">KB</div>
                         <h3 class="admin-card-clean__name">Kimberly Barker</h3>
                         <p class="admin-card-clean__title">Assistant Director</p>
@@ -580,11 +545,16 @@
                         <p class="admin-card-clean__title">Assistant Director</p>
                         <p class="admin-card-clean__email"><a href="mailto:BOWMANCA@pcsb.org">BOWMANCA@pcsb.org</a></p>
                     </article>
+                    <article class="admin-card-clean">
+                        <div class="admin-card-clean__photo" aria-hidden="true">RF</div>
+                        <h3 class="admin-card-clean__name">Raylee Fleisch</h3>
+                        <p class="admin-card-clean__title">Assistant Director</p>
+                        <p class="admin-card-clean__email"><a href="mailto:FLEISCHR@pcsb.org">FLEISCHR@pcsb.org</a></p>
+                    </article>
                 </div>
 
                 <div style="text-align: center; margin-top: 2.5rem;">
-                    <a href="clearwater-counselors.html" class="btn btn--primary">View Clearwater Counselors <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                    <a href="#" class="btn btn--outline" style="margin-left: 0.75rem;" data-followup="staff-directory-page-not-yet-built">Full Staff Directory <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="clearwater-staff-directory.html" class="btn btn--primary">Full Staff Directory <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </section>
@@ -593,7 +563,7 @@
              PROGRAMS AT THIS CAMPUS
              Green branded band with campus imagery for visual rhythm.
         ============================================= -->
-        <section class="campus-programs-cta" style="padding: 5rem 0; background: linear-gradient(135deg, rgba(0,129,66,0.94) 0%, rgba(0,102,52,0.92) 100%), url('assets/images/PTC1Graduation2025-1536.jpg') center/cover no-repeat; color: #fff;">
+        <section class="campus-programs-cta" style="padding: 5rem 0; background: linear-gradient(135deg, rgba(0,129,66,0.94) 0%, rgba(0,102,52,0.92) 100%), url('assets/more-pictures/graduation-clwr.jpg') center/cover no-repeat; color: #fff;">
             <div class="container">
                 <div class="section-header section-header--center" style="margin-bottom: 1.5rem;">
                     <p class="section-header__tag" style="color: rgba(255,255,255,0.85);">Hands-On Career Training</p>
@@ -608,7 +578,7 @@
 
         <!-- ============================================
              VISIT US
-             Address (verbatim from live), phone (verbatim), map placeholder, tour CTA.
+             Address (verbatim from live), phone (verbatim), map placeholder, visit CTA.
              Student services hours intentionally not shown — to be sourced from
              Marianne / campus admissions and added.
         ============================================= -->
@@ -628,8 +598,9 @@
                     </div>
                     <div class="visit-card-clean">
                         <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 0 0 1rem; color: var(--color-gray-900);"><i class="fas fa-calendar-check" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>Schedule a Visit</h3>
-                        <p style="margin: 0 0 0.75rem; line-height: 1.6; color: var(--color-gray-800);">Tours and shadow days let you experience the campus and meet instructors before you apply.</p>
-                        <p style="margin-top: 1.25rem;"><a href="admissions.html#shadowing-days" style="color: var(--color-green); font-weight: 600; font-size: 0.92rem;">View shadowing days &amp; times <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a></p>
+                        <p style="margin: 0 0 0.75rem; line-height: 1.6; color: var(--color-gray-800);">Visits and shadow days let you experience the campus and meet instructors before you apply.</p>
+                        <p style="margin-top: 1.25rem; margin-bottom: 0.5rem;"><a href="admissions.html#shadowing-days" style="color: var(--color-green); font-weight: 600; font-size: 0.92rem;">View shadowing days &amp; times <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a></p>
+                        <p style="margin: 0;"><a href="schedule-clearwater.html" style="color: var(--color-green); font-weight: 600; font-size: 0.92rem;">View Clearwater class schedule <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a></p>
                     </div>
                 </div>
             </div>
@@ -666,8 +637,8 @@
                         <p>Apply now or request information about programs at the Clearwater campus.</p>
                     </div>
                     <div class="cta-band__actions">
-                        <a href="#" class="btn btn--accent btn--lg">Apply Now</a>
-                        <a href="#" class="btn btn--outline-white btn--lg">Request Info</a>
+                        <a href="https://apply.myptc.edu/" class="btn btn--accent btn--lg" target="_blank" rel="noopener">Apply Now</a>
+                        <a href="https://inforequest.myptc.edu/" class="btn btn--outline-white btn--lg" target="_blank" rel="noopener">Request Info</a>
                     </div>
                 </div>
             </div>
@@ -706,7 +677,7 @@
                             <li><a href="schedule-clearwater.html">Class Schedule</a></li>
                             <li><a href="#">Campus Map &amp; Directions</a></li>
                             <li><a href="#">Academic Calendar</a></li>
-                            <li><a href="#">Schedule a Tour</a></li>
+                            <li><a href="#">Schedule a Visit</a></li>
                             <li><a href="#">Staff Directory</a></li>
                         </ul>
                     </div>
