@@ -3,7 +3,7 @@ source_url: https://stpete.myptc.edu/admissions/admissions/enrollment-options
 campus: stpete
 title: Enrollment Options
 type: admissions-sub-page
-scrape_date: 2026-04-30
+scrape_date: 2026-05-03
 scrape_method: curl + python parse
 char_count: 2675
 notes: Stage 2 extract for Admissions cluster. Raw HTML at admissions-enrollment-options.raw.html.

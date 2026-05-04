@@ -3,7 +3,7 @@ source_url: https://stpete.myptc.edu/admissions/testing/casas
 campus: stpete
 title: CASAS
 type: testing-sub-page
-scrape_date: 2026-04-30
+scrape_date: 2026-05-03
 scrape_method: curl + python parse
 char_count: 1056
 notes: Stage 2 extract for Admissions cluster. Raw HTML at testing-casas.raw.html.

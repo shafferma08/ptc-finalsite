@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Your Records &mdash; Pinellas Technical College</title>
-    <meta name="description" content="Request transcripts and class records from Pinellas Technical College. Forms and contact info for both Clearwater and St. Petersburg campuses.">
+    <title>Request Your Records | Pinellas Technical College</title>
+    <meta name="description" content="Former PTC students can request copies of their class records and transcripts. Choose your campus to get started.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
@@ -38,30 +38,63 @@
         .page-hero__subtitle {
             font-size: 1.15rem; max-width: 700px; opacity: 0.92; line-height: 1.6;
         }
-        .interim-section { padding: 4rem 0; }
-        .interim-callout {
-            background: var(--color-off-white, #F7F8FA);
-            border-left: 4px solid var(--color-green);
-            padding: 1.5rem 2rem;
-            border-radius: var(--border-radius-lg);
+        .chooser-section { padding: 4rem 0; }
+        .chooser-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
             margin: 2rem 0;
         }
-        .interim-callout--warning {
-            background: #FFF8E1;
-            border-left-color: var(--color-yellow);
-        }
-        .interim-card {
+        .campus-card {
             background: var(--color-white);
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: var(--border-radius-lg);
             box-shadow: var(--shadow-md);
-            margin-bottom: 1.5rem;
+            border-top: 4px solid var(--color-green);
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        .interim-card h3 {
+        .campus-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .campus-card__icon {
+            width: 64px; height: 64px;
+            margin: 0 auto 1rem;
+            background: var(--color-off-white, #F7F8FA);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--color-green); font-size: 1.5rem;
+        }
+        .campus-card h2 {
             font-family: var(--font-heading);
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             margin: 0 0 0.5rem;
             color: var(--color-gray-900);
+        }
+        .campus-card p {
+            margin: 0 0 1.5rem;
+            color: var(--color-gray-700);
+            line-height: 1.6;
+        }
+        .campus-card .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-green);
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: var(--border-radius-md);
+            transition: background 0.2s;
+        }
+        .campus-card .btn:hover { background: #006634; }
+        .records-callout {
+            background: #FFF8E1;
+            border-left: 4px solid var(--color-yellow);
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius-lg);
+            margin: 2.5rem auto 0;
+            max-width: 800px;
         }
     </style>
 </head>
@@ -80,39 +113,32 @@
                     </ol>
                 </nav>
                 <h1 class="page-hero__title">Request Your Student Records</h1>
-                <p class="page-hero__subtitle">Former PTC students can request copies of their class records and transcripts. Choose your campus below.</p>
+                <p class="page-hero__subtitle">Former PTC students can request copies of their class records and transcripts. Choose the campus you attended to continue.</p>
             </div>
         </section>
 
-        <section class="interim-section">
-            <div class="container" style="max-width: 800px;">
-                <p>Content on this page is verbatim from <a href="https://www.myptc.edu/about-us/welcome-to-ptc/how-to-request-your-student-records-from-ptc" target="_blank" rel="noopener" class="inline-link">www.myptc.edu &mdash; Request Your Student Records</a>.</p>
+        <section class="chooser-section">
+            <div class="container">
+                <div class="chooser-grid">
 
-                <div class="interim-callout">
-                    <p style="margin: 0;"><strong>Records older than 5 years</strong> are maintained by the Central Records Department of Pinellas County Schools. Call <a href="tel:7277932701" class="inline-link">727-793-2701</a>.</p>
+                    <article class="campus-card">
+                        <div class="campus-card__icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+                        <h2>PTC Clearwater</h2>
+                        <p>I attended the Clearwater campus.</p>
+                        <a href="clearwater-records-request.html" class="btn">Request Clearwater Records</a>
+                    </article>
+
+                    <article class="campus-card">
+                        <div class="campus-card__icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+                        <h2>PTC St. Petersburg</h2>
+                        <p>I attended the St. Petersburg campus.</p>
+                        <a href="stpete-records-request.html" class="btn">Request St. Petersburg Records</a>
+                    </article>
+
                 </div>
 
-                <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-top: 2rem;">Step 1 &mdash; Download &amp; complete the request form</h2>
-                <p>Download the Request for School Records and Release Authorization Form. After completing the form, mail it to the PTC campus where you attended.</p>
-
-                <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-top: 2.5rem;">Step 2 &mdash; Mail or email to your campus</h2>
-
-                <div class="interim-card">
-                    <h3>Pinellas Technical College &mdash; Clearwater</h3>
-                    <p style="margin: 0 0 0.5rem;"><strong>Attn:</strong> Records Department<br>
-                    6100 154th Ave North<br>
-                    Clearwater, FL 33760</p>
-                    <p style="margin: 0;"><strong>Email:</strong> <a href="mailto:canfieldj@pcsb.org" class="inline-link">canfieldj@pcsb.org</a></p>
-                    <p style="margin-top: 1rem;"><a href="https://clearwater.myptc.edu/school-information/about-us/how-to-request-your-student-records-from-ptc-clearwater" target="_blank" rel="noopener" class="inline-link">Download Clearwater request form <i class="fas fa-external-link-alt" style="font-size:0.75em;" aria-hidden="true"></i></a></p>
-                </div>
-
-                <div class="interim-card">
-                    <h3>Pinellas Technical College &mdash; St. Petersburg</h3>
-                    <p style="margin: 0 0 0.5rem;"><strong>Attn:</strong> Records Department<br>
-                    901 34th Street South<br>
-                    St. Petersburg, FL 33711</p>
-                    <p style="margin: 0;"><strong>Email:</strong> <a href="mailto:kilpatrickc@pcsb.org" class="inline-link">kilpatrickc@pcsb.org</a></p>
-                    <p style="margin-top: 1rem;"><a href="https://stpete.myptc.edu/school-information/about-us/how-to-request-your-student-records-from-ptc-st-petersburg" target="_blank" rel="noopener" class="inline-link">Download St. Petersburg request form <i class="fas fa-external-link-alt" style="font-size:0.75em;" aria-hidden="true"></i></a></p>
+                <div class="records-callout">
+                    <p style="margin: 0;"><strong>Records older than 5 years</strong> are maintained by the Central Records Department of Pinellas County Schools. Call <a href="tel:7277932701" style="color: var(--color-green); font-weight: 500;">727-793-2701</a>.</p>
                 </div>
             </div>
         </section>

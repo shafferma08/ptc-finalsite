@@ -68,3 +68,49 @@ Many of the size deltas above come from extraction-method differences between th
 **Files not modified by this run:**
 - `extracted/clearwater/admissions-acceptable-proofs-of-residency.md`, `extracted/stpete/admissions-acceptable-proofs-of-residency.md` — preserved as the pre-drift baseline.
 - `admissions.html` — preserved.
+
+---
+
+## 2026-05-03 — Drift reconciliation closed
+
+Marianne reviewed the drift report and chose: **mirror live verbatim, split into a dedicated sub-page** (using design judgment for UX). Reconciliation executed in one session.
+
+**Investigation, before build:**
+
+Re-ran `_extract.py` against all 16 admissions URLs. Surprise: the script returned 1,328 chars for `acceptable-proofs-of-residency` (matching the original baseline), not the 15,319 chars the drift checker had reported. Cross-checked with WebFetch: WebFetch returned ~13.8K chars of full statute text, matching what the drift checker saw. Conclusion: **Finalsite injects the FL Statute 1009.21 body via JavaScript after page load**. The curl + bs4 extractor reads pre-render HTML and missed 12K+ chars. The same gap likely affects baselines for prior verified clusters (about, compliance, counselors). Logged as a **high-priority pipeline issue** in `follow-ups.md` § Pipeline infrastructure, separate from this cluster's closure.
+
+Note: STP `admissions-shadowing-days-times` returned 404 during the re-extract. STP runs shadowing through counselor inquiry rather than a published schedule (per existing low-priority follow-up D1), so the 404 is consistent with that operating model. No new action needed.
+
+**Reconciliation actions taken:**
+
+1. **New baselines saved** for `acceptable-proofs-of-residency` on both campuses, sourced via WebFetch (rendered DOM). Files at `extracted/clearwater/admissions-acceptable-proofs-of-residency.md` and `extracted/stpete/admissions-acceptable-proofs-of-residency.md`. Byte-identical content; only `source_url` and `campus` frontmatter differ. Frontmatter notes the JS-render gap so future maintainers understand why the saved char count jumped.
+
+2. **New sub-page built** at `acceptable-proofs-of-residency.html` (top-level redesign HTML). Holds the full statute text verbatim: subsections (1) through (13) + History citation line. Two-campus classification: `shared` (FL state law applies the same to both campuses; live serves byte-identical content from CLW + STP URLs). Page chrome: breadcrumb (Home > Admissions > Acceptable Proofs of Residency), source-attribution callout, TOC anchors (numbers only — no editorial labels), print-friendly styling, back-link to `admissions.html#residency`. Em-dashes preserved in 2 verbatim quotation contexts (statute lead and History line); no editorial em-dashes elsewhere.
+
+3. **`admissions.html#residency` updated.** Kept the verbatim lead paragraph (with em-dash and bold formatting restored to match live — the previous build had silently dropped both, surfaced and fixed during this run's Stage 7 verifier pass). Replaced the old 5-statute-link list with a single primary CTA "Read the full text of Florida Statute 1009.21" pointing to the new sub-page. The 5 statute references (s. 1002.34, s. 1001.44, s. 1000.21, s. 222.17) are not lost — they are referenced inline within the rendered statute body on the sub-page (subsections (1)(c) and (1)(d)).
+
+**Stage 7 verifier outcome:**
+
+`audit-verifier` subagent re-checked the build. 6 of 7 blocks CONFIRM-RESOLVED. 1 FLIP (em-dash + bold drift on `admissions.html` line 1028 lead paragraph) fixed mid-run before close. 0 NEW-DRIFT-INTRODUCED. 3 spot-checks on unchanged admissions sub-pages (transfer, readmission, enrollment-options) all clean — no regression from this build.
+
+**Cosmetic-drift rows status:**
+
+The 8 cosmetic-drift rows from the original drift detection (2 transfer, 2 testing-hub, 2 testing-teas, 2 shadowing-days-times where applicable, 1 www-admissions-process) remain known noise from extraction-method differences (curl+bs4 vs Chrome MCP innerText). These do not represent real content changes. They will continue to appear in future drift checks until the extractor is migrated to a rendered-DOM method (tracked in pipeline-infrastructure follow-up).
+
+**Cluster status after this run:**
+
+Flipped from `drift` → `verified`. Drift-watched.
+
+**New artifacts:**
+- `acceptable-proofs-of-residency.html` (top-level, ~16K chars rendered)
+- `extracted/clearwater/admissions-acceptable-proofs-of-residency.md` (re-extracted verbatim baseline)
+- `extracted/stpete/admissions-acceptable-proofs-of-residency.md` (re-extracted verbatim baseline)
+- `VERIFICATION.md` (new "## 2026-05-03 Stage 7 verification (post-drift reconciliation)" section appended)
+- `follow-ups.md` (new "## Pipeline infrastructure (added 2026-05-03)" section with high-priority JS-render gap entry)
+
+**Modified:**
+- `admissions.html` § `#residency` (CTA pattern + verbatim lead paragraph fix)
+- `CLUSTERS.md` row 5 (`drift` → `verified`, last touched updated)
+
+**Preserved:**
+- All other admissions cluster extracts and the rest of `admissions.html` (no other content changes).

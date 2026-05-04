@@ -3,7 +3,7 @@ source_url: https://clearwater.myptc.edu/admissions/admissions/readmission
 campus: clearwater
 title: Readmission
 type: admissions-sub-page
-scrape_date: 2026-04-30
+scrape_date: 2026-05-03
 scrape_method: curl + python parse
 char_count: 442
 notes: Stage 2 extract for Admissions cluster. Raw HTML at admissions-readmission.raw.html.

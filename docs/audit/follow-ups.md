@@ -232,49 +232,21 @@ Surfaced during the homepage CTA-rewiring pass on `index.html` (companion to the
 
 ---
 
-## Closed follow-ups
+## Pipeline infrastructure (added 2026-05-03)
 
-(none yet)
+Surfaced during the Admissions cluster Stage 7 drift reconciliation on 2026-05-03. These are infrastructure issues affecting the audit pipeline itself, not specific content items.
 
----
+### High priority — pipeline correctness
 
-## See also
-
-- [docs/audit/about-cluster/RECOMMENDATIONS.md](about-cluster/RECOMMENDATIONS.md) — original About cluster audit that surfaced most of these items
-- Memory: `feedback_redesign_content_source.md` — the project rule that all content comes from approved live site only
-- Memory: `feedback_live_site_url_inference_unreliable.md` — Stage 1 binding rule established 2026-04-30 (don't infer URLs; do per-subsite search/sitemap/probe pass)
-with Español link decision (no Spanish redesign yet). | PTC webmaster (Marianne) | Low | Admissions cluster Stage 7, 2026-05-01 |
-| AP-style hyphenation pair on live | www admissions page + enrollment-options sub-pages | Redesign normalized "state issued ID" / "state identified" to AP-style "state-issued" / "state-identified" hyphenation under verbatim-rule §3 (AP-style permitted). When live updates next, mirror the AP-style hyphenation. | Live-owner exception: update live during a polish pass to match redesign's AP-style hyphenation. | PTC webmaster (Marianne) | Low | Admissions cluster Stage 7, 2026-05-01 |
-
----
-
-## Homepage CTA cleanup (added 2026-05-03)
-
-Surfaced during the homepage CTA-rewiring pass on `index.html` (companion to the Admissions Stage 7 sitewide chrome work). Most dead `href="#"` links on the homepage are now repointed to verified live URLs; what remains needs either source verification or a redesign-page build.
-
-### High priority — fabricated-stat verification
-
-| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+| Item | Affected files | Issue | Recommendation | Likely owner | Priority | Source |
 |---|---|---|---|---|---|---|
-| Hero stat "50+ Industry Partners" has no live source | `index.html` hero | The animated counter shows `50+ Industry Partners` next to `40+ Career Programs` and `2 Campus Locations`. Per the verbatim rule, no live PTC page sources a "50+" or any specific industry-partner count. The 40+ figure also conflicts with about.html's verbatim "60+ Career and Technical Programs" pulled from live during the About cluster M22 fix (2026-04-27). | Two paths: (a) source a real industry-partner count from the live site (institutional comms or director's office) and use the verbatim figure; (b) drop the stat entirely and replace with something verifiable (e.g., "Est. 1962" already present in the Why PTC section, or COE-accredited badge). The 40+ figure should be reconciled with the verbatim 60+ as part of the Programs cluster audit. | Webmaster + PTC institutional comms | High (verbatim-rule violation, customer-facing) | Homepage CTA pass, 2026-05-03 |
-| Programs section preamble "41 programs across 8 career clusters" inconsistent with live "60+" | `index.html` programs-section CTA | The line "Browse the full catalog of 41 programs across 8 career clusters at both campuses" reflects the actual mockup's program-card count, but the live "60+" framing (already in about.html verbatim) creates inconsistent counts across the redesign. Cross-references follow-up row 55. | Reconcile during Programs cluster audit. Either expand `programs.html` to the full live program list (matching live's "60+") and update the preamble, or revise the live "60+" framing if it counts OCPs as separate programs. The homepage preamble inherits from whichever resolution lands. | Webmaster + program counselors | Medium | Homepage CTA pass, 2026-05-03 |
+| Stage 2 extractor (`_extract.py` curl + bs4) misses JavaScript-injected content | every cluster's `extracted/` baselines, especially admissions | The Admissions Stage 7 drift reconciliation found that `acceptable-proofs-of-residency` shows 1,328 chars via curl + bs4 but ~13.8K chars via WebFetch (rendered DOM). Finalsite injects the full FL Statute 1009.21 body via JavaScript after page load. The curl + bs4 extractor reads pre-render HTML and missed 12K+ chars of legally-required content. The original 2026-04-30 admissions baselines were therefore incomplete; the cluster shipped to `verified` against an under-captured source. The same gap may affect prior cluster baselines (about, compliance, counselors). | (1) Switch the extractor to a rendered-DOM method (WebFetch is the lowest-friction option in the audit pipeline; Chrome MCP via Stage 2 of `PROCESS.md` already supports this for interactive sessions). (2) Backfill: re-extract all prior verified clusters (about, about-sub-pages, compliance, counselors, admissions remaining 15 URLs) using the new method and diff against the saved markdown baselines to find any other JS-injected content gaps. (3) Update `_extract.py` or replace it. | Webmaster (Marianne) + content-audit pipeline maintainer | **High (data integrity across all prior verified clusters)** | Admissions cluster Stage 7, 2026-05-03 |
 
-### Medium priority — redesign chrome / structural
+### Process notes — file hygiene
 
-| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+| Item | Affected files | Issue | Recommendation | Likely owner | Priority | Source |
 |---|---|---|---|---|---|---|
-| Employer Hook "Post a Job or Partner with Us" still `href="#"` | `index.html` News & Events panel | Dead link on the high-visibility employer engagement callout. No "Employer Partnerships" landing page exists in the redesign yet (the About PTC dropdown also has a placeholder for it). Pointing employers to `inforequest.myptc.edu` (currently the prospective-student form) would be a category mismatch. | Build a `/employer-partnerships` redesign page or add an employer-specific contact form to `contact.html`. Until then, leave the link as `href="#"` rather than misroute to a prospective-student form. | Webmaster + employer relations contact | Medium | Homepage CTA pass, 2026-05-03 |
-| Social media links all `href="#"` in homepage footer | `index.html` footer + every other top-level page | 5 social icons (Facebook, Instagram, X, YouTube, LinkedIn) are placeholders. PTC's actual social handles aren't currently sourced anywhere in the redesign. | Marianne to confirm PTC's official social handles (and which platforms PTC actually maintains). Then a sitewide chrome pass updates every footer copy. | Webmaster + PTC marketing/comms | Medium | Homepage CTA pass, 2026-05-03 |
-| Programs dropdown miscellaneous categories still `href="#"` | `index.html` Programs nav dropdown | Six items in the "Explore" column (Evening & Part-Time, Apprenticeships, Dual Enrollment, Distance Learning, ABE / GED / ESOL, Student Orgs) are placeholders. The 8 By-Category links were repointed to `programs.html?cluster=*` filters during this pass; the explore items don't yet have redesign destinations or verified live equivalents. | Source each one during the Programs cluster Stage 1 inventory: ABE/GED/ESOL likely lives somewhere on live; Dual Enrollment is referenced in admissions; Distance Learning is Marianne's incoming role. Pick destinations cluster-by-cluster, don't invent. | Webmaster | Medium | Homepage CTA pass, 2026-05-03 |
-| About PTC dropdown "Staff Directory" + "Employer Partnerships" placeholders | `index.html` About PTC nav dropdown | Two placeholder dropdown items. Staff Directory may want to point to the existing `clearwater-counselors.html` / `stpete-counselors.html` campus-staff pattern; Employer Partnerships ties into the employer-hook follow-up above. | Decide whether Staff Directory is a single redesign page (built from PCSB AD or a campus-staff lookup) or routes per-campus. Build Employer Partnerships when the cluster opens. | Webmaster | Medium | Homepage CTA pass, 2026-05-03 |
-| Campus-page utility-bar dead links (Canvas Login + SIS Portal/Focus + search) | `clearwater.html`, `stpete.html`, `welding-clearwater.html`, `welding-stpete.html`, `schedule-clearwater.html`, `schedule-stpete.html` | The campus utility bar is a different structure from the prospective-student bar (audience: current students/staff). It carries Canvas Login, SIS Portal / Focus, PTC Main Site, opposite-campus link, and a search button. Three of those are dead `href="#"`: Canvas Login, SIS Portal / Focus, and the search button (no global search modal exists yet). The opposite-campus and Main Site links work. | Repoint Canvas Login → `https://pcsb.instructure.com` (PCSB Canvas tenant) and SIS Portal/Focus → `https://pinellas.focusschoolsoftware.com/focus/` (the URL `about.html` already uses for "Focus Portal"). Decide whether the search button needs a real modal/page or should be hidden until built. Surfaced as out-of-scope during the 2026-05-03 sitewide chrome pass. | Webmaster | Medium | Sitewide chrome pass, 2026-05-03 |
-
-### Low priority — polish
-
-| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
-|---|---|---|---|---|---|---|
-| Spanish utility-bar link is dead | `index.html` utility bar (and every other top-level page) | "Español" link is `href="#"`. No Spanish-language version of the redesign exists. Live PTC doesn't have a parallel Spanish site either (only the bilingual Brochure ES PDF). | Decide policy: drop the Español link entirely from the utility bar, or commit to building a parallel Spanish hub. Until decided, leave as is. | Webmaster | Low | Homepage CTA pass, 2026-05-03 |
-| Quick Links grid responsive behavior at 768px → 4-col now creates orphan in 7-card layout | `styles.css` `.quick-links__grid` | Adding the Bookstore card brought count to 7. Desktop grid set to `repeat(7, 1fr)` (clean), tablet was bumped to `repeat(4, 1fr)` (4+3 split, cleaner than the old 3-col-with-orphan), narrow mobile stays `repeat(2, 1fr)` (2+2+2+1, one orphan). Acceptable but if Marianne adds an 8th Quick Link in the future, mobile becomes clean again (4×2). | Watch for an 8th-card opportunity (e.g., a "Schedule a Tour" or "Pay Tuition" specialized card) on the next homepage pass — would clean up the mobile orphan. | Webmaster | Low | Homepage CTA pass, 2026-05-03 |
+| `follow-ups.md` had a duplicate "Homepage CTA cleanup" section + orphan row fragments | `docs/audit/follow-ups.md` | A bad-merge artifact had duplicated the entire Homepage CTA section (~30 rows, byte-identical) and left orphan fragments of two rows (Apply Now placeholder tail + AP-style hyphenation row, both already present elsewhere). Cleaned up during the 2026-05-03 admissions closeout — same content, deduplicated. | None (cleanup applied). Note for future merges: when `follow-ups.md` gets edits from concurrent sessions, watch for section-level duplication. | (housekeeping) | Low | Admissions cluster Stage 7, 2026-05-03 |
 
 ---
 

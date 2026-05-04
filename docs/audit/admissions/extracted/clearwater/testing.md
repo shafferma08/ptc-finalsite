@@ -3,7 +3,7 @@ source_url: https://clearwater.myptc.edu/admissions/testing
 campus: clearwater
 title: Testing
 type: testing-hub
-scrape_date: 2026-04-30
+scrape_date: 2026-05-03
 scrape_method: curl + python parse
 char_count: 1368
 notes: Stage 2 extract for Admissions cluster. Raw HTML at testing.raw.html.

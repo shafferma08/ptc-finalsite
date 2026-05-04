@@ -4,6 +4,92 @@ This file tracks daily work sessions on the PTC website redesign. Each entry rec
 
 ---
 
+## May 3, 2026 — About cluster IA reorganization (interactive evening session with Marianne)
+
+Major architectural work to address the campus-About problem and prepare the cluster for Kyesha's first review batch tomorrow. Marianne pushed back on the half-measures I'd been proposing and forced a real conversation about IA. The model we agreed on:
+
+- **Main site (`myptc.edu`)** = institutional content + funnel/router (one Mission, one Programs A-Z, one Consumer Information hub, one campus chooser for Records Request)
+- **Each campus subsite** (`clearwater.myptc.edu`, `stpete.myptc.edu`) = campus-specific landing + campus-specific compliance pages owned by that campus
+- **Decision rule:** if content is different per campus, or contact is different per campus, the page lives on that campus's subsite. Shared/institutional content lives on main, campus sites link to it. No duplicating one shared page across both campuses with both campus contacts on it.
+
+**Why this matters (per Marianne's pushback):** COE accredits each PTC campus as its own legal entity, separately. The half-measure "shared records request page with both contacts" was wrong because it forced campus visitors to re-pick a campus they'd already picked. Same logic applied to compliance content (accreditation, written plans, financial accountability, safety data, SIP) — those are campus-specific and have to live on the campus subsite, both for COE compliance review and for clean UX.
+
+**12 new campus-internal pages built** (verbatim from `docs/audit/about-cluster/extracted/{clearwater,stpete}/*.md`):
+- `clearwater-accreditation.html` + `stpete-accreditation.html` — campus-specific COE/Cognia accreditation
+- `clearwater-written-plans.html` + `stpete-written-plans.html` — COE-required written plans (CLW lists 10, STP lists ~11 with one truncated in extract — flagged for re-fetch)
+- `clearwater-financial-accountability.html` + `stpete-financial-accountability.html` — HEERF reports through 3/31/2023 (stale per-PTC; live owners need to refresh)
+- `clearwater-safety-security.html` + `stpete-safety-security.html` — annual Safety & Security Data PDFs (CLW current through 8/2025, STP only through 2023 — gap flagged)
+- `clearwater-school-improvement-plan.html` + `stpete-school-improvement-plan.html` — CLW SY 2024-25 (stale), STP SY 2025-26 (current)
+- `clearwater-records-request.html` + `stpete-records-request.html` — campus-specific records workflow with campus contact and address
+
+**Other changes:**
+- `records-request.html` on main converted from "shared page with both contacts" to "campus chooser" routing to the two campus records pages.
+- `clearwater-about.html` + `stpete-about.html` — 12 compliance card CTAs across both pages repointed from `https://clearwater.myptc.edu/...` (live) to the new internal `clearwater-*.html` / `stpete-*.html` pages.
+- 12 main-site institutional pages had Consumer Information added to the main top-nav About PTC dropdown (was previously only in footer; Marianne literally couldn't find it). Mechanical sed-style replacement via Python; landed cleanly on all 12.
+
+**Verifier outcome:**
+Stage 7 audit-verifier ran post-build. 12/12 new pages confirmed verbatim. All link integrity correct (no orphan live links remaining on the campus About pages). Consumer Information findable in nav across 12 institutional pages. Two-campus discipline preserved (no cross-campus link contamination). Two minor em-dash drifts on the accreditation pages flagged and fixed mid-run (live uses hyphen, redesign was rendering em-dash in body paragraphs).
+
+**Side investigation:** Earlier in the session, I ran a peer-site IA review (7 colleges: Lively, Atlantic, Manatee, Lake, Sheridan, SPC, Valencia). Saved at `docs/audit/ia-peer-review-2026-05-03.md`. Marianne caught that the review was apples-to-oranges — only Manatee was a confirmed COE-accredited multi-campus peer; the rest were either single-campus tech colleges or regionally-accredited (SACSCOC) community colleges that don't share the COE-per-campus structural constraint. Lesson logged: future peer reviews must filter for COE multi-campus to be useful for PTC's IA decisions.
+
+**Issues / blockers:**
+- None on this work. About cluster ready for Kyesha tomorrow.
+- 8 cosmetic-drift rows in admissions DRIFT-LOG remain known noise (separate issue from tonight).
+- High-priority pipeline-infrastructure follow-up (JS-render gap in `_extract.py`) still open from this morning's admissions reconciliation.
+
+**Next priorities:**
+1. **Send About cluster batch to Kyesha** — 3 institutional/campus About pages + 12 new campus-internal compliance pages + restructured records-request + Consumer Information now in nav. Frame as: "first batch reviewing the About cluster and our campus-specific compliance architecture."
+2. **Pipeline-infrastructure backfill** (still pending from this morning) — switch extractor to rendered DOM, re-extract about/compliance/counselors clusters to check for missed JS-injected content.
+3. **STP missing SIP card on About page** — the redesign's stpete-about.html doesn't have a School Improvement Plan card (CLW does). STP has the current SY 2025-26 SIP. Adding the card is a clean follow-up.
+4. **Tuition cluster Stage 1 inventory** (queued).
+5. **Hero stats reconciliation** (unchanged).
+
+**Files added:** 12 new HTML files at the repo root (`clearwater-*.html` and `stpete-*.html` campus-internal pages).
+
+**Files modified:** `records-request.html` (restructured), `clearwater-about.html` (6 CTAs + 1 nav link repointed), `stpete-about.html` (5 CTAs + 1 nav link repointed), 12 institutional pages (Consumer Information added to About PTC nav dropdown), `clearwater-accreditation.html` + `stpete-accreditation.html` (em-dash polish), `docs/audit/about-sub-pages/VERIFICATION.md` (Stage 7 IA-reorg verification appended).
+
+---
+
+## May 3, 2026 — Admissions cluster drift reconciliation closed (interactive session with Marianne)
+
+Reconciled the drift detected on 2026-05-03 morning by the weekly drift checker: live `acceptable-proofs-of-residency` (both campuses, byte-identical) inlines the full text of Florida Statute 1009.21 (~13.8K chars) where the saved baseline only had the 1,328-char intro + 5 statute reference links. Marianne approved a sub-page split (mirror live verbatim, but use redesign UX judgment to put the statute body on its own page).
+
+**Surprise finding during investigation:** Re-running `_extract.py` returned 1,328 chars (matching the original baseline), not the 15,319 the drift checker reported. WebFetch returned ~13.8K. Conclusion: Finalsite injects the statute body via JavaScript after page load, and the curl + bs4 extractor reads pre-render HTML. This means the 2026-04-30 admissions baselines were under-captured and the cluster had originally shipped to `verified` against an incomplete source. Same gap likely affects baselines for prior verified clusters (about, compliance, counselors). Filed as a high-priority pipeline issue in `follow-ups.md` § Pipeline infrastructure.
+
+**Files created:**
+- `acceptable-proofs-of-residency.html` — new top-level shared sub-page (~16K chars rendered). Holds the full FL Statute 1009.21 text verbatim from live (subsections 1-13 + History citation). Page chrome: hero with breadcrumb, source-attribution callout (links to both campus URLs), TOC anchors (numeric only — labels would be editorial), print-friendly styling, back-link to admissions.
+
+**Files modified:**
+- `admissions.html` § `#residency` — replaced the 5-statute-link list with a single primary CTA pointing to the new sub-page. While doing this, surfaced and fixed a pre-existing verbatim drift on the lead paragraph: the previous build had silently dropped the em-dash ("purposes.—Students" → "purposes. Students") and bold formatting on "Florida Statute 1009.21 Determination of resident status for tuition purposes." Both restored to match live.
+- `docs/audit/admissions/extracted/{clearwater,stpete}/admissions-acceptable-proofs-of-residency.md` — re-extracted via WebFetch (rendered DOM). New 13.8K-char verbatim baselines. Frontmatter notes the JS-render gap so future maintainers understand the char-count jump.
+- `docs/audit/CLUSTERS.md` row 5 — `drift` → `verified`, last touched 2026-05-03.
+- `docs/audit/admissions/DRIFT-LOG.md` — appended "2026-05-03 — Drift reconciliation closed" section.
+- `docs/audit/admissions/VERIFICATION.md` — `audit-verifier` subagent appended Stage 7 post-reconciliation verification block.
+- `docs/audit/follow-ups.md` — added new top-level section "Pipeline infrastructure (added 2026-05-03)" with the high-priority JS-render gap and a low-priority hygiene note about a duplicate-section cleanup applied during this same session.
+
+**Decisions made:**
+
+1. **Sub-page split, not inline.** Inlining 13.8K chars of statute on `admissions.html` would push every other admissions step (Apply, Register, Pathways, Veterans) below the fold and tank scan-ability. A dedicated sub-page mirrors live's actual structure (live has its own `/admissions/admissions/acceptable-proofs-of-residency` URL on each campus) and respects the verbatim rule fully (every word from live is in the redesign).
+2. **Two-campus classification: `shared`.** FL state law applies the same to both campuses; live serves byte-identical content from both campus URLs. One file in the redesign, both campus admissions flows link to it.
+3. **No editorial labels in the TOC or section anchors.** Initial draft had "(1) Definitions", "(2) Qualifying as a resident" etc. — those summaries are paraphrasing what each subsection is *about*, which violates verbatim. Stripped to just "(1)", "(2)", etc. Headings within the body removed; statute flows as live's flowing paragraphs.
+4. **Em-dashes preserved in verbatim quotation only.** Marianne's no-em-dash rule applies to user-facing text we write. The 2 em-dashes on the new sub-page are inside the statute lead and the History citation line — both verbatim quotation of legal text. No editorial em-dashes added elsewhere.
+5. **Pipeline-infrastructure issue documented but not fixed in this session.** The JS-render gap affects more than admissions and warrants its own work session: switch `_extract.py` to a rendered-DOM method and backfill all prior verified clusters. Filed as high-priority follow-up rather than mixed into this cluster's closure.
+
+**Stage 7 verifier outcome:**
+6 of 7 blocks CONFIRM-RESOLVED. 1 FLIP (em-dash + bold drift) fixed mid-run. 0 NEW-DRIFT-INTRODUCED. 3 spot-checks on unchanged admissions sub-pages (transfer, readmission, enrollment-options) all clean — no regression from this build.
+
+**Issues / blockers:**
+- None on this work.
+- The 8 cosmetic-drift rows in DRIFT-LOG remain known noise from extraction-method differences (curl+bs4 vs innerText). These will continue to appear in future weekly drift checks until the extractor is migrated. Tracked in the pipeline-infrastructure follow-up.
+
+**Next priorities:**
+1. **Pipeline-infrastructure backfill** — switch the extractor to rendered DOM, then re-extract about, about-sub-pages, compliance, counselors, and the other 15 admissions URLs. Diff against saved baselines to see whether other clusters had similar JS-injected content gaps. Estimated 2-3 hours.
+2. **Tuition cluster Stage 1 inventory** — owned by `ptc-content-pipeline-daily` task; `myptc.edu/resources/future-students/financial-aid` already flagged as starting URL.
+3. **Hero stats reconciliation** (unchanged) — "50+ Industry Partners" needs source; "40+ Career Programs" needs reconcile with about.html's verbatim "60+" during Programs cluster.
+4. **First batch for Kyesha review** — Marianne plans to send the About cluster (3 verified pages: `about.html`, `clearwater-about.html`, `stpete-about.html`) tomorrow as the first rolling-approval batch.
+
+---
+
 ## May 3, 2026 — Sitewide utility-bar repoint pass (scheduled task `ptc-redesign-daily`)
 
 Continuation of the morning's homepage CTA work. This afternoon's run executes the rest of follow-up #200 — the same Apply Now / Student Portal / Events repointing that landed on `index.html` this morning, applied to every other top-level page that carries the standard prospective-student utility bar. After this pass, follow-up #200 is fully closed.

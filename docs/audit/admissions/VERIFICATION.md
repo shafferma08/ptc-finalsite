@@ -357,3 +357,108 @@ The 9 follow-up items already enumerated in `RECOMMENDATIONS.md §4` (STP TEAS P
 - `docs/audit/verbatim-rule.md` (interpretation framework)
 - `docs/audit/follow-ups.md` (live-site action register)
 - `admissions.html` (post-build, 1,300 lines)
+
+---
+
+## 2026-05-03 Stage 7 verification (post-drift reconciliation)
+
+**Inputs read:** `acceptable-proofs-of-residency.html` (new sub-page, 277 lines); `admissions.html` lines 1011–1036 (`#residency` block); `extracted/clearwater/admissions-acceptable-proofs-of-residency.md` and `extracted/stpete/admissions-acceptable-proofs-of-residency.md` (new 13.8K WebFetch baselines); `DRIFT-LOG.md`; non-residency extracts for transfer/readmission/enrollment-options/testing as regression spot-checks.
+
+### Block A — Verbatim integrity of `acceptable-proofs-of-residency.html` against the new extract
+
+**Verdict: CONFIRM-RESOLVED.**
+
+Whole statute body (subsections 1–13) compared paragraph-by-paragraph against `extracted/clearwater/admissions-acceptable-proofs-of-residency.md`. Every subsection number `(1)`–`(13)` is present and in order. Every lettered subsection `(a)`–`(k)` reads verbatim. Numbered list items `1.`/`2.` and lettered sub-list items `a.`–`h.` under (3)(c) are preserved with original punctuation.
+
+Required spot-checks:
+- **(1)(c) institution-of-higher-education:** HTML reads "...any charter technical career center as defined in s. 1002.34, career center operated by a school district as defined in s. 1001.44, Florida College System institution as defined in s. 1000.21(5), or state university as defined in s. 1000.21(8)." — byte-identical to extract line 24.
+- **(3)(c)1.h Proof of permanent full-time employment:** HTML reads "Proof of permanent full-time employment in Florida for at least 30 hours per week for a 12-month period." — byte-identical to extract line 68.
+- **(10)(j) Canadian military / NORAD:** HTML reads "Active duty members of the Canadian military residing or stationed in this state under the North American Air Defense (NORAD) agreement, and their spouses and dependent children, attending a Florida College System institution or state university within 50 miles of the military establishment where they are stationed." — byte-identical to extract line 122.
+
+Em-dash preservation in legal quotation:
+- Lead: HTML uses `&mdash;` between "tuition purposes." and "Students shall be classified..." (line 157). Extract uses U+2014 in the same spot. Renders identically. **CONFIRM.**
+- History line: HTML uses `History.&mdash;s. 2, ch. 2002-270;...` (line 249). Extract: `History.—s. 2, ch. 2002-270;...`. Full citation list matches: 13 sections in order, last one `s. 172, ch. 2023-8`. **CONFIRM.**
+
+No paraphrasing, dropped sentences, or missing punctuation found. The clearwater and stpete extracts are byte-identical (frontmatter aside), consistent with the shared-content classification.
+
+### Block B — Verbatim integrity of `admissions.html` `#residency` section
+
+**Verdict: FLIP — minor wording drift introduced.**
+
+The lead paragraph in `admissions.html` line 1028 reads:
+
+> "Florida Statute 1009.21 Determination of resident status for tuition purposes. Students shall be classified as residents..."
+
+Live extract (line 16) reads:
+
+> "**Florida Statute 1009.21 Determination of resident status for tuition purposes.**—Students shall be classified as residents..."
+
+Two small drifts:
+1. **Em-dash dropped.** Live has `purposes.—Students` (period + em-dash, no space, joining the title to the body, which is the official Florida statute formatting). The redesign has `purposes. Students` (period + space). This breaks verbatim quotation of a legal source. The em-dash is not Marianne's editorial em-dash; it is part of the statute's official text. The sub-page preserved it correctly via `&mdash;` (line 157). The inline section did not.
+2. **Bold styling stripped from the title clause.** Live (and the sub-page) renders "Florida Statute 1009.21 Determination of resident status for tuition purposes." in bold. The inline admissions.html section renders the whole sentence in normal weight (the bolding is on the preceding heading "Determination of Dependent/Independent Student Status & Acceptable Forms of Documentation for Residency Classification" instead). Live uses bold on **both** the determination line (subtitle) and the statute title. Cosmetic only, but not verbatim.
+
+The CTA link `href="acceptable-proofs-of-residency.html"` resolves correctly to the new file (sibling top-level path, file confirmed to exist). No editorial content added below the CTA. Section header tag "In-State Tuition" and title "Acceptable Proofs of Residency" are verbatim preserved from the prior build. **Recommend a 5-minute fix in admissions.html line 1028 to restore the em-dash and statute-title bolding.** Not blocking; route as a polish item.
+
+### Block C — Two-campus and structural integrity
+
+**Verdict: CONFIRM-RESOLVED.**
+
+Sub-page treats content as `shared`: no campus-specific divergence; the statute body is identical regardless of which campus a student lands from. The attribution callout (line 154) calls out both campus mirrors and states "The same content is published at both campuses (Clearwater, St. Petersburg)." Breadcrumb on sub-page (lines 138–144): `Home > Admissions > Acceptable Proofs of Residency` — correct hierarchy, terminal item is `aria-current="page"`. Sub-page closing link (line 252): `<a href="admissions.html#residency">…Back to Admissions</a>` — anchor matches the section id in admissions.html line 1021. Section header in admissions.html still reads tag "In-State Tuition" + title "Acceptable Proofs of Residency" verbatim. Round-trip navigation works.
+
+### Block D — Em-dash / no-em-dash rule
+
+**Verdict: CONFIRM-RESOLVED for the sub-page; FLIP for admissions.html (in the opposite direction from expected).**
+
+The sub-page contains exactly two em-dashes (`&mdash;`), both inside verbatim legal quotation: line 157 (statute lead) and line 249 (History citation). Both are protected verbatim quotation, not Marianne-authored editorial. No em-dashes appear in the sub-page chrome (breadcrumb, page hero subtitle, attribution callout, TOC callout, back-to-admissions link). Compliant with the binding rule.
+
+The admissions.html `#residency` block (lines 1011–1036) contains zero em-dashes — but as Block B notes, this is a problem rather than a virtue here: live's verbatim text contains an em-dash that should have been preserved. This is a verbatim-rule failure, not an editorial-em-dash insertion. Same fix as Block B.
+
+### Block E — Regression spot-checks of unchanged admissions content
+
+Picked three at random: **transfer**, **readmission**, **enrollment-options**.
+
+- **Transfer (admissions.html lines 1054–1066):** Card body matches `extracted/clearwater/admissions-transfer.md` lines 14–30 verbatim. Lead paragraph ("primarily designed to prepare students for entry into the job market...three (3) years...") confirmed word-for-word. The 5 documentation bullets render as `<ul>` instead of inline-bullets, but bullet text matches: "Current license in the field of enrollment, supported by performance standards for acquiring the license," "Current certification in the field of enrollment," "Samples of work produced," "Evidence of training undertaken and completed with description of objectives achieved and learning outcomes," "Documented and validated volunteer work." **CONFIRM.**
+- **Readmission (admissions.html lines 1067–1074):** Card body matches `extracted/clearwater/admissions-readmission.md` lines 14–20 verbatim, including parenthetical "(Test scores are valid for a two-year period, provided there have been no changes in the literacy levels mandated by state guidelines.)" and the bolded "Note:" prefix on the three-year credit validity sentence. **CONFIRM.**
+- **Enrollment Options (admissions.html lines 985–1007):** Three sub-cards (Course Intent / Definition, Career Technical Certificate Program, Continuing Workforce Education) match `extracted/clearwater/admissions-enrollment-options.md` verbatim. Note: the "state identified" → "state-identified" hyphenation drift previously flagged in the post-build VERIFICATION (low-priority polish, line 1000) is unchanged from 2026-04-30. Not new drift. **CONFIRM.**
+
+No regressions in non-residency content from the Stage 7 build.
+
+### Block F — DRIFT-LOG status
+
+**Verdict: CONFIRM-RESOLVED for the 2 REAL DRIFT rows.**
+
+DRIFT-LOG.md rows for `clw /admissions/admissions/acceptable-proofs-of-residency` (1328 → 15319 chars) and `stp /admissions/admissions/acceptable-proofs-of-residency` (1328 → 15319 chars) are now resolved by today's build: the new sub-page holds the full statute body verbatim, and the old `<ul class="statute-list">` of 5 statute reference links has been removed (those statute references are now inlined inside the rendered statute body, e.g. `s. 1002.34`, `s. 1001.44`, `s. 1000.21(5)`, `s. 1000.21(8)`, `s. 222.17` — none lost).
+
+The 7 cosmetic-drift entries remain known noise from extraction-method differences (curl+bs4 with markdown-link overhead vs. innerText). They are not real content changes and do not block this cluster's `verified` status:
+1. www `/resources/future-students/admissions-process-requirements-and-criteria` (FAFSA bullet duplication in old extract)
+2. clw `/admissions/admissions/transfer` (markdown-bullet vs HTML list rendering)
+3. stp `/admissions/admissions/transfer` (same)
+4. clw `/admissions/testing` (markdown-link overhead in extract)
+5. stp `/admissions/testing` (same)
+6. clw `/admissions/testing/teas` (PDF wrapper rendering)
+7. stp `/admissions/testing/teas` (same)
+8. clw `/admissions/admissions/shadowing-days-times` (PDF wrapper)
+
+(That is 8 cosmetic items, not 7 — the orchestrator's "7 cosmetic-drift entries" note slightly undercounts. Substantively the same conclusion: all are extraction-method noise, not live-content drift.)
+
+### Block G — JS-render gap (new pipeline issue)
+
+**Verdict: NEW-ISSUE — recommend high-priority follow-up.**
+
+Today's reconciliation surfaced a real pipeline defect: `_extract.py` uses curl + BeautifulSoup, which extracts only the pre-render HTML and misses JavaScript-injected content. On 2026-05-03 the residency page returned 1,328 chars via curl+bs4 (matching the stale baseline) but ~13,800 chars via WebFetch (rendered DOM, matching live's actually-visible content). This means **all Stage 2 extraction baselines for the entire admissions cluster — and likely every prior cluster — may have under-captured JS-rendered live content.**
+
+Concretely, this masks real drift: a content owner can publish a long block via the Finalsite WYSIWYG and the extractor will see only the wrapper. The 2026-04-30 admissions baseline missed 12,000+ chars of legally-required content (Florida residency statute) because of this. Other clusters (compliance, programs, tuition) likely have similar holes.
+
+Recommend adding a high-priority entry to `docs/audit/follow-ups.md` for the **pipeline owner** (Marianne herself), separate from the admissions cluster closure: replace `_extract.py` curl+bs4 fetch with a rendered-DOM fetch (Chrome MCP innerText, WebFetch, or Playwright), then re-run Stage 2 against verified clusters as a one-time backfill. The weekly drift-check task already uses innerText, which is why it caught this (and would catch future similar gaps), but the stale Stage 2 baselines themselves need a sweep.
+
+### Tally
+
+- CONFIRM-RESOLVED: 5 blocks (A, C, E, F, plus Block D for the sub-page)
+- FLIP: 1 block (B — em-dash + bold drift in `admissions.html` `#residency` lead) and the admissions.html half of Block D
+- NEW-ISSUE: 1 block (G — JS-render gap in `_extract.py`)
+- NEEDS-MORE-RESEARCH: 0
+- NEW-DRIFT-INTRODUCED by Stage 7 build: 1 (the inline lead em-dash + bolding regression in admissions.html line 1028)
+
+### Summary
+
+**Recommend the cluster flip back to `verified` with one polish item filed to follow-ups.** The substantive reconciliation is sound: the new sub-page is verbatim against the rendered live extract end-to-end including all 13 subsections, the History citation, and the spot-checked legal language; two-campus classification is correctly `shared`; navigation round-trips between admissions.html and the sub-page; the prior 2 REAL DRIFT rows are resolved; non-residency content shows no regressions. The single defect is a 1-character verbatim drift in `admissions.html` line 1028 (em-dash dropped, statute-title bold dropped) — a 5-minute fix that does not justify holding the cluster in `drift`. The deeper finding here is the JS-render gap in `_extract.py`, which is a pipeline-level issue that should be tracked and remediated independently of this cluster, since it affects every cluster's Stage 2 baselines.

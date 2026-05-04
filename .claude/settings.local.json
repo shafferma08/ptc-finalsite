@@ -41,7 +41,11 @@
       "Bash(awk '/<div class=\"fsElementContent\"/,/<\\\\/div>/' /tmp/v1-fdle.html)",
       "Bash(grep -v -E \"^[[:space:]]*$\")",
       "Bash(curl *)",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:www.spcollege.edu)",
+      "WebFetch(domain:atlantictechnicalcollege.edu)",
+      "WebFetch(domain:council.org)",
+      "WebFetch(domain:manateetech.edu)"
     ]
   }
 }

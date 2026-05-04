@@ -97,3 +97,73 @@ All stop-the-line items from RECOMMENDATIONS are resolved: C1, C2, H1, H2, H3, H
 - **CLW Code of Conduct stub** is honest disclosure of a known live-site gap; the stub itself is acceptable to ship per RECOMMENDATIONS.
 
 **New issues found that the Comparator missed:** none material. The Comparator's only undercount was the sitewide scope of F1, and the Verifier + Build phase closed it. No fabricated content slipped through unflagged in the audited destination files.
+
+---
+
+## 2026-05-03 IA reorganization verification
+
+Verifies the campus-About sub-page architecture rebuild: 12 new campus-specific compliance pages, the converted main `records-request.html` campus chooser, the repointed CTA links on both campus About pages, and the Consumer Information main-nav addition across 12 institutional pages.
+
+### Block A — Verbatim integrity of the 12 new campus pages
+
+| # | New page | vs. live extract | Verdict | Evidence |
+|---|---|---|---|---|
+| A1 | `clearwater-accreditation.html` | clearwater/accreditation.md | **CONFIRM-RESOLVED** | COE address ("7840 Roswell Road, Building 300, Suite 325 / Atlanta, Georgia 30350"), phone 770-396-3898, Cognia at 9115 Westside Parkway, Alpharetta GA 30009, (888) 413-3669 — all verbatim. |
+| A2 | `stpete-accreditation.html` | stpete/accreditation.md | **CONFIRM-RESOLVED** | Same accreditor block, correctly labeled "St. Petersburg." |
+| A3 | `clearwater-written-plans.html` | clearwater/written-plans.md | **CONFIRM-RESOLVED** | All 10 plan names match exactly, including ampersand on "Facilities Operation, Maintenance & Technical Infrastructure Plan." Intro paragraph quotes "2023 Handbook of Accreditation" verbatim. |
+| A4 | `stpete-written-plans.html` | stpete/written-plans.md | **CONFIRM-RESOLVED** | 10 plans listed in STP order, intro reads "Handbook of Accreditation" (no year, matching STP live). Truncated 11th plan ("Transcript Plan") honestly disclosed in the freshness note. |
+| A5 | `clearwater-financial-accountability.html` | clearwater/financial-accountability.md | **CONFIRM-RESOLVED** | All 7 HEERF report dates (3/31/2023 → 9/30/2021) verbatim. |
+| A6 | `stpete-financial-accountability.html` | stpete/financial-accountability.md | **CONFIRM-RESOLVED** | Identical 7-report list, correctly campus-scoped. |
+| A7 | `clearwater-safety-security.html` | clearwater/safety-security-data.md | **CONFIRM-RESOLVED** | All 6 reports (8/28/2025 → 11/30/2020) verbatim. |
+| A8 | `stpete-safety-security.html` | stpete/safety-security-data.md | **CONFIRM-RESOLVED** | Both STP reports (2023 and 2020-22) verbatim; freshness gap honestly disclosed. |
+| A9 | `clearwater-school-improvement-plan.html` | clearwater/school-improvement-plan-2024-25.md | **CONFIRM-RESOLVED** | Title "School Improvement Plan, SY 2024-25" and PDF filename "PTCCL2425SIPFinal.pdf" verbatim. |
+| A10 | `stpete-school-improvement-plan.html` | stpete/school-improvement-plan-2025-26.md | **CONFIRM-RESOLVED** | Title "School Improvement Plan \| SY 2025-26" verbatim; PDF URL (resources.finalsite.net/.../PTC-SP_SIP_25-26.pdf) matches extract exactly. |
+| A11 | `clearwater-records-request.html` | clearwater/records-request.md | **CONFIRM-RESOLVED** | Address "6100 154th Ave North / Clearwater, FL 33760", email canfieldj@pcsb.org, 5-year carve-out + 727-793-2701 all verbatim. |
+| A12 | `stpete-records-request.html` | stpete/records-request.md | **CONFIRM-RESOLVED** | Address "901 34th Street South / St. Petersburg, FL 33711", email kilpatrickc@pcsb.org, same 5-year + 727-793-2701 verbatim. |
+
+### Block B — Link integrity
+
+| Check | Verdict | Evidence |
+|---|---|---|
+| `clearwater-about.html` 6 compliance card CTAs point to internal `clearwater-*.html` | **CONFIRM-RESOLVED** | Lines 212/224/230/236/242/248 link to clearwater-accreditation, written-plans, school-improvement-plan, safety-security, financial-accountability, records-request — none use `clearwater.myptc.edu/...`. |
+| `clearwater-about.html` nav dropdown Record Request link | **CONFIRM-RESOLVED** | Line 115: `clearwater-records-request.html`. |
+| `stpete-about.html` 5 compliance card CTAs (no SIP card; known gap) | **CONFIRM-RESOLVED** | Lines 212/224/242/248/254 link to stpete-accreditation, written-plans, safety-security, financial-accountability, records-request. SIP card absence noted, not flagged. |
+| `stpete-about.html` nav dropdown Record Request link | **CONFIRM-RESOLVED** | Line 114: `stpete-records-request.html`. |
+| `records-request.html` (main) is now a campus chooser | **CONFIRM-RESOLVED** | Two `.campus-card` articles routing to `clearwater-records-request.html` and `stpete-records-request.html`; no contact addresses or emails embedded on main page. |
+
+### Block C — Consumer Information nav additions
+
+All 12 main-site pages now have `<li><a href="consumer-information.html">Consumer Information</a></li>` placed between `Employer Partnerships` and `Contact Us` in the About PTC dropdown:
+
+`index.html:169`, `about.html:450`, `admissions.html:769`, `tuition-aid.html:681`, `programs.html:191`, `student-resources.html:221`, `consumer-information.html:467`, `contact.html:552`, `campus-maps.html:328`, `careers.html:374`, `sitemap.html:361`, `welding-advanced.html:544`. **CONFIRM-RESOLVED** for all 12.
+
+### Block D — Em-dash audit
+
+Grep for `&mdash;` / `—` across the 12 new pages returns 13 hits, all in title chrome that mirrors the live page title format:
+
+- 8 are in `<h1>` page titles (e.g., "Pinellas Technical College &mdash; Clearwater Campus Accreditation"), which match the live site's hyphen-spaced title pattern formatted typographically.
+- 2 are in records-card `<h3>` headings ("Pinellas Technical College &mdash; Clearwater" / "&mdash; St. Petersburg") — these mirror the address block heading on the live records page and are acceptable as title-chrome.
+- 2 are in the body paragraph of the accreditation pages ("The Pinellas Technical College &mdash; Clearwater campus is accredited by..."). The live extract uses a hyphen here, not an em-dash. **NEW-DRIFT-INTRODUCED (low severity, cosmetic):** these two body em-dashes are an upgrade for consistency with the page title, not strictly verbatim. Recommend either downgrading them to a comma ("The Pinellas Technical College Clearwater campus") or accepting them as house-style title-chrome for institutional naming. Not a blocker.
+- Zero em-dashes in CTAs, freshness notes, breadcrumbs, or attribution callouts.
+
+**Verdict:** **CONFIRM-RESOLVED** for editorial chrome (the Marianne-rule scope); one minor verbatim-vs-typography note above.
+
+### Block E — Two-campus discipline
+
+| Check | Verdict | Evidence |
+|---|---|---|
+| All 6 CLW pages breadcrumb starts "Clearwater Home > About This Campus > X" | **CONFIRM-RESOLVED** | Verified on all 6 (`clearwater.html` → `clearwater-about.html` → page title). |
+| All 6 STP pages breadcrumb starts "St. Petersburg Home > About This Campus > X" | **CONFIRM-RESOLVED** | Verified on all 6 (`stpete.html` → `stpete-about.html` → page title). |
+| All 12 pages' "Back to About This Campus" link points to the correct campus About | **CONFIRM-RESOLVED** | CLW pages all link to `clearwater-about.html`; STP pages all link to `stpete-about.html`. |
+| Records-request pages have correct cross-campus hint | **CONFIRM-RESOLVED** | `clearwater-records-request.html` line 75 links to `stpete-records-request.html`; `stpete-records-request.html` line 74 links to `clearwater-records-request.html`. |
+| No CLW page links erroneously to STP and vice versa | **CONFIRM-RESOLVED** | Grep confirms each campus's internal links and external (live PDF) URLs all stay scoped to that campus's subdomain. |
+
+### Block F — Findability of Consumer Information
+
+The 12 institutional pages enumerated in Block C all surface Consumer Information in the main top-nav About PTC dropdown (not just footer). The footer link is also retained on every page. **CONFIRM-RESOLVED.**
+
+---
+
+### Summary
+
+The 2026-05-03 IA rebuild is verifiably clean: 12/12 new campus pages reproduce live content verbatim with only honest disclosure notes for known live-site gaps (STP truncated 11th plan, STP safety reports paused at 2023, CLW SIP one year behind STP); 11/11 internal CTA repoints land on the correct internal pages; the main records-request page is a proper campus chooser; Consumer Information now appears in the main About PTC nav across all 12 audited institutional pages and is correctly positioned between Employer Partnerships and Contact Us; cross-campus link discipline is intact; em-dash usage is restricted to title chrome with one minor cosmetic note on accreditation body paragraphs that does not block release. **About cluster is ready to send to Kyesha for review tomorrow.** Optional polish before send: downgrade the two body em-dashes on accreditation pages to commas if you want strict verbatim parity with live; otherwise accept as house-style.
