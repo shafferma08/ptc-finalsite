@@ -93,7 +93,7 @@
             box-shadow: 0 4px 24px rgba(0,0,0,0.1);
         }
 
-        /* Our Story slideshow — CSS-only crossfade, 7 slides, 6s each (42s cycle) */
+        /* Our Story slideshow — CSS-only crossfade, 8 slides, 6s each (48s cycle) */
         .story-slideshow {
             position: relative;
             width: 100%;
@@ -106,11 +106,15 @@
         .story-slideshow__slide {
             position: absolute;
             inset: 0;
+            margin: 0;
+            opacity: 0;
+            animation: storySlideFade 48s infinite;
+        }
+        .story-slideshow__img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0;
-            animation: storySlideFade 42s infinite;
+            display: block;
         }
         .story-slideshow__slide:nth-child(1) { animation-delay: 0s; }
         .story-slideshow__slide:nth-child(2) { animation-delay: 6s; }
@@ -119,12 +123,13 @@
         .story-slideshow__slide:nth-child(5) { animation-delay: 24s; }
         .story-slideshow__slide:nth-child(6) { animation-delay: 30s; }
         .story-slideshow__slide:nth-child(7) { animation-delay: 36s; }
+        .story-slideshow__slide:nth-child(8) { animation-delay: 42s; }
 
         @keyframes storySlideFade {
             0% { opacity: 0; }
-            2% { opacity: 1; }
-            12.28% { opacity: 1; }
-            14.28% { opacity: 0; }
+            1.75% { opacity: 1; }
+            10.75% { opacity: 1; }
+            12.5% { opacity: 0; }
             100% { opacity: 0; }
         }
 
@@ -146,7 +151,7 @@
             height: 8px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.55);
-            animation: storyDotActive 42s infinite;
+            animation: storyDotActive 48s infinite;
             transition: transform 0.3s ease;
         }
         .story-slideshow__dot:nth-child(1) { animation-delay: 0s; }
@@ -156,10 +161,11 @@
         .story-slideshow__dot:nth-child(5) { animation-delay: 24s; }
         .story-slideshow__dot:nth-child(6) { animation-delay: 30s; }
         .story-slideshow__dot:nth-child(7) { animation-delay: 36s; }
+        .story-slideshow__dot:nth-child(8) { animation-delay: 42s; }
 
         @keyframes storyDotActive {
-            0%, 14.28% { background: var(--color-yellow, #FFCF01); transform: scale(1.3); }
-            16%, 100% { background: rgba(255, 255, 255, 0.55); transform: scale(1); }
+            0%, 12.5% { background: var(--color-yellow, #FFCF01); transform: scale(1.3); }
+            14.25%, 100% { background: rgba(255, 255, 255, 0.55); transform: scale(1); }
         }
 
         .story-slideshow:hover .story-slideshow__slide,
@@ -732,14 +738,32 @@
                     </div>
                     <div class="about-grid__media">
                         <div class="story-slideshow" aria-roledescription="carousel" aria-label="PTC over the years">
-                            <img src="assets/more-pictures/60-anniversary-clwr.JPG" alt="PTC celebrating its 60th anniversary" class="story-slideshow__slide" loading="lazy">
-                            <img src="assets/more-pictures/diesel-clwr.jpg" alt="PTC Clearwater Diesel program in action" class="story-slideshow__slide" loading="lazy">
-                            <img src="assets/more-pictures/public-works-stp.jpg" alt="PTC St. Petersburg Public Works program in action" class="story-slideshow__slide" loading="lazy">
-                            <img src="assets/more-pictures/signing-day-clwr.jpg" alt="National Signing Day at PTC Clearwater" class="story-slideshow__slide" loading="lazy">
-                            <img src="assets/more-pictures/signing-day-stp.jpg" alt="National Signing Day at PTC St. Petersburg" class="story-slideshow__slide" loading="lazy">
-                            <img src="assets/more-pictures/graduation2-clwr.jpg" alt="PTC Clearwater graduation" class="story-slideshow__slide" loading="lazy">
-                            <img src="assets/more-pictures/graduation2-stp.jpg" alt="PTC St. Petersburg graduation" class="story-slideshow__slide" loading="lazy">
+                            <figure class="story-slideshow__slide">
+                                <img src="assets/more-pictures/60-anniversary-clwr.JPG" alt="PTC celebrating its 60th anniversary" class="story-slideshow__img" loading="lazy">
+                            </figure>
+                            <figure class="story-slideshow__slide">
+                                <img src="assets/more-pictures/public-works-stp.jpg" alt="PTC St. Petersburg Public Works program in action" class="story-slideshow__img" loading="lazy">
+                            </figure>
+                            <figure class="story-slideshow__slide">
+                                <img src="assets/more-pictures/diesel-clwr.jpg" alt="PTC Clearwater Diesel program in action" class="story-slideshow__img" loading="lazy">
+                            </figure>
+                            <figure class="story-slideshow__slide">
+                                <img src="assets/more-pictures/ptc-up-stp.jpg" alt="PTC-Up at the St. Petersburg campus" class="story-slideshow__img" loading="lazy">
+                            </figure>
+                            <figure class="story-slideshow__slide">
+                                <img src="assets/more-pictures/entrepreneur-clwr.jpg" alt="PTC Clearwater Entrepreneurship program" class="story-slideshow__img" loading="lazy">
+                            </figure>
+                            <figure class="story-slideshow__slide">
+                                <img src="assets/more-pictures/signing-day-stp.jpg" alt="National Signing Day at PTC St. Petersburg" class="story-slideshow__img" loading="lazy">
+                            </figure>
+                            <figure class="story-slideshow__slide">
+                                <img src="assets/more-pictures/graduation2-clwr.jpg" alt="PTC Clearwater graduation" class="story-slideshow__img" loading="lazy">
+                            </figure>
+                            <figure class="story-slideshow__slide">
+                                <img src="assets/more-pictures/graduation2-stp.jpg" alt="PTC St. Petersburg graduation" class="story-slideshow__img" loading="lazy">
+                            </figure>
                             <div class="story-slideshow__dots" aria-hidden="true">
+                                <span class="story-slideshow__dot"></span>
                                 <span class="story-slideshow__dot"></span>
                                 <span class="story-slideshow__dot"></span>
                                 <span class="story-slideshow__dot"></span>
