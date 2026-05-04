@@ -4,6 +4,42 @@ This file tracks daily work sessions on the PTC website redesign. Each entry rec
 
 ---
 
+## May 4, 2026 — Tuition Stage 1 inventory + campus utility-bar repoint (scheduled task `ptc-redesign-daily`)
+
+Three concrete pieces of work this run, picked from the carry-over priority list at the bottom of the May 3 evening log. Skipped (1) "Send About cluster batch to Kyesha" because that requires Marianne, and (2) "Pipeline-infrastructure backfill" because rendered-DOM extractor migration is multi-hour and benefits from interactive review of the diffs against existing baselines.
+
+**Files created:**
+
+- `docs/audit/tuition/inventory.md` — Stage 1 inventory for Tuition cluster (#6). 19 URLs queued for Stage 2: 10 on Clearwater (financial-aid hub + 8 sub-pages + the asymmetric `/admissions/military-veteran-student-resources`), 9 on St. Pete (parallel hub + 8 sub-pages, no military-vet page). www has only a placeholder financial-aid page at `/resources/future-students/financial-aid` (200 OK, empty body) — same institutional/campus split as the Admissions cluster, so the redesign continues building a real institutional `tuition-aid.html` against the union of CLW + STP extracts. Net Price Calculator is intentionally campus-specific by IPEDS design (CLW slug `net-price-calculator-clearwater`, STP slug `net-price-calculator-st-petersburg`). Per Stage 1 binding rule, did per-subsite probing across 14 candidate slugs before declaring "no www tuition content"; only the placeholder URL exists. Stage 2 hand-off to use WebFetch (rendered DOM) per the open pipeline-infrastructure follow-up. 9 IA questions surfaced for Stage 3 to answer (refund-policy section placement, NPC routing pattern, military-vet asymmetry decision, scholarship sub-page consolidation, Bill Young Tuition Waiver placement, etc.).
+
+**Files updated:**
+
+- `docs/audit/CLUSTERS.md` row 6 — Tuition advanced `queued` → `extracting`. Added the 19-URL summary plus pointer to `tuition/inventory.md`.
+- 11 HTML files repointed for the campus utility-bar follow-up (carry-over from May 3 afternoon's "out of scope" note on follow-up #200): `clearwater.html`, `stpete.html`, `welding-clearwater.html`, `welding-stpete.html`, `schedule-clearwater.html`, `schedule-stpete.html`, `campus-template.html`, plus 4 templates in `_templates/` (`campus-landing.html`, `shell-clearwater.html`, `shell-stpete.html`, `program-page.html`). Each had two dead `href="#"` links: Canvas Login and SIS Portal/Focus. 22 dead links repointed total. URLs match the redesign-wide pattern already in use elsewhere: Canvas → `https://www.myptc.edu/student-links/canvas-login` (live's redirect), SIS → `https://pinellas.focusschoolsoftware.com/focus/`. Verification grep confirms zero remaining dead patterns of either type.
+- `docs/audit/follow-ups.md` — Campus-utility-bar follow-up flipped to **PARTIALLY RESOLVED 2026-05-04** (Canvas + SIS done across 11 files; search button spun out as separate low-priority polish row).
+
+**Decisions made:**
+
+1. **Tuition Stage 1 didn't fall into the Admissions Stage 1 trap.** Per the binding rule added 2026-04-30, did a per-subsite discovery pass before declaring www has no tuition content. Probed 14 candidate slugs across www/clearwater/stpete: only `/resources/future-students/financial-aid` returned 200 on www, and that page has an empty body. Result documented in inventory.md headline finding so the Comparator and IA-Recommender don't re-litigate.
+2. **Canvas Login URL: `myptc.edu/student-links/canvas-login`, not `pcsb.instructure.com`.** The original follow-up suggested the PCSB Canvas tenant URL directly. Picked the redesign-wide `myptc.edu/student-links/canvas-login` pattern instead, because (a) every other page in the redesign already uses it (about, admissions, campus-maps, all 12 campus-internal compliance pages, all 3 staff-directory + counselors pages), (b) live's nav uses the same URL, (c) the `myptc.edu/student-links/canvas-login` URL is itself a redirect to PCSB Canvas, so functionally equivalent but with one consistent canonical, and (d) if PCSB ever migrates Canvas, only the redirect target needs to change rather than every page in the redesign.
+3. **Search button left alone, not blanket-repointed.** The campus utility-bar's search button (`<a href="#" class="btn btn--primary btn--sm">` with magnifying-glass icon) is a search trigger, not a navigation link. The canonical search pattern elsewhere in the redesign (`tuition-aid.html` line 690 etc.) is a `<button class="search-toggle">` opening an in-page `search-overlay` — the campus pages don't have that overlay markup. Repointing requires either porting the overlay or hiding the button until global search is built; both are scope creep beyond a mechanical chrome pass. Logged as separate low-priority polish row in follow-ups.
+4. **STP missing SIP card priority is stale.** May 3 evening log had it as priority #3, but verification today shows the SIP card is present on both `clearwater-accreditation.html` (line 389) and `stpete-accreditation.html` (line 310). The May 3 priority pre-dated the IA reorganization that moved compliance content from the campus About pages to the campus Accreditation pages — both campuses already have parity. No action needed.
+
+**Issues / blockers:**
+
+- None on this work.
+- Pipeline-infrastructure (rendered-DOM extractor migration) still open from 2026-05-03; affects future drift checks but not Tuition Stage 2 (which uses WebFetch directly).
+
+**Next priorities:**
+
+1. **Tuition Stage 2 extraction** — 19 URLs via WebFetch (rendered DOM). The pipeline can pick this up tomorrow. Estimated 30-45 min wall-clock. Save outputs to `docs/audit/tuition/extracted/{clearwater,stpete}/<slug>.md` with frontmatter (URL, char count, extraction method, date). Note: 3 sub-pages exceeded inline output limit (~56 KB observed on `/fees-and-expenses`), so extraction script must save raw HTML to disk and parse from there.
+2. **Send About cluster batch to Kyesha** (still pending — needs Marianne to actually send). 3 institutional/campus About pages + 12 new campus-internal compliance pages + restructured records-request + Consumer Information now in nav.
+3. **Pipeline-infrastructure backfill** — switch extractor to rendered DOM, re-extract about/compliance/counselors clusters to check for missed JS-injected content. Multi-hour; benefits from interactive review.
+4. **Hero stats reconciliation** — "50+ Industry Partners" and "40+ Career Programs" still need sourcing.
+5. **Campus utility-bar search-button polish** (new) — port `search-overlay` pattern to campus shells, or hide the button. Low priority.
+
+---
+
 ## May 3, 2026 — About cluster IA reorganization (interactive evening session with Marianne)
 
 Major architectural work to address the campus-About problem and prepare the cluster for Kyesha's first review batch tomorrow. Marianne pushed back on the half-measures I'd been proposing and forced a real conversation about IA. The model we agreed on:
