@@ -232,6 +232,37 @@ Surfaced during the homepage CTA-rewiring pass on `index.html` (companion to the
 
 ---
 
+## Campus About page expansion (added 2026-05-03)
+
+The campus About pages (`clearwater-about.html`, `stpete-about.html`) were expanded from compliance-only hubs to real campus About pages with Mission/Vision/Values, Administration, Programs CTA, Visit Us, and Compliance sections. Several content items still need sourcing or building.
+
+### Medium priority — content sourcing
+
+| Item | Affected files | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Campus Programs section uses minimal editorial copy | `clearwater-about.html`, `stpete-about.html` | Description text ("From healthcare and skilled trades to information technology and culinary arts...") was written as connective copy. Not from live verbatim. Functional placeholder until live publishes campus-specific program narrative or Marianne authors it. | Replace with verbatim copy when sourced. Either ask CLW/STP campus directors for a 2-3 sentence campus program identity blurb, or source from PTC institutional comms. | Webmaster (Marianne) + campus directors | Medium | Campus About expansion, 2026-05-03 |
+| Visit Us "Schedule a Visit" copy is editorial | `clearwater-about.html` | "Tours and shadow days let you experience the campus and meet instructors before you apply." — written as connective copy, not from live. | Replace with verbatim copy when live publishes a tour-program description, or have Marianne author. | Webmaster (Marianne) | Low | Campus About expansion, 2026-05-03 |
+| Student services hours not yet on campus About pages | both campus About pages | Marianne flagged that hours vary, suggested student services hours specifically. Hours not yet verified or sourced. Section structure is in place to add a "Student Services Hours" item to the Visit Us card later. | Get current student services hours from CLW + STP campus admissions, add to Visit Us card on each campus About. | Campus admissions / Marianne | Medium | Campus About expansion, 2026-05-03 |
+
+### Pages still to build
+
+| Item | Redesign target | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Build campus staff directory pages | `clearwater-staff-directory.html`, `stpete-staff-directory.html` | Campus About pages now have a "Full Staff Directory" CTA but the destination page doesn't exist yet. Currently `href="#"` with `data-followup` flag. CTA points alongside the existing campus counselors page. | Build out per-campus staff directory pages with full administration, faculty, and support staff (sourced from campus HR or live's existing staff directory pages). | Webmaster + campus directors | Medium | Campus About expansion, 2026-05-03 |
+| Mrs. Ortiz administrator photos for campus admin cards | `clearwater-about.html`, `stpete-about.html`, `about.html` | Campus admin cards on both About pages and the institutional About page show initial bubbles (JP, JS, DH) as placeholders. Mrs. Ortiz is sourcing real photos for the redesign. | Replace initial bubbles with real headshot images when received. | Mrs. Ortiz | Medium | Campus About expansion, 2026-05-03 |
+
+---
+
+## About cluster — Marianne's editorial decisions on about.html (added 2026-05-03)
+
+Editorial decisions made by Marianne during evening review of `about.html`. Each item is a deliberate divergence from live verbatim that the live site should be updated to match.
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| "Nearly 5,000" → "5,000" | www.myptc.edu/about-us/welcome-to-ptc (Story paragraph + stats) | Live says "nearly 5,000 full-time students". Marianne's decision: drop "nearly", use the round number. Redesign updated 2026-05-03; live will be out of sync until updated. | Update live to say "5,000 full-time students" (drop "nearly") on the welcome-to-ptc page. | PTC webmaster (Marianne) | Low (cosmetic divergence, low risk) | About cluster review, 2026-05-03 |
+
+---
+
 ## Pipeline infrastructure (added 2026-05-03)
 
 Surfaced during the Admissions cluster Stage 7 drift reconciliation on 2026-05-03. These are infrastructure issues affecting the audit pipeline itself, not specific content items.

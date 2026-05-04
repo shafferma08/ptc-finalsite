@@ -137,7 +137,8 @@
         }
         .accred-card__logo {
             max-height: 60px;
-            margin-bottom: 1rem;
+            display: block;
+            margin: 0 auto 1rem;
         }
         .accred-card__name {
             font-family: var(--font-heading);
@@ -445,8 +446,7 @@
                                     <ul>
                                         <li><a href="about.html">Welcome &amp; History</a></li>
                                         <li><a href="about.html#accreditation">Accreditation</a></li>
-                                        <li><a href="#">Staff Directory</a></li>
-                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="about.html#leadership">Staff Directory</a></li>
                                         <li><a href="consumer-information.html">Consumer Information</a></li>
                                         <li><a href="contact.html">Contact Us</a></li>
                                     </ul>
@@ -502,9 +502,8 @@
         ============================================= -->
         <section class="mission-statement">
             <div class="container">
-                <div class="mission-statement__icon"><i class="fas fa-bullseye" aria-hidden="true"></i></div>
-                <p class="mission-statement__text">"Our mission is to provide students the opportunity to develop national workplace competencies to fill the needs of business and industry."</p>
                 <p class="mission-statement__label">Our Mission</p>
+                <p class="mission-statement__text">"Our mission is to provide students the opportunity to develop national workplace competencies to fill the needs of business and industry."</p>
             </div>
         </section>
 
@@ -547,7 +546,7 @@
                     <div class="about-grid__content">
                         <h2>Our Story</h2>
                         <p>Since 1962, Pinellas Technical College has offered students first-rate career and technical education at our two campuses in Clearwater and St. Petersburg, and at extension and clinical locations across the region.</p>
-                        <p>PTC's emphasis is on postsecondary education focusing on over 40 career areas and about 60 programs, currently serving nearly 5,000 full-time students. We're proud of our network of more than 250 business and industry partners who advise and guide our programs to ensure they prepare students for the needs of the workforce.</p>
+                        <p>PTC's emphasis is on postsecondary education focusing on over 40 career areas and about 60 programs, currently serving 5,000 full-time students. We're proud of our network of more than 250 business and industry partners who advise and guide our programs to ensure they prepare students for the needs of the workforce.</p>
                         <p>PTC is also a leader in Florida in providing career and technical education via distance learning, supported by highly skilled faculty and staff who prepare graduates to compete in a global job market.</p>
                         <p>As part of Pinellas County Schools, PTC combines the resources of a public school system with the focused, career-driven mission of a technical college. Students benefit from affordable tuition, financial aid, and direct connections to local employers.</p>
                     </div>
@@ -577,7 +576,7 @@
                         <span class="about-stat__label">Career Areas</span>
                     </div>
                     <div class="about-stat">
-                        <span class="about-stat__number">Nearly 5,000</span>
+                        <span class="about-stat__number">5,000</span>
                         <span class="about-stat__label">Full-Time Students</span>
                     </div>
                     <div class="about-stat">
@@ -585,7 +584,6 @@
                         <span class="about-stat__label">Industry Partners</span>
                     </div>
                 </div>
-                <p class="about-stats__source" style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--color-gray-600); font-style: italic;">Source: Pinellas Technical College, www.myptc.edu, retrieved April 2026</p>
             </div>
         </section>
 
@@ -666,7 +664,7 @@
         <!-- ============================================
              LEADERSHIP
         ============================================= -->
-        <section class="about-section">
+        <section class="about-section" id="leadership">
             <div class="container">
                 <div class="section-header section-header--center">
                     <p class="section-header__tag">Our Team</p>
@@ -693,9 +691,10 @@
                         <p style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--color-gray-600);">Pinellas County Schools</p>
                     </div>
                 </div>
-                <p style="text-align: center; margin-top: 2rem;">
-                    <a href="#" class="btn btn--primary">View Full Staff Directory <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+                    <a href="clearwater.html" class="btn btn--primary">Clearwater Staff Directory <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="stpete.html" class="btn btn--primary">St. Petersburg Staff Directory <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
             </div>
         </section>
 
@@ -712,7 +711,7 @@
                         <p>No matter which campus you choose, you will have access to modern labs, experienced instructors, and direct connections to Tampa Bay employers.</p>
                         <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
                             <a href="clearwater.html" class="btn btn--primary">Clearwater Campus <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                            <a href="stpete.html" class="btn btn--outline">St. Pete Campus <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                            <a href="stpete.html" class="btn btn--primary">St. Pete Campus <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="about-grid__media">

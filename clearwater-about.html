@@ -10,6 +10,335 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Campus About — design system: clean cards, no left-stripe accents */
+        .compliance-stack { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+
+        /* Accreditation hero card (full width) */
+        .accred-hero {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #e8ecf1;
+            border-top: 3px solid var(--color-green);
+            padding: 2rem 2.5rem;
+            display: grid;
+            grid-template-columns: minmax(180px, 280px) 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .accred-hero__logos {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        .accred-hero__logos img {
+            max-height: 56px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        .accred-hero__content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            margin: 0 0 0.5rem;
+            color: var(--color-gray-900);
+        }
+        .accred-hero__content p {
+            font-size: 0.98rem;
+            line-height: 1.6;
+            margin: 0 0 0.85rem;
+            color: var(--color-gray-700);
+        }
+        .accred-hero__cta {
+            font-weight: 600;
+            color: var(--color-green);
+            font-size: 0.92rem;
+            text-decoration: none;
+        }
+        .accred-hero__cta:hover { text-decoration: underline; }
+        @media (max-width: 720px) {
+            .accred-hero { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.5rem; }
+            .accred-hero__logos { flex-direction: row; justify-content: flex-start; }
+        }
+
+        /* Pair: Catalog + Records (2-col) */
+        .compliance-pair {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Subsection: COE-Required Compliance Documents */
+        .compliance-subsection-title {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--color-gray-900);
+            margin: 1rem 0 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-green);
+            display: inline-block;
+        }
+        .compliance-quad {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Tight cards for the quad row */
+        .compliance-card-tight {
+            background: var(--color-white);
+            padding: 1.25rem;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid #e8ecf1;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        .compliance-card-tight:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .compliance-card-tight h3 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            margin: 0 0 0.5rem;
+            color: var(--color-gray-900);
+        }
+        .compliance-card-tight h3 i {
+            color: var(--color-green);
+            margin-right: 0.4rem;
+        }
+        .compliance-card-tight p {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: var(--color-gray-700);
+            margin: 0 0 0.75rem;
+            flex-grow: 1;
+        }
+        .compliance-card-tight a {
+            font-weight: 600;
+            color: var(--color-green);
+            font-size: 0.85rem;
+            text-decoration: none;
+            margin-top: auto;
+        }
+        .compliance-card-tight a:hover { text-decoration: underline; }
+
+        /* Practical card (Catalog, Records) — fuller content */
+        .compliance-card-practical {
+            background: var(--color-white);
+            padding: 1.5rem 1.75rem;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid #e8ecf1;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        .compliance-card-practical:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .compliance-card-practical h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin: 0 0 0.5rem;
+            color: var(--color-gray-900);
+        }
+        .compliance-card-practical h3 i {
+            color: var(--color-green);
+            margin-right: 0.5rem;
+        }
+        .compliance-card-practical p {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            color: var(--color-gray-700);
+            margin: 0 0 0.85rem;
+        }
+        .compliance-card-practical a {
+            font-weight: 600;
+            color: var(--color-green);
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+        .compliance-card-practical a:hover { text-decoration: underline; }
+
+        /* Accessibility banner (full width, slim) */
+        .accessibility-banner {
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid #e8ecf1;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Guiding Principles — 3-column layout matching live stpete.myptc.edu */
+        .guiding-principles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+            align-items: start;
+        }
+        .principle {
+            text-align: center;
+            padding: 0 0.5rem;
+        }
+        .principle__icon {
+            width: 96px;
+            height: 96px;
+            object-fit: contain;
+            margin: 0 auto 1.25rem;
+            display: block;
+        }
+        .principle__heading {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin: 0 0 1rem;
+        }
+        .principle__body {
+            font-size: 0.98rem;
+            line-height: 1.65;
+            color: var(--color-gray-800);
+        }
+        .principle__body p { margin: 0; }
+        .principle__body ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: left;
+        }
+        .principle__body li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+            font-size: 0.92rem;
+        }
+        .principle__body li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 6px;
+            height: 6px;
+            background: var(--color-green);
+            border-radius: 50%;
+        }
+        @media (max-width: 900px) {
+            .guiding-principles { grid-template-columns: 1fr; gap: 2.5rem; }
+            .principle { padding: 0; }
+        }
+
+        /* Admin / leadership cards — clean white-bg with hover */
+        .admin-card-clean {
+            background: var(--color-white);
+            padding: 2rem 1.5rem;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid #e8ecf1;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            text-align: center;
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        .admin-card-clean:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .admin-card-clean__photo {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: var(--color-green);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+        .admin-card-clean__name {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            margin: 0 0 0.25rem;
+            color: var(--color-gray-900);
+        }
+        .admin-card-clean__title {
+            font-size: 0.9rem;
+            color: var(--color-gray-700);
+            margin: 0 0 0.5rem;
+            line-height: 1.4;
+        }
+        .admin-card-clean__email {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        .admin-card-clean__email a {
+            color: var(--color-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .admin-card-clean__email a:hover { text-decoration: underline; }
+        .admin-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 1.5rem auto 0;
+        }
+        .admin-subsection-label {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-gray-700);
+            text-align: center;
+            margin: 2.5rem 0 1rem;
+        }
+
+        /* Visit cards — clean style */
+        .visit-card-clean {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid #e8ecf1;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+        .accessibility-banner__icon {
+            font-size: 1.75rem;
+            color: var(--color-green);
+            flex-shrink: 0;
+        }
+        .accessibility-banner__content { flex: 1 1 300px; }
+        .accessibility-banner__content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            margin: 0 0 0.25rem;
+            color: var(--color-gray-900);
+        }
+        .accessibility-banner__content p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--color-gray-700);
+            margin: 0;
+        }
+        .accessibility-banner a {
+            font-weight: 600;
+            color: var(--color-green);
+            font-size: 0.9rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .accessibility-banner a:hover { text-decoration: underline; }
+    </style>
 </head>
 <body>
 
@@ -155,7 +484,7 @@
         <!-- ============================================
              PAGE HERO + BREADCRUMB
         ============================================= -->
-        <section class="page-hero" style="background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%); color: #fff; padding: 4rem 0 3rem;">
+        <section class="page-hero" style="background: linear-gradient(135deg, rgba(0,129,66,0.92) 0%, rgba(0,102,52,0.88) 100%), url('assets/images/PTC-CLW.jpg') center/cover no-repeat; color: #fff; padding: 5rem 0 4rem;">
             <div class="container">
                 <nav class="page-hero__breadcrumb" aria-label="Breadcrumb" style="font-size: 0.875rem; margin-bottom: 1rem; opacity: 0.85;">
                     <ol style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem;">
@@ -164,97 +493,164 @@
                     </ol>
                 </nav>
                 <h1 style="font-family: var(--font-heading); font-size: clamp(1.85rem, 4vw, 2.5rem); font-weight: 700; margin: 0 0 0.75rem;">About PTC Clearwater Campus</h1>
-                <p style="font-size: 1.15rem; max-width: 700px; opacity: 0.92; line-height: 1.6;">Find official documents for the Clearwater campus: catalog, accreditation, school improvement and safety reports, and how to request your records.</p>
+                <p style="font-size: 1.15rem; max-width: 700px; opacity: 0.92; line-height: 1.6;">6100 154th Avenue North, Clearwater, FL 33760 &middot; (727) 538-7167</p>
             </div>
         </section>
 
         <!-- ============================================
-             INSTITUTIONAL CONTEXT
-             For PTC's institutional history, mission, vision, and core values, link to main About.
+             OUR GUIDING PRINCIPLES
+             3-column layout matching live stpete.myptc.edu structure.
+             Mission/Vision/Core Values verbatim from live mission-vision-core-values page.
+             Icons sourced by Marianne, in assets/logos/.
         ============================================= -->
-        <aside aria-label="Institutional context" style="padding: 3rem 0; background: var(--color-white);">
-            <div class="container" style="max-width: 800px;">
-                <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray-700);">PTC's institutional history, mission, vision, and core values apply to both Clearwater and St. Petersburg campuses. To learn about PTC as a whole, visit <a href="about.html" style="color: var(--color-green); font-weight: 600;">About PTC</a>.</p>
-                <p style="font-size: 1.1rem; line-height: 1.7; color: var(--color-gray-700);">The records on this page are specific to the Clearwater campus and are maintained per Council on Occupational Education (COE) accreditation requirements.</p>
+        <section class="guiding-principles-section" style="padding: 4rem 0; background: var(--color-white);">
+            <div class="container">
+                <div class="section-header section-header--center" style="margin-bottom: 1rem;">
+                    <h2 class="section-header__title">Our Guiding Principles</h2>
+                </div>
+                <div class="guiding-principles">
+                    <div class="principle">
+                        <img src="assets/logos/Mission.png" alt="" class="principle__icon" aria-hidden="true">
+                        <h3 class="principle__heading">Mission</h3>
+                        <div class="principle__body">
+                            <p>Our mission is to provide students the opportunity to develop national workplace competencies to fill the needs of business and industry.</p>
+                        </div>
+                    </div>
+                    <div class="principle">
+                        <img src="assets/logos/Vision.png" alt="" class="principle__icon" aria-hidden="true">
+                        <h3 class="principle__heading">Vision</h3>
+                        <div class="principle__body">
+                            <p>To be our communities' first choice for technical training.</p>
+                        </div>
+                    </div>
+                    <div class="principle">
+                        <img src="assets/logos/CoreValue.png" alt="" class="principle__icon" aria-hidden="true">
+                        <h3 class="principle__heading">Core Values</h3>
+                        <div class="principle__body">
+                            <ul>
+                                <li>Focus on attracting and retaining students.</li>
+                                <li>Implement and maintain systems to enable all students to succeed.</li>
+                                <li>Deliver customized employer-driven training.</li>
+                                <li>Be accountable for our students' learning outcomes.</li>
+                                <li>Provide learning experiences when and where necessary to meet our customers' needs.</li>
+                                <li>Maintain a safe environment conducive to learning.</li>
+                                <li>Recruit and develop quality staff.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </aside>
+        </section>
 
         <!-- ============================================
-             CAMPUS COMPLIANCE & RECORDS
-             Built 2026-04-25 from About cluster audit. All link targets come
-             from approved live PTC content (clearwater.myptc.edu pages and
-             resources.finalsite.net PDFs).
+             CAMPUS ADMINISTRATION
+             Campus Director + Assistant Directors verified from PCSB. Initial bubbles
+             pending Mrs. Ortiz photo delivery. Full Staff Directory CTA routes to a
+             future clearwater-staff-directory.html (follow-up to build).
         ============================================= -->
-        <section class="campus-compliance" id="compliance" style="padding: 3rem 0 5rem; background: var(--color-off-white, #F7F8FA);">
+        <section class="campus-admin" style="padding: 4rem 0; background: var(--color-off-white, #F7F8FA);" id="leadership">
             <div class="container">
-                <div class="section-header section-header--center">
-                    <p class="section-header__tag">Campus Documents</p>
-                    <h2 class="section-header__title">Accreditation, Records &amp; Compliance</h2>
+                <div class="section-header section-header--center" style="margin-bottom: 0.5rem;">
+                    <p class="section-header__tag">Campus Leadership</p>
+                    <h2 class="section-header__title">Meet Our Administration</h2>
                 </div>
-                <div class="campus-compliance-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2.5rem;">
 
-
-                    <article class="compliance-card" style="background: var(--color-white); padding: 1.5rem; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-green); box-shadow: var(--shadow-sm);">
-                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--color-gray-900);"><i class="fas fa-award" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>Accreditation</h3>
-                        <p style="font-size: 0.95rem; line-height: 1.6; margin: 0 0 0.75rem; color: var(--color-gray-700);">The Clearwater campus is individually accredited by the Council on Occupational Education (COE) and Cognia.</p>
-                        <p style="font-size: 0.85rem; line-height: 1.55; margin: 0 0 0.5rem; color: var(--color-gray-700);">
-                            <strong>Council on Occupational Education</strong><br>
-                            7840 Roswell Road, Building 300, Suite 325<br>
-                            Atlanta, GA 30350<br>
-                            Phone: <a href="tel:7703963898" style="color: var(--color-green);">770-396-3898</a>
-                        </p>
-                        <p style="font-size: 0.85rem; line-height: 1.55; margin: 0 0 0.75rem; color: var(--color-gray-700);">
-                            <strong>Cognia</strong><br>
-                            9115 Westside Parkway<br>
-                            Alpharetta, GA 30009<br>
-                            Phone: <a href="tel:8884133669" style="color: var(--color-green);">888-413-3669</a>
-                        </p>
-                        <a href="clearwater-accreditation.html" class="inline-link" style="font-weight: 600; color: var(--color-green); font-size: 0.9rem;">View Clearwater accreditation details <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a>
+                <div class="admin-grid-3">
+                    <article class="admin-card-clean">
+                        <div class="admin-card-clean__photo" aria-hidden="true">JP</div>
+                        <h3 class="admin-card-clean__name">Dr. Jakub Prokop</h3>
+                        <p class="admin-card-clean__title">Campus Director</p>
+                        <p class="admin-card-clean__email"><a href="mailto:PROKOPJ@pcsb.org">PROKOPJ@pcsb.org</a></p>
                     </article>
-
-                    <article class="compliance-card" style="background: var(--color-white); padding: 1.5rem; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-green); box-shadow: var(--shadow-sm);">
-                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--color-gray-900);"><i class="fas fa-book" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>2025-26 Campus Catalog</h3>
-                        <p style="font-size: 0.95rem; line-height: 1.6; margin: 0 0 0.75rem; color: var(--color-gray-700);">Current Clearwater campus catalog with program details, admissions, and policies.</p>
-                        <a href="https://resources.finalsite.net/images/v1769715394/myptecorg/z9jaaectoajdv2e82jwg/25-26PTCClearwaterCatalogrev1-29-26.pdf" target="_blank" rel="noopener" class="inline-link" style="font-weight: 600; color: var(--color-green); font-size: 0.9rem;">Download 2025-26 Clearwater catalog (PDF)<span class="sr-only"> (opens in new tab)</span> <i class="fas fa-file-pdf" style="font-size: 0.85em;" aria-hidden="true"></i></a>
+                    <article class="admin-card-clean">
+                        <div class="admin-card-clean__photo" aria-hidden="true">RF</div>
+                        <h3 class="admin-card-clean__name">Raylee Fleisch</h3>
+                        <p class="admin-card-clean__title">Assistant Director</p>
+                        <p class="admin-card-clean__email"><a href="mailto:FLEISCHR@pcsb.org">FLEISCHR@pcsb.org</a></p>
                     </article>
-
-                    <article class="compliance-card" style="background: var(--color-white); padding: 1.5rem; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-green); box-shadow: var(--shadow-sm);">
-                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--color-gray-900);"><i class="fas fa-clipboard-list" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>Written Plans</h3>
-                        <p style="font-size: 0.95rem; line-height: 1.6; margin: 0 0 0.75rem; color: var(--color-gray-700);">10 plans required by COE: Follow-Up, Strategic, Media Services, Facilities, Health &amp; Safety, Technology, Distance Learning, Student Retention, Placement, Student Services Effectiveness.</p>
-                        <a href="clearwater-written-plans.html" class="inline-link" style="font-weight: 600; color: var(--color-green); font-size: 0.9rem;">View Clearwater written plans <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a>
+                    <article class="admin-card-clean">
+                        <div class="admin-card-clean__photo" aria-hidden="true">KB</div>
+                        <h3 class="admin-card-clean__name">Kimberly Barker</h3>
+                        <p class="admin-card-clean__title">Assistant Director</p>
+                        <p class="admin-card-clean__email"><a href="mailto:BARKERKI@pcsb.org">BARKERKI@pcsb.org</a></p>
                     </article>
-
-                    <article class="compliance-card" style="background: var(--color-white); padding: 1.5rem; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-green); box-shadow: var(--shadow-sm);">
-                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--color-gray-900);"><i class="fas fa-chart-line" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>School Improvement Plan</h3>
-                        <p style="font-size: 0.95rem; line-height: 1.6; margin: 0 0 0.75rem; color: var(--color-gray-700);">School Improvement Plan, SY 2024-25.</p>
-                        <a href="clearwater-school-improvement-plan.html" class="inline-link" style="font-weight: 600; color: var(--color-green); font-size: 0.9rem;">View 2024-25 Clearwater School Improvement Plan <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a>
+                    <article class="admin-card-clean">
+                        <div class="admin-card-clean__photo" aria-hidden="true">CB</div>
+                        <h3 class="admin-card-clean__name">Carson Bowman</h3>
+                        <p class="admin-card-clean__title">Assistant Director</p>
+                        <p class="admin-card-clean__email"><a href="mailto:BOWMANCA@pcsb.org">BOWMANCA@pcsb.org</a></p>
                     </article>
+                </div>
 
-                    <article class="compliance-card" style="background: var(--color-white); padding: 1.5rem; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-green); box-shadow: var(--shadow-sm);">
-                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--color-gray-900);"><i class="fas fa-shield-alt" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>Safety &amp; Security Data</h3>
-                        <p style="font-size: 0.95rem; line-height: 1.6; margin: 0 0 0.75rem; color: var(--color-gray-700);">Annual safety and security reports for the Clearwater campus, 2020-2025.</p>
-                        <a href="clearwater-safety-security.html" class="inline-link" style="font-weight: 600; color: var(--color-green); font-size: 0.9rem;">View Clearwater safety &amp; security reports <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a>
-                    </article>
+                <div style="text-align: center; margin-top: 2.5rem;">
+                    <a href="clearwater-counselors.html" class="btn btn--primary">View Clearwater Counselors <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="#" class="btn btn--outline" style="margin-left: 0.75rem;" data-followup="staff-directory-page-not-yet-built">Full Staff Directory <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </section>
 
-                    <article class="compliance-card" style="background: var(--color-white); padding: 1.5rem; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-green); box-shadow: var(--shadow-sm);">
-                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--color-gray-900);"><i class="fas fa-dollar-sign" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>Financial Accountability</h3>
-                        <p style="font-size: 0.95rem; line-height: 1.6; margin: 0 0 0.75rem; color: var(--color-gray-700);">HEERF I, II, &amp; III quarterly budget and expenditure reports (2021-2023).</p>
-                        <a href="clearwater-financial-accountability.html" class="inline-link" style="font-weight: 600; color: var(--color-green); font-size: 0.9rem;">View Clearwater financial accountability reports <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a>
-                    </article>
+        <!-- ============================================
+             PROGRAMS AT THIS CAMPUS
+             Green branded band with campus imagery for visual rhythm.
+        ============================================= -->
+        <section class="campus-programs-cta" style="padding: 5rem 0; background: linear-gradient(135deg, rgba(0,129,66,0.94) 0%, rgba(0,102,52,0.92) 100%), url('assets/images/PTC1Graduation2025-1536.jpg') center/cover no-repeat; color: #fff;">
+            <div class="container">
+                <div class="section-header section-header--center" style="margin-bottom: 1.5rem;">
+                    <p class="section-header__tag" style="color: rgba(255,255,255,0.85);">Hands-On Career Training</p>
+                    <h2 class="section-header__title" style="color: #fff;">Programs at the Clearwater Campus</h2>
+                    <p class="section-header__desc" style="max-width: 700px; margin: 1rem auto 0; color: rgba(255,255,255,0.92);">From healthcare and skilled trades to information technology and culinary arts, the Clearwater campus offers career-focused programs aligned with high-demand Tampa Bay employers.</p>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="programs.html?campus=clw" class="btn btn--accent btn--lg" style="background: var(--color-yellow, #FFCF01); color: var(--color-gray-900);">View All Clearwater Programs <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </section>
 
-                    <article class="compliance-card" style="background: var(--color-white); padding: 1.5rem; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-green); box-shadow: var(--shadow-sm);">
-                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--color-gray-900);"><i class="fas fa-folder-open" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>Request Your Records</h3>
-                        <p style="font-size: 0.95rem; line-height: 1.6; margin: 0 0 0.75rem; color: var(--color-gray-700);">Former Clearwater students can request transcripts and class records. Email <a href="mailto:canfieldj@pcsb.org" style="color: var(--color-green);">canfieldj@pcsb.org</a> or visit the records request page.</p>
-                        <a href="clearwater-records-request.html" class="inline-link" style="font-weight: 600; color: var(--color-green); font-size: 0.9rem;">Request Clearwater school records <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a>
-                    </article>
+        <!-- ============================================
+             VISIT US
+             Address (verbatim from live), phone (verbatim), map placeholder, tour CTA.
+             Student services hours intentionally not shown — to be sourced from
+             Marianne / campus admissions and added.
+        ============================================= -->
+        <section class="campus-visit" style="padding: 4rem 0; background: var(--color-off-white, #F7F8FA);">
+            <div class="container" style="max-width: 1000px;">
+                <div class="section-header section-header--center" style="margin-bottom: 2rem;">
+                    <p class="section-header__tag">Find Us</p>
+                    <h2 class="section-header__title">Visit the Clearwater Campus</h2>
+                </div>
+                <div class="visit-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                    <div class="visit-card-clean">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 0 0 1rem; color: var(--color-gray-900);"><i class="fas fa-map-marker-alt" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>Address</h3>
+                        <p style="margin: 0 0 0.75rem; line-height: 1.6; color: var(--color-gray-800);">6100 154th Avenue North<br>Clearwater, FL 33760</p>
+                        <p style="margin: 0;"><strong style="color: var(--color-gray-700);">Phone:</strong> <a href="tel:7275387167" style="color: var(--color-green);">(727) 538-7167</a></p>
+                        <p style="margin: 0.25rem 0 0;"><strong style="color: var(--color-gray-700);">Fax:</strong> (727) 538-7203</p>
+                        <p style="margin-top: 1.25rem;"><a href="campus-maps.html#clearwater" style="color: var(--color-green); font-weight: 600; font-size: 0.92rem;">Get directions <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a></p>
+                    </div>
+                    <div class="visit-card-clean">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 0 0 1rem; color: var(--color-gray-900);"><i class="fas fa-calendar-check" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>Schedule a Visit</h3>
+                        <p style="margin: 0 0 0.75rem; line-height: 1.6; color: var(--color-gray-800);">Tours and shadow days let you experience the campus and meet instructors before you apply.</p>
+                        <p style="margin-top: 1.25rem;"><a href="admissions.html#shadowing-days" style="color: var(--color-green); font-weight: 600; font-size: 0.92rem;">View shadowing days &amp; times <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <article class="compliance-card" style="background: var(--color-white); padding: 1.5rem; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-green); box-shadow: var(--shadow-sm);">
-                        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; margin: 0 0 0.5rem; color: var(--color-gray-900);"><i class="fas fa-universal-access" style="color: var(--color-green); margin-right: 0.5rem;" aria-hidden="true"></i>Accessibility &amp; Compliance Officers</h3>
-                        <p style="font-size: 0.95rem; line-height: 1.6; margin: 0 0 0.75rem; color: var(--color-gray-700);">Find PTC's accessibility statement, the District 504 Coordinator, and the named EEO/Title IX/ADA Officer for compliance concerns.</p>
-                        <a href="consumer-information.html#accessibility" class="inline-link" style="font-weight: 600; color: var(--color-green); font-size: 0.9rem;">View accessibility &amp; compliance contacts <i class="fas fa-arrow-right" style="font-size: 0.75em;" aria-hidden="true"></i></a>
-                    </article>
-
-
+        <!-- ============================================
+             ACCREDITATION & COMPLIANCE — SINGLE CTA
+             Per IA: full COE accreditation/compliance content lives on
+             clearwater-accreditation.html. Records Request lives in Student
+             Resources. Campus Catalog now also on accreditation page.
+             This section is just a wayfinding CTA.
+        ============================================= -->
+        <section class="campus-compliance" id="compliance" style="padding: 4rem 0; background: var(--color-off-white, #F7F8FA);">
+            <div class="container" style="max-width: 800px;">
+                <div class="section-header section-header--center">
+                    <p class="section-header__tag">Accreditation &amp; Documents</p>
+                    <h2 class="section-header__title">COE Accreditation &amp; Compliance</h2>
+                    <p class="section-header__desc" style="max-width: 700px; margin: 1rem auto 0;">The Clearwater campus is individually accredited by the Council on Occupational Education (COE) and Cognia. View full accreditor information, the campus catalog, written plans, financial accountability reports, safety data, and the school improvement plan.</p>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="clearwater-accreditation.html" class="btn btn--primary btn--lg">View Accreditation &amp; COE Documents <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
         </section>
