@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff &amp; Faculty Resources &mdash; Community Resources &mdash; Pinellas Technical College</title>
+    <meta name="description" content="Professional development, training, and curated supports for PTC staff and faculty working with students who have disabilities (ESE), multilingual learners (ESOL), or returning citizens.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        main { font-size: 17px; line-height: 1.65; }
+
+        .offset-header { background: #fff; border-bottom: 1px solid var(--color-gray-200); padding: 0.75rem 0; }
+        .offset-header__inner {
+            max-width: var(--container-max); margin: 0 auto; padding: 0 1.25rem;
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 1rem; flex-wrap: wrap;
+        }
+        .offset-header__brand {
+            font-family: var(--font-heading); font-weight: 700; font-size: 1.05rem;
+            color: var(--color-green); text-decoration: none;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .offset-header__crumbs {
+            font-size: 0.9rem; color: var(--color-gray-600);
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .offset-header__crumbs a { color: var(--color-gray-700); text-decoration: none; }
+        .offset-header__crumbs a:hover { color: var(--color-green); }
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
+            color: #fff; padding: 2.5rem 0 2.25rem;
+        }
+        .page-hero__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 1.25rem; }
+        .page-hero__eyebrow {
+            display: inline-block; background: rgba(255, 207, 1, 0.18); color: var(--color-yellow);
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 999px; margin-bottom: 0.85rem;
+        }
+        .page-hero h1 { font-size: clamp(1.75rem, 3.8vw, 2.4rem); margin: 0 0 0.5rem; font-weight: 700; }
+        .page-hero p { font-size: 1.05rem; max-width: 760px; line-height: 1.55; opacity: 0.95; }
+
+        .section { padding: 2.25rem 0; }
+        .section--alt { background: var(--color-off-white); }
+        .section__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 1.25rem; }
+        .section h2 { font-size: clamp(1.5rem, 2.8vw, 1.85rem); margin: 0 0 0.4rem; }
+        .section__lede {
+            color: var(--color-gray-700); font-size: 1.02rem;
+            max-width: 720px; margin: 0 0 1.5rem;
+        }
+
+        /* Jump nav within the page */
+        .jumpnav {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;
+            padding: 0.85rem 1rem; background: #fff;
+            border: 1px solid var(--color-gray-200); border-radius: 8px;
+        }
+        .jumpnav__label {
+            font-weight: 700; color: var(--color-gray-700);
+            font-size: 0.9rem; margin-right: 0.5rem;
+        }
+        .jumpnav a {
+            font-size: 0.9rem; color: var(--color-green); font-weight: 600;
+            text-decoration: none; padding: 0.3rem 0.6rem;
+            border-radius: 6px; border: 1px solid transparent;
+        }
+        .jumpnav a:hover { background: var(--color-green-light); border-color: var(--color-green); }
+
+        .resource-grid {
+            display: grid; gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+        .resource-card {
+            background: #fff; border: 1px solid var(--color-gray-200);
+            border-left: 4px solid var(--color-accent-dark);
+            border-radius: 8px; padding: 1.25rem 1.4rem;
+            display: flex; flex-direction: column;
+        }
+        .resource-card h3 {
+            font-family: var(--font-heading); font-size: 1.1rem;
+            margin: 0 0 0.45rem; color: var(--color-gray-900); line-height: 1.25;
+        }
+        .resource-card p {
+            font-size: 0.92rem; color: var(--color-gray-700);
+            line-height: 1.55; margin: 0 0 0.85rem;
+        }
+        .resource-card__cta {
+            margin-top: auto; font-weight: 700; color: var(--color-green); font-size: 0.92rem;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+        }
+        .resource-card__cta:hover { text-decoration: underline; }
+
+        .resource-card--placeholder {
+            background: var(--color-gray-100);
+            border-left-color: var(--color-gray-400);
+        }
+        .resource-card--placeholder h3 i { color: var(--color-gray-500); margin-right: 0.4rem; }
+        .resource-card--placeholder p { color: var(--color-gray-600); }
+
+        .section h2 .anchor-icon {
+            color: var(--color-gray-300); font-size: 0.7em; margin-left: 0.3rem;
+            text-decoration: none; opacity: 0; transition: opacity 0.15s;
+        }
+        .section h2:hover .anchor-icon { opacity: 1; }
+
+
+        /* ---- Persistent sub-nav across all Community Resources pages ---- */
+        .community-nav {
+            background: var(--color-off-white);
+            border-bottom: 1px solid var(--color-gray-200);
+            padding: 0.6rem 0;
+        }
+        .community-nav__inner {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .community-nav__label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-gray-600);
+            margin-right: 0.5rem;
+        }
+        .community-nav__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.38rem 0.85rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            border: 1.5px solid transparent;
+            transition: background 0.12s, color 0.12s;
+        }
+        .community-nav__link:hover {
+            background: var(--color-green-light);
+            color: var(--color-green);
+        }
+        .community-nav__link:focus-visible {
+            outline: 2px solid var(--color-yellow);
+            outline-offset: 2px;
+        }
+        .community-nav__link--active {
+            background: var(--color-green);
+            color: #fff;
+        }
+        .community-nav__link--active:hover {
+            background: var(--color-green-dark);
+            color: #fff;
+        }
+        .community-nav__link i { font-size: 0.85em; }
+
+        .offset-footer {
+            background: var(--color-gray-900); color: var(--color-gray-300);
+            padding: 1.5rem 0; text-align: center; font-size: 0.9rem;
+        }
+        .offset-footer a { color: #fff; text-decoration: underline; }
+
+        .skip-link {
+            position: absolute;
+            top: -100px; left: 0;
+            background: var(--color-green); color: #fff;
+            padding: 0.75rem 1.25rem; font-weight: 700;
+            z-index: 9999; border-radius: 0 0 8px 8px;
+            text-decoration: none;
+            transition: top 0.15s ease;
+        }
+        .skip-link:focus { top: 0; outline: 3px solid var(--color-yellow); outline-offset: 2px; }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="offset-header">
+        <div class="offset-header__inner">
+            <a href="index.html" class="offset-header__brand">
+                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                Pinellas Technical College
+            </a>
+            <nav class="offset-header__crumbs" aria-label="Breadcrumb">
+                <a href="community-resources.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Community Resources</a>
+                <span>&middot;</span>
+                <span aria-current="page">Staff &amp; Faculty</span>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="community-nav" aria-label="Community Resources pages">
+        <div class="community-nav__inner">
+            <span class="community-nav__label">Community Resources:</span>
+            <a href="community-resources.html" class="community-nav__link">
+                <i class="fas fa-house" aria-hidden="true"></i> Hub
+            </a>
+            <a href="community-directory.html" class="community-nav__link">
+                <i class="fas fa-folder-open" aria-hidden="true"></i> Agency Directory
+            </a>
+            <a href="community-staff.html" class="community-nav__link community-nav__link--active">
+                <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> Staff &amp; Faculty
+            </a>
+            <a href="community-employers.html" class="community-nav__link">
+                <i class="fas fa-handshake" aria-hidden="true"></i> Employers
+            </a>
+        </div>
+    </nav>
+
+
+    <section class="page-hero" aria-labelledby="page-title">
+        <div class="page-hero__inner">
+            <span class="page-hero__eyebrow">For staff &amp; faculty</span>
+            <h1 id="page-title">Resources for working with ESE, ESOL &amp; returning students</h1>
+            <p>Professional development, training, and curated supports for teachers and faculty across PTC programs. The PTC Study Group is actively expanding this section. To suggest a resource, email <a href="mailto:shafferma@pcsb.org" style="color: var(--color-yellow);">shafferma@pcsb.org</a>.</p>
+        </div>
+    </section>
+
+    <main id="main">
+        <section class="section">
+            <div class="section__inner">
+
+                <nav class="jumpnav" aria-label="On this page">
+                    <span class="jumpnav__label">On this page:</span>
+                    <a href="#pd">Professional development</a>
+                    <a href="#study-group">Study Group materials</a>
+                    <a href="#related">Related</a>
+                </nav>
+
+                <h2 id="pd">Professional development partners <a href="#pd" class="anchor-icon" aria-hidden="true">#</a></h2>
+                <p class="section__lede">Agencies that explicitly offer training, consultation, or technical assistance to teachers and faculty in Pinellas County.</p>
+
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>FDLRS Gulf Coast</h3>
+                        <p>Florida Diagnostic and Learning Resources System. Human Resource Development (PD for teachers), Child Find, Parent Services, and assistive and instructional technology support for educators serving exceptional children in Hernando, Pasco, and Pinellas counties.</p>
+                        <a class="resource-card__cta" href="https://www.pcsb.org" target="_blank" rel="noopener">pcsb.org <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Project 10 Transition Education Network</h3>
+                        <p>Technical assistance, training, professional development, and resources to Florida school districts on secondary transition services for students with disabilities. Based at USF St. Petersburg.</p>
+                        <a class="resource-card__cta" href="http://www.project10.info/" target="_blank" rel="noopener">project10.info <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>CARD-USF</h3>
+                        <p>Center for Autism and Related Disabilities. Instruction and coaching to families and professionals through a training and assistance model. Free for those serving individuals with autism spectrum disorder or related disabilities.</p>
+                        <a class="resource-card__cta" href="http://card-usf.fmhi.usf.edu" target="_blank" rel="noopener">card-usf.fmhi.usf.edu <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>SEDNET / Pinellas</h3>
+                        <p>Multi-Agency Network for Students with Emotional/Behavioral Disabilities. Cross-agency training for families, educators, and community partners, plus problem-solving support and Response to Intervention guidance.</p>
+                        <a class="resource-card__cta" href="http://www.sednetfl.info" target="_blank" rel="noopener">sednetfl.info <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>VSA Florida (Very Special Arts)</h3>
+                        <p>Professional development on building inclusive learning opportunities in the arts. Statewide, regional, and local workshops for teachers, plus art residency programs that model inclusion strategies and curriculum adaptations.</p>
+                        <a class="resource-card__cta" href="http://www.vsafl.org" target="_blank" rel="noopener">vsafl.org <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Family Network on Disabilities</h3>
+                        <p>Statewide network connecting families, professionals, and concerned citizens to information and resources. Useful for teachers who want to point families toward training, mentoring, and advocacy support.</p>
+                        <a class="resource-card__cta" href="http://www.FNDUSA.org" target="_blank" rel="noopener">FNDUSA.org <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section section--alt">
+            <div class="section__inner">
+                <h2 id="study-group">PTC Study Group materials <a href="#study-group" class="anchor-icon" aria-hidden="true">#</a></h2>
+                <p class="section__lede">Work the Study Group is developing. If you have a resource you'd like to add, share it with <a href="mailto:shafferma@pcsb.org">shafferma@pcsb.org</a>.</p>
+
+                <div class="resource-grid">
+                    <article class="resource-card resource-card--placeholder">
+                        <h3><i class="fas fa-clock" aria-hidden="true"></i>Classroom strategies (coming soon)</h3>
+                        <p>A library of practical classroom strategies, scaffolds, and inclusive teaching practices spanning ESE, ESOL, and returning students. Aimed at PTC's adult-learner context across programs.</p>
+                    </article>
+                    <article class="resource-card resource-card--placeholder">
+                        <h3><i class="fas fa-clock" aria-hidden="true"></i>Session recordings (coming soon)</h3>
+                        <p>Session recordings, handouts, and discussion guides from PTC's Study Group. The ESE book study has sessions 1 and 2 complete; sessions 3 through 5 are in development. ESOL and returning-student sessions are being planned.</p>
+                    </article>
+                    <article class="resource-card resource-card--placeholder">
+                        <h3><i class="fas fa-clock" aria-hidden="true"></i>Referral playbooks (coming soon)</h3>
+                        <p>"When a student tells me X, who do I call?" Quick reference cards organized by common faculty scenarios. Maps the most common situations to the right agency and the right phone number.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section__inner">
+                <h2 id="related">Related <a href="#related" class="anchor-icon" aria-hidden="true">#</a></h2>
+                <p class="section__lede">If you came here looking for something else.</p>
+
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>Agency directory</h3>
+                        <p>Looking up an agency to refer a student? Use the full searchable directory of about 40 Pinellas County community agencies.</p>
+                        <a class="resource-card__cta" href="community-directory.html">Browse the directory <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Employer resources</h3>
+                        <p>If you advise students about job placement and want to know which employer-side programs (Federal Bonding, WOTC) can help your students get hired, this is the page to share.</p>
+                        <a class="resource-card__cta" href="community-employers.html">Open employer resources <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Community Resources hub</h3>
+                        <p>The main landing page that ties these resources together. Useful when sending a single link to someone unsure where to start.</p>
+                        <a class="resource-card__cta" href="community-resources.html">Go to the hub <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="offset-footer">
+        <p>Pinellas Technical College &middot; <a href="community-resources.html">Community Resources hub</a> &middot; Built by the PTC Study Group.</p>
+    </footer>
+</body>
+</html>

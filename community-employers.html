@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employers &amp; Community Partners &mdash; Community Resources &mdash; Pinellas Technical College</title>
+    <meta name="description" content="Hiring programs, tax credits, and community partnerships for Pinellas County employers interested in expanding their hiring pool to PTC graduates with disabilities, multilingual workers, and returning citizens.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        main { font-size: 17px; line-height: 1.65; }
+
+        .offset-header { background: #fff; border-bottom: 1px solid var(--color-gray-200); padding: 0.75rem 0; }
+        .offset-header__inner {
+            max-width: var(--container-max); margin: 0 auto; padding: 0 1.25rem;
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 1rem; flex-wrap: wrap;
+        }
+        .offset-header__brand {
+            font-family: var(--font-heading); font-weight: 700; font-size: 1.05rem;
+            color: var(--color-green); text-decoration: none;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .offset-header__crumbs {
+            font-size: 0.9rem; color: var(--color-gray-600);
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+        .offset-header__crumbs a { color: var(--color-gray-700); text-decoration: none; }
+        .offset-header__crumbs a:hover { color: var(--color-green); }
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
+            color: #fff; padding: 2.5rem 0 2.25rem;
+        }
+        .page-hero__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 1.25rem; }
+        .page-hero__eyebrow {
+            display: inline-block; background: rgba(255, 207, 1, 0.18); color: var(--color-yellow);
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 999px; margin-bottom: 0.85rem;
+        }
+        .page-hero h1 { font-size: clamp(1.75rem, 3.8vw, 2.4rem); margin: 0 0 0.5rem; font-weight: 700; }
+        .page-hero p { font-size: 1.05rem; max-width: 760px; line-height: 1.55; opacity: 0.95; }
+
+        .section { padding: 2.25rem 0; }
+        .section--alt { background: var(--color-off-white); }
+        .section__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 1.25rem; }
+        .section h2 { font-size: clamp(1.5rem, 2.8vw, 1.85rem); margin: 0 0 0.4rem; }
+        .section__lede {
+            color: var(--color-gray-700); font-size: 1.02rem;
+            max-width: 720px; margin: 0 0 1.5rem;
+        }
+
+        /* Why-this-matters callout */
+        .why-callout {
+            background: var(--color-green-light);
+            border-left: 4px solid var(--color-green);
+            border-radius: 8px; padding: 1.15rem 1.4rem;
+            margin-bottom: 2rem;
+        }
+        .why-callout h3 {
+            margin: 0 0 0.4rem; font-size: 1.05rem;
+            color: var(--color-green);
+        }
+        .why-callout p { margin: 0; font-size: 0.95rem; color: var(--color-gray-800); line-height: 1.6; }
+
+        .resource-grid {
+            display: grid; gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+        .resource-card {
+            background: #fff; border: 1px solid var(--color-gray-200);
+            border-left: 4px solid var(--color-green);
+            border-radius: 8px; padding: 1.25rem 1.4rem;
+            display: flex; flex-direction: column;
+        }
+        .resource-card h3 {
+            font-family: var(--font-heading); font-size: 1.1rem;
+            margin: 0 0 0.45rem; color: var(--color-gray-900); line-height: 1.25;
+        }
+        .resource-card__tagline {
+            font-size: 0.82rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.05em; color: var(--color-accent-dark);
+            margin: 0 0 0.5rem;
+        }
+        .resource-card p {
+            font-size: 0.92rem; color: var(--color-gray-700);
+            line-height: 1.55; margin: 0 0 0.85rem;
+        }
+        .resource-card__cta {
+            margin-top: auto; font-weight: 700; color: var(--color-green); font-size: 0.92rem;
+            text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+        }
+        .resource-card__cta:hover { text-decoration: underline; }
+
+        .resource-card--placeholder {
+            background: var(--color-gray-100);
+            border-left-color: var(--color-gray-400);
+        }
+        .resource-card--placeholder h3 i { color: var(--color-gray-500); margin-right: 0.4rem; }
+        .resource-card--placeholder p { color: var(--color-gray-600); }
+
+        .contact-band {
+            background: var(--color-green); color: #fff;
+            border-radius: 12px; padding: 1.85rem;
+        }
+        .contact-band h2 { color: #fff; margin-top: 0; }
+        .contact-band p { color: rgba(255,255,255,0.92); }
+        .contact-band a { color: var(--color-yellow); font-weight: 700; }
+
+
+        /* ---- Persistent sub-nav across all Community Resources pages ---- */
+        .community-nav {
+            background: var(--color-off-white);
+            border-bottom: 1px solid var(--color-gray-200);
+            padding: 0.6rem 0;
+        }
+        .community-nav__inner {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .community-nav__label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-gray-600);
+            margin-right: 0.5rem;
+        }
+        .community-nav__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.38rem 0.85rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            border: 1.5px solid transparent;
+            transition: background 0.12s, color 0.12s;
+        }
+        .community-nav__link:hover {
+            background: var(--color-green-light);
+            color: var(--color-green);
+        }
+        .community-nav__link:focus-visible {
+            outline: 2px solid var(--color-yellow);
+            outline-offset: 2px;
+        }
+        .community-nav__link--active {
+            background: var(--color-green);
+            color: #fff;
+        }
+        .community-nav__link--active:hover {
+            background: var(--color-green-dark);
+            color: #fff;
+        }
+        .community-nav__link i { font-size: 0.85em; }
+
+        .offset-footer {
+            background: var(--color-gray-900); color: var(--color-gray-300);
+            padding: 1.5rem 0; text-align: center; font-size: 0.9rem;
+        }
+        .offset-footer a { color: #fff; text-decoration: underline; }
+
+        .skip-link {
+            position: absolute;
+            top: -100px; left: 0;
+            background: var(--color-green); color: #fff;
+            padding: 0.75rem 1.25rem; font-weight: 700;
+            z-index: 9999; border-radius: 0 0 8px 8px;
+            text-decoration: none;
+            transition: top 0.15s ease;
+        }
+        .skip-link:focus { top: 0; outline: 3px solid var(--color-yellow); outline-offset: 2px; }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="offset-header">
+        <div class="offset-header__inner">
+            <a href="index.html" class="offset-header__brand">
+                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                Pinellas Technical College
+            </a>
+            <nav class="offset-header__crumbs" aria-label="Breadcrumb">
+                <a href="community-resources.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Community Resources</a>
+                <span>&middot;</span>
+                <span aria-current="page">Employers &amp; Partners</span>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="community-nav" aria-label="Community Resources pages">
+        <div class="community-nav__inner">
+            <span class="community-nav__label">Community Resources:</span>
+            <a href="community-resources.html" class="community-nav__link">
+                <i class="fas fa-house" aria-hidden="true"></i> Hub
+            </a>
+            <a href="community-directory.html" class="community-nav__link">
+                <i class="fas fa-folder-open" aria-hidden="true"></i> Agency Directory
+            </a>
+            <a href="community-staff.html" class="community-nav__link">
+                <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> Staff &amp; Faculty
+            </a>
+            <a href="community-employers.html" class="community-nav__link community-nav__link--active">
+                <i class="fas fa-handshake" aria-hidden="true"></i> Employers
+            </a>
+        </div>
+    </nav>
+
+
+    <section class="page-hero" aria-labelledby="page-title">
+        <div class="page-hero__inner">
+            <span class="page-hero__eyebrow">For employers &amp; partners</span>
+            <h1 id="page-title">Hiring graduates with barriers, with less risk</h1>
+            <p>For Pinellas County employers interested in hiring PTC graduates and other workers who face barriers to employment. The federal and state programs below provide bonding, tax credits, on-the-job training support, and an introduction service through CareerSource Pinellas.</p>
+        </div>
+    </section>
+
+    <main id="main">
+        <section class="section">
+            <div class="section__inner">
+
+                <div class="why-callout">
+                    <h3>Why this page exists</h3>
+                    <p>PTC graduates often face structural barriers when applying for jobs: a disability, a non-native English background, or a record. Employers often want to hire from this pool but worry about insurance, training cost, or risk. The programs on this page exist exactly to defray those costs. Most are free. None of them require you to be a large employer.</p>
+                </div>
+
+                <div class="resource-grid">
+
+                    <article class="resource-card">
+                        <p class="resource-card__tagline">Introductions</p>
+                        <h3>CareerSource Pinellas</h3>
+                        <p>Pinellas County's workforce board acts as the primary bridge between local employers and job seekers with barriers. Post jobs at no cost, get pre-screened candidates, host on-site recruitment events, and coordinate with the Ticket to Work program for Social Security beneficiaries.</p>
+                        <a class="resource-card__cta" href="https://www.careersourcepinellas.com" target="_blank" rel="noopener">careersourcepinellas.com <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="resource-card">
+                        <p class="resource-card__tagline">Bonding</p>
+                        <h3>Federal Bonding Program</h3>
+                        <p>Free fidelity bonds for employers hiring at-risk workers, including people with criminal records, who would not normally qualify for commercial bonding. Bonds cover the first six months at no cost to the employer. Administered locally through CareerSource centers.</p>
+                        <a class="resource-card__cta" href="https://bonds4jobs.com" target="_blank" rel="noopener">bonds4jobs.com <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="resource-card">
+                        <p class="resource-card__tagline">Tax credit</p>
+                        <h3>Work Opportunity Tax Credit (WOTC)</h3>
+                        <p>Federal tax credit for employers who hire from targeted groups facing barriers to employment, including returning citizens (ex-felons), SSI recipients, and Vocational Rehabilitation referrals. Credit ranges from $1,200 to $9,600 per qualifying employee depending on the target group.</p>
+                        <a class="resource-card__cta" href="https://www.dol.gov/agencies/eta/wotc" target="_blank" rel="noopener">dol.gov/agencies/eta/wotc <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="resource-card">
+                        <p class="resource-card__tagline">Training support</p>
+                        <h3>Vocational Rehabilitation Employer Services</h3>
+                        <p>Florida VR partners with employers to identify candidates, fund on-the-job training, and arrange workplace accommodations. Free consulting to design jobs that work for both the employee and the business.</p>
+                        <a class="resource-card__cta" href="https://www.rehabworks.org" target="_blank" rel="noopener">rehabworks.org <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="resource-card">
+                        <p class="resource-card__tagline">Established partner</p>
+                        <h3>Goodwill Industries-Suncoast</h3>
+                        <p>Operates employment and training services for people with disabilities and other barriers to work, including returning citizens. Can supply job-ready candidates and on-site coaching for new hires. A useful introduction if you don't know where to start.</p>
+                        <a class="resource-card__cta" href="https://www.goodwill-suncoast.org" target="_blank" rel="noopener">goodwill-suncoast.org <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="resource-card resource-card--placeholder">
+                        <h3><i class="fas fa-clock" aria-hidden="true"></i>Pinellas employers who hire (coming soon)</h3>
+                        <p>The Study Group is building a list of local Pinellas employers who actively hire from ESE, ESOL, and returning-citizen pools. If your business should be on this list, contact the Study Group below.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--alt">
+            <div class="section__inner">
+                <div class="contact-band">
+                    <h2>Talk to PTC</h2>
+                    <p>If you're a Pinellas employer interested in hiring PTC graduates or want to set up an on-campus event, reach out. We can connect you to the right campus contact and to the workforce partners above.</p>
+                    <p style="margin-bottom:0;">Email <a href="mailto:shafferma@pcsb.org">shafferma@pcsb.org</a>.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="offset-footer">
+        <p>Pinellas Technical College &middot; <a href="community-resources.html">Community Resources hub</a> &middot; Built by the PTC Study Group.</p>
+    </footer>
+</body>
+</html>

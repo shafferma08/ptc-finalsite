@@ -1,0 +1,325 @@
+<!--
+  PTC Canvas Login Portals + Outage Notice
+  Drop-in Finalsite Composer embed (Custom Code / HTML element).
+  All styles are scoped under .canvas-portal-wrapper so nothing leaks.
+
+  Outage banner can be removed once Canvas access is restored: delete the
+  <aside class="outage-banner"> block and the .outage-banner CSS rule.
+-->
+
+<div>
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;800&display=swap');
+    .canvas-portal-wrapper {
+        --bg-color: #f8f8f8;
+        --card-bg: #ffffff;
+        --text-color: #0f172a;
+        --accent-blue: #032b5b;
+        --accent-green: #008142;
+        --accent-orange: #FFCF01;
+        --danger-bg: #fef2f2;
+        --danger-border: #f87171;
+        --danger-text: #b91c1c;
+        font-family: 'Outfit', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        padding: 50px 20px;
+        margin: 0 auto;
+        border-radius: 16px;
+        box-sizing: border-box;
+    }
+    .canvas-portal-wrapper * {
+        box-sizing: border-box;
+    }
+    .canvas-portal-wrapper .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .canvas-portal-wrapper h1 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+        color: var(--accent-green);
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+    }
+    @media (min-width: 768px) {
+        .canvas-portal-wrapper h1 {
+            font-size: 3.5rem;
+        }
+    }
+    .canvas-portal-wrapper .subtitle {
+        font-size: 1.15rem;
+        color: #475569;
+        margin-bottom: 40px;
+    }
+    /* OUTAGE BANNER (temporary, top-of-page) */
+    .canvas-portal-wrapper .outage-banner {
+        background: var(--danger-text);
+        border: 2px solid var(--danger-text);
+        border-radius: 12px;
+        padding: 24px 28px;
+        margin: 0 auto 40px auto;
+        color: #ffffff;
+        text-align: left;
+        box-shadow: 0 10px 15px -3px rgba(185, 28, 28, 0.25), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    }
+    .canvas-portal-wrapper .outage-banner__title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        font-size: 1.4rem;
+        margin: 0 0 12px 0;
+        line-height: 1.25;
+        color: #ffffff;
+    }
+    .canvas-portal-wrapper .outage-banner__icon {
+        flex: 0 0 auto;
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--accent-orange);
+        color: #0f172a;
+        border-radius: 50%;
+        font-weight: 800;
+        font-size: 1.1rem;
+        line-height: 1;
+    }
+    .canvas-portal-wrapper .outage-banner p {
+        margin: 8px 0;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #ffffff;
+    }
+    .canvas-portal-wrapper .outage-banner strong {
+        color: var(--accent-orange);
+    }
+    /* WARNING BOX */
+    .canvas-portal-wrapper .warning-zone {
+        background: var(--danger-bg);
+        border: 2px dashed var(--danger-border);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 50px;
+        color: #1e293b;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+    .canvas-portal-wrapper .warning-title {
+        color: var(--danger-text);
+        font-weight: 800;
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .canvas-portal-wrapper .warning-zone p {
+        margin: 8px 0;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    /* RESPONSIVE GRID LAYOUT */
+    .canvas-portal-wrapper .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+        align-items: stretch;
+    }
+    @media (min-width: 850px) {
+        .canvas-portal-wrapper .grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    /* CARD STYLES */
+    .canvas-portal-wrapper .card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        padding: 35px 25px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        color: #1e293b;
+        text-align: center;
+        text-decoration: none;
+    }
+    .canvas-portal-wrapper .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+    .canvas-portal-wrapper .icon-box {
+        width: 85px;
+        height: 85px;
+        margin: 0 auto 20px auto;
+        border-radius: 50%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+        border: 1px solid #e2e8f0;
+    }
+    .canvas-portal-wrapper .icon-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .canvas-portal-wrapper .icon-box.contain-img img {
+        width: 82%;
+        height: auto;
+        object-fit: contain;
+    }
+    .canvas-portal-wrapper .card h2 {
+        font-size: 1.45rem;
+        margin-top: 5px;
+        margin-bottom: 12px;
+        font-weight: 800;
+    }
+    .canvas-portal-wrapper .card p {
+        color: #475569;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-top: 0;
+        margin-bottom: 25px;
+        flex-grow: 1;
+    }
+    .canvas-portal-wrapper .card-meta {
+        margin-bottom: 25px;
+        font-size: 0.9rem;
+        color: #64748b;
+    }
+    .canvas-portal-wrapper .card-meta strong {
+        color: #334155;
+        font-weight: 800;
+    }
+    .canvas-portal-wrapper .btn {
+        display: inline-block;
+        padding: 14px 25px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.2s;
+        width: 100%;
+        font-size: 1rem;
+        border: none;
+        cursor: pointer;
+    }
+    .canvas-portal-wrapper .card-staff {
+        border-top: 8px solid var(--accent-blue);
+    }
+    .canvas-portal-wrapper .card-staff h2 {
+        color: var(--accent-blue);
+    }
+    .canvas-portal-wrapper .card-staff .btn {
+        background-color: var(--accent-blue);
+        color: #ffffff;
+    }
+    .canvas-portal-wrapper .card-staff .btn:hover {
+        background-color: #021a38;
+    }
+    .canvas-portal-wrapper .card-cert {
+        border-top: 8px solid var(--accent-green);
+    }
+    .canvas-portal-wrapper .card-cert h2 {
+        color: var(--accent-green);
+    }
+    .canvas-portal-wrapper .card-cert .btn {
+        background-color: var(--accent-green);
+        color: #ffffff;
+    }
+    .canvas-portal-wrapper .card-cert .btn:hover {
+        background-color: #005c2f;
+    }
+    .canvas-portal-wrapper .card-app {
+        border-top: 8px solid var(--accent-orange);
+    }
+    .canvas-portal-wrapper .card-app h2 {
+        color: #1e293b;
+    }
+    .canvas-portal-wrapper .card-app .btn {
+        background-color: var(--accent-orange);
+        color: #0f172a;
+        border: 1px solid #e2e8f0;
+    }
+    .canvas-portal-wrapper .card-app .btn:hover {
+        background-color: #e6bb00;
+    }
+    .canvas-portal-wrapper .footer {
+        margin-top: 50px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 25px;
+        color: #475569;
+        font-size: 1rem;
+        text-align: center;
+    }
+    .canvas-portal-wrapper .footer a {
+        color: var(--accent-blue);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 2px 6px;
+        border-radius: 4px;
+        transition: background 0.2s, color 0.2s;
+    }
+    .canvas-portal-wrapper .footer a:hover {
+        background-color: rgba(3, 43, 91, 0.1);
+        text-decoration: underline;
+    }
+</style>
+</div>
+<div class="canvas-portal-wrapper">
+<div class="container">
+
+<aside class="outage-banner" role="alert" aria-live="polite" aria-labelledby="outage-banner-title">
+<h2 id="outage-banner-title" class="outage-banner__title">
+<span class="outage-banner__icon" aria-hidden="true">!</span>
+Notice: Canvas is Currently Unavailable
+</h2>
+<p>Canvas access is temporarily disabled while Pinellas County Schools completes an internal investigation. There is no specific restoration timeline at this time.</p>
+<p>If you need to reach your instructor or have questions about coursework, please contact them directly via <strong>PCSB email</strong>.</p>
+<p>We will update this notice as more information becomes available.</p>
+</aside>
+
+<header class="header-content">
+<h1>Canvas Login Portals</h1>
+<p class="subtitle">Choose the correct Canvas pathway for your program.</p>
+</header>
+<section aria-labelledby="warning-heading" class="warning-zone">
+<div class="warning-title" id="warning-heading"><span aria-hidden="true">&#9888;&#65039;</span> CRITICAL: PATHWAYS MATTER <span aria-hidden="true">&#9888;&#65039;</span></div>
+<p><strong>The specific Canvas link (URL) you use determines which credentials will work.</strong></p>
+<p>If you try to log in using the wrong pathway (e.g., a PTC Student using the Staff link), <strong>your Canvas login will fail</strong> even if your password is correct.</p>
+<p>Please ensure you are clicking the <em>exact</em> Canvas link for your specific program below.</p>
+</section>
+<main class="grid"><!-- Card 1: Staff -->
+<article class="card card-staff">
+<div class="icon-box contain-img"><img alt="Pinellas County Schools Logo" src="https://myptecorg.finalsite.com/fs/resource-manager/view/c78fb74d-cd6f-404e-a5ad-58d975a35d49" /></div>
+<h2>Staff &amp; Dual Enrollment</h2>
+<p>For Instructors and Dual Enrollment students.</p>
+<div class="card-meta">Credentials: <strong>pcsb.org</strong> email</div>
+<a class="btn" href="https://pcsb.instructure.com/login/saml/211" rel="noopener" target="_blank">Launch Staff Portal</a></article>
+<!-- Card 2: PTC Certificate -->
+<article class="card card-cert">
+<div class="icon-box"><img alt="Pinellas Technical College Logo" src="https://myptecorg.finalsite.com/fs/resource-manager/view/57a3d459-493a-47c8-8313-ea90d4519e0b" /></div>
+<h2>PTC Career Students</h2>
+<p>For standard postsecondary Certificate/Career students.</p>
+<div class="card-meta">Credentials: <strong>myptc.edu</strong> email</div>
+<a class="btn" href="https://pcsb.instructure.com/login/saml/213" rel="noopener" target="_blank">Launch Student Portal</a></article>
+<!-- Card 3: Apprenticeships -->
+<article class="card card-app">
+<div class="icon-box"><img alt="Pinellas Technical College Logo" src="https://myptecorg.finalsite.com/fs/resource-manager/view/57a3d459-493a-47c8-8313-ea90d4519e0b" /></div>
+<h2>Short Course / Apprentice</h2>
+<p>For Apprenticeships and specialized short-term courses.</p>
+<div class="card-meta">Credentials provided through program</div>
+<a class="btn" href="https://pcsb.instructure.com/login/canvas" rel="noopener" target="_blank">Launch Direct Portal</a></article>
+</main>
+<footer class="footer">
+<p>Need help logging in? Contact <a href="mailto:shafferma@pcsb.org">Marianne Shaffer</a></p>
+</footer>
+</div>
+</div>
