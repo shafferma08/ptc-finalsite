@@ -271,35 +271,6 @@
             font-weight: 600;
         }
 
-        /* Enrollment Options grid */
-        .enrollment-options-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        .enrollment-option {
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid #e8ecf1;
-        }
-        .enrollment-option h3 {
-            font-family: var(--font-heading);
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin: 0 0 0.75rem;
-            color: var(--color-gray-900);
-        }
-        .enrollment-option p {
-            font-size: 0.95rem;
-            line-height: 1.65;
-            color: var(--color-gray-700, #4a5568);
-            margin: 0 0 0.75rem;
-        }
-        .enrollment-option p:last-child {
-            margin-bottom: 0;
-        }
 
         /* Statute list */
         .statute-list {
@@ -468,7 +439,6 @@
                                 <div class="dropdown__column">
                                     <ul>
                                         <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
-                                        <li><a href="admissions.html#enrollment-options">Enrollment Options</a></li>
                                         <li><a href="acceptable-proofs-of-residency.html">Acceptable Proofs of Residency</a></li>
                                         <li><a href="admissions.html#pathways">Transfer Students</a></li>
                                         <li><a href="admissions.html#pathways">Readmission</a></li>
@@ -608,8 +578,7 @@
                 <p class="admissions-toc__label">On this page:</p>
                 <ul class="admissions-toc__list">
                     <li><a href="#how-to-apply">How to Apply</a></li>
-                    <li><a href="#enrollment-options">Enrollment Options</a></li>
-                    <li><a href="#pathways">Pathways</a></li>
+                    <li><a href="#pathways">Transfer &amp; Readmission</a></li>
                     <li><a href="#testing">Testing</a></li>
                     <li><a href="#campus-tours">Campus Visits</a></li>
                     <li><a href="#accommodations">Accommodations</a></li>
@@ -706,39 +675,6 @@
         </section>
 
         <!-- ============================================
-             ENROLLMENT OPTIONS (NEW Stage 6 add A4)
-             Verbatim from extracted/{clw,stp}/admissions-enrollment-options.md
-             (byte-identical CLW=STP, 2675 chars).
-        ============================================= -->
-        <section class="admissions-section" id="enrollment-options">
-            <div class="container">
-                <div class="section-header">
-                    <p class="section-header__tag">Adult Student Status</p>
-                    <h2 class="section-header__title">Enrollment Options</h2>
-                </div>
-                <p class="lead">Students who are at least 16 years of age and not currently enrolled in a secondary education program in the Pinellas County School System are considered adult students. Students are expected to enroll on a full-time basis each fee period. With prior approval, a student may be eligible to enroll on a half-time basis for a fee period.</p>
-
-                <div class="enrollment-options-grid">
-                    <div class="enrollment-option">
-                        <h3>Course Intent / Definition</h3>
-                        <p>Programs consist of a planned sequence of instruction consisting of several Occupational Completion Points (OCPs). The structure will allow students to complete specified portions of the program for employment or to remain for advanced training. A student who completes the applicable competencies at any occupational completion point may either continue with the training (working toward the Certificate of Program Completion) or become an occupational completer. The intent for all career technical students is to be employed in a job-related field within the first six months after completion.</p>
-                    </div>
-                    <div class="enrollment-option">
-                        <h3>Career Technical Certificate Program</h3>
-                        <p>Students who complete all required Occupational Completion Points for a state-identified job preparatory program and meet state literacy requirements will be awarded a Certificate of Program Completion.</p>
-                        <p>Students receive grades, transcripts and certificates. Upon request, students who exit prior to program completion may be given a certificate to verify completion points mastered.</p>
-                        <p>An OCP completer must meet state literacy requirements for all terminal completion points. (Terminal completion points are identified with an asterisk (*) on each program listing.)</p>
-                    </div>
-                    <div class="enrollment-option">
-                        <h3>Continuing Workforce Education</h3>
-                        <p>Courses are designed to provide students with instruction that do not result in a career technical certificate. The content may vary as a result of industry and student needs. Instruction in these courses is for students training for license or certificate renewal, new or expanding businesses, retraining of employees whose occupations are changing so rapidly because of the products or services the employers offer, or for students who are enhancing occupational skills necessary to maintain current employment, cross train, or upgrade employment. Students who require confirmation for employment must submit their request in writing to the Records Office, while still enrolled in the course. Records will verify completed courses and issue official documentation. Continuing workforce education courses are noncredit, nontransferable and no transcripts are maintained by this school.</p>
-                        <p>The intent of the course/instruction determines whether a student is enrolled as a vocational certificate student or a continuing workforce education student.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ============================================
              ADMISSION PATHWAYS
              Stage 6 build 2026-04-30: rewritten Transfer + Readmission
              cards verbatim from extracted/{clw,stp}/admissions-{transfer,readmission}.md
@@ -749,9 +685,9 @@
             <div class="container">
                 <div class="section-header section-header--center">
                     <p class="section-header__tag">Your Path to PTC</p>
-                    <h2 class="section-header__title">Admission Pathways</h2>
+                    <h2 class="section-header__title">Transfer &amp; Readmission</h2>
                 </div>
-                <div class="info-cards info-cards--two-col">
+                <div class="info-cards" style="grid-template-columns: 1fr; gap: 1.5rem; max-width: 860px; margin: 2rem auto 0;">
                     <div class="info-card">
                         <div class="info-card__icon"><i class="fas fa-exchange-alt" aria-hidden="true"></i></div>
                         <div class="info-card__content">
