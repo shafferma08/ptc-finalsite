@@ -2,7 +2,8 @@
 
 **Generated:** 2026-05-04
 **Method:** WebFetch scout of www / clearwater / stpete subsites + targeted brute-force slug probes per the Stage 1 binding rule (`PROCESS.md` 2026-04-30 update). myptc.edu (Finalsite) returns clean nav data on this domain. Stage 2 verbatim extraction will use WebFetch (rendered DOM) for Finalsite pages, given the JS-render gap caught during the 2026-05-03 admissions drift reconciliation.
-**Redesign target:** `tuition-aid.html` (institutional, single page) with sections: `#rates`, `#pay`, `#fafsa`, `#federal-state`, `#scholarships`, `#net-price`, `#veterans`, `#faq`.
+
+**Redesign target (revised 2026-05-18):** three pages following the Admissions cluster IA pattern. `tuition-aid.html` (institutional: refund policy, FAFSA framework, scholarship overview, NPC explanation, general policy) + `clearwater-tuition.html` (NEW per-campus action: campus-specific NPC link, financial aid contacts, military-veteran resources, scholarship application process) + `stpete-tuition.html` (NEW per-campus action: campus-specific NPC, FA contacts Schnell + Mitchell). Per-campus split locks in the same institutional-on-www / action-on-campus IA the Admissions cluster restructured into on 2026-05-18. See `admissions/IA-RESTRUCTURE-2026-05-18.md` for the rationale. Original target was single-page `tuition-aid.html` with per-campus cards; that pattern was retired across the redesign for the reasons documented in the Admissions restructure (campus bounce friction, page bloat, drift risk, operational mismatch with how each campus owns its own intake). Stage 4 RECOMMENDATIONS will plan the three-page split in detail.
 
 ---
 

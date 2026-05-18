@@ -4,6 +4,81 @@ This file tracks daily work sessions on the PTC website redesign. Each entry rec
 
 ---
 
+## May 18, 2026 — schedule-stpete restructure + Admissions cluster IA restructure (interactive session with Marianne)
+
+**Two substantive pieces of work in one session.**
+
+### Part 1 — schedule-stpete.html restructure
+
+Marianne received batched counselor emails with Adult Education + Apprenticeship schedules for the St. Petersburg campus. Restructured `schedule-stpete.html` to match `schedule-clearwater.html` style/format:
+
+- Added Category filter chips (All / Full-Time Programs / Adult Education / Apprenticeships) and section headings within the table, alphabetized within each section
+- Added 3 Adult Education rows (ABE/GED/ASB, ESOL Daytime, ESOL Evening) verbatim from counselor email
+- Added 8 Apprenticeship rows verbatim from counselor email; Plumbing Technology Apprenticeship intentionally omitted per follow-up email noting "critical changes" pending
+- Added new location badges for off-campus apprenticeship sites: St. Pete Fire and Rescue Facilities (red), BayCare Facilities (blue, for Practical Nursing Apprenticeship)
+- Added apprenticeship asterisk note ("Employment with participating agency required before registration") inline next to the Apprenticeships category heading, using counselor's verbatim wording
+- Renamed start date column from "Start Terms" to "Start Date" with "Terms 1, 3, 5" prefix for full-time program term lists, "TBD" for Adult Ed, specific dates for some apprenticeships ("9/9/2026 and 2/24/2027", "January 2027")
+- Disambiguated CSIT (added (CVAEC) / (Main) suffixes) and ESOL (added Daytime / Evening suffixes)
+- Practical Nursing Apprenticeship at BayCare uses daysLabel: "Varies" and timeLabel: "—" per counselor's verbatim source (no specific days/times available)
+
+### Part 2 — Admissions cluster IA restructure
+
+Marianne questioned the consolidated-www-admissions IA built on 2026-04-30. Her concern: campus pages have no admissions content; campus visitors get bounced to www; admissions.html ballooned to 1300 lines. Reopened the cluster (`verified` → `building` → `verified`) and rebuilt as three-page split matching live IA.
+
+**Files created:**
+
+- `clearwater-admissions.html` (NEW per-campus action page) — Apply Online green banner + 6-card Application Checklist + FAFSA section with code 005605 prominent + CASAS+TEAS testing schedules side-by-side at >=900px (with Merritt Scott TEAS contact verbatim) + Accommodations callout. All content verbatim from CLW counselors/admissions hub extract + CLW testing extract + CLW shadowing PDF wrapper.
+- `stpete-admissions.html` (NEW per-campus action page) — same structure with STP-specific FAFSA code 013917, Joanne Schnell (VA) + Sabrina Mitchell (Pell/other) financial aid contacts verbatim, CASAS/TEAS schedules verbatim, shadow visit routes to counselor inquiry per Marianne's D1. Items absent from STP's own extract (outside funding, accommodations, pay-fees) pulled verbatim from www extract with HTML comment attribution.
+- `docs/audit/admissions/IA-RESTRUCTURE-2026-05-18.md` — Stage 4 addendum documenting the institutional + per-campus split decision, content distribution matrix, two-campus classification per topic, migration order, three Q-questions answered (full process on each campus / FAFSA codes shown on both / STP accommodations short note + dual cross-link).
+
+**Files updated:**
+
+- `admissions.html` — stripped per-campus CASAS/TEAS testing schedule cards and per-campus shadowing cards (removed lines ~1100-1146 and ~1167-1180), replaced with `campus-cta-strip` blocks routing users to clearwater-admissions or stpete-admissions for actual schedules and contacts. CTA band rebuilt as dual-campus ("Apply at Clearwater" / "Apply at St. Petersburg" + Request Info). Hero subtitle reframed to direct campus-bound users to campus admissions pages. Institutional content kept verbatim: 8-step process, age rule, 5 start dates, residency, transfer/readmission, enrollment options, accommodations institutional sentence, TABE/Wonderlic/CASAS/TEAS overview.
+- 22 campus-prefixed HTML files (clearwater-*, stpete-*, welding-clearwater, welding-stpete, schedule-clearwater, schedule-stpete) — bulk-updated via sed to point nav dropdown + footer admissions links to the campus admissions page instead of institutional admissions. 133 references reduced to intentional residuals (institutional cross-links on the new campus admissions pages + cross-campus pages like welding-advanced and campus-maps that legitimately link to institutional). Three body links updated manually: clearwater-contact + stpete-contact (Schedule a Visit shadow links) and stpete-counselors ("View Admissions Steps" CTA).
+- `_templates/shell-clearwater.html` and `_templates/shell-stpete.html` — footer Quick Links updated so future pages built from these templates point at the campus admissions page by default.
+- `docs/audit/CLUSTERS.md` row 5 — Admissions status: `verified` → `building` (during the day) → `verified` (close); replaced 2026-05-03 note with restructure summary.
+- `docs/audit/tuition/inventory.md` — added "Redesign target (revised 2026-05-18)" line locking in the same three-page split for the in-progress Tuition cluster, so Stage 4 plans against the right architecture from the start.
+
+**Design + accessibility reviews dispatched mid-session:**
+
+`persona-designer` and `persona-accessibility` reviewed `clearwater-admissions.html` and `stpete-admissions.html` in parallel. Findings classified as page-specific (fixed) vs sitewide (logged to follow-ups). Applied fixes:
+
+1. Em-dash in STP financial aid contacts → commas (verbatim rule violation)
+2. Hero contrast — removed `opacity: 0.85/0.7/0.92` tricks, used solid white / rgba `0.95` / `0.85` to clear WCAG AA on white-on-green gradient
+3. CASAS card visual unbalance on CLW — added parallel "Schedule CASAS" contact footer mirroring the TEAS Merritt Scott block
+4. FAFSA School Code visual hierarchy — reduced 2.25rem → 1.85rem so it sits below the section H2
+5. Apply Online green banner stacking breakpoint — moved from 768px to 960px (CTA crowding at small-laptop widths)
+6. Application Checklist heading — bumped 1.3rem → 1.5rem to match Apply Online H3
+7. `→` arrows in card CTAs replaced with FontAwesome icons (screen readers were announcing "right arrow")
+8. Redundant `style="background: var(--color-white)"` on `.campus-card` removed (class already sets it)
+9. **`.apply-secondary-card` (one-off) refactored to canonical `.card card--accent card--lift`** per house rules — removed ~80 lines of CSS, uses canonical pattern from styles.css
+10. Duplicate breadcrumb separator (`<span aria-hidden="true">/</span>` + CSS `::after`) — kept CSS, removed inline span
+
+**Decisions made:**
+
+1. **Three-page admissions split, not single-www-page with per-campus cards.** Marianne questioned the 2026-04-30 build's IA. Single-page consolidation was an IA invention; live actually publishes campus admissions hubs on both subsites. Three-page split (institutional + 2 campus) restores faithful verbatim, matches operational reality (each campus runs its own intake), and removes the campus-bounce friction.
+2. **Application Checklist (not numbered "How to Apply" steps).** Marianne flagged that the 6 process items aren't strictly sequential — applicants do them in different orders. Restructured as un-numbered cards: prominent green Apply Online banner up top + 6 supporting action cards in a 3-col responsive grid below. Heading "Application Checklist", lede "Work through these as they apply to you."
+3. **Canonical `.card` over one-off `.apply-secondary-card`.** Per house rules requiring use of canonical components from styles.css. Refactor took 30 lines of markup change per page, deleted ~80 lines of CSS per page.
+4. **CASAS + TEAS side-by-side at >=900px**, stacks below. Marianne preferred two-column layout when there's room. Added new `.testing-grid` CSS to both campus pages.
+5. **Apply card grid locked at 3 columns on desktop**, 2 on tablet (1024-768), 1 on mobile (<640). Marianne wanted 3x3 (6 cards in 3-col) instead of the original `auto-fit` minmax variable columns.
+6. **Q1-Q3 IA decisions for the restructure** (recorded in IA-RESTRUCTURE-2026-05-18.md): full process verbatim on each campus page (not link-to-www); both FAFSA codes shown on www AND on each campus page; STP accommodations is a short note + cross-links to both targets (institutional admissions accommodations + consumer-information accessibility).
+7. **Tuition cluster will follow the same three-page IA**, locked in inventory.md so Stage 4 doesn't rebuild on the wrong architecture.
+
+**Issues / blockers:**
+
+- None blocking.
+- Sitewide review items from designer/a11y are logged but not fixed in this session: sticky TOC + sticky site header collision (admissions.html and the two new campus pages all hit it), dead `href="#"` links across nav and social icons sitewide, dropdown nav lacking keyboard support (no aria-haspopup/aria-expanded, no Escape), PDF/external-link new-tab warnings missing for assistive tech, page-hero inline-style duplication across multiple pages. These need a separate sitewide chrome polish pass.
+- STP campus content gaps surfaced during the build (outside funding sentence not on STP hub; accommodations sentence not on STP hub; pay-fees sentence not on STP hub; TEAS contact not named on STP testing page) — log to follow-ups for STP campus to author on live for parity with CLW.
+
+**Next priorities:**
+
+1. **Send Update #2 to Kyesha** — Counselors + Admissions bundled (4 pages: clearwater-counselors, stpete-counselors, admissions, clearwater-admissions, stpete-admissions). Need to confirm sitewide cleanup before Kyesha sees it, or note it as pending.
+2. **Sitewide chrome polish pass** — sticky-element collision fix, dead `href="#"` cleanup, dropdown keyboard support, PDF/external-link warnings, page-hero CSS migration. Affects every page in the redesign. Multi-hour.
+3. **Tuition cluster Stage 2 extraction** — 19 URLs via WebFetch (rendered DOM). Stage 4 will plan the three-page split per the locked-in IA pattern.
+4. **Log new follow-ups** — STP campus content gaps (outside funding, accommodations, pay-fees, TEAS contact); design/a11y sitewide items.
+
+---
+
 ## May 4, 2026 — Tuition Stage 1 inventory + campus utility-bar repoint (scheduled task `ptc-redesign-daily`)
 
 Three concrete pieces of work this run, picked from the carry-over priority list at the bottom of the May 3 evening log. Skipped (1) "Send About cluster batch to Kyesha" because that requires Marianne, and (2) "Pipeline-infrastructure backfill" because rendered-DOM extractor migration is multi-hour and benefits from interactive review of the diffs against existing baselines.

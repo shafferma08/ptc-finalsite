@@ -291,6 +291,43 @@ Surfaced during the Admissions cluster Stage 7 drift reconciliation on 2026-05-0
 
 ---
 
+## Admissions cluster IA restructure (added 2026-05-18)
+
+Surfaced during the 2026-05-18 IA restructure that split the admissions cluster into three pages (institutional `admissions.html` + per-campus `clearwater-admissions.html` + `stpete-admissions.html`). STP campus admissions hub publishes less than CLW, leaving asymmetric in-context coverage.
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| STP admissions hub missing outside-funding paragraph | stpete.myptc.edu/admissions/admissions | CLW's admissions hub includes a verbatim sentence: "If using an outside funding agency (CareerSource, Voc. Rehab, etc.), provide all necessary paperwork to the agency." STP's hub has no equivalent. Redesign's `stpete-admissions.html` pulls the institutional sentence from the www extract instead, but live parity would close the asymmetry. | Add the outside-funding sentence to the STP admissions hub. | STP campus admin / Webmaster | Medium | Admissions cluster IA restructure, 2026-05-18 |
+| STP admissions hub missing accommodations statement | stpete.myptc.edu/admissions/admissions | CLW's admissions hub includes: "Accommodations are available during the instructional program for students with documented physical or mental impairments. Please see a school counselor for further information." STP's hub has none. Redesign's `stpete-admissions.html` pulls the institutional sentence from the www extract. | Add an accommodations statement to the STP admissions hub. Likely the institutional language ("documented learning or physical challenges") for consistency with www. | STP campus admin / Webmaster | Medium (accessibility-adjacent) | Admissions cluster IA restructure, 2026-05-18 |
+| STP admissions hub missing pay-fees / finalize sentence | stpete.myptc.edu/admissions/admissions | CLW's admissions hub closes with: "Once notified that you are accepted into the program, pay all applicable fees to finalize your registration." STP's hub has no equivalent. Redesign's `stpete-admissions.html` uses the www institutional sentence. | Add a closing pay-fees sentence to the STP admissions hub for parity. | STP campus admin / Webmaster | Low | Admissions cluster IA restructure, 2026-05-18 |
+| STP testing page missing scheduling phone for CASAS/TEAS | stpete.myptc.edu/admissions/testing | CLW's testing page leads with "Call 727-538-7167 ext 2006 to schedule" as the global scheduling phone. STP's testing page does not name one. | Publish the STP testing scheduling phone on the STP testing page. | STP campus admin | Medium | Admissions cluster IA restructure, 2026-05-18 |
+
+---
+
+## Sitewide design / accessibility (added 2026-05-18)
+
+Surfaced during the persona-designer + persona-accessibility review of the new per-campus admissions pages on 2026-05-18. All of these affect multiple pages across the redesign, not just admissions. Tracked here for a dedicated sitewide chrome polish pass.
+
+### High priority — accessibility blockers (WCAG AA risk)
+
+| Item | Affected files | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Dead `href="#"` links across nav, footer social icons, and utility-bar search button | every page in the redesign | Screen readers announce them as actionable links; keyboard users tabbing through lose scroll position when activated. ADA Title II / 508 risk for a public-institution site. | Until destinations exist: remove from nav, render as `<span aria-disabled="true">` styled-like-link but not focusable, or point to a "coming soon" stub. Convert search to `<button type="button">` with `aria-expanded`. Remove social icons until real URLs ship. | Webmaster | High | Admissions IA restructure design+a11y review, 2026-05-18 |
+| Sticky in-page TOC collides with sticky site header at `top: 0` | `admissions.html`, `clearwater-admissions.html`, `stpete-admissions.html` (and any future page using `.admissions-toc`) | `.site-header` and `.admissions-toc` both have `position: sticky; top: 0`. When a TOC link is clicked, the destination section's heading scrolls under the sticky bar. Keyboard users hit focus-occlusion (WCAG 2.4.11). | Add `section[id] { scroll-margin-top: 80px }` plus set the TOC's `top` to the site-header's computed height. Or drop the TOC's sticky behavior. | Webmaster | High (focus occlusion is a 2.2 SC failure) | Admissions IA restructure design+a11y review, 2026-05-18 |
+| Dropdown nav menus lack keyboard support and ARIA disclosure pattern | every campus shell + main shell (all redesign pages) | Dropdowns rely on `:focus-within` CSS only. Trigger links have `href="#"` (so activating them sends user to top), no `aria-haspopup`, no `aria-expanded` toggling, no Escape-to-close. Keyboard users cannot operate the menus reliably. | Change triggers to `<button type="button" aria-haspopup="true" aria-expanded="false">`, toggle expanded state via JS, add Escape handler. | Webmaster | High (WCAG 2.1.1 Keyboard) | Admissions IA restructure design+a11y review, 2026-05-18 |
+
+### Medium priority — accessibility polish + design consistency
+
+| Item | Affected files | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| `target="_blank"` links lack programmatic new-tab warning | every page (apply.myptc.edu CTAs, Canvas Login, SIS Portal, FAFSA, PDF links) | WCAG 3.2.5 / 3.2.4 — opening a new tab without warning is friction for screen-reader users. | Add visually-hidden `<span class="sr-only"> (opens in new tab)</span>` after link text, or include in `aria-label`. Consider a small external-link icon. | Webmaster | Medium | Admissions IA restructure design+a11y review, 2026-05-18 |
+| External PDF links not identified as PDFs to assistive tech | admissions pages, schedule pages, several others with CASAS/TEAS/shadow schedule PDFs | WCAG 3.2.4 advisory. Only some links include "(PDF)" in visible text. | Standardize "(PDF, [month/year])" annotation + visually-hidden "opens in new tab". Verify each linked PDF is itself tagged (Section 508). | Webmaster + PDF authors | Medium | Admissions IA restructure design+a11y review, 2026-05-18 |
+| Page-hero inline-style duplication across multiple pages | `admissions.html`, `clearwater-admissions.html`, `stpete-admissions.html`, likely others using `.page-hero` | Hero re-declares the page-hero CSS as inline `style` attributes on every element even though the CSS classes are defined. ~40 lines per page. | Remove inline `style` attrs from hero markup; rely on CSS classes. Better still: lift the admissions-page CSS into `styles.css` and drop the inline `<style>` blocks entirely. | Webmaster | Medium (maintainability + CSP-friendliness) | Admissions IA restructure design+a11y review, 2026-05-18 |
+| Mobile-toggle `aria-expanded` may not update on open | every page with the mobile-nav toggle button | The hamburger button declares `aria-expanded="false"` but `script.js` may not flip it when the menu opens. SR users can't tell whether the menu is open. | Verify in `script.js`; add the toggle if missing. | Webmaster | Medium | Admissions IA restructure design+a11y review, 2026-05-18 |
+| Lift admissions-specific CSS into `styles.css` | `admissions.html`, `clearwater-admissions.html`, `stpete-admissions.html` | All three carry near-identical inline `<style>` blocks (~300 lines each) for the `.admissions-section`, `.admissions-toc`, `.apply-primary`, `.apply-secondary-grid`, `.campus-card`, `.testing-grid`, etc. patterns. Future redesign-wide style changes need to touch three files. | Move admissions-page CSS into `styles.css` (new "Admissions module" section), then delete inline `<style>` blocks. | Webmaster | Medium (maintainability) | Admissions IA restructure design+a11y review, 2026-05-18 |
+
+---
+
 ## Closed follow-ups
 
 (none yet)
