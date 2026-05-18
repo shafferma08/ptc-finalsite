@@ -386,18 +386,8 @@
         }
         .apply-secondary-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
-        }
-        @media (max-width: 1024px) {
-            .apply-secondary-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 640px) {
-            .apply-secondary-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* CASAS + TEAS side-by-side grid */
@@ -406,10 +396,14 @@
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             margin-top: 1.5rem;
-            align-items: start;
         }
         .testing-grid .testing-subhead {
             margin-top: 0;
+        }
+        .testing-grid .campus-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         @media (max-width: 900px) {
             .testing-grid {
@@ -424,11 +418,9 @@
         .info-card__content a.btn--accent {
             color: #fff;
         }
-
-        @media (max-width: 768px) {
-            .apply-secondary-grid {
-                grid-template-columns: 1fr;
-            }
+        /* FAFSA + Financial Aid cards: equal height inside info-cards row */
+        #financial-aid .info-card {
+            height: 100%;
         }
 
         /* Apply Online banner stacks at small-laptop width to avoid CTA crowding */
@@ -683,15 +675,17 @@
                     </article>
 
                     <article class="card card--accent card--lift">
-                        <div class="card__icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
-                        <h4 class="card__title">Notify outside funding agency</h4>
-                        <p class="card__body">If using an outside funding agency (CareerSource, Voc. Rehab, etc.), provide all necessary paperwork to the agency.</p>
+                        <div class="card__icon"><i class="fas fa-receipt" aria-hidden="true"></i></div>
+                        <h4 class="card__title">Pay fees to finalize</h4>
+                        <p class="card__body">Once notified that you are accepted into the program, pay all applicable fees to finalize your registration. Students must provide two forms of documentation for proof of Florida residency when they register.</p>
+                        <a href="acceptable-proofs-of-residency.html" class="card__cta">Acceptable proofs of residency <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </article>
 
                     <article class="card card--accent card--lift">
-                        <div class="card__icon"><i class="fas fa-receipt" aria-hidden="true"></i></div>
-                        <h4 class="card__title">Pay fees to finalize</h4>
-                        <p class="card__body">Once notified that you are accepted into the program, pay all applicable fees to finalize your registration.</p>
+                        <div class="card__icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
+                        <h4 class="card__title">Notify outside funding agency</h4>
+                        <p class="card__body">If using an outside funding agency (CareerSource, Voc. Rehab, etc.), provide all necessary paperwork to the agency.</p>
+                        <a href="https://www.careersourcepinellas.com/" target="_blank" rel="noopener" class="card__cta">CareerSource Pinellas <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </article>
 
                 </div>

@@ -118,18 +118,8 @@
         }
         .apply-secondary-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
-        }
-        @media (max-width: 1024px) {
-            .apply-secondary-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 640px) {
-            .apply-secondary-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* Steps Section */
@@ -478,9 +468,8 @@
                                 <div class="dropdown__column">
                                     <ul>
                                         <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
-                                        <li><a href="admissions.html#enrollment-steps">Enrollment Steps</a></li>
                                         <li><a href="admissions.html#enrollment-options">Enrollment Options</a></li>
-                                        <li><a href="admissions.html#residency">Acceptable Proofs of Residency</a></li>
+                                        <li><a href="acceptable-proofs-of-residency.html">Acceptable Proofs of Residency</a></li>
                                         <li><a href="admissions.html#pathways">Transfer Students</a></li>
                                         <li><a href="admissions.html#pathways">Readmission</a></li>
                                         <li><a href="admissions.html#testing">Testing &amp; Assessment</a></li>
@@ -619,9 +608,7 @@
                 <p class="admissions-toc__label">On this page:</p>
                 <ul class="admissions-toc__list">
                     <li><a href="#how-to-apply">How to Apply</a></li>
-                    <li><a href="#enrollment-steps">Who Can Apply</a></li>
                     <li><a href="#enrollment-options">Enrollment Options</a></li>
-                    <li><a href="#residency">Residency</a></li>
                     <li><a href="#pathways">Pathways</a></li>
                     <li><a href="#testing">Testing</a></li>
                     <li><a href="#campus-tours">Campus Visits</a></li>
@@ -701,54 +688,20 @@
                     </article>
 
                     <article class="card card--accent card--lift">
-                        <div class="card__icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
-                        <h4 class="card__title">Notify outside funding agency</h4>
-                        <p class="card__body">If using an outside funding agency (Career Source, Voc. Rehab, etc.) provide all paperwork to the agency.</p>
-                    </article>
-
-                    <article class="card card--accent card--lift">
                         <div class="card__icon"><i class="fas fa-receipt" aria-hidden="true"></i></div>
                         <h4 class="card__title">Pay fees to finalize</h4>
                         <p class="card__body">Complete the online registration form. Pay all applicable fees. Students must provide two forms of documentation for proof of Florida residency when they register (driver license, state-issued ID, voter registration card, vehicle registration, etc.).</p>
                         <a href="acceptable-proofs-of-residency.html" class="card__cta">Acceptable proofs of residency <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                     </article>
 
-                </div>
-            </div>
-        </section>
+                    <article class="card card--accent card--lift">
+                        <div class="card__icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
+                        <h4 class="card__title">Notify outside funding agency</h4>
+                        <p class="card__body">If using an outside funding agency (Career Source, Voc. Rehab, etc.) provide all paperwork to the agency.</p>
+                        <a href="https://www.careersourcepinellas.com/" target="_blank" rel="noopener" class="card__cta">CareerSource Pinellas <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
 
-        <!-- ============================================
-             ENROLLMENT STEPS (now: General Information block)
-             Stage 6 build 2026-04-30: section repurposed. The old
-             3-step "after acceptance" framing was a fabricated process
-             model. Live treats these as concurrent application items
-             (now in How to Apply above). This section now carries the
-             "General information" block from the www admissions page
-             verbatim, plus a counselor reminder.
-        ============================================= -->
-        <section class="admissions-section admissions-section--alt" id="enrollment-steps">
-            <div class="container">
-                <div class="section-header section-header--center">
-                    <p class="section-header__tag">General Information</p>
-                    <h2 class="section-header__title">Who Can Apply and When</h2>
                 </div>
-                <div class="info-cards info-cards--two-col">
-                    <div class="info-card">
-                        <div class="info-card__icon"><i class="fas fa-user-check" aria-hidden="true"></i></div>
-                        <div class="info-card__content">
-                            <h3>Age requirement</h3>
-                            <p>Students must be at least 16 years of age and not currently enrolled in high school.</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="info-card__icon"><i class="fas fa-calendar-alt" aria-hidden="true"></i></div>
-                        <div class="info-card__content">
-                            <h3>Program start dates</h3>
-                            <p>Most of our programs start five times per school year: August, October, January, March/April, and June.</p>
-                        </div>
-                    </div>
-                </div>
-                <p class="centered-callout">Please speak with a counselor for further information.</p>
             </div>
         </section>
 
@@ -782,33 +735,6 @@
                         <p>The intent of the course/instruction determines whether a student is enrolled as a vocational certificate student or a continuing workforce education student.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- ============================================
-             RESIDENCY (Stage 7 reconciliation 2026-05-03)
-             Drift detected 2026-05-03: live now inlines the full text of FL Statute
-             1009.21 (~13.8K chars) on acceptable-proofs-of-residency. Reconciled by
-             splitting into a dedicated sub-page (acceptable-proofs-of-residency.html)
-             that holds the full statute text verbatim. This section keeps the live
-             lead paragraph verbatim and links out to the sub-page for the body.
-             Two-campus classification: shared (FL state law applies the same to both
-             campuses; live serves identical content from CLW + STP URLs).
-        ============================================= -->
-        <section class="admissions-section admissions-section--alt" id="residency">
-            <div class="container">
-                <div class="section-header">
-                    <p class="section-header__tag">In-State Tuition</p>
-                    <h2 class="section-header__title">Acceptable Proofs of Residency</h2>
-                </div>
-                <p class="lead"><strong>Determination of Dependent/Independent Student Status &amp; Acceptable Forms of Documentation for Residency Classification</strong></p>
-                <p><strong>Florida Statute 1009.21 Determination of resident status for tuition purposes.</strong>&mdash;Students shall be classified as residents or nonresidents for the purpose of assessing tuition in postsecondary educational programs offered by charter technical career centers or career centers operated by school districts, in Florida College System institutions, and in state universities.</p>
-                <p style="margin-top: 1.5rem;">
-                    <a href="acceptable-proofs-of-residency.html" class="btn btn--primary">
-                        Read the full text of Florida Statute 1009.21
-                        <i class="fas fa-arrow-right" aria-hidden="true" style="margin-left:0.4em;"></i>
-                    </a>
-                </p>
             </div>
         </section>
 
