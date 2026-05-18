@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026–2027 Class Schedule — PTC St. Petersburg</title>
-    <meta name="description" content="2026-2027 class schedule for Pinellas Technical College St. Petersburg. Browse full-time programs, adult education, and apprenticeship offerings with days, times, and locations.">
+    <meta name="description" content="2026-2027 class schedule for Pinellas Technical College St. Petersburg. Browse full-time programs, adult education courses, and apprenticeships with days, times, and locations.">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -59,35 +59,6 @@
             padding: 0.4rem 1rem;
             font-size: 0.875rem;
             font-weight: 600;
-        }
-
-        /* ---- Source Banner (verified data from counseling office) ---- */
-        .source-banner {
-            background: #ecfdf5;
-            border-bottom: 3px solid var(--color-green);
-            padding: 1rem 0;
-        }
-        .source-banner__inner {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            color: #065f46;
-        }
-        .source-banner__icon {
-            font-size: 1.3rem;
-            color: var(--color-green);
-            margin-top: 0.15rem;
-            flex-shrink: 0;
-        }
-        .source-banner__text {
-            font-size: 0.92rem;
-            line-height: 1.5;
-        }
-        .source-banner__text strong { color: #064e3b; }
-        .source-banner__text a {
-            color: var(--color-green-dark);
-            font-weight: 700;
-            text-decoration: underline;
         }
 
         /* ---- Filter Bar ---- */
@@ -211,6 +182,15 @@
             letter-spacing: 0.3px;
         }
         .category-heading.hidden { display: none; }
+        .category-heading__note {
+            display: inline-block;
+            margin-left: 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--color-gray-600);
+            letter-spacing: 0;
+        }
 
         /* ---- Schedule Table ---- */
         .schedule-wrap {
@@ -330,37 +310,39 @@
             background: #dcfce7;
             color: #166534;
         }
-        .loc-badge--offsite {
-            background: var(--color-gray-100);
-            color: var(--color-gray-600);
-        }
         .loc-badge--cvaec {
             background: #fef3c7;
             color: #92400e;
         }
+        .loc-badge--fire {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .loc-badge--baycare {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .loc-badge--offsite {
+            background: var(--color-gray-100);
+            color: var(--color-gray-600);
+        }
 
-        /* Start Terms cell */
-        .terms {
+        /* Start date */
+        .start-date {
             font-size: 0.85rem;
             color: var(--color-gray-800);
             font-weight: 600;
         }
-        .terms--see-page,
-        .terms--unverified {
+        .start-date--tbd {
+            color: var(--color-accent);
+            font-style: italic;
+            font-weight: 500;
+        }
+        .start-date--see-page {
             color: var(--color-gray-500);
             font-style: italic;
             font-weight: 500;
         }
-
-        /* Confirmed status pill kept for legacy references */
-        .status {
-            font-size: 0.82rem;
-        }
-        .status--confirmed {
-            color: #166534;
-            font-weight: 600;
-        }
-        .status--confirmed i { margin-right: 0.3rem; }
 
         /* No results */
         .no-results {
@@ -387,7 +369,7 @@
         @media (max-width: 768px) {
             .filters-inner { gap: 1rem; }
             .schedule-table thead th:nth-child(5),
-            .schedule-table tbody td:nth-child(5) { display: none; } /* hide status on mobile */
+            .schedule-table tbody td:nth-child(5) { display: none; } /* hide start date on mobile */
         }
     </style>
 </head>
@@ -542,7 +524,7 @@
             </nav>
             <p style="text-transform:uppercase;letter-spacing:2px;color:var(--color-accent);font-weight:700;font-size:0.85rem;margin-bottom:0.5rem;">St. Petersburg Campus</p>
             <h1>2026–2027 Class Schedule</h1>
-            <p>Browse full-time programs offered at the St. Petersburg campus. Use the filters below to narrow your search by time of day or program name.</p>
+            <p>Browse all programs, adult education courses, and apprenticeships offered at the St. Petersburg campus. Use the filters below to find the schedule that fits your life.</p>
             <div class="schedule-page-header__meta">
                 <span class="schedule-page-header__badge"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 901 34th St S, St. Petersburg, FL 33711</span>
                 <span class="schedule-page-header__badge"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Academic Year 2026–2027</span>
@@ -551,25 +533,28 @@
         </div>
     </div>
 
-<!-- Sticky Filter Bar -->
+    <!-- Sticky Filter Bar -->
     <div class="schedule-filters" id="schedule-filters">
         <div class="container">
             <div class="filters-inner">
+                <div class="filter-group">
+                    <label>Category</label>
+                    <div class="filter-chips" id="filter-category">
+                        <button class="chip active" data-value="all">All</button>
+                        <button class="chip" data-value="fulltime">Full-Time Programs</button>
+                        <button class="chip" data-value="adult">Adult Education</button>
+                        <button class="chip" data-value="apprenticeship">Apprenticeships</button>
+                    </div>
+                </div>
                 <div class="filter-group">
                     <label>Time of Day</label>
                     <div class="filter-chips" id="filter-time">
                         <button class="chip active" data-value="all">All</button>
                         <button class="chip" data-value="morning">Morning</button>
+                        <button class="chip" data-value="afternoon">Afternoon</button>
                         <button class="chip" data-value="evening">Evening</button>
                         <button class="chip" data-value="online">Online</button>
-                    </div>
-                </div>
-                <div class="filter-group">
-                    <label>Location</label>
-                    <div class="filter-chips" id="filter-location">
-                        <button class="chip active" data-value="all">All</button>
-                        <button class="chip" data-value="main">Main Campus</button>
-                        <button class="chip" data-value="cvaec">CVAEC</button>
+                        <button class="chip" data-value="offsite">Offsite</button>
                     </div>
                 </div>
                 <div class="search-wrap">
@@ -598,7 +583,7 @@
                             <th>Days</th>
                             <th>Time</th>
                             <th>Location</th>
-                            <th>Start Terms</th>
+                            <th>Start Date</th>
                         </tr>
                     </thead>
                     <tbody id="schedule-body">
@@ -618,8 +603,9 @@
                 <div class="container" style="padding:0;">
                     <p><strong>How to read this schedule</strong></p>
                     <p><strong>Days:</strong> M = Monday, T = Tuesday, W = Wednesday, R = Thursday, F = Friday.</p>
-                    <p><strong>Start Terms:</strong> Our academic year is divided into five terms. The numbers in this column show which terms you can start a program. For example, "1, 3, 5" means you can begin in Term 1, Term 3, or Term 5. Programs marked <em>See program page</em> follow a different enrollment timeline; visit the program page or contact a counselor for current start dates.</p>
-                    <p><strong>Main vs. CVAEC:</strong> Most programs meet at the main St. Petersburg campus (901 34th St S). One section of Computer Systems &amp; Information Technology meets at <strong>CVAEC (Clearview Adult Education Center)</strong>, a separate PTC location.</p>
+                    <p><strong>Start Date:</strong> The St. Petersburg academic year is divided into five terms. For full-time programs, the numbers (for example, "Terms 1, 3, 5") show which terms you can begin a program. Adult Education start dates are still being finalized. Apprenticeships show either a specific start date or "See program page" if enrollment runs on a separate timeline.</p>
+                    <p><strong>Locations:</strong> Most programs meet at the main St. Petersburg campus (901 34th St S). One section of Computer Systems &amp; Information Technology meets at <strong>CVAEC (Clearview Adult Education Center)</strong>, a separate PTC location. The St. Petersburg Fire and Rescue Apprenticeship meets at <strong>St. Pete Fire and Rescue Facilities</strong>, and the Practical Nursing Apprenticeship meets at <strong>BayCare Facilities</strong>.</p>
+                    <p><strong>Apprenticeships:</strong> Employment with a participating agency is required before registration on all apprenticeship programs. Contact a counselor for details.</p>
                     <p>Program lengths and start dates are approximate and subject to change. Contact a counselor to confirm enrollment availability before applying.</p>
                     <p style="margin-top:0.75rem;"><strong>Questions?</strong> Call <a href="tel:7278932500" style="color:var(--color-green);font-weight:600;">727.893.2500</a> or <a href="#" style="color:var(--color-green);font-weight:600;">apply online</a>.</p>
                     <p style="margin-top:0.75rem;"><strong>Looking for Clearwater campus programs?</strong> <a href="schedule-clearwater.html" style="color:var(--color-green);font-weight:600;">View the Clearwater class schedule →</a></p>
@@ -706,65 +692,55 @@
     <script>
     // ============================================================
     // SCHEDULE DATA — St. Petersburg Campus
-    //
-    // Source: "2026-2027 Class Schedule" PDF provided by the
-    // St. Petersburg counseling office. Each row below mirrors that
-    // document's Program / Length / Location / Meeting Days / Class
-    // Times / Start Dates columns. The `terms` field encodes the
-    // PDF's "START DATES (WHICH TERMS?)" column — the five
-    // academic-year terms a student can start in. Programs with
-    // cohort-based or rolling enrollment are marked "See program page".
-    //
-    // Adult Education and apprenticeship offerings are not on the
-    // St. Petersburg full-time schedule; they run on separate schedules
-    // through PCSB Adult Ed and the regional apprenticeship programs
-    // (several classroom sessions meet at the Clearwater campus).
-    // Call (727) 893-2500 for current options.
+    // Plumbing Technology Apprenticeship intentionally omitted
+    // pending critical program changes (per counseling office).
     // ============================================================
     const programs = [
 
-        // ---- FULL-TIME PROGRAMS ----
-        // Health Sciences
-        { name: "Dental Assisting", hours: "1230 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "Emergency Medical Technician", hours: "300 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 3, 5", category: "fulltime" },
-        { name: "Medical Coder / Biller", hours: "1110 hrs", days: [], timeLabel: "Distance Education", timeOfDay: "online", location: "main", terms: "1, 3, 5", category: "fulltime" },
-        { name: "Practical Nursing", hours: "1350 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "See program page", category: "fulltime" },
-        { name: "Surgical Technology", hours: "1330 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 4", category: "fulltime" },
+        // ---- FULL-TIME PROGRAMS (alphabetized) ----
+        { name: "Automotive Collision Technology", hours: "1400 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Barbering", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Building Trades & Construction Design Technology", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Childcare Center Operations", hours: "45 hrs", days: ["W"], timeLabel: "5:30 PM – 8:30 PM", timeOfDay: "evening", location: "main", startDate: "See program page", category: "fulltime" },
+        { name: "Commercial Class B Driving", hours: "150 hrs", days: ["M","T","W","R"], timeLabel: "7:00 AM – 2:30 PM", timeOfDay: "morning", location: "main", startDate: "See program page", category: "fulltime" },
+        { name: "Commercial Vehicle Driving", hours: "320 hrs", days: ["M","T","W","R"], timeLabel: "7:00 AM – 2:30 PM", timeOfDay: "morning", location: "main", startDate: "See program page", category: "fulltime" },
+        { name: "Computer Systems & Information Technology (CVAEC)", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "cvaec", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Computer Systems & Information Technology (Main)", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Computer-Aided Drawing & Modeling", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Cosmetology", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 3", category: "fulltime" },
+        { name: "Dental Assisting", hours: "1230 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Digital Media Design Technology", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Early Childhood Education", hours: "600 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Electricity", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Emergency Medical Technician", hours: "300 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 3, 5", category: "fulltime" },
+        { name: "Facials Specialty", hours: "220 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "See program page", category: "fulltime" },
+        { name: "Heating, Ventilation, Air Conditioning/Refrigeration (Day)", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Heating, Ventilation, Air Conditioning/Refrigeration (Evening)", hours: "750 hrs", days: ["M","T","W","R"], timeLabel: "4:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Master Automotive Service Technology", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Medical Coder / Biller", hours: "1110 hrs", days: [], timeLabel: "Distance Education", timeOfDay: "online", location: "main", startDate: "Terms 1, 3, 5", category: "fulltime" },
+        { name: "Nails Specialty", hours: "180 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "See program page", category: "fulltime" },
+        { name: "Plumbing", hours: "1080 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Practical Nursing", hours: "1350 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "See program page", category: "fulltime" },
+        { name: "Professional Culinary Arts & Hospitality", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
+        { name: "Public Works", hours: "450 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "See program page", category: "fulltime" },
+        { name: "School Age Certification", hours: "80 hrs", days: [], timeLabel: "Distance Education", timeOfDay: "online", location: "main", startDate: "See program page", category: "fulltime" },
+        { name: "Surgical Technology", hours: "1330 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", startDate: "Terms 1, 4", category: "fulltime" },
+        { name: "Welding Technology", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "4:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "Terms 1, 2, 3, 4, 5", category: "fulltime" },
 
-        // Skilled Trades & Construction
-        { name: "Building Trades &amp; Construction Design Technology", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "Electricity", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "Heating, Ventilation, Air Conditioning/Refrigeration (Day)", hours: "750 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "Heating, Ventilation, Air Conditioning/Refrigeration (Evening)", hours: "750 hrs", days: ["M","T","W","R"], timeLabel: "4:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "Plumbing", hours: "1080 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "Public Works", hours: "450 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "See program page", category: "fulltime" },
-        { name: "Welding Technology", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "4:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
+        // ---- ADULT EDUCATION (alphabetized) ----
+        { name: "ABE/GED/ASB", hours: "", days: ["M","T","W","R","F"], timeLabel: "8:00 AM – 1:00 PM", timeOfDay: "morning", location: "main", startDate: "TBD", category: "adult" },
+        { name: "ESOL – Daytime", hours: "", days: ["M","T","W","R","F"], timeLabel: "8:00 AM – 1:30 PM", timeOfDay: "morning", location: "main", startDate: "TBD", category: "adult" },
+        { name: "ESOL – Evening", hours: "", days: ["M","T","W","R"], timeLabel: "3:00 PM – 8:00 PM", timeOfDay: "evening", location: "main", startDate: "TBD", category: "adult" },
 
-        // Information Technology
-        { name: "Computer Systems &amp; Information Technology", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "cvaec", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "Computer Systems &amp; Information Technology", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "Computer-Aided Drawing &amp; Modeling", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "Digital Media Design Technology", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-
-        // Cosmetology &amp; Barbering
-        { name: "Barbering", hours: "900 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "Cosmetology", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 3", category: "fulltime" },
-        { name: "Facials Specialty", hours: "220 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "See program page", category: "fulltime" },
-        { name: "Nails Specialty", hours: "180 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "See program page", category: "fulltime" },
-
-        // Transportation &amp; Logistics
-        { name: "Commercial Class B Driving", hours: "150 hrs", days: ["M","T","W","R"], timeLabel: "7:00 AM – 2:30 PM", timeOfDay: "morning", location: "main", terms: "See program page", category: "fulltime" },
-        { name: "Commercial Vehicle Driving", hours: "320 hrs", days: ["M","T","W","R"], timeLabel: "7:00 AM – 2:30 PM", timeOfDay: "morning", location: "main", terms: "See program page", category: "fulltime" },
-        { name: "Automotive Collision Technology", hours: "1400 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "Master Automotive Service Technology", hours: "1050 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-
-        // Culinary &amp; Hospitality
-        { name: "Professional Culinary Arts &amp; Hospitality", hours: "1200 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-
-        // Arts, Media &amp; Education
-        { name: "Childcare Center Operations", hours: "45 hrs", days: ["W"], timeLabel: "5:30 PM – 8:30 PM", timeOfDay: "evening", location: "main", terms: "See program page", category: "fulltime" },
-        { name: "Early Childhood Education", hours: "600 hrs", days: ["M","T","W","R","F"], timeLabel: "7:00 AM – 12:15 PM", timeOfDay: "morning", location: "main", terms: "1, 2, 3, 4, 5", category: "fulltime" },
-        { name: "School Age Certification", hours: "80 hrs", days: [], timeLabel: "Distance Education", timeOfDay: "online", location: "main", terms: "See program page", category: "fulltime" },
+        // ---- APPRENTICESHIPS (alphabetized) ----
+        { name: "Child Care Apprenticeship", hours: "144 hrs", days: ["R"], timeLabel: "5:00 PM – 9:00 PM", timeOfDay: "evening", location: "main", startDate: "9/9/2026 and 2/24/2027", category: "apprenticeship" },
+        { name: "Industrial Machinery Maintenance", hours: "4 years", days: ["R"], timeLabel: "7:00 AM – 11:00 AM", timeOfDay: "morning", location: "main", startDate: "See program page", category: "apprenticeship" },
+        { name: "Practical Nursing Apprenticeship", hours: "478 hrs", days: [], daysLabel: "Varies", timeLabel: "—", timeOfDay: "offsite", location: "baycare", startDate: "January 2027", category: "apprenticeship" },
+        { name: "Roadway Technician", hours: "2 years", days: ["R"], timeLabel: "7:00 AM – 11:00 AM", timeOfDay: "morning", location: "main", startDate: "See program page", category: "apprenticeship" },
+        { name: "St. Petersburg Fire and Rescue Apprenticeship", hours: "3 years", days: ["M","T","W","R","F"], timeLabel: "8:00 AM – 5:00 PM", timeOfDay: "morning", location: "fire", startDate: "See program page", category: "apprenticeship" },
+        { name: "Stormwater", hours: "4 years", days: ["R"], timeLabel: "7:00 AM – 11:00 AM", timeOfDay: "morning", location: "main", startDate: "See program page", category: "apprenticeship" },
+        { name: "Water Distribution 2", hours: "", days: ["W"], timeLabel: "7:00 AM – 11:00 AM", timeOfDay: "morning", location: "main", startDate: "See program page", category: "apprenticeship" },
+        { name: "Water Distribution 3", hours: "", days: ["T"], timeLabel: "7:00 AM – 11:00 AM", timeOfDay: "morning", location: "main", startDate: "See program page", category: "apprenticeship" },
     ];
 
     // ============================================================
@@ -772,7 +748,17 @@
     // ============================================================
     const ALL_DAYS = ["M","T","W","R","F"];
 
-    let activeLocation = "all";
+    const CATEGORY_LABELS = {
+        fulltime: "Full-Time Programs",
+        adult: "Adult Education",
+        apprenticeship: "Apprenticeships"
+    };
+
+    const CATEGORY_NOTES = {
+        apprenticeship: "* Employment with participating agency required before registration"
+    };
+
+    let activeCategory = "all";
     let activeTime = "all";
     let searchVal = "";
 
@@ -785,29 +771,44 @@
     function locLabel(l) {
         if (l === "main") return '<span class="loc-badge loc-badge--main">Main</span>';
         if (l === "cvaec") return '<span class="loc-badge loc-badge--cvaec">CVAEC</span>';
+        if (l === "fire") return '<span class="loc-badge loc-badge--fire">St. Pete Fire</span>';
+        if (l === "baycare") return '<span class="loc-badge loc-badge--baycare">BayCare</span>';
         return '<span class="loc-badge loc-badge--offsite">Offsite</span>';
     }
-    function termsLabel(terms, unverified) {
-        if (!terms) return '<span class="terms terms--unverified">Contact campus</span>';
-        if (unverified) return `<span class="terms terms--unverified">${terms}</span>`;
-        // Phrases rendered in italic gray rather than as confirmed term codes
-        const seePage = /see program page/i.test(terms);
-        const contactish = /contact|call\s*\(/i.test(terms);
-        if (seePage) return '<span class="terms terms--see-page">See program page</span>';
-        if (contactish) return `<span class="terms terms--unverified">${terms}</span>`;
-        return `<span class="terms">${terms}</span>`;
+    function startDateLabel(d) {
+        if (!d || /^tbd$/i.test(d)) {
+            return `<span class="start-date start-date--tbd">${d || "TBD"}</span>`;
+        }
+        if (/see program page/i.test(d)) {
+            return '<span class="start-date start-date--see-page">See program page</span>';
+        }
+        return `<span class="start-date">${d}</span>`;
     }
 
     function buildRows() {
         const tbody = document.getElementById("schedule-body");
         tbody.innerHTML = "";
 
+        let lastCategory = null;
+
         programs.forEach((p) => {
+            // Category heading row
+            if (p.category !== lastCategory) {
+                const headingRow = document.createElement("tr");
+                headingRow.className = "category-heading-row";
+                headingRow.dataset.category = p.category;
+                const note = CATEGORY_NOTES[p.category];
+                headingRow.innerHTML = `<td colspan="5" class="category-heading">${CATEGORY_LABELS[p.category]}${note ? `<span class="category-heading__note">${note}</span>` : ""}</td>`;
+                tbody.appendChild(headingRow);
+                lastCategory = p.category;
+            }
+
             const daysHtml = ALL_DAYS.map(d =>
                 `<span class="day-badge ${p.days.includes(d) ? 'active' : ''}">${d}</span>`
             ).join("");
 
             const tr = document.createElement("tr");
+            tr.dataset.category = p.category;
             tr.dataset.time = p.timeOfDay;
             tr.dataset.location = p.location;
             tr.dataset.name = p.name.toLowerCase();
@@ -816,10 +817,10 @@
                     <span class="prog-name">${p.name}</span>
                     ${p.hours ? `<span class="prog-hours">${p.hours}</span>` : ""}
                 </td>
-                <td><div class="days-list">${p.days.length ? daysHtml : '<span style="color:var(--color-gray-400);font-size:0.8rem;">See notes</span>'}</div></td>
+                <td><div class="days-list">${p.days.length ? daysHtml : `<span style="color:var(--color-gray-500);font-size:0.85rem;font-style:italic;">${p.daysLabel || "—"}</span>`}</div></td>
                 <td><span class="time-badge time-badge--${timeBadgeClass(p.timeOfDay)}"><i class="fas ${timeIcon(p.timeOfDay)}" style="font-size:0.7rem;" aria-hidden="true"></i>${p.timeLabel}</span></td>
                 <td>${locLabel(p.location)}</td>
-                <td>${termsLabel(p.terms, p.unverified)}</td>
+                <td>${startDateLabel(p.startDate)}</td>
             `;
             tbody.appendChild(tr);
         });
@@ -828,31 +829,43 @@
     function applyFilters() {
         const rows = document.querySelectorAll("#schedule-body tr");
         let visible = 0;
+        let visibleByCategory = { fulltime: 0, adult: 0, apprenticeship: 0 };
 
         rows.forEach(row => {
-            const loc = row.dataset.location;
+            if (row.classList.contains("category-heading-row")) return;
+
+            const cat = row.dataset.category;
             const time = row.dataset.time;
             const name = row.dataset.name || "";
 
-            const locMatch = activeLocation === "all" || loc === activeLocation;
+            const catMatch = activeCategory === "all" || cat === activeCategory;
             const timeMatch = activeTime === "all" || time === activeTime;
             const searchMatch = searchVal === "" || name.includes(searchVal.toLowerCase());
 
-            const show = locMatch && timeMatch && searchMatch;
+            const show = catMatch && timeMatch && searchMatch;
             row.classList.toggle("hidden", !show);
-            if (show) visible++;
+            if (show) {
+                visible++;
+                visibleByCategory[cat]++;
+            }
+        });
+
+        // Show/hide category headings based on visible rows in each category
+        rows.forEach(row => {
+            if (!row.classList.contains("category-heading-row")) return;
+            const cat = row.dataset.category;
+            row.classList.toggle("hidden", visibleByCategory[cat] === 0);
         });
 
         document.getElementById("result-count").textContent = visible;
         document.getElementById("no-results").classList.toggle("visible", visible === 0);
 
-        // Show clear button if any filter is active
-        const isFiltered = activeLocation !== "all" || activeTime !== "all" || searchVal !== "";
+        const isFiltered = activeCategory !== "all" || activeTime !== "all" || searchVal !== "";
         document.getElementById("clear-btn").classList.toggle("visible", isFiltered);
     }
 
     function clearAllFilters() {
-        activeLocation = "all";
+        activeCategory = "all";
         activeTime = "all";
         searchVal = "";
         document.getElementById("prog-search").value = "";
@@ -862,11 +875,11 @@
         applyFilters();
     }
 
-    // Wire up location chips
-    document.getElementById("filter-location").addEventListener("click", e => {
+    // Wire up category chips
+    document.getElementById("filter-category").addEventListener("click", e => {
         if (!e.target.classList.contains("chip")) return;
-        activeLocation = e.target.dataset.value;
-        document.querySelectorAll("#filter-location .chip").forEach(c => c.classList.remove("active"));
+        activeCategory = e.target.dataset.value;
+        document.querySelectorAll("#filter-category .chip").forEach(c => c.classList.remove("active"));
         e.target.classList.add("active");
         applyFilters();
     });
