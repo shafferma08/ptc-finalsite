@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Pinellas Technical College</title>
+    <meta name="description" content="This page is being built for the PTC website redesign. While you wait, browse programs, contact a campus, or start your application.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-hero {
+            background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
+            color: #fff;
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+        .page-hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.18);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.25rem;
+        }
+        .page-hero__title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin: 0 0 1rem;
+        }
+        .page-hero__subtitle {
+            font-size: 1.15rem;
+            max-width: 640px;
+            margin: 0 auto;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .coming-soon-section {
+            padding: 4rem 0;
+            background: var(--color-off-white, #F7F8FA);
+        }
+        .coming-soon-card {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            border-left: 4px solid var(--color-green);
+            box-shadow: var(--shadow-sm);
+        }
+        .coming-soon-card h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin: 0 0 0.5rem;
+        }
+        .coming-soon-card h2 i {
+            color: var(--color-green);
+            margin-right: 0.5rem;
+        }
+        .coming-soon-card p {
+            color: var(--color-gray-700);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0 0 1rem;
+        }
+        .coming-soon-card ul {
+            margin: 1rem 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        @media (max-width: 600px) {
+            .coming-soon-card ul {
+                grid-template-columns: 1fr;
+            }
+        }
+        .coming-soon-card li a {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 1rem;
+            background: var(--color-off-white, #F7F8FA);
+            border-radius: 8px;
+            color: var(--color-gray-900);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid var(--color-gray-200, #e8ecf1);
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .coming-soon-card li a:hover {
+            background: rgba(0, 129, 66, 0.06);
+            border-color: var(--color-green);
+        }
+        .coming-soon-card li a i {
+            color: var(--color-green);
+            width: 1.2rem;
+            text-align: center;
+        }
+        .coming-soon-contact {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-gray-200, #e8ecf1);
+            font-size: 0.95rem;
+            color: var(--color-gray-700);
+        }
+        .coming-soon-contact strong {
+            color: var(--color-gray-900);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ============================================
+         UTILITY BAR
+    ============================================= -->
+    <div class="utility-bar">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> Clearwater: 727.538.7167</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> St. Pete: 727.893.2500</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building" aria-hidden="true"></i> District Home</a>
+                <a href="https://www.myptc.edu/student-links" target="_blank" rel="noopener"><i class="fas fa-user" aria-hidden="true"></i> Student Portal</a>
+                <a href="https://apply.myptc.edu/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Apply Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MAIN HEADER
+    ============================================= -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Opportunity Starts Here" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
+                </div>
+            </a>
+            <div class="site-header__actions">
+                <a href="https://apply.myptc.edu/" class="btn btn--primary btn--sm site-header__cta" target="_blank" rel="noopener">Apply Now</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- ============================================
+             PAGE HERO
+        ============================================= -->
+        <section class="page-hero">
+            <div class="container">
+                <span class="page-hero__badge"><i class="fas fa-hard-hat" aria-hidden="true"></i> Under Construction</span>
+                <h1 class="page-hero__title">This page is coming soon</h1>
+                <p class="page-hero__subtitle">We&rsquo;re building out the PTC website ahead of the August 11, 2026 launch. This page isn&rsquo;t live yet, but here&rsquo;s what you can do in the meantime.</p>
+            </div>
+        </section>
+
+        <!-- ============================================
+             ALTERNATIVES
+        ============================================= -->
+        <section class="coming-soon-section">
+            <div class="container">
+                <div class="coming-soon-card">
+                    <h2><i class="fas fa-compass" aria-hidden="true"></i>Looking for something now?</h2>
+                    <p>Most of what students and visitors need is already available on the redesign. Try one of these:</p>
+                    <ul>
+                        <li><a href="programs.html"><i class="fas fa-list-ul" aria-hidden="true"></i>All programs A&ndash;Z</a></li>
+                        <li><a href="admissions.html"><i class="fas fa-paper-plane" aria-hidden="true"></i>Admissions process</a></li>
+                        <li><a href="clearwater.html"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>Clearwater campus</a></li>
+                        <li><a href="stpete.html"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>St. Petersburg campus</a></li>
+                        <li><a href="tuition-aid.html"><i class="fas fa-dollar-sign" aria-hidden="true"></i>Tuition &amp; Aid</a></li>
+                        <li><a href="schedule-clearwater.html"><i class="fas fa-calendar-alt" aria-hidden="true"></i>Class schedules</a></li>
+                        <li><a href="consumer-information.html"><i class="fas fa-info-circle" aria-hidden="true"></i>Consumer Information</a></li>
+                        <li><a href="https://inforequest.myptc.edu/" target="_blank" rel="noopener"><i class="fas fa-envelope" aria-hidden="true"></i>Request more info</a></li>
+                    </ul>
+                    <p class="coming-soon-contact">
+                        <strong>Still have questions?</strong> Call a campus directly: Clearwater <a href="tel:7275387167" style="color: var(--color-green); font-weight: 600;">(727) 538-7167</a> or St. Petersburg <a href="tel:7278932500" style="color: var(--color-green); font-weight: 600;">(727) 893-2500</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================
+         FOOTER (Minimal)
+    ============================================= -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__bottom" style="padding-top: 2rem; text-align: center;">
+                <p style="margin: 0 0 0.5rem;"><a href="index.html" style="color: var(--color-green); font-weight: 600;"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to PTC Home</a></p>
+                <p style="margin: 0;">&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

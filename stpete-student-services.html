@@ -3,29 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Improvement Plan (Clearwater) | Pinellas Technical College</title>
-    <meta name="description" content="Pinellas Technical College Clearwater campus School Improvement Plan, SY 2024-25.">
+    <title>Student Services Hours | PTC St. Petersburg Campus</title>
+    <meta name="description" content="Hours of service for Counseling, Financial Aid, Bookstore, and Records departments at PTC St. Petersburg.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .page-hero { background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%); color: #fff; padding: 4rem 0 3rem; }
-        .page-hero__breadcrumb { font-size: 0.875rem; margin-bottom: 1rem; opacity: 0.85; }
-        .page-hero__breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
-        .page-hero__breadcrumb li { display: inline-flex; align-items: center; }
-        .page-hero__breadcrumb li:not(:last-child)::after { content: "/"; padding-left: 0.35rem; opacity: 0.7; }
-        .page-hero__breadcrumb a { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
-        .page-hero__title { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; margin: 0 0 0.75rem; }
-        .content-section { padding: 4rem 0; background: var(--color-white); }
-        .content-wrap { max-width: 800px; margin: 0 auto; }
-        .pdf-card { background: var(--color-off-white, #F7F8FA); padding: 2rem; border-radius: var(--border-radius-lg); border-left: 4px solid var(--color-green); margin: 2rem 0; }
-        .pdf-card a { color: var(--color-green); font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.05rem; }
-        .pdf-card a:hover { text-decoration: underline; }
-        .freshness-note { margin-top: 2rem; padding: 1.25rem 1.5rem; background: #FFF8E1; border-left: 4px solid var(--color-yellow); border-radius: var(--border-radius-lg); font-size: 0.95rem; }
-        .back-link { margin: 3rem 0 0; padding: 1.5rem 0 0; border-top: 1px solid var(--color-gray-200, #E5E7EB); }
-        .back-link a { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-green); font-weight: 500; text-decoration: none; }
+        /* Hours card grid: 2x2 on most screens, 1-col on mobile */
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 640px) {
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .hours-card {
+            background: var(--color-white);
+            padding: 1.75rem;
+            border-radius: var(--border-radius-lg);
+            border-left: 4px solid var(--color-green);
+            box-shadow: var(--shadow-sm);
+        }
+        .hours-card h2 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            margin: 0 0 1rem;
+            color: var(--color-gray-900);
+        }
+        .hours-card h2 i {
+            color: var(--color-green);
+            margin-right: 0.5rem;
+        }
+        .hours-card dl {
+            margin: 0;
+        }
+        .hours-card dt {
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        .hours-card dd {
+            margin: 0 0 0.6rem 0;
+            color: var(--color-gray-700, #4a5568);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            font-variant-numeric: tabular-nums;
+        }
+        .hours-card dd:last-of-type { margin-bottom: 0; }
     </style>
 </head>
 <body>
@@ -38,10 +68,9 @@
     <div class="utility-bar utility-bar--campus">
         <div class="container utility-bar__inner">
             <div class="utility-bar__left">
-                 <!-- Campus Contact info -->
-                 <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> 727.538.7167</a>
+                 <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> 727.893.2500</a>
                  <span class="utility-bar__divider">|</span>
-                 <a href="campus-maps.html#clearwater"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 6100 154th Ave N, Clearwater, FL</a>
+                 <a href="campus-maps.html#stpete"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 901 34th St S, St. Petersburg, FL</a>
             </div>
             <div class="utility-bar__right">
                 <a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener"><i class="fas fa-desktop" aria-hidden="true"></i> Canvas Login</a>
@@ -50,28 +79,27 @@
                 <span class="utility-bar__divider">|</span>
                 <a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> PTC Main Site</a>
                 <span class="utility-bar__divider">|</span>
-                <a href="stpete.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> St. Pete Campus</a>
+                <a href="clearwater.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Clearwater Campus</a>
                 <a href="#" class="btn btn--primary btn--sm" aria-label="Search" style="margin-left: 1rem;"><i class="fas fa-search" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
 
     <!-- ============================================
-         CAMPUS HEADER (5-Pillar Structure)
+         CAMPUS HEADER
     ============================================= -->
     <header class="site-header" id="site-header">
         <div class="container site-header__inner">
-            <a href="clearwater.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
-                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Clearwater Campus" style="height: 60px;">
+            <a href="stpete.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, St. Petersburg Campus" style="height: 60px;">
                 <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
                     <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
-                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Clearwater Campus</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">St. Petersburg Campus</span>
                 </div>
             </a>
 
             <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
                 <ul class="main-nav__list">
-                    <!-- PROGRAMS -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
                         <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
@@ -85,70 +113,67 @@
                                         <li><a href="programs.html">Transportation &amp; Logistics</a></li>
                                         <li><a href="programs.html">Culinary &amp; Hospitality</a></li>
                                         <li><a href="programs.html">Cosmetology &amp; Barbering</a></li>
-                                        <li><a href="programs.html">Business &amp; Office</a></li>
                                         <li><a href="programs.html">Arts, Media &amp; Education</a></li>
                                     </ul>
                                     <p class="dropdown__column-title">Explore</p>
                                     <ul>
                                         <li><a href="programs.html">All Programs A&ndash;Z</a></li>
-                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
                                         <li><a href="coming-soon.html">Distance Learning</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <!-- ADMISSIONS & AID -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <a href="stpete-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="clearwater-admissions.html#how-to-apply">How to Apply</a></li>
-                                        <li><a href="clearwater-admissions.html#financial-aid">FAFSA &amp; Financial Aid</a></li>
+                                        <li><a href="stpete-admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="stpete-admissions.html#testing">Placement Testing</a></li>
+                                        <li><a href="stpete-admissions.html#financial-aid">FAFSA &amp; Financial Aid</a></li>
+                                        <li><a href="stpete-counselors.html">Meet Your Counselors</a></li>
                                         <li><a href="tuition-aid.html#rates">Tuition &amp; Fees</a></li>
-                                        <li><a href="tuition-aid.html#fafsa">Financial Aid &amp; FAFSA</a></li>
                                         <li><a href="tuition-aid.html#scholarships">Scholarships</a></li>
-                                        <li><a href="clearwater-admissions.html#testing">Placement Testing</a></li>
                                         <li><a href="tuition-aid.html#veterans">Veterans Benefits</a></li>
+                                        <li><a href="admissions.html">Institutional Admissions (PTC)</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <!-- CURRENT STUDENTS -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
                         <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
                                         <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
-                                        <li><a href="clearwater-student-services.html">Student Services Hours</a></li>
+                                        <li><a href="stpete-student-services.html" aria-current="page">Student Services Hours</a></li>
                                         <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
-                                        <li><a href="clearwater-records-request.html">Record Request</a></li>
+                                        <li><a href="https://stpete.myptc.edu/school-information/about-us/how-to-request-your-student-records-from-ptc-st-petersburg" target="_blank" rel="noopener">Record Request</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <!-- CAMPUS INFO -->
                     <li class="main-nav__item main-nav__item--has-dropdown">
                         <a href="#" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="clearwater-about.html">About This Campus</a></li>
-                                        <li><a href="campus-maps.html#clearwater">Map &amp; Directions</a></li>
-                                        <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
+                                        <li><a href="stpete-about.html">About This Campus</a></li>
+                                        <li><a href="campus-maps.html#stpete">Map &amp; Directions</a></li>
+                                        <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
                                         <li><a href="coming-soon.html">Employer Partnerships</a></li>
                                         <li><a href="coming-soon.html">Post a Job for Students</a></li>
                                         <li><a href="coming-soon.html">Advisory Committees</a></li>
                                         <li><a href="consumer-information.html">Consumer Information</a></li>
-                                        <li><a href="clearwater-contact.html">Contact Us</a></li>
+                                        <li><a href="stpete-contact.html">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -169,35 +194,95 @@
     </header>
 
     <main id="main-content">
-        <section class="page-hero">
+        <!-- ============================================
+             PAGE HERO + BREADCRUMB
+        ============================================= -->
+        <section class="page-hero" style="background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%); color: #fff; padding: 4rem 0 3rem;">
             <div class="container">
-                <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
-                    <ol>
-                        <li><a href="clearwater.html">Clearwater Home</a></li>
-                        <li><a href="clearwater-about.html">About This Campus</a></li>
-                        <li aria-current="page">School Improvement Plan</li>
+                <nav class="page-hero__breadcrumb" aria-label="Breadcrumb" style="font-size: 0.875rem; margin-bottom: 1rem; color: rgba(255,255,255,0.95);">
+                    <ol style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem;">
+                        <li style="display: inline-flex; align-items: center;"><a href="stpete.html" style="color: #fff; text-decoration: underline; text-underline-offset: 2px;">St. Petersburg Campus</a></li>
+                        <li aria-current="page" style="display: inline-flex; align-items: center;">Student Services Hours</li>
                     </ol>
                 </nav>
-                <h1 class="page-hero__title">School Improvement Plan, SY 2024-25</h1>
+                <h1 style="font-family: var(--font-heading); font-size: clamp(1.85rem, 4vw, 2.5rem); font-weight: 700; margin: 0 0 0.75rem;">Student Services Hours</h1>
+                <p style="font-size: 1.15rem; max-width: 720px; color: #fff; line-height: 1.6;">Hours of service for the offices at the PTC St. Petersburg campus.</p>
             </div>
         </section>
 
-        <section class="content-section">
+        <!-- ============================================
+             HOURS GRID
+             Verbatim from stpete.myptc.edu/admissions/student-services-hours
+             (counselors/extracted/stpete/student-services-hours.md).
+        ============================================= -->
+        <section style="padding: 3rem 0 4rem; background: var(--color-off-white, #F7F8FA);">
             <div class="container">
-                <div class="content-wrap">
+                <div class="hours-grid">
 
-                    <div class="pdf-card">
-                        <a href="https://clearwater.myptc.edu/school-information/about-us/school-improvement-plan-sy-2024-25" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i>PTCCL2425SIPFinal.pdf <i class="fas fa-external-link-alt" style="font-size: 0.75em; margin-left: 0.25rem;" aria-hidden="true"></i></a>
+                    <article class="hours-card">
+                        <h2><i class="fas fa-user-graduate" aria-hidden="true"></i>Counseling Department</h2>
+                        <dl>
+                            <dt>Monday &ndash; Wednesday</dt>
+                            <dd>7:00 a.m. &ndash; 2:30 p.m.</dd>
+                            <dt>Thursday</dt>
+                            <dd>7:00 a.m. &ndash; 5:30 p.m.</dd>
+                            <dt>Friday</dt>
+                            <dd>7:00 a.m. &ndash; 2:30 p.m.</dd>
+                        </dl>
+                    </article>
+
+                    <article class="hours-card">
+                        <h2><i class="fas fa-dollar-sign" aria-hidden="true"></i>Financial Aid Department</h2>
+                        <dl>
+                            <dt>Monday &ndash; Friday</dt>
+                            <dd>7:00 a.m. &ndash; 2:30 p.m.</dd>
+                        </dl>
+                    </article>
+
+                    <article class="hours-card">
+                        <h2><i class="fas fa-book" aria-hidden="true"></i>Bookstore</h2>
+                        <dl>
+                            <dt>Monday &ndash; Friday</dt>
+                            <dd>7:00 a.m. &ndash; 2:30 p.m.</dd>
+                        </dl>
+                    </article>
+
+                    <article class="hours-card">
+                        <h2><i class="fas fa-folder-open" aria-hidden="true"></i>Records Department</h2>
+                        <dl>
+                            <dt>Monday &ndash; Friday</dt>
+                            <dd>7:00 a.m. &ndash; 2:00 p.m.</dd>
+                        </dl>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================
+             CROSS-LINKS
+        ============================================= -->
+        <aside aria-label="Related links" style="padding: 2rem 0 3rem;">
+            <div class="container" style="max-width: 800px;">
+                <p style="font-size: 1rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;"><strong>Need to reach a specific person?</strong> See <a href="stpete-counselors.html" style="color: var(--color-green); font-weight: 600;">Meet your St. Petersburg counselors</a> or the <a href="stpete-staff-directory.html" style="color: var(--color-green); font-weight: 600;">St. Petersburg staff directory</a>.</p>
+                <p style="font-size: 0.95rem; line-height: 1.6; margin: 0.75rem 0 0; color: var(--color-gray-700);">Front office: <a href="tel:7278932500" style="color: var(--color-green); font-weight: 600;">(727) 893-2500</a></p>
+            </div>
+        </aside>
+
+        <!-- ============================================
+             CTA BAND
+        ============================================= -->
+        <section class="cta-band" id="cta-section">
+            <div class="container">
+                <div class="cta-band__inner">
+                    <div class="cta-band__text">
+                        <h2>Ready to Apply?</h2>
+                        <p>Start your application to St. Petersburg campus or contact a counselor.</p>
                     </div>
-
-                    <div class="freshness-note">
-                        <p style="margin: 0;"><strong>Note:</strong> The current School Improvement Plan published for the Clearwater campus on the live site is SY 2024-25 (the prior school year). The St. Petersburg campus has published a SY 2025-26 plan; an updated Clearwater SY 2025-26 plan is being tracked. PDF link routes to the live Clearwater SIP page; PDF URL will be wired up directly during Finalsite migration.</p>
+                    <div class="cta-band__actions">
+                        <a href="https://apply.myptc.edu/" class="btn btn--accent btn--lg" target="_blank" rel="noopener">Apply Now</a>
+                        <a href="stpete-admissions.html" class="btn btn--outline-white btn--lg">St. Petersburg Admissions</a>
                     </div>
-
-                    <div class="back-link">
-                        <a href="clearwater-about.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to About This Campus</a>
-                    </div>
-
                 </div>
             </div>
         </section>
@@ -209,8 +294,8 @@
             <div class="footer__top">
                 <div class="footer__brand">
                     <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
-                    <p class="footer__tagline"><strong>6100 154th Ave N, Clearwater, FL 33760</strong><br>
-                    Phone: 727.538.7167<br>
+                    <p class="footer__tagline"><strong>901 34th St S, St. Petersburg, FL 33711</strong><br>
+                    Phone: 727.893.2500<br>
                     Preparing students for high-demand careers through hands-on, industry-certified training since 1962.</p>
                     <div class="footer__social">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
@@ -225,20 +310,20 @@
                         <p class="footer__col-title">Quick Links</p>
                         <ul>
                             <li><a href="programs.html">Programs</a></li>
-                            <li><a href="clearwater-admissions.html">Clearwater Admissions</a></li>
+                            <li><a href="stpete-admissions.html">St. Petersburg Admissions</a></li>
                             <li><a href="tuition-aid.html">Tuition &amp; Aid</a></li>
                             <li><a href="student-resources.html">Student Resources</a></li>
                             <li><a href="about.html">About PTC</a></li>
                         </ul>
                     </div>
                     <div class="footer__col">
-                        <p class="footer__col-title">Clearwater Links</p>
+                        <p class="footer__col-title">St. Petersburg Links</p>
                         <ul>
-                            <li><a href="schedule-clearwater.html">Class Schedule</a></li>
-                            <li><a href="campus-maps.html#clearwater">Campus Map &amp; Directions</a></li>
-                            <li><a href="coming-soon.html">Academic Calendar</a></li>
-                            <li><a href="clearwater-admissions.html#how-to-apply">Schedule a Shadow Visit</a></li>
-                            <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
+                            <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                            <li><a href="stpete-counselors.html">Meet Your Counselors</a></li>
+                            <li><a href="stpete-student-services.html">Student Services Hours</a></li>
+                            <li><a href="campus-maps.html#stpete">Campus Map &amp; Directions</a></li>
+                            <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
                         </ul>
                     </div>
                     <div class="footer__col">
@@ -248,7 +333,7 @@
                             <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
                             <li><a href="about.html#accreditation">Accreditation</a></li>
                             <li><a href="careers.html">Careers at PTC</a></li>
-                            <li><a href="clearwater-contact.html">Contact Us</a></li>
+                            <li><a href="stpete-contact.html">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
