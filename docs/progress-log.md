@@ -2496,3 +2496,77 @@ Dispatched the 4 audit subagents (audit-mapper, audit-comparator, audit-ia-recom
 **New issues surfaced (for Stage 4 / follow-ups):** NPC buttons + several CTAs resolve to dead `href="#"`; redesign omits the live "Institutional Application Form" requirement; STP has NO named VA specialists (inventory's Schnell/Mitchell expectation is wrong — not in DOM or raw HTML); CLW street address (6100 154th Ave N) not in tuition extracts, verify against Contact cluster; live typo "grades"→"graduates" on fees page.
 
 **Next run:** Stage 4 (`synthesizing`) — read all 4 analysis docs, produce `tuition/RECOMMENDATIONS.md` punch list, advance to `building`. Given the volume of fabrications, Stage 4 will be substantial. The build stage will need verbatim rate/code/scholarship/veterans content pulled straight from the extracts.
+
+---
+
+## 2026-06-02 — Tuition cluster: `synthesizing` → `building` (Stage 4 complete)
+
+Wrote `tuition/RECOMMENDATIONS.md` punch list synthesizing all 4 analysis docs. Every replacement value is verbatim from the extracts and inlined in the punch list so Stage 5 doesn't have to re-derive them.
+
+**Punch list:** 12 fabrication fixes (F1-F12), 10 missing-content adds (M1-M10), 4 drift items (D1-D4, mostly resolved by the F/M fixes), 7 build/structural (B1-B7), 2 chrome (C1-C2), 7 follow-ups to route. Headline fixes: FAFSA code 013847 → 005605/013917; rates $2.91/$11.64 → $2.92/$11.71; rate-setter → Pinellas County School Board; "pay online via Focus" → in-person bookstore each term; strip fabricated GI Bill Ch.30/1606 + MyCAA + TA; add Bill Young + Purple Heart waivers + Title 38 3679(e) + Ch.35 restriction; add AGE tuition tier; add named scholarships; add #refund section; strip fabricated FAQ.
+
+**6 decisions flagged for Marianne (DEC-1..6)** before building: confirm the lopsided 3-page split, strip FAQ, remove fabricated estimate block, remove dual-enrollment $0 row, Bill Young placement under #veterans, scholarship consolidation. Stage 5 is gated on these.
+
+**Stage 5 (`building`) will be a near-rewrite** of tuition-aid.html plus two NEW thin campus pages (clearwater-tuition.html, stpete-tuition.html). Build order is specified at the bottom of RECOMMENDATIONS.md. This is the largest single-page rebuild in the project so far — recommend doing it Marianne-present given the volume of fabrication fixes and the 6 open decisions.
+
+**Next run:** Stage 5 building, once DEC-1..6 are confirmed.
+
+---
+
+## 2026-06-02 — Tuition cluster: `building` → `verifying` (Stage 5 build complete)
+
+Marianne confirmed the lopsided 3-page split and accepted DEC-2..6 defaults, then approved building this session. Largest single-page rebuild in the project so far.
+
+**`tuition-aid.html` rebuilt verbatim:**
+- F1-F12 fabrications fixed: rates now $2.92/hr resident, $11.71/hr nonresident; two campus FAFSA codes (CLW 005605, STP 013917) replacing fabricated 013847; rate-setter now "Pinellas County School Board"; payment now in-person bookstore each term (removed "pay online via Focus"); stripped fabricated GI Bill Ch.30/1606, MyCAA $4,000, Tuition Assistance, and WIOA naming; removed fabricated tuition-estimate block + dual-enrollment $0 row.
+- M1-M10 added verbatim: Adult General Education tuition tier, full fee list, FL Prepaid note, FAFSA checklist + Institutional Application Form requirement, verification, SAP/90% attendance, Return of Title IV 60.01%, FAME; named scholarships (7 shared + 2 STP-only marked); named federal/state programs (Pell, Bright Futures, Career Ed Grant, Voc Rehab, Youth Connect, CareerSource Pinellas).
+- New sections: `#refund` (verbatim refund policy), `#scholarships` (full list + PCSB outbound link), `#federal-state` (program cards). Rebuilt `#veterans` (Title 38 3679(e) provisions, Ch.35 online restriction, attendance 80%/94%, appeal process, Bill Young + Purple Heart waivers anchored here). Removed fabricated `#faq`. Wired NPC chooser buttons to the real PCSB calculator URL. Campus chooser cards repointed to the new campus pages.
+
+**NEW campus pages built (3-page split):**
+- `clearwater-tuition.html` — FAFSA 005605, CLW NPC, FA Office (727) 538-7167 Option 7, plus the full asymmetric **Military & Veteran Student Resources** block (MVRC Building 1, Lidija Milisav x2020, Susan Welden x2023, July 7 + Nov 11 2026 events, community resource links). Section id `#military-veteran-resources` (institutional page links to it).
+- `stpete-tuition.html` — FAFSA 013917, STP NPC, FA Office (727) 893-2500, veterans pointer to institutional `#veterans` (STP has no resource center; follow-up filed).
+
+**Verification done inline:** grep-confirmed 0 fabricated values remain (013847, 2.91, 11.64, MyCAA, Florida Legislature, WIOA, "first week of instruction", "pay online", Tuition Assistance all gone). The one "Chapter 30/33/1606" match is the legitimate Barrett VA Scholarship eligibility (verbatim from STP source).
+
+**7 follow-ups routed** to `follow-ups.md` § Tuition cluster: STP missing VA contacts/resources page (high), live Bill Young waiver duplication (med), no institutional www tuition page (med), PCSB NPC external-URL drift (low), rate-refresh owner/cadence (low), live "grades"→"graduates" typo (low), verify CLW street address against Contact cluster (low, NEEDS-MORE-RESEARCH).
+
+**Next run:** Stage 6/7 (`verifying`) — re-run the audit-verifier against the rebuilt tuition-aid.html + the two new campus pages to confirm every fabrication is resolved verbatim and no new drift was introduced. If clean, advance to `verified`.
+
+---
+
+## 2026-06-02 — Tuition cluster: `verifying` → `verified` (CLOSED)
+
+Stage 7 audit-verifier ran independently against the rebuilt `tuition-aid.html`, `clearwater-tuition.html`, and `stpete-tuition.html`. **Verdict: PASS.**
+
+**Counts:** 28 CONFIRMED-RESOLVED, 0 STILL-FABRICATED, 4 PASS-THROUGH, 1 NEW-DRIFT-INTRODUCED (non-blocking).
+- All 12 fabrications resolved verbatim and grep-confirmed: `013847` = 0 hits, `2.91`/`11.64` = 0 hits, "Florida Legislature" = 0 hits, MyCAA/$4,000/Tuition Assistance/WIOA gone, "pay online via Focus" gone. "Chapter 30, 33, or 1606" appears only in the allowed Barrett VA Scholarship eligibility (verbatim from STP source).
+- All missing adds present and verbatim (AGE rates, fee list, refund window, Bill Young + Purple Heart waivers, Title 38/Ch.35/attendance, named scholarships with exact amounts).
+- Structural confirmed: `#faq` gone, `#refund` present, NPC buttons wired to real PCSB URL on all 3 pages, campus chooser routes to the new pages, CLW Military & Veteran block verbatim (Milisav/Welden/events), STP correctly invents no VA specialists.
+- **1 NEW-DRIFT (non-blocking):** CLW street address `6100 154th Ave N / 33760` published in CLW page chrome despite not being in any tuition extract (standing NEEDS-MORE-RESEARCH from Stage 4). Cross-cluster gap, not a fabrication (phone confirmed; STP address verbatim). Logged in follow-ups for Contact-cluster confirmation, plus a low-priority CareerSource URL note.
+
+CLUSTERS.md row 6 advanced `verifying` → `verified`. Drift-watched. 8 follow-ups in the Tuition register.
+
+### Active queue status
+
+**6 of 7 clusters now closed:** About hubs ✓, About sub-pages ✓, Compliance ✓, Counselors ✓, Admissions ✓, **Tuition ✓**. Only **Programs** (#7, `queued`) remains — the largest cluster (per-program pages from `_templates/program-page.html`; Welding pilots already done). All three previously-verified clusters that were at JS-render-gap risk were re-verified clean earlier today.
+
+### Session summary (2026-06-02)
+
+One sitting took the project from a check-in to two clusters of real progress: (1) re-verified the 3 at-risk clusters against the JS-render gap (found + fixed 5 truncated baselines, 1 redesign gap on stpete-written-plans); (2) drove the entire Tuition cluster from `extracting` through `verified` (Stages 2-7), including the largest single-page rebuild in the project and 2 new campus pages. Open root-cause item for Marianne: confirm whether the `ptc-content-pipeline-daily` scheduled task is still firing (Tuition had been frozen at `extracting` since May 4).
+
+**Next run:** Programs cluster Stage 1 inventory (the final cluster).
+
+---
+
+## 2026-06-02 — Tuition post-close refinement: Military & Veteran Resources promoted to its own page
+
+Marianne flagged that the CLW Military & Veteran Student Resources should be its own page (matching live, which publishes it at `/admissions/military-veteran-student-resources`), not a block inside `clearwater-tuition.html`. A complete custom-coded version already existed at `urgent-fixes/military-veteran-resources.html` (the Finalsite-embed artifact).
+
+Built **`clearwater-military-veteran-resources.html`** as a standalone redesign page (full CLW campus chrome) carrying the complete content: intro + MVRC box, the full 6-step "How to Apply" (Explore & Shadow, Application, VA Benefits, Financial Aid, Basic Skills Testing, Finalize Enrollment) with the Priority Registration note, both events (Exploration Day July 7 2026 + Veterans Day Breakfast Nov 11 2026), the support team (Milisav x2020, Welden x2023), and community resources + the PDF guide. Content matches the live `military-veteran-student-resources.md` extract verbatim; event naming/date uses the current live values (Exploration Day / July 7), not the older "Schoolwide Shadow Day / TBD" wording in the urgent-fixes embed.
+
+Reconnected:
+- `clearwater-tuition.html` — the long MVRC section replaced by a compact link card to the new page; added the page to the Admissions & Aid nav dropdown.
+- `tuition-aid.html#veterans` — the "Clearwater Military & Veteran Student Resources" button now points to the standalone page (was an in-page anchor on clearwater-tuition.html).
+- New page reachable from both campus nav and the institutional veterans section; footer Clearwater Links includes it.
+
+The `urgent-fixes/military-veteran-resources.html` Finalsite-embed version is left in place as the live-embed artifact (separate workflow). Cluster stays `verified`.

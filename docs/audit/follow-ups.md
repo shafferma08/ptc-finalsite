@@ -329,6 +329,36 @@ Surfaced during the persona-designer + persona-accessibility review of the new p
 
 ---
 
+## Tuition cluster (added 2026-06-02)
+
+Surfaced during the Tuition cluster audit + build (Stage 3-5). The redesign `tuition-aid.html` was heavily fabricated and was rebuilt verbatim; these items are live-side or cross-cluster issues that the redesign cannot fix on its own.
+
+### High priority
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| STP has no named VA specialists / no Military &amp; Veteran Resources page | stpete.myptc.edu/admissions/financial-aid/veterans-benefits (and no `/admissions/military-veteran-student-resources`) | CLW publishes a full Military &amp; Veteran Student Resources page (MVRC in Building 1, named contacts Lidija Milisav x2020 + Susan Welden x2023, events, community resources). STP publishes none of this; its veterans-benefits page names only a generic "Veteran Certifying Official." The inventory's earlier expectation that STP names Joanne Schnell (VA) / Sabrina Mitchell (Pell) on its aid pages was NOT confirmed: those names appear nowhere in the STP DOM or raw HTML. Redesign `stpete-tuition.html` routes veterans to the institutional section; `clearwater-tuition.html` carries the CLW resource block (asymmetric). | STP to publish a parallel Military &amp; Veteran Student Resources page (or confirm CLW serves both campuses), and publish named VA contacts. Until then the asymmetry persists in the redesign. | STP campus admin / Webmaster | High (parity + veteran support) | Tuition cluster, 2026-06-02 |
+
+### Medium priority
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Bill Young / Purple Heart waiver block duplicated verbatim on two live pages | both campuses' `fees-and-expenses` AND `veterans-benefits` | The identical HB 7015 / HB 851 statutory waiver block appears on four live pages (2 pages x 2 campuses). The redesign de-dupes to a single home under `tuition-aid.html#veterans`. | Consolidate on live to a single canonical home and cross-link, to reduce maintenance and drift. | Webmaster | Medium | Tuition cluster, 2026-06-02 |
+| No institutional www tuition / financial-aid page | www.myptc.edu/resources/future-students/financial-aid | The www financial-aid URL returns 200 but has an empty body. All real tuition/aid content lives only on the two campus subsites. The redesign creates the canonical institutional `tuition-aid.html`. | Publish a real institutional financial-aid page on live www (the redesign page can serve as the content source once approved). | Webmaster | Medium | Tuition cluster, 2026-06-02 |
+| Financial Reports: reproduce verbatim vs link-out (carryover) | consumer-information.html#financial-reports | Decision pending from the 2026-06-02 About re-verification (see Homepage CTA section above) — kept here for cross-cluster visibility. | See the About re-verification follow-up. | Webmaster (Marianne) | Low | About re-verification, 2026-06-02 |
+
+### Low priority
+
+| Item | Live page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| PCSB Net Price Calculator links are external | both campus NPC pages | CLW and STP NPC pages both link to the same PCSB-hosted calculator (`pcsb.org/.../domain/134/netprice/index.html`). The redesign wires both campus chooser buttons to this URL. If PCSB relocates the file, both campus links break. | Add to the drift-watch; confirm the URL periodically. | Webmaster | Low | Tuition cluster, 2026-06-02 |
+| Tuition rate refresh owner / cadence | both campus `fees-and-expenses` | Rates ($2.92 resident / $11.71 nonresident per hour; AGE $45/$120 per term) are PCSB-set and change at fiscal-year boundaries. The redesign carries the current verbatim values. | Assign a content owner (PCSB CTAE administration, Frank Cianca as PTC relay) and an annual July refresh checkpoint. | Webmaster + PCSB CTAE | Low | Tuition cluster, 2026-06-02 |
+| Live typo on fees page: "recent Florida high school grades" | both campus `fees-and-expenses` | The HB 851 out-of-state-fee-waiver paragraph reads "recent Florida high school grades" where it should read "graduates." Preserved verbatim in the extracts; the redesign did not reproduce this specific sentence. | Correct "grades" to "graduates" on live. | Webmaster | Low | Tuition cluster, 2026-06-02 |
+| CareerSource link target on `tuition-aid.html#federal-state` | redesign `tuition-aid.html` | The Federal Stimulus Job Training card links to `careersourcepinellas.com` (current canonical homepage). Live's `federal-and-state-funding` extract uses an older `ww25.worknetpinellas.org/...` application URL with a session-token-style param. The clearwater-tuition.html veterans resources block uses `careersourcepinellas.com/veteran-services/` (verbatim from the MVRC extract). Functional, but confirm the canonical CareerSource application URL on next drift pass. | Confirm CareerSource Pinellas canonical URL; align live + redesign. | Webmaster | Low | Tuition cluster Verifier, 2026-06-02 |
+| Verify Clearwater street address against Contact cluster | clearwater-tuition.html / sitewide CLW chrome | The CLW street address (6100 154th Ave N, Clearwater, FL 33760) is used in the redesign's standard CLW page chrome but does NOT appear in any Tuition cluster extract. Verifier flagged it NEEDS-MORE-RESEARCH. It is consistent with the redesign's other CLW pages but should be confirmed against an authoritative source during the Contact/Campus cluster. | Confirm the CLW address verbatim from an authoritative live source (campus contact/about page) during a future cluster. | Webmaster | Low | Tuition cluster Verifier, 2026-06-02 |
+
+---
+
 ## Closed follow-ups
 
 (none yet)

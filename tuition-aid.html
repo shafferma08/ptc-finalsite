@@ -513,6 +513,32 @@
             background: rgba(255,255,255,0.1);
         }
 
+        /* Prose + verbatim-content helpers (added 2026-06-02 Tuition rebuild) */
+        .ta-prose { max-width: 820px; }
+        .ta-prose h3 { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: var(--color-gray-900); margin: 2rem 0 0.6rem; }
+        .ta-prose p { font-size: 1rem; color: var(--color-gray-700, #4a5568); line-height: 1.7; margin: 0 0 1rem; }
+        .ta-prose ul { margin: 0 0 1.5rem; padding-left: 1.25rem; color: var(--color-gray-700, #4a5568); line-height: 1.7; }
+        .ta-prose ul li { margin-bottom: 0.4rem; }
+        .ta-prose a { color: var(--color-green); font-weight: 500; }
+        .fee-list-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 2rem; list-style: none; padding: 0; margin: 1rem 0 1.5rem; }
+        .fee-list-grid li { padding: 0.55rem 0; border-bottom: 1px solid #e8ecf1; color: var(--color-gray-800,#2d3748); }
+        .info-callout { background: #f0f9f4; border-left: 4px solid var(--color-green); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; font-size: 0.95rem; line-height: 1.65; color: var(--color-gray-800,#2d3748); }
+        .info-callout strong { color: var(--color-gray-900); }
+        .scholarship-item { background:#fff; border:1px solid #e8ecf1; border-radius:10px; padding:1.5rem 1.75rem; margin-bottom:1rem; box-shadow:0 1px 6px rgba(0,0,0,0.04); }
+        .scholarship-item--stp { border-left: 4px solid var(--color-yellow,#FFCF01); }
+        .scholarship-item h3 { font-family: var(--font-heading); font-size:1.05rem; font-weight:700; color:var(--color-gray-900); margin:0 0 0.5rem; }
+        .scholarship-item p { font-size:0.95rem; color:var(--color-gray-700,#4a5568); line-height:1.6; margin:0 0 0.5rem; }
+        .scholarship-item__meta { font-size:0.85rem; color:var(--color-gray-600,#718096); margin:0; }
+        .campus-badge { display:inline-block; background:var(--color-yellow,#FFCF01); color:var(--color-gray-900); font-size:0.7rem; font-weight:700; padding:0.15rem 0.5rem; border-radius:4px; letter-spacing:0.3px; text-transform:uppercase; margin-left:0.4rem; vertical-align:middle; }
+        .policy-list { list-style:none; padding:0; margin:1rem 0; }
+        .policy-list li { display:flex; gap:0.75rem; align-items:flex-start; padding:0.75rem 0; border-bottom:1px solid #e8ecf1; color:var(--color-gray-800,#2d3748); line-height:1.6; }
+        .policy-list li i { color:var(--color-green); margin-top:5px; flex-shrink:0; }
+        .fed-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:0.5rem; }
+        .fed-card { background:#fff; border:1px solid #e8ecf1; border-radius:10px; padding:1.5rem; box-shadow:0 1px 6px rgba(0,0,0,0.04); }
+        .fed-card h3 { font-family:var(--font-heading); font-size:1.05rem; font-weight:700; color:var(--color-gray-900); margin:0 0 0.5rem; }
+        .fed-card p { font-size:0.92rem; color:var(--color-gray-700,#4a5568); line-height:1.6; margin:0 0 0.5rem; }
+        .fed-card a { color:var(--color-green); font-weight:500; font-size:0.9rem; }
+
         @media (max-width: 900px) {
             .aid-grid { grid-template-columns: 1fr; }
             .aid-steps { grid-template-columns: repeat(2, 1fr); }
@@ -520,6 +546,8 @@
             .campus-aid-grid { grid-template-columns: 1fr; }
             .npc-callout { grid-template-columns: 1fr; text-align: center; }
             .pay-tuition-banner { flex-direction: column; text-align: center; }
+            .fee-list-grid { grid-template-columns: 1fr; }
+            .fed-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 600px) {
             .aid-steps { grid-template-columns: 1fr; }
@@ -623,7 +651,7 @@
                                         <li><a href="tuition-aid.html#scholarships">Scholarships</a></li>
                                         <li><a href="tuition-aid.html#veterans">Veterans Benefits</a></li>
                                         <li><a href="tuition-aid.html#net-price">Net Price Calculator</a></li>
-                                        <li><a href="tuition-aid.html#faq">Refund Policy</a></li>
+                                        <li><a href="tuition-aid.html#refund">Refund Policy</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -721,7 +749,7 @@
                     </ol>
                 </nav>
                 <h1 class="page-hero__title">Tuition &amp; Financial Aid</h1>
-                <p class="page-hero__subtitle">PTC is one of Florida's most affordable pathways to a career-ready credential. Explore our tuition rates, payment options, and financial aid resources to find the support that fits your situation.</p>
+                <p class="page-hero__subtitle">Find PTC's tuition rates, fees, and payment information, along with the financial aid, scholarships, and veterans benefits that can help cover the cost of your program.</p>
             </div>
         </section>
 
@@ -729,96 +757,209 @@
         <section class="ta-section" id="rates">
             <div class="container">
 
-                <!-- Pay Tuition Banner -->
+                <!-- Pay Tuition Banner (F11: corrected to live in-person bookstore payment) -->
                 <div class="pay-tuition-banner" id="pay">
                     <div class="pay-tuition-banner__text">
-                        <h3><i class="fas fa-credit-card" style="margin-right: 0.5rem;" aria-hidden="true"></i> Ready to Pay Your Tuition?</h3>
-                        <p>Current students can pay online through the Focus student portal. Questions? Contact the Business Office at your campus.</p>
+                        <h3><i class="fas fa-store" style="margin-right: 0.5rem;" aria-hidden="true"></i> Paying Your Tuition &amp; Fees</h3>
+                        <p>All students must come to the bookstore to pay fees each term; payment does not happen automatically. Tuition, lab fees, and facility fees are due by the first day of class of each term.</p>
                     </div>
-                    <a href="#" class="btn-secondary">Pay Tuition Online</a>
                 </div>
 
                 <h2 class="ta-section__heading">Tuition &amp; Fee Rates</h2>
-                <p class="ta-section__subtext">PTC offers some of the lowest tuition rates in the state. The tables below reflect standard rates for Florida residents. Non-resident rates and program-specific lab fees may vary.</p>
+                <p class="ta-section__subtext">Tuition for programs offered is established by the Pinellas County School Board. Current tuition rates are below. Rates are the same at both the Clearwater and St. Petersburg campuses.</p>
 
                 <div class="rates-table-wrapper">
                     <table class="rates-table" aria-label="PTC Tuition Rate Schedule">
                         <thead>
                             <tr>
-                                <th>Student Type</th>
-                                <th>Cost per Credit Hour</th>
-                                <th>Typical Program Length</th>
-                                <th>Estimated Total Tuition</th>
+                                <th>Program Type</th>
+                                <th>Resident</th>
+                                <th>Nonresident / Foreign</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Florida Resident</td>
-                                <td>$2.91/clock hour</td>
-                                <td>900–1,800 hours</td>
-                                <td>~$2,619–$5,238</td>
+                                <td>Career Technical Certificate</td>
+                                <td>$2.92 per hour</td>
+                                <td>$11.71 per hour</td>
                             </tr>
                             <tr>
-                                <td>Non-Resident</td>
-                                <td>$11.64/clock hour</td>
-                                <td>900–1,800 hours</td>
-                                <td>~$10,476–$20,952</td>
-                            </tr>
-                            <tr>
-                                <td>Dual Enrollment (HS Students)</td>
-                                <td>No cost to student</td>
-                                <td>Varies by program</td>
-                                <td>$0</td>
+                                <td>Adult General Education<br><span style="font-size:0.85rem; color:var(--color-gray-600,#718096);">ESOL, Adult Disabled, GED (with or without diploma or GED)</span></td>
+                                <td>$45 per term<br><span style="font-size:0.85rem; color:var(--color-gray-600,#718096);">not to exceed two terms / $90 per year</span></td>
+                                <td>$120 per term<br><span style="font-size:0.85rem; color:var(--color-gray-600,#718096);">not to exceed three terms / $360 per year</span></td>
                             </tr>
                             <tr class="note-row">
-                                <td colspan="4">Rates are set by the Florida Legislature and subject to change. Lab fees, uniforms, tools, and certification exam costs are separate from tuition. Contact your campus Business Office for a complete cost estimate for your specific program.</td>
+                                <td colspan="3">Adult General Education does not include High School Credit, homeless populations, or individuals in state foster care programs; some classes have lab fees. Fee-Based Instruction and Self-Sustaining course fees are based on the actual cost of each course and are determined by the facility offering the course or by CTAE administration.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
+                <div class="ta-prose" style="margin-top: 2.5rem;">
+                    <h3>Fees</h3>
+                    <p>In addition to tuition, Pinellas Technical College programs and courses are subject to the following fees:</p>
+                    <ul class="fee-list-grid">
+                        <li>Application/processing fee</li>
+                        <li>ID card</li>
+                        <li>Parking permit</li>
+                        <li>Books, tools, and supplies</li>
+                        <li>Laboratory fees</li>
+                        <li>Equipment and facility usage fees</li>
+                        <li>Graduation fees</li>
+                        <li>Uniforms (as required by program)</li>
+                        <li>Certification or licensure exam assessments (as required by program)</li>
+                    </ul>
+
+                    <h3>Registration &amp; Fee Payments</h3>
+                    <p>Pinellas Technical College tuition and fees are collected upon initial registration and subsequent fee periods. Cash, credit card (Visa and MasterCard), FL Prepaid ID Card, money orders, personal checks, and Cashier's Checks are accepted. Financial aid is available to those who qualify.</p>
+                    <ul>
+                        <li>Fee periods are identified on the website calendar.</li>
+                        <li>All students must come to the bookstore to pay fees each term; payment does not happen automatically.</li>
+                        <li>Tuition, lab fees, and facility fees are due by the first day of class of each term.</li>
+                        <li>If being funded by an outside agency, students must make sure the agency has all necessary paperwork in a timely manner. Pinellas Technical College does not send this information to the agency.</li>
+                    </ul>
+                    <div class="info-callout">
+                        <strong>FL Prepaid:</strong> Please bring your card to each registration. Currently, only tuition fees are covered. Other fees such as lab, facility, ID, application, etc., should be paid out of pocket or through another type of financial aid.
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- FINANCIAL AID SECTION -->
+        <!-- FAFSA & ELIGIBILITY SECTION -->
         <section class="ta-section ta-section--alt" id="fafsa">
             <div class="container">
-                <h2 class="ta-section__heading">Financial Aid Options</h2>
-                <p class="ta-section__subtext">Most PTC students qualify for some form of financial assistance. Our financial aid counselors are here to help you navigate every option available.</p>
+                <h2 class="ta-section__heading">FAFSA &amp; Financial Aid Eligibility</h2>
+                <p class="ta-section__subtext">Financial aid consisting of Federal Pell Grants and various agency scholarships helps eligible students meet educational expenses. For complete eligibility and application details, visit the federal FAFSA site.</p>
 
-                <div class="aid-grid">
-                    <div class="aid-card">
-                        <div class="aid-card__icon"><i class="fas fa-file-alt" aria-hidden="true"></i></div>
-                        <div class="aid-card__content">
-                            <h3>FAFSA &amp; Federal Aid</h3>
-                            <p>Filing the FAFSA is the first step toward most financial aid. PTC's Federal School Code is <strong>013847</strong>. Many students qualify for Federal Pell Grants, which do not need to be repaid.</p>
-                            <a href="#" class="aid-card__link" id="federal-state">Complete the FAFSA at studentaid.gov <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                        </div>
+                <div class="ta-prose">
+                    <h3>Completing the FAFSA</h3>
+                    <p>The Free Application for Federal Student Aid (FAFSA) is available at Pinellas Technical College's Financial Aid office or online at <a href="https://www.fafsa.gov" target="_blank" rel="noopener">fafsa.gov</a>. What you need to fill out the FAFSA:</p>
+                    <ul>
+                        <li>Social Security Number</li>
+                        <li>Prior Year Tax Return Documents</li>
+                        <li>Driver's License Number</li>
+                        <li>Current Bank Statement</li>
+                        <li>Mortgage &amp; Investment Records (if any)</li>
+                        <li>Alien Registration Number (if not a U.S. Citizen)</li>
+                        <li>Parents' Tax Return Documents (if a dependent)</li>
+                        <li>Your campus Federal School Code</li>
+                    </ul>
+                    <div class="info-callout">
+                        <strong>Each campus has its own Federal School Code.</strong> Use <strong>005605</strong> for the Clearwater campus or <strong>013917</strong> for the St. Petersburg campus when completing your FAFSA. Find your campus details on the <a href="clearwater-tuition.html">Clearwater</a> or <a href="stpete-tuition.html">St. Petersburg</a> tuition page.
                     </div>
-                    <div class="aid-card" id="scholarships">
-                        <div class="aid-card__icon"><i class="fas fa-award" aria-hidden="true"></i></div>
-                        <div class="aid-card__content">
-                            <h3>Scholarships</h3>
-                            <p>PTC and Pinellas County Schools offer a variety of scholarships for enrolled students, including industry-specific awards and general merit scholarships. Applications open each fall semester.</p>
-                            <a href="#" class="aid-card__link">Browse Available Scholarships <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                        </div>
+                    <p>In addition, all students must visit Pinellas Technical College's Financial Aid Department to complete an Institutional Application Form prior to starting school. This allows the Financial Aid Department to begin processing financial aid on students' behalf. Without completing an Institutional Application Form in a timely manner, students' financial aid may be delayed.</p>
+
+                    <h3>Verification</h3>
+                    <p>Student aid reports may require verification through the U.S. Department of Education or financial aid specialists. Students must provide requested documentation before disbursement, which may include tax returns, social security cards, or selective service registrations.</p>
+
+                    <h3>Satisfactory Academic Progress &amp; Attendance</h3>
+                    <p>Students follow qualitative and quantitative institutional guidelines. Minimum Satisfactory Academic Progress and Attendance Requirements exist for each program. Academic progress is calculated as Standard Hours Completed divided by Enrolled Class Hours; attendance is calculated as Hours Attended divided by Enrolled Class Hours.</p>
+                    <ul>
+                        <li>Students must attend 90% of program hours to graduate.</li>
+                        <li>All clock-hour program students must meet attendance requirements before graduation.</li>
+                        <li>Students on financial aid not meeting 90% attendance have Pell awards prorated to attended hours.</li>
+                        <li>At SAP evaluation, students may miss up to 10% per payment period; more requires hour makeup.</li>
+                        <li>Pell awards cannot exceed standard program clock hours; dropped hours reduce Pell awards and may delay disbursement.</li>
+                    </ul>
+
+                    <h3>Return of Title IV Funds</h3>
+                    <p>Title IV funds assume full enrollment for the award period. If students withdraw before completing 60.01% of scheduled payment period hours, the institution calculates earned versus disbursed amounts. Excess funds return; unearned aid owed to students may be requested post-withdrawal.</p>
+
+                    <h3>FAME ID Theft Prevention</h3>
+                    <p>Pinellas Technical College uses FAME to process Pell Grant awards and disbursements. Visit FAME for information regarding cybersecurity and ID theft prevention.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEDERAL & STATE FUNDING SECTION -->
+        <section class="ta-section" id="federal-state">
+            <div class="container">
+                <h2 class="ta-section__heading">Federal &amp; State Funding</h2>
+                <p class="ta-section__subtext">Most of Pinellas Technical College's financial assistance involves the Federal Pell Grant. Florida residents may also qualify for several state and workforce programs.</p>
+                <div class="fed-grid">
+                    <div class="fed-card">
+                        <h3>Federal Pell Grant</h3>
+                        <p>An award to help undergraduates pay for education beyond high school. Students receiving Title IV Federal Assistance are required to have a high school diploma or GED. Eligibility is determined after an application is submitted to the Federal Processing Center.</p>
                     </div>
-                    <div class="aid-card">
-                        <div class="aid-card__icon"><i class="fas fa-hand-holding-usd" aria-hidden="true"></i></div>
-                        <div class="aid-card__content">
-                            <h3>State &amp; Workforce Funding</h3>
-                            <p>Florida residents may qualify for additional state programs including Workforce Innovation and Opportunity Act (WIOA) grants, which can cover tuition, books, and supplies for eligible students in high-demand programs.</p>
-                            <a href="#" class="aid-card__link">Learn About State Programs <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                        </div>
+                    <div class="fed-card">
+                        <h3>Florida Bright Futures Scholarship Program</h3>
+                        <p>Scholarships based on high school academic achievement. Funding is determined by award level: Florida Academic Scholars (FAS), Florida Medallion Scholars (FMS), or Gold Seal Vocational Scholars (GSV). Submit a Florida Financial Aid Application during your last year in high school.</p>
                     </div>
-                    <div class="aid-card">
-                        <div class="aid-card__icon"><i class="fas fa-dollar-sign" aria-hidden="true"></i></div>
-                        <div class="aid-card__content">
-                            <h3>Payment Plans</h3>
-                            <p>PTC's Business Office offers installment payment plans to help students manage costs semester by semester. Contact your campus Business Office to set up a payment arrangement before the term begins.</p>
-                            <a href="contact.html" class="aid-card__link">Contact the Business Office <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                        </div>
+                    <div class="fed-card">
+                        <h3>Florida Public Postsecondary Career Education Student Assistance Grant</h3>
+                        <p>Assistance for Florida students enrolled in certificate programs of 450 hours or more. Requires enrollment of at least 180 hours per fee period, a completed FAFSA, and demonstrated unmet need of at least $200, among other state eligibility requirements.</p>
                     </div>
+                    <div class="fed-card">
+                        <h3>Vocational Rehabilitation</h3>
+                        <p>Florida's Vocational Rehabilitation program helps people with disabilities find meaningful careers and may assist with training, medical treatment, accommodations, and other services. Clients must apply in person. <a href="http://www.rehabworks.org/" target="_blank" rel="noopener">Rehabworks</a></p>
+                    </div>
+                    <div class="fed-card">
+                        <h3>Youth Connect</h3>
+                        <p>Assists economically disadvantaged youth ages 16 to 21. The Youth Connect Scholarship funds tuition, books, fees, tools, and uniforms up to $2,500 per student as approved by the Youth Connect Project Manager. See the Youth Connect Coordinator on campus.</p>
+                    </div>
+                    <div class="fed-card">
+                        <h3>Federal Stimulus Job Training Program (CareerSource Pinellas)</h3>
+                        <p>CareerSource Pinellas has funding available to assist dislocated workers. General eligibility includes Pinellas County residency, age 18 or older, and U.S. work authorization, among other criteria. <a href="https://careersourcepinellas.com/" target="_blank" rel="noopener">CareerSource Pinellas</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCHOLARSHIPS SECTION -->
+        <section class="ta-section ta-section--alt" id="scholarships">
+            <div class="container">
+                <h2 class="ta-section__heading">Scholarships</h2>
+                <p class="ta-section__subtext">Below is a list of scholarships available to Pinellas Technical College students. The organization offering the scholarship establishes the eligibility criteria, which is usually based on financial need and/or academic achievement. High school students, contact your high school counselor for additional available scholarships.</p>
+
+                <div class="scholarship-item">
+                    <h3>The American Welding Society Scholarship</h3>
+                    <p>The American Welding Society awards scholarships to students enrolled in a welding-related education or training program. To be eligible, the student must have a high school diploma or GED and attend school in the United States or its territories.</p>
+                    <p class="scholarship-item__meta">Deadline: March 1 for the following fall term. <a href="https://www.aws.org/foundation/page/scholarships" target="_blank" rel="noopener">Apply at the American Welding Society</a></p>
+                </div>
+                <div class="scholarship-item">
+                    <h3>The Armed Forces Communications and Electronics Association (AFCEA) Scholarship</h3>
+                    <p>The AFCEA provides scholarships in fields of study that relate to its sphere of interest. Applications are accepted from students enrolled in Computer Systems, Electronics, Web Design, Telecommunications, or PC support. Requires a minimum 3.0 GPA (unweighted), demonstrated financial need, and U.S. citizenship, among other criteria.</p>
+                    <p class="scholarship-item__meta">Applications accepted prior to February 28; reviewed in mid-March; awarded in April. <a href="https://www.afcea.org/site/foundation/scholarships?q=foundation/scholarships" target="_blank" rel="noopener">Apply at the AFCEA</a></p>
+                </div>
+                <div class="scholarship-item">
+                    <h3>The Bailey Family Foundation Scholarship</h3>
+                    <p>The Bailey Family Foundation awards a $5,000 scholarship each year to a PTC student based on GPA, financial need, and community involvement. The scholarship money may be used for tuition only.</p>
+                    <p class="scholarship-item__meta">Applications accepted January 1 to March 15 and July 1 to September 15. <a href="http://www.bailey-family.org" target="_blank" rel="noopener">Apply at the Bailey Family Foundation</a></p>
+                </div>
+                <div class="scholarship-item">
+                    <h3>Marine Technology Society Scholarship</h3>
+                    <p>MTS offers $2,000 scholarships to students enrolled in a two-year technical, engineering, or community college in a marine-related field.</p>
+                    <p class="scholarship-item__meta">Deadline: April 15 for the following fall term. <a href="https://www.mtsociety.org/scholarships" target="_blank" rel="noopener">Apply at the Marine Technology Society</a></p>
+                </div>
+                <div class="scholarship-item">
+                    <h3>Pinellas Technical College Nursing Service Scholarship</h3>
+                    <p>Provides financial assistance for students to pursue the state board examination within thirty to forty-five days upon completion of the Practical Nursing Program. The committee awards two scholarships per graduating class as long as funds are available. Eligibility includes being a Florida resident and a graduate of Pinellas Technical College St. Petersburg, 90% attendance, a GPA of 80% or higher, community volunteer involvement, faculty nomination, and demonstrated financial need.</p>
+                    <p class="scholarship-item__meta">Application forms are available at the Financial Aid office.</p>
+                </div>
+                <div class="scholarship-item">
+                    <h3>The Passmore Scholarship</h3>
+                    <p>Makes awards directly to women, age 21 or over, who live, work, or go to school in the Tampa Bay area, who demonstrate achievement, need, and well-defined educational goals, and who are attending an accredited program. Several awards averaging between $200 and $500 are made each year.</p>
+                    <p class="scholarship-item__meta">Deadline: April 30. Mail completed forms to BPW/St. Petersburg-Pinellas, P.O. Box 1063, St. Petersburg, FL 33731-1063, or fax to (214) 602-7823. <a href="http://www.bpwstpetepinellas.org/philanthropy.htm" target="_blank" rel="noopener">Passmore Scholarship details</a></p>
+                </div>
+                <div class="scholarship-item">
+                    <h3>Pinellas Education Foundation Scholarship</h3>
+                    <p>A variety of scholarships for graduating high school seniors are available through the generosity of local corporations, businesses, agencies, organizations, and individuals. Scholarships vary in amounts and most may be used for vocational education.</p>
+                    <p class="scholarship-item__meta">December deadline. <a href="http://www.pinellaseducation.org" target="_blank" rel="noopener">Apply at the Pinellas Education Foundation</a></p>
+                </div>
+                <div class="scholarship-item scholarship-item--stp">
+                    <h3>The Barrett Family Foundation VA Scholarship <span class="campus-badge">St. Petersburg</span></h3>
+                    <p>The Barrett Family Foundation awards a scholarship to a veteran who is honorably discharged and already qualifies for VA benefits under Chapter 30, 33, or 1606. Recipients must maintain satisfactory academic grades for the program and 80% monthly attendance, and write a thank-you note of appreciation at acceptance and at graduation.</p>
+                    <p class="scholarship-item__meta"><a href="https://stpete.myptc.edu/admissions/financial-aid/scholarships" target="_blank" rel="noopener">Apply through the St. Petersburg campus</a></p>
+                </div>
+                <div class="scholarship-item scholarship-item--stp">
+                    <h3>Florida Center for Students with Unique Abilities (FCSUA) / PTC-UP <span class="campus-badge">St. Petersburg</span></h3>
+                    <p>PTC-UP is a Postsecondary Transition Program designed for students with intellectual disabilities, providing structured, individualized career pathways leading to certificates of attendance, employability readiness, and potentially industry certifications and licensing. Eligibility includes possession of a high school diploma or equivalent, documentation of intellectual disability, reliable transportation, a commitment to education and employment, and successful completion of an interview process.</p>
+                    <p class="scholarship-item__meta">Contact: Pinellas Technical College Unique Professionals, 727-893-2500 ext. 2323. <a href="https://fcsua.org/" target="_blank" rel="noopener">Sponsor: FCSUA</a></p>
+                </div>
+
+                <div class="info-callout" style="margin-top:1.5rem;">
+                    Pinellas County Schools maintains an additional, regularly updated list of scholarship opportunities. <a href="https://www.pcsb.org/financialaid" target="_blank" rel="noopener">View PCSB Financial Aid &amp; Scholarships</a>.
                 </div>
             </div>
         </section>
@@ -832,8 +973,8 @@
                         <p>Not sure what PTC will actually cost you after grants and aid? Use our Net Price Calculator to get a personalized estimate based on your income and situation. Each campus has its own calculator because tuition rates and available aid can vary.</p>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center;">
-                        <a href="#" class="btn-green">Clearwater Calculator</a>
-                        <a href="#" class="btn-green" style="background: #006634;">St. Pete Calculator</a>
+                        <a href="https://www.pcsb.org/cms/lib/fl01903687/centricity/domain/134/netprice/index.html" class="btn-green" target="_blank" rel="noopener">Clearwater Calculator</a>
+                        <a href="https://www.pcsb.org/cms/lib/fl01903687/centricity/domain/134/netprice/index.html" class="btn-green" style="background: #006634;" target="_blank" rel="noopener">St. Pete Calculator</a>
                     </div>
                 </div>
             </div>
@@ -851,7 +992,7 @@
                     </div>
                     <div class="aid-step">
                         <h4>File the FAFSA</h4>
-                        <p>Complete the Free Application for Federal Student Aid at studentaid.gov using PTC's school code (013847). This unlocks grants, scholarships, and work-study options.</p>
+                        <p>Complete the Free Application for Federal Student Aid at fafsa.gov using your campus Federal School Code (Clearwater 005605 or St. Petersburg 013917). This is the first step toward grants and other aid.</p>
                     </div>
                     <div class="aid-step">
                         <h4>Receive Your Award Letter</h4>
@@ -865,37 +1006,59 @@
             </div>
         </section>
 
-        <!-- VETERANS BENEFITS -->
+        <!-- VETERANS BENEFITS (rebuilt verbatim 2026-06-02: Title 38 3679(e), Ch.35 restriction, attendance, appeal, Bill Young + Purple Heart waivers) -->
         <section class="veterans-band" id="veterans">
             <div class="container">
                 <div class="veterans-band__inner">
                     <div>
-                        <h2>Veterans &amp; Military Benefits</h2>
-                        <p>PTC is proud to support our veteran and active-duty students. We are approved for multiple GI Bill programs and have dedicated staff to help you maximize your education benefits.</p>
-                        <a href="#" class="btn-white">Contact Our Veterans Services Team</a>
+                        <h2>Veterans Benefits</h2>
+                        <p>Pinellas Technical College welcomes veterans and their dependents. Most of the full-time programs offered are approved for veterans (VA) educational benefits.</p>
+                        <a href="clearwater-military-veteran-resources.html" class="btn-white">Clearwater Military &amp; Veteran Student Resources</a>
                     </div>
                     <ul class="veterans-list">
                         <li>
                             <i class="fas fa-check-circle" aria-hidden="true"></i>
-                            <span><strong>GI Bill Approved</strong> — PTC is approved for Chapter 30, 33 (Post-9/11), 35, and 1606 benefits</span>
+                            <span>Approved for VA educational benefits including the Post-9/11 G.I. Bill&reg; (Ch. 33) and Vocational Rehabilitation &amp; Employment (Ch. 31)</span>
                         </li>
                         <li>
                             <i class="fas fa-check-circle" aria-hidden="true"></i>
-                            <span><strong>MyCAA Scholarships</strong> — Eligible military spouses can receive up to $4,000 toward education costs</span>
+                            <span>Title 38 U.S. Code 3679(e) protections while VA payment to the institution is pending</span>
                         </li>
                         <li>
                             <i class="fas fa-check-circle" aria-hidden="true"></i>
-                            <span><strong>Vocational Rehabilitation</strong> — Chapter 31 VR&amp;E benefits can cover tuition, fees, and supplies for eligible veterans</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle" aria-hidden="true"></i>
-                            <span><strong>Veterans Resource Coordinator</strong> — Dedicated on-campus support at Clearwater campus for benefits navigation and referrals</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle" aria-hidden="true"></i>
-                            <span><strong>Tuition Assistance (TA)</strong> — Active-duty military members can use federal Tuition Assistance to cover program costs</span>
+                            <span>Out-of-state fee waivers for eligible veterans under the Congressman C.W. Bill Young Veteran Tuition Waiver Program</span>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- VETERANS DETAIL -->
+        <section class="ta-section">
+            <div class="container">
+                <div class="ta-prose">
+                    <p>In accordance with Title 38 US Code 3679 subsection (e), this school adopts the following additional provisions for any students using U.S. Department of Veterans Affairs (VA) Post 9/11 G.I. Bill&reg; (Ch. 33) or Vocational Rehabilitation &amp; Employment (Ch. 31) benefits, while payment to the institution is pending from the VA. This school will not:</p>
+                    <ul>
+                        <li>Prevent the student's enrollment;</li>
+                        <li>Assess a late penalty fee to the student;</li>
+                        <li>Require the student to secure alternative or additional funding;</li>
+                        <li>Deny the student access to any resources (access to classes, libraries, or other institutional facilities) available to other students who have satisfied their tuition and fee bills to the institution.</li>
+                    </ul>
+                    <p>However, to qualify for this provision, such students may be required to produce the VA Certificate of Eligibility (COE) by the first day of class, provide a written request to be certified, and provide additional information needed to properly certify the enrollment as described in other institutional policies.</p>
+                    <div class="info-callout">
+                        <strong>Chapter 35 VA students will not be certified for any program taught in whole or in part in an online, distance learning, independent study, hybrid, or blended format.</strong> All other veterans can attend 100% online, but their benefits will reflect this option.
+                    </div>
+
+                    <h3>Veteran's Attendance Policy</h3>
+                    <p>Veteran students must maintain a minimum of 80% attendance each calendar month to remain in good standing. Students exceeding 20% absenteeism in a calendar month will have their VA benefits terminated on the last day they were satisfactory for the current month. Students must have 80% attendance the following month in order to be re-instated the first school day of the next month. If a student were to withdraw, the attendance policy remains effective for a calendar year. Minimum attendance standards vary by program; where program standards are greater than 80%, students must adhere to the higher standard. Practical Nursing requires a minimum 94% attendance.</p>
+
+                    <h3>Appeal Process</h3>
+                    <p>Students may appeal the denial status of their financial aid by submitting a written request to the Financial Aid Office detailing the student's personal mitigating circumstances. Some circumstances such as medical problems, illness or death in the family, or divorce shall be considered for an appeal. Appeals must be accompanied by documentation from a third party such as a family physician or lawyer. All appeals will be reviewed by the financial aid specialist and an administrator. The student will receive a response to the appeal within one week from the date the financial aid office receives all documentation. If the student finds this decision unsatisfactory, the student may appeal to the campus director. The campus director's decision on the appeal will be final.</p>
+
+                    <h3>Congressman C.W. Bill Young Veteran Tuition Waiver Program</h3>
+                    <p>Chapter 2014-1, Laws of Florida, (House Bill 7015) amended section 1009.26, Florida Statutes (F.S.), and created the Congressman C.W. Bill Young Veteran Tuition Waiver Program. This program authorizes an out-of-state fee waiver for honorably discharged veterans of the United States (U.S.) Armed Forces, U.S. Reserve Forces or the National Guard who physically reside in Florida. A career center operated by a school district under s. 1001.44, F.S. or charter technical career center operated under s. 1002.34, F.S., must waive out-of-state fees for an honorably discharged veteran of the U.S. Armed Forces, the U.S. Reserve Forces or the National Guard who physically resides in this state while enrolled in the institution.</p>
+                    <p>Chapter 2014-62, Laws of Florida, (House Bill 851) amended s. 1009.22 and 1009.26, F.S. Career centers operated by school districts and charter technical career centers must provide a tuition waiver for recipients of a Purple Heart or another combat decoration superior in precedence in accordance with the provisions in s. 1009.26(8), F.S.</p>
+                    <p><a href="https://clearwater.myptc.edu/admissions/financial-aid/veterans-benefits" target="_blank" rel="noopener">Read the full PTC Veterans Benefits page <i class="fas fa-external-link-alt" style="font-size:0.75em;" aria-hidden="true"></i></a></p>
                 </div>
             </div>
         </section>
@@ -903,77 +1066,42 @@
         <!-- CAMPUS AID OFFICES -->
         <section class="ta-section">
             <div class="container">
-                <h2 class="ta-section__heading">Campus Financial Aid Offices</h2>
-                <p class="ta-section__subtext">Each campus has its own financial aid office and net price calculator. Connect with the right team for your campus.</p>
+                <h2 class="ta-section__heading">Financial Aid by Campus</h2>
+                <p class="ta-section__subtext">A few details differ by campus: your FAFSA Federal School Code, your Net Price Calculator, and your campus Financial Aid Office contact. Choose your campus for the specifics.</p>
                 <div class="campus-aid-grid">
                     <div class="campus-aid-card">
                         <div class="campus-aid-card__icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
                         <h3>Clearwater Campus</h3>
-                        <p>6100 154th Ave N, Clearwater, FL 33760<br>Phone: (727) 538-7167</p>
-                        <a href="clearwater.html">Go to Clearwater Campus</a>
+                        <p>FAFSA School Code 005605<br>Financial Aid Office: (727) 538-7167, Option 7<br>Includes Military &amp; Veteran Student Resources</p>
+                        <a href="clearwater-tuition.html">Clearwater Tuition &amp; Aid</a>
                     </div>
                     <div class="campus-aid-card">
                         <div class="campus-aid-card__icon"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
                         <h3>St. Petersburg Campus</h3>
-                        <p>901 34th St S, St. Petersburg, FL 33711<br>Phone: (727) 893-2500</p>
-                        <a href="stpete.html">Go to St. Pete Campus</a>
+                        <p>FAFSA School Code 013917<br>Financial Aid Office: (727) 893-2500</p>
+                        <a href="stpete-tuition.html">St. Petersburg Tuition &amp; Aid</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ -->
-        <section class="ta-section ta-section--alt" id="faq">
+        <!-- REFUND POLICY (NEW verbatim section, replaces fabricated FAQ) -->
+        <section class="ta-section ta-section--alt" id="refund">
             <div class="container">
-                <h2 class="ta-section__heading">Frequently Asked Questions</h2>
-                <p class="ta-section__subtext">Have questions about costs or aid? Here are the ones we hear most often.</p>
-                <ul class="faq-list">
-                    <li class="faq-item">
-                        <button class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');" aria-expanded="false">
-                            Do I have to repay financial aid?
-                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="faq-answer">
-                            Grants (such as Federal Pell Grants and state grants) do not need to be repaid as long as you remain enrolled and maintain satisfactory academic progress. Scholarships are also generally not repaid. Student loans are a different story and do require repayment, so always prioritize grants and scholarships first. PTC's financial aid counselors can walk you through the difference.
-                        </div>
-                    </li>
-                    <li class="faq-item">
-                        <button class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');" aria-expanded="false">
-                            What is PTC's Federal School Code for the FAFSA?
-                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="faq-answer">
-                            PTC's Federal School Code is <strong>013847</strong>. Enter this on your FAFSA to ensure your aid eligibility information is sent to our financial aid office. If you are applying for aid at both campuses, use the same school code — PTC is one institution with two locations.
-                        </div>
-                    </li>
-                    <li class="faq-item">
-                        <button class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');" aria-expanded="false">
-                            Are there fees beyond tuition?
-                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="faq-answer">
-                            Yes. In addition to per-hour tuition, most programs have lab fees, and you may need to purchase uniforms, tools, textbooks, or testing materials. Some certification exams also have separate fees. Ask your program advisor for a full cost breakdown before enrolling so there are no surprises.
-                        </div>
-                    </li>
-                    <li class="faq-item">
-                        <button class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');" aria-expanded="false">
-                            What is the refund policy if I withdraw?
-                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="faq-answer">
-                            Tuition refund eligibility depends on when you withdraw relative to the start of the term. Generally, a full refund is available during the first week of instruction. After that, refunds are prorated. If you received financial aid and withdraw, a portion of that aid may need to be returned. Contact the Business Office at your campus for the current refund schedule before making any decisions.
-                        </div>
-                    </li>
-                    <li class="faq-item">
-                        <button class="faq-question" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open');" aria-expanded="false">
-                            Can I get aid for a short-term or non-credit program?
-                            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="faq-answer">
-                            Federal financial aid (including Pell Grants) is available for most of PTC's full-length career certificate programs. Short-term, non-credit, or community education courses are generally not eligible for federal aid. Workforce funding programs such as WIOA may cover some short-term training. Ask a financial aid counselor about your specific program.
-                        </div>
-                    </li>
-                </ul>
+                <h2 class="ta-section__heading">Refund Policy</h2>
+                <p class="ta-section__subtext">Refunds, when due, are made without requiring a request from the student.</p>
+                <div class="ta-prose">
+                    <ul class="policy-list">
+                        <li><i class="fas fa-check" aria-hidden="true"></i><span><strong>Active military service.</strong> If a student withdraws for active military service, the student is given two options: a full refund or credit with the withdrawal noted for active military duty, or the opportunity to complete the course(s) at a later date without academic or financial penalty.</span></li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i><span>A student may cancel an enrollment at any time before the commencement of a class and shall be entitled to a refund of tuition.</span></li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i><span>Students who withdraw from their career technical programs qualify for a refund of tuition and lab fees. The withdrawal (the last day of attendance) must occur within the first 10 class sessions or first 50 enrollment hours following the entry date on the class registration form, whichever occurs first. Notice of withdrawal must be submitted to the records office.</span></li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i><span>Refunds, when due, are made within 45 days of the last day of attendance if written notification has been provided to the institution by the student, or from the date the institution terminates the student or determines the student has withdrawn.</span></li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i><span>Refunds will be issued for incorrect fee charges, classes that are closed due to low enrollment, or an administrative determination that the student is in the incorrect program.</span></li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i><span>The application fee, facility fee, parking and ID fees are nonrefundable.</span></li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i><span>Tuition paid by Title IV funding (Pell Grant) will be refunded to the grant according to the Title IV policy.</span></li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i><span>Students enrolled in Continuing Workforce Education classes are not entitled to a refund once the class has commenced.</span></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
