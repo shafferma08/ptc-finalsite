@@ -2434,3 +2434,65 @@ The 9 RECOMMENDATIONS §4 follow-ups were already migrated to `docs/audit/follow
 3. **`.card` component migration** of `student-resources.html`, `careers.html`, `campus-maps.html` (carried) — closes M5/M6 from the review panel tracker. Marianne-present session for visual spot-checks.
 4. **First real program page from `_templates/program-page.html`** (carried) — gated on Programs cluster Stage 1+ running first so content can come verbatim.
 5. **Compliance follow-up #8** (live-site accessibility-statement update) — needs Marianne, not pipeline.
+
+---
+
+## 2026-06-02 — Cross-cluster check-in + JS-render-gap baseline re-verification
+
+Marianne asked for a team check-in across scheduled work before opening the next phase. Findings: the daily content pipeline has been quiet since ~2026-05-04 (Tuition frozen at `extracting`); ~5 weeks of live-fix work shipped via direct commits outside the pipeline (community hub, STP pages, nav refactors); and the 2026-05-03 JS-render extraction gap had never been swept against the other verified clusters. Marianne chose to re-verify the 3 at-risk clusters before moving on.
+
+**Sweep:** 4 parallel agents re-fetched all 46 baselines (About www/clw/stp, Compliance, Counselors) via rendered-DOM WebFetch and diffed against saved extracts.
+
+**Result:** Compliance, Counselors, and About-Clearwater fully CLEAN (live-longer deltas were only the shared footer accreditation boilerplate the old extractor correctly stripped). The JS-render gap was narrower than feared — concentrated entirely in About-www, as 4 truncated/blocked baselines + 1 truncated STP baseline. All were **baseline-capture defects, not live drift.**
+
+**Reconciliation (Marianne-directed):**
+- 5 baselines re-extracted with complete verbatim content: `www/welcome-to-ptc`, `www/get-to-know-ptc`, `www/financial-reports` (was BLOCKED/empty), `www/sexual-misconduct-predators`, `stpete/written-plans`. Each tagged `re_extracted: 2026-06-02`.
+- **1 redesign content fix:** `stpete-written-plans.html` was missing the 11th plan; added **"Transfer Credit Policy"** verbatim and removed the incorrect "Transcript Plan" guess note.
+- Confirmed NO gap on `about.html` (250-partners + summary accreditation by IA design) and `consumer-information.html` (full FDLE safety text + financial-reports summary/link-out already correct).
+- New `about-cluster/DRIFT-LOG.md` records the sweep. Clusters stay `verified` (re-verified) — baseline-completeness fix, not a live-drift event, so flag-and-pause doesn't apply.
+
+**Follow-ups updated:**
+- Homepage "50+ Industry Partners" hero stat — **source found:** live says "more than 250 business and industry partners." Recommend updating the counter to 250+ to match about.html.
+- New low-priority decision: whether consumer-information should reproduce the financial-reports descriptions verbatim or keep the current summary + link-out.
+
+**Still open for Marianne (raised in check-in, not yet actioned):**
+- Confirm whether `ptc-content-pipeline-daily` + `ptc-live-drift-check` scheduled tasks are still firing (Tuition frozen since 5/4 suggests the daily stalled or is blocked on Chrome MCP at Stage 2).
+- Tuition cluster still at `extracting`, next up.
+
+---
+
+## 2026-06-02 — Tuition cluster: `extracting` → `analyzing` (Stage 2 complete)
+
+Extracted all 19 live Tuition URLs verbatim via WebFetch rendered DOM (2 parallel agents, one per campus). Saved 19 `.md` verbatim files + 19 `.raw.html` backups to `docs/audit/tuition/extracted/{clearwater,stpete}/`.
+
+**Rendered-DOM decision validated:** STP financial-aid pages had a major JS-render gap — raw curl returned 51-59 KB of near-empty body (Finalsite injects content via JS); WebFetch caught the real text on all 9. Two pages (federal-and-state-funding, fees-and-expenses) needed a stricter second WebFetch call to get verbatim instead of a paraphrase. The CLW military-vet-resources page inverted (WebFetch paraphrased; verbatim pulled from raw HTML instead).
+
+**Key Stage 2 findings (for Stage 3):**
+- Tuition rates are `shared`/identical across campuses: $2.92/hr resident, $11.71/hr nonresident (Career Technical Certificate); AGE $45/term res ($90/yr) / $120/term nonres ($360/yr); HB 851 statutory note present on both.
+- `scholarships` vs `pcsb-financial-aid-scholarships` = complementary, not duplicate. The former is the substantive named-scholarship list (7 on CLW, 9 on STP); the latter is a thin pass-through to pcsb.org/financialaid.
+- Bill Young Veteran Tuition Waiver is duplicated verbatim on both `fees-and-expenses` and `veterans-benefits` (consolidation candidate for Stage 3 IA).
+- `fafsa-fsa-eligibility-help` is thin on both campuses (single PDF link, no prose). NPC + pcsb-scholarships pages are thin launchers.
+- VA contacts: CLW publishes Lidija Milisav (Military & Veteran Resources Coordinator, milisavl@pcsb.org, x2020) + Susan Welden (VA Certifying Official, weldens@pcsb.org, x2023) on the military-vet-resources page. **STP publishes NO named VA specialists** — the inventory's expectation of Joanne Schnell (VA) / Sabrina Mitchell (Pell) was NOT found on any STP page (grep-confirmed against raw HTML). Inventory note corrected.
+- Live typo preserved verbatim: fees page says "recent Florida high school grades" (should be "graduates") — route to follow-ups.
+
+**Next run:** Stage 3 (`analyzing`) — dispatch the 4 audit subagents (Mapper, Comparator, IA-Recommender, Verifier) in a single message. Open IA questions already enumerated in `tuition/inventory.md` §"Key IA questions for Stage 3" (single page vs 3-page split, refund section placement, NPC routing, military-vet asymmetry, Bill Young waiver placement, two scholarship pages, FAQ).
+
+---
+
+## 2026-06-02 — Tuition cluster: `analyzing` → `synthesizing` (Stage 3 complete)
+
+Dispatched the 4 audit subagents (audit-mapper, audit-comparator, audit-ia-recommender, audit-verifier). Outputs: `tuition/OVERLAP-MATRIX.md`, `REDESIGN-COMPARISON.md`, `IA-RECOMMENDATION.md`, `VERIFICATION.md`.
+
+**Headline: `tuition-aid.html` is the most fabricated page found in the audit so far.** Comparator counts: 14 FABRICATED, 18 MISSING, 4 REWORDED-DRIFT, 1 VERBATIM, 8 REWORDED-OK. Verifier independently CONFIRMED 27/27 high-stakes flags, 0 FLIP, 1 NEEDS-MORE-RESEARCH. This page was clearly built before the verbatim discipline (and with no live www tuition source to pull from). Confirmed high-stakes errors that must be fixed at Stage 4:
+- **FAFSA code fabricated:** redesign hardcodes `013847` ("same code for both campuses") — appears in ZERO live extracts. Live: CLW 005605 / STP 013917. Misroutes federal aid.
+- **Tuition rates wrong:** redesign $2.91/$11.64 per clock hour vs live $2.92/$11.71 (verbatim both campuses). Derived totals + "900-1,800 hours" range fabricated.
+- **Rate-setter wrong:** redesign "Florida Legislature" vs live "Pinellas County School Board."
+- **Refund distorted:** redesign "full refund during the first week" vs live "first 10 class sessions or 50 enrollment hours, refund within 45 days."
+- **Veterans section:** fabricates GI Bill Ch.30/1606, MyCAA $4,000, federal Tuition Assistance, "pay online via Focus" (none in live); OMITS Bill Young Waiver, Purple Heart waiver, Title 38 3679(e), Ch.35 online restriction (all in live).
+- **AGE tuition ($45/$120 per term)** and 8+ named scholarships (Bailey $5,000, MTS $2,000, AWS, AFCEA, Passmore, Barrett VA, FCSUA, Nursing Service) missing entirely.
+
+**IA-Recommender call:** lopsided 3-page split. One substantive institutional `tuition-aid.html` (~90% of content, nearly all `shared`) + two thin per-campus action pages (`clearwater-tuition.html`, `stpete-tuition.html`) for the 3 genuine per-campus divergences only: FAFSA school code, NPC URL, and the CLW-only military-vet block (Milisav x2020, Welden x2023). Refund = own `#refund` section verbatim. Bill Young Waiver = anchor once under `#veterans`, cross-link from `#rates`. Two scholarship pages → consolidate (PCSB page becomes a single outbound link). FAQ → strip (no verbatim source; Admissions precedent). NPC → campus chooser (IPEDS per-campus).
+
+**New issues surfaced (for Stage 4 / follow-ups):** NPC buttons + several CTAs resolve to dead `href="#"`; redesign omits the live "Institutional Application Form" requirement; STP has NO named VA specialists (inventory's Schnell/Mitchell expectation is wrong — not in DOM or raw HTML); CLW street address (6100 154th Ave N) not in tuition extracts, verify against Contact cluster; live typo "grades"→"graduates" on fees page.
+
+**Next run:** Stage 4 (`synthesizing`) — read all 4 analysis docs, produce `tuition/RECOMMENDATIONS.md` punch list, advance to `building`. Given the volume of fabrications, Stage 4 will be substantial. The build stage will need verbatim rate/code/scholarship/veterans content pulled straight from the extracts.
