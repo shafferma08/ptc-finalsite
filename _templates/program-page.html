@@ -20,14 +20,22 @@
     1.  Campus Utility Bar
     2.  Campus Site Header
     3.  Breadcrumbs
-    4.  Program Hero (with flex stat bar)
-    5.  Start Here yellow bar (configurable steps)
-    6.  Jump Nav (sticky)
-    7.  See It In Action (videos)
-    8.  Program Overview + Course Sequence
-    9.  Credentials & Licensure (accepts 1-N cards)
+    4.  Program Hero (flex stat bar; white title via the .program-hero rule in styles.css)
+    5.  Start Here yellow bar (UNNUMBERED steps)
+    6.  Jump Nav (sticky; qualify-first order)
+    7.  Program Overview + Course Sequence
+    8.  Credentials, Licensure & Cost (accepts 1-N cards)
+    9.  See It In Action (videos — placed BELOW credentials per the 2026-06-08 UX review)
     10. Next Steps / Counselor (accepts 1-N counselors)
-    11. Site Footer
+    11. Back to All Programs
+    12. Site Footer
+
+  RECOMMENDED PAGE FLOW (qualify-first, from the Practical Nursing reference build):
+    Hero -> Start Here -> (trust strip, optional) -> Jump Nav -> Admission Requirements
+    (fold any entrance-exam callout in here) -> About + Course Sequence ->
+    (Path Forward / articulation, optional) -> Distance Ed (optional) ->
+    Credentials, Licensure & Cost -> See It In Action -> Counselor/Apply -> Back to All Programs.
+    Worked example: practical-nursing-clearwater.html.
 
   OPTIONAL SECTIONS  (include ONLY if applicable, otherwise delete the block)
     A. Admission Requirements          — for selective or prereq programs
@@ -119,6 +127,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        /* styles.css sets a global dark color on h1-h6; force white on the dark hero
+           so the program title is legible (this contrast bug recurs site-wide when
+           a hero relies on inherited color). */
+        .program-hero h1 {
+            color: #fff;
         }
 
         /* --- STAT BAR (flex: show only stats that apply) --- */
@@ -994,9 +1009,9 @@
     <div class="utility-bar utility-bar--campus">
         <div class="container utility-bar__inner">
             <div class="utility-bar__left">
-                <a href="tel:[CAMPUS_PHONE]"><i class="fas fa-phone" aria-hidden="true"></i> [CAMPUS_PHONE_DISPLAY]</a>
-                <span class="utility-bar__divider">|</span>
-                <a href="#"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> [CAMPUS_ADDRESS]</a>
+                 <a href="tel:[CAMPUS_PHONE]"><i class="fas fa-phone" aria-hidden="true"></i> [CAMPUS_PHONE_DISPLAY]</a>
+                 <span class="utility-bar__divider">|</span>
+                 <a href="campus-maps.html#[CAMPUS_SLUG]"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> [CAMPUS_ADDRESS]</a>
             </div>
             <div class="utility-bar__right">
                 <a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener"><i class="fas fa-desktop" aria-hidden="true"></i> Canvas Login</a>
@@ -1006,20 +1021,21 @@
                 <a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> PTC Main Site</a>
                 <span class="utility-bar__divider">|</span>
                 <a href="[OTHER_CAMPUS_SLUG].html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> [OTHER_CAMPUS] Campus</a>
-                <a href="#" class="btn btn--primary btn--sm" style="margin-left: 1rem;"><i class="fas fa-search" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
 
     <!-- ============================================================
-         CAMPUS SITE HEADER (4-pillar nav + Apply CTA)
-         This block is identical to welding-[campus].html. Swap campus
-         title and campus-specific dropdown links only.
+         CAMPUS SITE HEADER (current campus chrome — matches
+         clearwater-tuition.html / practical-nursing-clearwater.html).
+         Find-and-replace [CAMPUS] and [CAMPUS_SLUG]. The Military &
+         Veteran Resources link is CLEARWATER-ONLY: remove it for the
+         St. Petersburg campus (no stpete-military-veteran-resources page).
     ============================================================= -->
     <header class="site-header" id="site-header">
         <div class="container site-header__inner">
             <a href="[CAMPUS_SLUG].html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
-                <img src="assets/logos/ptc-circle-logo.png" alt="PTC Logo" style="height: 60px;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, [CAMPUS] Campus" style="height: 60px;">
                 <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
                     <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
                     <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">[CAMPUS] Campus</span>
@@ -1029,21 +1045,10 @@
             <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
                 <ul class="main-nav__list">
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <a href="programs.html" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
-                                    <p class="dropdown__column-title">By Career Cluster</p>
-                                    <ul>
-                                        <li><a href="programs.html">Health Sciences</a></li>
-                                        <li><a href="programs.html">Information Technology</a></li>
-                                        <li><a href="programs.html">Skilled Trades &amp; Construction</a></li>
-                                        <li><a href="programs.html">Transportation &amp; Logistics</a></li>
-                                        <li><a href="programs.html">Culinary &amp; Hospitality</a></li>
-                                        <li><a href="programs.html">Cosmetology &amp; Barbering</a></li>
-                                        <li><a href="programs.html">Arts, Media &amp; Education</a></li>
-                                    </ul>
-                                    <p class="dropdown__column-title">Explore</p>
                                     <ul>
                                         <li><a href="programs.html">All Programs A&ndash;Z</a></li>
                                         <li><a href="schedule-[CAMPUS_SLUG].html">Class Schedule</a></li>
@@ -1054,54 +1059,50 @@
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <a href="[CAMPUS_SLUG]-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
-                                        <li><a href="admissions.html#enrollment-steps">Enrollment Steps</a></li>
-                                        <li><a href="tuition-aid.html">Tuition &amp; Fees</a></li>
-                                        <li><a href="tuition-aid.html">Financial Aid &amp; FAFSA</a></li>
-                                        <li><a href="tuition-aid.html#scholarships">Scholarships</a></li>
-                                        <li><a href="admissions.html#testing">Testing &amp; Assessment</a></li>
-                                        <li><a href="tuition-aid.html#veterans">Veterans Benefits</a></li>
+                                        <li><a href="[CAMPUS_SLUG]-admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="[CAMPUS_SLUG]-admissions.html#testing">Placement Testing</a></li>
+                                        <li><a href="[CAMPUS_SLUG]-tuition.html">Tuition &amp; Financial Aid</a></li>
+                                        <!-- CLEARWATER ONLY: remove the next line for St. Petersburg -->
+                                        <li><a href="clearwater-military-veteran-resources.html">Military &amp; Veteran Resources</a></li>
+                                        <li><a href="[CAMPUS_SLUG]-counselors.html">Meet Your Counselors</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <a href="schedule-[CAMPUS_SLUG].html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="coming-soon.html">Academic Calendar</a></li>
-                                        <li><a href="#">Canvas Login</a></li>
-                                        <li><a href="student-resources.html">Student Services</a></li>
-                                        <li><a href="#">Campus Bookstore</a></li>
-                                        <li><a href="#">Record Request</a></li>
-                                        <li><a href="coming-soon.html">Tech Support</a></li>
+                                        <li><a href="schedule-[CAMPUS_SLUG].html">Class Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="[CAMPUS_SLUG]-student-services.html">Student Services Hours</a></li>
+                                        <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
+                                        <li><a href="[CAMPUS_SLUG]-records-request.html">Record Request</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="#" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <a href="[CAMPUS_SLUG]-about.html" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="#">About This Campus</a></li>
-                                        <li><a href="campus-maps.html">Map &amp; Directions</a></li>
-                                        <li><a href="#">Staff Directory</a></li>
-                                        <li><a href="coming-soon.html">Employer Partnerships</a></li>
-                                        <li><a href="post-a-job-FINAL.html">Post a Job for Students</a></li>
-                                        <li><a href="coming-soon.html">Advisory Committees</a></li>
+                                        <li><a href="[CAMPUS_SLUG]-about.html">About This Campus</a></li>
+                                        <li><a href="campus-maps.html#[CAMPUS_SLUG]">Map &amp; Directions</a></li>
+                                        <li><a href="[CAMPUS_SLUG]-staff-directory.html">Staff Directory</a></li>
+                                        <li><a href="employers.html">For Employers</a></li>
                                         <li><a href="consumer-information.html">Consumer Information</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li><a href="[CAMPUS_SLUG]-contact.html">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1230,11 +1231,11 @@
                 <div class="start-steps__inner">
                     <span class="start-steps__label"><i class="fas fa-bolt" style="margin-right: 0.4rem;" aria-hidden="true"></i> New to PTC? Start Here:</span>
 
-                    <!-- VARIANT A: Apply + Shadow Day + Counselor (default for trades) -->
+                    <!-- VARIANT A: Apply + Shadow Day + Counselor (default for trades). Steps are unnumbered per house style. -->
                     <div class="start-steps__links">
-                        <a href="https://www.myptc.edu/admissions" target="_blank" class="step-btn step-btn--dark"><i class="fas fa-file-alt" aria-hidden="true"></i> Step 1: Apply Online</a>
-                        <a href="https://[CAMPUS_SLUG].myptc.edu/admissions/admissions/shadowing-days-times" target="_blank" class="step-btn step-btn--outline"><i class="fas fa-calendar-check" aria-hidden="true"></i> Step 2: Schedule a Shadow Day</a>
-                        <a href="#counselor" class="step-btn step-btn--outline"><i class="fas fa-user-tie" aria-hidden="true"></i> Step 3: Meet Your Counselor</a>
+                        <a href="https://apply.myptc.edu/" target="_blank" rel="noopener" class="step-btn step-btn--dark"><i class="fas fa-file-alt" aria-hidden="true"></i> Apply Online</a>
+                        <a href="https://[CAMPUS_SLUG].myptc.edu/admissions/admissions/shadowing-days-times" target="_blank" rel="noopener" class="step-btn step-btn--outline"><i class="fas fa-calendar-check" aria-hidden="true"></i> Schedule a Shadow Day</a>
+                        <a href="#counselor" class="step-btn step-btn--outline"><i class="fas fa-user-tie" aria-hidden="true"></i> Meet Your Counselor</a>
                     </div>
 
                     <!-- VARIANT B: Apply + Info Session + Counselor (uncomment to use)
@@ -1263,52 +1264,19 @@
         <nav class="jump-nav" id="jump-nav" aria-label="Page sections">
             <div class="container">
                 <div class="jump-nav__inner">
-                    <a href="#program-videos" class="jump-nav__link">See It In Action</a>
-                    <!-- Uncomment if OPTIONAL section A is included -->
-                    <!-- <a href="#admission-requirements" class="jump-nav__link">Admission Requirements</a> -->
+                    <!-- QUALIFY-FIRST ORDER (2026-06-08 UX review). Keep links only for sections you include.
+                         "See It In Action" is intentionally last-but-one; videos sit below credentials. -->
+                    <a href="#admission-requirements" class="jump-nav__link">Admission Requirements</a>
                     <a href="#program-courses" class="jump-nav__link">Course Sequence</a>
-                    <!-- Uncomment if OPTIONAL section D is included -->
-                    <!-- <a href="#clinical" class="jump-nav__link">Clinical Placement</a> -->
+                    <!-- Include the next two only if those sections are present: -->
+                    <!-- <a href="#path-to-rn" class="jump-nav__link">Your Path Forward</a> -->
+                    <!-- <a href="#distance-ed" class="jump-nav__link">Distance Education</a> -->
                     <a href="#program-credentials" class="jump-nav__link">Credentials &amp; Cost</a>
-                    <a href="#counselor" class="jump-nav__link">Get Started</a>
+                    <a href="#program-videos" class="jump-nav__link">See It In Action</a>
                     <a href="#counselor" class="jump-nav__link jump-nav__link--cta"><i class="fas fa-user-tie" aria-hidden="true"></i> Talk to a Counselor</a>
                 </div>
             </div>
         </nav>
-
-        <!-- =================================================
-             4. SEE IT IN ACTION (videos)
-             If no video exists yet, you can either omit this section
-             or use a static photo grid. Do not leave with placeholder.
-        ================================================== -->
-        <section id="program-videos" style="padding: 5rem 0; background: var(--color-gray-900);">
-            <div class="container">
-                <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--color-accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">See It In Action</p>
-                <h2 style="font-family: var(--font-heading); font-size: 2.25rem; color: white; margin-bottom: 0.75rem;">What It&rsquo;s Really Like</h2>
-                <p style="color: rgba(255,255,255,0.65); margin-bottom: 3rem; font-size: 1.05rem; max-width: 600px;">Get a real look at our facility, hear from students and instructors, and see the kind of work you&rsquo;ll be doing.</p>
-
-                <div class="video-grid">
-                    <div class="video-card">
-                        <div class="video-card__embed">
-                            <a class="video-card__link"
-                                href="https://www.youtube.com/watch?v=[VIDEO_ID]"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Watch: [PROGRAM_NAME] at PTC [CAMPUS] on YouTube (opens in new tab)">
-                                <img src="https://img.youtube.com/vi/[VIDEO_ID]/maxresdefault.jpg"
-                                    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/[VIDEO_ID]/hqdefault.jpg';"
-                                    alt="[PROGRAM_NAME] at PTC [CAMPUS] video thumbnail">
-                                <span class="video-card__play" aria-hidden="true"><i class="fas fa-play" aria-hidden="true"></i></span>
-                                <span class="video-card__caption">
-                                    <i class="fab fa-youtube" aria-hidden="true"></i>
-                                    Watch: [PROGRAM_NAME] at PTC [CAMPUS]
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- =================================================
              OPTIONAL SECTION A: ADMISSION REQUIREMENTS
@@ -1737,6 +1705,41 @@
         </section>
 
         <!-- =================================================
+             SEE IT IN ACTION (videos) — placed BELOW credentials per the 2026-06-08 UX
+             review (qualify-first flow). Add a .video-card per video; for multiple videos
+             the grid is 2-col. Omit the whole section if no video exists (no placeholder).
+             Uses .on-dark so headings stay white without inline color.
+        ================================================== -->
+        <section id="program-videos" class="on-dark" style="padding: 5rem 0; background: var(--color-gray-900);">
+            <div class="container">
+                <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--color-accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">See It In Action</p>
+                <h2 style="font-family: var(--font-heading); font-size: 2.25rem; margin-bottom: 0.75rem;">What It&rsquo;s Really Like</h2>
+                <p style="color: rgba(255,255,255,0.65); margin-bottom: 3rem; font-size: 1.05rem; max-width: 600px;">Get a real look at our facility, hear from students and instructors, and see the kind of work you&rsquo;ll be doing.</p>
+
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-card__embed">
+                            <a class="video-card__link"
+                                href="https://www.youtube.com/watch?v=[VIDEO_ID]"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Watch: [PROGRAM_NAME] at PTC [CAMPUS] on YouTube (opens in new tab)">
+                                <img src="https://img.youtube.com/vi/[VIDEO_ID]/maxresdefault.jpg"
+                                    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/[VIDEO_ID]/hqdefault.jpg';"
+                                    alt="[PROGRAM_NAME] at PTC [CAMPUS] video thumbnail">
+                                <span class="video-card__play" aria-hidden="true"><i class="fas fa-play" aria-hidden="true"></i></span>
+                                <span class="video-card__caption">
+                                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                                    Watch: [PROGRAM_NAME] at PTC [CAMPUS]
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
              7. NEXT STEPS / COUNSELOR
              Supports 1-N counselors. Use .counselor-grid with
              .counselor-entry for 2+ counselors (dual-campus or
@@ -1815,6 +1818,11 @@
                 </div>
             </div>
         </section>
+
+        <!-- BACK TO ALL PROGRAMS (keep on every program page) -->
+        <div style="padding: 0 0 4rem; text-align: center; background-color: white;">
+            <a href="programs.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-green); font-weight: 600; text-decoration: none; font-size: 1.05rem;"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to All Programs</a>
+        </div>
     </main>
 
     <!-- ============================================================

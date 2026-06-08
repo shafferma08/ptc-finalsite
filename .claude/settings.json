@@ -5,7 +5,15 @@
       "PowerShell(Get-ScheduledTask | Where-Object { $_.TaskName -match 'ptc|pipeline|drift|content|audit|vitale|rio|machinist|pmt|project-manager|memory' } | Select-Object TaskName, State | Format-Table -AutoSize; \"----- last run info -----\"; Get-ScheduledTask | Where-Object { $_.TaskName -match 'ptc|pipeline|drift|content|audit' } | ForEach-Object { $i = $_ | Get-ScheduledTaskInfo; [PSCustomObject]@{ Task=$_.TaskName; State=$_.State; LastRun=$i.LastRunTime; LastResult=$i.LastTaskResult; NextRun=$i.NextRunTime } } | Format-Table -AutoSize)",
       "Read(//c/Users/mshaf/.claude/**)",
       "Bash(git fetch *)",
-      "Bash(git rev-list *)"
+      "Bash(git rev-list *)",
+      "Bash(curl -sL -A \"Mozilla/5.0\" \"https://clearwater.myptc.edu/programs/clearwater-full-time-programs/practical-nursing\")",
+      "Bash(wc -c)",
+      "Bash(echo \"exit=$? bytes=$\\(wc -c < docs/audit/programs/extracted/clearwater/practical-nursing.raw.html 2>/dev/null\\)\")",
+      "Bash(ls \"F:/I-Drive/_Photos-Videos_OWI_/\" 2>/dev/null | head -5 || echo \"F-DRIVE-NOT-MOUNTED\")",
+      "Read(//f/I-Drive/**)",
+      "Bash(mkdir -p docs/audit/programs/extracted/clearwater docs/audit/programs/extracted/stpete)",
+      "Bash(echo \"exit=$? bytes=$\\(wc -c < docs/audit/programs/extracted/clearwater/practical-nursing.raw.html\\)\")",
+      "Bash(echo \"exit=$? bytes=$\\(wc -c < docs/audit/programs/extracted/stpete/practical-nursing.raw.html\\)\")"
     ]
   }
 }

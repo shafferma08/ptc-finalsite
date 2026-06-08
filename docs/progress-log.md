@@ -2589,3 +2589,80 @@ Also handled two parked checks: (a) confirmed the PTC scheduled tasks are NOT re
 follow-ups.md updated: 5 items moved to Closed; hero-stat + financial-reports rows marked RESOLVED.
 
 **Cluster status unchanged:** 6 of 7 verified; Programs still the only open cluster. New top-level pages this session: clearwater-tuition.html, stpete-tuition.html, clearwater-military-veteran-resources.html, employers.html.
+
+---
+
+## 2026-06-08 — Programs cluster: `queued` → `extracting` (Stage 1 inventory complete)
+
+Ran Stage 1 discovery for the final cluster (rendered-DOM WebFetch of the three subsite /programs hubs + scan of the redesign programs.html grid). Output: `docs/audit/programs/inventory.md`.
+
+**Findings:**
+- **www `/programs` = 404** — no institutional programs hub on live (same institutional/campus split as Admissions + Tuition).
+- Programs live only on the campus subsites under clean slugs (`/programs/<campus>-full-time-programs/<slug>`, `-apprenticeships`, `short-courses-evening-classes`, STP Clearview).
+- **Clearwater: 41 listings** (28 full-time, 6 short/evening, 7 apprenticeships). **St. Pete: 41 listings** (28 full-time, 6 short/evening, 6 apprenticeships, 1 Clearview). ~60+ unique programs after de-dup.
+- Redesign has only the **3 welding pilots** built + the programs.html grid (41 cards, 8 clusters: business/transportation/culinary/cosmo/trades/arts/it/health). Grid is incomplete vs ~60+ live; this reconciles the "60+ programs / 40+ career areas" figure (the 41-vs-60+ homepage follow-up resolves here).
+
+**Sizing:** largest cluster by far — realistic build ~70-82 per-program pages. Cannot run as one pipeline pass. Recommended as **waves by career cluster, both campuses per wave**: Wave 0 Welding (done), Wave 1 Health, Wave 2 Trades, Wave 3 Transportation, Wave 4 IT/Business/Arts, Wave 5 Culinary/Cosmo/Child Care, Wave 6 Apprenticeships+Short Courses (hub treatment).
+
+**Two-campus rule:** default per-campus pages even for the ~11 both-campus programs (welding pilots set this precedent); Stage 3 Comparator confirms identical-vs-different content.
+
+**Open Stage 3 scope calls:** short-courses/apprenticeships hub-vs-full-page; shared-program de-dup; programs.html grid expansion vs de-duplicated-index framing.
+
+CLUSTERS.md row 7 → `extracting (waves)`, last touched 2026-06-08.
+
+**Next run:** Wave 1 (Health) Stage 2 — extract the health-cluster program pages verbatim (rendered DOM) from both campuses into `programs/extracted/{clearwater,stpete}/`. Run interactively in reviewed waves (the auto-builder routine was disabled 2026-06-08).
+
+---
+
+## 2026-06-08 — Programs Wave 1 (Health): first page built + chrome sync
+
+**Reference program page built:** `practical-nursing-clearwater.html` (Wave 1 Health, first build). Full verbatim content from the live Clearwater PN page, captured via **curl raw HTML** (the Finalsite content is hardcoded in the page body; WebFetch summarized and dropped most of it — process correction: use curl raw HTML for program pages, saved to `docs/audit/programs/extracted/clearwater/practical-nursing.md`). Page carries: full mission, all 5 course descriptions verbatim, TEAS-at-PTC-only callout, Info Virtual Sessions (Zoom), Upcoming Classes, Distance Education (675 theory / 675 clinical), articulation agreements, Florida State Board of Nursing approval, CNA + LPN + Top Ranked LPN badge, related links, 4 program videos (titled per Marianne in website order), and Flyer/Costs/Application/FAQ PDFs. Counselor Merritt Scott verbatim.
+
+**Real assets pulled into repo:** `assets/images/content/clearwater-practical-nursing.jpg` (live program hero photo, 1200x600) and `assets/images/content/lpn-top-ranked-badge.png` (Top Ranked LPN badge), both from the live Finalsite page.
+
+**Marianne feedback addressed:** unnumbered start-steps; real hero image; restructured the cost/aid area (horizontal green banner + row of resource PDF cards, replacing the tall vertical sidebar box); added all the missing content; added the 4 videos with correct titles + the badge logo.
+
+**Chrome sync ("all program pages match"):** updated `welding-clearwater.html`, `welding-stpete.html`, and `_templates/program-page.html` to the current campus chrome (removed search button, dead `#` Canvas link, `post-a-job-FINAL.html`, `coming-soon` Academic Calendar / Tech Support / Employer Partnerships / Advisory; added Tuition & Financial Aid, Military & Veteran Resources [CLW-only], For Employers; fixed logo alt + "St. Petersburg" naming). Template now carries a CLW-only note on the Military/Veteran link. `welding-advanced.html` left on main-site chrome (documented dual-campus exception).
+
+**Open for the Programs cluster:**
+- welding-advanced.html chrome (main-site) — verify/leave as dual-campus exception.
+- Per-program hero photos: marketing library (`PerkinsVds-Phts`, `DE-PTCSP`, `Photos-CLW/SP`) has program-specific stills/video; pull + optimize per program as built. PN used the live page's own hero as a reliable stand-in.
+- Rest of Wave 1 Health to build: Phlebotomy, Dental Assisting, EMT, Surgical Tech, Medical Administrative Specialist, Medical Coder/Biller (+ STP counterparts where offered).
+
+**Next run:** continue Wave 1 Health builds, one program at a time, each from curl raw HTML + the canonical template + current campus chrome.
+
+---
+
+## 2026-06-08 — PN reference page UX review + template alignment
+
+Ran a 4-persona UX/stakeholder review (prospective-student, parent, designer, director) on `practical-nursing-clearwater.html`. Strong consensus; applied all placement-only (verbatim-safe) fixes and one systemic CSS fix.
+
+**Direct fixes from Marianne's catches:** added the HCA Florida Northside Hospital partner logo (pulled `hca-florida-northside.png` into assets) + "Pinellas Technical College proudly partners with"; added a "Back to All Programs" link; pulled the real live program photo (`clearwater-practical-nursing.jpg`) and the Top Ranked LPN badge; titled the 4 videos in website order; **fixed the recurring dark-title bug systemically** in `styles.css` (the global `h1-h6 { color: gray-900 }` was only overridden for `.page-hero` — added `.program-hero` + a reusable `.on-dark` helper).
+
+**Reorder applied (qualify-first):** Hero (value-prop subtitle + State Board line; dropped Program Code stat, added Credential + ~15 months) -> Start Here (unnumbered) -> trust strip (State Board / Top Ranked LPN / HCA) -> jump-nav reordered -> Admission Requirements (TEAS callout folded in) -> About + Courses -> NEW "Your Path to RN" (articulation pulled out of Distance Ed) -> Distance Ed -> Credentials, Licensure & Cost -> videos (moved down, led by "Welcome") -> HCA -> Counselor -> Back to All Programs.
+
+**Template aligned to the approved pattern** (`_templates/program-page.html`): unnumbered Start Here, qualify-first jump-nav, videos moved below credentials (uses `.on-dark`), "Back to All Programs" added, documented section list + recommended flow rewritten, hero white-title rule. Every future program page now inherits the correct order.
+
+**Logged to follow-ups (need real sources / decisions):** NCLEX-PN pass rate + placement + salary (high; ties to Compliance Student-Outcomes item), on-page tuition figure, TBD start dates, Top-Ranked-badge St-Pete-link verification, sitewide Apply-button standardization.
+
+**Next:** build St. Petersburg Practical Nursing from the corrected template (curl raw HTML) to validate the per-campus split — is a both-campus program identical content (one shared page) or different (two pages)? That answers the page-count question for the whole Health wave.
+
+---
+
+## 2026-06-08 — St. Pete Practical Nursing built; per-campus split confirmed
+
+Built `stpete-practical-nursing.html` from the corrected template (curl raw HTML). This was the validation build to answer: are both-campus programs identical (one page) or different (two pages)?
+
+**Verdict: two pages.** Academic content is IDENTICAL verbatim across campuses (program code H170607, all 5 course descriptions, mission, Special Admission Requirements, articulation agreements, Florida State Board of Nursing approval, CNA/LPN + Top Ranked badge, Related Links, SAP 80% / attendance 90% / exit 11-11). But the campus wrapper DIFFERS materially:
+- Counselor: Jeromy Johnson (johnsonjer@pcsb.org, x2392) vs CLW Merritt Scott (scottme@pcsb.org, x2032)
+- PDFs: STP flyer/costs are different files
+- Video: STP has ONE video (Qn71T7TV_94) vs CLW's four
+- Upcoming Classes: STP has REAL content (Fall 2026 traditional Mon-Fri 7:00 AM-12:15 PM + a BayCare Team Member Cohort starting Jan 6 2027, hybrid, deadline Oct 12 2026) vs CLW's TBD/TBD + monthly Zoom info sessions
+- Partner: STP has NO HCA "proudly partners with" block (CLW does); STP instead has the BayCare cohort
+- Distance Education: STP's section is commented out (hidden) on live; CLW shows it
+
+**Implication for the cluster:** shared programs (~11) = two per-campus pages each, but the shared academic core is reusable verbatim with campus-specific swaps (counselor, PDFs, video, schedule/cohorts, partner). Confirms the welding-pilot two-page precedent. Full wave page count is roughly: per-campus full-time + apprenticeship-hub + short-course treatment.
+
+STP PN follows the approved qualify-first order, uses STP chrome + `.on-dark` videos, includes a rich Upcoming Classes section (with the BayCare cohort), and omits Distance Ed + HCA (not on the STP live page). Assets: reused nursing.jpg as the STP hero.
+
+**Next:** continue Wave 1 Health (Phlebotomy CLW, Dental Assisting STP, EMT STP, Surgical Tech STP, Medical Admin CLW, Medical Coder STP), each curl raw HTML -> template -> campus chrome.

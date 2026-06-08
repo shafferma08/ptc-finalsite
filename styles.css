@@ -109,12 +109,26 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-gray-900);
 }
 
-/* Page hero: white text on green gradient. Overrides the global heading color. */
+/* Dark/colored backgrounds: white text. Overrides the global dark heading color
+   so titles on dark or green backgrounds stay legible. The global `h1-h6 { color }`
+   rule above beats inherited color, so any dark section MUST opt in here or use the
+   .on-dark helper, otherwise headings render dark-on-dark. */
 .page-hero,
 .page-hero h1,
 .page-hero h2,
 .page-hero h3,
-.page-hero p {
+.page-hero p,
+.program-hero,
+.program-hero h1,
+.program-hero h2,
+.program-hero h3,
+.program-hero p,
+.on-dark,
+.on-dark h1,
+.on-dark h2,
+.on-dark h3,
+.on-dark h4,
+.on-dark p {
     color: #fff;
 }
 

@@ -359,6 +359,28 @@ Surfaced during the Tuition cluster audit + build (Stage 3-5). The redesign `tui
 
 ---
 
+## Programs cluster — Practical Nursing review (added 2026-06-08)
+
+Surfaced during the UX/stakeholder review panel (prospective-student, parent, designer, director) of `practical-nursing-clearwater.html`, the Wave 1 reference page. The hierarchy/flow fixes were applied directly (placement only, verbatim-safe). The items below need real source content or a decision and could not be added per the verbatim rule.
+
+### High priority — content gaps (new content, needs live source)
+
+| Item | Page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| No NCLEX-PN pass rate / job placement / salary on program pages | practical-nursing-clearwater.html (and all program pages) | All four reviewers flagged outcomes as the #1 missing decision factor for a nursing program. The live program page has no pass-rate, placement, or salary data; the page intentionally omits a salary/BLS stat. This is both a conversion gap and an accreditation-transparency expectation. | Source NCLEX-PN pass rate + placement data from PTC institutional research / the PN program; publish on live, then mirror verbatim. Name the NCLEX-PN exam explicitly. Cross-references the Compliance cluster "Student Outcomes / COE Right-to-Know" follow-up. | PTC institutional research + PN program + Webmaster | High | Programs Wave 1 review, 2026-06-08 |
+| No on-page tuition figure | practical-nursing-clearwater.html (and program pages) | Cost lives only in a "Program Costs" PDF; no dollar figure on the page. Reviewers (student + parent + designer) called this the top scannability failure. | If the live Program Costs PDF / fees page has a total or per-hour figure, surface it on-page verbatim (rates are PCSB-set; see Tuition cluster: $2.92/hr resident). Decide whether to compute/display a total program cost. | Webmaster + PCSB CTAE | High | Programs Wave 1 review, 2026-06-08 |
+
+### Medium / low
+
+| Item | Page | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| "Upcoming Classes: TBD / TBD" reads unfinished | practical-nursing-clearwater.html | Live PN page shows PN Traditional + Hybrid start dates as TBD. Two TBDs at the conversion moment stall ready applicants. | Populate real start dates before soft launch / accreditation visit, or lead with the info-session + "get notified" link. (Live currently shows TBD, so redesign mirrors it verbatim.) | PN program / Webmaster | Medium | Programs Wave 1 review, 2026-06-08 |
+| Top Ranked LPN badge links to a St. Petersburg ranking URL on a Clearwater page | practical-nursing-clearwater.html | The badge + "Practical Nursing.org" link point to `practicalnursing.org/lpn-programs/florida/st-petersburg`. Live uses the same link. Verify the ranking applies to the Clearwater program / is institution-wide before it represents Clearwater. | Confirm with the PN program whether the ranking is campus-specific or institutional; adjust link/label if needed. | PN program / Webmaster | Low | Programs Wave 1 review, 2026-06-08 |
+| Primary "Apply" CTA uses 3 different button treatments | program pages | header `.btn--primary`, Start Here `.step-btn--outline`, closing `.btn--accent`. Designer recommends standardizing the loudest treatment for Apply, outline for Counselor. | Standardize the apply button styling across program pages (sitewide chrome polish). | Webmaster | Low | Programs Wave 1 review, 2026-06-08 |
+| ~~Mirror the qualify-first section order into the program template~~ **RESOLVED 2026-06-08** | `_templates/program-page.html` | Template updated to the approved PN pattern: unnumbered Start Here steps, qualify-first jump-nav, videos moved below credentials (using `.on-dark`), "Back to All Programs" added, documented section list + recommended flow rewritten. Future program pages inherit the correct order. | Webmaster | ~~Medium~~ Resolved | Programs Wave 1 review, 2026-06-08 |
+
+---
+
 ## Closed follow-ups
 
 **2026-06-02 — parked-items decision session (Marianne-directed):**
