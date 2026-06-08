@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3 -)"
+      "Bash(python3 -)",
+      "PowerShell(Get-ScheduledTask | Where-Object { $_.TaskName -match 'ptc|pipeline|drift|content|audit|vitale|rio|machinist|pmt|project-manager|memory' } | Select-Object TaskName, State | Format-Table -AutoSize; \"----- last run info -----\"; Get-ScheduledTask | Where-Object { $_.TaskName -match 'ptc|pipeline|drift|content|audit' } | ForEach-Object { $i = $_ | Get-ScheduledTaskInfo; [PSCustomObject]@{ Task=$_.TaskName; State=$_.State; LastRun=$i.LastRunTime; LastResult=$i.LastTaskResult; NextRun=$i.NextRunTime } } | Format-Table -AutoSize)",
+      "Read(//c/Users/mshaf/.claude/**)",
+      "Bash(git fetch *)",
+      "Bash(git rev-list *)"
     ]
   }
 }

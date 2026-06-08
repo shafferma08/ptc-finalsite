@@ -2570,3 +2570,22 @@ Reconnected:
 - New page reachable from both campus nav and the institutional veterans section; footer Clearwater Links includes it.
 
 The `urgent-fixes/military-veteran-resources.html` Finalsite-embed version is left in place as the live-embed artifact (separate workflow). Cluster stays `verified`.
+
+---
+
+## 2026-06-02 — Parked-items decision session (sitewide chrome + employer page)
+
+Marianne worked through 6 redesign decisions and I executed them:
+
+1. **Hero stat → 250+** — index.html counter changed from fabricated "50+" to verbatim "250+ Industry Partners" (`data-count="250"`), matching about.html.
+2. **Financial Reports reproduced verbatim** — consumer-information.html#financial-reports now carries the three live report-type descriptions (School Financial Reports, CAPOR, Fiscal Transparency Report) + 4 resource links verbatim (chosen over the prior summary + link-out).
+3. **Español link removed sitewide** — dead `href="#"` lang link stripped from 16 redesign pages + sitemap.html (legacy mockup left alone). Decision: remove until a real Spanish version exists.
+4. **Social handles wired sitewide** — 56 files: footers now use PTC's official Facebook / Instagram / X / YouTube / LinkedIn URLs (Marianne-provided), all `target="_blank" rel="noopener"`. Done via a PowerShell sweep (UTF-8 no-BOM, exact-string replace per platform).
+5. **Boy Scouts paragraph** — decided not to add (K-12 oriented).
+6. **Employer page built** — new `employers.html` duplicating the live "Post a Job Opportunity" page verbatim (Career Rocket® free job board; Placement Coordinator Maria M. Mediavilla Thackrah, mediavillam@pcsb.org; CLW (727) 538-7167 x2097 Wed/Thu + 1st & 3rd Fri, STP (727) 893-2500 x2362 Mon/Tue + 2nd & last Fri; placement hours 7:00 AM–2:00 PM) + a "Partner with Us: PTC Works!" section linking to the live partner directory (`myptc.edu/we-hire-ptc-ptc-works`). Homepage employer-hook callout wired to it; "For Employers" added to nav + footer.
+
+Also handled two parked checks: (a) confirmed the PTC scheduled tasks are NOT registered as Windows Task Scheduler jobs (so they live in the Claude Code `/schedule` routines backend, or aren't running) — Tuition's May-4 freeze stands as evidence the daily pipeline stalled; (b) confirmed the live Military & Veteran Resources event is "Exploration Day / July 7, 2026," matching the new redesign page (the urgent-fixes embed's "Shadow Day / TBD" is the stale copy).
+
+follow-ups.md updated: 5 items moved to Closed; hero-stat + financial-reports rows marked RESOLVED.
+
+**Cluster status unchanged:** 6 of 7 verified; Programs still the only open cluster. New top-level pages this session: clearwater-tuition.html, stpete-tuition.html, clearwater-military-veteran-resources.html, employers.html.
