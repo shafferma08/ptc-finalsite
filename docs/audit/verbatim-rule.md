@@ -111,6 +111,28 @@ If digits differ — even by one character — that's a verbatim violation. Surf
 
 ---
 
+## Typo / spelling correction (permitted — do NOT preserve typos)
+
+Live PTC program and content pages contain spelling and word-level errors (e.g., "Collison" for "Collision", "suspention" for "suspension", "systens" for "systems", "distaster" for "disaster", "solid stare" for "solid state", "St. PetersburgCollege" missing a space, "board" for "broad", "process" for "possess").
+
+**Rule: the redesign corrects obvious typos. Do NOT reproduce them verbatim.** Marianne is the webmaster and owns both endpoints; the redesign leads and live follows (same model as the `1961`→`1962` sweep). This is the category-3 "wording cleanup of accurate content" rule and decision-tree step 5 applied to spelling.
+
+What counts as an "obvious typo" you may fix silently on the redesign:
+- Misspelled words with a single unambiguous intended spelling (Collison → Collision).
+- Missing/extra spaces and doubled punctuation ("suspention,;" → "suspension;", "St. PetersburgCollege" → "St. Petersburg College").
+- Wrong-word swaps where the intended word is unambiguous from context ("board foundation" → "broad foundation", "to process the necessary knowledge" → "to possess the necessary knowledge").
+
+What you must NOT do under cover of "typo fixing":
+- Change a substantive fact, number, name, code, date, or credential (that's still strict verbatim — a wrong program code is a follow-up, not a typo fix).
+- Rewrite or restructure a sentence, or **deduplicate an accidentally repeated clause**, where more than one reading is plausible. That's an editorial decision — flag it to Marianne, don't guess. (Surfaced 2026-06-08: the Medical Administrative Specialist mission statement has a wholesale duplicated "in order to prepare students for employment..." clause; the word typos were fixed but the duplication was escalated, not silently rewritten.)
+- "Improve" AP style, hyphenation, or phrasing in ways that change meaning.
+
+**Always still log the live typo in `follow-ups.md`** so live gets corrected too. The extract files under `docs/audit/programs/extracted/` stay verbatim (typos intact) — they are the evidentiary record of what live actually says; only the redesign HTML is cleaned.
+
+Surfaced 2026-06-08 when Wave 1-3 program builds preserved live typos verbatim and Marianne corrected: "i dont think you should preserve typos."
+
+---
+
 ## Anti-patterns (don't do these)
 
 - **Inventing federal-law boilerplate** because "everyone has a FERPA statement, surely we can write one." No.

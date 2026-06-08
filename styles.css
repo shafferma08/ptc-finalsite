@@ -128,7 +128,16 @@ h1, h2, h3, h4, h5, h6 {
 .on-dark h2,
 .on-dark h3,
 .on-dark h4,
-.on-dark p {
+.on-dark p,
+.aid-banner,
+.aid-banner h3,
+.aid-banner p,
+.cta-band,
+.cta-band h2,
+.cta-band p,
+.veterans-band,
+.veterans-band h2,
+.veterans-band p {
     color: #fff;
 }
 

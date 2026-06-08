@@ -2666,3 +2666,95 @@ Built `stpete-practical-nursing.html` from the corrected template (curl raw HTML
 STP PN follows the approved qualify-first order, uses STP chrome + `.on-dark` videos, includes a rich Upcoming Classes section (with the BayCare cohort), and omits Distance Ed + HCA (not on the STP live page). Assets: reused nursing.jpg as the STP hero.
 
 **Next:** continue Wave 1 Health (Phlebotomy CLW, Dental Assisting STP, EMT STP, Surgical Tech STP, Medical Admin CLW, Medical Coder STP), each curl raw HTML -> template -> campus chrome.
+
+---
+
+## 2026-06-08 — Systemic dark-heading-on-dark-background fix
+
+Marianne flagged the "Financial Aid & Costs" title rendering dark on the green `.aid-banner` (STP PN page) and noted it recurs site-wide. Root cause (same as the hero issue): the global `h1-h6 { color: var(--color-gray-900) }` element rule in styles.css overrides inherited light color on any dark band whose heading has no explicit color.
+
+Comprehensive fix in `styles.css` white-override block — now covers: `.page-hero`, `.program-hero`, `.on-dark` (helper), `.aid-banner`, `.cta-band`, `.veterans-band` (+ their h2/h3/p). This catches the latent invisible-heading bug on `contact.html` and `tuition-aid.html` CTA bands and the tuition veterans band, not just the PN pages.
+
+Also aligned `_templates/program-page.html` cost section to the approved `.aid-banner` + `.resource-grid` pattern (full-width credentials, no tall sidebar box; heading "Credentials, Licensure & Cost"), with the supporting CSS added to the template style block. Future program pages inherit the fixed, approved cost layout.
+
+---
+
+## 2026-06-08 — Programs Wave 1 (Health): 6 more pages built (parallel agents)
+
+Renamed `stpete-practical-nursing.html` -> `practical-nursing-stpete.html` (the `{program}-{campus}.html` convention; matches the welding pilots + template).
+
+Built the rest of Wave 1 Health via 6 parallel build agents, each mirroring the matching campus reference page (practical-nursing-{campus}.html), pulling content via curl raw HTML, verbatim:
+
+| Page | Code | Hours | Credential | Counselor | Notes |
+|---|---|---|---|---|---|
+| phlebotomy-clearwater | (none on live) | 165 (~4 mo) | RPT (AMT) | Jaclyn Cappello x2014 | Not Pell-eligible; AdventHealth + BayCare partner logos; single course; no videos |
+| medical-administrative-specialist-clearwater | B070300 | 1,050 | MOS + CMAA | Yata Fields x2016 | Hybrid-PM; certs graphic; 1 video; no admission-reqs on live |
+| dental-assisting-stpete | H170106 | 1,230 | CDA | Jeromy Johnson x2392 | CODA-accredited (trust strip); 1 video |
+| emergency-medical-technician-stpete | W170212 | 300 | NREMT + FL EMT | Jeromy Johnson x2392 | Real session Aug 26 2026; Distance Ed "Not Available"; no videos |
+| surgical-technology-stpete | H170211 | 1,330 (15 mo) | CSPDT + TS-C | Jeromy Johnson x2392 | NCCA-accredited; BayCare apprenticeship cohort; no videos |
+| medical-coder-biller-stpete | H170529 | 1,110 | CBCS + CPC + CEHRS | Jeromy Johnson x2392 | Distance Ed shown; 1 video |
+
+**Verified:** 0 fabrications, 0 body em dashes, correct per-campus chrome + tuition links, `.on-dark` + `.aid-banner` used (so the dark-heading fix applies), Back-to-All-Programs present, real hero/partner/badge images pulled into `assets/images/content/`. The template's flexibility held: each page included only the sections live actually has (single vs multi course, trust strip only when a real accreditation/board signal exists, Distance Ed only when shown, videos only when present, Upcoming Classes/cohorts only when dated).
+
+**Wave 1 Health status:** Practical Nursing (CLW + STP), Phlebotomy (CLW), Medical Admin Specialist (CLW), Dental Assisting (STP), EMT (STP), Surgical Tech (STP), Medical Coder/Biller (STP) = 8 program pages built. Health wave essentially complete (the only other health-ish item is Practical Nursing already done both campuses).
+
+**Per-program content gaps -> follow-ups:** no program code on the live Phlebotomy page; MAS live typos ("board"->"broad", duplicated clause, "process"->"possess"); Dental "St. PetersburgCollege" typo + possibly-stale Program Costs PDF (May 2025); EMT/MAS lack any on-page admission requirements; Surgical Tech "March 23 2026" start date already past; instructor contacts (Frazier, Garcia, Henderson, Lowe, Capra) exist on live but the program-page pattern surfaces only the counselor; no cert pass-rate / salary / on-page tuition on any. All omitted (not fabricated) and routed to follow-ups.
+
+**Next:** Wave 2 (Trades) or continue. Apprenticeship-hub + short-course treatment still a Stage-3 scope decision.
+
+---
+
+## 2026-06-08 — Programs Wave 2 (Trades) built
+
+**9 program pages built verbatim via curl raw HTML** (parallel build agents, one per program, each mirroring the matching-campus reference page practical-nursing-{clearwater,stpete}.html):
+cabinetmaking-clearwater, marine-service-technologies-clearwater, electricity-clearwater, electricity-stpete, hvacr-clearwater, hvacr-stpete, building-trades-stpete, plumbing-stpete, public-works-stpete.
+
+Verified: 0 em dashes, 0 fabrications, correct campus tuition links (clearwater-tuition.html / stpete-tuition.html), Back to All Programs present on all 9, white hero h1 via global .program-hero rule, .aid-banner cost section.
+
+**Trades-specific sections** added only where live had them: Electricity (CLW + STP) and HVAC/R (CLW + STP) carry Apprenticeship Pathway callouts; Electricity carries a 3-OCP career ladder (Electrician Helper BCV0603 / Residential BCV0640 / Commercial BCV0652). No tool-kit/required-materials lists existed on any live trades page. Cabinetmaking has a verbatim "Services Available" public-cabinet-build callout folded into About.
+
+**Shared-program per-campus split confirmed:** Electricity (program I460312, identical course core; differs by counselor [Milisav x2020 CLW / Ashwood x2325 STP], instructors, PDFs, video, and CLW's afternoon 12:30-5:45 schedule) and HVAC/R (program C400410; CLW = "(HVAC/R) 1 - IET" 750h with ESOL/Integrated Education & Training framing, STP = "(HVAC/R) 1" 750h day+evening). Two pages each, academic content verbatim-shared, wrapper campus-specific.
+
+**Navigation wired:** programs.html — 5 single-campus cards linked (Cabinetmaking, Marine Service, Building Trades, Plumbing, Public Works) + Electricity and HVAC/R given the dual-campus link pattern (two campus links, Practical Nursing precedent). sitemap.html — Clearwater + St. Petersburg Programs cards delinked-to-real for all 9 (remaining trades: Diesel, Master Auto, RACCA, Machining still Planned on CLW; none left planned on STP trades).
+
+**Content gaps -> follow-ups:** several trades pages have no program photo on live (cabinetmaking uses a video still; electricity-clearwater, hvacr-stpete, plumbing-stpete, public-works-stpete reuse a related-trade lab photo placeholder, flagged in-file for a real-photo swap); live videos carry no real titles on most pages (neutral captions used); Building Trades BCV0080 live typo "distaster", HVAC/R STP live typo "solid stare electronics" preserved verbatim. All omitted/preserved, none fabricated.
+
+**Next:** Wave 3 (Transportation) — Diesel Maintenance, Diesel Systems 1&2, Master Auto, Auto Body, Commercial Vehicle Driving (CDL), Commercial Class B, plus the trades-tagged auto/diesel programs. Apprenticeship-hub + short-course treatment still a Stage-3 scope decision.
+
+---
+
+## 2026-06-08 — Programs Wave 3 (Transportation) built + FLRTW drift fix
+
+**10 program pages built verbatim via curl raw HTML** (parallel agents, one per program, mirroring practical-nursing-{clearwater,stpete}.html):
+master-automotive-service-technology-1-clearwater, master-automotive-service-technology-2-clearwater, master-automotive-service-technology-1-stpete, master-automotive-service-technology-2-stpete, diesel-maintenance-technician-clearwater, diesel-systems-technician-1-clearwater, diesel-systems-technician-2-clearwater, automotive-collision-technology-stpete, commercial-class-b-driving-stpete, commercial-vehicle-driving-stpete.
+
+Verified: 0 em dashes, 0 fabrications, canonical FL Ready to Work block (exactly 1 each, no "BIG SIX" drift), correct campus tuition links, Back to All Programs on all 10.
+
+**Shared-program split confirmed:** Master Automotive Service Technology 1 (T400700, 1,050h, 5 courses) and Master Auto 2 (T400800, 750h, 4 courses; names Master Auto 1 as prerequisite verbatim) are each offered at BOTH campuses. Academic core identical; campus wrapper differs (CLW counselor Yata Fields x2016 + NC3/MOPAR CAP/Snap-On/FCA/Crown partner set; STP counselor Cheri Ashwood x2325 + NC3/MOPAR CAP/FCA/Snap-On/Honda PACT + Dimmitt). Note: the CLW Master Auto 1 live page omits the T400700 code that the STP page publishes (logged to follow-ups).
+
+**Diesel = three distinct Clearwater programs** (not "1 & 2"): Diesel Maintenance Technician (600h, 3 courses, counselor Valerie Santos x2017, instructors Murphy + Fecteau x2091), Diesel Systems Technician 1 (1,050h, 4 courses), Diesel Systems Technician 2 (750h, 5 courses; names DST1 as prerequisite verbatim). Shared ASE/partner ecosystem; no program/CIP code on any diesel live page (course codes only).
+
+**CDL = two distinct St. Pete programs:** Commercial Class B Driving (I490251, single course TRA0084, 150h) and Commercial Vehicle Driving / Class A (I490205, single course TRA0080, 320h), both counselor Nancy Randolph x2060. License/DOT/age (18 for B, 21 for A with 19-21 employer-letter exception)/drug-screen prerequisites and third-party testing + Passenger endorsement + Train-the-Trainer captured verbatim in Admission Requirements.
+
+**Navigation wired:** programs.html — 4 single cards linked (Auto Collision, Commercial Class B, Commercial Vehicle Driving, Diesel Maintenance); the two conflated grid cards SPLIT per the welding precedent: "Automotive Service Technology 1 & 2" -> two cards "Master Automotive Service Technology 1" and "2" (each dual-campus link pattern); "Diesel Systems Technician 1 & 2" -> two single-campus CLW cards. sitemap.html — Clearwater + St. Petersburg Programs cards delinked-to-real for all 10 (CLW trades planned line now only "RACCA, Machining"; STP transportation fully linked).
+
+**Same-session fix — Florida Ready to Work boilerplate drift:** the institutional FLRTW block had drifted into 5 variants across program pages (short 256-char version on 13 pages, partial on cabinetmaking, "BIG SIX" + an em dash on the welding pages, paraphrase in the template). Confirmed against live raw HTML that every live program page carries the long "Industry Certifications and FL Ready to Work Credentials" version. Normalized all 20 program pages (Wave 1 + 2 + welding) + `_templates/program-page.html` to one byte-identical canonical block; cleared the welding em dash and "BIG SIX" misspelling.
+
+**Content gaps -> follow-ups:** no program/CIP code on diesel pages or CLW Master Auto 1; Auto Collision has no live hero image (reused Master Auto STP photo placeholder) + live typos "Collison/suspention/systens" preserved verbatim; most pages' videos carry only generic "YouTube video player" titles; no on-page admission requirements on the automotive/diesel programs (CDL pages do have them). All omitted/preserved, none fabricated.
+
+**Next:** Wave 4 (IT / Business / Arts & Media): Computer Systems & IT (shared), Network Support Services (CLW), Computer-Aided Drawing & Modeling (STP), Accounting Operations (CLW), Web Development (CLW), Digital Media & Multimedia Design (STP), Stage Production (CLW), TV/Digital Production, Interior Decorating (CLW), Electronic Systems Integration (CLW). Apprenticeship-hub + short-course treatment still a Stage-3 scope decision.
+
+---
+
+## 2026-06-08 — Policy change: fix typos, don't preserve them
+
+Marianne: "i dont think you should preserve typos." Verbatim binds substantive content, not mechanical spelling errors. Updated `docs/audit/verbatim-rule.md` with a "Typo / spelling correction (permitted)" section and saved a feedback memory so future build agents fix typos by default.
+
+Corrected the typos already introduced this session (extracts under `docs/audit/programs/extracted/` left verbatim as the evidentiary record; only redesign HTML cleaned):
+- automotive-collision-technology-stpete: Collison->Collision, "suspention,;"->"suspension;", systens->systems
+- building-trades-stpete: distaster->disaster
+- hvacr-clearwater + hvacr-stpete: "solid stare"->"solid state"
+- dental-assisting-stpete: "St. PetersburgCollege"->"St. Petersburg College"
+- medical-administrative-specialist-clearwater: "board foundation"->"broad foundation", "to process the necessary"->"to possess the necessary"
+
+NOT auto-fixed (escalated to Marianne): the Medical Administrative Specialist mission statement has a wholesale duplicated "in order to prepare students for employment..." clause. Deduplicating is an editorial reword, not a typo fix, so it was left as-is pending her decision (logged in follow-ups). follow-ups.md typo rows updated from "kept verbatim" to "corrected on redesign; fix on live."

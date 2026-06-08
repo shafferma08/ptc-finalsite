@@ -13,7 +13,25 @@
       "Read(//f/I-Drive/**)",
       "Bash(mkdir -p docs/audit/programs/extracted/clearwater docs/audit/programs/extracted/stpete)",
       "Bash(echo \"exit=$? bytes=$\\(wc -c < docs/audit/programs/extracted/clearwater/practical-nursing.raw.html\\)\")",
-      "Bash(echo \"exit=$? bytes=$\\(wc -c < docs/audit/programs/extracted/stpete/practical-nursing.raw.html\\)\")"
+      "Bash(echo \"exit=$? bytes=$\\(wc -c < docs/audit/programs/extracted/stpete/practical-nursing.raw.html\\)\")",
+      "Bash(grep -rl \"stpete-practical-nursing\" --include=\"*.html\" .)",
+      "Bash(git mv *)",
+      "Bash(mv stpete-practical-nursing.html practical-nursing-stpete.html)",
+      "Bash(mkdir -p docs/audit/programs/extracted/stpete assets/images/content)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(python3 -c ' *)",
+      "Read(//tmp/**)",
+      "Read(//c/tmp/**)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(python -c ' *)",
+      "Bash(file assets/images/content/building-trades-stpete*.jpg)",
+      "Bash(python -c \"import sys,re; t=sys.stdin.read\\(\\); m=re.search\\(r'<title>\\(.*?\\)</title>',t\\); print\\('TITLE:', m.group\\(1\\) if m else 'none'\\)\")",
+      "Bash(python -c \"from PIL import Image; print\\(Image.open\\('/tmp/cm_hero.jpg'\\).size\\)\")",
+      "Bash(identify /tmp/cm_hero.jpg)",
+      "Bash(cd \"c:\\\\Users\\\\mshaf\\\\Documents\\\\PTC\\\\Website\\\\ptc-finalsite\" && cp /tmp/cm_hero.jpg assets/images/content/cabinetmaking-clearwater.jpg && file assets/images/content/cabinetmaking-clearwater.jpg && ls -la assets/images/content/cabinetmaking-clearwater.jpg)"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
     ]
   }
 }

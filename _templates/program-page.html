@@ -624,6 +624,28 @@
             font-size: 1.5rem;
         }
 
+        /* --- FINANCIAL AID BANNER + RESOURCE GRID (approved cost pattern) --- */
+        .aid-banner {
+            background: var(--color-green-dark);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .aid-banner h3 { font-family: var(--font-heading); font-size: 1.35rem; margin: 0 0 0.4rem; }
+        .aid-banner p { margin: 0; opacity: 0.9; font-size: 0.95rem; line-height: 1.5; max-width: 560px; }
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
         /* --- COUNSELOR CARD (flex: 1-N counselors) --- */
         .counselor-card {
             background: var(--color-gray-100);
@@ -1511,103 +1533,66 @@
         ================================================== -->
         <section id="program-credentials" style="padding: 5rem 0; background-color: var(--color-gray-100);">
             <div class="container">
-                <div class="content-split">
+                <h2 style="color: var(--color-green-dark); margin-bottom: 2rem; font-family: var(--font-heading);">Credentials, Licensure &amp; Cost</h2>
+
+                <!-- CREDENTIAL STACK: add a .credential-card for each credential. -->
+                <div class="credential-stack">
+
+                    <!-- Card 1 — primary industry credential or licensure -->
+                    <div class="credential-card">
+                        <span class="credential-card__type credential-card__type--certification">Industry Certification</span>
+                        <h3>[CREDENTIAL_1_NAME]</h3>
+                        <p>[Description of the credential, who awards it, how students earn it, testing fees if any.]</p>
+                        <!-- Optional logo -->
+                        <!-- <img src="assets/images/content/[credential-logo].jpg" alt="[Credential name]"> -->
+                    </div>
+
+                    <!-- Card 2 — state licensure (only if program leads to licensure) -->
+                    <!--
+                    <div class="credential-card">
+                        <span class="credential-card__type credential-card__type--licensure">State Licensure</span>
+                        <h3>[LICENSURE_NAME, e.g., NCLEX-PN]</h3>
+                        <p>[Description of the licensure pathway, state board name, exam details.]</p>
+                    </div>
+                    -->
+
+                    <!-- FL Ready to Work block — keep on every program page -->
+                    <div class="flrtw-block">
+                        <h4><i class="fas fa-check-circle" style="margin-right: 0.5rem;" aria-hidden="true"></i> Industry Certifications and FL Ready to Work Credentials</h4>
+                        <p>The goal of Pinellas Technical College's career and technical programs is for each student to achieve an industry-recognized credential or professional license. Where certifications or licenses are linked to a career, Pinellas Technical College's goal is to prepare graduates of that career technical program for the certification or license exam. In some cases, Pinellas Technical College proctors the exams. Specific certification and license requirements are available from Pinellas Technical College school counselors and program instructors. It is an expectation that students will earn the <strong>FL Ready to Work</strong> Soft Skills credential before graduating. The Digital Skills credential is also highly recommended as all careers use technology, and it now includes AI topics. The Employability Skills credential reviews basic reading and math skills used on the job. These credentials align with our BIGSIX initiative because our students will be able to articulate how professionalism, pride, focus, success, ownership, and excellence look in their chosen industry.</p>
+                        <p style="font-size: 0.9rem; color: var(--color-gray-700); margin: 0;"><a href="https://www.myfloridareadytowork.com" target="_blank" rel="noopener" style="color: var(--color-green); font-weight: 600;">myfloridareadytowork.com &rarr;</a></p>
+                    </div>
+                </div>
+
+                <!-- =================================================
+                     OPTIONAL SECTION E: STATE LICENSURE DISCLOSURE
+                     INCLUDE IF: program leads to state licensure.
+                ================================================== -->
+                <div class="licensure-disclosure">
+                    <h4><i class="fas fa-info-circle" aria-hidden="true"></i> State Licensure Disclosure</h4>
+                    <p>
+                        Pinellas Technical College&rsquo;s [PROGRAM_NAME] program is approved by the [FLORIDA_BOARD_NAME] and meets the educational requirements for licensure in the State of Florida. Licensure requirements vary by state; students who plan to work outside Florida should review licensure requirements in their intended state of practice. Contact your counselor for more information.
+                    </p>
+                </div>
+
+                <!-- Financial Aid banner + program resource cards (approved pattern; NOT a tall sidebar box) -->
+                <div class="aid-banner">
                     <div>
-                        <h2 style="color: var(--color-green-dark); margin-bottom: 2rem; font-family: var(--font-heading);">Credentials &amp; Licensure</h2>
-
-                        <!-- CREDENTIAL STACK: add a .credential-card for each credential. -->
-                        <div class="credential-stack">
-
-                            <!-- Card 1 — primary industry credential or licensure -->
-                            <div class="credential-card">
-                                <span class="credential-card__type credential-card__type--certification">Industry Certification</span>
-                                <h3>[CREDENTIAL_1_NAME]</h3>
-                                <p>[Description of the credential, who awards it, how students earn it, testing fees if any.]</p>
-                                <!-- Optional logo -->
-                                <!-- <img src="assets/images/content/[credential-logo].jpg" alt="[Credential name]"> -->
-                            </div>
-
-                            <!-- Card 2 — state licensure (only if program leads to licensure) -->
-                            <!--
-                            <div class="credential-card">
-                                <span class="credential-card__type credential-card__type--licensure">State Licensure</span>
-                                <h3>[LICENSURE_NAME, e.g., NCLEX-PN]</h3>
-                                <p>[Description of the licensure pathway, state board name, exam details.]</p>
-                            </div>
-                            -->
-
-                            <!-- Card 3 — secondary/supporting credential -->
-                            <!--
-                            <div class="credential-card">
-                                <span class="credential-card__type credential-card__type--certification">Supporting Certification</span>
-                                <h3>[CREDENTIAL_NAME, e.g., OSHA 10]</h3>
-                                <p>[Description.]</p>
-                            </div>
-                            -->
-
-                            <!-- Card 4 — exam prep -->
-                            <!--
-                            <div class="credential-card">
-                                <span class="credential-card__type credential-card__type--preparatory">Exam Preparation</span>
-                                <h3>[EXAM_NAME]</h3>
-                                <p>[Program prepares students to sit for this exam after graduation. Not awarded by PTC.]</p>
-                            </div>
-                            -->
-
-                            <!-- FL Ready to Work block — keep on every program page -->
-                            <div class="flrtw-block">
-                                <h4><i class="fas fa-check-circle" style="margin-right: 0.5rem;" aria-hidden="true"></i> Florida Ready to Work</h4>
-                                <p>
-                                    The goal of Pinellas Technical College&rsquo;s career and technical programs is for each student to achieve an industry-recognized credential or professional license. It is an expectation that students will earn the <strong>FL Ready to Work Soft Skills</strong> credential before graduating. The <strong>Digital Skills</strong> credential is also highly recommended as all careers use technology. The <strong>Employability Skills</strong> credential reviews basic reading and math skills used on the job.
-                                </p>
-                                <p style="font-size: 0.9rem; color: var(--color-gray-700); margin: 0;">
-                                    These credentials align with our <strong>BIG SIX initiative</strong>: professionalism, pride, focus, success, ownership, and excellence. <a href="https://www.myfloridareadytowork.com" target="_blank" style="color: var(--color-green); font-weight: 600;">myfloridareadytowork.com &rarr;</a>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- =================================================
-                             OPTIONAL SECTION E: STATE LICENSURE DISCLOSURE
-                             INCLUDE IF: program leads to state licensure.
-                             Federal state-authorization disclosure requirement.
-                             Check with institutional research / compliance.
-                        ================================================== -->
-                        <div class="licensure-disclosure">
-                            <h4><i class="fas fa-info-circle" aria-hidden="true"></i> State Licensure Disclosure</h4>
-                            <p>
-                                Pinellas Technical College&rsquo;s [PROGRAM_NAME] program is approved by the [FLORIDA_BOARD_NAME] and meets the educational requirements for licensure in the State of Florida. Licensure requirements vary by state; students who plan to work outside Florida should review licensure requirements in their intended state of practice. Contact your counselor for more information.
-                            </p>
-                        </div>
+                        <h3>Financial Aid &amp; Costs</h3>
+                        <p>Program length and costs are approximate, and subject to change. Financial assistance is available to those who qualify.</p>
                     </div>
+                    <a href="[CAMPUS_SLUG]-tuition.html" class="btn btn--accent">Explore Financial Aid</a>
+                </div>
 
-                    <!-- Cost + Financial Aid sidebar -->
-                    <div style="display: flex; flex-direction: column; gap: 2rem;">
-                        <div style="background: var(--color-green-dark); border-radius: 12px; padding: 3rem; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; flex: 1; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                            <div style="color: var(--color-accent); font-size: 3rem; margin-bottom: 1.5rem;">
-                                <i class="fas fa-circle-dollar-to-slot" aria-hidden="true"></i>
-                            </div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; font-family: var(--font-heading);">Financial Aid &amp; Costs</h3>
-                            <p style="margin-bottom: 2rem; opacity: 0.9; line-height: 1.6; font-size: 0.95rem;">
-                                Program length and costs are approximate, and subject to change. Financial assistance is available to those who qualify.
-                            </p>
-                            <a href="tuition-aid.html" class="btn btn--accent" style="width: 100%;">Explore Financial Aid</a>
-                        </div>
-
-                        <a href="#" class="pdf-card">
-                            <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
-                            <div>
-                                <strong style="display: block; color: var(--color-gray-900); font-size: 1rem; margin-bottom: 0.2rem;">Program Flyer</strong>
-                                <span style="font-size: 0.85rem; color: var(--color-gray-500);">[FORMAT] &middot; [CAMPUS] &middot; PDF</span>
-                            </div>
-                        </a>
-                        <a href="#" class="pdf-card">
-                            <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
-                            <div>
-                                <strong style="display: block; color: var(--color-gray-900); font-size: 1rem; margin-bottom: 0.2rem;">Program Costs</strong>
-                                <span style="font-size: 0.85rem; color: var(--color-gray-500);">[PROGRAM_NAME] &middot; [CAMPUS] &middot; PDF</span>
-                            </div>
-                        </a>
-                    </div>
+                <div class="resource-grid">
+                    <a class="pdf-card" href="[FLYER_PDF_URL]" target="_blank" rel="noopener">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Program Flyer</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">[PROGRAM_NAME] &middot; [CAMPUS] &middot; PDF</span></div>
+                    </a>
+                    <a class="pdf-card" href="[COSTS_PDF_URL]" target="_blank" rel="noopener">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Program Costs</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">[PROGRAM_NAME] &middot; [CAMPUS] &middot; PDF</span></div>
+                    </a>
                 </div>
 
                 <!-- =================================================

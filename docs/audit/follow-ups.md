@@ -381,6 +381,63 @@ Surfaced during the UX/stakeholder review panel (prospective-student, parent, de
 
 ---
 
+## Programs cluster — Wave 1 Health builds (added 2026-06-08)
+
+Surfaced while building the 8 Health program pages verbatim. All items were OMITTED from the redesign (not fabricated) and need a live-owner action or decision.
+
+| Item | Page(s) | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| No outcomes data (cert pass rate / placement / salary) on any program page | all program pages | Same gap as Practical Nursing. No RPT/CDA/NREMT/CSPDT/CBCS pass rates, no placement, no salary. | Source + publish per program (ties to Compliance Student-Outcomes item). | PTC institutional research + programs | High | Wave 1 Health, 2026-06-08 |
+| No on-page tuition figure on program pages | all program pages | Cost is a downloadable "Program Costs" PDF only. | Surface a verbatim figure on-page if live has one (PCSB-set rates exist). | Webmaster + PCSB CTAE | Medium | Wave 1 Health, 2026-06-08 |
+| Instructor/course-info contacts not surfaced (pattern shows only the counselor) | medical-administrative-specialist (Brenda Frazier), dental-assisting (Dawn Garcia), emergency-medical-technician (Lt. Christopher Henderson), surgical-technology (Jen Lowe), medical-coder-biller (Bonnie Capra) | Live lists a second "Course Information" contact (instructor) that the single-counselor program-page pattern doesn't render. Captured in the extracts. | Decide whether program pages should show an instructor/course-info contact alongside the counselor; if yes, extend the template counselor block. | Webmaster | Low | Wave 1 Health, 2026-06-08 |
+| No program/CIP code on live Phlebotomy page | phlebotomy-clearwater | Most program pages publish a program code; Phlebotomy's live page does not. | Add the program code to the live Phlebotomy page. | CLW program / Webmaster | Low | Wave 1 Health, 2026-06-08 |
+| No on-page admission requirements on some health programs | emergency-medical-technician, medical-administrative-specialist, medical-coder-biller | Live pages have no Special/Admission Requirements or entrance-exam statement (unlike Practical Nursing / Dental). | Confirm whether these programs have admission prerequisites that should be published. | STP/CLW program admins | Medium | Wave 1 Health, 2026-06-08 |
+| Stale / past dates on live | surgical-technology ("Next session start date | March 23, 2026" already past), dental-assisting (Program Costs PDF dated May 2025), emergency-medical-technician ("Fall Orientation Date: TBD") | Live shows past/placeholder dates; redesign mirrors verbatim. | Refresh the dated content on live. | Program admins / Webmaster | Medium | Wave 1 Health, 2026-06-08 |
+| Live typos CORRECTED on redesign (policy 2026-06-08) | medical-administrative-specialist ("board"->"broad", "process"->"possess"); dental-assisting ("St. PetersburgCollege" -> "St. Petersburg College") | Redesign now fixes obvious typos rather than preserving them (see verbatim-rule.md "Typo / spelling correction"). The live pages still carry the typos. | Correct the same typos on the live pages. | Webmaster | Low | Wave 1 Health, 2026-06-08 |
+| ~~Garbled mission sentence~~ **RESOLVED on redesign 2026-06-08** | medical-administrative-specialist | The live mission statement repeated a whole clause ("...in order to prepare students for employment as a Medical Administrative Specialist and office managers in the workforce; to possess the necessary knowledge and decision making skills, in order to prepare students for employment..."). Marianne approved the dedup; the redesign now removes the one repeated clause (minimal, no rewrite). The LIVE page still carries the duplication. | Remove the duplicated clause on the live MAS page to match. | Webmaster | Medium | Wave 1 Health, 2026-06-08 |
+
+---
+
+## Programs cluster — Wave 2 Trades builds (added 2026-06-08)
+
+Surfaced while building the 9 Trades program pages verbatim (cabinetmaking-clearwater, marine-service-technologies-clearwater, electricity-{clearwater,stpete}, hvacr-{clearwater,stpete}, building-trades-stpete, plumbing-stpete, public-works-stpete). All items OMITTED/preserved, not fabricated.
+
+| Item | Page(s) | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| No program photo on several live trades pages (hero placeholders in redesign) | cabinetmaking-clearwater (uses a video still), electricity-clearwater, hvacr-stpete, plumbing-stpete, public-works-stpete (reuse a related-trade lab photo, flagged in-file) | These live program pages have no usable hero/program image, so the redesign uses a video frame or a related-trade lab photo as a stand-in. | Source a real lab/shop photo per program (Ronald McGuire / OWI marketing library has a CNC/HVAC/electrical/plumbing folder) and swap the placeholder. | Webmaster + OWI marketing | Medium | Wave 2 Trades, 2026-06-08 |
+| Live videos have no titles | most trades pages (cabinetmaking, electricity CLW+STP, public-works, etc.) | YouTube embeds on live carry only "YouTube video player" as the label, so redesign captions are neutral/generic. | Add real video titles on live (or supply captions) for stronger "See It In Action" cards. | Webmaster / programs | Low | Wave 2 Trades, 2026-06-08 |
+| No on-page admission requirements on most trades programs | cabinetmaking, electricity (CLW+STP), hvacr (CLW+STP), building-trades, plumbing | Unlike Practical Nursing/Public Works, these live pages publish no Special/Admission Requirements or entrance-exam content, so the qualify-first Admission section is omitted entirely. | Confirm whether these trades have admission prerequisites (basic-skills entry, ESOL level, etc.) that should be published on-page. | CLW/STP program admins | Medium | Wave 2 Trades, 2026-06-08 |
+| Live typos CORRECTED on redesign (policy 2026-06-08) | building-trades ("distaster" -> "disaster" in BCV0080), hvacr-clearwater + hvacr-stpete ("solid stare" -> "solid state" electronics) | Redesign now fixes obvious typos (see verbatim-rule.md). Live pages still carry them. | Correct the same typos on the live pages. | Webmaster | Low | Wave 2 Trades, 2026-06-08 |
+| Apprenticeship pathway points cross-campus | hvacr-stpete, plumbing-stpete, electricity (both) | Live apprenticeship callouts say "refer to the Clearwater/St. Petersburg Campus Apprenticeship section," so the actual apprenticeship offering lives in the (not-yet-built) Apprenticeships hub, not the program page. | Resolve in the Stage-3 apprenticeship-hub scope decision; ensure the program-page callouts deep-link to the right apprenticeship listing once built. | Webmaster | Medium | Wave 2 Trades, 2026-06-08 |
+| No outcomes/tuition figure on-page (carryover) | all trades program pages | Same gap as Wave 1: no cert pass rate / placement / salary; cost is a "Program Costs" PDF only. | Ties to the Wave 1 Health outcomes + on-page-tuition rows above; one institutional fix covers all program pages. | Institutional research + PCSB CTAE | High | Wave 2 Trades, 2026-06-08 |
+
+---
+
+## Programs cluster — Wave 3 Transportation builds (added 2026-06-08)
+
+Surfaced while building the 10 Transportation/Automotive/Diesel/CDL program pages verbatim. All items OMITTED/preserved, not fabricated.
+
+| Item | Page(s) | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Clearwater Master Auto 1 live page omits the program code | master-automotive-service-technology-1-clearwater | The St. Pete Master Auto 1 live page publishes program code T400700; the Clearwater live page shows only "1,050 hours" with no code. Same program, inconsistent metadata between campuses. | Add T400700 to the Clearwater Master Auto 1 live page for parity. | CLW program / Webmaster | Low | Wave 3 Transportation, 2026-06-08 |
+| No program/CIP code on any Diesel live page | diesel-maintenance-technician, diesel-systems-technician-1, diesel-systems-technician-2 | All three diesel pages publish course codes (DIM####) but no overarching program/CIP code, unlike most other programs. | Add the program codes to the live diesel pages. | CLW program / Webmaster | Low | Wave 3 Transportation, 2026-06-08 |
+| No on-page admission requirements on automotive/diesel programs | master-automotive-service-technology-1/2 (both campuses), all three diesel pages, automotive-collision-technology | These live pages have no Special/Admission Requirements or entrance-exam content (the CDL pages DO publish license/DOT/age/drug-screen prerequisites). | Confirm whether these programs have admission prerequisites that should be published on-page. | CLW/STP program admins | Medium | Wave 3 Transportation, 2026-06-08 |
+| No live hero image on Auto Collision (placeholder used) | automotive-collision-technology-stpete | Live page has no program photo or partner logos; redesign reuses the Master Auto St. Pete photo as a stand-in (flagged in-file). | Source a real collision-shop photo and swap the placeholder. | STP program + OWI marketing | Medium | Wave 3 Transportation, 2026-06-08 |
+| Live typos CORRECTED on redesign (policy 2026-06-08) | automotive-collision-technology ("Collison" -> "Collision", "suspention,;" -> "suspension;", "systens" -> "systems") | Redesign now fixes obvious typos (see verbatim-rule.md). Live page still carries them. | Correct the same typos on the live page. | Webmaster | Low | Wave 3 Transportation, 2026-06-08 |
+| Program videos have no titles | most transportation pages (Master Auto, diesel, CDL, auto collision) | YouTube embeds on live carry only "YouTube video player" labels, so redesign captions are neutral/generic. | Add real video titles on live (or supply captions). | Webmaster / programs | Low | Wave 3 Transportation, 2026-06-08 |
+
+---
+
+## Programs cluster — grid card reconciliation note (added 2026-06-08)
+
+Process note, not a live-site issue. The programs.html teaser grid had simplified/conflated cards that did not match the live program catalog. As Wave 3 was wired, two were split to match live (and the welding precedent of one card per program):
+- "Automotive Service Technology 1 & 2" (one dual-campus card) -> "Master Automotive Service Technology 1" + "Master Automotive Service Technology 2" (two dual-campus cards).
+- "Diesel Systems Technician 1 & 2" (one CLW card) -> "Diesel Systems Technician 1" + "Diesel Systems Technician 2" (two CLW cards).
+
+Remaining grid-vs-catalog reconciliation (the ~41-vs-60+ count question) is still open for later waves: confirm the grid lists every distinct live program once (e.g., short courses, apprenticeships, Clearview, any other multi-OCP programs presented as a single card). Owner: Webmaster. Tracked under the existing "40+/60+ programs-count reconciliation" item.
+
+---
+
 ## Closed follow-ups
 
 **2026-06-02 — parked-items decision session (Marianne-directed):**
