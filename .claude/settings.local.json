@@ -102,7 +102,23 @@
       "Bash(grep -o \"Online Education.\\\\{0,200\\\\}\" computer-systems-it.raw.html)",
       "Bash(grep -n -o -i \"credentialing.\\\\{0,80\\\\}\\\\|NSS_certs[^\\\\\"]*\\\\|certs[^\\\\\"]\\\\{0,40\\\\}\" network-support-services.raw.html)",
       "Read(//c/c/tmp/**)",
-      "Read(//c/mshaf/**)"
+      "Read(//c/mshaf/**)",
+      "Bash(awk 'NR>=533 && NR<=1200' child-care-center-operations.raw.html)",
+      "PowerShell(\\(Get-Item \"c:\\\\Users\\\\mshaf\\\\Documents\\\\PTC\\\\Website\\\\ptc-finalsite\\\\docs\\\\audit\\\\programs\\\\extracted\\\\clearwater\\\\professional-culinary-arts-hospitality.raw.html\"\\).Length)",
+      "PowerShell(\\(Get-Content \"c:\\\\Users\\\\mshaf\\\\Documents\\\\PTC\\\\Website\\\\ptc-finalsite\\\\docs\\\\audit\\\\programs\\\\extracted\\\\clearwater\\\\professional-culinary-arts-hospitality.raw.html\" | Measure-Object -Line\\).Lines)",
+      "Bash(awk 'NR>=533 && NR<=1200' docs/audit/programs/extracted/stpete/early-childhood-education.raw.html)",
+      "Bash(sed -n '120,160p' welding-clearwater.html)",
+      "Bash(sed -n '690,745p' welding-clearwater.html)",
+      "Bash(awk 'NR>=533 && NR<=900' facials-specialty.raw.html)",
+      "Bash(grep -i \"\\\\.html$\")",
+      "PowerShell(curl.exe -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\)\" -o \"c:\\\\Users\\\\mshaf\\\\Documents\\\\PTC\\\\Website\\\\ptc-finalsite\\\\assets\\\\images\\\\content\\\\professional-culinary-arts-hospitality-clearwater.jpg\" \"https://resources.finalsite.net/images/f_auto,q_auto/v1760637334/myptecorg/dqy14ayonwj9fkv7s3w4/CULINARY.jpg\"; \\(Get-Item \"c:\\\\Users\\\\mshaf\\\\Documents\\\\PTC\\\\Website\\\\ptc-finalsite\\\\assets\\\\images\\\\content\\\\professional-culinary-arts-hospitality-clearwater.jpg\"\\).Length)",
+      "Bash(awk 'NR>=533 && NR<=900' school-age-professional-certificate.raw.html)",
+      "Bash(sed -n '1,30p' \"/c/Users/mshaf/Documents/PTC/Website/ptc-finalsite/commercial-class-b-driving-stpete.html\")",
+      "Bash(sed -n '308,400p' \"/c/Users/mshaf/Documents/PTC/Website/ptc-finalsite/commercial-class-b-driving-stpete.html\")",
+      "PowerShell(curl.exe -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\)\" -o \"c:\\\\Users\\\\mshaf\\\\Documents\\\\PTC\\\\Website\\\\ptc-finalsite\\\\assets\\\\images\\\\content\\\\servsafe-logo.jpg\" \"https://resources.finalsite.net/images/f_auto,q_auto/v1757939094/myptecorg/qqwotw07obahxiabxfhr/servsafelogo.jpg\"; \\(Get-Item \"c:\\\\Users\\\\mshaf\\\\Documents\\\\PTC\\\\Website\\\\ptc-finalsite\\\\assets\\\\images\\\\content\\\\servsafe-logo.jpg\"\\).Length)",
+      "Bash(cp /c/tmp/ffs-hero.bin assets/images/content/fundamental-foodservice-skills-clearwater.jpg)",
+      "Bash(cp /c/tmp/ffs-servsafe.bin assets/images/content/fundamental-foodservice-skills-clearwater-servsafe.jpg)",
+      "PowerShell(foreach \\($id in @\\(\"4RBJon8yGBI\",\"DPoCQHqRq6w\",\"0qURB4UaALI\"\\)\\) { $r = curl.exe -sL \"https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=$id&format=json\"; \"$id => $r\" })"
     ]
   }
 }
