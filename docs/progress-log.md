@@ -2758,3 +2758,26 @@ Corrected the typos already introduced this session (extracts under `docs/audit/
 - medical-administrative-specialist-clearwater: "board foundation"->"broad foundation", "to process the necessary"->"to possess the necessary"
 
 NOT auto-fixed (escalated to Marianne): the Medical Administrative Specialist mission statement has a wholesale duplicated "in order to prepare students for employment..." clause. Deduplicating is an editorial reword, not a typo fix, so it was left as-is pending her decision (logged in follow-ups). follow-ups.md typo rows updated from "kept verbatim" to "corrected on redesign; fix on live."
+
+---
+
+## 2026-06-10 — Programs Wave 4 (IT / Business / Arts) complete: 10 pages verified + wired
+
+Marianne kicked off Wave 4 interactively. Discovery first: 8 of the 10 pages already existed, built 2026-06-08 by the since-disabled auto-builder (committed unlogged + unverified in 38ede34 and earlier). Live pages re-curled 2026-06-10; diffs were dynamic tokens only (asset hashes, CF nonces), so the Jun 8 Stage 2 extracts (.md + .raw.html, all 10) remain the valid baseline.
+
+**Built fresh (2 parallel builder agents):** accounting-operations-clearwater.html (B200100, 1,050h, 4 courses OTA0040/ACO0040/ACO0041/ACO0042; Lidija Milisav x2020; Bill Scales x2084) and stage-production-clearwater.html (K200200, 300h, TPA0390+TPA0391; Valerie Santos x2017; Jeff Wilson x2060; 4 live videos incl. Super Bowl LV). Both digests had wrongly claimed no live hero photo; raw HTML had AccountJPG.jpg and Stage-Production.jpg, real heroes pulled to assets. Process note reaffirmed: trust .raw.html over the digest.
+
+**Verified the 8 pre-existing pages (2 parallel Comparator agents), all findings fixed same session:**
+- HIGH: CSIT CLW credential card had an invented sentence ("...across computer systems, networking, and cybersecurity"). Removed; replaced with a text transcription verified by READING the live certs graphics (CSIT: CompTIA A+/Network+/Security+; NSS: Network+/CCNA/CWNA/Security+ + Note + italic closer, transcription confirmed accurate). Marked the redundant graphic decorative (alt="").
+- MED: CSIT CLW "Distance Education is available" drift -> live's "Online Education" heading + verbatim contact line; stat bar item relabeled. 3 fabricated articulation intro connectives stripped (CSIT/NSS/WebDev). WebDev stat "Credential: Program Y700100" -> "Program Code"; CSIT STP "Program Certificate" -> "Y100200". WebDev teach-out contradiction: Apply Online CTAs suppressed, "Ready to Get Started?" -> "Have Questions?" routing to Student Services per the live notice (flag for Marianne, her program).
+- LOW: invalid fa-user-chalkboard icon (NSS), ESI full basic-skills sentence restored, CAD "technician specializations" connective neutralized, Digital Media "totaling 900 hours" addition trimmed, "Credentials, Licensure & Cost" headings trimmed where no licensure exists, 2 unreferenced -1200.jpg placeholder variants deleted.
+
+**Nav wired:** programs.html 7 cards delinked-to-real + CSIT converted to the dual-campus link pattern + NEW Digital Media & Multimedia Design card added (was missing entirely); Stage Production + Interior Decorating tag chips fixed ("Cosmetology" copy-paste bug -> "Arts & Media"). sitemap.html: CLW "IT cluster" pending line -> 7 real links; STP "CSIT, CAD, TV Production" pending -> 3 real links (no TV Production program exists on live; Digital Media covers it). 12 remaining `#` cards = Wave 5 (Culinary/Cosmo/Child Care/Education) + Machining + the "Professional Nursing (LPN-RN)" card which has NO live source (grid-reconciliation item).
+
+**Follow-ups:** 12 rows added (live "Al topics" FLRTW typo, IntDec doubled-word typos, Accounting OTA0040 garble + stale 900h PDF, WebDev PDF filename typo, cert lists trapped in graphics x3 (a11y), NSS punctuation, Stage Production grammar + no certs listed, Digital Media instructor dead-end, aid-banner template sentence source, digest hero errors).
+
+**Also this session:** Med Admin mission dedup confirmed already resolved + register row verified. Marianne's Wave 6 direction captured (inventory scope decisions + memory): short courses = OWI courses, NOT shorter COE programs; apprenticeships + short courses get their own easily accessible area; category likely renamed (propose options at Wave 6).
+
+**Mechanical sweep:** FLRTW block byte-identical across all 10 pages; 0 user-facing em dashes (title-tag &mdash; site-wide pattern noted as an open decision); all images resolve; campus tuition links correct.
+
+**Next:** Wave 5 Culinary / Cosmo / Child Care (Stage 2 extraction). Then Wave 6 Apprenticeships + Short Courses hub IA per Marianne's naming direction.

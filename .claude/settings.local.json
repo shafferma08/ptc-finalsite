@@ -83,7 +83,26 @@
       "Bash(python -c \"from PIL import Image; im=Image.open\\('assets/images/content/stage-production-clearwater.jpg'\\); print\\('size', im.size\\); im2=im.copy\\(\\); im2.thumbnail\\(\\(1200,1200\\)\\); im2.save\\('assets/images/content/stage-production-clearwater-1200.jpg','JPEG',quality=85\\); print\\('1200 done', im2.size\\)\")",
       "Bash(cp assets/images/content/computer-systems-it-stpete.jpg assets/images/content/computer-systems-it-stpete-1200.jpg)",
       "Bash(python -c \"from PIL import Image; print\\('main', Image.open\\('assets/images/content/computer-systems-it-stpete.jpg'\\).size\\); print\\('1200', Image.open\\('assets/images/content/computer-systems-it-stpete-1200.jpg'\\).size\\)\")",
-      "Bash(file assets/images/content/stage-production-clearwater.jpg)"
+      "Bash(file assets/images/content/stage-production-clearwater.jpg)",
+      "Bash(cd \"/c/Users/mshaf/Documents/PTC/Website/ptc-finalsite\" && grep -n -A2 'data-cluster=\"it\"\\\\|data-cluster=\"business\"\\\\|data-cluster=\"arts\"' programs.html | grep -E 'data-cluster|<h3>' )",
+      "Read(//c/c/Users/mshaf/Documents/PTC/Website/ptc-finalsite/**)",
+      "Bash(grep -iE 'computer|network|web-dev|account|interior|stage|electronic|digital|drawing|total|:$')",
+      "Bash(cp accounting-live-test.jpg accounting-operations-clearwater.jpg)",
+      "Bash(cp accounting-live-test.jpg accounting-operations-clearwater-1200.jpg)",
+      "Bash(rm accounting-live-test.jpg)",
+      "Bash(sed -n '14p' practical-nursing-clearwater.html)",
+      "Bash(sed -n '10p;20p' electronic-systems-integration-clearwater.html)",
+      "Bash(sed -n '18p' computer-systems-it-stpete.html)",
+      "Bash(sed -n '16p' computer-aided-drawing-modeling-stpete.html)",
+      "Bash(sed -n '18p' digital-media-multimedia-design-stpete.html)",
+      "Bash(sed -n '1,40p' \"/c/Users/mshaf/Documents/PTC/Website/ptc-finalsite/docs/audit/verbatim-rule.md\")",
+      "Bash(sed -n '1,20p' \"/c/Users/mshaf/Documents/PTC/Website/ptc-finalsite/medical-administrative-specialist-clearwater.html\")",
+      "Bash(grep -o -E \"\\(x20[0-9]{2}|Y100200|CTS00[0-9]{2}|Online Education[^<]{0,120}|fieldsy@pcsb.org|FIELDSY@pcsb.org|cottonr@pcsb.org|Robert Cotton|Yata Fields|900 [Hh]ours\\)\" computer-systems-it.raw.html)",
+      "Bash(grep -o -E \"\\(x21[0-9]{2}|x20[0-9]{2}|B078000|OTA0040|EEV0504|CTS002[2-9]|EEV0317|bojilovv@pcsb.org|Victor Bojilov|Viktor|1050 [Hh]ours|Statewide; Networking Services Technology AS degree|Computer Engineering Technology AS degree|Distance Education[^<]{0,40}\\)\" network-support-services.raw.html)",
+      "Bash(grep -o \"Online Education.\\\\{0,200\\\\}\" computer-systems-it.raw.html)",
+      "Bash(grep -n -o -i \"credentialing.\\\\{0,80\\\\}\\\\|NSS_certs[^\\\\\"]*\\\\|certs[^\\\\\"]\\\\{0,40\\\\}\" network-support-services.raw.html)",
+      "Read(//c/c/tmp/**)",
+      "Read(//c/mshaf/**)"
     ]
   }
 }

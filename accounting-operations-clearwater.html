@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--
-  PROGRAM PAGE · Digital Media and Multimedia Design · St. Petersburg Campus
-  Built 2026-06-08 from _templates/program-page.html (current qualify-first order) + St. Petersburg chrome,
-  mirroring practical-nursing-stpete.html.
-  Content verbatim from stpete.myptc.edu/programs/st-petersburg-full-time-programs/digital-media-and-multimedia-design
-  (source: docs/audit/programs/extracted/stpete/digital-media-multimedia-design.md).
-  Omitted (no live source): Admission Requirements / entrance exam (live has none), Upcoming Classes
-  (no dated cohorts), Articulation / Path (none on live), See It In Action (no videos), salary/BLS stat,
-  named counselor card (live names no counselor, only "Email the instructor to schedule a visit and tour").
-  Included: Distance Education shown verbatim ("No distance learning at this time."), Adobe industry
-  certifications, Related Links, single Program Costs PDF.
+  PROGRAM PAGE · Accounting Operations · Clearwater Campus
+  Built 2026-06-10 mirroring practical-nursing-clearwater.html + CURRENT Clearwater campus chrome.
+  Content verbatim from clearwater.myptc.edu/programs/clearwater-full-time-programs/accounting-operations
+  (raw source saved at docs/audit/programs/extracted/clearwater/accounting-operations.raw.html).
+  Omitted (no live source): Admission Requirements section (live lists none), trust strip (no verbatim
+  trust signal), videos section (live has none), licensure disclosure (no state licensure), articulation
+  degree-path section (folded into the info card per the MAS pattern).
+  Hero image pulled from live: AccountJPG.jpg (saved as assets/images/content/accounting-operations-clearwater.jpg).
+  Typos fixed per docs/audit/verbatim-rule.md (reported in build log): OTA0040 garbled sentence restored
+  ("meet industry standards. Job seeking..."), "Quickbooks" -> "QuickBooks", "ChromeBooks" -> "Chromebooks".
 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Media and Multimedia Design - St. Petersburg Campus &mdash; Pinellas Technical College</title>
-    <meta name="description" content="Digital Media and Multimedia Design at PTC St. Petersburg: a 900-hour program in studio and field digital media production, preparing students for Adobe Certified Professional certifications and a professional portfolio.">
+    <title>Accounting Operations - Clearwater Campus | Pinellas Technical College</title>
+    <meta name="description" content="Accounting Operations at PTC Clearwater: a 1,050-hour program preparing students to develop competencies in the field of accounting and become employed as productive workers in a financial business environment.">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -27,9 +27,12 @@
         .program-hero__text { padding: 4rem 0 4rem 2rem; display: flex; flex-direction: column; justify-content: center; }
         .program-hero__image { overflow: hidden; }
         .program-hero__image img { width: 100%; height: 100%; object-fit: cover; }
+        /* Hero headings inherit the global dark h1/h2 color from styles.css; force white on the dark hero. */
+        .program-hero h1 { color: #fff; }
         .stat-bar { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.15); }
         .stat-bar__item strong { display: block; font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.25rem; }
         .stat-bar__item span { font-size: 1.1rem; font-weight: 600; }
+        .stat-bar__item span.available { color: #86efac; }
         .hero-counselor-nudge { margin-top: 1.25rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); }
         .hero-counselor-nudge a { color: var(--color-yellow); font-weight: 600; text-decoration: none; }
         .hero-counselor-nudge a:hover { text-decoration: underline; }
@@ -47,7 +50,7 @@
         .jump-nav__link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.9rem 1.25rem; font-size: 0.875rem; font-weight: 600; color: var(--color-gray-600); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
         .jump-nav__link:hover { color: var(--color-green); border-bottom-color: var(--color-green); }
         .jump-nav__link--cta { margin-left: auto; color: var(--color-green); border-left: 1px solid var(--color-gray-200); padding-left: 1.5rem; }
-        .teas-callout { background: #fffbeb; border: 1px solid #fde68a; border-left: 5px solid var(--color-yellow); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; max-width: 900px; margin: 0 auto; font-weight: 600; color: var(--color-gray-800); line-height: 1.5; }
+        /* Videos */
         .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
         .video-card { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         .video-card__embed { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; }
@@ -57,6 +60,7 @@
         .video-card__play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 84px; height: 84px; border-radius: 50%; background: rgba(0, 0, 0, 0.7); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 2rem; padding-left: 6px; transition: background 0.2s ease, transform 0.2s ease; }
         .video-card__link:hover .video-card__play { background: var(--color-yellow); color: #111; transform: translate(-50%, -50%) scale(1.05); }
         .video-card__caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 0.9rem 1.1rem; background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%); color: #fff; font-family: var(--font-heading); font-weight: 600; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        /* Accordion */
         .accordion-item { border: 1px solid var(--color-gray-300); border-radius: 8px; overflow: hidden; background: white; transition: box-shadow 0.2s; }
         .accordion-item:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); }
         .accordion-item summary { padding: 1.25rem 1.75rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; background: var(--color-gray-100); border-bottom: 1px solid var(--color-gray-200); gap: 1rem; }
@@ -64,17 +68,21 @@
         .accordion-item summary .course-name { font-weight: 700; font-family: var(--font-heading); font-size: 1.15rem; color: var(--color-green-dark); flex: 1; }
         .accordion-item .hours-badge { background: var(--color-green); color: white; padding: 0.4rem 1.2rem; border-radius: 30px; font-size: 0.9rem; font-weight: 600; white-space: nowrap; }
         .accordion-item .accordion-body { padding: 2rem; }
+        /* Info cards */
         .info-card { background: white; border: 1px solid var(--color-gray-200); padding: 1.5rem; border-radius: 0 8px 8px 0; }
         .info-card--green { border-left: 4px solid var(--color-green); }
         .info-card--accent { border-left: 4px solid var(--color-accent); }
         .info-card h4 { font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 0.75rem; font-size: 1.1rem; }
         .info-card p { font-size: 0.95rem; color: var(--color-gray-700); line-height: 1.6; margin: 0; }
+        .info-card ul { font-size: 0.95rem; color: var(--color-gray-700); line-height: 1.7; margin: 0; padding-left: 1.25rem; }
         .info-card-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+        /* Credentials */
         .credential-stack { display: flex; flex-direction: column; gap: 1.25rem; }
         .credential-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); border-top: 4px solid var(--color-accent); }
         .credential-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-gray-900); }
         .credential-card p { color: var(--color-gray-700); line-height: 1.7; margin: 0 0 1rem 0; }
         .credential-card__type { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
+        .credential-card__type--licensure { background: #fef3c7; color: #92400e; }
         .credential-card__type--certification { background: var(--color-green-light); color: var(--color-green-dark); }
         .flrtw-block { background: rgba(0, 129, 66, 0.05); border-left: 4px solid var(--color-green); padding: 1.5rem; border-radius: 0 8px 8px 0; margin-top: 1.5rem; }
         .flrtw-block h4 { color: var(--color-green); margin-bottom: 0.75rem; font-size: 1.05rem; }
@@ -82,6 +90,7 @@
         .licensure-disclosure { background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid #f59e0b; padding: 1.25rem 1.5rem; border-radius: 0 8px 8px 0; margin-top: 1.5rem; }
         .licensure-disclosure h4 { color: #92400e; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
         .licensure-disclosure p { font-size: 0.92rem; color: var(--color-gray-700); line-height: 1.6; margin: 0; }
+        /* Aid banner + resource cards (replaces the tall vertical sidebar box) */
         .aid-banner { background: var(--color-green-dark); color: white; border-radius: 12px; padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
         .aid-banner h3 { font-family: var(--font-heading); font-size: 1.35rem; margin: 0 0 0.4rem; }
         .aid-banner p { margin: 0; opacity: 0.9; font-size: 0.95rem; line-height: 1.5; max-width: 560px; }
@@ -93,14 +102,14 @@
         .program-related-callout { background: var(--color-off-white); border: 1px solid var(--color-gray-200); border-left: 4px solid var(--color-accent); padding: 1.25rem 1.5rem; border-radius: 0 8px 8px 0; margin-top: 2rem; }
         .program-related-callout h4 { font-family: var(--font-heading); color: var(--color-green-dark); margin: 0 0 0.6rem; font-size: 1.1rem; }
         .program-related-callout ul { margin: 0; padding-left: 1.25rem; color: var(--color-gray-700); line-height: 1.7; }
-        .cohort-card { background:#fff; border:1px solid #e8ecf1; border-left:4px solid var(--color-green); border-radius:10px; padding:1.5rem 1.75rem; margin-bottom:1.25rem; box-shadow:0 1px 6px rgba(0,0,0,0.04); }
-        .cohort-card h3 { font-family:var(--font-heading); color:var(--color-green-dark); margin:0 0 0.75rem; font-size:1.2rem; }
-        .cohort-card p { margin:0 0 0.4rem; line-height:1.6; color:var(--color-gray-800); font-size:0.95rem; }
-        .cohort-card .label { color:var(--color-gray-500); font-style:italic; }
-        .cohort-card--accent { border-left-color: var(--color-yellow,#FFCF01); }
+        .session-callout { background: var(--color-green-light); border-radius: 12px; padding: 2rem 2.5rem; text-align: center; max-width: 760px; margin: 2.5rem auto 0; }
+        .session-callout h3 { font-family: var(--font-heading); color: var(--color-green-dark); margin: 0 0 0.5rem; }
+        .session-callout p { color: var(--color-gray-700); margin: 0 0 0.4rem; line-height: 1.6; }
+        /* Counselor */
         .counselor-card { background: var(--color-gray-100); padding: 3rem; border-radius: 12px; border: 1px solid var(--color-gray-200); text-align: center; }
         .counselor-avatar { width: 80px; height: 80px; background: var(--color-green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; font-family: var(--font-heading); font-weight: 700; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
         .action-buttons { display: flex; gap: 1rem; align-items: center; justify-content: center; margin-bottom: 3.5rem; }
+        /* Breadcrumb */
         .breadcrumb-bar { background: var(--color-off-white); border-bottom: 1px solid var(--color-gray-200); padding: 0.6rem 0; }
         .breadcrumb-bar__inner { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--color-gray-600); flex-wrap: wrap; }
         .breadcrumb-bar__inner ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
@@ -127,13 +136,13 @@
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- CAMPUS UTILITY BAR (current St. Petersburg chrome) -->
+    <!-- CAMPUS UTILITY BAR (current Clearwater chrome) -->
     <div class="utility-bar utility-bar--campus">
         <div class="container utility-bar__inner">
             <div class="utility-bar__left">
-                 <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> 727.893.2500</a>
+                 <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> 727.538.7167</a>
                  <span class="utility-bar__divider">|</span>
-                 <a href="campus-maps.html#stpete"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 901 34th St S, St. Petersburg, FL</a>
+                 <a href="campus-maps.html#clearwater"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 6100 154th Ave N, Clearwater, FL</a>
             </div>
             <div class="utility-bar__right">
                 <a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener"><i class="fas fa-desktop" aria-hidden="true"></i> Canvas Login</a>
@@ -142,19 +151,19 @@
                 <span class="utility-bar__divider">|</span>
                 <a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> PTC Main Site</a>
                 <span class="utility-bar__divider">|</span>
-                <a href="clearwater.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Clearwater Campus</a>
+                <a href="stpete.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> St. Petersburg Campus</a>
             </div>
         </div>
     </div>
 
-    <!-- CAMPUS HEADER (current St. Petersburg chrome) -->
+    <!-- CAMPUS HEADER (current Clearwater chrome) -->
     <header class="site-header" id="site-header">
         <div class="container site-header__inner">
-            <a href="stpete.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
-                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, St. Petersburg Campus" style="height: 60px;">
+            <a href="clearwater.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Clearwater Campus" style="height: 60px;">
                 <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
                     <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
-                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">St. Petersburg Campus</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Clearwater Campus</span>
                 </div>
             </a>
 
@@ -167,7 +176,7 @@
                                 <div class="dropdown__column">
                                     <ul>
                                         <li><a href="programs.html">All Programs A&ndash;Z</a></li>
-                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
                                         <li><a href="coming-soon.html">Distance Learning</a></li>
                                     </ul>
                                 </div>
@@ -175,48 +184,49 @@
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="stpete-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <a href="clearwater-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="stpete-admissions.html#how-to-apply">How to Apply</a></li>
-                                        <li><a href="stpete-admissions.html#testing">Placement Testing</a></li>
-                                        <li><a href="stpete-tuition.html">Tuition &amp; Financial Aid</a></li>
-                                        <li><a href="stpete-counselors.html">Meet Your Counselors</a></li>
+                                        <li><a href="clearwater-admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="clearwater-admissions.html#testing">Placement Testing</a></li>
+                                        <li><a href="clearwater-tuition.html">Tuition &amp; Financial Aid</a></li>
+                                        <li><a href="clearwater-military-veteran-resources.html">Military &amp; Veteran Resources</a></li>
+                                        <li><a href="clearwater-counselors.html">Meet Your Counselors</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="schedule-stpete.html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <a href="schedule-clearwater.html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
                                         <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
-                                        <li><a href="stpete-student-services.html">Student Services Hours</a></li>
+                                        <li><a href="clearwater-student-services.html">Student Services Hours</a></li>
                                         <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
-                                        <li><a href="stpete-records-request.html">Record Request</a></li>
+                                        <li><a href="clearwater-records-request.html">Record Request</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="stpete-about.html" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <a href="clearwater-about.html" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="stpete-about.html">About This Campus</a></li>
-                                        <li><a href="campus-maps.html#stpete">Map &amp; Directions</a></li>
-                                        <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
+                                        <li><a href="clearwater-about.html">About This Campus</a></li>
+                                        <li><a href="campus-maps.html#clearwater">Map &amp; Directions</a></li>
+                                        <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
                                         <li><a href="employers.html">For Employers</a></li>
                                         <li><a href="consumer-information.html">Consumer Information</a></li>
-                                        <li><a href="stpete-contact.html">Contact Us</a></li>
+                                        <li><a href="clearwater-contact.html">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -243,9 +253,9 @@
             <nav class="container breadcrumb-bar__inner" aria-label="Breadcrumb">
                 <ol>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                    <li><a href="clearwater.html">Clearwater Campus</a></li>
                     <li><a href="programs.html">Programs</a></li>
-                    <li class="breadcrumb-bar__current" aria-current="page">Digital Media and Multimedia Design</li>
+                    <li class="breadcrumb-bar__current" aria-current="page">Accounting Operations</li>
                 </ol>
             </nav>
         </div>
@@ -255,9 +265,9 @@
             <div class="container">
                 <div class="program-hero__inner">
                     <div class="program-hero__text">
-                        <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--color-accent); font-weight: 700; font-size: 0.9rem;">St. Petersburg Campus</p>
-                        <h1 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 3.75rem); margin-bottom: 1rem; line-height: 1.1;">Digital Media and Multimedia Design</h1>
-                        <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.95; max-width: 520px; margin-bottom: 0;">Students will learn about the digital media production industry while mastering the operations of all aspects of studio and field equipment and workflows.</p>
+                        <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--color-accent); font-weight: 700; font-size: 0.9rem;">Clearwater Campus</p>
+                        <h1 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 3.75rem); margin-bottom: 1rem; line-height: 1.1;">Accounting Operations</h1>
+                        <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.95; max-width: 520px; margin-bottom: 0;">The mission of the accounting operations program is to provide students with the opportunity to develop competencies in the field of accounting that will enable them to become employed as productive workers in a financial business environment.</p>
 
                         <div class="stat-bar">
                             <div class="stat-bar__item">
@@ -266,21 +276,21 @@
                             </div>
                             <div class="stat-bar__item">
                                 <strong>Length</strong>
-                                <span>900 Hours</span>
-                            </div>
-                            <div class="stat-bar__item">
-                                <strong>Credential</strong>
-                                <span>Adobe Certified Professional</span>
+                                <span>1,050 Hours</span>
                             </div>
                             <div class="stat-bar__item">
                                 <strong>Location</strong>
-                                <span>St. Petersburg</span>
+                                <span>Clearwater</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Distance Ed</strong>
+                                <span class="available">Available</span>
                             </div>
                         </div>
                         <p class="hero-counselor-nudge"><i class="fas fa-user-tie" aria-hidden="true"></i> Have questions? <a href="#counselor">Talk to your counselor</a> before you apply.</p>
                     </div>
                     <div class="program-hero__image">
-                        <img src="assets/images/content/digital-media-multimedia-design-stpete.jpg" alt="Digital Media and Multimedia Design studio and field production at Pinellas Technical College St. Petersburg">
+                        <img src="assets/images/content/accounting-operations-clearwater.jpg" alt="Accounting Operations program at Pinellas Technical College Clearwater">
                     </div>
                 </div>
             </div>
@@ -292,19 +302,11 @@
                 <div class="start-steps__inner">
                     <span class="start-steps__label"><i class="fas fa-bolt" style="margin-right: 0.4rem;" aria-hidden="true"></i> New to PTC? Start Here:</span>
                     <div class="start-steps__links">
-                        <a href="#program-courses" class="step-btn step-btn--dark"><i class="fas fa-clipboard-check" aria-hidden="true"></i> Explore the Program</a>
+                        <a href="#program-courses" class="step-btn step-btn--dark"><i class="fas fa-clipboard-check" aria-hidden="true"></i> Review the Program</a>
                         <a href="https://apply.myptc.edu/" target="_blank" rel="noopener" class="step-btn step-btn--outline"><i class="fas fa-file-alt" aria-hidden="true"></i> Apply Online</a>
                         <a href="#counselor" class="step-btn step-btn--outline"><i class="fas fa-user-tie" aria-hidden="true"></i> Meet Your Counselor</a>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- TRUST STRIP -->
-        <div style="background: var(--color-green-light); padding: 1rem 0;">
-            <div class="container" style="display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; justify-content: center; align-items: center; font-size: 0.95rem; font-weight: 600; color: var(--color-green-dark);">
-                <span><i class="fas fa-certificate" style="margin-right: 0.4rem;" aria-hidden="true"></i> Adobe Certified Professional Certifications</span>
-                <span><i class="fas fa-chalkboard-teacher" style="margin-right: 0.4rem;" aria-hidden="true"></i> Taught by an Adobe Education Leader</span>
             </div>
         </div>
 
@@ -313,7 +315,7 @@
             <div class="container">
                 <div class="jump-nav__inner">
                     <a href="#program-courses" class="jump-nav__link">Course Sequence</a>
-                    <a href="#distance-education" class="jump-nav__link">Distance Education</a>
+                    <a href="#distance-ed" class="jump-nav__link">Distance Education</a>
                     <a href="#program-credentials" class="jump-nav__link">Credentials &amp; Cost</a>
                     <a href="#counselor" class="jump-nav__link jump-nav__link--cta"><i class="fas fa-user-tie" aria-hidden="true"></i> Talk to a Counselor</a>
                 </div>
@@ -324,45 +326,46 @@
         <section id="program-courses" style="padding: 5rem 0; background-color: var(--color-off-white);">
             <div class="container" style="max-width: 900px;">
                 <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">About This Program</h2>
-                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 2.5rem; font-size: 1.1rem;">Students will learn about the digital media production industry while mastering the operations of all aspects of studio and field equipment and workflows. Program K100200 consists of a planned sequence of courses.</p>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 1.5rem; font-size: 1.1rem;">The mission of the accounting operations program is to provide students with the opportunity to develop competencies in the field of accounting that will enable them to become employed as productive workers in a financial business environment.</p>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 2.5rem; font-size: 1.1rem;">Program B200100 consists of a planned sequence of courses totaling 1,050 clock hours.</p>
 
                 <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--color-gray-900);">Course Sequence</h3>
 
                 <div style="display: flex; flex-direction: column; gap: 1rem;">
                     <details class="accordion-item" open>
                         <summary>
-                            <span class="course-name">Theory and Foundations of Design (DIG0081)</span>
+                            <span class="course-name">Information Technology Assistant (OTA0040)</span>
                             <span class="hours-badge">150 Hours</span>
                         </summary>
                         <div class="accordion-body">
-                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Upon completion of this course, students will be able to demonstrate knowledge of multimedia/design foundations, basic computer skills, photo and video editing software, digital image composition, camera movements and color modes.</p>
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">This course is designed to provide a basic overview of current business and information systems and trends and to introduce students to the basics and foundations required for today's business environments. Emphasis is placed on developing proficiency with fundamental computer applications, so they may be used as communication tools for enhancing personal and workplace proficiency in an information-based society. This also includes proficiency with computers using word processing, database, spreadsheet, and presentation software that meet industry standards. Job seeking techniques, career planning, and success strategies will also be developed.</p>
                         </div>
                     </details>
                     <details class="accordion-item">
                         <summary>
-                            <span class="course-name">Multimedia Digital Designer (DIG0082)</span>
+                            <span class="course-name">Accounting Clerk (ACO0040)</span>
                             <span class="hours-badge">300 Hours</span>
                         </summary>
                         <div class="accordion-body">
-                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Upon completion of this course, students will be able to demonstrate knowledge in fonts, illustration software, design layout software, advanced design processes, presentation software and equipment to produce complex digital video productions.</p>
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Builds on the skills introduced in Course OTA0040. It offers human relations/interpersonal skills appropriate for the workplace. The application of the full accounting cycle will be introduced using an automated accounting method.</p>
                         </div>
                     </details>
                     <details class="accordion-item">
                         <summary>
-                            <span class="course-name">Multimedia Integrated Producer Designer (DIG0084)</span>
+                            <span class="course-name">Accounting Assistant (ACO0041)</span>
                             <span class="hours-badge">300 Hours</span>
                         </summary>
                         <div class="accordion-body">
-                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Upon completion of this course, students will be able to demonstrate knowledge in audio fundamentals, using audio recording/editing software, using studio and field cameras to capture a variety of video shots, studio and field lighting techniques, video editing software and equipment, and become content creators for a variety of screens.</p>
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Builds on the skills introduced in Course ACO0040. The application of the full accounting cycle will be continued using a computerized accounting method. Advanced concepts in Microsoft Excel and PowerPoint will be covered. Prerequisites: courses OTA0040 and ACO0040.</p>
                         </div>
                     </details>
                     <details class="accordion-item">
                         <summary>
-                            <span class="course-name">Multimedia Web/Interactive Designer (DIG0085)</span>
-                            <span class="hours-badge">150 Hours</span>
+                            <span class="course-name">Accounting Associate (ACO0042)</span>
+                            <span class="hours-badge">300 Hours</span>
                         </summary>
                         <div class="accordion-body">
-                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Upon completion of this course, students will be able to demonstrate knowledge of key production principles, a variety of camera operations, understand HTML and CSS, preliminary webpage design, SEO, CODECS for optimizing playback experiences and platforms, apply job readiness, career planning, and job seeking skills.</p>
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Reinforces the intended outcomes and skills developed in Course ACO0041. Training in QuickBooks and relevant software will be used to enhance workplace productivity and performance. Prerequisites: courses OTA0040, ACO0040 and ACO0041.</p>
                         </div>
                     </details>
                 </div>
@@ -371,26 +374,24 @@
                     <div class="info-card info-card--accent">
                         <h4><i class="fas fa-check-square" style="margin-right: 0.4rem;" aria-hidden="true"></i> Program Requirements</h4>
                         <p>
-                            <strong>Minimum Attendance Requirement:</strong> 90%<br>
-                            <strong>Minimum Satisfactory Academic Progress Requirement:</strong> 70%
+                            <strong>Minimum Satisfactory Academic Progress:</strong> 70%<br>
+                            <strong>Minimum Attendance:</strong> 90%<br>
+                            <strong>Basic Skills Exit:</strong> Computation - 10 and Communication - 10
                         </p>
                     </div>
                     <div class="info-card info-card--green">
-                        <h4><i class="fas fa-id-badge" style="margin-right: 0.4rem;" aria-hidden="true"></i> Credentials</h4>
-                        <p>Students finish the program with Adobe Certified Professional certifications and a professional portfolio of their productions.</p>
+                        <h4><i class="fas fa-graduation-cap" style="margin-right: 0.4rem;" aria-hidden="true"></i> Articulation Agreement</h4>
+                        <p>Statewide Office Administration, A.A.S./A.S. Degree</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- DISTANCE EDUCATION -->
-        <section id="distance-education" style="padding: 5rem 0; background: white;">
+        <section id="distance-ed" style="padding: 5rem 0; background: white;">
             <div class="container" style="max-width: 900px;">
-                <h2 class="section-title" style="text-align: center; margin-bottom: 1.5rem;">Distance Education</h2>
-                <div class="info-card info-card--accent" style="max-width: 600px; margin: 0 auto;">
-                    <p style="text-align: center;">No distance learning at this time.</p>
-                </div>
-                <p style="text-align: center; color: var(--color-gray-600); margin-top: 2rem; font-size: 1.05rem;">Email the instructor to schedule a visit and tour.</p>
+                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Distance Education</h2>
+                <p style="color: var(--color-gray-700); line-height: 1.8; font-size: 1.05rem;">Distance Education: Available. Refer to the Distance Learning section. <em>You will use the following software to participate online: Microsoft Office (Word, Excel, PowerPoint, and Outlook), and QuickBooks. <strong>NOTE: Chromebooks are not compatible for use as distance-learning systems.</strong> <a href="https://www.pcsb.org/site/Default.aspx?PageID=6902" target="_blank" rel="noopener" style="color: var(--color-green); font-weight: 600;">For additional information go to the 'Online Programs and Courses' page</a>.</em></p>
             </div>
         </section>
 
@@ -400,21 +401,13 @@
                 <h2 style="color: var(--color-green-dark); margin-bottom: 2rem; font-family: var(--font-heading);">Credentials &amp; Cost</h2>
 
                 <div class="credential-stack">
-                    <div class="credential-card">
-                        <span class="credential-card__type credential-card__type--certification">Industry Certifications</span>
-                        <h3>Adobe Certified Professional</h3>
-                        <p>Students in the program are provided with personal Adobe Creative Cloud accounts and access. They learn from an instructor with a 15 year professional relationship with Adobe as a trainer, mentor and Adobe Education Leader.</p>
-                        <p>Students are equipped and given opportunities to certify in Adobe Creative Cloud products: Premiere, Photoshop, Illustrator, After Effects and more. Finish the program with Adobe Certified Professional certifications and a professional portfolio of your productions.</p>
-                        <p style="margin: 0;"><a href="https://certifiedprofessional.adobe.com/en/home" target="_blank" rel="noopener" style="color: var(--color-green); font-weight: 600;">Adobe Certified Professional &rarr;</a></p>
-                    </div>
-
-                    <div class="program-related-callout" style="margin-top: 1.5rem;">
-                        <h4><i class="fas fa-link" style="margin-right: 0.4rem;" aria-hidden="true"></i> Related Links</h4>
-                        <ul>
-                            <li>The Tampa Bay designated market area is the <a href="https://ustvdb.com/seasons/2024-25/markets/" target="_blank" rel="noopener">11th largest media market</a> in the United States.</li>
-                            <li>According to the World Economic Forum, Creative thinking is the second most in-demand skill for employers globally.</li>
-                            <li>Grow your career with <a href="https://certifiedprofessional.adobe.com/en/home" target="_blank" rel="noopener">Adobe Certified Professional</a> certifications.</li>
-                        </ul>
+                    <div class="credential-card" style="display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 280px;">
+                            <span class="credential-card__type credential-card__type--certification">Industry Certifications</span>
+                            <h3>Credentialing Exams</h3>
+                            <p>This program prepares the student for the following credentialing exams:</p>
+                        </div>
+                        <img src="assets/images/content/accounting-operations-clearwater-certs.png" alt="Credentialing exam logos: Microsoft Word, Microsoft Excel, Microsoft PowerPoint, Microsoft Outlook, QuickBooks, and NOCTI" width="310" style="display: block; flex-shrink: 0; height: auto; border-radius: 8px;">
                     </div>
 
                     <div class="flrtw-block">
@@ -424,20 +417,40 @@
                     </div>
                 </div>
 
+                <!-- Financial aid banner (replaces tall vertical box) -->
                 <div class="aid-banner">
                     <div>
                         <h3>Financial Aid &amp; Costs</h3>
                         <p>Program length and costs are approximate, and subject to change. Financial assistance is available to those who qualify.</p>
                     </div>
-                    <a href="stpete-tuition.html" class="btn btn--accent">Explore Financial Aid</a>
+                    <a href="clearwater-tuition.html" class="btn btn--accent">Explore Financial Aid</a>
                 </div>
 
+                <!-- Program resources (horizontal cards, not a tall sidebar) -->
                 <div class="resource-grid">
-                    <a class="pdf-card" href="https://stpete.myptc.edu/fs/resource-manager/view/2485c0fb-8a2c-4bf4-a229-217219abebaf" target="_blank" rel="noopener">
+                    <a class="pdf-card" href="https://clearwater.myptc.edu/fs/resource-manager/view/d1801995-d0df-403e-af3f-62df816a4afa" target="_blank" rel="noopener">
                         <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
-                        <div><strong style="display: block; color: var(--color-gray-900);">Program Costs</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Digital Media and Multimedia Design &middot; St. Petersburg &middot; PDF</span></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Program Flyer</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Accounting Operations &middot; Clearwater &middot; PDF</span></div>
+                    </a>
+                    <a class="pdf-card" href="https://clearwater.myptc.edu/fs/resource-manager/view/4eb4e7bf-0b3b-4571-b7c6-3cda08d91f00" target="_blank" rel="noopener">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Program Costs (900 Hours)</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Accounting Operations &middot; Clearwater &middot; PDF</span></div>
+                    </a>
+                    <a class="pdf-card" href="https://clearwater.myptc.edu/fs/resource-manager/view/5582f414-bd22-4aa2-a4e8-01bcdc09c6ed" target="_blank" rel="noopener">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Program Costs (1050 Hours)</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Accounting Operations &middot; Clearwater &middot; PDF</span></div>
                     </a>
                 </div>
+            </div>
+        </section>
+
+        <!-- PROUDLY PARTNERS WITH -->
+        <section style="padding: 4rem 0; background: var(--color-off-white);">
+            <div class="container" style="max-width: 900px; text-align: center;">
+                <p style="color: var(--color-green); font-weight: 700; font-size: 1.15rem; margin-bottom: 1.5rem;">Pinellas Technical College proudly partners with</p>
+                <a href="http://www.hrblock.com" target="_blank" rel="noopener noreferrer">
+                    <img src="assets/images/content/hrblock.png" alt="H&amp;R Block" style="max-width: 225px; width: 100%; height: auto;">
+                </a>
             </div>
         </section>
 
@@ -445,25 +458,26 @@
         <section id="counselor" style="padding: 5rem 0; background-color: white; scroll-margin-top: 100px;">
             <div class="container" style="max-width: 900px; text-align: center;">
                 <h2 class="section-title" style="margin-bottom: 0.75rem;">Ready to Get Started?</h2>
-                <p style="color: var(--color-gray-600); font-size: 1.1rem; line-height: 1.6; margin-bottom: 3rem;">All students must apply online. Then connect with your program counselor to discuss admission requirements, financial aid, and enrollment on the St. Petersburg campus.</p>
+                <p style="color: var(--color-gray-600); font-size: 1.1rem; line-height: 1.6; margin-bottom: 3rem;">All students must apply online. Then connect with your program counselor to discuss admission requirements, financial aid, and enrollment on the Clearwater campus.</p>
 
                 <div class="action-buttons">
                     <a href="https://apply.myptc.edu/" target="_blank" rel="noopener" class="btn btn--accent" style="padding: 1.1rem 3rem; font-size: 1.15rem;"><i class="fas fa-file-alt" aria-hidden="true"></i> Apply Online Now</a>
                 </div>
 
                 <div class="counselor-card">
-                    <div class="counselor-avatar"><i class="fas fa-user-tie" aria-hidden="true"></i></div>
-                    <h3 style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 0.25rem;">Meet Your Counselors</h3>
-                    <p style="color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 2rem;">St. Petersburg Campus</p>
+                    <div class="counselor-avatar">LM</div>
+                    <h3 style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 0.25rem;">Lidija Milisav</h3>
+                    <p style="color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 2rem;">School Counselor</p>
 
                     <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; max-width: 320px; margin: 0 auto;">
-                        <a href="stpete-counselors.html" class="btn btn--primary" style="width: 100%; justify-content: center;">
-                            <i class="fas fa-user-tie" aria-hidden="true"></i> Meet Your Counselors
+                        <a href="mailto:milisavl@pcsb.org" class="btn btn--primary" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-envelope" aria-hidden="true"></i> milisavl@pcsb.org
                         </a>
-                        <a href="tel:7278932500" class="btn" style="width: 100%; justify-content: center; border: 2px solid var(--color-green); color: var(--color-green);">
-                            <i class="fas fa-phone" aria-hidden="true"></i> 727-893-2500
+                        <a href="tel:7275387167" class="btn" style="width: 100%; justify-content: center; border: 2px solid var(--color-green); color: var(--color-green);">
+                            <i class="fas fa-phone" aria-hidden="true"></i> 727.538.7167 x2020
                         </a>
                     </div>
+                    <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--color-gray-600);">For course information, contact <strong>Bill Scales</strong>, Instructor &middot; <a href="mailto:SCALESW@pcsb.org" style="color: var(--color-green); font-weight: 600;">scalesw@pcsb.org</a> &middot; 727-538-7167 ext. 2084</p>
                 </div>
             </div>
         </section>
@@ -474,14 +488,14 @@
         </div>
     </main>
 
-    <!-- SITE FOOTER (current St. Petersburg chrome) -->
+    <!-- SITE FOOTER (current Clearwater chrome) -->
     <footer class="site-footer" id="site-footer">
         <div class="container">
             <div class="footer__top">
                 <div class="footer__brand">
                     <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
-                    <p class="footer__tagline"><strong>901 34th St S, St. Petersburg, FL 33711</strong><br>
-                    Phone: 727.893.2500<br>
+                    <p class="footer__tagline"><strong>6100 154th Ave N, Clearwater, FL 33760</strong><br>
+                    Phone: 727.538.7167<br>
                     Preparing students for high-demand careers through hands-on, industry-certified training since 1962.</p>
                     <div class="footer__social">
                         <a href="https://www.facebook.com/pinellastechnical/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
@@ -496,20 +510,20 @@
                         <p class="footer__col-title">Quick Links</p>
                         <ul>
                             <li><a href="programs.html">Programs</a></li>
-                            <li><a href="stpete-admissions.html">St. Petersburg Admissions</a></li>
-                            <li><a href="stpete-tuition.html">Tuition &amp; Aid</a></li>
+                            <li><a href="clearwater-admissions.html">Clearwater Admissions</a></li>
+                            <li><a href="clearwater-tuition.html">Tuition &amp; Aid</a></li>
                             <li><a href="student-resources.html">Student Resources</a></li>
                             <li><a href="about.html">About PTC</a></li>
                         </ul>
                     </div>
                     <div class="footer__col">
-                        <p class="footer__col-title">St. Petersburg Links</p>
+                        <p class="footer__col-title">Clearwater Links</p>
                         <ul>
-                            <li><a href="schedule-stpete.html">Class Schedule</a></li>
-                            <li><a href="stpete-tuition.html">Tuition &amp; Financial Aid</a></li>
-                            <li><a href="stpete-counselors.html">Meet Your Counselors</a></li>
-                            <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
-                            <li><a href="campus-maps.html#stpete">Campus Map &amp; Directions</a></li>
+                            <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                            <li><a href="clearwater-tuition.html">Tuition &amp; Financial Aid</a></li>
+                            <li><a href="clearwater-counselors.html">Meet Your Counselors</a></li>
+                            <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
+                            <li><a href="campus-maps.html#clearwater">Campus Map &amp; Directions</a></li>
                         </ul>
                     </div>
                     <div class="footer__col">
@@ -519,7 +533,7 @@
                             <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
                             <li><a href="about.html#accreditation">Accreditation</a></li>
                             <li><a href="careers.html">Careers at PTC</a></li>
-                            <li><a href="stpete-contact.html">Contact Us</a></li>
+                            <li><a href="clearwater-contact.html">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>

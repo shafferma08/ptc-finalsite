@@ -438,6 +438,27 @@ Remaining grid-vs-catalog reconciliation (the ~41-vs-60+ count question) is stil
 
 ---
 
+## Programs cluster — Wave 4 IT/Business/Arts builds (added 2026-06-10)
+
+Surfaced while building/verifying the 10 IT/Business/Arts program pages (8 built 2026-06-08 by the since-disabled auto-builder, verified 2026-06-10; Accounting Operations + Stage Production built 2026-06-10).
+
+| Item | Page(s) | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Live FLRTW boilerplate "Al topics" typo | all live program pages carrying the FL Ready to Work block | The live boilerplate reads "it now includes Al topics" (lowercase L, should be "AI topics"). Redesign's canonical block already corrects it. | Fix "Al" to "AI" in the live FLRTW boilerplate everywhere it appears. | Webmaster | Low | Wave 4, 2026-06-10 |
+| Live typos CORRECTED on redesign (policy 2026-06-08) | interior-decorating-services ("applies applies and demonstrates" -> "applies and demonstrates"; "the element and principles of design" -> "the elements and principles of design") | Redesign fixes obvious typos per verbatim-rule.md; live still carries them. | Correct the same typos on the live page. | Webmaster | Low | Wave 4, 2026-06-10 |
+| Live OTA0040 description garbled on Accounting Operations | accounting-operations (CLW) | Live sentence reads "...presentation software that meet industry job seeking techniques, career planning, and success strategies will also be developed." Words are dropped mid-sentence. Redesign restores "...that meet industry standards. Job seeking techniques..." (grounded in the same OTA0040 description on the live Medical Administrative Specialist page). | Fix the dropped words in the live OTA0040 description. | CLW program / Webmaster | Medium | Wave 4, 2026-06-10 |
+| Live PDF filename typo | web-development (CLW) | Live links "FT-CLWWebDevlopment.pdf" (missing the "e" in Development). Cosmetic but visible in the URL. | Rename the PDF on live (and update the link). | Webmaster | Low | Wave 4, 2026-06-10 |
+| Cert lists exist only as graphics on live (accessibility) | computer-systems-it (CLW), network-support-services (CLW), accounting-operations (CLW) | The credentialing-exam lists (CompTIA A+/Network+/Security+; Network+/CCNA/CWNA/Security+; Word/Excel/PowerPoint/Outlook/QuickBooks/NOCTI) live only inside PNG graphics with no text equivalent. Redesign adds verified text transcriptions (graphics read and confirmed 2026-06-10). | Add text lists alongside the graphics on live for screen-reader access. | Webmaster | Medium | Wave 4, 2026-06-10 |
+| NSS articulation list punctuation oddities | network-support-services (CLW) | Live list has "Statewide; Networking Services Technology AS degree" (stray semicolon) and a trailing period on "Computer Engineering Technology AS degree." Inconsistent with sibling items. Kept verbatim on redesign. | Normalize the punctuation on live. | Webmaster | Low | Wave 4, 2026-06-10 |
+| Outdated 900-hour Program Costs PDF still published | accounting-operations (CLW) | Live links both a 1050-hour and an older 900-hour cost PDF (AcctOps_CW_06272024-900hours.pdf). The program is 1,050 hours. | Confirm whether the 900-hour PDF should still be public; remove if stale. | CLW program / Webmaster | Medium | Wave 4, 2026-06-10 |
+| Stage Production mission grammar | stage-production (CLW) | Live mission reads "enhancing their technical and creative skills, that addresses real world solutions" (comma splice + number disagreement). Substantive wording, kept verbatim on redesign. | Review/correct the sentence on live. | CLW program / Webmaster | Low | Wave 4, 2026-06-10 |
+| Stage Production page lists no industry certifications | stage-production (CLW) | Live page has no certification info and no months estimate for the 300 hours. | Confirm whether certs/duration framing should be added on live. | CLW program | Low | Wave 4, 2026-06-10 |
+| "Email the instructor" with no instructor published | digital-media-and-multimedia-design (STP) | Live says "Email the instructor to schedule a visit and tour." but names no instructor and gives no email anywhere on the page. Dead end for prospective students. | Add the instructor name/email to the live page. | STP program / Webmaster | Medium | Wave 4, 2026-06-10 |
+| Aid-banner sentence has no live program-page source | all redesign program pages (template copy) | "Financial assistance is available to those who qualify." appears in the redesign aid banner on every program page but is not on the live program pages. Inherited from the verified canonical practical-nursing page, treated as approved template copy. | Confirm the sentence is approved marketing copy (or source it from a live financial-aid page). | Marianne | Low | Wave 4, 2026-06-10 |
+| Stage 2 digest hero-image errors (internal) | accounting-operations.md, stage-production.md digests | Both digests claimed no live hero photo; the raw HTML captures contain AccountJPG.jpg and Stage-Production.jpg. Real heroes pulled 2026-06-10. Process note: trust .raw.html over the digest for imagery. | None (logged for pipeline awareness). | Pipeline | Low | Wave 4, 2026-06-10 |
+
+---
+
 ## Closed follow-ups
 
 **2026-06-02 — parked-items decision session (Marianne-directed):**
