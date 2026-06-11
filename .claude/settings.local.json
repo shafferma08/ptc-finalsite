@@ -176,7 +176,9 @@
       "Bash(cd /c/Users/mshaf/Documents/PTC/Website/ptc-finalsite && mkdir -p assets/images/content && curl -sL -A \"Mozilla/5.0\" \"https://resources.finalsite.net/images/f_auto,q_auto/v1757939108/myptecorg/w0kweobz8rffztiuofax/img_4227electrical2stpete1.jpg\" -o assets/images/content/electricity-1-clearwater.jpg && file assets/images/content/electricity-1-clearwater.jpg && ls -la assets/images/content/electricity-1-clearwater.jpg)",
       "Bash(python3 -c \"import sys,re,html; t=html.unescape\\(re.sub\\(r'<[^>]+>',' ',sys.stdin.read\\(\\)\\)\\); t=re.sub\\(r'\\\\s+',' ',t\\); [print\\(' ',m\\) for m in re.findall\\(r'\\(?:Day|Evening|Monday|Mon\\)[^.]{0,60}\\(?:AM|PM|a\\\\.m|p\\\\.m\\)[^.]{0,30}', t\\)][:8]\")",
       "Bash(mkdir -p /tmp/prog-backup)",
-      "Bash(python3 /tmp/css_apply.py apply)"
+      "Bash(python3 /tmp/css_apply.py apply)",
+      "Bash(ls docs/implementation_plan.md docs/*timeline* docs/*plan*)",
+      "Bash(ls urgent-fixes/)"
     ],
     "additionalDirectories": [
       "C:\\Users\\mshaf\\Documents\\PTC\\Website\\ptc-finalsite",
