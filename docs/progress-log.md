@@ -2801,3 +2801,31 @@ Picked up across multiple session-limit interruptions (Marianne hit her cap twic
 **Follow-ups:** 15 rows logged (past dates on live, per-campus distance-ed inconsistency on Child Care V200206, credential-naming inconsistency on School Age, ServSafe spelling, broken phone markup, empty hero alt, generic video titles, CMS paste artifacts, the standing "Al topics" FLRTW typo, and the permitted typo-fix register).
 
 **Next:** Wave 6 = Apprenticeships (13, hub treatment) + Short Courses/OWI (rename + own accessible area per Marianne's 2026-06-10 direction). Then Machining Technologies CLW and the programs.html 41-vs-60+ grid reconciliation close out the Programs cluster.
+
+---
+
+## 2026-06-11 — Programs Wave 6 (Apprenticeships + Workforce/OWI + Clearview) complete: 12 pages
+
+Final Programs sub-wave. Unlike Waves 1-5 (mechanical per-program builds), this was an IA-decision wave run as recon -> Marianne decisions -> controlled build batches.
+
+**Recon findings:** both campus "short-courses-evening-classes" slugs REDIRECT to one institutional www page under Office of Workforce Innovation (confirms Marianne's "short courses = OWI" point). Apprenticeships are campus-specific content-rich pages (CLW 7, STP 6 + Fire Fighting CPAT/FireTEAM sub-pages). Clearview = 1 STP CSIT-IET page. Found an existing admin-built `urgent-fixes/apprenticeships-clearwater.html` implementing a two-tier PTC-sponsored/community split.
+
+**Marianne's decisions (2026-06-11, saved to memory + wave6-recon.md):** (1) apprenticeships HYBRID mirroring live — PTC-sponsored get full pages, community get a listing pointing to the outside sponsor; (2) OWI area labeled "Workforce & Continuing Education"; (3) own top-level nav area AND a link from Programs.
+
+**Built (2 controlled batches of 5 + 7 agents, sized to dodge the session limits that bit Wave 5):**
+- `workforce-continuing-education.html` — institutional OWI page, verbatim, 10 courses with campus-location notes, external Enrole/PDF/provider links preserved.
+- `computer-systems-it-clearview-stpete.html` — Y100200, CSIT-IET at Clearview Adult Education Center; attendance 70% (Clearview-specific, differs from full-time CSIT's 90% — confirmed correct, flagged).
+- `apprenticeships-clearwater.html` — two-tier hub on redesign chrome (Tier 1 PTC-sponsored: Automotive Elec/Hybrid-EV + Facilities Maintenance, link to full pages; Tier 2 community: HVAC, Bay Area Electrical JATC, IEC, Tampa Bay Machining, ABC FL Gulf Coast — listing). Adapted from the admin page's approved copy.
+- `automotive-apprenticeship-clearwater.html` + `facilities-maintenance-apprenticeship-clearwater.html` — full pages; live pages are THIN (no code/hours/wage/sponsor) so builders omitted rather than fabricated. Automotive live hero is a 3rd-party hotlink (copyright risk) so the redesign uses the Master Auto Clearwater photo as a stand-in pending a real photo.
+- `apprenticeships-stpete.html` — hub (6 cards; STP apprenticeships are all PTC-delivered, single tier).
+- 6 STP full pages: child-care, fire-fighting (CPAT + FireTEAM testing sub-pages folded in as sections), industrial-machinery-maintenance, industrial-pipefitter, plumbing-technology, roadway-technician.
+
+**Verification:** 7 pages independently verified by 2 Comparator agents = all PASS (0 fabrications, 0 missing). Clearview 70% attendance confirmed correct against the Clearview live page (not the sibling's 90%). One MEDIUM (Sprinkler "Chapter" suffix) resolved as accurate (matches admin source + is the org's real name). The 5 thin pages (automotive, facilities, industrial-machinery, plumbing, STP hub) got a lighter check; builders reported clean omission. All 12 pages: 0 body em dashes, FLRTW correctly omitted on apprenticeship pages (live carries none), heroes pulled where live had real PTC photos.
+
+**Nav wired:** programs.html Programs-dropdown ("Apprenticeships" -> CLW hub; "Evening & Part-Time" slot -> "Workforce & Continuing Education") + header callout expanded to 3 entry-point buttons (CLW Apprenticeships / STP Apprenticeships / Workforce & CE) + new Clearview CSIT-IET grid card. sitemap.html district + CLW + STP program lists updated. LPN-RN card already removed in Wave 5.
+
+**Deferred + logged (NOT done):** the sitewide top-level "Apprenticeships & Workforce" nav-bar item across all ~70 pages. The top nav is copied per-page (no shared include), so this is a deliberate sitewide chrome sweep best done as its own pass alongside wiring the other still-`#` nav placeholders (Campuses, Current Students, Dual Enrollment, Distance Learning, ABE/GED/ESOL, Student Orgs). Logged to follow-ups as Medium.
+
+**Follow-ups:** ~20 rows logged (thin pages, hotlinked hero, dead legacy back-links, Clearview attendance discrepancy, Fire Fighting ext 2595-vs-1095, typo fixes, cert-graphic a11y, flat live hubs, sponsor contacts, OWI title mismatch, sitewide nav rollout).
+
+**Programs cluster status:** Waves 0-6 done (~60 program pages + 2 apprenticeship hubs + OWI page + Clearview across the whole cluster). Remaining to fully close Programs: (a) sitewide nav rollout, (b) Machining Technologies CLW (last single program page — still `#` on the grid), (c) programs.html 41-vs-60+ grid reconciliation. Everything uncommitted in the working tree for Marianne's review.

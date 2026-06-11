@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  PROGRAM PAGE · Fire Fighting Apprenticeship · St. Petersburg Campus
+  Built 2026-06-11 from surgical-technology-stpete.html chrome + St. Petersburg apprenticeship content.
+  Content verbatim from stpete.myptc.edu/programs/st-petersburg-apprenticeships/fire-fighting-apprenticeship
+  plus its two testing sub-pages (/cpat-testing and /fireteamtm-testing).
+  (source: docs/audit/programs/extracted/wave6/fire-fighting-apprenticeship-stpete.md)
+  Decision: CPAT Testing + FireTEAM Testing are incorporated as labeled sections within this single
+  page under a "Testing" area with jump-nav anchors. All substantive content kept verbatim.
+  Hero image present on live (firefighting.jpg, UUID ec32a92b-9681-4173-8c56-aa7a6a4616b7); curled local.
+  Omitted: course list / codes / hours (none on live); videos (none); PDFs (none);
+  FLRTW block (absent on live, omitted per binding rule #4); sub-page illustrative images (decorative).
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Fighting Apprenticeship - St. Petersburg Campus &mdash; Pinellas Technical College</title>
+    <meta name="description" content="Fire Fighting Apprenticeship at PTC St. Petersburg: a 3-year apprenticeship with the City of St. Petersburg Fire and Rescue Department. Includes CPAT and FireTEAM testing information.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* PROGRAM PAGE STYLES (from canonical program-page template) */
+        .program-hero { background: linear-gradient(135deg, var(--color-green-dark) 0%, #004d29 100%); color: white; padding: 0; overflow: hidden; }
+        .program-hero__inner { display: grid; grid-template-columns: 1.1fr 0.9fr; min-height: 480px; }
+        .program-hero__text { padding: 4rem 0 4rem 2rem; display: flex; flex-direction: column; justify-content: center; }
+        .program-hero__image { overflow: hidden; }
+        .program-hero__image img { width: 100%; height: 100%; object-fit: cover; }
+        .stat-bar { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.15); }
+        .stat-bar__item strong { display: block; font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.25rem; }
+        .stat-bar__item span { font-size: 1.1rem; font-weight: 600; }
+        .hero-counselor-nudge { margin-top: 1.25rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); }
+        .hero-counselor-nudge a { color: var(--color-yellow); font-weight: 600; text-decoration: none; }
+        .hero-counselor-nudge a:hover { text-decoration: underline; }
+        .start-steps { background: var(--color-yellow); padding: 1.25rem 0; }
+        .start-steps__inner { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+        .start-steps__label { font-family: var(--font-heading); font-weight: 800; color: var(--color-gray-900); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+        .start-steps__links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .step-btn { padding: 0.55rem 1.15rem; border-radius: 6px; font-weight: 700; font-size: 0.9rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: transform 0.15s, box-shadow 0.15s; }
+        .step-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+        .step-btn--dark { background: var(--color-green-dark); color: white; }
+        .step-btn--outline { background: white; color: var(--color-green-dark); border: 2px solid var(--color-green-dark); }
+        .jump-nav { background: white; border-bottom: 2px solid var(--color-gray-200); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); }
+        .jump-nav__inner { display: flex; align-items: stretch; gap: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+        .jump-nav__inner::-webkit-scrollbar { display: none; }
+        .jump-nav__link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.9rem 1.25rem; font-size: 0.875rem; font-weight: 600; color: var(--color-gray-600); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
+        .jump-nav__link:hover { color: var(--color-green); border-bottom-color: var(--color-green); }
+        .jump-nav__link--cta { margin-left: auto; color: var(--color-green); border-left: 1px solid var(--color-gray-200); padding-left: 1.5rem; }
+        .info-card { background: white; border: 1px solid var(--color-gray-200); padding: 1.5rem; border-radius: 0 8px 8px 0; }
+        .info-card--green { border-left: 4px solid var(--color-green); }
+        .info-card--accent { border-left: 4px solid var(--color-accent); }
+        .info-card h4 { font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 0.75rem; font-size: 1.1rem; }
+        .info-card p { font-size: 0.95rem; color: var(--color-gray-700); line-height: 1.6; margin: 0; }
+        .info-card ol, .info-card ul { font-size: 0.97rem; color: var(--color-gray-700); line-height: 1.7; margin: 0; padding-left: 1.25rem; }
+        .info-card-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+        .testing-card { background: white; border: 1px solid var(--color-gray-200); border-top: 4px solid var(--color-accent); border-radius: 12px; padding: 2rem 2.25rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); margin-bottom: 1.5rem; }
+        .testing-card h3 { font-family: var(--font-heading); font-size: 1.4rem; color: var(--color-green-dark); margin: 0 0 1rem; }
+        .testing-card h4 { font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-gray-900); margin: 1.5rem 0 0.5rem; }
+        .testing-card p { color: var(--color-gray-700); line-height: 1.7; margin: 0 0 1rem; }
+        .testing-card ul { color: var(--color-gray-700); line-height: 1.7; margin: 0 0 1rem; padding-left: 1.25rem; }
+        .testing-facts { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
+        .testing-facts span { background: var(--color-green-light); color: var(--color-green-dark); font-size: 0.85rem; font-weight: 600; padding: 0.35rem 0.9rem; border-radius: 20px; }
+        .testing-register { background: var(--color-off-white); border-left: 4px solid var(--color-green); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin-top: 1rem; }
+        .testing-register p { margin: 0 0 0.5rem; font-size: 0.95rem; }
+        .testing-register a { color: var(--color-green); font-weight: 600; }
+        .aid-banner { background: var(--color-green-dark); color: white; border-radius: 12px; padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
+        .aid-banner h3 { font-family: var(--font-heading); font-size: 1.35rem; margin: 0 0 0.4rem; }
+        .aid-banner p { margin: 0; opacity: 0.9; font-size: 0.95rem; line-height: 1.5; max-width: 560px; }
+        .program-related-callout { background: var(--color-off-white); border: 1px solid var(--color-gray-200); border-left: 4px solid var(--color-accent); padding: 1.25rem 1.5rem; border-radius: 0 8px 8px 0; margin-top: 2rem; }
+        .program-related-callout h4 { font-family: var(--font-heading); color: var(--color-green-dark); margin: 0 0 0.6rem; font-size: 1.1rem; }
+        .program-related-callout ul { margin: 0; padding-left: 1.25rem; color: var(--color-gray-700); line-height: 1.7; }
+        .counselor-card { background: var(--color-gray-100); padding: 3rem; border-radius: 12px; border: 1px solid var(--color-gray-200); text-align: center; }
+        .counselor-avatar { width: 80px; height: 80px; background: var(--color-green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; font-family: var(--font-heading); font-weight: 700; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+        .action-buttons { display: flex; gap: 1rem; align-items: center; justify-content: center; margin-bottom: 3.5rem; }
+        .breadcrumb-bar { background: var(--color-off-white); border-bottom: 1px solid var(--color-gray-200); padding: 0.6rem 0; }
+        .breadcrumb-bar__inner { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--color-gray-600); flex-wrap: wrap; }
+        .breadcrumb-bar__inner ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+        .breadcrumb-bar__inner li { display: inline-flex; align-items: center; }
+        .breadcrumb-bar__inner li:not(:last-child)::after { content: "\f054"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 0.65rem; color: var(--color-gray-400); margin-left: 0.4rem; }
+        .breadcrumb-bar__inner a { color: var(--color-green); text-decoration: none; }
+        .breadcrumb-bar__current { color: var(--color-gray-700); font-weight: 500; }
+        @media screen and (max-width: 768px) {
+            .program-hero__inner { grid-template-columns: 1fr; min-height: auto; }
+            .program-hero__text { padding: 3rem 1.5rem; }
+            .program-hero__image { min-height: 250px; }
+            .action-buttons { flex-direction: column; }
+            .action-buttons .btn { width: 100%; }
+            .stat-bar { gap: 1.5rem; }
+            .jump-nav__link--cta { margin-left: 0; }
+            .info-card-grid-2 { grid-template-columns: 1fr; }
+            .aid-banner { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- CAMPUS UTILITY BAR (current St. Petersburg chrome) -->
+    <div class="utility-bar utility-bar--campus">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                 <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> 727.893.2500</a>
+                 <span class="utility-bar__divider">|</span>
+                 <a href="campus-maps.html#stpete"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 901 34th St S, St. Petersburg, FL</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener"><i class="fas fa-desktop" aria-hidden="true"></i> Canvas Login</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener"><i class="fas fa-user-graduate" aria-hidden="true"></i> SIS Portal / Focus</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> PTC Main Site</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="clearwater.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Clearwater Campus</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAMPUS HEADER (current St. Petersburg chrome) -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="stpete.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, St. Petersburg Campus" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">St. Petersburg Campus</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="programs.html" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                                        <li><a href="coming-soon.html">Distance Learning</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="stpete-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="stpete-admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="stpete-admissions.html#testing">Placement Testing</a></li>
+                                        <li><a href="stpete-tuition.html">Tuition &amp; Financial Aid</a></li>
+                                        <li><a href="stpete-counselors.html">Meet Your Counselors</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="schedule-stpete.html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="stpete-student-services.html">Student Services Hours</a></li>
+                                        <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
+                                        <li><a href="stpete-records-request.html">Record Request</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="stpete-about.html" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="stpete-about.html">About This Campus</a></li>
+                                        <li><a href="campus-maps.html#stpete">Map &amp; Directions</a></li>
+                                        <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
+                                        <li><a href="employers.html">For Employers</a></li>
+                                        <li><a href="consumer-information.html">Consumer Information</a></li>
+                                        <li><a href="stpete-contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a href="https://apply.myptc.edu/" class="btn btn--primary btn--sm site-header__cta" target="_blank" rel="noopener">Apply Now</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- BREADCRUMBS -->
+        <div class="breadcrumb-bar">
+            <nav class="container breadcrumb-bar__inner" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="apprenticeships-stpete.html">Apprenticeships</a></li>
+                    <li class="breadcrumb-bar__current" aria-current="page">Fire Fighting Apprenticeship</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- 1. PROGRAM HERO -->
+        <section class="program-hero">
+            <div class="container">
+                <div class="program-hero__inner">
+                    <div class="program-hero__text">
+                        <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--color-accent); font-weight: 700; font-size: 0.9rem;">St. Petersburg Campus</p>
+                        <h1 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 3.75rem); margin-bottom: 1rem; line-height: 1.1;">Fire Fighting Apprenticeship</h1>
+                        <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.95; max-width: 520px; margin-bottom: 0;">To establish and maintain an organized and planned system of apprenticeship conducted as a joint labor and management undertaking. The committee's goal is to improve the quality and quantity of training, while maintaining the highest standards of professionalism, efficiency, and effectiveness.</p>
+
+                        <div class="stat-bar">
+                            <div class="stat-bar__item">
+                                <strong>Format</strong>
+                                <span>Apprenticeship</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Length</strong>
+                                <span>3 Years</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Sponsor</strong>
+                                <span>City of St. Petersburg Fire and Rescue</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Location</strong>
+                                <span>St. Petersburg</span>
+                            </div>
+                        </div>
+                        <p class="hero-counselor-nudge"><i class="fas fa-user-tie" aria-hidden="true"></i> Have questions? <a href="#counselor">Talk to your contact</a> for the program.</p>
+                    </div>
+                    <div class="program-hero__image">
+                        <img src="assets/images/content/fire-fighting-apprenticeship-stpete.jpg" alt="Fire Fighting Apprenticeship at Pinellas Technical College St. Petersburg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. START HERE (unnumbered) -->
+        <div class="start-steps">
+            <div class="container">
+                <div class="start-steps__inner">
+                    <span class="start-steps__label"><i class="fas fa-bolt" style="margin-right: 0.4rem;" aria-hidden="true"></i> New to PTC? Start Here:</span>
+                    <div class="start-steps__links">
+                        <a href="#admission-requirements" class="step-btn step-btn--dark"><i class="fas fa-clipboard-check" aria-hidden="true"></i> Review Special Admission Requirements</a>
+                        <a href="#testing" class="step-btn step-btn--outline"><i class="fas fa-dumbbell" aria-hidden="true"></i> Testing Information</a>
+                        <a href="#counselor" class="step-btn step-btn--outline"><i class="fas fa-user-tie" aria-hidden="true"></i> Contact Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. JUMP NAV -->
+        <nav class="jump-nav" id="jump-nav" aria-label="Page sections">
+            <div class="container">
+                <div class="jump-nav__inner">
+                    <a href="#about-program" class="jump-nav__link">About This Program</a>
+                    <a href="#admission-requirements" class="jump-nav__link">Special Admission Requirements</a>
+                    <a href="#credentials" class="jump-nav__link">Industry Certifications</a>
+                    <a href="#testing" class="jump-nav__link">CPAT &amp; FireTEAM Testing</a>
+                    <a href="#counselor" class="jump-nav__link jump-nav__link--cta"><i class="fas fa-user-tie" aria-hidden="true"></i> Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- ABOUT THIS PROGRAM -->
+        <section id="about-program" style="padding: 5rem 0; background-color: var(--color-off-white);">
+            <div class="container" style="max-width: 900px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">About This Program</h2>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 2rem; font-size: 1.05rem;">Length: 3 Years</p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-gray-700);">Apprentices in the Fire Fighting Apprenticeship program shall be trained in the use, care and effective handling of all equipment commonly used in connection with fire protection. During the term of apprenticeship, apprentices will be given the instruction and experience necessary to develop the skill and knowledge of fire prevention and suppression. The training of apprentices will include a definite schedule that will outline the training and work experience required. The term of apprenticeship is 6,000 hours, 36 months of continuous on-the-job training (OJT) employment consistent with training requirements established by industry standards. The employer agrees to provide the apprentice with adequately supervised instruction and work experience of which a record will be kept and periodically evaluated in accordance with the work process outline.</p>
+            </div>
+        </section>
+
+        <!-- SPECIAL ADMISSION REQUIREMENTS -->
+        <section id="admission-requirements" style="padding: 5rem 0; background: white;">
+            <div class="container" style="max-width: 900px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Special Admission Requirements</h2>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 2.5rem; font-size: 1.05rem;">To be accepted into the City of St. Petersburg Fire Fighting, the apprentice shall possess the following qualifications listed in the <em>Standards of Apprenticeship</em> for the St. Petersburg Fire and Rescue Department. These include:</p>
+
+                <div class="info-card info-card--green">
+                    <ol>
+                        <li>Be employed by St. Petersburg Fire and Rescue Department.</li>
+                        <li>Be at least 18 years of age</li>
+                        <li>Be physically capable of performing the work of the trade</li>
+                        <li>Possess a Florida Driver's License</li>
+                        <li>Meet the requirements of Florida Statute 633.34, Firefighter Qualifications for Employment; and Florida Statute 112.011(2)(b), Felons, Removal of Disqualification for Employment Exceptions</li>
+                        <li>Possess a high school diploma or equivalent</li>
+                        <li>Be a non-user of tobacco for at least a year prior to date of application</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- INDUSTRY CERTIFICATIONS -->
+        <section id="credentials" style="padding: 5rem 0; background-color: var(--color-gray-100);">
+            <div class="container" style="max-width: 900px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">Industry Certification(s)</h2>
+                <div class="info-card info-card--accent">
+                    <h4><i class="fas fa-id-badge" style="margin-right: 0.4rem;" aria-hidden="true"></i> Industry Certification(s)</h4>
+                    <p>To enter the City of St. Petersburg Fire and Rescue Department apprenticeship program, apprentices must have the State of Florida Firefighter certification and the State of Florida Emergency Medical Technician (EMT) certification; upon completion of the program, apprentices receive their Firefighter Journeyman's certificate from the state.</p>
+                </div>
+
+                <div class="program-related-callout">
+                    <h4><i class="fas fa-link" style="margin-right: 0.4rem;" aria-hidden="true"></i> Related Links</h4>
+                    <ul>
+                        <li><a href="http://www.stpete.org/fire" target="_blank" rel="noopener" style="color: var(--color-green); font-weight: 600;">City of St. Petersburg Fire and Rescue Department</a></li>
+                    </ul>
+                </div>
+
+                <div class="aid-banner">
+                    <div>
+                        <h3>Financial Aid &amp; Costs</h3>
+                        <p>Length of program and all costs are approximate and subject to change. Financial assistance is available to those who qualify.</p>
+                    </div>
+                    <a href="stpete-tuition.html" class="btn btn--accent">Explore Financial Aid</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTING (CPAT + FireTEAM sub-pages incorporated here) -->
+        <section id="testing" style="padding: 5rem 0; background: white;">
+            <div class="container" style="max-width: 1000px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Testing</h2>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 3rem; font-size: 1.05rem;">Fire department candidates schedule their CPAT and FireTEAM testing through the National Testing Network.</p>
+
+                <!-- CPAT TESTING -->
+                <div class="testing-card" id="cpat-testing">
+                    <h3>The Candidate Physical Abilities Test (CPAT)</h3>
+                    <p>The CPAT was designed by fire fighters for fire fighters and endorsed by both the International Association of Fire Chiefs (IAFC) and the International Association of Fire Fighters (IAFF). The CPAT consists of eight events directly related to the job of fire fighter. Candidates complete each of the events in a predetermined path from one event to another. The events are placed in a sequence that simulates fire scene events.</p>
+
+                    <h4>The Events</h4>
+                    <ul>
+                        <li>Stair climb</li>
+                        <li>Hose drag</li>
+                        <li>Equipment carry</li>
+                        <li>Ladder raise and extension</li>
+                        <li>Forcible entry</li>
+                        <li>Search</li>
+                        <li>Rescue</li>
+                        <li>Ceiling breach and pull</li>
+                    </ul>
+
+                    <div class="testing-facts">
+                        <span>One Convenient Process</span>
+                        <span>Multiple Fire Departments</span>
+                        <span>CPAT Test Good for One Year</span>
+                        <span>You Choose the Date</span>
+                    </div>
+
+                    <div class="testing-register">
+                        <p><a href="http://www.nationaltestingnetwork.com" target="_blank" rel="noopener">Register Here!</a></p>
+                        <p>For more information call PTC at 727-893-2500 ext 2595</p>
+                        <p>Log onto nationaltestingnetwork.com and click on the CPAT for Firefighters button. Then click on the "schedule a CPAT" button.</p>
+                    </div>
+                </div>
+
+                <!-- FIRETEAM TESTING -->
+                <div class="testing-card" id="fireteam-testing">
+                    <h3>FireTEAM&trade; Testing</h3>
+                    <p>FireTEAM&trade; Testing System was developed to measure specific aptitudes important to the occupation of firefighter and emergency response personnel. There are four components to the FireTEAM&trade; testing system: a human interaction test, a mechanical aptitude test, a math test and a reading ability test. All test items were developed through rigorous research with many panels of experienced fire fighting and fire service professionals. You don't need experience to answer the questions in this test. Common sense is always your best guide.</p>
+
+                    <h4>FireTEAM&trade; Human Relations Video Test</h4>
+                    <ul>
+                        <li>Judgment</li>
+                        <li>Teamwork</li>
+                        <li>Public Relations</li>
+                        <li>Professionalism in Difficult Situations</li>
+                        <li>Chore Initiative</li>
+                        <li>Ability to Live and Work Together</li>
+                        <li>Relations with Management</li>
+                    </ul>
+
+                    <h4>FireTEAM&trade; Mechanical Reasoning Test</h4>
+                    <ul>
+                        <li>Mechanical Reasoning and Aptitude</li>
+                        <li>Understanding Systems</li>
+                        <li>Observation and Analysis</li>
+                    </ul>
+
+                    <h4>FireTEAM&trade; Math Test</h4>
+                    <ul>
+                        <li>Addition, Subtraction, Multiplication,</li>
+                        <li>Division and Proportions</li>
+                    </ul>
+
+                    <h4>FireTEAM&trade; Reading Test</h4>
+                    <ul>
+                        <li>Firefighter Standard Reading Level</li>
+                    </ul>
+
+                    <p>This is a 3 hour video test.</p>
+
+                    <div class="testing-facts">
+                        <span>One Convenient Process</span>
+                        <span>Multiple Fire Departments</span>
+                        <span>FireTEAM&trade; Test Good for One Year</span>
+                        <span>You can retest in 6 months</span>
+                        <span>You Choose the Date</span>
+                    </div>
+
+                    <div class="testing-register">
+                        <p><a href="http://www.nationaltestingnetwork.com" target="_blank" rel="noopener">National Testing Network</a></p>
+                        <p>For more information call Pinellas Technical College at 727-893-2500 ext 1095</p>
+                        <p>Log onto <a href="http://www.nationaltestingnetwork.com" target="_blank" rel="noopener">National Testing Network</a> and click on the Firefighters Jobs button. Then select the Fire Departments you want to receive your scores. Schedule your test-calendar at PTC.</p>
+                        <p>Address: 901 - 34 Street South, St. Petersburg FL. 33711</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT INFORMATION -->
+        <section id="counselor" style="padding: 5rem 0; background-color: var(--color-off-white); scroll-margin-top: 100px;">
+            <div class="container" style="max-width: 900px; text-align: center;">
+                <h2 class="section-title" style="margin-bottom: 0.75rem;">Contact Information</h2>
+                <p style="color: var(--color-gray-600); font-size: 1.1rem; line-height: 1.6; margin-bottom: 3rem;">For questions about the Fire Fighting Apprenticeship, reach out to the program contact below.</p>
+
+                <div class="counselor-card">
+                    <div class="counselor-avatar">DA</div>
+                    <h3 style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 0.25rem;">Darrin Anderson</h3>
+                    <p style="color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 2rem;">Program Contact</p>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; max-width: 320px; margin: 0 auto;">
+                        <a href="mailto:andersondar@pcsb.org" class="btn btn--primary" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-envelope" aria-hidden="true"></i> andersondar@pcsb.org
+                        </a>
+                        <a href="tel:7278932500" class="btn" style="width: 100%; justify-content: center; border: 2px solid var(--color-green); color: var(--color-green);">
+                            <i class="fas fa-phone" aria-hidden="true"></i> (727) 893-2500, extension 2595
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BACK TO ALL PROGRAMS -->
+        <div style="padding: 4rem 0; text-align: center; background-color: white;">
+            <a href="programs.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-green); font-weight: 600; text-decoration: none; font-size: 1.05rem;"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to All Programs</a>
+        </div>
+    </main>
+
+    <!-- SITE FOOTER (current St. Petersburg chrome) -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline"><strong>901 34th St S, St. Petersburg, FL 33711</strong><br>
+                    Phone: 727.893.2500<br>
+                    Preparing students for high-demand careers through hands-on, industry-certified training since 1962.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/pinellastechnical/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/PinellasTechCollege/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://x.com/PinellasTech" target="_blank" rel="noopener" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@pinellastechnicalcollege8910" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/school/pinellas-technical-college" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <p class="footer__col-title">Quick Links</p>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="stpete-admissions.html">St. Petersburg Admissions</a></li>
+                            <li><a href="stpete-tuition.html">Tuition &amp; Aid</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">St. Petersburg Links</p>
+                        <ul>
+                            <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                            <li><a href="stpete-tuition.html">Tuition &amp; Financial Aid</a></li>
+                            <li><a href="stpete-counselors.html">Meet Your Counselors</a></li>
+                            <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
+                            <li><a href="campus-maps.html#stpete">Campus Map &amp; Directions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Resources</p>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
+                            <li><a href="stpete-contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#non-discrimination">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

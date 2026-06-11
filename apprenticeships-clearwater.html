@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  HUB PAGE · Clearwater Apprenticeships · Clearwater Campus
+  Built 2026-06-11 from CURRENT Clearwater campus chrome + canonical .card / .card-grid components.
+  Two-tier structure (Marianne's decision: apprenticeships are hybrid):
+    Tier 1: PTC-Sponsored Apprenticeships (cards link to full program pages)
+    Tier 2: Community Apprenticeship Programs (outside-sponsored; contact sponsor directly)
+  Apprenticeship titles + community sponsor names verbatim from live
+  (clearwater.myptc.edu/programs/clearwater-apprenticeships, source at
+  docs/audit/programs/extracted/wave6/clw-apprenticeships-hub.raw.html).
+  Overview + "How Apprenticeships Work" copy reused from the admin-built two-tier page
+  (urgent-fixes/apprenticeships-clearwater.html), which was admin-approved.
+  No external sponsor URLs exist on the live hub (all live links are Finalsite-internal
+  /fs/pages/ IDs), so community items present the sponsor name as text + a contact note.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clearwater Apprenticeships - Clearwater Campus &mdash; Pinellas Technical College</title>
+    <meta name="description" content="Apprenticeship programs at PTC Clearwater. Earn while you learn through paid on-the-job training and classroom instruction, including PTC-sponsored and community apprenticeship programs.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* HUB PAGE STYLES (page-scoped; canonical .card / .card-grid handle the cards) */
+        .hub-hero { background: linear-gradient(135deg, var(--color-green-dark) 0%, #004d29 100%); color: white; padding: 3.5rem 0; }
+        .hub-hero .eyebrow { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--color-accent); font-weight: 700; font-size: 0.9rem; }
+        .hub-hero h1 { font-family: var(--font-heading); font-size: clamp(2.25rem, 5vw, 3.25rem); margin-bottom: 1rem; line-height: 1.1; color: #fff; }
+        .hub-hero p { font-size: 1.15rem; line-height: 1.7; max-width: 720px; margin: 0; color: rgba(255, 255, 255, 0.9); }
+        /* Breadcrumb (matches campus program pages) */
+        .breadcrumb-bar { background: var(--color-off-white); border-bottom: 1px solid var(--color-gray-200); padding: 0.6rem 0; }
+        .breadcrumb-bar__inner { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--color-gray-600); flex-wrap: wrap; }
+        .breadcrumb-bar__inner ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+        .breadcrumb-bar__inner li { display: inline-flex; align-items: center; }
+        .breadcrumb-bar__inner li:not(:last-child)::after { content: "\f054"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 0.65rem; color: var(--color-gray-400); margin-left: 0.4rem; }
+        .breadcrumb-bar__inner a { color: var(--color-green); text-decoration: none; }
+        .breadcrumb-bar__current { color: var(--color-gray-700); font-weight: 500; }
+        /* Section header block */
+        .section-head { margin-bottom: 2rem; }
+        .section-head .eyebrow { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--color-green); margin-bottom: 0.4rem; }
+        .section-head p { font-size: 1.05rem; color: var(--color-gray-600); margin-top: 0.5rem; max-width: 720px; }
+        /* How it works steps */
+        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .step { text-align: center; padding: 1rem; }
+        .step__number { width: 52px; height: 52px; background: var(--color-yellow); color: var(--color-green-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; margin: 0 auto 1.25rem; }
+        .step h3 { font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: #fff; }
+        .step p { font-size: 0.95rem; line-height: 1.6; color: rgba(255, 255, 255, 0.8); margin: 0; }
+        /* Community list */
+        .community-list { display: flex; flex-direction: column; gap: 1rem; }
+        .community-item { display: flex; align-items: center; gap: 1.25rem; background: white; padding: 1.25rem 1.75rem; border-radius: var(--border-radius); border: 1px solid var(--color-gray-200); }
+        .community-item__icon { width: 44px; height: 44px; background: var(--color-gray-200); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--color-gray-800); font-size: 1.1rem; }
+        .community-item__name { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; color: var(--color-gray-900); }
+        .community-item__sponsor { font-size: 0.88rem; color: var(--color-gray-600); margin-top: 0.15rem; }
+        /* CTA bar */
+        .cta-bar { background: var(--color-yellow); padding: 2rem 0; }
+        .cta-bar__inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+        .cta-bar h3 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--color-gray-900); margin: 0; }
+        .cta-bar p { font-size: 0.95rem; color: var(--color-gray-700); margin: 0.25rem 0 0; }
+        .cta-bar__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+        /* Cross-link related callout */
+        .related-callout { background: var(--color-off-white); border: 1px solid var(--color-gray-200); border-left: 4px solid var(--color-accent); padding: 1.5rem 1.75rem; border-radius: 0 8px 8px 0; }
+        .related-callout h3 { font-family: var(--font-heading); color: var(--color-green-dark); margin: 0 0 0.6rem; font-size: 1.2rem; }
+        .related-callout ul { margin: 0; padding-left: 1.25rem; color: var(--color-gray-700); line-height: 1.8; }
+        .related-callout a { color: var(--color-green); font-weight: 600; text-decoration: none; }
+        .related-callout a:hover { text-decoration: underline; }
+        @media screen and (max-width: 768px) {
+            .steps-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .cta-bar__inner { flex-direction: column; text-align: center; }
+            .cta-bar__actions { justify-content: center; }
+            .community-item { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- CAMPUS UTILITY BAR (current Clearwater chrome) -->
+    <div class="utility-bar utility-bar--campus">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                 <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> 727.538.7167</a>
+                 <span class="utility-bar__divider">|</span>
+                 <a href="campus-maps.html#clearwater"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 6100 154th Ave N, Clearwater, FL</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener"><i class="fas fa-desktop" aria-hidden="true"></i> Canvas Login</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener"><i class="fas fa-user-graduate" aria-hidden="true"></i> SIS Portal / Focus</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> PTC Main Site</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="stpete.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> St. Petersburg Campus</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAMPUS HEADER (current Clearwater chrome) -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="clearwater.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Clearwater Campus" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Clearwater Campus</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="programs.html" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                                        <li><a href="coming-soon.html">Distance Learning</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="clearwater-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="clearwater-admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="clearwater-admissions.html#testing">Placement Testing</a></li>
+                                        <li><a href="clearwater-tuition.html">Tuition &amp; Financial Aid</a></li>
+                                        <li><a href="clearwater-military-veteran-resources.html">Military &amp; Veteran Resources</a></li>
+                                        <li><a href="clearwater-counselors.html">Meet Your Counselors</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="schedule-clearwater.html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="clearwater-student-services.html">Student Services Hours</a></li>
+                                        <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
+                                        <li><a href="clearwater-records-request.html">Record Request</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="clearwater-about.html" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="clearwater-about.html">About This Campus</a></li>
+                                        <li><a href="campus-maps.html#clearwater">Map &amp; Directions</a></li>
+                                        <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
+                                        <li><a href="employers.html">For Employers</a></li>
+                                        <li><a href="consumer-information.html">Consumer Information</a></li>
+                                        <li><a href="clearwater-contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a href="https://apply.myptc.edu/" class="btn btn--primary btn--sm site-header__cta" target="_blank" rel="noopener">Apply Now</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- BREADCRUMBS -->
+        <div class="breadcrumb-bar">
+            <nav class="container breadcrumb-bar__inner" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li class="breadcrumb-bar__current" aria-current="page">Clearwater Apprenticeships</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- HERO -->
+        <section class="hub-hero">
+            <div class="container">
+                <p class="eyebrow">Clearwater Campus</p>
+                <h1>Apprenticeship Programs</h1>
+                <p>Earn while you learn. PTC-Clearwater apprenticeship programs combine paid on-the-job training with hands-on classroom instruction, so you can build real skills and a real career at the same time.</p>
+            </div>
+        </section>
+
+        <!-- TIER 1: PTC-SPONSORED PROGRAMS -->
+        <section style="padding: 4rem 0; background: white;">
+            <div class="container">
+                <div class="section-head">
+                    <p class="eyebrow">PTC-Sponsored</p>
+                    <h2 class="section-title" style="margin: 0;">Our Apprenticeship Programs</h2>
+                    <p>These programs are directly sponsored by Pinellas Technical College. We handle enrollment, instruction, and employer coordination.</p>
+                </div>
+
+                <div class="card-grid">
+
+                    <!-- Card 1: Automotive Electrical / Electronics / Hybrid-EV Systems -->
+                    <article class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fa-solid fa-car" aria-hidden="true"></i></span>
+                        <h3 class="card__title">Automotive Electrical/Electronics/Hybrid-EV Systems</h3>
+                        <p class="card__body">Train in modern automotive electrical diagnostics, electronics, and hybrid-EV systems. This apprenticeship prepares you for high-demand careers in a rapidly evolving automotive industry.</p>
+                        <a href="automotive-apprenticeship-clearwater.html" class="card__cta">Learn More <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+
+                    <!-- Card 2: Facilities Maintenance -->
+                    <article class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></span>
+                        <h3 class="card__title">Facilities Maintenance</h3>
+                        <p class="card__body">Develop the skills needed to maintain and repair commercial and institutional facilities. Covers electrical, plumbing, HVAC basics, and building systems in a hands-on apprenticeship format.</p>
+                        <a href="facilities-maintenance-apprenticeship-clearwater.html" class="card__cta">Learn More <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW APPRENTICESHIPS WORK -->
+        <section style="padding: 4rem 0; background: var(--color-green-dark); color: white;">
+            <div class="container">
+                <div class="section-head" style="text-align: center;">
+                    <p class="eyebrow" style="color: var(--color-yellow);">Get Started</p>
+                    <h2 style="font-family: var(--font-heading); font-size: 1.75rem; color: #fff; margin: 0;">How Apprenticeships Work</h2>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin: 0.5rem auto 0; max-width: 680px;">Apprenticeships let you earn a wage while training for a skilled career. Here is what to expect.</p>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step__number">1</div>
+                        <h3>Apply and Get Hired</h3>
+                        <p>You are employed by a sponsor company from day one. You earn a paycheck while attending classes at PTC.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step__number">2</div>
+                        <h3>Train On the Job</h3>
+                        <p>Split your time between hands-on work with your employer and classroom instruction at PTC-Clearwater.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step__number">3</div>
+                        <h3>Earn Your Credential</h3>
+                        <p>Complete the program with industry-recognized credentials, real experience, and zero student debt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA BAR -->
+        <section class="cta-bar">
+            <div class="container cta-bar__inner">
+                <div>
+                    <h3>Ready to Start Your Apprenticeship?</h3>
+                    <p>Contact our admissions team to learn about openings and next steps.</p>
+                </div>
+                <div class="cta-bar__actions">
+                    <a href="tel:7275387167" class="btn btn--primary"><i class="fas fa-phone" aria-hidden="true"></i> (727) 538-7167</a>
+                    <a href="clearwater-admissions.html" class="btn" style="background: white; color: var(--color-green-dark); border: 2px solid var(--color-green-dark);"><i class="fas fa-user-plus" aria-hidden="true"></i> Admissions Info</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIER 2: COMMUNITY APPRENTICESHIP PROGRAMS -->
+        <section style="padding: 4rem 0; background: var(--color-off-white);">
+            <div class="container">
+                <div class="section-head">
+                    <h2 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-gray-700); margin: 0;">Community Apprenticeship Programs</h2>
+                    <p>The following apprenticeship programs are operated and sponsored by outside organizations. Contact the sponsoring organization directly for enrollment and program details.</p>
+                </div>
+
+                <div class="community-list">
+
+                    <!-- HVAC -->
+                    <div class="community-item">
+                        <div class="community-item__icon"><i class="fa-solid fa-temperature-half" aria-hidden="true"></i></div>
+                        <div>
+                            <div class="community-item__name">Heating, Ventilation and Air Conditioning (HVAC)</div>
+                            <div class="community-item__sponsor">Community partner sponsored. Contact the sponsoring organization to enroll.</div>
+                        </div>
+                    </div>
+
+                    <!-- Electrician (Bay Area Electrical) -->
+                    <div class="community-item">
+                        <div class="community-item__icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+                        <div>
+                            <div class="community-item__name">Electrician (Bay Area Electrical)</div>
+                            <div class="community-item__sponsor">Bay Area Electrical JATC. Contact the sponsoring organization to enroll.</div>
+                        </div>
+                    </div>
+
+                    <!-- Electrician (Independent Electrical Contractors) -->
+                    <div class="community-item">
+                        <div class="community-item__icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+                        <div>
+                            <div class="community-item__name">Electrician (Independent Electrical Contractors)</div>
+                            <div class="community-item__sponsor">IEC Apprenticeship. Contact the sponsoring organization to enroll.</div>
+                        </div>
+                    </div>
+
+                    <!-- Tampa Bay Machining Apprenticeship -->
+                    <div class="community-item">
+                        <div class="community-item__icon"><i class="fa-solid fa-gears" aria-hidden="true"></i></div>
+                        <div>
+                            <div class="community-item__name">Tampa Bay Machining Apprenticeship</div>
+                            <div class="community-item__sponsor">Tampa Bay Machining. Contact the sponsoring organization to enroll.</div>
+                        </div>
+                    </div>
+
+                    <!-- Sprinkler Fitter -->
+                    <div class="community-item">
+                        <div class="community-item__icon"><i class="fa-solid fa-fire-extinguisher" aria-hidden="true"></i></div>
+                        <div>
+                            <div class="community-item__name">Sprinkler Fitter</div>
+                            <div class="community-item__sponsor">ABC Florida Gulf Coast Chapter. Contact the sponsoring organization to enroll.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- RELATED PROGRAMS CROSS-LINKS -->
+        <section style="padding: 4rem 0; background: white;">
+            <div class="container">
+                <div class="related-callout">
+                    <h3><i class="fas fa-compass" style="margin-right: 0.4rem;" aria-hidden="true"></i> Explore More Ways to Train at PTC-Clearwater</h3>
+                    <ul>
+                        <li><a href="programs.html">Full-Time Programs</a>: career and technical programs you can complete at the Clearwater campus.</li>
+                        <li><a href="workforce-continuing-education.html">Short Courses &amp; Evening Classes</a>: shorter workforce and continuing education options.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- BACK TO ALL PROGRAMS -->
+        <div style="padding: 0 0 4rem; text-align: center; background-color: white;">
+            <a href="programs.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-green); font-weight: 600; text-decoration: none; font-size: 1.05rem;"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to All Programs</a>
+        </div>
+    </main>
+
+    <!-- SITE FOOTER (current Clearwater chrome) -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline"><strong>6100 154th Ave N, Clearwater, FL 33760</strong><br>
+                    Phone: 727.538.7167<br>
+                    Preparing students for high-demand careers through hands-on, industry-certified training since 1962.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/pinellastechnical/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/PinellasTechCollege/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://x.com/PinellasTech" target="_blank" rel="noopener" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@pinellastechnicalcollege8910" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/school/pinellas-technical-college" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <p class="footer__col-title">Quick Links</p>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="clearwater-admissions.html">Clearwater Admissions</a></li>
+                            <li><a href="clearwater-tuition.html">Tuition &amp; Aid</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Clearwater Links</p>
+                        <ul>
+                            <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                            <li><a href="clearwater-tuition.html">Tuition &amp; Financial Aid</a></li>
+                            <li><a href="clearwater-counselors.html">Meet Your Counselors</a></li>
+                            <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
+                            <li><a href="campus-maps.html#clearwater">Campus Map &amp; Directions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Resources</p>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
+                            <li><a href="clearwater-contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#non-discrimination">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
