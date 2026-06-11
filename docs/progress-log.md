@@ -2912,3 +2912,19 @@ Marianne's pick after Wave 7. Stage 1 found NO dedicated live "Contact" pages â€
 **Follow-ups (logged):** redesign omits a public contact email (live campus email is JS-obscured via FS.util.insertEmail; decide whether to surface one, don't invent); unused `.contact-form` CSS block in contact.html is dead code (optional cleanup); confirm the stpete-contact CVAEC/CSIT sentence against the schedule source.
 
 Contact cluster: **verified.** Backlog clusters remaining: Records Request, Workforce/Employer Hook, News & Events, Summer Camps.
+
+---
+
+## 2026-06-11 â€” Review panel + immediate fix pass
+
+Ran the 8-persona review panel + PM synthesis (scoped to the new Programs/hubs/nav). Report: `docs/reviews/2026-06-11/consolidated-report.md`; tracker updated. Headline: the program-page template substantially advances long-open C1/H1/H5 (program pages now have codes/hours/sequences/credentials/named counselors + working apply CTAs). Then cleared the launch-blockers + quick wins in one pass (Marianne wanted momentum, not a timeline wait):
+
+- **C8 (launch-blocker) FIXED:** both landing hubs (adult-education-pathways.html, apprenticeships-workforce.html) shipped without `script.js` -> dead mobile nav. Added the script to both.
+- **C9 (launch-blocker) RESOLVED as verbatim-correct:** the live Practical Nursing extract genuinely lists "Merritt Scott, School Counselor, SCOTTME@pcsb.org", so the redesign matches live. The Phlebotomy association is a LIVE-DATA question, not a redesign error. Routed to follow-ups for live verification; no redesign change (verbatim rule).
+- **C10 (launch-blocker) RECONCILED:** welding-stpete.html advertised a Day+Evening schedule that its own shipped TODO comment + the authoritative redesign schedule (schedule-stpete.html: Welding = evening only, M-F 4-9PM) contradict. Updated the page to evening-only (stat bar + schedule block) and removed the in-source DATA RECONCILIATION comment. Logged for Cheri Ashwood to confirm on live.
+- **Em-dash `<title>` regression (M14) FIXED:** swept `&mdash;`/em dash out of `<title>` tags across 106 files -> "|".
+- **Nav consistency FIXED:** the 3-way Apprenticeships entry point normalized (Explore dropdown "Apprenticeships" -> apprenticeships-workforce.html to match the top-level item; 5 files); workforce-page nav label normalized from "Evening & Part-Time" -> "Workforce & Continuing Education" (18 files).
+- **programs.html chip mislabels FIXED:** Dental Assisting (was "Arts, Media & Education" -> "Health Sciences"), Facials + Nails (-> "Cosmetology & Barbering"); data-cluster attributes were already correct, only the visible chips were wrong.
+- **AA contrast (accessibility S3) FIXED:** `.eyebrow` used `--color-accent` (#8DC63F, ~2.6:1) as text on the dark green hero; swapped to `--color-yellow` (#FFCF01) across 75 files.
+
+Still open (not this pass): structural/CMS items (programs.html JS filter vs Composer H8, program-page CSS consolidation into styles.css, design-system convergence), mobile-nav dropdown ARIA (M2), the programs.html filter live-region announcement (S1/S2), live-gated content (cost/tuition/salary/NCLEX pass rate), and remaining dead `coming-soon.html`/`#` links. All uncommitted.
