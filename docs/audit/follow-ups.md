@@ -459,6 +459,30 @@ Surfaced while building/verifying the 10 IT/Business/Arts program pages (8 built
 
 ---
 
+## Programs cluster — Wave 5 Culinary/Cosmo/Child Care builds (added 2026-06-11)
+
+Surfaced while building/verifying the 13 Culinary/Cosmetology/Child Care/Education program pages (5 CLW + 8 STP). All 13 verified PASS (0 fabrications, 0 missing, 0 drift). Items below are live-side issues or preserved live inconsistencies, none of which block the redesign.
+
+| Item | Page(s) | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Past class start/session dates published on live | school-age-professional-certificate (Spring | Feb 10, 2026), barbering CLW + STP (May 13, 2026 Meet & Greet), cosmetology STP (May 13 M&G), nails STP (May 13 M&G) | Live still advertises start/meet-and-greet dates that have already passed. Redesign mirrors verbatim per match-live rule. | Refresh dated content on the live program pages. | Program admins / Webmaster | Medium | Wave 5, 2026-06-11 |
+| Live typos CORRECTED on redesign (policy 2026-06-08) | child-care-center-operations CLW+STP ("Credential.Students"/"Credential.There" missing spaces), cosmetology STP ("techniques.Completers" missing space), early-childhood-education STP ("personnel/ preschool" stray space), baking-pastry-arts CLW ("Identify"->"identify", stray comma in FSS 0091), fundamental-foodservice/culinary CLW ("market place"->"marketplace") | Redesign fixes obvious mechanical typos per verbatim-rule.md; live still carries them. | Correct the same typos on the live pages. | Webmaster | Low | Wave 5, 2026-06-11 |
+| Live FLRTW boilerplate "Al topics" typo | all Wave 5 live pages carrying the FL Ready to Work block | Same standing "Al"->"AI" issue already logged in Wave 4; redesign canonical block is correct. | Fix "Al" to "AI" in the live FLRTW boilerplate. | Webmaster | Low | Wave 5, 2026-06-11 |
+| Malformed YouTube embed query string on live | barbering STP | Live iframe src is `?si=...?rel=0` (two `?`); redesign corrects the second to `&rel=0`. | Fix the embed query string on live. | Webmaster | Low | Wave 5, 2026-06-11 |
+| Counselor phone markup broken on live | barbering STP, child-care STP, early-childhood STP, school-age STP | Phone split as plain "727-" plus an href-less `<a>`; redesign rebuilds as proper `tel:` links. | Repair the phone markup on live. | Webmaster | Low | Wave 5, 2026-06-11 |
+| Hero images have empty alt / role=presentation on live | culinary CLW+STP, child-care STP, early-childhood STP, school-age STP, others | Live hero photos carry empty alt text; redesign adds descriptive alt per house a11y rules. | Add descriptive alt text to the live hero images. | Webmaster | Low | Wave 5, 2026-06-11 |
+| YouTube embeds have generic "YouTube video player" titles on live | most Wave 5 pages with videos | No real titles on live, so redesign uses neutral descriptive captions. | Add real video titles on live. | Webmaster / programs | Low | Wave 5, 2026-06-11 |
+| Distance Education inconsistency between campuses (same program) | child-care-center-operations: CLW "Available" vs STP "Traditional Only" (program V200206, classes "held at various locations in Pinellas County") | The same program code reports different distance-ed availability per campus. Both kept verbatim. | Confirm the correct distance-ed status and align the two campus pages. | Program admins | Medium | Wave 5, 2026-06-11 |
+| Credential naming inconsistent within a single live page | school-age-professional-certificate STP (mission "School Age Professional Certificate (SAPC)" vs Industry Certification line "School Age Certification") | Two different names for the same credential on one page. Kept verbatim. | Pick one credential name on live. | STP program / Webmaster | Low | Wave 5, 2026-06-11 |
+| "(40 hours are transferred)" unexplained on live | school-age-professional-certificate STP | The Length row says "120 hours (40 hours are transferred)" with no explanation of the transfer. | Add a sentence explaining the 40-hour transfer, or remove the parenthetical. | STP program | Low | Wave 5, 2026-06-11 |
+| ServSafe brand spelling | professional-culinary-arts-hospitality STP ("Servsafe®") | Live spells it "Servsafe®"; official brand is "ServSafe®". CLW culinary page spells it "ServSafe®". Kept verbatim per binding rule. | Normalize to "ServSafe®" on the STP live page. | STP program / Webmaster | Low | Wave 5, 2026-06-11 |
+| "Held in the Cosmetology Classroom" on Barbering pages | barbering CLW+STP | Barbering Meet & Greets list the Cosmetology Classroom as the location. Possibly intentional shared space. | Confirm the location is correct. | Program admins | Low | Wave 5, 2026-06-11 |
+| Wording oddities kept verbatim | barbering CLW+STP ("temporary/semi-demi permanent" color; "hairpieces" vs "hair pieces" between Barber 3A/4A) | Non-typo wording inconsistencies in course descriptions. Kept verbatim. | Review and normalize on live if desired. | Program admins | Low | Wave 5, 2026-06-11 |
+| CMS paste artifacts in live body | professional-culinary-arts-hospitality STP (stray `gtx-trans` / `pastingspan1` divs) | Leftover translation/paste junk divs in the live page source. Not reproduced in redesign. | Clean the stray divs out of the live page. | Webmaster | Low | Wave 5, 2026-06-11 |
+| 3 Stage 2 digests not written (internal) | baking-pastry-arts CLW, fundamental-foodservice-skills CLW, nails-specialty STP | Builder agents hit session limits before writing the .md digest; pages built fine from .raw.html and verified PASS. Digests backfilled 2026-06-11. | None (logged for pipeline awareness). | Pipeline | Low | Wave 5, 2026-06-11 |
+
+---
+
 ## Closed follow-ups
 
 **2026-06-02 — parked-items decision session (Marianne-directed):**

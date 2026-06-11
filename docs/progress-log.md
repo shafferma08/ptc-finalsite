@@ -2781,3 +2781,23 @@ Marianne kicked off Wave 4 interactively. Discovery first: 8 of the 10 pages alr
 **Mechanical sweep:** FLRTW block byte-identical across all 10 pages; 0 user-facing em dashes (title-tag &mdash; site-wide pattern noted as an open decision); all images resolve; campus tuition links correct.
 
 **Next:** Wave 5 Culinary / Cosmo / Child Care (Stage 2 extraction). Then Wave 6 Apprenticeships + Short Courses hub IA per Marianne's naming direction.
+
+---
+
+## 2026-06-11 — Programs Wave 5 (Culinary / Cosmo / Child Care / Education) complete: 13 pages verified + wired
+
+Picked up across multiple session-limit interruptions (Marianne hit her cap twice mid-wave; re-dispatched the unbuilt pages each resume). Final state: all 13 pages built, verified, and wired.
+
+**Built (13 pages, parallel builder agents, fresh from .raw.html):**
+- CLW (5): baking-pastry-arts-clearwater (N100600, FSS0090/FSS0091), barbering-clearwater (I120403, COS0160-0163, 900h, DBPR licensure), child-care-center-operations-clearwater (V200206, HEV0160, 45h), fundamental-foodservice-skills-clearwater (N100520, HMV0101/HMV0102), professional-culinary-arts-hospitality-clearwater (N100500, HMV0100/0170/0171/0126, 1200h).
+- STP (8): barbering-stpete (I120403), child-care-center-operations-stpete (V200206), cosmetology-stpete (D500100, 1200h, FL Licensed Cosmetologist), early-childhood-education-stpete (E300100, 600h, FDOE ECPC + DCF), facials-specialty-stpete (I120425, 220h, FL Facial Specialist Registration), nails-specialty-stpete (CSP0016, 180h, FL Nail Specialist Registration), professional-culinary-arts-hospitality-stpete (N100500), school-age-professional-certificate-stpete (V200310, 120h).
+
+**Verification (4 parallel Comparator agents, vs .raw.html):** all 13 PASS. 0 HIGH (fabrications), 0 MED (missing/drift). Only LOW: permitted mechanical typo fixes (missing spaces, "market place"->"marketplace", stray commas) and correctly-preserved live inconsistencies. Every program code, clock-hour count, course number, and counselor/instructor name+email+extension matched live character-for-character. Licensure-strictness check passed on all four licensure-track pages (Cosmetology, Facials, Nails, Barbering): no invented exam vendors or board requirements. This wave was materially cleaner than Wave 4 (which the auto-builder had salted with a fabrication) because every page was built fresh this session under the trust-the-raw-HTML rule. No content fixes required.
+
+**Process note (session limits):** builder agents that hit the cap mid-run still left complete, valid pages (retried dispatches finished them); 3 agents died before writing their Stage 2 .md digest (baking-clw, fundamental-foodservice-clw, nails-stp). Pages were unaffected (built + verified from .raw.html); digests backfilled.
+
+**Nav wired:** programs.html 13 cards delinked-to-real, including 3 dual-campus link pairs (Barbering, Child Care Center Operations, Professional Culinary Arts). Only "Machining Technologies" remains as `#` (Wave 6 / remaining). sitemap.html: CLW "Culinary, Barbering, Child Care" planned line -> 5 real links (RACCA/Machining still planned); STP "Culinary, Cosmetology, Barbering" planned line -> 8 real links. LPN-RN grid card REMOVED from programs.html (Marianne: live took the program down).
+
+**Follow-ups:** 15 rows logged (past dates on live, per-campus distance-ed inconsistency on Child Care V200206, credential-naming inconsistency on School Age, ServSafe spelling, broken phone markup, empty hero alt, generic video titles, CMS paste artifacts, the standing "Al topics" FLRTW typo, and the permitted typo-fix register).
+
+**Next:** Wave 6 = Apprenticeships (13, hub treatment) + Short Courses/OWI (rename + own accessible area per Marianne's 2026-06-10 direction). Then Machining Technologies CLW and the programs.html 41-vs-60+ grid reconciliation close out the Programs cluster.
