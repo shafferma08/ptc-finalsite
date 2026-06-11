@@ -538,7 +538,20 @@ Built the live content area behind the `#` Explore nav items (Dual Enrollment, D
 | ESOL Clearwater: unfinished flyer placeholders | esol-clearwater (live) | Live has bracketed CMS placeholders ("[ESOL program flyer - English/Español]") with no resource attached; 8 translated welcome flyers exist (CLW only). | Attach/remove the placeholder flyers on live; decide whether STP ESOL should carry translated flyers. | Webmaster | Low | Wave 7, 2026-06-11 |
 | Student Orgs: STP lacks a Student Council; no national-org links | student-organizations (live, both campuses) | CLW student-orgs page lists a 5th org (Student Council); STP does not. Org descriptions have no links to the national organizations. | Decide if STP wants a Student Council; add national-org links on live. | OWI / Webmaster | Low | Wave 7, 2026-06-11 |
 | Distance Learning: 4 child sub-pages not yet folded in | distance-learning-clearwater + -stpete (live) | Beyond the cost sub-page (folded in), live has 4 more DL sub-pages (Online Programs & Courses Information; Is Online Learning right for me; Do I need a special computer/software; How do online classes work). Out of scope this wave. | Decide whether to fold these into the DL pages too (Marianne's domain). | Marianne | Low | Wave 7, 2026-06-11 |
-| PENDING redesign decision: Explore nav items for the per-campus pathways | nav (Programs > Explore dropdown, all pages) | Dual Enrollment, Distance Learning, and ABE/GED/ESOL Explore items are still `#` because each is a single institutional link but the content is per-campus. (Student Orgs is wired -> student-organizations.html since it is a single shared page.) | Marianne to choose: build an "Adult Education & Pathways" landing hub (apprenticeships-workforce.html precedent) and point the Explore items there, or route each to the Clearwater page cross-linked to St. Pete. | Marianne (redesign) | Medium | Wave 7, 2026-06-11 |
+| ~~PENDING: Explore nav items for the per-campus pathways~~ **RESOLVED 2026-06-11** | nav (Programs > Explore dropdown) | Marianne chose the hub option. Built `adult-education-pathways.html` (institutional landing) and wired Dual Enrollment / Distance Learning / ABE-GED-ESOL Explore items -> the hub across 128 files; Student Orgs -> student-organizations.html. | Done. | Marianne (redesign) | - | Wave 7, 2026-06-11 |
+
+---
+
+## Contact cluster (added 2026-06-11)
+
+All 3 redesign contact pages verified PASS, 0 fabrications. See `docs/audit/contact/REDESIGN-COMPARISON.md`.
+
+| Item | Page(s) | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| Public contact email omitted | contact.html, clearwater-contact.html, stpete-contact.html | Live footers carry a JS-obscured campus email (`FS.util.insertEmail`); the redesign omits email entirely rather than invent one. | Decide whether to surface a real public contact email on the redesign (provide the address; do not invent). | Marianne / Webmaster | Low | Contact cluster, 2026-06-11 |
+| Dead `.contact-form` CSS | contact.html | An unused `.contact-form` CSS block (~lines 199-279) is dead code; no `<form>` exists on the page. | Optional cleanup: delete the unused CSS, or add a real Request-Info form (CMS/Finalsite decision). | Webmaster (redesign) | Low | Contact cluster, 2026-06-11 |
+| CVAEC/CSIT sentence to confirm | stpete-contact.html | "One section of CSIT meets at CVAEC, a separate PTC location." is live-grounded (CVAEC referenced on the live STP homepage) but the exact wording should be confirmed against the schedule-stpete source. | Confirm wording when the Schedule cluster runs. | Pipeline | Low | Contact cluster, 2026-06-11 |
+| ~~CLW street address NEEDS-MORE-RESEARCH~~ **RESOLVED 2026-06-11** | clearwater-contact.html (+ sitewide) | Confirmed against live: 6100 154th Ave N, Clearwater, FL 33760, (727) 538-7167. Matches the redesign. | Done. | - | - | Contact cluster (carried from Tuition) |
 
 ---
 

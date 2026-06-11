@@ -2894,3 +2894,21 @@ Built the live content area discovered when checking the `#` Explore nav items. 
 ## 2026-06-11 — Adult Education & Pathways hub built + Explore nav wired (Marianne's call)
 
 Marianne chose the hub option. Built `adult-education-pathways.html` (institutional landing, sibling of apprenticeships-workforce.html): hero + 5 cards (Dual Enrollment, Distance Learning, ABE/GED, ESOL each dual-campus + Student Organizations single) + cross-links to programs.html and apprenticeships-workforce.html. Wired the 3 per-campus Explore nav items (Dual Enrollment, Distance Learning, ABE/GED/ESOL) -> adult-education-pathways.html across 128 files (also caught the coming-soon.html "Distance Learning" stragglers on the Wave 7 campus pages). Student Orgs Explore item already -> student-organizations.html. Added the hub as the overview link atop the sitemap "Adult Education & Pathways" card. Verified: hub 0 body em dashes, all destination links resolve, Explore items confirmed pointing to the hub on institutional pages. Only the legacy scaffolds (campus-template, program-page-preview, _templates/campus-landing) retain `#` for these labels. Wave 7 fully wired + reachable.
+
+---
+
+## 2026-06-11 — Contact cluster verified (3 pages, 0 fabrications)
+
+Marianne's pick after Wave 7. Stage 1 found NO dedicated live "Contact" pages — contact facts are distributed (campus footers + welcome/school-information pages), and the redesign contact.html / clearwater-contact.html / stpete-contact.html are an IA consolidation. Ran a combined Stage 2+3 audit (audit-comparator) gathering authoritative live contact facts and verifying all 3 redesign pages. Report: `docs/audit/contact/REDESIGN-COMPARISON.md`; captures in `docs/audit/contact/extracted/`.
+
+**Result: all 3 pages PASS, 0 fabrications.** Key findings:
+- **Fax numbers are NOT fabricated** (the main risk): live campus-information pages carry "Fax (727) 538-7203" (CLW) and "Fax (727) 893-2776" (STP); redesign matches verbatim.
+- Addresses/phones verbatim: CLW 6100 154th Ave N, Clearwater, FL 33760, (727) 538-7167; STP 901 34th St S, St. Petersburg, FL 33711, (727) 893-2500.
+- **Deferred "CLW street address NEEDS-MORE-RESEARCH" (from Tuition cluster) RESOLVED:** 6100 154th Ave N, FL 33760 confirmed correct.
+- "1900 Gandy Blvd N" in live footers is a calendar EVENT venue (First Baptist Church of St. Petersburg), not a PCSB district address; redesign correctly omits it.
+
+**Fix applied:** contact.html `<title>` em dash -> "Contact Us | Pinellas Technical College".
+
+**Follow-ups (logged):** redesign omits a public contact email (live campus email is JS-obscured via FS.util.insertEmail; decide whether to surface one, don't invent); unused `.contact-form` CSS block in contact.html is dead code (optional cleanup); confirm the stpete-contact CVAEC/CSIT sentence against the schedule source.
+
+Contact cluster: **verified.** Backlog clusters remaining: Records Request, Workforce/Employer Hook, News & Events, Summer Camps.
