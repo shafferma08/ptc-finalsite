@@ -555,6 +555,18 @@ All 3 redesign contact pages verified PASS, 0 fabrications. See `docs/audit/cont
 
 ---
 
+## Review-panel follow-up fixes (2026-06-11)
+
+Cleared the dead-link findings from the 2026-06-11 review panel. Items below are the ones that need a DECISION or a live source rather than a mechanical fix.
+
+| Item | Page(s) | Issue | Recommendation | Likely owner | Priority | Source |
+|---|---|---|---|---|---|---|
+| ~~Dead `coming-soon.html`/`#` nav + body links~~ **MOSTLY RESOLVED 2026-06-11** | sitewide | Wired the resolvable ones: Employer Partnerships + Post a Job for Students -> employers.html (62), and straggler Workforce/Student Orgs/Apprenticeships/ABE-GED-ESOL Explore items -> their real hubs (16). Remaining `coming-soon.html` links (Academic Calendar ~32, Advisory Committees ~27, Tech Support ~2) point to the honest placeholder page because no redesign page exists yet. | Build pages for Academic Calendar / Advisory Committees / Tech Support, or remove those nav items. | Webmaster (redesign) | Low | Review panel, 2026-06-11 |
+| Dead `#` search button is SITEWIDE campus chrome (not just contact) | all campus-chrome pages (clearwater.html, stpete.html, all campus program pages, clearwater-contact, stpete-contact, etc.) | Campus chrome uses a dead `<a href="#" aria-label="Search"><i class="fa-search">` and campus pages have NO search-overlay div (unlike main-site pages which have search-toggle + overlay wired by script.js). So search is non-functional on every campus page. | Decide: add the search-overlay markup to campus chrome sitewide (script.js already supports search-toggle/overlay), or remove the dead search button from campus chrome. A sitewide chrome change, not a per-page fix. | Webmaster (redesign) | Medium | Review panel, 2026-06-11 |
+| Contact pages lack campus hours + safety/security info | contact.html, clearwater-contact.html, stpete-contact.html | Parent + current-student personas wanted office/campus hours and a safety statement to reach a human / confirm campus safety. Hours are live-sourced (likely the live "Student Services Hours" page) and must be added verbatim, not invented. | Confirm the live campus/office hours source and add verbatim; consider linking the Clery/Safety & Security info from the contact page. | Marianne / Webmaster | Medium | Review panel, 2026-06-11 |
+
+---
+
 ## Closed follow-ups
 
 **2026-06-02 — parked-items decision session (Marianne-directed):**

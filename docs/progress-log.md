@@ -2935,3 +2935,16 @@ Still open (not this pass): structural/CMS items (programs.html JS filter vs Com
 - **S1/S2 (programs.html filter not announced) FIXED:** added a visually-hidden `role="status" aria-live="polite"` region (`#filter-status`) above the grid; `filterPrograms()` now announces "N programs shown." or "No programs match your selected filters." on every cluster/campus filter change. `.sr-only` already exists in styles.css. script.js passes `node --check`.
 
 Remaining a11y (logged, larger): M25 PDF tagging (live-owner), and any per-page contrast spot-checks. Structural/CMS items (H8 filter architecture, program-page CSS consolidation, design-system convergence) remain for pre-July-build planning. All uncommitted.
+
+## 2026-06-11 — Review-panel dead-link cleanup
+
+Cleared the resolvable dead links flagged by the review panel:
+- Employer Partnerships + Post a Job for Students nav/footer items -> employers.html (the For-Employers hub, has a Post a Job section): 62 links across 34 files.
+- Straggler Explore items still on coming-soon.html (Workforce & Continuing Education, Student Orgs, Apprenticeships, ABE/GED/ESOL) -> their real hubs: 16 links.
+- Remaining coming-soon.html links (Academic Calendar, Advisory Committees, Tech Support) intentionally left pointing at the placeholder page since no redesign page exists; logged to build-or-remove.
+
+Two flagged items NOT mechanically fixable, logged as decisions instead of guessing:
+- The dead `#` search button is SITEWIDE campus chrome (campus pages have no search-overlay), not a contact-only bug. Needs a sitewide decision (add overlay vs remove button).
+- Contact-page campus hours / safety info: live-sourced content, route verbatim from the live hours page rather than invent.
+
+Repo otherwise at committed HEAD; CSS consolidation was reverted earlier (see css-consolidation-analysis.md). Dead-link wiring is uncommitted in the working tree.
