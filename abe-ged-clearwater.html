@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  INFORMATIONAL PATHWAY PAGE · ABE / GED / ASB · Clearwater Campus
+  Built 2026-06-11 from CURRENT Clearwater campus chrome (modeled on practical-nursing-clearwater.html).
+  Content verbatim from clearwater.myptc.edu/programs/clearwater-abe-ged-asb
+  (raw capture: docs/audit/programs/extracted/wave7/clw-abe-ged.raw.html;
+   Stage 2 digest: docs/audit/programs/extracted/wave7/abe-ged-clearwater.md).
+  This is an informational pathway page, NOT an OCP program page: no course table,
+  no program code, no FL Ready to Work block (live has none of those).
+  Hero photo: assets/images/content/abe-ged-clearwater.jpg (live inline content image
+  adulteducation.jpg, UUID 7106b7a2-9086-4277-a6bb-2cbd27934ba9). Live has no dedicated hero banner.
+  ESOL + CASAS Testing links re-aimed to redesign targets (UX-layer decision).
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABE / GED / ASB - Clearwater Campus &mdash; Pinellas Technical College</title>
+    <meta name="description" content="Adult Basic Education, GED Preparation, and Academic Skills Building at PTC Clearwater: self-paced day and evening classes with experienced instructors.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* INFORMATIONAL PATHWAY PAGE STYLES (lean: hero + content sections) */
+        .program-hero { background: linear-gradient(135deg, var(--color-green-dark) 0%, #004d29 100%); color: white; padding: 0; overflow: hidden; }
+        .program-hero__inner { display: grid; grid-template-columns: 1.1fr 0.9fr; min-height: 360px; }
+        .program-hero__text { padding: 3.5rem 0 3.5rem 2rem; display: flex; flex-direction: column; justify-content: center; }
+        .program-hero__image { overflow: hidden; }
+        .program-hero__image img { width: 100%; height: 100%; object-fit: cover; }
+        .program-hero h1 { color: #fff; }
+
+        .info-section { padding: 4rem 0; }
+        .info-section .container { max-width: 860px; }
+        .lead-mission { text-align: center; font-family: var(--font-heading); font-size: 1.35rem; line-height: 1.5; color: var(--color-green-dark); margin: 0 auto 2.5rem; max-width: 760px; }
+        .info-list { font-size: 1.05rem; line-height: 1.8; color: var(--color-gray-800); padding-left: 1.25rem; }
+        .info-list li { margin-bottom: 0.6rem; }
+
+        .label-heading { font-family: var(--font-heading); color: var(--color-green); font-size: 1.4rem; font-weight: 700; margin: 0 0 1rem; }
+
+        .schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+        .schedule-card { background: white; border: 1px solid var(--color-gray-200); border-left: 4px solid var(--color-green); border-radius: 0 8px 8px 0; padding: 1.5rem 1.75rem; }
+        .schedule-card h4 { font-family: var(--font-heading); color: var(--color-green-dark); margin: 0 0 0.4rem; font-size: 1.1rem; }
+        .schedule-card p { margin: 0 0 0.35rem; color: var(--color-gray-700); line-height: 1.55; }
+        .schedule-card .note { font-size: 0.85rem; color: var(--color-gray-500); }
+        .summer-banner { background: var(--color-green-light); border-radius: 10px; padding: 1.5rem 2rem; text-align: center; margin-bottom: 1.5rem; }
+        .summer-banner .summer-title { font-family: var(--font-heading); font-weight: 700; color: var(--color-green-dark); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 0.5rem; }
+        .summer-banner p { margin: 0.2rem 0; font-size: 1.05rem; font-weight: 600; color: var(--color-gray-800); }
+
+        .cost-card { background: var(--color-off-white); border: 1px solid var(--color-gray-200); border-left: 4px solid var(--color-accent); border-radius: 0 8px 8px 0; padding: 1.5rem 1.75rem; }
+        .cost-card h4 { font-family: var(--font-heading); color: var(--color-green-dark); margin: 0 0 0.6rem; font-size: 1.1rem; }
+        .cost-card p { margin: 0; color: var(--color-gray-700); line-height: 1.7; font-size: 1rem; }
+
+        .contact-callout { background: var(--color-green-dark); color: white; border-radius: 12px; padding: 2rem 2.5rem; text-align: center; max-width: 760px; margin: 0 auto; }
+        .contact-callout p { margin: 0 0 0.75rem; font-size: 1.1rem; opacity: 0.95; }
+        .contact-callout a.phone { display: inline-block; font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--color-yellow); text-decoration: none; }
+        .contact-callout a.phone:hover { text-decoration: underline; }
+
+        .flyer-card { display: flex; align-items: center; gap: 1.5rem; background: white; padding: 1.5rem 1.75rem; border-radius: 10px; border: 1px solid var(--color-gray-200); box-shadow: 0 1px 6px rgba(0,0,0,0.04); text-decoration: none; max-width: 520px; margin: 2rem auto 0; transition: box-shadow 0.2s, transform 0.2s; }
+        .flyer-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .flyer-card img { width: 120px; height: auto; border: 1px solid var(--color-gray-200); border-radius: 4px; flex-shrink: 0; }
+        .flyer-card .flyer-text strong { display: block; color: var(--color-gray-900); font-size: 1.05rem; margin-bottom: 0.25rem; }
+        .flyer-card .flyer-text span { font-size: 0.9rem; color: var(--color-gray-500); }
+
+        /* Breadcrumb */
+        .breadcrumb-bar { background: var(--color-off-white); border-bottom: 1px solid var(--color-gray-200); padding: 0.6rem 0; }
+        .breadcrumb-bar__inner { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--color-gray-600); flex-wrap: wrap; }
+        .breadcrumb-bar__inner ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+        .breadcrumb-bar__inner li { display: inline-flex; align-items: center; }
+        .breadcrumb-bar__inner li:not(:last-child)::after { content: "\f054"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 0.65rem; color: var(--color-gray-400); margin-left: 0.4rem; }
+        .breadcrumb-bar__inner a { color: var(--color-green); text-decoration: none; }
+        .breadcrumb-bar__current { color: var(--color-gray-700); font-weight: 500; }
+
+        @media screen and (max-width: 768px) {
+            .program-hero__inner { grid-template-columns: 1fr; min-height: auto; }
+            .program-hero__text { padding: 3rem 1.5rem; }
+            .program-hero__image { min-height: 220px; }
+            .schedule-grid { grid-template-columns: 1fr; }
+            .flyer-card { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- CAMPUS UTILITY BAR (current Clearwater chrome) -->
+    <div class="utility-bar utility-bar--campus">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                 <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> 727.538.7167</a>
+                 <span class="utility-bar__divider">|</span>
+                 <a href="campus-maps.html#clearwater"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 6100 154th Ave N, Clearwater, FL</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener"><i class="fas fa-desktop" aria-hidden="true"></i> Canvas Login</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener"><i class="fas fa-user-graduate" aria-hidden="true"></i> SIS Portal / Focus</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> PTC Main Site</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="stpete.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> St. Petersburg Campus</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAMPUS HEADER (current Clearwater chrome) -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="clearwater.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Clearwater Campus" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Clearwater Campus</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="programs.html" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                                        <li><a href="adult-education-pathways.html">Distance Learning</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item"><a href="apprenticeships-workforce.html" class="main-nav__link">Apprenticeships</a></li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="clearwater-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="clearwater-admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="clearwater-admissions.html#testing">Placement Testing</a></li>
+                                        <li><a href="clearwater-tuition.html">Tuition &amp; Financial Aid</a></li>
+                                        <li><a href="clearwater-military-veteran-resources.html">Military &amp; Veteran Resources</a></li>
+                                        <li><a href="clearwater-counselors.html">Meet Your Counselors</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="schedule-clearwater.html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="clearwater-student-services.html">Student Services Hours</a></li>
+                                        <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
+                                        <li><a href="clearwater-records-request.html">Record Request</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="clearwater-about.html" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="clearwater-about.html">About This Campus</a></li>
+                                        <li><a href="campus-maps.html#clearwater">Map &amp; Directions</a></li>
+                                        <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
+                                        <li><a href="employers.html">For Employers</a></li>
+                                        <li><a href="consumer-information.html">Consumer Information</a></li>
+                                        <li><a href="clearwater-contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a href="https://apply.myptc.edu/" class="btn btn--primary btn--sm site-header__cta" target="_blank" rel="noopener">Apply Now</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- BREADCRUMBS -->
+        <div class="breadcrumb-bar">
+            <nav class="container breadcrumb-bar__inner" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li class="breadcrumb-bar__current" aria-current="page">ABE-GED-ASB</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- HERO -->
+        <section class="program-hero">
+            <div class="container">
+                <div class="program-hero__inner">
+                    <div class="program-hero__text">
+                        <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--color-accent); font-weight: 700; font-size: 0.9rem;">Clearwater Campus</p>
+                        <h1 style="font-family: var(--font-heading); font-size: clamp(2.25rem, 5vw, 3.25rem); margin-bottom: 1rem; line-height: 1.1;">GED, Adult Basic Education &amp; Academic Skills Building</h1>
+                        <p style="font-size: 1.15rem; line-height: 1.6; opacity: 0.95; max-width: 540px; margin-bottom: 0;">Pinellas Technical College offers GED and Adult Basic Education at both of its campuses, and we have an award-winning ESOL (English for Speakers of Other Languages) program on our Clearwater campus.</p>
+                    </div>
+                    <div class="program-hero__image">
+                        <img src="assets/images/content/abe-ged-clearwater.jpg" alt="Adult education at Pinellas Technical College Clearwater">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABE-GED-ASB @ PTC -->
+        <section class="info-section" style="background: white;">
+            <div class="container">
+                <p class="lead-mission">Our mission is to prepare students for academic, technical, and personal success. Our staff strives to inspire and motivate students to become productive, self-sufficient members of society.</p>
+
+                <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-800);">PTC's adult education programs offer self-paced learning centers with a staff of experienced instructors and the following classes:</p>
+                <ul class="info-list">
+                    <li>Adult Basic Education (ABE)</li>
+                    <li>Academic Skills Building (ASB)</li>
+                    <li>GED Preparation</li>
+                    <li><a href="esol-clearwater.html">English for Speakers of Other Languages (ESOL)</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- GETTING STARTED -->
+        <section class="info-section" style="background: var(--color-off-white);">
+            <div class="container">
+                <h2 class="label-heading">Getting Started</h2>
+                <ul class="info-list">
+                    <li><strong>Choose a career</strong> from the many programs offered by Pinellas Technical College, OR <strong>get your GED</strong>. See a guidance counselor for assistance.</li>
+                    <li>Take the CASAS test - make sure to bring a photo ID (required) and dress according to PCSB dress code when you come to test; arrive 30 minutes prior to the scheduled testing time. <strong>For the CASAS test schedule and locations, please <a href="clearwater-admissions.html#testing">click here</a>.</strong></li>
+                    <li>You will receive your test results as soon as you finish testing!</li>
+                    <li>An individualized plan of study will be created for you, to help you meet your goals - there are both day and evening, self-paced classes that will fit into your busy schedule.</li>
+                    <li>It's really pretty simple ... <strong>all you need to do is get started!</strong></li>
+                </ul>
+                <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-800); margin-top: 1.5rem;">Day and evening classes are available, attendance is flexible, and the curriculum is tailored to fit your needs.</p>
+            </div>
+        </section>
+
+        <!-- CLASS SCHEDULES -->
+        <section class="info-section" style="background: white;">
+            <div class="container">
+                <h2 class="label-heading" style="text-align: center;">Class Schedules</h2>
+
+                <div class="summer-banner">
+                    <p class="summer-title">Summer Hours</p>
+                    <p>Daytime | 7:00 am - 2:30 pm, Mon-Thu</p>
+                    <p>Evening | 5:30 - 8:30 pm, Mon-Thu (all year)</p>
+                </div>
+
+                <div class="schedule-grid">
+                    <div class="schedule-card">
+                        <h4>Clearwater &middot; Day</h4>
+                        <p>7:00a - 1:15p, M - F</p>
+                        <p class="note">(Classroom closes daily 11:30a-noon for break)</p>
+                    </div>
+                    <div class="schedule-card">
+                        <h4>Clearwater &middot; Evening</h4>
+                        <p>5:30p - 8:30p, M - Th</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COST -->
+        <section class="info-section" style="background: var(--color-off-white);">
+            <div class="container">
+                <div class="cost-card">
+                    <h4><i class="fas fa-dollar-sign" style="margin-right: 0.4rem;" aria-hidden="true"></i> Cost</h4>
+                    <p>The cost per term is $45. In addition, a $5 fee for an identification badge will be required of all students, and there may be an additional $5 fee for parking (if applicable).</p>
+                </div>
+                <p style="text-align: center; margin-top: 1.5rem;"><a href="clearwater-tuition.html" style="color: var(--color-green); font-weight: 600; text-decoration: none;">See Tuition &amp; Fees details &rarr;</a></p>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="info-section" style="background: white;">
+            <div class="container">
+                <div class="contact-callout">
+                    <p>For more information about our ABE-GED programs, contact PTC - Clearwater campus:</p>
+                    <a class="phone" href="tel:7275387167,2076">(727) 538-7167 ext. 2076</a>
+                </div>
+
+                <!-- Program flyer (links to live resource-manager PDF, verbatim) -->
+                <a class="flyer-card" href="https://clearwater.myptc.edu/fs/resource-manager/view/76a47677-fd99-4627-b052-eee85834c435" target="_blank" rel="noopener">
+                    <img src="https://resources.finalsite.net/images/f_auto,q_auto/v1757939152/myptecorg/j647fjp1dmgysffdbyhn/abe-ged-asb_welcometree_2023-24_06122023.png" alt="ABE GED ASB welcome flyer">
+                    <div class="flyer-text">
+                        <strong>Program Flyer</strong>
+                        <span>Click on the flyer graphic to download the PDF</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- BACK TO ALL PROGRAMS -->
+        <div style="padding: 0 0 4rem; text-align: center; background: white;">
+            <a href="programs.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-green); font-weight: 600; text-decoration: none; font-size: 1.05rem;"><i class="fas fa-arrow-left" aria-hidden="true"></i> Explore Programs</a>
+        </div>
+    </main>
+
+    <!-- SITE FOOTER (current Clearwater chrome) -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline"><strong>6100 154th Ave N, Clearwater, FL 33760</strong><br>
+                    Phone: 727.538.7167<br>
+                    Preparing students for high-demand careers through hands-on, industry-certified training since 1962.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/pinellastechnical/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/PinellasTechCollege/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://x.com/PinellasTech" target="_blank" rel="noopener" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@pinellastechnicalcollege8910" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/school/pinellas-technical-college" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <p class="footer__col-title">Quick Links</p>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="clearwater-admissions.html">Clearwater Admissions</a></li>
+                            <li><a href="clearwater-tuition.html">Tuition &amp; Aid</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Clearwater Links</p>
+                        <ul>
+                            <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                            <li><a href="clearwater-tuition.html">Tuition &amp; Financial Aid</a></li>
+                            <li><a href="clearwater-counselors.html">Meet Your Counselors</a></li>
+                            <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
+                            <li><a href="campus-maps.html#clearwater">Campus Map &amp; Directions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Resources</p>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
+                            <li><a href="clearwater-contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#non-discrimination">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

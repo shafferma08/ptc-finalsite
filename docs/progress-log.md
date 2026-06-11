@@ -2869,3 +2869,28 @@ Marianne's pick after Programs completed. Two loose ends closed.
 **Electricity 1 (CLW):** Marianne confirmed Electricity and Electricity 1 are DISTINCT programs. Built `electricity-1-clearwater.html` (C400500, 750 hours, 2 courses: Electrician Helper BCV0603 300h + Residential Electrician BCV0640 450h) vs the existing Electricity page (I460312, 1,200 hours, 3 courses incl. Commercial Electrician). Verbatim, no cross-contamination between the two pages, FLRTW byte-identical, hero pulled, "Al"->"AI" fix. Wired: new CLW-only "Electricity 1" grid card (programs.html now 46 cards) + sitemap CLW list.
 
 **Live content discovery (answering Marianne's "does live have those pages?"):** YES. The four nav Explore items that were `#` all have real live pages under the campus `/programs/` trees (per-campus slugs): Dual Enrollment (clw/stp), ABE/GED (clearwater-abe-ged-asb / abe-ged-lakewood-community), ESOL (esol-ptc-clearwater / esol-lakewood-community), Distance Learning (clw/stp, each + a cost sub-page), and Student Orgs (shared career-technical-student-organizations). They were "no target" only because no REDESIGN page exists yet, not because live lacks them. Logged as a candidate **Wave 7 — Adult Ed & Pathways** (~9-11 pages, per-campus, verbatim). Distance Learning is Marianne's incoming coordinator domain, so likely a priority within that wave. Corrected the nav follow-up row (was "no target page / need pages or removal" -> "live pages exist, build then wire").
+
+---
+
+## 2026-06-11 — Wave 7 (Adult Ed & Pathways): 9 pages built + verified
+
+Built the live content area discovered when checking the `#` Explore nav items. 9 pages, 2 batches (5 + 4) to stay under session limits.
+
+**Built:** dual-enrollment-{clearwater,stpete}, abe-ged-{clearwater,stpete}, esol-{clearwater,stpete}, distance-learning-{clearwater,stpete} (each with its live "cost" sub-page folded in as a Cost section), and student-organizations.html (shared institutional page; CLW carries a 5th org "Student Council" tagged Clearwater-only). Treated as INFORMATIONAL pathway pages, not OCP programs (no forced course/code/FLRTW modules).
+
+**Key findings:**
+- **STP ABE/GED and STP ESOL live pages are published EMPTY STUBS** (no body content, pageids 1340/1341, published 2025-09-22). Builders correctly did NOT fabricate; built minimal "information coming" pages with verbatim title + campus routing and flagged the stubs for the STP campus to populate. (CLW ABE/GED + ESOL are fully populated.)
+- **Distance Learning still references "Blackboard"** as the LMS on live; kept verbatim (PTC is on Canvas now) and flagged. Distance Learning is Marianne's incoming coordinator domain; built verbatim, expansion deferred to her.
+- Dual Enrollment STP lists 16 programs (linked to existing redesign pages where they exist; Television Production Technology + generic "Master Automotive Service Technology" left as text, no clean redesign target). Live had 2 broken empty `<a>` tags + 2 typos (fixed on redesign, flagged).
+
+**Verification:** 3 content-heavy pages (dual-enrollment-stpete, distance-learning-clearwater, esol-clearwater) Comparator-verified PASS (0 fabrications, Blackboard preserved, 8 ESOL translated-flyer links intact). Mechanical sweep clean across all 9 (0 body em dashes). The 2 STP stubs + thin pages got a lighter check.
+
+**Cross-links fixed:** abe-ged-clearwater body ESOL link + nav -> esol-clearwater.html; esol-clearwater "Return to GED" -> abe-ged-clearwater.html.
+
+**Nav + sitemap:** new "Adult Education & Pathways" sitemap card (all 9 pages, campus-labeled). Student Orgs Explore nav item wired -> student-organizations.html (15 institutional pages). PENDING (IA decision for Marianne): the per-campus Explore items Dual Enrollment / Distance Learning / ABE-GED-ESOL are still `#` because each is a single institutional link with per-campus destinations; needs either an "Adult Education & Pathways" landing hub (apprenticeships-workforce.html precedent) or CLW-default routing.
+
+**Remaining:** the Explore-item nav wiring (pending IA decision), STP stub population (live owners), Distance Learning expansion (Marianne's domain). All uncommitted.
+
+## 2026-06-11 — Adult Education & Pathways hub built + Explore nav wired (Marianne's call)
+
+Marianne chose the hub option. Built `adult-education-pathways.html` (institutional landing, sibling of apprenticeships-workforce.html): hero + 5 cards (Dual Enrollment, Distance Learning, ABE/GED, ESOL each dual-campus + Student Organizations single) + cross-links to programs.html and apprenticeships-workforce.html. Wired the 3 per-campus Explore nav items (Dual Enrollment, Distance Learning, ABE/GED/ESOL) -> adult-education-pathways.html across 128 files (also caught the coming-soon.html "Distance Learning" stragglers on the Wave 7 campus pages). Student Orgs Explore item already -> student-organizations.html. Added the hub as the overview link atop the sitemap "Adult Education & Pathways" card. Verified: hub 0 body em dashes, all destination links resolve, Explore items confirmed pointing to the hub on institutional pages. Only the legacy scaffolds (campus-template, program-page-preview, _templates/campus-landing) retain `#` for these labels. Wave 7 fully wired + reachable.

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  INFORMATIONAL PATHWAY PAGE · ESOL | Lakewood Community · St. Petersburg Campus
+  Built from CURRENT St. Petersburg campus chrome (modeled on surgical-technology-stpete.html).
+  Content source: stpete.myptc.edu/programs/esol-lakewood-community
+  (extract saved at docs/audit/programs/extracted/wave7/esol-stpete.md).
+  NOTE: the live St. Petersburg ESOL page is a PUBLISHED-BUT-EMPTY STUB. The live main content
+  region (fsPageContent) carries ONLY the page title "ESOL | Lakewood Community" with no body,
+  no levels, no schedule, no cost, no contacts, no flyers, no hero image.
+  Per the verbatim rule we do NOT borrow content from the Clearwater ESOL sibling (a different
+  campus). This redesign page carries the verbatim title framing plus a minimal "more information
+  coming" line and helper cross-links to Programs + St. Petersburg Tuition. The empty-live-page
+  gap is logged in docs/audit/follow-ups.md for the STP page owner to populate.
+  No photographic hero on live (clean text hero used). No translated flyers on the St. Pete page.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESOL | Lakewood Community - St. Petersburg Campus &mdash; Pinellas Technical College</title>
+    <meta name="description" content="ESOL (English for Speakers of Other Languages) at Pinellas Technical College, St. Petersburg, runs with the Lakewood Community location.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* INFORMATIONAL PATHWAY PAGE STYLES (lightweight, token-based) */
+        .pathway-hero { background: linear-gradient(135deg, var(--color-green-dark) 0%, #004d29 100%); color: white; padding: 4rem 0; }
+        .pathway-hero p.eyebrow { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--color-accent); font-weight: 700; font-size: 0.9rem; }
+        .pathway-hero h1 { color: #fff; font-family: var(--font-heading); font-size: clamp(2.25rem, 5vw, 3.5rem); margin-bottom: 1rem; line-height: 1.1; }
+        .pathway-hero p.lead { font-size: 1.2rem; line-height: 1.6; opacity: 0.95; max-width: 640px; margin-bottom: 0; }
+        .info-card { background: white; border: 1px solid var(--color-gray-200); padding: 1.75rem; border-radius: 0 8px 8px 0; }
+        .info-card--green { border-left: 4px solid var(--color-green); }
+        .info-card--accent { border-left: 4px solid var(--color-accent); }
+        .info-card h3 { font-family: var(--font-heading); color: var(--color-green-dark); margin: 0 0 0.9rem; font-size: 1.25rem; }
+        .info-card p { font-size: 1rem; color: var(--color-gray-700); line-height: 1.7; margin: 0 0 0.5rem; }
+        .info-card p:last-child { margin-bottom: 0; }
+        .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+        .help-card { display: flex; align-items: center; gap: 1.25rem; background: white; padding: 1.25rem 1.5rem; border-radius: 10px; border: 1px solid var(--color-gray-200); box-shadow: 0 1px 6px rgba(0,0,0,0.04); text-decoration: none; transition: box-shadow 0.2s, transform 0.2s; }
+        .help-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .help-icon { width: 46px; height: 46px; background: var(--color-green-light, #e6f3ec); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .help-icon i { color: var(--color-green); font-size: 1.4rem; }
+        /* Breadcrumb */
+        .breadcrumb-bar { background: var(--color-off-white); border-bottom: 1px solid var(--color-gray-200); padding: 0.6rem 0; }
+        .breadcrumb-bar__inner { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--color-gray-600); flex-wrap: wrap; }
+        .breadcrumb-bar__inner ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+        .breadcrumb-bar__inner li { display: inline-flex; align-items: center; }
+        .breadcrumb-bar__inner li:not(:last-child)::after { content: "\f054"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 0.65rem; color: var(--color-gray-400); margin-left: 0.4rem; }
+        .breadcrumb-bar__inner a { color: var(--color-green); text-decoration: none; }
+        .breadcrumb-bar__current { color: var(--color-gray-700); font-weight: 500; }
+        @media screen and (max-width: 768px) {
+            .help-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- CAMPUS UTILITY BAR (current St. Petersburg chrome) -->
+    <div class="utility-bar utility-bar--campus">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                 <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> 727.893.2500</a>
+                 <span class="utility-bar__divider">|</span>
+                 <a href="campus-maps.html#stpete"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 901 34th St S, St. Petersburg, FL</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener"><i class="fas fa-desktop" aria-hidden="true"></i> Canvas Login</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener"><i class="fas fa-user-graduate" aria-hidden="true"></i> SIS Portal / Focus</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> PTC Main Site</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="clearwater.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Clearwater Campus</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAMPUS HEADER (current St. Petersburg chrome) -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="stpete.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, St. Petersburg Campus" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">St. Petersburg Campus</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="programs.html" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                                        <li><a href="adult-education-pathways.html">Distance Learning</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item"><a href="apprenticeships-workforce.html" class="main-nav__link">Apprenticeships</a></li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="stpete-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="stpete-admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="stpete-admissions.html#testing">Placement Testing</a></li>
+                                        <li><a href="stpete-tuition.html">Tuition &amp; Financial Aid</a></li>
+                                        <li><a href="stpete-counselors.html">Meet Your Counselors</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="schedule-stpete.html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="stpete-student-services.html">Student Services Hours</a></li>
+                                        <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
+                                        <li><a href="stpete-records-request.html">Record Request</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="stpete-about.html" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="stpete-about.html">About This Campus</a></li>
+                                        <li><a href="campus-maps.html#stpete">Map &amp; Directions</a></li>
+                                        <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
+                                        <li><a href="employers.html">For Employers</a></li>
+                                        <li><a href="consumer-information.html">Consumer Information</a></li>
+                                        <li><a href="stpete-contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a href="https://apply.myptc.edu/" class="btn btn--primary btn--sm site-header__cta" target="_blank" rel="noopener">Apply Now</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- BREADCRUMBS -->
+        <div class="breadcrumb-bar">
+            <nav class="container breadcrumb-bar__inner" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li class="breadcrumb-bar__current" aria-current="page">ESOL</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- HERO (clean text hero; live has no photographic banner and no body content) -->
+        <section class="pathway-hero">
+            <div class="container">
+                <p class="eyebrow">St. Petersburg Campus &middot; Adult Education</p>
+                <h1>ESOL | Lakewood Community</h1>
+                <p class="lead">English for Speakers of Other Languages at Pinellas Technical College, St. Petersburg, runs with the Lakewood Community location.</p>
+            </div>
+        </section>
+
+        <!-- MORE INFORMATION COMING (live page is an empty stub; no schedule/cost/contacts/flyers exist to import) -->
+        <section style="padding: 4rem 0; background: white;">
+            <div class="container" style="max-width: 820px;">
+                <div class="info-card info-card--accent">
+                    <h3><i class="fas fa-circle-info" style="margin-right: 0.4rem;" aria-hidden="true"></i> More information is coming</h3>
+                    <p>Full details for the St. Petersburg ESOL program at the Lakewood Community location, including class schedule, cost, and how to register, are being prepared for this page.</p>
+                    <p>In the meantime, the links below can help you get started, or you can reach the St. Petersburg campus at (727) 893-2500.</p>
+                </div>
+
+                <div class="help-grid">
+                    <a class="help-card" href="programs.html">
+                        <div class="help-icon"><i class="fas fa-compass" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Explore Programs</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Browse all PTC programs</span></div>
+                    </a>
+                    <a class="help-card" href="stpete-tuition.html">
+                        <div class="help-icon"><i class="fas fa-dollar-sign" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Tuition &amp; Fees</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">St. Petersburg costs and aid</span></div>
+                    </a>
+                    <a class="help-card" href="stpete-contact.html">
+                        <div class="help-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Contact Us</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">St. Petersburg campus</span></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SITE FOOTER (current St. Petersburg chrome) -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline"><strong>901 34th St S, St. Petersburg, FL 33711</strong><br>
+                    Phone: 727.893.2500<br>
+                    Preparing students for high-demand careers through hands-on, industry-certified training since 1962.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/pinellastechnical/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/PinellasTechCollege/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://x.com/PinellasTech" target="_blank" rel="noopener" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@pinellastechnicalcollege8910" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/school/pinellas-technical-college" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <p class="footer__col-title">Quick Links</p>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="stpete-admissions.html">St. Petersburg Admissions</a></li>
+                            <li><a href="stpete-tuition.html">Tuition &amp; Aid</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">St. Petersburg Links</p>
+                        <ul>
+                            <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                            <li><a href="stpete-tuition.html">Tuition &amp; Financial Aid</a></li>
+                            <li><a href="stpete-counselors.html">Meet Your Counselors</a></li>
+                            <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
+                            <li><a href="campus-maps.html#stpete">Campus Map &amp; Directions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Resources</p>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
+                            <li><a href="stpete-contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#non-discrimination">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

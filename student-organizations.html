@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career &amp; Technical Student Organizations — Pinellas Technical College</title>
+    <meta name="description" content="Career and technical student organizations at Pinellas Technical College, including FBLA-PBL, the National Technical Honor Society, SkillsUSA, Student Council, and the Society of Manufacturing Engineers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Student Organizations Page Styles */
+        .page-hero {
+            background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
+            color: #fff;
+            padding: 4rem 0 3rem;
+        }
+        .page-hero__breadcrumb {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            opacity: 0.85;
+        }
+        .page-hero__breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+        .page-hero__breadcrumb li { display: inline-flex; align-items: center; }
+        .page-hero__breadcrumb li:not(:last-child)::after { content: "\203A"; padding-left: 0.35rem; opacity: 0.7; }
+        .page-hero__breadcrumb a {
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .page-hero__title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 0.75rem;
+        }
+        .page-hero__subtitle {
+            font-size: 1.15rem;
+            max-width: 720px;
+            opacity: 0.92;
+            line-height: 1.6;
+        }
+
+        .so-section {
+            padding: 4rem 0;
+        }
+        .so-section__heading {
+            font-family: var(--font-heading);
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin: 0 0 0.5rem;
+        }
+        .so-section__subtext {
+            font-size: 1.05rem;
+            color: var(--color-gray-700, #4a5568);
+            max-width: 720px;
+            line-height: 1.6;
+            margin: 0 0 2rem;
+        }
+
+        .org-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.75rem;
+            margin-top: 0.5rem;
+        }
+        .org-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border: 1px solid #e8ecf1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .org-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .org-card__head {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        .org-card__icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--color-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+        .org-card__title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--color-gray-900);
+            margin: 0;
+            align-self: center;
+        }
+        .org-card__body p {
+            font-size: 0.975rem;
+            color: var(--color-gray-700, #4a5568);
+            line-height: 1.65;
+            margin: 0;
+        }
+        .campus-badge {
+            display: inline-block;
+            background: var(--color-yellow, #FFCF01);
+            color: var(--color-gray-900);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* CTA Band */
+        .cta-band {
+            background: var(--color-gray-900, #1a202c);
+            color: #fff;
+            text-align: center;
+            padding: 3.5rem 0;
+        }
+        .cta-band h2 {
+            font-family: var(--font-heading);
+            font-size: 1.85rem;
+            font-weight: 700;
+            margin: 0 0 0.75rem;
+        }
+        .cta-band p {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            margin: 0 0 2rem;
+            max-width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-band__actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cta-band .btn-yellow {
+            background: var(--color-yellow, #FFCF01);
+            color: var(--color-gray-900);
+            padding: 0.9rem 2.25rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+        .cta-band .btn-yellow:hover {
+            opacity: 0.88;
+        }
+        .cta-band .btn-outline-white {
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 0.9rem 2.25rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        .cta-band .btn-outline-white:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 900px) {
+            .org-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .page-hero__title { font-size: 1.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- UTILITY BAR -->
+    <div class="utility-bar">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> Clearwater: 727.538.7167</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> St. Pete: 727.893.2500</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.pcsb.org" target="_blank" rel="noopener"><i class="fas fa-building" aria-hidden="true"></i> District Home</a>
+                <a href="https://www.myptc.edu/student-links" target="_blank" rel="noopener"><i class="fas fa-user" aria-hidden="true"></i> Student Portal</a>
+                <a href="https://apply.myptc.edu/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Apply Now</a>
+                <a href="https://www.myptc.edu/about-us/all-ptc-news" target="_blank" rel="noopener"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Events</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER / NAVIGATION -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="index.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Opportunity Starts Here" id="header-logo" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Opportunity Starts Here</span>
+                </div>
+            </a>
+            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="programs.html" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <p class="dropdown__column-title">By Category</p>
+                                    <ul>
+                                        <li><a href="programs.html?cluster=health">Health Sciences</a></li>
+                                        <li><a href="programs.html?cluster=it">Information Technology</a></li>
+                                        <li><a href="programs.html?cluster=trades">Skilled Trades &amp; Construction</a></li>
+                                        <li><a href="programs.html?cluster=transportation">Transportation &amp; Logistics</a></li>
+                                        <li><a href="programs.html?cluster=culinary">Culinary &amp; Hospitality</a></li>
+                                        <li><a href="programs.html?cluster=cosmo">Cosmetology &amp; Barbering</a></li>
+                                        <li><a href="programs.html?cluster=business">Business &amp; Office</a></li>
+                                        <li><a href="programs.html?cluster=arts">Arts, Media &amp; Education</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <p class="dropdown__column-title">Explore</p>
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="workforce-continuing-education.html">Evening &amp; Part-Time</a></li>
+                                        <li><a href="apprenticeships-workforce.html">Apprenticeships</a></li>
+                                        <li><a href="adult-education-pathways.html">Dual Enrollment</a></li>
+                                        <li><a href="adult-education-pathways.html">Distance Learning</a></li>
+                                        <li><a href="adult-education-pathways.html">ABE / GED / ESOL</a></li>
+                                        <li><a href="student-organizations.html">Student Orgs</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item"><a href="apprenticeships-workforce.html" class="main-nav__link">Apprenticeships</a></li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="admissions.html" class="main-nav__link">Admissions <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="admissions.html#enrollment-steps">Enrollment Steps</a></li>
+                                        <li><a href="admissions.html#pathways">Transfer Students</a></li>
+                                        <li><a href="admissions.html#pathways">Readmission</a></li>
+                                        <li><a href="admissions.html#testing">Testing &amp; Assessment</a></li>
+                                        <li><a href="admissions.html#campus-tours">Campus Visits &amp; Shadowing</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="tuition-aid.html" class="main-nav__link">Tuition &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="tuition-aid.html#rates">Tuition &amp; Fee Rates</a></li>
+                                        <li><a href="tuition-aid.html#pay">Pay Tuition</a></li>
+                                        <li><a href="tuition-aid.html#fafsa">FAFSA &amp; Eligibility</a></li>
+                                        <li><a href="tuition-aid.html#federal-state">Federal &amp; State Funding</a></li>
+                                        <li><a href="tuition-aid.html#scholarships">Scholarships</a></li>
+                                        <li><a href="tuition-aid.html#veterans">Veterans Benefits</a></li>
+                                        <li><a href="tuition-aid.html#net-price">Net Price Calculator</a></li>
+                                        <li><a href="tuition-aid.html#refund">Refund Policy</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="campus-maps.html" class="main-nav__link">Campuses <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <p class="dropdown__column-title">Clearwater</p>
+                                    <ul>
+                                        <li><a href="clearwater.html">Clearwater Campus Home</a></li>
+                                        <li><a href="clearwater-about.html">About the Clearwater Campus</a></li>
+                                        <li><a href="schedule-clearwater.html">Clearwater Schedule</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown__column">
+                                    <p class="dropdown__column-title">St. Petersburg</p>
+                                    <ul>
+                                        <li><a href="stpete.html">St. Petersburg Campus Home</a></li>
+                                        <li><a href="stpete-about.html">About the St. Petersburg Campus</a></li>
+                                        <li><a href="schedule-stpete.html">St. Pete Schedule</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="student-resources.html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener">Focus / SIS Portal</a></li>
+                                        <li><a href="schedule-clearwater.html">Clearwater Schedule</a></li>
+                                        <li><a href="schedule-stpete.html">St. Pete Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/about-us/welcome-to-ptc/how-to-request-your-student-records-from-ptc" target="_blank" rel="noopener">Transcript Request</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="about.html" class="main-nav__link">About PTC <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="about.html">Welcome &amp; History</a></li>
+                                        <li><a href="about.html#accreditation">Accreditation</a></li>
+                                        <li><a href="about.html#leadership">Staff Directory</a></li>
+                                        <li><a href="consumer-information.html">Consumer Information</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="site-header__actions">
+                <button class="search-toggle" id="search-toggle" aria-label="Search">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+        <div class="search-overlay" id="search-overlay">
+            <div class="container">
+                <form class="search-form" role="search" aria-label="Site Search">
+                    <label for="search-input" class="sr-only">Search</label>
+                    <input type="search" placeholder="Search programs, courses, and more..." class="search-form__input" id="search-input">
+                    <button type="submit" class="search-form__btn" id="search-submit"><i class="fas fa-search" aria-hidden="true"></i><span class="sr-only">Submit search</span></button>
+                    <button type="button" class="search-form__close" id="search-close"><i class="fas fa-times" aria-hidden="true"></i><span class="sr-only">Close search</span></button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- PAGE HERO -->
+        <section class="page-hero">
+            <div class="container">
+                <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li aria-current="page">Student Organizations</li>
+                    </ol>
+                </nav>
+                <h1 class="page-hero__title">Career &amp; Technical Student Organizations</h1>
+                <p class="page-hero__subtitle">Pinellas Technical College students can take part in career and technical student organizations that build leadership, recognize achievement, and connect students with their industry.</p>
+            </div>
+        </section>
+
+        <!-- ORGANIZATIONS SECTION -->
+        <section class="so-section" id="organizations">
+            <div class="container">
+                <h2 class="so-section__heading">Our Student Organizations</h2>
+                <p class="so-section__subtext">PTC's career and technical student organizations are offered across the Clearwater and St. Petersburg campuses.</p>
+
+                <div class="org-grid">
+
+                    <div class="org-card">
+                        <div class="org-card__head">
+                            <div class="org-card__icon"><i class="fas fa-briefcase" aria-hidden="true"></i></div>
+                            <h3 class="org-card__title">Future Business Leaders of America - Phi Beta Lambda (FBLA-PBL)</h3>
+                        </div>
+                        <div class="org-card__body">
+                            <p>Future Business Leaders of America - Phi Beta Lambda is a dynamic organization of young people preparing for success as leaders in our businesses, government, and communities. It is the largest and oldest business student organization in the world. Membership and career recognition programs are designed to provide additional personal and chapter development opportunities.</p>
+                        </div>
+                    </div>
+
+                    <div class="org-card">
+                        <div class="org-card__head">
+                            <div class="org-card__icon"><i class="fas fa-award" aria-hidden="true"></i></div>
+                            <h3 class="org-card__title">National Technical Honor Society</h3>
+                        </div>
+                        <div class="org-card__body">
+                            <p>NTHS is the acknowledged leader in the recognition of outstanding student achievement in career and technical education. NTHS encourages higher scholastic achievement, cultivates a desire for personal excellence, and helps top students find success in today's highly competitive workplace.</p>
+                        </div>
+                    </div>
+
+                    <div class="org-card">
+                        <div class="org-card__head">
+                            <div class="org-card__icon"><i class="fas fa-trophy" aria-hidden="true"></i></div>
+                            <h3 class="org-card__title">SkillsUSA</h3>
+                        </div>
+                        <div class="org-card__body">
+                            <p>SkillsUSA promotes high standards in work ethics, craftsmanship, scholarship, and safety, while it fosters a deep respect for the dignity of work. An integral part of SkillsUSA is the series of leadership and technical competitions beginning locally, and progressing to regional, state, and national competition.</p>
+                        </div>
+                    </div>
+
+                    <div class="org-card">
+                        <div class="org-card__head">
+                            <div class="org-card__icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                            <h3 class="org-card__title">PTC Clearwater - Student Council <span class="campus-badge">Clearwater</span></h3>
+                        </div>
+                        <div class="org-card__body">
+                            <p>The Pinellas Technical College Clearwater Student Council is a student-run organization that represents and advocates for all students on campus.</p>
+                            <p>The Student Council is a body composed of elected and appointed student representatives which meets regularly to discuss matters of general concern regarding students. The assembly acts as a liaison between the student body and the faculty, staff and administration by presenting proposals, programs, activities, and resolutions.</p>
+                        </div>
+                    </div>
+
+                    <div class="org-card">
+                        <div class="org-card__head">
+                            <div class="org-card__icon"><i class="fas fa-industry" aria-hidden="true"></i></div>
+                            <h3 class="org-card__title">Society of Manufacturing Engineers - SME</h3>
+                        </div>
+                        <div class="org-card__body">
+                            <p>SME serves the manufacturing industry by promoting advanced manufacturing technology and developing a skilled workforce. SME student membership links you with the latest in what's happening in manufacturing, industry trends and developments.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA BAND -->
+        <section class="cta-band">
+            <div class="container">
+                <h2>Explore Programs at PTC</h2>
+                <p>Find the career and technical program that fits your goals at the Clearwater and St. Petersburg campuses.</p>
+                <div class="cta-band__actions">
+                    <a href="programs.html" class="btn-yellow">Explore Programs</a>
+                    <a href="admissions.html" class="btn-outline-white">Start Your Application</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline">Preparing students for high-demand careers through hands-on, industry-certified training since 1962.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/pinellastechnical/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/PinellasTechCollege/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://x.com/PinellasTech" target="_blank" rel="noopener" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@pinellastechnicalcollege8910" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/school/pinellas-technical-college" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <p class="footer__col-title">Quick Links</p>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="admissions.html">Admissions</a></li>
+                            <li><a href="tuition-aid.html">Tuition &amp; Aid</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Campuses</p>
+                        <ul>
+                            <li><a href="clearwater.html">Clearwater Campus</a></li>
+                            <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                            <li><a href="campus-maps.html">Campus Maps</a></li>
+                            <li><a href="admissions.html#campus-tours">Schedule a Visit</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Resources</p>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#non-discrimination">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

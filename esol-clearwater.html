@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  INFORMATIONAL PATHWAY PAGE · ESOL (English for Speakers of Other Languages) · Clearwater Campus
+  Built from CURRENT Clearwater campus chrome (modeled on practical-nursing-clearwater.html).
+  Content verbatim from clearwater.myptc.edu/programs/esol-ptc-clearwater
+  (extract saved at docs/audit/programs/extracted/wave7/esol-clearwater.md).
+  NOT an OCP program page: no course table, program code, FL Ready to Work block, or counselor card (live has none).
+  No photographic hero on live (clean text hero used). Translated flyer PDFs preserved verbatim with live UUIDs.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESOL - Clearwater Campus &mdash; Pinellas Technical College</title>
+    <meta name="description" content="ESOL (English for Speakers of Other Languages) at PTC Clearwater: an award-winning, self-paced English language program with day and evening classes.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* INFORMATIONAL PATHWAY PAGE STYLES (lightweight, token-based) */
+        .pathway-hero { background: linear-gradient(135deg, var(--color-green-dark) 0%, #004d29 100%); color: white; padding: 4rem 0; }
+        .pathway-hero p.eyebrow { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--color-accent); font-weight: 700; font-size: 0.9rem; }
+        .pathway-hero h1 { color: #fff; font-family: var(--font-heading); font-size: clamp(2.25rem, 5vw, 3.5rem); margin-bottom: 1rem; line-height: 1.1; }
+        .pathway-hero p.lead { font-size: 1.2rem; line-height: 1.6; opacity: 0.95; max-width: 640px; margin-bottom: 0; }
+        .pathway-hero .quick-facts { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.15); }
+        .pathway-hero .quick-facts strong { display: block; font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.25rem; }
+        .pathway-hero .quick-facts span { font-size: 1.05rem; font-weight: 600; }
+        .info-card { background: white; border: 1px solid var(--color-gray-200); padding: 1.75rem; border-radius: 0 8px 8px 0; }
+        .info-card--green { border-left: 4px solid var(--color-green); }
+        .info-card--accent { border-left: 4px solid var(--color-accent); }
+        .info-card h3 { font-family: var(--font-heading); color: var(--color-green-dark); margin: 0 0 0.9rem; font-size: 1.25rem; }
+        .info-card p { font-size: 1rem; color: var(--color-gray-700); line-height: 1.7; margin: 0 0 0.5rem; }
+        .info-card p:last-child { margin-bottom: 0; }
+        .schedule-line { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px dashed var(--color-gray-200); font-size: 1.05rem; color: var(--color-gray-800); }
+        .schedule-line:last-child { border-bottom: none; }
+        .schedule-line i { color: var(--color-green); width: 1.25rem; flex-shrink: 0; }
+        .schedule-line .note { color: var(--color-gray-500); font-size: 0.9rem; }
+        .info-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .lang-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
+        .lang-chip { display: inline-flex; align-items: center; gap: 0.45rem; background: white; border: 1px solid var(--color-gray-300); border-radius: 30px; padding: 0.5rem 1.1rem; font-size: 0.95rem; font-weight: 600; color: var(--color-green-dark); text-decoration: none; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; }
+        .lang-chip:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); transform: translateY(-1px); border-color: var(--color-green); }
+        .lang-chip i { color: #dc2626; }
+        .flyer-card { display: flex; align-items: center; gap: 1.25rem; background: white; padding: 1.25rem 1.5rem; border-radius: 10px; border: 1px solid var(--color-gray-200); box-shadow: 0 1px 6px rgba(0,0,0,0.04); text-decoration: none; transition: box-shadow 0.2s, transform 0.2s; }
+        .flyer-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .flyer-icon { width: 46px; height: 46px; background: #fee2e2; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .flyer-icon i { color: #dc2626; font-size: 1.4rem; }
+        .flyer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+        .contact-banner { background: var(--color-green-dark); color: white; border-radius: 12px; padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+        .contact-banner h3 { font-family: var(--font-heading); font-size: 1.35rem; margin: 0 0 0.4rem; color: #fff; }
+        .contact-banner p { margin: 0; opacity: 0.92; font-size: 1rem; line-height: 1.5; max-width: 600px; }
+        .contact-banner .btn-phone { background: var(--color-yellow); color: var(--color-gray-900); font-weight: 700; padding: 0.85rem 1.75rem; border-radius: 6px; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .contact-banner .btn-phone:hover { background: var(--color-yellow-dark); }
+        /* Breadcrumb */
+        .breadcrumb-bar { background: var(--color-off-white); border-bottom: 1px solid var(--color-gray-200); padding: 0.6rem 0; }
+        .breadcrumb-bar__inner { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--color-gray-600); flex-wrap: wrap; }
+        .breadcrumb-bar__inner ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+        .breadcrumb-bar__inner li { display: inline-flex; align-items: center; }
+        .breadcrumb-bar__inner li:not(:last-child)::after { content: "\f054"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 0.65rem; color: var(--color-gray-400); margin-left: 0.4rem; }
+        .breadcrumb-bar__inner a { color: var(--color-green); text-decoration: none; }
+        .breadcrumb-bar__current { color: var(--color-gray-700); font-weight: 500; }
+        @media screen and (max-width: 768px) {
+            .info-grid-2 { grid-template-columns: 1fr; }
+            .contact-banner { flex-direction: column; text-align: center; }
+            .pathway-hero .quick-facts { gap: 1.5rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- CAMPUS UTILITY BAR (current Clearwater chrome) -->
+    <div class="utility-bar utility-bar--campus">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                 <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> 727.538.7167</a>
+                 <span class="utility-bar__divider">|</span>
+                 <a href="campus-maps.html#clearwater"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 6100 154th Ave N, Clearwater, FL</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener"><i class="fas fa-desktop" aria-hidden="true"></i> Canvas Login</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener"><i class="fas fa-user-graduate" aria-hidden="true"></i> SIS Portal / Focus</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> PTC Main Site</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="stpete.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> St. Petersburg Campus</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAMPUS HEADER (current Clearwater chrome) -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="clearwater.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Clearwater Campus" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Clearwater Campus</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="programs.html" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                                        <li><a href="adult-education-pathways.html">Distance Learning</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item"><a href="apprenticeships-workforce.html" class="main-nav__link">Apprenticeships</a></li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="clearwater-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="clearwater-admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="clearwater-admissions.html#testing">Placement Testing</a></li>
+                                        <li><a href="clearwater-tuition.html">Tuition &amp; Financial Aid</a></li>
+                                        <li><a href="clearwater-military-veteran-resources.html">Military &amp; Veteran Resources</a></li>
+                                        <li><a href="clearwater-counselors.html">Meet Your Counselors</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="schedule-clearwater.html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="clearwater-student-services.html">Student Services Hours</a></li>
+                                        <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
+                                        <li><a href="clearwater-records-request.html">Record Request</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="clearwater-about.html" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="clearwater-about.html">About This Campus</a></li>
+                                        <li><a href="campus-maps.html#clearwater">Map &amp; Directions</a></li>
+                                        <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
+                                        <li><a href="employers.html">For Employers</a></li>
+                                        <li><a href="consumer-information.html">Consumer Information</a></li>
+                                        <li><a href="clearwater-contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a href="https://apply.myptc.edu/" class="btn btn--primary btn--sm site-header__cta" target="_blank" rel="noopener">Apply Now</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <!-- BREADCRUMBS -->
+        <div class="breadcrumb-bar">
+            <nav class="container breadcrumb-bar__inner" aria-label="Breadcrumb">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li class="breadcrumb-bar__current" aria-current="page">ESOL</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- HERO (clean text hero; live has no photographic banner) -->
+        <section class="pathway-hero">
+            <div class="container">
+                <p class="eyebrow">Clearwater Campus &middot; Adult Education</p>
+                <h1>Welcome to ESOL @ PTC-Clearwater!</h1>
+                <p class="lead">Pinellas Technical College offers an award-winning ESOL (English for Speakers of Other Languages) program on our Clearwater campus.</p>
+                <div class="quick-facts">
+                    <div>
+                        <strong>Format</strong>
+                        <span>Self-paced &middot; Day &amp; Evening</span>
+                    </div>
+                    <div>
+                        <strong>Schedule</strong>
+                        <span>August - May</span>
+                    </div>
+                    <div>
+                        <strong>Cost per Term</strong>
+                        <span>$45</span>
+                    </div>
+                    <div>
+                        <strong>Location</strong>
+                        <span>Clearwater</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT THE PROGRAM -->
+        <section style="padding: 4rem 0; background: white;">
+            <div class="container" style="max-width: 820px;">
+                <h2 class="section-title" style="margin-bottom: 1.5rem;">About the ESOL Program</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-gray-700); margin-bottom: 1.25rem;">PTC's ESOL program offers a self-paced learning environment with a staff of experienced instructors.</p>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--color-gray-700); margin: 0;">Day and evening classes are available, and the curriculum is tailored to fit your needs.</p>
+            </div>
+        </section>
+
+        <!-- CLASS SCHEDULE + COST -->
+        <section style="padding: 4rem 0; background: var(--color-off-white);">
+            <div class="container" style="max-width: 900px;">
+                <div class="info-grid-2">
+                    <div class="info-card info-card--green">
+                        <h3><i class="fas fa-clock" style="margin-right: 0.4rem;" aria-hidden="true"></i> Class Schedule, August - May</h3>
+                        <div class="schedule-line">
+                            <i class="fas fa-sun" aria-hidden="true"></i>
+                            <span>8:00 a.m. - 1:00 p.m. &nbsp;Monday - Friday <span class="note">(flexible schedule)</span></span>
+                        </div>
+                        <div class="schedule-line">
+                            <i class="fas fa-moon" aria-hidden="true"></i>
+                            <span>4:00 - 9:00 p.m. &nbsp;Monday - Thursday <span class="note">(flexible schedule)</span></span>
+                        </div>
+                    </div>
+                    <div class="info-card info-card--accent">
+                        <h3><i class="fas fa-dollar-sign" style="margin-right: 0.4rem;" aria-hidden="true"></i> Cost</h3>
+                        <p>The cost per term is $45 (two terms per year); in addition, a $5 fee for an identification badge will be required of all students, and there may be an additional $5 fee for parking (if applicable).</p>
+                    </div>
+                </div>
+
+                <div class="info-card info-card--green" style="margin-top: 1.5rem;">
+                    <h3><i class="fas fa-clipboard-check" style="margin-right: 0.4rem;" aria-hidden="true"></i> Intake Testing and Registration for ESOL</h3>
+                    <div class="schedule-line">
+                        <i class="fas fa-calendar-day" aria-hidden="true"></i>
+                        <span>Monday &amp; Tuesday 4:00 - 8:00 p.m. and</span>
+                    </div>
+                    <div class="schedule-line">
+                        <i class="fas fa-calendar-day" aria-hidden="true"></i>
+                        <span>Wednesday &amp; Thursday 9:00 a.m. - 12:00 p.m. (noon) or by appointment.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WELCOME FLYERS (translated) -->
+        <section style="padding: 4rem 0; background: white;">
+            <div class="container" style="max-width: 900px;">
+                <h2 class="section-title" style="margin-bottom: 0.75rem;">ESOL Welcome Flyers</h2>
+                <p style="color: var(--color-gray-600); margin-bottom: 1.5rem; font-size: 1.05rem;">Open the full-sized ESOL welcome flyer in your language:</p>
+                <div class="lang-row">
+                    <a class="lang-chip" href="https://clearwater.myptc.edu/fs/resource-manager/view/bafd7012-975c-4eab-854c-06820605ea6b" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Arabic</a>
+                    <a class="lang-chip" href="https://clearwater.myptc.edu/fs/resource-manager/view/da2b0e64-719e-47b9-8aa9-693602db10f6" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Haitian Creole</a>
+                    <a class="lang-chip" href="https://clearwater.myptc.edu/fs/resource-manager/view/28bf6135-c281-4642-b34d-b7d34608e409" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Portuguese</a>
+                    <a class="lang-chip" href="https://clearwater.myptc.edu/fs/resource-manager/view/b68ffa7f-92e3-48e3-8c86-2781df9c306c" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Russian</a>
+                    <a class="lang-chip" href="https://clearwater.myptc.edu/fs/resource-manager/view/4f858b5e-a0ed-44bd-94c9-b6bdc90220bd" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Spanish</a>
+                    <a class="lang-chip" href="https://clearwater.myptc.edu/fs/resource-manager/view/c50c0af7-2979-4415-a4cd-14be5271f002" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Thai</a>
+                    <a class="lang-chip" href="https://clearwater.myptc.edu/fs/resource-manager/view/77a5bacf-064e-4c52-8dbe-df9ce93cad3d" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Vietnamese</a>
+                    <a class="lang-chip" href="https://clearwater.myptc.edu/fs/resource-manager/view/63107672-b710-4f00-afdf-ff189927b109" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Ukrainian</a>
+                </div>
+
+                <div class="flyer-grid">
+                    <a class="flyer-card" href="https://clearwater.myptc.edu/fs/resource-manager/view/6c62bd05-3d6a-4029-88cd-3eb85a14465b" target="_blank" rel="noopener">
+                        <div class="flyer-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">ESOL Welcome Flyer</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">English &middot; 2025-26 &middot; PDF</span></div>
+                    </a>
+                    <a class="flyer-card" href="https://clearwater.myptc.edu/fs/resource-manager/view/56cd0ba3-07bc-469b-9b02-bf1753b2ce65" target="_blank" rel="noopener">
+                        <div class="flyer-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Welcome Flyer</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Portuguese &middot; PDF</span></div>
+                    </a>
+                    <a class="flyer-card" href="https://clearwater.myptc.edu/fs/resource-manager/view/e81bbf75-9456-4f1f-869a-cda73c2bf849" target="_blank" rel="noopener">
+                        <div class="flyer-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Welcome Flyer</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Russian &middot; PDF</span></div>
+                    </a>
+                    <a class="flyer-card" href="https://clearwater.myptc.edu/fs/resource-manager/view/2aeefbd4-fc61-492e-a675-2398042d00a9" target="_blank" rel="noopener">
+                        <div class="flyer-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Welcome Flyer</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Spanish &middot; PDF</span></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section style="padding: 4rem 0; background: var(--color-off-white);">
+            <div class="container" style="max-width: 900px;">
+                <div class="contact-banner">
+                    <div>
+                        <h3>More Information</h3>
+                        <p>Please contact one of the ESOL instructors at 727-538-7167, ext. 2122, for more information about registration and testing.</p>
+                    </div>
+                    <a class="btn-phone" href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> (727) 538-7167 x2122</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RETURN TO GED / ADULT BASIC EDUCATION -->
+        <div style="padding: 0 0 4rem; text-align: center; background: var(--color-off-white);">
+            <a href="abe-ged-clearwater.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-green); font-weight: 600; text-decoration: none; font-size: 1.05rem;"><i class="fas fa-arrow-left" aria-hidden="true"></i> Return to the GED and Adult Basic Education Page</a>
+        </div>
+    </main>
+
+    <!-- SITE FOOTER (current Clearwater chrome) -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline"><strong>6100 154th Ave N, Clearwater, FL 33760</strong><br>
+                    Phone: 727.538.7167<br>
+                    Preparing students for high-demand careers through hands-on, industry-certified training since 1962.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/pinellastechnical/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/PinellasTechCollege/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://x.com/PinellasTech" target="_blank" rel="noopener" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@pinellastechnicalcollege8910" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/school/pinellas-technical-college" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <p class="footer__col-title">Quick Links</p>
+                        <ul>
+                            <li><a href="programs.html">Programs</a></li>
+                            <li><a href="clearwater-admissions.html">Clearwater Admissions</a></li>
+                            <li><a href="clearwater-tuition.html">Tuition &amp; Aid</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="about.html">About PTC</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Clearwater Links</p>
+                        <ul>
+                            <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                            <li><a href="clearwater-tuition.html">Tuition &amp; Financial Aid</a></li>
+                            <li><a href="clearwater-counselors.html">Meet Your Counselors</a></li>
+                            <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
+                            <li><a href="campus-maps.html#clearwater">Campus Map &amp; Directions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Resources</p>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="about.html#accreditation">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
+                            <li><a href="clearwater-contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#non-discrimination">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
