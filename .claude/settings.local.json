@@ -172,10 +172,12 @@
       "Bash(ls *apprenticeship*.html)",
       "Bash(ls docs/audit/programs/extracted/wave6/*.md)",
       "Bash(awk '/flrtw-block/{f=1} f{print} /myfloridareadytowork.com &rarr/{if\\(f\\){exit}}' practical-nursing-clearwater.html)",
-      "Bash(awk '/flrtw-block/{f=1} f{print} /myfloridareadytowork.com &rarr/{if\\(f\\){exit}}' machining-technologies-clearwater.html)"
+      "Bash(awk '/flrtw-block/{f=1} f{print} /myfloridareadytowork.com &rarr/{if\\(f\\){exit}}' machining-technologies-clearwater.html)",
+      "Bash(cd /c/Users/mshaf/Documents/PTC/Website/ptc-finalsite && mkdir -p assets/images/content && curl -sL -A \"Mozilla/5.0\" \"https://resources.finalsite.net/images/f_auto,q_auto/v1757939108/myptecorg/w0kweobz8rffztiuofax/img_4227electrical2stpete1.jpg\" -o assets/images/content/electricity-1-clearwater.jpg && file assets/images/content/electricity-1-clearwater.jpg && ls -la assets/images/content/electricity-1-clearwater.jpg)"
     ],
     "additionalDirectories": [
-      "C:\\Users\\mshaf\\Documents\\PTC\\Website\\ptc-finalsite"
+      "C:\\Users\\mshaf\\Documents\\PTC\\Website\\ptc-finalsite",
+      "c:\\c\\Users\\mshaf\\Documents\\PTC\\Website\\ptc-finalsite\\assets\\images"
     ]
   }
 }
