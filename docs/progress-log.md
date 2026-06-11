@@ -2843,3 +2843,21 @@ Final Programs sub-wave. Unlike Waves 1-5 (mechanical per-program builds), this 
 **Still open (logged):** the OTHER `#` nav placeholders (By Category links, Campuses/Current Students top-level targets, Dual Enrollment, Distance Learning, ABE/GED/ESOL, Student Orgs) remain unwired across the nav — a separate nav-wiring pass. programs.html 41-vs-60+ grid-count reconciliation also still open.
 
 **Programs cluster:** Waves 0-6 + Machining done; every program page built, verified, and wired; the Apprenticeships & Workforce area has its own top-level nav presence sitewide + a link from Programs. Remaining cluster-level items are the grid-count reconciliation and the broader nav-placeholder wiring. All uncommitted in the working tree.
+
+---
+
+## 2026-06-11 — Programs loose ends: grid reconciliation + nav placeholder wiring
+
+Marianne's pick after Programs completed. Two loose ends closed.
+
+**Grid reconciliation (programs.html):** audited every built program page against the grid. Result: grid is COMPLETE — 45 distinct program cards, all hrefs resolve, 0 `#` cards, no gaps (the only pages not in the grid are the 8 apprenticeships, which correctly live in the Apprenticeships & Workforce area, not the full-time grid). Shared programs are single dual-campus-link cards. Reconciled the stale homepage count: index.html "41 programs" -> "40+ programs across 8 career clusters" (matches programs.html's "over 40", non-brittle). Bonus: cleared 2 body em dashes on index.html ("certificates — they launch" -> "certificates. They launch"; "training — all with" -> "training, all with"). The "Electricity" vs "Electricity 1" live-duplicate question remains a minor open item (one card; built as one program).
+
+**Nav placeholder wiring (sitewide):** confirmed the programs.html filter reads `?cluster=` / `?campus=` URL params and applies on load (line 712). Wired via two scripted global passes + a per-campus pass:
+- ALL top-level nav items now resolve on every real page: Programs->programs.html, Campuses->campus-maps.html, Current Students->student-resources.html (institutional) / schedule-{campus}.html (campus, pre-existing), Campus Info->{campus}-about.html, Admissions & Aid->{campus}-admissions.html. (Campus pages already had Programs->programs.html; only ~25 institutional pages needed the top-level wiring, plus 2 straggler admissions pages + the 2 campus shells fixed per-campus.)
+- 8 "By Category" dropdown links -> programs.html?cluster={health,it,trades,transportation,culinary,cosmo,business,arts} (filter pre-applies on arrival).
+- "Evening & Part-Time" -> workforce-continuing-education.html; "Apprenticeships" Explore item -> apprenticeships-workforce.html; "Employer Partnerships" -> employers.html.
+- Verified: 0 `#` top-level nav links remain on any real page.
+
+**Still open (logged, dropdown sub-items only, low priority):** institutional Explore items with no target page yet (Dual Enrollment, Distance Learning, ABE/GED/ESOL, Student Orgs) need pages or removal; a few campus dropdown sub-item stragglers (Staff Directory, Student Services, Record Request, Post a Job, Canvas Login, Campus Bookstore, Tech Support, Advisory Committees, Academic Calendar) on 2-4 pages each need per-campus targets; legacy scaffolds (campus-template.html, program-page-preview.html, _templates/campus-landing.html) still carry `#`.
+
+**Programs cluster:** now effectively closed — every program built/verified/reachable, grid complete + count accurate, all top-level nav wired sitewide with the Apprenticeships & Workforce area present. Remaining items are low-priority nav sub-item polish (logged) and the minor Electricity-1 dedup question. All uncommitted.
