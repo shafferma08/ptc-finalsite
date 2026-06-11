@@ -170,7 +170,9 @@
       "Bash(sed -n '/<div class=\"flrtw-block\">/,/<\\\\/div>/p' school-age-professional-certificate-stpete.html)",
       "PowerShell($f = \"C:\\\\Users\\\\mshaf\\\\Documents\\\\PTC\\\\Website\\\\ptc-finalsite\\\\facials-specialty-stpete.html\"; $t = [System.IO.File]::ReadAllText\\($f\\); $em = [regex]::Matches\\($t, [char]0x2014\\).Count; $mdash = [regex]::Matches\\($t, \"&mdash;\"\\).Count; \"Literal em dashes: $em\"; \"&mdash; entities: $mdash\"; Select-String -Path $f -Pattern \"&mdash;\" | ForEach-Object { \"line $\\($_.LineNumber\\): $\\($_.Line.Trim\\(\\)\\)\" })",
       "Bash(ls *apprenticeship*.html)",
-      "Bash(ls docs/audit/programs/extracted/wave6/*.md)"
+      "Bash(ls docs/audit/programs/extracted/wave6/*.md)",
+      "Bash(awk '/flrtw-block/{f=1} f{print} /myfloridareadytowork.com &rarr/{if\\(f\\){exit}}' practical-nursing-clearwater.html)",
+      "Bash(awk '/flrtw-block/{f=1} f{print} /myfloridareadytowork.com &rarr/{if\\(f\\){exit}}' machining-technologies-clearwater.html)"
     ],
     "additionalDirectories": [
       "C:\\Users\\mshaf\\Documents\\PTC\\Website\\ptc-finalsite"

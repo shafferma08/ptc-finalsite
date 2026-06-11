@@ -2829,3 +2829,17 @@ Final Programs sub-wave. Unlike Waves 1-5 (mechanical per-program builds), this 
 **Follow-ups:** ~20 rows logged (thin pages, hotlinked hero, dead legacy back-links, Clearview attendance discrepancy, Fire Fighting ext 2595-vs-1095, typo fixes, cert-graphic a11y, flat live hubs, sponsor contacts, OWI title mismatch, sitewide nav rollout).
 
 **Programs cluster status:** Waves 0-6 done (~60 program pages + 2 apprenticeship hubs + OWI page + Clearview across the whole cluster). Remaining to fully close Programs: (a) sitewide nav rollout, (b) Machining Technologies CLW (last single program page — still `#` on the grid), (c) programs.html 41-vs-60+ grid reconciliation. Everything uncommitted in the working tree for Marianne's review.
+
+---
+
+## 2026-06-11 — Machining Technologies CLW + sitewide "Apprenticeships" nav rollout
+
+**Machining Technologies (CLW):** built `machining-technologies-clearwater.html` (J200100, 1,500 hours; PMT0020/0022/0024/0025; counselor Lidija Milisav x2020, instructor Scott Baldwin x2083; 3 videos; real hero pulled; FLRTW byte-identical; "Al topics"->"AI topics" fix). Verified verbatim. Wired: programs.html Machining card (was the last `#`) -> real page; sitemap.html CLW list (RACCA still planned). **programs.html now has 0 `#` program cards** — every program in the grid is wired.
+
+**Apprenticeships & Workforce landing page:** built `apprenticeships-workforce.html` (institutional chrome) as the area home: 3 route cards (Clearwater Apprenticeships, St. Petersburg Apprenticeships, Workforce & Continuing Education) + "What is an apprenticeship?" explainer + cross-link to programs.html.
+
+**Sitewide top-level nav rollout:** added a new top-level nav item "Apprenticeships" -> `apprenticeships-workforce.html`, positioned right after Programs (before Admissions), across **121 files** (all redesign pages + the 4 `_templates/shell-*` and program-page templates). Done with a balanced-`<li>` Python insertion script (`/tmp/nav_insert.py`) anchored on the byte-identical `<ul class="main-nav__list">` open tag, walking `<li>`/`</li>` depth to land after the Programs item's close so the nested dropdown links didn't fool it. Idempotent (skips files already carrying the item). Verified: 121/121 files carry the item exactly once per nav list, order confirmed Programs -> Apprenticeships -> Admissions on both the institutional (6-item) and campus (4-item) nav variants. Chose a simple top-level link (no dropdown) for sweep robustness; the landing page does the routing.
+
+**Still open (logged):** the OTHER `#` nav placeholders (By Category links, Campuses/Current Students top-level targets, Dual Enrollment, Distance Learning, ABE/GED/ESOL, Student Orgs) remain unwired across the nav — a separate nav-wiring pass. programs.html 41-vs-60+ grid-count reconciliation also still open.
+
+**Programs cluster:** Waves 0-6 + Machining done; every program page built, verified, and wired; the Apprenticeships & Workforce area has its own top-level nav presence sitewide + a link from Programs. Remaining cluster-level items are the grid-count reconciliation and the broader nav-placeholder wiring. All uncommitted in the working tree.

@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--
-  PROGRAM PAGE · Medical Coder/Biller · St. Petersburg Campus
-  Built 2026-06-08 from practical-nursing-stpete.html (current qualify-first order) + St. Petersburg chrome.
-  Content verbatim from stpete.myptc.edu/programs/st-petersburg-full-time-programs/medical-coderbiller
-  (source: docs/audit/programs/extracted/stpete/medical-coder-biller.md).
-  Program H170529, 1,110 Hours. Counselor Jeromy Johnson. Single video (sTPSXGM5KzE).
-  Distance Education is LIVE/visible on this program, so it is shown.
-  Omitted (no live source): Admission Requirements / entrance-exam section (none on live),
-  Upcoming Classes (no dated cohorts on live), trust strip (no board approval/ranking/partner),
-  State Licensure Disclosure (program leads to industry certifications, not state licensure),
-  salary/BLS stat. Articulation (SPC HIT A.S.) is present on live, so "Your Path Forward" is included.
-  Per reference order, Distance Education appears before Credentials, Licensure & Cost.
+  PROGRAM PAGE · Machining Technologies · Clearwater Campus
+  Built 2026-06-11 from _templates/program-page.html modules + CURRENT Clearwater campus chrome.
+  Content verbatim from clearwater.myptc.edu/programs/clearwater-full-time-programs/machining-technologies
+  (full source saved at docs/audit/programs/extracted/clearwater/machining-technologies.md).
+  Omitted (no live source): articulation agreements (none published), special admission requirements (none published),
+  hero stat for credential beyond NIMS. Distance Education carried as live states ("Not available at this time").
+  Hero image curled from live program photo Machining.png (decorative on live; given descriptive alt here).
 -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical Coder/Biller - St. Petersburg Campus &mdash; Pinellas Technical College</title>
-    <meta name="description" content="Medical Coder/Biller at PTC St. Petersburg: a 1,110-hour program preparing students for careers in the health care industry, with eligibility for CBCS, CPC, and CEHRS certifications.">
+    <title>Machining Technologies - Clearwater Campus &mdash; Pinellas Technical College</title>
+    <meta name="description" content="Machining Technologies at PTC Clearwater: a 1,500-hour program preparing students for employment as entry level machinists, tool makers, lathe, mill, grinding, EDM and CNC machine operators. Accredited by the National Institute of Metalworking Skills (NIMS).">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&amp;family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -28,9 +24,12 @@
         .program-hero__text { padding: 4rem 0 4rem 2rem; display: flex; flex-direction: column; justify-content: center; }
         .program-hero__image { overflow: hidden; }
         .program-hero__image img { width: 100%; height: 100%; object-fit: cover; }
+        /* Hero headings inherit the global dark h1/h2 color from styles.css; force white on the dark hero. */
+        .program-hero h1 { color: #fff; }
         .stat-bar { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.15); }
         .stat-bar__item strong { display: block; font-size: 0.8rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.25rem; }
         .stat-bar__item span { font-size: 1.1rem; font-weight: 600; }
+        .stat-bar__item span.available { color: #86efac; }
         .hero-counselor-nudge { margin-top: 1.25rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.75); }
         .hero-counselor-nudge a { color: var(--color-yellow); font-weight: 600; text-decoration: none; }
         .hero-counselor-nudge a:hover { text-decoration: underline; }
@@ -48,7 +47,7 @@
         .jump-nav__link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.9rem 1.25rem; font-size: 0.875rem; font-weight: 600; color: var(--color-gray-600); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s; }
         .jump-nav__link:hover { color: var(--color-green); border-bottom-color: var(--color-green); }
         .jump-nav__link--cta { margin-left: auto; color: var(--color-green); border-left: 1px solid var(--color-gray-200); padding-left: 1.5rem; }
-        .teas-callout { background: #fffbeb; border: 1px solid #fde68a; border-left: 5px solid var(--color-yellow); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; max-width: 900px; margin: 0 auto; font-weight: 600; color: var(--color-gray-800); line-height: 1.5; }
+        /* Videos */
         .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
         .video-card { border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
         .video-card__embed { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; }
@@ -58,6 +57,7 @@
         .video-card__play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 84px; height: 84px; border-radius: 50%; background: rgba(0, 0, 0, 0.7); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 2rem; padding-left: 6px; transition: background 0.2s ease, transform 0.2s ease; }
         .video-card__link:hover .video-card__play { background: var(--color-yellow); color: #111; transform: translate(-50%, -50%) scale(1.05); }
         .video-card__caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 0.9rem 1.1rem; background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%); color: #fff; font-family: var(--font-heading); font-weight: 600; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        /* Accordion */
         .accordion-item { border: 1px solid var(--color-gray-300); border-radius: 8px; overflow: hidden; background: white; transition: box-shadow 0.2s; }
         .accordion-item:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); }
         .accordion-item summary { padding: 1.25rem 1.75rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; background: var(--color-gray-100); border-bottom: 1px solid var(--color-gray-200); gap: 1rem; }
@@ -65,17 +65,21 @@
         .accordion-item summary .course-name { font-weight: 700; font-family: var(--font-heading); font-size: 1.15rem; color: var(--color-green-dark); flex: 1; }
         .accordion-item .hours-badge { background: var(--color-green); color: white; padding: 0.4rem 1.2rem; border-radius: 30px; font-size: 0.9rem; font-weight: 600; white-space: nowrap; }
         .accordion-item .accordion-body { padding: 2rem; }
+        /* Info cards */
         .info-card { background: white; border: 1px solid var(--color-gray-200); padding: 1.5rem; border-radius: 0 8px 8px 0; }
         .info-card--green { border-left: 4px solid var(--color-green); }
         .info-card--accent { border-left: 4px solid var(--color-accent); }
         .info-card h4 { font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 0.75rem; font-size: 1.1rem; }
         .info-card p { font-size: 0.95rem; color: var(--color-gray-700); line-height: 1.6; margin: 0; }
+        .info-card ul { font-size: 0.95rem; color: var(--color-gray-700); line-height: 1.7; margin: 0; padding-left: 1.25rem; }
         .info-card-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+        /* Credentials */
         .credential-stack { display: flex; flex-direction: column; gap: 1.25rem; }
         .credential-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); border-top: 4px solid var(--color-accent); }
         .credential-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-gray-900); }
         .credential-card p { color: var(--color-gray-700); line-height: 1.7; margin: 0 0 1rem 0; }
         .credential-card__type { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
+        .credential-card__type--licensure { background: #fef3c7; color: #92400e; }
         .credential-card__type--certification { background: var(--color-green-light); color: var(--color-green-dark); }
         .flrtw-block { background: rgba(0, 129, 66, 0.05); border-left: 4px solid var(--color-green); padding: 1.5rem; border-radius: 0 8px 8px 0; margin-top: 1.5rem; }
         .flrtw-block h4 { color: var(--color-green); margin-bottom: 0.75rem; font-size: 1.05rem; }
@@ -83,6 +87,7 @@
         .licensure-disclosure { background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid #f59e0b; padding: 1.25rem 1.5rem; border-radius: 0 8px 8px 0; margin-top: 1.5rem; }
         .licensure-disclosure h4 { color: #92400e; margin-bottom: 0.5rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
         .licensure-disclosure p { font-size: 0.92rem; color: var(--color-gray-700); line-height: 1.6; margin: 0; }
+        /* Aid banner + resource cards (replaces the tall vertical sidebar box) */
         .aid-banner { background: var(--color-green-dark); color: white; border-radius: 12px; padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; }
         .aid-banner h3 { font-family: var(--font-heading); font-size: 1.35rem; margin: 0 0 0.4rem; }
         .aid-banner p { margin: 0; opacity: 0.9; font-size: 0.95rem; line-height: 1.5; max-width: 560px; }
@@ -94,9 +99,11 @@
         .program-related-callout { background: var(--color-off-white); border: 1px solid var(--color-gray-200); border-left: 4px solid var(--color-accent); padding: 1.25rem 1.5rem; border-radius: 0 8px 8px 0; margin-top: 2rem; }
         .program-related-callout h4 { font-family: var(--font-heading); color: var(--color-green-dark); margin: 0 0 0.6rem; font-size: 1.1rem; }
         .program-related-callout ul { margin: 0; padding-left: 1.25rem; color: var(--color-gray-700); line-height: 1.7; }
+        /* Counselor */
         .counselor-card { background: var(--color-gray-100); padding: 3rem; border-radius: 12px; border: 1px solid var(--color-gray-200); text-align: center; }
         .counselor-avatar { width: 80px; height: 80px; background: var(--color-green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; font-family: var(--font-heading); font-weight: 700; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
         .action-buttons { display: flex; gap: 1rem; align-items: center; justify-content: center; margin-bottom: 3.5rem; }
+        /* Breadcrumb */
         .breadcrumb-bar { background: var(--color-off-white); border-bottom: 1px solid var(--color-gray-200); padding: 0.6rem 0; }
         .breadcrumb-bar__inner { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--color-gray-600); flex-wrap: wrap; }
         .breadcrumb-bar__inner ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
@@ -123,13 +130,13 @@
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- CAMPUS UTILITY BAR (current St. Petersburg chrome) -->
+    <!-- CAMPUS UTILITY BAR (current Clearwater chrome) -->
     <div class="utility-bar utility-bar--campus">
         <div class="container utility-bar__inner">
             <div class="utility-bar__left">
-                 <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> 727.893.2500</a>
+                 <a href="tel:7275387167"><i class="fas fa-phone" aria-hidden="true"></i> 727.538.7167</a>
                  <span class="utility-bar__divider">|</span>
-                 <a href="campus-maps.html#stpete"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 901 34th St S, St. Petersburg, FL</a>
+                 <a href="campus-maps.html#clearwater"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 6100 154th Ave N, Clearwater, FL</a>
             </div>
             <div class="utility-bar__right">
                 <a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener"><i class="fas fa-desktop" aria-hidden="true"></i> Canvas Login</a>
@@ -138,19 +145,19 @@
                 <span class="utility-bar__divider">|</span>
                 <a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> PTC Main Site</a>
                 <span class="utility-bar__divider">|</span>
-                <a href="clearwater.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Clearwater Campus</a>
+                <a href="stpete.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> St. Petersburg Campus</a>
             </div>
         </div>
     </div>
 
-    <!-- CAMPUS HEADER (current St. Petersburg chrome) -->
+    <!-- CAMPUS HEADER (current Clearwater chrome) -->
     <header class="site-header" id="site-header">
         <div class="container site-header__inner">
-            <a href="stpete.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
-                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, St. Petersburg Campus" style="height: 60px;">
+            <a href="clearwater.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, Clearwater Campus" style="height: 60px;">
                 <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
                     <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
-                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">St. Petersburg Campus</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">Clearwater Campus</span>
                 </div>
             </a>
 
@@ -163,7 +170,7 @@
                                 <div class="dropdown__column">
                                     <ul>
                                         <li><a href="programs.html">All Programs A&ndash;Z</a></li>
-                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
                                         <li><a href="coming-soon.html">Distance Learning</a></li>
                                     </ul>
                                 </div>
@@ -172,48 +179,49 @@
                     </li>
                     <li class="main-nav__item"><a href="apprenticeships-workforce.html" class="main-nav__link">Apprenticeships</a></li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="stpete-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <a href="clearwater-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="stpete-admissions.html#how-to-apply">How to Apply</a></li>
-                                        <li><a href="stpete-admissions.html#testing">Placement Testing</a></li>
-                                        <li><a href="stpete-tuition.html">Tuition &amp; Financial Aid</a></li>
-                                        <li><a href="stpete-counselors.html">Meet Your Counselors</a></li>
+                                        <li><a href="clearwater-admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="clearwater-admissions.html#testing">Placement Testing</a></li>
+                                        <li><a href="clearwater-tuition.html">Tuition &amp; Financial Aid</a></li>
+                                        <li><a href="clearwater-military-veteran-resources.html">Military &amp; Veteran Resources</a></li>
+                                        <li><a href="clearwater-counselors.html">Meet Your Counselors</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="schedule-stpete.html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <a href="schedule-clearwater.html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                                        <li><a href="schedule-clearwater.html">Class Schedule</a></li>
                                         <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
-                                        <li><a href="stpete-student-services.html">Student Services Hours</a></li>
+                                        <li><a href="clearwater-student-services.html">Student Services Hours</a></li>
                                         <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
-                                        <li><a href="stpete-records-request.html">Record Request</a></li>
+                                        <li><a href="clearwater-records-request.html">Record Request</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="main-nav__item main-nav__item--has-dropdown">
-                        <a href="stpete-about.html" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <a href="clearwater-about.html" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
                         <div class="main-nav__dropdown main-nav__dropdown--narrow">
                             <div class="dropdown__inner">
                                 <div class="dropdown__column">
                                     <ul>
-                                        <li><a href="stpete-about.html">About This Campus</a></li>
-                                        <li><a href="campus-maps.html#stpete">Map &amp; Directions</a></li>
-                                        <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
+                                        <li><a href="clearwater-about.html">About This Campus</a></li>
+                                        <li><a href="campus-maps.html#clearwater">Map &amp; Directions</a></li>
+                                        <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
                                         <li><a href="employers.html">For Employers</a></li>
                                         <li><a href="consumer-information.html">Consumer Information</a></li>
-                                        <li><a href="stpete-contact.html">Contact Us</a></li>
+                                        <li><a href="clearwater-contact.html">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -240,9 +248,9 @@
             <nav class="container breadcrumb-bar__inner" aria-label="Breadcrumb">
                 <ol>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="stpete.html">St. Petersburg Campus</a></li>
+                    <li><a href="clearwater.html">Clearwater Campus</a></li>
                     <li><a href="programs.html">Programs</a></li>
-                    <li class="breadcrumb-bar__current" aria-current="page">Medical Coder/Biller</li>
+                    <li class="breadcrumb-bar__current" aria-current="page">Machining Technologies</li>
                 </ol>
             </nav>
         </div>
@@ -252,9 +260,9 @@
             <div class="container">
                 <div class="program-hero__inner">
                     <div class="program-hero__text">
-                        <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--color-accent); font-weight: 700; font-size: 0.9rem;">St. Petersburg Campus</p>
-                        <h1 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 3.75rem); margin-bottom: 1rem; line-height: 1.1;">Medical Coder/Biller</h1>
-                        <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.95; max-width: 520px; margin-bottom: 0;">The mission of this program is to provide students with the best quality training in order for them to achieve their career goals in the health care industry.</p>
+                        <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--color-accent); font-weight: 700; font-size: 0.9rem;">Clearwater Campus</p>
+                        <h1 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 3.75rem); margin-bottom: 1rem; line-height: 1.1;">Machining Technologies</h1>
+                        <p style="font-size: 1.2rem; line-height: 1.6; opacity: 0.95; max-width: 520px; margin-bottom: 0;">The mission of the program is to prepare students for employment as entry level machinists, tool makers, lathe operators, mill operators, grinding operators, electrical discharge machine (EDM) operator basic programmers, and computer numerically controlled (CNC) machine operator basic programmers.</p>
 
                         <div class="stat-bar">
                             <div class="stat-bar__item">
@@ -263,21 +271,21 @@
                             </div>
                             <div class="stat-bar__item">
                                 <strong>Length</strong>
-                                <span>1,110 Hours</span>
+                                <span>1,500 Hours</span>
                             </div>
                             <div class="stat-bar__item">
-                                <strong>Credential</strong>
-                                <span>CBCS, CPC &amp; CEHRS Eligible</span>
+                                <strong>Accreditation</strong>
+                                <span>NIMS</span>
                             </div>
                             <div class="stat-bar__item">
                                 <strong>Location</strong>
-                                <span>St. Petersburg</span>
+                                <span>Clearwater</span>
                             </div>
                         </div>
                         <p class="hero-counselor-nudge"><i class="fas fa-user-tie" aria-hidden="true"></i> Have questions? <a href="#counselor">Talk to your counselor</a> before you apply.</p>
                     </div>
                     <div class="program-hero__image">
-                        <img src="assets/images/content/medical-coder-biller-stpete.jpg" alt="Medical Coder/Biller training at Pinellas Technical College St. Petersburg">
+                        <img src="assets/images/content/machining-technologies-clearwater.jpg" alt="Machining Technologies training at Pinellas Technical College Clearwater">
                     </div>
                 </div>
             </div>
@@ -289,7 +297,7 @@
                 <div class="start-steps__inner">
                     <span class="start-steps__label"><i class="fas fa-bolt" style="margin-right: 0.4rem;" aria-hidden="true"></i> New to PTC? Start Here:</span>
                     <div class="start-steps__links">
-                        <a href="#program-courses" class="step-btn step-btn--dark"><i class="fas fa-list-ol" aria-hidden="true"></i> View the Course Sequence</a>
+                        <a href="#program-courses" class="step-btn step-btn--dark"><i class="fas fa-list-ol" aria-hidden="true"></i> Review the Course Sequence</a>
                         <a href="https://apply.myptc.edu/" target="_blank" rel="noopener" class="step-btn step-btn--outline"><i class="fas fa-file-alt" aria-hidden="true"></i> Apply Online</a>
                         <a href="#counselor" class="step-btn step-btn--outline"><i class="fas fa-user-tie" aria-hidden="true"></i> Meet Your Counselor</a>
                     </div>
@@ -297,15 +305,21 @@
             </div>
         </div>
 
-        <!-- JUMP NAV -->
+        <!-- TRUST STRIP (credibility signals surfaced high) -->
+        <div style="background: var(--color-green-light); padding: 1rem 0;">
+            <div class="container" style="display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; justify-content: center; align-items: center; font-size: 0.95rem; font-weight: 600; color: var(--color-green-dark);">
+                <span><i class="fas fa-certificate" style="margin-right: 0.4rem;" aria-hidden="true"></i> Accredited by the National Institute of Metalworking Skills (NIMS)</span>
+                <span><i class="fas fa-tools" style="margin-right: 0.4rem;" aria-hidden="true"></i> Apprenticeship Available</span>
+            </div>
+        </div>
+
+        <!-- 3. JUMP NAV -->
         <nav class="jump-nav" id="jump-nav" aria-label="Page sections">
             <div class="container">
                 <div class="jump-nav__inner">
                     <a href="#program-courses" class="jump-nav__link">Course Sequence</a>
-                    <a href="#path-forward" class="jump-nav__link">Your Path Forward</a>
-                    <a href="#distance-education" class="jump-nav__link">Distance Education</a>
-                    <a href="#program-credentials" class="jump-nav__link">Credentials &amp; Cost</a>
                     <a href="#program-videos" class="jump-nav__link">See It In Action</a>
+                    <a href="#program-credentials" class="jump-nav__link">Credentials &amp; Cost</a>
                     <a href="#counselor" class="jump-nav__link jump-nav__link--cta"><i class="fas fa-user-tie" aria-hidden="true"></i> Talk to a Counselor</a>
                 </div>
             </div>
@@ -315,45 +329,45 @@
         <section id="program-courses" style="padding: 5rem 0; background-color: var(--color-off-white);">
             <div class="container" style="max-width: 900px;">
                 <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">About This Program</h2>
-                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 2.5rem; font-size: 1.1rem;">The mission of this program is to provide students with the best quality training in order for them to achieve their career goals in the health care industry. Program H170529 consists of a planned sequence of courses.</p>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 2.5rem; font-size: 1.1rem;">The mission of the program is to prepare students for employment as entry level machinists, tool makers, lathe operators, mill operators, grinding operators, electrical discharge machine (EDM) operator basic programmers, and computer numerically controlled (CNC) machine operator basic programmers. Program J200100 consists of a planned sequence of courses totaling 1,500 clock hours.</p>
 
                 <h3 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--color-gray-900);">Course Sequence</h3>
 
                 <div style="display: flex; flex-direction: column; gap: 1rem;">
                     <details class="accordion-item" open>
                         <summary>
-                            <span class="course-name">Introduction to Health Information Technology (HIM0009)</span>
-                            <span class="hours-badge">90 Hours</span>
+                            <span class="course-name">Machinist Helper (PMT0020)</span>
+                            <span class="hours-badge">300 Hours</span>
                         </summary>
                         <div class="accordion-body">
-                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Students will learn safety procedures, employability skills, communication skills, interpersonal skills, basic mathematics, science, computer literacy, the profession of health information management, and basic health information technology.</p>
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Includes classroom and machining lab experience; course content includes orientation, lab safety, basic blue print reading, related math, measuring tools related to quality control, employability skills/entrepreneurship and all machines related to general machine work.</p>
                         </div>
                     </details>
                     <details class="accordion-item">
                         <summary>
-                            <span class="course-name">Medical Coder/Biller, 1 of 3 (HIM0091)</span>
-                            <span class="hours-badge">350 Hours</span>
+                            <span class="course-name">Machine Operator (PMT0022)</span>
+                            <span class="hours-badge">300 Hours</span>
                         </summary>
                         <div class="accordion-body">
-                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Students will achieve a high level of knowledge and comprehension of medical terminology, human anatomy and physiology, and the fundamentals of the disease process.</p>
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">This competency includes classroom and machining lab experience. Students will learn how to apply blueprint specifications to production, perform basic precision measuring, operate lathes, milling machines, and grinders.</p>
                         </div>
                     </details>
                     <details class="accordion-item">
                         <summary>
-                            <span class="course-name">Medical Coder/Biller, 2 of 3 (HIM0093)</span>
-                            <span class="hours-badge">350 Hours</span>
+                            <span class="course-name">Machine Setup Operator (PMT0024)</span>
+                            <span class="hours-badge">600 Hours</span>
                         </summary>
                         <div class="accordion-body">
-                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Students will demonstrate proficiency in the use of ICD and CPT coding systems, the utilization of medical coding references, and will be able to explain the significance of health information services.</p>
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Content involves classroom and machining lab experience, including how to solve advanced job-related math problems, operating a CNC machine and setting up and operating an EDM machine.</p>
                         </div>
                     </details>
                     <details class="accordion-item">
                         <summary>
-                            <span class="course-name">Medical Coder/Biller, 3 of 3 (HIM0092)</span>
-                            <span class="hours-badge">320 Hours</span>
+                            <span class="course-name">Machinist (PMT0025)</span>
+                            <span class="hours-badge">300 Hours</span>
                         </summary>
                         <div class="accordion-body">
-                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Students will demonstrate the following: ethical and legal principles with regard to the use of medical records, computer skills, safety and security specific to health information, and an understanding of medical billing.</p>
+                            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--color-gray-700); margin: 0;">Set up and operate a CNC machine, identify CAD/CAM processes, perform advanced lathe, milling, grinding operations and the set-up and operation of heat-treating furnaces.</p>
                         </div>
                     </details>
                 </div>
@@ -364,38 +378,54 @@
                         <p>
                             <strong>Minimum Satisfactory Academic Progress:</strong> 70%<br>
                             <strong>Minimum Attendance:</strong> 90%<br>
-                            <strong>Basic Skills Exit:</strong> Computation - 9 and Communication - 11
+                            <strong>Basic Skills Exit:</strong> Computation - 9 and Communication - 8
                         </p>
                     </div>
                     <div class="info-card info-card--green">
-                        <h4><i class="fas fa-id-badge" style="margin-right: 0.4rem;" aria-hidden="true"></i> Industry Certifications</h4>
-                        <p>Graduates are prepared and eligible to sit for the National Healthcareer Association (NHA) Certified Billing and Coding Specialist (CBCS) certification exam, the Certified Professional Coder (CPC) through the American Academy of Professional Coders (AAPC), and the Certified Electronic Health Records Specialist (CEHRS), also offered through NHA.</p>
+                        <h4><i class="fas fa-info-circle" style="margin-right: 0.4rem;" aria-hidden="true"></i> Program Details</h4>
+                        <p>
+                            <strong>Distance Education:</strong> Not available at this time<br>
+                            <strong>Apprenticeship:</strong> Available, refer to the Clearwater Campus Apprenticeship section
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- YOUR PATH FORWARD -->
-        <section id="path-forward" style="padding: 5rem 0; background: var(--color-off-white);">
-            <div class="container" style="max-width: 900px;">
-                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Your Path Forward</h2>
-                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 2rem; font-size: 1.05rem;">Medical Coder/Biller graduates can continue their education through the following articulation agreement:</p>
-                <div class="program-related-callout">
-                    <h4><i class="fas fa-graduation-cap" style="margin-right: 0.4rem;" aria-hidden="true"></i> Articulation Agreement(s)</h4>
-                    <ul>
-                        <li>St. Petersburg College Health Information Technology, A.S. Degree</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- DISTANCE EDUCATION -->
-        <section id="distance-education" style="padding: 5rem 0; background: white;">
-            <div class="container" style="max-width: 900px;">
-                <h2 class="section-title" style="text-align: center; margin-bottom: 1rem;">Distance Education</h2>
-                <div class="info-card info-card--green">
-                    <h4><i class="fas fa-laptop" style="margin-right: 0.4rem;" aria-hidden="true"></i> Online Format</h4>
-                    <p>Online format only; prospective students should have proficient computer skills to enroll in this program. Students are expected to complete a required number of online lessons every week.</p>
+        <!-- SEE IT IN ACTION (videos) -->
+        <section id="program-videos" class="on-dark" style="padding: 5rem 0; background: var(--color-gray-900);">
+            <div class="container">
+                <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--color-accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">See It In Action</p>
+                <h2 style="font-family: var(--font-heading); font-size: 2.25rem; margin-bottom: 0.75rem;">What It&rsquo;s Really Like</h2>
+                <p style="color: rgba(255,255,255,0.65); margin-bottom: 3rem; font-size: 1.05rem; max-width: 600px;">See the kind of work you&rsquo;ll be doing in the Machining Technologies program at PTC-Clearwater.</p>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-card__embed">
+                            <a class="video-card__link" href="https://www.youtube.com/watch?v=BVcjRZydsH8" target="_blank" rel="noopener noreferrer" aria-label="Watch: Machining Technologies at PTC-Clearwater on YouTube (opens in new tab)">
+                                <img src="https://img.youtube.com/vi/BVcjRZydsH8/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/BVcjRZydsH8/hqdefault.jpg';" alt="Machining Technologies at PTC-Clearwater video thumbnail">
+                                <span class="video-card__play" aria-hidden="true"><i class="fas fa-play" aria-hidden="true"></i></span>
+                                <span class="video-card__caption"><i class="fab fa-youtube" aria-hidden="true"></i> Machining Technologies at PTC-Clearwater</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-card__embed">
+                            <a class="video-card__link" href="https://www.youtube.com/watch?v=PFM1A6RqFhE" target="_blank" rel="noopener noreferrer" aria-label="Watch: Machining Technologies at PTC-Clearwater on YouTube (opens in new tab)">
+                                <img src="https://img.youtube.com/vi/PFM1A6RqFhE/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/PFM1A6RqFhE/hqdefault.jpg';" alt="Machining Technologies at PTC-Clearwater video thumbnail">
+                                <span class="video-card__play" aria-hidden="true"><i class="fas fa-play" aria-hidden="true"></i></span>
+                                <span class="video-card__caption"><i class="fab fa-youtube" aria-hidden="true"></i> Machining Technologies at PTC-Clearwater</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-card__embed">
+                            <a class="video-card__link" href="https://www.youtube.com/watch?v=23OPEcSEJFE" target="_blank" rel="noopener noreferrer" aria-label="Watch: Machining Technologies at PTC-Clearwater on YouTube (opens in new tab)">
+                                <img src="https://img.youtube.com/vi/23OPEcSEJFE/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/23OPEcSEJFE/hqdefault.jpg';" alt="Machining Technologies at PTC-Clearwater video thumbnail">
+                                <span class="video-card__play" aria-hidden="true"><i class="fab fa-youtube" aria-hidden="true"></i></span>
+                                <span class="video-card__caption"><i class="fab fa-youtube" aria-hidden="true"></i> Machining Technologies at PTC-Clearwater</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -403,13 +433,19 @@
         <!-- CREDENTIALS & COST -->
         <section id="program-credentials" style="padding: 5rem 0; background-color: var(--color-gray-100);">
             <div class="container" style="max-width: 1000px;">
-                <h2 style="color: var(--color-green-dark); margin-bottom: 2rem; font-family: var(--font-heading);">Credentials, Licensure &amp; Cost</h2>
+                <h2 style="color: var(--color-green-dark); margin-bottom: 2rem; font-family: var(--font-heading);">Credentials, Accreditation &amp; Cost</h2>
 
                 <div class="credential-stack">
                     <div class="credential-card">
-                        <span class="credential-card__type credential-card__type--certification">Industry Certifications</span>
-                        <h3>CBCS, CPC &amp; CEHRS</h3>
-                        <p>Graduates are prepared and eligible to sit for the National Healthcareer Association (NHA) Certified Billing and Coding Specialist (CBCS) certification exam, the Certified Professional Coder (CPC) through the American Academy of Professional Coders (AAPC), and the Certified Electronic Health Records Specialist (CEHRS), also offered through NHA.</p>
+                        <span class="credential-card__type credential-card__type--certification">Industry Certification</span>
+                        <h3>National Institute of Metalworking Skills (NIMS)</h3>
+                        <p>This program is accredited by the National Institute of Metalworking Skills (NIMS), and the industry certification offered is the National Institute of Metalworking Skills (NIMS).</p>
+                        <p style="margin: 0;"><a href="https://www.nims-skills.org/web/nims/home" target="_blank" rel="noopener" style="color: var(--color-green); font-weight: 600;">National Institute for Metalworking Skills, Inc. &rarr;</a></p>
+                    </div>
+
+                    <div class="licensure-disclosure">
+                        <h4><i class="fas fa-info-circle" aria-hidden="true"></i> Program Accreditation</h4>
+                        <p>This program is accredited by the National Institute of Metalworking Skills (NIMS).</p>
                     </div>
 
                     <div class="flrtw-block">
@@ -419,43 +455,32 @@
                     </div>
                 </div>
 
+                <!-- Financial aid banner (replaces tall vertical box) -->
                 <div class="aid-banner">
                     <div>
                         <h3>Financial Aid &amp; Costs</h3>
                         <p>Program length and costs are approximate, and subject to change. Financial assistance is available to those who qualify.</p>
                     </div>
-                    <a href="stpete-tuition.html" class="btn btn--accent">Explore Financial Aid</a>
+                    <a href="clearwater-tuition.html" class="btn btn--accent">Explore Financial Aid</a>
                 </div>
 
+                <!-- Program resources (horizontal cards, not a tall sidebar) -->
                 <div class="resource-grid">
-                    <a class="pdf-card" href="https://stpete.myptc.edu/fs/resource-manager/view/685e3f6a-3d8f-4b06-959e-e6554b87907e" target="_blank" rel="noopener">
+                    <a class="pdf-card" href="https://clearwater.myptc.edu/fs/resource-manager/view/19bb06c9-c9c2-46c7-ae28-97c8185c7908" target="_blank" rel="noopener">
                         <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
-                        <div><strong style="display: block; color: var(--color-gray-900);">Program Flyer</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Medical Coder/Biller &middot; St. Petersburg &middot; PDF</span></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Program Flyer</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Machining Technologies &middot; Clearwater &middot; PDF</span></div>
                     </a>
-                    <a class="pdf-card" href="https://stpete.myptc.edu/fs/resource-manager/view/fd8ff2cc-8921-4bac-b058-84e96c1416f6" target="_blank" rel="noopener">
+                    <a class="pdf-card" href="https://clearwater.myptc.edu/fs/resource-manager/view/6295e5f5-5c00-4c97-abff-97d8a5adef08" target="_blank" rel="noopener">
                         <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
-                        <div><strong style="display: block; color: var(--color-gray-900);">Program Costs</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Medical Coder/Biller &middot; St. Petersburg &middot; PDF</span></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Program Cost</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">Machining Technologies &middot; Clearwater &middot; PDF</span></div>
                     </a>
                 </div>
-            </div>
-        </section>
 
-        <!-- SEE IT IN ACTION -->
-        <section id="program-videos" class="on-dark" style="padding: 5rem 0; background: var(--color-gray-900);">
-            <div class="container">
-                <p style="text-transform: uppercase; letter-spacing: 2px; color: var(--color-accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem;">See It In Action</p>
-                <h2 style="font-family: var(--font-heading); font-size: 2.25rem; margin-bottom: 0.75rem;">What It&rsquo;s Really Like</h2>
-                <p style="color: rgba(255,255,255,0.65); margin-bottom: 3rem; font-size: 1.05rem; max-width: 600px;">See the kind of work you&rsquo;ll be doing in our Medical Coder/Biller program.</p>
-                <div class="video-grid" style="max-width: 720px;">
-                    <div class="video-card">
-                        <div class="video-card__embed">
-                            <a class="video-card__link" href="https://www.youtube.com/watch?v=sTPSXGM5KzE" target="_blank" rel="noopener noreferrer" aria-label="Watch a Medical Coder/Biller video from PTC St. Petersburg on YouTube (opens in new tab)">
-                                <img src="https://img.youtube.com/vi/sTPSXGM5KzE/maxresdefault.jpg" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/sTPSXGM5KzE/hqdefault.jpg';" alt="Medical Coder/Biller at PTC St. Petersburg video thumbnail">
-                                <span class="video-card__play" aria-hidden="true"><i class="fas fa-play" aria-hidden="true"></i></span>
-                                <span class="video-card__caption"><i class="fab fa-youtube" aria-hidden="true"></i> Medical Coder/Biller at PTC St. Petersburg</span>
-                            </a>
-                        </div>
-                    </div>
+                <div class="program-related-callout" style="margin-top: 2rem;">
+                    <h4><i class="fas fa-link" style="margin-right: 0.4rem;" aria-hidden="true"></i> Related Links</h4>
+                    <ul>
+                        <li><a href="https://www.nims-skills.org/web/nims/home" target="_blank" rel="noopener">National Institute for Metalworking Skills, Inc.</a></li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -464,24 +489,38 @@
         <section id="counselor" style="padding: 5rem 0; background-color: white; scroll-margin-top: 100px;">
             <div class="container" style="max-width: 900px; text-align: center;">
                 <h2 class="section-title" style="margin-bottom: 0.75rem;">Ready to Get Started?</h2>
-                <p style="color: var(--color-gray-600); font-size: 1.1rem; line-height: 1.6; margin-bottom: 3rem;">All students must apply online. Then connect with your program counselor to discuss admission requirements, financial aid, and enrollment on the St. Petersburg campus.</p>
+                <p style="color: var(--color-gray-600); font-size: 1.1rem; line-height: 1.6; margin-bottom: 3rem;">All students must apply online. Then connect with your program counselor to discuss admission requirements, financial aid, and enrollment on the Clearwater campus.</p>
 
                 <div class="action-buttons">
                     <a href="https://apply.myptc.edu/" target="_blank" rel="noopener" class="btn btn--accent" style="padding: 1.1rem 3rem; font-size: 1.15rem;"><i class="fas fa-file-alt" aria-hidden="true"></i> Apply Online Now</a>
                 </div>
 
-                <div class="counselor-card">
-                    <div class="counselor-avatar">JJ</div>
-                    <h3 style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 0.25rem;">Jeromy Johnson</h3>
-                    <p style="color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 2rem;">School Counselor</p>
-
-                    <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; max-width: 320px; margin: 0 auto;">
-                        <a href="mailto:johnsonjer@pcsb.org" class="btn btn--primary" style="width: 100%; justify-content: center;">
-                            <i class="fas fa-envelope" aria-hidden="true"></i> johnsonjer@pcsb.org
-                        </a>
-                        <a href="tel:7278932500" class="btn" style="width: 100%; justify-content: center; border: 2px solid var(--color-green); color: var(--color-green);">
-                            <i class="fas fa-phone" aria-hidden="true"></i> 727-893-2500 x2392
-                        </a>
+                <div class="info-card-grid-2" style="margin-top: 0;">
+                    <div class="counselor-card">
+                        <div class="counselor-avatar">LM</div>
+                        <h3 style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 0.25rem;">Lidija Milisav</h3>
+                        <p style="color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 2rem;">School Counselor</p>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; max-width: 320px; margin: 0 auto;">
+                            <a href="mailto:milisavl@pcsb.org" class="btn btn--primary" style="width: 100%; justify-content: center;">
+                                <i class="fas fa-envelope" aria-hidden="true"></i> milisavl@pcsb.org
+                            </a>
+                            <a href="tel:7275387167" class="btn" style="width: 100%; justify-content: center; border: 2px solid var(--color-green); color: var(--color-green);">
+                                <i class="fas fa-phone" aria-hidden="true"></i> 727.538.7167 x2020
+                            </a>
+                        </div>
+                    </div>
+                    <div class="counselor-card">
+                        <div class="counselor-avatar">SB</div>
+                        <h3 style="font-size: 1.5rem; font-family: var(--font-heading); color: var(--color-green-dark); margin-bottom: 0.25rem;">Scott Baldwin</h3>
+                        <p style="color: var(--color-gray-500); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 2rem;">Instructor</p>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: center; max-width: 320px; margin: 0 auto;">
+                            <a href="mailto:BALDWINB@pcsb.org" class="btn btn--primary" style="width: 100%; justify-content: center;">
+                                <i class="fas fa-envelope" aria-hidden="true"></i> BALDWINB@pcsb.org
+                            </a>
+                            <a href="tel:7275387167" class="btn" style="width: 100%; justify-content: center; border: 2px solid var(--color-green); color: var(--color-green);">
+                                <i class="fas fa-phone" aria-hidden="true"></i> 727-538-7167 ext. 2083
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -493,14 +532,14 @@
         </div>
     </main>
 
-    <!-- SITE FOOTER (current St. Petersburg chrome) -->
+    <!-- SITE FOOTER (current Clearwater chrome) -->
     <footer class="site-footer" id="site-footer">
         <div class="container">
             <div class="footer__top">
                 <div class="footer__brand">
                     <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
-                    <p class="footer__tagline"><strong>901 34th St S, St. Petersburg, FL 33711</strong><br>
-                    Phone: 727.893.2500<br>
+                    <p class="footer__tagline"><strong>6100 154th Ave N, Clearwater, FL 33760</strong><br>
+                    Phone: 727.538.7167<br>
                     Preparing students for high-demand careers through hands-on, industry-certified training since 1962.</p>
                     <div class="footer__social">
                         <a href="https://www.facebook.com/pinellastechnical/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
@@ -515,20 +554,20 @@
                         <p class="footer__col-title">Quick Links</p>
                         <ul>
                             <li><a href="programs.html">Programs</a></li>
-                            <li><a href="stpete-admissions.html">St. Petersburg Admissions</a></li>
-                            <li><a href="stpete-tuition.html">Tuition &amp; Aid</a></li>
+                            <li><a href="clearwater-admissions.html">Clearwater Admissions</a></li>
+                            <li><a href="clearwater-tuition.html">Tuition &amp; Aid</a></li>
                             <li><a href="student-resources.html">Student Resources</a></li>
                             <li><a href="about.html">About PTC</a></li>
                         </ul>
                     </div>
                     <div class="footer__col">
-                        <p class="footer__col-title">St. Petersburg Links</p>
+                        <p class="footer__col-title">Clearwater Links</p>
                         <ul>
-                            <li><a href="schedule-stpete.html">Class Schedule</a></li>
-                            <li><a href="stpete-tuition.html">Tuition &amp; Financial Aid</a></li>
-                            <li><a href="stpete-counselors.html">Meet Your Counselors</a></li>
-                            <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
-                            <li><a href="campus-maps.html#stpete">Campus Map &amp; Directions</a></li>
+                            <li><a href="schedule-clearwater.html">Class Schedule</a></li>
+                            <li><a href="clearwater-tuition.html">Tuition &amp; Financial Aid</a></li>
+                            <li><a href="clearwater-counselors.html">Meet Your Counselors</a></li>
+                            <li><a href="clearwater-staff-directory.html">Staff Directory</a></li>
+                            <li><a href="campus-maps.html#clearwater">Campus Map &amp; Directions</a></li>
                         </ul>
                     </div>
                     <div class="footer__col">
@@ -538,7 +577,7 @@
                             <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
                             <li><a href="about.html#accreditation">Accreditation</a></li>
                             <li><a href="careers.html">Careers at PTC</a></li>
-                            <li><a href="stpete-contact.html">Contact Us</a></li>
+                            <li><a href="clearwater-contact.html">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>

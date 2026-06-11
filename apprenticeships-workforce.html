@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Career in a Year &mdash; Pinellas Technical College</title>
-    <meta name="description" content="Many PTC programs can be completed in 12 months or less. Learn how short-term training can launch your career.">
+    <title>Apprenticeships &amp; Workforce — Pinellas Technical College</title>
+    <meta name="description" content="Earn while you learn through a registered apprenticeship at the Clearwater or St. Petersburg campus, or build new skills with a short course or evening class.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Page-local layout only. Cards use the canonical .card / .card-grid components. */
         .page-hero {
             background: linear-gradient(135deg, var(--color-green) 0%, #006634 100%);
             color: #fff;
@@ -21,47 +22,107 @@
             margin-bottom: 1rem;
             opacity: 0.85;
         }
-        .page-hero__breadcrumb ol {
-            list-style: none; padding: 0; margin: 0;
-            display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem;
-        }
+        .page-hero__breadcrumb ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
         .page-hero__breadcrumb li { display: inline-flex; align-items: center; }
-        .page-hero__breadcrumb li:not(:last-child)::after {
-            content: "/"; padding-left: 0.35rem; opacity: 0.7;
-        }
+        .page-hero__breadcrumb li:not(:last-child)::after { content: "\203A"; padding-left: 0.35rem; opacity: 0.7; }
         .page-hero__breadcrumb a {
-            color: #fff; text-decoration: underline; text-underline-offset: 2px;
+            color: #fff;
+            text-decoration: underline;
+            text-underline-offset: 2px;
         }
         .page-hero__title {
-            font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; margin: 0 0 0.75rem;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 0.75rem;
         }
         .page-hero__subtitle {
-            font-size: 1.15rem; max-width: 700px; opacity: 0.92; line-height: 1.6;
+            font-size: 1.15rem;
+            max-width: 700px;
+            opacity: 0.92;
+            line-height: 1.6;
         }
-        .interim-section { padding: 4rem 0; }
-        .interim-callout {
-            background: var(--color-off-white, #F7F8FA);
-            border-left: 4px solid var(--color-green);
-            padding: 1.5rem 2rem;
-            border-radius: var(--border-radius-lg);
-            margin: 2rem 0;
-        }
-        .interim-callout--warning {
-            background: #FFF8E1;
-            border-left-color: var(--color-yellow);
-        }
-        .interim-card {
-            background: var(--color-white);
-            padding: 2rem;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-md);
-            margin-bottom: 1.5rem;
-        }
-        .interim-card h3 {
+
+        .aw-section { padding: 4rem 0; }
+        .aw-section--alt { background: var(--color-off-white, #F7F8FA); }
+        .aw-section__heading {
             font-family: var(--font-heading);
-            font-size: 1.25rem;
-            margin: 0 0 0.5rem;
+            font-size: 1.85rem;
+            font-weight: 700;
             color: var(--color-gray-900);
+            margin: 0 0 0.5rem;
+        }
+        .aw-section__subtext {
+            font-size: 1.05rem;
+            color: var(--color-gray-700);
+            max-width: 720px;
+            line-height: 1.6;
+            margin: 0 0 2rem;
+        }
+
+        /* Numbered "how it works" steps */
+        .aw-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        .aw-step {
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--border-radius);
+            padding: 1.75rem 1.5rem;
+        }
+        .aw-step__number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--color-green);
+            color: var(--color-white);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.15rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .aw-step h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.5rem;
+        }
+        .aw-step p {
+            color: var(--color-gray-700);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Cross-link banner back to full-time programs */
+        .aw-crosslink {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-200);
+            border-left: 4px solid var(--color-green);
+            border-radius: var(--border-radius);
+            padding: 1.75rem 2rem;
+        }
+        .aw-crosslink__text h2 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            color: var(--color-gray-900);
+            margin: 0 0 0.35rem;
+        }
+        .aw-crosslink__text p {
+            color: var(--color-gray-700);
+            margin: 0;
+            line-height: 1.5;
+            max-width: 560px;
         }
     </style>
 </head>
@@ -84,7 +145,6 @@
                 <a href="https://www.myptc.edu/student-links" target="_blank" rel="noopener"><i class="fas fa-user" aria-hidden="true"></i> Student Portal</a>
                 <a href="https://apply.myptc.edu/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Apply Now</a>
                 <a href="https://www.myptc.edu/about-us/all-ptc-news" target="_blank" rel="noopener"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Events</a>
-                
             </div>
         </div>
     </div>
@@ -124,8 +184,8 @@
                                     <p class="dropdown__column-title">Explore</p>
                                     <ul>
                                         <li><a href="programs.html">All Programs A&ndash;Z</a></li>
-                                        <li><a href="#">Evening &amp; Part-Time</a></li>
-                                        <li><a href="#">Apprenticeships</a></li>
+                                        <li><a href="workforce-continuing-education.html">Workforce &amp; Continuing Education</a></li>
+                                        <li><a href="apprenticeships-clearwater.html">Apprenticeships</a></li>
                                         <li><a href="#">Dual Enrollment</a></li>
                                         <li><a href="#">Distance Learning</a></li>
                                         <li><a href="#">ABE / GED / ESOL</a></li>
@@ -205,7 +265,7 @@
                                         <li><a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener">Focus / SIS Portal</a></li>
                                         <li><a href="schedule-clearwater.html">Clearwater Schedule</a></li>
                                         <li><a href="schedule-stpete.html">St. Pete Schedule</a></li>
-                                        <li><a href="records-request.html">Transcript Request</a></li>
+                                        <li><a href="https://www.myptc.edu/about-us/welcome-to-ptc/how-to-request-your-student-records-from-ptc" target="_blank" rel="noopener">Transcript Request</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -219,8 +279,8 @@
                                     <ul>
                                         <li><a href="about.html">Welcome &amp; History</a></li>
                                         <li><a href="about.html#accreditation">Accreditation</a></li>
-                                        <li><a href="#">Staff Directory</a></li>
-                                        <li><a href="#">Employer Partnerships</a></li>
+                                        <li><a href="about.html#leadership">Staff Directory</a></li>
+                                        <li><a href="consumer-information.html">Consumer Information</a></li>
                                         <li><a href="contact.html">Contact Us</a></li>
                                     </ul>
                                 </div>
@@ -240,45 +300,110 @@
                 </button>
             </div>
         </div>
+        <!-- Search Overlay -->
+        <div class="search-overlay" id="search-overlay">
+            <div class="container">
+                <form class="search-form" role="search" aria-label="Site Search">
+                    <label for="search-input" class="sr-only">Search</label>
+                    <input type="search" placeholder="Search programs, courses, and more..." class="search-form__input" id="search-input">
+                    <button type="submit" class="search-form__btn" id="search-submit"><i class="fas fa-search" aria-hidden="true"></i><span class="sr-only">Submit search</span></button>
+                    <button type="button" class="search-form__close" id="search-close"><i class="fas fa-times" aria-hidden="true"></i><span class="sr-only">Close search</span></button>
+                </form>
+            </div>
+        </div>
     </header>
 
     <main id="main-content">
+
+        <!-- PAGE HERO -->
         <section class="page-hero">
             <div class="container">
                 <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
                     <ol>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="programs.html">Programs</a></li>
-                        <li aria-current="page">A Career in a Year</li>
+                        <li aria-current="page">Apprenticeships &amp; Workforce</li>
                     </ol>
                 </nav>
-                <h1 class="page-hero__title">A Career in a Year</h1>
-                <p class="page-hero__subtitle">Many PTC programs can be completed in 12 months or less, putting you on a fast track to a credential and a paying career.</p>
+                <h1 class="page-hero__title">Apprenticeships &amp; Workforce</h1>
+                <p class="page-hero__subtitle">Earn while you learn through a registered apprenticeship, or build new skills with a short course or evening class. Explore the options below.</p>
             </div>
         </section>
 
-        <section class="interim-section">
-            <div class="container" style="max-width: 800px;">
+        <!-- DESTINATION CARDS -->
+        <section class="aw-section">
+            <div class="container">
+                <h2 class="aw-section__heading">Choose Your Path</h2>
+                <p class="aw-section__subtext">PTC offers paid apprenticeships at both campuses and a range of short courses and evening classes for continuing workforce development. Pick the area that fits your goals.</p>
 
-                <div class="interim-callout interim-callout--warning">
-                    <p style="margin: 0;"><strong>Note:</strong> The downloadable handout linked below was last revised in November 2019. Specific program details, hours, and tuition figures in the handout may be out of date. For current program information, visit the <a href="programs.html" class="inline-link">Programs</a> page or contact your campus directly.</p>
+                <div class="card-grid">
+                    <article class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-hard-hat" aria-hidden="true"></i></span>
+                        <h3 class="card__title">Clearwater Apprenticeships</h3>
+                        <p class="card__body">Paid on-the-job apprenticeships at the Clearwater campus, including PTC-sponsored programs and community-sponsored programs.</p>
+                        <a href="apprenticeships-clearwater.html" class="card__cta">Explore Clearwater Apprenticeships <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-tools" aria-hidden="true"></i></span>
+                        <h3 class="card__title">St. Petersburg Apprenticeships</h3>
+                        <p class="card__body">Paid on-the-job apprenticeships at the St. Petersburg campus across child care, fire fighting, industrial trades, plumbing, and roadway technician fields.</p>
+                        <a href="apprenticeships-stpete.html" class="card__cta">Explore St. Petersburg Apprenticeships <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
+
+                    <article class="card card--accent card--lift">
+                        <span class="card__icon"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></span>
+                        <h3 class="card__title">Workforce &amp; Continuing Education</h3>
+                        <p class="card__body">Short courses and evening classes for continuing workforce development and life enrichment, including CPR, forklift, drone, and more.</p>
+                        <a href="workforce-continuing-education.html" class="card__cta">Explore Workforce &amp; Continuing Education <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                    </article>
                 </div>
+            </div>
+        </section>
 
-                <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-top: 2rem;">Download the handout</h2>
-                <p>The original PTC "A Career in a Year" handout summarizes how short-term, hands-on training can prepare you for a high-demand career in months, not years.</p>
+        <!-- WHAT IS AN APPRENTICESHIP EXPLAINER -->
+        <section class="aw-section aw-section--alt">
+            <div class="container">
+                <h2 class="aw-section__heading">What Is an Apprenticeship?</h2>
+                <p class="aw-section__subtext">A registered apprenticeship lets you start working in your field right away and get paid while you train. You split your time between hands-on work with an employer and classroom instruction at PTC, and you finish with a credential and real experience.</p>
 
-                <p><a href="https://resources.finalsite.net/images/v1753705133/myptecorg/mwdpwq7tk9qlmoph0wiz/A_Career_in_a_Year_Handout_rev_11-8-19.pdf" target="_blank" rel="noopener" class="btn btn--primary btn--lg"><i class="fas fa-file-pdf" aria-hidden="true"></i> Download Handout (rev. 11-8-19)</a></p>
+                <div class="aw-steps">
+                    <div class="aw-step">
+                        <div class="aw-step__number">1</div>
+                        <h3>Apply and Get Hired</h3>
+                        <p>You are employed by a sponsor company from day one. You earn a paycheck while attending classes at PTC.</p>
+                    </div>
+                    <div class="aw-step">
+                        <div class="aw-step__number">2</div>
+                        <h3>Train On the Job</h3>
+                        <p>Split your time between hands-on work with your employer and classroom instruction at PTC.</p>
+                    </div>
+                    <div class="aw-step">
+                        <div class="aw-step__number">3</div>
+                        <h3>Earn Your Credential</h3>
+                        <p>Complete the program with industry-recognized credentials, real experience, and zero student debt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-top: 2.5rem;">Find a program</h2>
-                <p>For the most current list of programs, including length, hours, and credentials:</p>
-                <p><a href="programs.html" class="btn btn--accent">Browse all PTC programs</a></p>
-
-                <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--color-gray-600);">Source: <a href="https://www.myptc.edu/about-us/welcome-to-ptc/a-career-in-a-year" target="_blank" rel="noopener" class="inline-link">www.myptc.edu &mdash; A Career in a Year</a></p>
+        <!-- CROSS-LINK BACK TO FULL-TIME PROGRAMS -->
+        <section class="aw-section">
+            <div class="container">
+                <div class="aw-crosslink">
+                    <div class="aw-crosslink__text">
+                        <h2>Looking for a full-time program?</h2>
+                        <p>Browse PTC's full-time career and technical programs across both campuses in the Programs A-Z directory.</p>
+                    </div>
+                    <a href="programs.html" class="btn btn--primary">View All Programs <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
             </div>
         </section>
 
     </main>
 
+    <!-- ============================================
+         FOOTER
+    ============================================= -->
     <footer class="site-footer" id="site-footer">
         <div class="container">
             <div class="footer__top">
@@ -347,6 +472,5 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
