@@ -34,38 +34,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const campusMenuToggle = document.getElementById('campus-menu-toggle');
     const mainNav = document.getElementById('main-nav');
 
+    // Collapse any open dropdown accordions and reset their ARIA state
+    const collapseAllDropdowns = (except) => {
+        document.querySelectorAll('.main-nav__item--has-dropdown').forEach(item => {
+            if (item === except) return;
+            item.classList.remove('accordion-open');
+            const l = item.querySelector(':scope > .main-nav__link');
+            if (l) l.setAttribute('aria-expanded', 'false');
+        });
+    };
+
     if (mobileToggle && mainNav) {
         mobileToggle.addEventListener('click', () => {
             const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
             mobileToggle.setAttribute('aria-expanded', !expanded);
             mainNav.classList.toggle('mobile-open');
             mobileToggle.classList.toggle('is-active');
-            
+
             // Prevent body scrolling when mobile menu is open
             document.body.style.overflow = mainNav.classList.contains('mobile-open') ? 'hidden' : '';
+
+            // When closing the menu, collapse any open accordions + reset ARIA
+            if (!mainNav.classList.contains('mobile-open')) collapseAllDropdowns();
         });
     }
 
-    // --- Mobile Menu Accordions ---
-    const mobileDropdownLinks = document.querySelectorAll('.main-nav__item--has-dropdown > .main-nav__link');
-    
-    mobileDropdownLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            // Only fire accordion logic if we are in mobile view (hamburger toggle is visible)
-            const isMobile = mobileToggle && window.getComputedStyle(mobileToggle).display !== 'none';
-            
-            if (isMobile) {
-                e.preventDefault();
-                const parentItem = link.parentElement;
-                
-                // Close other open accordions for a cleaner UX
-                document.querySelectorAll('.main-nav__item.accordion-open').forEach(item => {
-                    if (item !== parentItem) item.classList.remove('accordion-open');
-                });
+    // --- Dropdown ARIA + Mobile Menu Accordions ---
+    // Dropdown triggers are navigation links on desktop (hover/focus menus) and
+    // disclosure accordions on mobile. Wire WCAG disclosure semantics + keyboard support.
+    const dropdownItems = document.querySelectorAll('.main-nav__item--has-dropdown');
 
-                parentItem.classList.toggle('accordion-open');
-            }
+    dropdownItems.forEach((item, i) => {
+        const link = item.querySelector(':scope > .main-nav__link');
+        const panel = item.querySelector(':scope > .main-nav__dropdown');
+        if (!link) return;
+
+        link.setAttribute('aria-haspopup', 'true');
+        link.setAttribute('aria-expanded', 'false');
+        if (panel) {
+            if (!panel.id) panel.id = 'nav-dropdown-' + i;
+            link.setAttribute('aria-controls', panel.id);
+        }
+
+        const toggleAccordion = (e) => {
+            // Only act as an accordion in mobile view (hamburger visible)
+            const isMobile = mobileToggle && window.getComputedStyle(mobileToggle).display !== 'none';
+            if (!isMobile) return;
+            e.preventDefault();
+            collapseAllDropdowns(item);
+            const open = item.classList.toggle('accordion-open');
+            link.setAttribute('aria-expanded', open ? 'true' : 'false');
+        };
+
+        link.addEventListener('click', toggleAccordion);
+        // Space should toggle the disclosure (Enter already activates the link/click)
+        link.addEventListener('keydown', (e) => {
+            if (e.key === ' ' || e.key === 'Spacebar') toggleAccordion(e);
         });
+    });
+
+    // Reset accordion ARIA when returning to desktop width
+    window.addEventListener('resize', () => {
+        const isMobile = mobileToggle && window.getComputedStyle(mobileToggle).display !== 'none';
+        if (!isMobile) collapseAllDropdowns();
     });
 
     // --- Hero Image Slider ---

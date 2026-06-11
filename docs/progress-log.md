@@ -2928,3 +2928,10 @@ Ran the 8-persona review panel + PM synthesis (scoped to the new Programs/hubs/n
 - **AA contrast (accessibility S3) FIXED:** `.eyebrow` used `--color-accent` (#8DC63F, ~2.6:1) as text on the dark green hero; swapped to `--color-yellow` (#FFCF01) across 75 files.
 
 Still open (not this pass): structural/CMS items (programs.html JS filter vs Composer H8, program-page CSS consolidation into styles.css, design-system convergence), mobile-nav dropdown ARIA (M2), the programs.html filter live-region announcement (S1/S2), live-gated content (cost/tuition/salary/NCLEX pass rate), and remaining dead `coming-soon.html`/`#` links. All uncommitted.
+
+## 2026-06-11 — Accessibility follow-up pass (M2 + S1/S2)
+
+- **M2 (mobile-nav dropdown ARIA) FIXED in script.js (sitewide, no markup edits):** dropdown triggers now get `aria-haspopup`, `aria-controls` (panels auto-IDed), and `aria-expanded` that tracks the mobile accordion state; Space key toggles the disclosure (Enter already activated the link); opening one accordion collapses siblings and resets their `aria-expanded`; closing the hamburger menu or resizing back to desktop resets all accordion ARIA. Applies to every page that loads script.js.
+- **S1/S2 (programs.html filter not announced) FIXED:** added a visually-hidden `role="status" aria-live="polite"` region (`#filter-status`) above the grid; `filterPrograms()` now announces "N programs shown." or "No programs match your selected filters." on every cluster/campus filter change. `.sr-only` already exists in styles.css. script.js passes `node --check`.
+
+Remaining a11y (logged, larger): M25 PDF tagging (live-owner), and any per-page contrast spot-checks. Structural/CMS items (H8 filter architecture, program-page CSS consolidation, design-system convergence) remain for pre-July-build planning. All uncommitted.
