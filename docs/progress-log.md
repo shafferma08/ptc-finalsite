@@ -2948,3 +2948,23 @@ Two flagged items NOT mechanically fixable, logged as decisions instead of guess
 - Contact-page campus hours / safety info: live-sourced content, route verbatim from the live hours page rather than invent.
 
 Repo otherwise at committed HEAD; CSS consolidation was reverted earlier (see css-consolidation-analysis.md). Dead-link wiring is uncommitted in the working tree.
+
+## 2026-06-15 — Programs grid reconciliation + campus-homepage nav wiring
+
+Closed the two remaining open Programs-cluster items.
+
+**programs.html 41-vs-60+ grid reconciliation — DONE.** Verified the grid is a complete de-duplicated institutional index, not an incomplete list. 46 `.prog-card`s = 11 dual-campus + 17 Clearwater-only + 18 St. Pete-only, covering every one of the 28 Clearwater + 28 St. Pete full-time programs plus the Clearview CSIT-IET page (56 built program pages total; shared programs collapse to one dual-campus card). Apprenticeships, short courses, and adult-ed pathways are intentionally excluded from the A-Z grid and routed via the page-header callout + their own hubs. Checks run: every card link resolves to a file on disk (0 dead links); every built full-time program page is represented (0 orphans); all 8 `data-cluster` values map exactly to the 8 filter `<option>`s; count language ("40+ programs / 8 clusters") consistent across index.html + programs.html (about.html "about 60 programs" left verbatim per live). Fixed one A-Z ordering error: Phlebotomy now sorts before Plumbing.
+
+**Campus-homepage `#` nav placeholders — DONE.** clearwater.html and stpete.html were the last redesign pages still carrying the original `href="#"` placeholders (23 each). script.js sets no hrefs, so all were genuinely dead. Wired both end-to-end:
+- Current Students dropdown: Academic Calendar -> live campus calendar (clearwater.myptc.edu / stpete.myptc.edu), Canvas Login -> myptc canvas-login, Student Services -> {campus}-student-services.html, Campus Bookstore -> bncvirtual.com/ptc (verbatim live bookstore URL), Record Request -> records-request.html, Tech Support -> coming-soon.html.
+- Campus Info: Post a Job for Students -> employers.html, Advisory Committees -> coming-soon.html.
+- Hero "Start an Application" -> apply.myptc.edu (new tab).
+- 6 quick-links: Admissions -> {campus}-admissions.html, Financial Aid -> {campus}-tuition.html, Bookstore -> bncvirtual.com/ptc, Visit Campus -> campus-maps.html#{campus}, Student Portal -> myptc/student-links, Consumer Info -> consumer-information.html.
+- 6 featured-program cluster cards -> programs.html?cluster=X&campus={clw|stp} (STP "Education & Child Care" -> arts; both "Cosmetology" cards -> cosmo).
+- Footer Academic Calendar -> live campus calendar.
+
+External links carry target="_blank" rel="noopener". Only the campus-chrome search button (`<a href="#" aria-label="Search">`) remains `#` on both pages, left untouched because it is the separately-flagged sitewide-chrome decision (add overlay vs remove button), not a per-page nav fix.
+
+**Flagged (logged to follow-ups.md):** while wiring, found the campus-homepage "Featured Programs" card blurbs name programs that don't exist or were removed (STP Health: Nursing Assistant / Pharmacy Tech / Medical Assisting; STP IT: Television Production; CLW Health: Professional Nursing LPN-RN). Links now point to the correct cluster filters, but the descriptive text needs a verbatim-catalog rewrite. Medium-priority follow-up.
+
+All uncommitted.

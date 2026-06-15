@@ -178,7 +178,8 @@
       "Bash(mkdir -p /tmp/prog-backup)",
       "Bash(python3 /tmp/css_apply.py apply)",
       "Bash(ls docs/implementation_plan.md docs/*timeline* docs/*plan*)",
-      "Bash(ls urgent-fixes/)"
+      "Bash(ls urgent-fixes/)",
+      "Bash(perl -i -pe 's/\\(programs\\\\.html\\\\?cluster=[a-z]+\\)&\\(campus=\\(?:clw|stp\\)\\)/$1&amp;$2/g' clearwater.html stpete.html)"
     ],
     "additionalDirectories": [
       "C:\\Users\\mshaf\\Documents\\PTC\\Website\\ptc-finalsite",
