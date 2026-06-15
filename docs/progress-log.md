@@ -3014,3 +3014,19 @@ Marianne flagged dark headings on green backgrounds. Root cause: styles.css `h1-
 - Verified clean: all program detail pages (hero uses whitelisted `.program-hero`, white h1; green only on badges/buttons/avatars that set their own white text), about.html (green = timeline line/dots, not headings), apprenticeships-workforce.html (`.aw-section` is light-bg, dark heading correct), careers.html (green = button).
 
 Pending Marianne decision (not changed): program-page Flyer + Program Costs placement. Currently in the "Credentials, Licensure & Cost" section, 7th of 9 sections (~3/4 down) in `_templates/program-page.html`. Marianne thinks it's too far down; agreed. Options to confirm before touching ~80 pages (see chat). All uncommitted.
+
+## 2026-06-15 (cont.) — Program-page IA restructure rolled out site-wide
+
+Marianne approved the nursing-page restructure (deconstruct the "Credentials, Licensure & Cost" kitchen-sink section: overview docs up top, application doc with admissions, credentials as outcomes, a dedicated Cost & Financial Aid section with inline tuition). Per her requirement that the shared mockup read as fully finished, applied the identical pattern to EVERY program page + the template.
+
+Spec written to c:\tmp\restructure-spec.md (single source of truth); nursing = reference. Fanned out 7 parallel agents over 54 standard program pages, then a tailored pass for the 3 welding pages, then the template by hand.
+
+Applied to each page: Tuition stat in hero ($2.92/hr FL resident); jump-nav split into Credentials + Cost & Aid; new "Program Documents" section after jump-nav (overview PDFs only); Application Information Kit moved into Admission Requirements where present; credentials heading renamed "Credentials & Licensure" with cost/aid-banner/PDFs stripped out; new "Cost & Financial Aid" section (id=program-cost) with inline tuition sentence ($2.92/$11.71 verbatim standard rate) + Program Costs PDF + aid-banner (campus-correct tuition link).
+
+**Coverage:** 54 standard program pages + practical-nursing-clearwater (reference) + welding-clearwater/stpete/advanced + _templates/program-page.html. All verbatim PDF hrefs relocated (none fabricated/lost).
+
+**Independent verification:** all pages have balanced <section> tags; every #program-credentials now paired with #program-cost; jump-nav anchors resolve; exactly one aid-banner per page (in the Cost section); 0 leftover old bundle headings; 0 em dashes. Welding 7/7, 7/7, 9/9; template 11/11.
+
+**Documented adaptations (not defects):** digital-media-multimedia-design-stpete (no overview PDFs -> Program Documents section dropped); child-care-apprenticeship-stpete (employer-sponsored, no clock-hour tuition -> no Tuition stat, cost language kept); welding-advanced (replaced a non-standard "$2.91/hr" line with the standard $2.92/$11.71); medical-administrative-specialist + computer-systems-it-clearview (two flyers incl. Spanish -> both kept in Program Documents); phlebotomy (kept its "not PELL eligible" cost language + moved Admissions Packet to admissions).
+
+**Known residual (flagged, not done):** 2 apprenticeship pages (industrial-pipefitter, industrial-machinery-maintenance) kept their original apprenticeship layout rather than the OCP program-page IA (different content type, no clock-hour tuition); they're consistent individually but differ from child-care-apprenticeship which was adapted. program-page-preview.html (internal scaffold, not shared) left on the old pattern. All uncommitted.
