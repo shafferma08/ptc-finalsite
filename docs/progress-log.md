@@ -2968,3 +2968,12 @@ External links carry target="_blank" rel="noopener". Only the campus-chrome sear
 **Flagged (logged to follow-ups.md):** while wiring, found the campus-homepage "Featured Programs" card blurbs name programs that don't exist or were removed (STP Health: Nursing Assistant / Pharmacy Tech / Medical Assisting; STP IT: Television Production; CLW Health: Professional Nursing LPN-RN). Links now point to the correct cluster filters, but the descriptive text needs a verbatim-catalog rewrite. Medium-priority follow-up.
 
 All uncommitted.
+
+## 2026-06-15 (cont.) — Campus-homepage featured-program blurbs rewritten
+
+Fixed the phantom-program follow-up from the nav-wiring pass. Rewrote the inaccurate "Featured Programs" card blurbs on the two campus homepages to name only real catalog programs:
+- clearwater.html Health Sciences: "Professional Nursing (LPN-RN)" (taken down) -> Phlebotomy. Now "Practical Nursing, Phlebotomy, and Medical Administrative Specialist."
+- stpete.html Health Sciences: dropped Nursing Assistant / Pharmacy Tech / Medical Assisting (none are PTC programs). Now "Dental Assisting, Emergency Medical Technician, Surgical Technology, and Medical Coder/Biller."
+- stpete.html Information Technology: dropped Television Production (no such program). Now "Computer Systems and Information Technology, and Computer-Aided Drawing and Modeling."
+
+All 12 featured blurbs (6 CLW + 6 STP) re-verified against the catalog; the other 9 were already accurate. Follow-up marked resolved. All uncommitted.
