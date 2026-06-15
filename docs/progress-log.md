@@ -2977,3 +2977,23 @@ Fixed the phantom-program follow-up from the nav-wiring pass. Rewrote the inaccu
 - stpete.html Information Technology: dropped Television Production (no such program). Now "Computer Systems and Information Technology, and Computer-Aided Drawing and Modeling."
 
 All 12 featured blurbs (6 CLW + 6 STP) re-verified against the catalog; the other 9 were already accurate. Follow-up marked resolved. All uncommitted.
+
+## 2026-06-15 (cont.) — Review panel (launch-readiness) + blocker fixes
+
+Ran the 8-persona + PM review panel (mockup mode) on a 10-page representative set: index, clearwater, stpete, programs, admissions, tuition-aid, practical-nursing-clearwater, contact, consumer-information, about. Output in docs/reviews/2026-06-15/ (consolidated-report.md + 8 agent files + metadata). Tracker updated.
+
+Panel verified 6 prior fixes as resolved: C8 (adult-ed script.js), H20/M2 (mobile-nav disclosure ARIA), M46 (programs filter live region), M44 (hero-eyebrow contrast), M33 (cluster-chip mislabels), M14-regressed (em-dash titles). Accessibility risk downgraded to LOW-MODERATE; 0 new Critical a11y defects.
+
+Fixed this session:
+- **C11 (launch-blocker) RESOLVED** — index.html still carried phantom programs in its featured-program blurbs (the campus pages were scrubbed earlier today but the homepage was missed). Rewrote all 8 homepage cluster blurbs to real catalog programs: Health (Medical Assisting/Pharmacy Tech/Patient Care -> Practical Nursing/Dental Assisting/Surgical Technology/Phlebotomy), IT (dropped Television Production -> Web Development + CAD & Modeling), Trades (Electrical->Electricity, Construction Technology->Building Trades), Culinary (dropped Hospitality Management -> Fundamental Foodservice Skills), Cosmo (Nail Technology->Nails Specialty), Business (dropped Administrative Office Specialist). grep confirms 0 phantom terms across index + both campus homes.
+- **M3-regressed RESOLVED** — campus split-hero `<img>` had both descriptive alt and aria-hidden; set alt="" (decorative) on clearwater.html + stpete.html.
+- **M24-regressed RESOLVED** — campus homepage logo alt="PTC Logo" -> campus-qualified descriptive alt on both pages.
+
+Still open / needs decision or verification (not fixed this pass):
+- C9 + C12 counselor attribution (Practical Nursing = Merritt Scott; Machining = Lidija Milisav listed as School Counselor). Verbatim-rule items: confirm against live + counseling office before external showing; route to follow-ups if live-sourced.
+- M47 dead campus-chrome search button (sitewide decision: add overlay vs remove).
+- H4 program outcomes (placement/pass-rate/salary) — strongest cross-agent ask, live-gated.
+- M5/M6/M39/M40/M50/M51 design-system + CSS extraction, H8/M49 programs.html Composer architecture — structural, pre-July-build.
+- L11/H7 regressions on contact/tuition-aid/consumer-information (breadcrumb opacity + lost clamp()).
+
+All uncommitted.
