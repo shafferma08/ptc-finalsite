@@ -3005,3 +3005,12 @@ All uncommitted.
 - **H4 program outcomes -> suggested-content list.** Per Marianne, not inventing figures. Logged a High-priority follow-up listing suggested per-program outcome fields (placement rate, licensure/pass rate, median wage w/ citation, data vintage) for program/data owners + PCSB to source and approve, then add verbatim.
 
 Still pending a working conversation (not started): Finalsite Composer architecture (H8/M49 programs filter, M5/M6/M50/M51 CSS + global regions). Marianne wants to talk it through first. All uncommitted.
+
+## 2026-06-15 (cont.) — Dark-heading-on-green fixes
+
+Marianne flagged dark headings on green backgrounds. Root cause: styles.css `h1-h6 { color: var(--color-gray-900) }` beats inherited white, so dark/green sections must opt into white text via the whitelist (or `.on-dark`). Swept all solid-green/dark sections across the redesign:
+- **programs.html "Programs A-Z Directory"** — its green banner uses class `.page-header`, which was missing from the styles.css white-text whitelist. Added `.page-header` + its h1/h2/h3/p to the whitelist (styles.css). Fixes the heading at the root; `.page-header` is used only on programs.html.
+- **apprenticeships-clearwater.html + apprenticeships-stpete.html** — the "How Apprenticeships Work" step h3s (Apply and Get Hired / Train On the Job / Earn Your Credential) sat directly on a green-dark section with no explicit color, rendering dark-on-green. Added `class="on-dark"` to both sections (whitelist covers `.on-dark h1-h4`).
+- Verified clean: all program detail pages (hero uses whitelisted `.program-hero`, white h1; green only on badges/buttons/avatars that set their own white text), about.html (green = timeline line/dots, not headings), apprenticeships-workforce.html (`.aw-section` is light-bg, dark heading correct), careers.html (green = button).
+
+Pending Marianne decision (not changed): program-page Flyer + Program Costs placement. Currently in the "Credentials, Licensure & Cost" section, 7th of 9 sections (~3/4 down) in `_templates/program-page.html`. Marianne thinks it's too far down; agreed. Options to confirm before touching ~80 pages (see chat). All uncommitted.

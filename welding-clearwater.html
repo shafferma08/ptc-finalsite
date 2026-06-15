@@ -236,6 +236,40 @@
             font-size: 1.5rem;
         }
 
+        .aid-banner {
+            background: var(--color-green-dark);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .aid-banner h3 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            margin: 0 0 0.4rem;
+        }
+
+        .aid-banner p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            max-width: 560px;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
         .counselor-card {
             background: var(--color-gray-100);
             padding: 3rem;
@@ -463,6 +497,11 @@
             .jump-nav__link--cta {
                 margin-left: 0;
             }
+
+            .aid-banner {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -635,6 +674,10 @@
                                 <span>1,050 Hours</span>
                             </div>
                             <div class="stat-bar__item">
+                                <strong>Tuition</strong>
+                                <span>$2.92/hr <span style="font-size: 0.8rem; opacity: 0.7;">&middot; FL resident</span></span>
+                            </div>
+                            <div class="stat-bar__item">
                                 <strong>Distance Ed</strong>
                                 <span class="unavailable">Not Available</span>
                             </div>
@@ -681,12 +724,33 @@
                 <div class="jump-nav__inner">
                     <a href="#program-videos" class="jump-nav__link">See It In Action</a>
                     <a href="#program-courses" class="jump-nav__link">Course Sequence</a>
-                    <a href="#program-credentials" class="jump-nav__link">Credentials &amp; Cost</a>
+                    <a href="#program-credentials" class="jump-nav__link">Credentials</a>
+                    <a href="#program-cost" class="jump-nav__link">Cost &amp; Aid</a>
                     <a href="#counselor" class="jump-nav__link">Get Started</a>
                     <a href="#counselor" class="jump-nav__link jump-nav__link--cta"><i class="fas fa-user-tie" aria-hidden="true"></i> Talk to a Counselor</a>
                 </div>
             </div>
         </nav>
+
+        <!-- PROGRAM DOCUMENTS (at-a-glance overview docs, surfaced high) -->
+        <section id="program-docs" style="padding: 3rem 0 1rem; background: white;">
+            <div class="container" style="max-width: 1000px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 0.5rem; font-size: 1.6rem;">Program Documents</h2>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 1.75rem; font-size: 1.05rem;">Start with the at-a-glance overview, then dig into the details below.</p>
+                <div class="resource-grid">
+                    <a href="program-flyers/FT-CLWWeldingTechnology.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div>
+                            <strong
+                                style="display: block; color: var(--color-gray-900); font-size: 1rem; margin-bottom: 0.2rem;">Program
+                                Flyer</strong>
+                            <span style="font-size: 0.85rem; color: var(--color-gray-500);">Full-Time &mdash;
+                                Clearwater &bull; PDF</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
 
         <!-- ============================
              3. SEE IT IN ACTION — Social proof first
@@ -819,79 +883,70 @@
              AWS + Florida Ready to Work
         ============================= -->
         <section id="program-credentials" style="padding: 5rem 0; background-color: var(--color-gray-100);">
-            <div class="container">
-                <div class="content-split">
+            <div class="container" style="max-width: 1000px;">
+                <div
+                    style="background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--color-accent);">
+                    <h2
+                        style="color: var(--color-green-dark); margin-bottom: 2rem; font-family: var(--font-heading);">
+                        Industry Credentials</h2>
+
+                    <h3
+                        style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-gray-900);">
+                        American Welding Society (AWS)</h3>
+                    <p style="color: var(--color-gray-700); line-height: 1.7; margin-bottom: 1.25rem;">After
+                        completing all competencies, students are encouraged and eligible to take the American
+                        Welding Society (AWS) certification test. There is an application fee from AWS. The
+                        Clearwater campus of Pinellas Technical College is an <strong>AWS accredited testing
+                            facility</strong>.</p>
+                    <img src="assets/images/content/awsatflogo_color.jpg"
+                        alt="AWS Accredited Test Facility - Welder Testing"
+                        style="max-width: 200px; margin-bottom: 2rem;">
+
                     <div
-                        style="background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--color-accent);">
-                        <h2
-                            style="color: var(--color-green-dark); margin-bottom: 2rem; font-family: var(--font-heading);">
-                            Industry Credentials</h2>
-
-                        <h3
-                            style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-gray-900);">
-                            American Welding Society (AWS)</h3>
-                        <p style="color: var(--color-gray-700); line-height: 1.7; margin-bottom: 1.25rem;">After
-                            completing all competencies, students are encouraged and eligible to take the American
-                            Welding Society (AWS) certification test. There is an application fee from AWS. The
-                            Clearwater campus of Pinellas Technical College is an <strong>AWS accredited testing
-                                facility</strong>.</p>
-                        <img src="assets/images/content/awsatflogo_color.jpg"
-                            alt="AWS Accredited Test Facility - Welder Testing"
-                            style="max-width: 200px; margin-bottom: 2rem;">
-
-                        <div
-                            style="background: rgba(0, 129, 66, 0.05); border-left: 4px solid var(--color-green); padding: 1.5rem; border-radius: 0 8px 8px 0;">
-                            <h4 style="color: var(--color-green); margin-bottom: 0.75rem; font-size: 1.05rem;"><i
-                                    class="fas fa-check-circle" style="margin-right: 0.5rem;"></i> Industry Certifications and FL Ready to Work Credentials
-                            </h4>
-                            <p
-                                style="font-size: 0.95rem; color: var(--color-gray-700); line-height: 1.6; margin-bottom: 0.75rem;">
-                                The goal of Pinellas Technical College&rsquo;s career and technical programs is for each student to achieve an industry-recognized credential or professional license. Where certifications or licenses are linked to a career, Pinellas Technical College&rsquo;s goal is to prepare graduates of that career technical program for the certification or license exam. In some cases, Pinellas Technical College proctors the exams. Specific certification and license requirements are available from Pinellas Technical College school counselors and program instructors. It is an expectation that students will earn the <strong>FL Ready to Work</strong> Soft Skills credential before graduating. The Digital Skills credential is also highly recommended as all careers use technology, and it now includes AI topics. The Employability Skills credential reviews basic reading and math skills used on the job. These credentials align with our BIGSIX initiative because our students will be able to articulate how professionalism, pride, focus, success, ownership, and excellence look in their chosen industry.
-                            </p>
-                            <p style="font-size: 0.9rem; color: var(--color-gray-700); margin: 0;"><a
-                                    href="https://www.myfloridareadytowork.com" target="_blank" rel="noopener"
-                                    style="color: var(--color-green); font-weight: 600;">myfloridareadytowork.com
-                                    &rarr;</a></p>
-                        </div>
+                        style="background: rgba(0, 129, 66, 0.05); border-left: 4px solid var(--color-green); padding: 1.5rem; border-radius: 0 8px 8px 0;">
+                        <h4 style="color: var(--color-green); margin-bottom: 0.75rem; font-size: 1.05rem;"><i
+                                class="fas fa-check-circle" style="margin-right: 0.5rem;"></i> Industry Certifications and FL Ready to Work Credentials
+                        </h4>
+                        <p
+                            style="font-size: 0.95rem; color: var(--color-gray-700); line-height: 1.6; margin-bottom: 0.75rem;">
+                            The goal of Pinellas Technical College&rsquo;s career and technical programs is for each student to achieve an industry-recognized credential or professional license. Where certifications or licenses are linked to a career, Pinellas Technical College&rsquo;s goal is to prepare graduates of that career technical program for the certification or license exam. In some cases, Pinellas Technical College proctors the exams. Specific certification and license requirements are available from Pinellas Technical College school counselors and program instructors. It is an expectation that students will earn the <strong>FL Ready to Work</strong> Soft Skills credential before graduating. The Digital Skills credential is also highly recommended as all careers use technology, and it now includes AI topics. The Employability Skills credential reviews basic reading and math skills used on the job. These credentials align with our BIGSIX initiative because our students will be able to articulate how professionalism, pride, focus, success, ownership, and excellence look in their chosen industry.
+                        </p>
+                        <p style="font-size: 0.9rem; color: var(--color-gray-700); margin: 0;"><a
+                                href="https://www.myfloridareadytowork.com" target="_blank" rel="noopener"
+                                style="color: var(--color-green); font-weight: 600;">myfloridareadytowork.com
+                                &rarr;</a></p>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <!-- Cost + Financial Aid sidebar -->
-                    <div style="display: flex; flex-direction: column; gap: 2rem;">
-                        <div
-                            style="background: var(--color-green-dark); border-radius: 12px; padding: 3rem; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; flex: 1; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                            <div style="color: var(--color-accent); font-size: 3rem; margin-bottom: 1.5rem;">
-                                <i class="fas fa-circle-dollar-to-slot" aria-hidden="true"></i>
-                            </div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem; font-family: var(--font-heading);">
-                                Financial Aid &amp; Costs</h3>
-                            <p style="margin-bottom: 2rem; opacity: 0.9; line-height: 1.6; font-size: 0.95rem;">Program
-                                length and costs are approximate, and subject to change. Financial assistance is
-                                available to those who qualify.</p>
-                            <a href="tuition-aid.html#fafsa" class="btn btn--accent" style="width: 100%;">Explore Financial Aid</a>
+        <!-- ============================
+             COST & FINANCIAL AID
+        ============================= -->
+        <section id="program-cost" style="padding: 5rem 0; background-color: white;">
+            <div class="container" style="max-width: 1000px;">
+                <h2 style="color: var(--color-green-dark); margin-bottom: 1.25rem; font-family: var(--font-heading);">Cost &amp; Financial Aid</h2>
+                <p style="color: var(--color-gray-700); line-height: 1.7; font-size: 1.05rem; margin-bottom: 2rem; max-width: 720px;">Tuition is <strong>$2.92 per clock hour</strong> for Florida residents (<strong>$11.71</strong> for non-residents), plus fees. Program length and costs are approximate and subject to change. Financial assistance is available to those who qualify.</p>
+
+                <div class="resource-grid" style="margin-bottom: 2rem;">
+                    <a href="program-flyers/WeldTech_CW_01272026.pdf" target="_blank" class="pdf-card">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div>
+                            <strong
+                                style="display: block; color: var(--color-gray-900); font-size: 1rem; margin-bottom: 0.2rem;">Program
+                                Costs</strong>
+                            <span style="font-size: 0.85rem; color: var(--color-gray-500);">Welding Technology
+                                &mdash; Jan 2026 &bull; PDF</span>
                         </div>
+                    </a>
+                </div>
 
-                        <!-- PDF Downloads -->
-                        <a href="program-flyers/FT-CLWWeldingTechnology.pdf" target="_blank" class="pdf-card">
-                            <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
-                            <div>
-                                <strong
-                                    style="display: block; color: var(--color-gray-900); font-size: 1rem; margin-bottom: 0.2rem;">Program
-                                    Flyer</strong>
-                                <span style="font-size: 0.85rem; color: var(--color-gray-500);">Full-Time &mdash;
-                                    Clearwater &bull; PDF</span>
-                            </div>
-                        </a>
-                        <a href="program-flyers/WeldTech_CW_01272026.pdf" target="_blank" class="pdf-card">
-                            <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
-                            <div>
-                                <strong
-                                    style="display: block; color: var(--color-gray-900); font-size: 1rem; margin-bottom: 0.2rem;">Program
-                                    Costs</strong>
-                                <span style="font-size: 0.85rem; color: var(--color-gray-500);">Welding Technology
-                                    &mdash; Jan 2026 &bull; PDF</span>
-                            </div>
-                        </a>
+                <div class="aid-banner">
+                    <div>
+                        <h3>Financial Aid &amp; Costs</h3>
+                        <p>Grants, scholarships, and veterans benefits may help cover the cost. See what you qualify for.</p>
                     </div>
+                    <a href="clearwater-tuition.html" class="btn btn--accent">Explore Financial Aid</a>
                 </div>
             </div>
         </section>
