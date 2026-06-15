@@ -2997,3 +2997,11 @@ Still open / needs decision or verification (not fixed this pass):
 - L11/H7 regressions on contact/tuition-aid/consumer-information (breadcrumb opacity + lost clamp()).
 
 All uncommitted.
+
+## 2026-06-15 (cont.) — Post-review decisions applied (Marianne)
+
+- **C9 + C12 counselor attribution CONFIRMED CORRECT (not defects).** Marianne confirmed Merritt Scott is the Clearwater counselor for Practical Nursing (counsels both PN + Phlebotomy) and Lidija Milisav is the Clearwater counselor for Machining (also holds the Military/Veteran coordinator title). Both pages publish the right names. Marked resolved in tracker.
+- **M47 dead campus search button REMOVED sitewide.** Marianne decided not to build campus search. Deleted the dead `<a href="#">...fa-search</a>` anchor from all 33 campus-chrome pages + 4 templates (perl line-delete). 0 remaining; the 17 main-shell `button.search-toggle` + working overlay untouched; no orphaned `|` dividers left behind.
+- **H4 program outcomes -> suggested-content list.** Per Marianne, not inventing figures. Logged a High-priority follow-up listing suggested per-program outcome fields (placement rate, licensure/pass rate, median wage w/ citation, data vintage) for program/data owners + PCSB to source and approve, then add verbatim.
+
+Still pending a working conversation (not started): Finalsite Composer architecture (H8/M49 programs filter, M5/M6/M50/M51 CSS + global regions). Marianne wants to talk it through first. All uncommitted.
