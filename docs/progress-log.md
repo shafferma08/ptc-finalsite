@@ -3034,3 +3034,10 @@ Applied to each page: Tuition stat in hero ($2.92/hr FL resident); jump-nav spli
 ## 2026-06-15 (cont.) — Apprenticeship-page alignment
 
 Per Marianne: align only apprenticeship pages built LIKE the program pages (have the credentials/cost structure); leave the thin ones. Of 8 individual apprenticeship pages, only 2 have a credentials/cost section: child-care-apprenticeship (already aligned in the main rollout) and industrial-pipefitter (had a credentials section with an embedded aid-banner, no cost split). Aligned industrial-pipefitter to match the child-care apprenticeship model: split the aid-banner out into a dedicated #program-cost "Cost & Financial Aid" section (apprenticeship cost framing, no clock-hour tuition line since employer-sponsored), renamed the credentials heading to "Credentials & Licensure", added the jump-nav "Cost & Aid" link. Verified 7/7 section balance, aid-banner moved out of credentials, anchors resolve. The other 6 apprenticeship pages have no credentials/cost content (thin Wave-6 pages) so there's nothing to split and adding sections would mean fabricating content; left as-is. program-page-preview.html (internal scaffold, not shared) intentionally left on the old pattern. All uncommitted.
+
+## 2026-06-15 (cont.) — L11/H7 regression fixes on funnel pages
+
+Cleared the two design regressions the review panel flagged on contact.html, tuition-aid.html, consumer-information.html:
+- L11: removed `opacity: 0.85` from `.page-hero__breadcrumb` (white-on-green breadcrumb now full opacity, matching the about.html fix).
+- H7: `.page-hero__title` hard-coded `font-size: 2.5rem` -> `clamp(1.85rem, 4vw, 2.5rem)` so the hero title is responsive in one rule.
+Note: the `.cta-band p { opacity: 0.85 }` left in place is a separate shared-component style (CTA paragraph), not the flagged breadcrumb regression. All uncommitted.
