@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agency Directory | Community Resources | Pinellas Technical College</title>
-    <meta name="description" content="A searchable directory of community agencies in Pinellas County serving students with disabilities, multilingual families, returning citizens, and foster youth. Filter by who you are and what you need.">
+    <meta name="description" content="A searchable directory of community agencies in Pinellas County serving students with disabilities, multilingual families, people who were formerly incarcerated, and foster youth. Filter by who you are and what you need.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
             display: inline-flex; align-items: center; gap: 0.35rem;
         }
         .lang-toggle:hover { background: var(--color-green); color: #fff; }
-        .lang-toggle:focus-visible { outline: 2px solid var(--color-yellow); outline-offset: 2px; }
+        .lang-toggle:focus-visible { outline: 3px solid var(--color-green); outline-offset: 2px; box-shadow: 0 0 0 4px rgba(255, 207, 1, 0.5); }
         .lang-toggle i { font-size: 0.85em; }
 
         /* ---- hero ---- */
@@ -52,7 +52,7 @@
         }
         .page-hero__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 1.25rem; }
         .page-hero__eyebrow {
-            display: inline-block; background: rgba(255, 207, 1, 0.18); color: var(--color-yellow);
+            display: inline-block; background: rgba(0, 50, 26, 0.5); color: var(--color-yellow);
             font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
             text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 999px; margin-bottom: 0.85rem;
         }
@@ -100,7 +100,7 @@
         .chip__count { color: var(--color-gray-500); font-weight: 500; font-size: 0.85em; }
         .chip:hover { border-color: var(--color-green); color: var(--color-green); }
         .chip:hover .chip__count { color: var(--color-green); }
-        .chip:focus-visible { outline: 3px solid var(--color-yellow); outline-offset: 2px; }
+        .chip:focus-visible { outline: 3px solid var(--color-green); outline-offset: 2px; box-shadow: 0 0 0 4px rgba(255, 207, 1, 0.5); }
         .chip[aria-pressed="true"] {
             background: var(--color-green); color: #fff; border-color: var(--color-green);
         }
@@ -111,11 +111,11 @@
         }
         /* Population chips use the OWI accent border, dark for contrast */
         .chip--pop { border-color: var(--color-accent-dark); }
-        .chip--pop:hover { background: rgba(141, 198, 63, 0.08); border-color: var(--color-accent-dark); color: var(--color-accent-dark); }
+        .chip--pop:hover { background: rgba(141, 198, 63, 0.08); border-color: #3f6212; color: #3f6212; }
         .chip--pop[aria-pressed="true"] {
-            background: var(--color-accent-dark); color: #fff; border-color: var(--color-accent-dark);
+            background: #3f6212; color: #fff; border-color: #3f6212;
         }
-        .chip--pop[aria-pressed="true"]:hover { background: #5e8a23; border-color: #5e8a23; color: #fff; }
+        .chip--pop[aria-pressed="true"]:hover { background: #2f4a0c; border-color: #2f4a0c; color: #fff; }
 
         .filter-search {
             display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap;
@@ -129,7 +129,7 @@
             background-repeat: no-repeat; background-position: 0.75rem center; background-size: 18px 18px;
         }
         .filter-search__input:focus {
-            outline: 3px solid var(--color-yellow); outline-offset: 1px; border-color: var(--color-green);
+            outline: 3px solid var(--color-green); outline-offset: 1px; border-color: var(--color-green); box-shadow: 0 0 0 4px rgba(255, 207, 1, 0.5);
         }
         .reset-btn {
             font-family: var(--font-body); font-size: 0.95rem; font-weight: 600;
@@ -167,12 +167,12 @@
         }
         .active-pill__remove {
             background: transparent; border: 0; color: inherit; cursor: pointer;
-            width: 22px; height: 22px; border-radius: 50%;
+            width: 26px; height: 26px; border-radius: 50%;
             display: inline-flex; align-items: center; justify-content: center;
             font-size: 0.95rem; padding: 0;
         }
         .active-pill__remove:hover { background: var(--color-green); color: #fff; }
-        .active-pill__remove:focus-visible { outline: 2px solid var(--color-yellow); outline-offset: 1px; }
+        .active-pill__remove:focus-visible { outline: 3px solid var(--color-green); outline-offset: 1px; box-shadow: 0 0 0 4px rgba(255, 207, 1, 0.5); }
         .active-bar__clear {
             margin-left: auto;
             background: none; border: 0; color: var(--color-green);
@@ -227,7 +227,7 @@
             border-radius: 999px; padding: 0.12rem 0.6rem; line-height: 1.4;
         }
         .agency-card__tag--pop {
-            background: rgba(141, 198, 63, 0.22); color: var(--color-accent-dark);
+            background: rgba(141, 198, 63, 0.22); color: #3f6212;
         }
         .agency-card__details-toggle {
             background: none; border: 1px solid var(--color-gray-300);
@@ -272,7 +272,7 @@
             font-size: 0.92rem; color: var(--color-gray-600); margin: 0.6rem auto 0; max-width: 480px;
         }
 
-        /* ---- staleness banner (data is from 2015 PINCS guide) ---- */
+        /* ---- "good to know" note banner ---- */
         .data-staleness {
             background: #fef9c3; border-left: 4px solid var(--color-yellow);
             padding: 0.85rem 1.15rem; border-radius: 6px;
@@ -324,8 +324,9 @@
             color: var(--color-green);
         }
         .community-nav__link:focus-visible {
-            outline: 2px solid var(--color-yellow);
+            outline: 3px solid var(--color-green);
             outline-offset: 2px;
+            box-shadow: 0 0 0 4px rgba(255, 207, 1, 0.5);
         }
         .community-nav__link--active {
             background: var(--color-green);
@@ -412,7 +413,7 @@
         <div class="page-hero__inner">
             <span class="page-hero__eyebrow" data-i18n="dir.eyebrow">For students &amp; families</span>
             <h1 id="page-title" data-i18n="dir.h1">Find a community agency that can help</h1>
-            <p data-i18n="dir.intro">About 40 Pinellas County agencies that support students with disabilities, multilingual families, returning citizens, and foster youth. Pick a population and a need to narrow the list.</p>
+            <p data-i18n="dir.intro">Local Pinellas County agencies that support students with disabilities, multilingual families, people who were formerly incarcerated, and foster youth. Pick a population and a need to narrow the list.</p>
         </div>
     </section>
 
@@ -421,11 +422,12 @@
             <div class="section__inner">
 
                 <div class="data-staleness" role="note">
-                    <span data-i18n="dir.stale.label"><strong>Heads up:</strong></span>
-                    <span data-i18n="dir.stale.body">The agency information on this page was last verified in <strong>September 2015</strong> from the PINCS Resource Guide. Phone numbers and addresses may have changed. Please call before you go. We are working on a fresh verification pass.</span>
+                    <span data-i18n="dir.stale.label"><strong>Good to know:</strong></span>
+                    <span data-i18n="dir.stale.body">Information can change, so please call before you go to confirm hours and location.</span>
                 </div>
 
                 <div class="filter-card">
+                    <h2 class="sr-only" data-i18n="dir.filter.heading">Filter agencies</h2>
 
                     <div class="filter-help">
                         <span data-i18n="dir.filter.help.label"><strong>How filtering works:</strong></span>
@@ -441,8 +443,8 @@
                         <div class="chip-row" role="group" aria-label="Filter by population" id="chips-pop">
                             <button type="button" class="chip chip--pop" data-axis="pop" data-tag="ese" aria-pressed="false"><i class="fas fa-universal-access" aria-hidden="true"></i> <span data-i18n="dir.chip.ese">A person with a disability</span> <span class="chip__count" data-count></span></button>
                             <button type="button" class="chip chip--pop" data-axis="pop" data-tag="esol" aria-pressed="false"><i class="fas fa-language" aria-hidden="true"></i> <span data-i18n="dir.chip.esol">A multilingual family</span> <span class="chip__count" data-count></span></button>
-                            <button type="button" class="chip chip--pop" data-axis="pop" data-tag="reentry" aria-pressed="false"><i class="fas fa-door-open" aria-hidden="true"></i> <span data-i18n="dir.chip.reentry">Returning citizens</span> <span class="chip__count" data-count></span></button>
-                            <button type="button" class="chip chip--pop" data-axis="pop" data-tag="foster" aria-pressed="false"><i class="fas fa-heart" aria-hidden="true"></i> <span data-i18n="dir.chip.foster">Foster youth aging out</span> <span class="chip__count" data-count></span></button>
+                            <button type="button" class="chip chip--pop" data-axis="pop" data-tag="reentry" aria-pressed="false"><i class="fas fa-door-open" aria-hidden="true"></i> <span data-i18n="dir.chip.reentry">Someone who was formerly incarcerated</span> <span class="chip__count" data-count></span></button>
+                            <button type="button" class="chip chip--pop" data-axis="pop" data-tag="foster" aria-pressed="false"><i class="fas fa-heart" aria-hidden="true"></i> <span data-i18n="dir.chip.foster">Foster youth</span> <span class="chip__count" data-count></span></button>
                         </div>
                     </div>
 
@@ -480,12 +482,16 @@
                 </div>
 
                 <div class="active-bar is-empty" id="active-bar" role="region" aria-label="Active filters and result count">
-                    <span class="active-bar__count"><em id="result-num">40</em> <span data-i18n="dir.results.of">of</span> 40 <span data-i18n="dir.results.agencies">agencies</span></span>
+                    <span class="active-bar__count"><em id="result-num">35</em> <span data-i18n="dir.results.of">of</span> 35 <span data-i18n="dir.results.agencies">agencies</span></span>
                     <span class="active-bar__label" id="active-bar-label" data-i18n="dir.results.nofilter">No filters applied</span>
                     <span id="active-pills"></span>
                     <button type="button" class="active-bar__clear" id="clear-all" hidden data-i18n="dir.results.clear_all">Clear all</button>
                 </div>
 
+                <div id="sr-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+                <p id="summary-note-es" class="data-staleness" role="note" lang="es" hidden>(El resumen y los detalles de cada agencia aparecen en inglés mientras se completa la traducción.)</p>
+
+                <h2 class="sr-only" data-i18n="dir.results.heading">Results</h2>
                 <div id="results">
                     <div class="agency-grid" id="agency-grid" role="list"></div>
                 </div>
@@ -495,7 +501,7 @@
     </main>
 
     <footer class="offset-footer">
-        <p data-i18n="dir.footer">Pinellas Technical College &middot; <a href="community-resources.html">Community Resources hub</a> &middot; Built by the PTC Study Group. Source: PINCS Transition Services Resource Guide (Sept 2015).</p>
+        <p data-i18n="dir.footer">Pinellas Technical College &middot; <a href="community-resources.html">Community Resources hub</a></p>
     </footer>
 
     <script src="community-data.js"></script>
@@ -613,6 +619,8 @@
             // Grey out chips that would zero the result if added (and which aren't already pressed)
             const isPressed = btn.getAttribute("aria-pressed") === "true";
             btn.dataset.zero = (!isPressed && n === 0) ? "true" : "false";
+            if (btn.dataset.zero === "true") { btn.setAttribute("aria-disabled", "true"); }
+            else { btn.removeAttribute("aria-disabled"); }
         });
     }
 
@@ -625,6 +633,9 @@
 
         const filtered = AGENCIES.filter(matchesAgency);
         resultNum.textContent = filtered.length;
+
+        const srStatus = document.getElementById("sr-status");
+        if (srStatus) srStatus.textContent = filtered.length + " " + L("dir.results.of", "of") + " " + AGENCIES.length + " " + L("dir.results.agencies", "agencies");
 
         const allActive = [
             ...Array.from(active.pop).map(t => ({ axis: "pop", tag: t })),
@@ -642,7 +653,7 @@
             `<span class="active-pill">${chipLabel(tag)}
                 <button type="button" class="active-pill__remove" data-axis="${axis}" data-tag="${tag}" aria-label="Remove ${chipLabel(tag)} filter"><i class="fas fa-times" aria-hidden="true"></i></button>
             </span>`
-        ).join("") + (searchTerm ? `<span class="active-pill">${L("dir.search.placeholder","Search").split(" ")[0]}: "${escapeHtml(searchTerm)}"
+        ).join("") + (searchTerm ? `<span class="active-pill">${L("dir.search.pill","Search")}: "${escapeHtml(searchTerm)}"
                 <button type="button" class="active-pill__remove" data-clear-search aria-label="Clear search"><i class="fas fa-times" aria-hidden="true"></i></button>
             </span>` : "");
 
@@ -695,10 +706,11 @@
             <article class="agency-card" role="listitem">
                 <h3 class="agency-card__name">${escapeHtml(a.name)}</h3>
                 <div class="agency-card__primary">
-                    ${a.address ? `<div><i class="fas fa-location-dot" aria-hidden="true"></i><span>${escapeHtml(a.address)}</span></div>` : ""}
+                    ${a.address ? `<div><i class="fas fa-location-dot" aria-hidden="true"></i><span lang="en">${escapeHtml(a.address)}</span></div>` : ""}
                     ${a.phone ? `<div><i class="fas fa-phone" aria-hidden="true"></i>${phoneLink(a.phone)}</div>` : ""}
+                    ${a.intakePhone ? `<div><i class="fas fa-phone-volume" aria-hidden="true"></i><span>${L("dir.card.calltostart","To start, call:")} ${phoneLink(a.intakePhone)}</span></div>` : ""}
                 </div>
-                <p class="agency-card__summary">${escapeHtml(a.summary || "")}</p>
+                <p class="agency-card__summary" lang="en">${escapeHtml(a.summary || "")}</p>
                 ${popPills ? `<div class="agency-card__tags">${popPills}</div>` : ""}
                 ${hasDetails ? `
                     <button type="button" class="agency-card__details-toggle" aria-expanded="false" aria-controls="${detailsId}">
@@ -708,10 +720,10 @@
                         ${helpsLine}
                         ${a.website ? `<p><strong>${L("dir.card.website","Website:")}</strong> ${siteLink(a.website)}</p>` : ""}
                         ${a.email ? `<p><strong>${L("dir.card.email","Email:")}</strong> <a href="mailto:${escapeHtml(a.email)}">${escapeHtml(a.email)}</a></p>` : ""}
-                        ${a.hours ? `<p><strong>${L("dir.card.hours","Hours:")}</strong> ${escapeHtml(a.hours)}</p>` : ""}
-                        ${a.fees ? `<p><strong>${L("dir.card.fees","Cost:")}</strong> ${escapeHtml(a.fees)}</p>` : ""}
-                        ${a.eligibility ? `<p><strong>${L("dir.card.eligibility","Who can use it:")}</strong> ${escapeHtml(a.eligibility)}</p>` : ""}
-                        ${a.intake ? `<p><strong>${L("dir.card.intake","How to start:")}</strong> ${escapeHtml(a.intake)}</p>` : ""}
+                        ${a.hours ? `<p><strong>${L("dir.card.hours","Hours:")}</strong> <span lang="en">${escapeHtml(a.hours)}</span></p>` : ""}
+                        ${a.fees ? `<p><strong>${L("dir.card.fees","Cost:")}</strong> <span lang="en">${escapeHtml(a.fees)}</span></p>` : ""}
+                        ${a.eligibility ? `<p><strong>${L("dir.card.eligibility","Who can use it:")}</strong> <span lang="en">${escapeHtml(a.eligibility)}</span></p>` : ""}
+                        ${a.intake ? `<p><strong>${L("dir.card.intake","How to start:")}</strong> <span lang="en">${escapeHtml(a.intake)}</span></p>` : ""}
                     </div>` : ""}
                 ${a.verified ? `<p class="agency-card__verified"><i class="fas fa-clock" aria-hidden="true"></i>${L("dir.card.verified","Last verified:")} ${formatVerified(a.verified)}</p>` : ""}
             </article>`;
@@ -735,6 +747,8 @@
         const filtered = renderActiveBar();
         renderCards(filtered);
         renderChipCounts();
+        const note = document.getElementById("summary-note-es");
+        if (note) note.hidden = (getCurrentLang() !== "es");
     }
 
     // ---- event wiring ----

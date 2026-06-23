@@ -581,6 +581,21 @@ Cleared the dead-link findings from the 2026-06-11 review panel. Items below are
 
 ---
 
+## Community Resources hub (Study Group resource)
+
+The offset Community Resources directory (`community-data.js` + the `community-*.html` pages) was refreshed June 2026 from the Study Group's reviewer pass. This is reviewer-sourced community data, not PTC live-site content. New direction applied: student-centered framing, a "Start at PTC" door, and SPC removed from the student directory (PTC should not route students to a competing college). Full detail in `../../../Professional Learning/ESE_Hub_Review_Tracker.md` and `../../../Professional Learning/ESE_Hub_Direction_Map.md` (in Drive, outside this repo).
+
+Items that still need a phone call or a person to confirm before they are final:
+
+- **SEDNET / Pinellas (Region 5)** — RESOLVED 2026-06-22. Verified via the official Region 5 listing (`727-487-2558`, sednetfl.com Region 5 page). Per the resource re-evaluation, it now lives on the Staff & Faculty page (a staff/educator resource) rather than in the student directory.
+- **Special Olympics Pinellas** — RESOLVED 2026-06-22. Updated to the West Coast Region page with the official Pinellas sports contacts (Ethan Michel 386-569-3806, Liam Oxford 352-349-4869) and the "become an athlete" link; office listed as Area 5, Tampa.
+- **PlacementWorks** — RESOLVED 2026-06-22. Confirmed still operating (CEO Christy Boccabella); the St. Pete address, phone, and placementworks.org are current; added email Christy@PlacementWorks.com.
+- **Suzanne's scan, light handwriting** — Mostly RESOLVED 2026-06-22 from official sites: CARD-USF set to its live site card-usf.fmhi.usf.edu with phone 813-974-2532; Creative Clay updated to 1846 1st Avenue South, St. Petersburg, FL 33712 (M-F 9-4, admin@creativeclay.org); CareerSource is now **CareerSource Tampa Bay** (careersourcetampabay.com) with its three Pinellas centers (Gulf to Bay/Clearwater, St. Petersburg, Tarpon Springs). Still open: the APD phone correction, and whether to add the Johns Hopkins All Children's main number Suzanne wrote (ends 7451).
+- **Family Center on Deafness** — new main line `727-501-2323` applied; the two old numbers are presumed retired (not found online). Confirm if you want certainty.
+- **Raising Down Syndrome Foundation** — removed (dead website, dormant). Optional: replace with an active local Down syndrome org (Down Syndrome Association of Tampa Bay or F.R.I.E.N.D.S. of West Florida) once contact details are verified.
+
+---
+
 ## See also
 
 - [docs/audit/about-cluster/RECOMMENDATIONS.md](about-cluster/RECOMMENDATIONS.md) — original About cluster audit that surfaced most of these items

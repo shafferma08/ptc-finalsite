@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Resources | Pinellas Technical College</title>
-    <meta name="description" content="Pinellas Technical College community resources hub. Find help for students with disabilities, multilingual families, returning citizens, and foster youth, plus tools for staff and local employers.">
+    <meta name="description" content="Pinellas Technical College community resources hub. Find help for students with disabilities, multilingual families, people who were formerly incarcerated, and foster youth, plus tools for staff and local employers.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
             display: inline-flex; align-items: center; gap: 0.35rem;
         }
         .lang-toggle:hover { background: var(--color-green); color: #fff; }
-        .lang-toggle:focus-visible { outline: 2px solid var(--color-yellow); outline-offset: 2px; }
+        .lang-toggle:focus-visible { outline: 3px solid var(--color-green); outline-offset: 2px; box-shadow: 0 0 0 4px rgba(255, 207, 1, 0.5); }
         .lang-toggle i { font-size: 0.85em; }
 
         .page-hero {
@@ -47,7 +47,7 @@
         }
         .page-hero__inner { max-width: var(--container-max); margin: 0 auto; padding: 0 1.25rem; }
         .page-hero__eyebrow {
-            display: inline-block; background: rgba(255, 207, 1, 0.18); color: var(--color-yellow);
+            display: inline-block; background: rgba(0, 50, 26, 0.5); color: var(--color-yellow);
             font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em;
             text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 999px;
             margin-bottom: 0.95rem;
@@ -100,7 +100,12 @@
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
-        .choice:focus-visible { outline: 3px solid var(--color-yellow); outline-offset: 2px; }
+        .choice:focus-visible { outline: 3px solid var(--color-green); outline-offset: 2px; box-shadow: 0 0 0 4px rgba(255, 207, 1, 0.5); }
+        .choice--primary { border-color: var(--color-green); box-shadow: var(--shadow-md); }
+        .choice__badge { display: inline-flex; align-items: center; align-self: flex-start; background: var(--color-green); color: #fff; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.6rem; border-radius: 999px; margin-bottom: 0.5rem; }
+        .secondary-roles { margin: 1.6rem 0 0; color: var(--color-gray-700); font-size: 0.98rem; }
+        .secondary-roles a { color: var(--color-green); font-weight: 600; text-decoration: none; }
+        .secondary-roles a:hover { text-decoration: underline; }
         .choice__icon {
             background: var(--color-green-light); color: var(--color-green);
             width: 52px; height: 52px; border-radius: 10px;
@@ -179,8 +184,9 @@
             color: var(--color-green);
         }
         .community-nav__link:focus-visible {
-            outline: 2px solid var(--color-yellow);
+            outline: 3px solid var(--color-green);
             outline-offset: 2px;
+            box-shadow: 0 0 0 4px rgba(255, 207, 1, 0.5);
         }
         .community-nav__link--active {
             background: var(--color-green);
@@ -252,8 +258,8 @@
     <section class="page-hero" aria-labelledby="page-title">
         <div class="page-hero__inner">
             <span class="page-hero__eyebrow" data-i18n="hub.eyebrow">Community Resources</span>
-            <h1 id="page-title" data-i18n="hub.h1">Find help in Pinellas County</h1>
-            <p data-i18n="hub.intro">Local agencies for students and families, training for the staff who work with them, and hiring programs for employers ready to bring them on.</p>
+            <h1 id="page-title" data-i18n="hub.h1">Support for PTC students and families</h1>
+            <p data-i18n="hub.intro">Local Pinellas County help for students and families. Crisis numbers and PTC contacts are at the top of the page.</p>
         </div>
     </section>
 
@@ -265,11 +271,11 @@
                 <div class="callout-row">
                     <div class="callout callout--crisis" role="note">
                         <p class="callout__title"><i class="fas fa-life-ring" aria-hidden="true"></i> <span data-i18n="hub.crisis.title">Need help right now?</span></p>
-                        <p class="callout__body" data-i18n="hub.crisis.body">Call or text <a href="tel:988">988</a> for the Suicide &amp; Crisis Lifeline, or dial <a href="tel:211">211</a> for the Crisis Center of Tampa Bay (24 hours a day, 365 days a year).</p>
+                        <p class="callout__body" data-i18n="hub.crisis.body">Call or text <a href="tel:988">988</a> for the Suicide &amp; Crisis Lifeline, or dial <a href="tel:211">211</a> to reach 211 Tampa Bay Cares for local help in Pinellas County (24 hours a day, 7 days a week).</p>
                     </div>
                     <div class="callout" role="note">
                         <p class="callout__title"><i class="fas fa-graduation-cap" aria-hidden="true"></i> <span data-i18n="hub.ptc.title">At PTC?</span></p>
-                        <p class="callout__body" data-i18n="hub.ptc.body">Students with documented disabilities can request classroom accommodations through Student Services on either campus. <a href="contact.html">Find your campus contact.</a></p>
+                        <p class="callout__body" data-i18n="hub.ptc.body">Students with documented disabilities can request classroom accommodations through PTC Student Services on either campus. <a href="consumer-information.html#accessibility">Learn about accommodations.</a></p>
                     </div>
                     <div class="callout" role="note">
                         <p class="callout__title"><i class="fas fa-school" aria-hidden="true"></i> <span data-i18n="hub.k12.title">In Pinellas K-12?</span></p>
@@ -282,31 +288,19 @@
         <!-- Audience choice cards -->
         <section class="section section--alt">
             <div class="section__inner">
-                <h2 data-i18n="hub.choose.h2">What brings you here?</h2>
-                <p class="section__lede" data-i18n="hub.choose.lede">Pick the page that fits you best. You can always come back to this hub from any page.</p>
+                <h2 data-i18n="hub.choose.h2">Find help</h2>
+                <p class="section__lede" data-i18n="hub.choose.lede">Browse local Pinellas County agencies. Filter by who needs help and what kind of help you're looking for.</p>
 
                 <div class="choice-grid">
-                    <a href="community-directory.html" class="choice">
+                    <a href="community-directory.html" class="choice choice--primary">
                         <span class="choice__icon"><i class="fas fa-folder-open" aria-hidden="true"></i></span>
-                        <h3 class="choice__title" data-i18n="hub.choice1.title">I'm looking for help</h3>
-                        <p class="choice__body" data-i18n="hub.choice1.body">A searchable directory of about 40 Pinellas County agencies. Filter by who needs help (a person with a disability, a multilingual family, a returning citizen, a foster youth) and by what kind of help (jobs, learning, counseling, transportation, money, and more).</p>
+                        <h3 class="choice__title" data-i18n="hub.choice1.title">Find help in the community</h3>
+                        <p class="choice__body" data-i18n="hub.choice1.body">A searchable directory of local Pinellas County agencies. Filter by who needs help (a person with a disability, a multilingual family, a person who was formerly incarcerated, a foster youth) and by what kind of help (jobs, learning, counseling, transportation, money, and more).</p>
                         <span class="choice__cta"><span data-i18n="hub.choice1.cta">Browse the directory</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </a>
-
-                    <a href="community-staff.html" class="choice">
-                        <span class="choice__icon"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></span>
-                        <h3 class="choice__title" data-i18n="hub.choice2.title">I work with these students</h3>
-                        <p class="choice__body" data-i18n="hub.choice2.body">Professional development, training, and curated supports for teachers and faculty working with ESE, ESOL, or returning students. Includes FDLRS, Project 10, CARD-USF, SEDNET, and study group materials.</p>
-                        <span class="choice__cta"><span data-i18n="hub.choice2.cta">Open staff resources</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
-                    </a>
-
-                    <a href="community-employers.html" class="choice">
-                        <span class="choice__icon"><i class="fas fa-handshake" aria-hidden="true"></i></span>
-                        <h3 class="choice__title" data-i18n="hub.choice3.title">I'm an employer or community partner</h3>
-                        <p class="choice__body" data-i18n="hub.choice3.body">Hiring programs and tax credits that lower the risk of expanding your hiring pool, including the Federal Bonding Program, Work Opportunity Tax Credit, CareerSource Pinellas, and Vocational Rehabilitation's employer services.</p>
-                        <span class="choice__cta"><span data-i18n="hub.choice3.cta">See employer resources</span> <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
-                    </a>
                 </div>
+
+                <p class="secondary-roles" data-i18n="hub.secondary">Looking for something else? <a href="student-resources.html">PTC student services</a> &middot; <a href="community-staff.html">Staff &amp; faculty</a> &middot; <a href="community-employers.html">Employers</a></p>
             </div>
         </section>
 
@@ -316,8 +310,8 @@
                 <div class="scope-note">
                     <span class="scope-note__icon"><i class="fas fa-info-circle" aria-hidden="true"></i></span>
                     <div>
-                        <h3 data-i18n="hub.about.h3">About these pages</h3>
-                        <p data-i18n="hub.about.body">The agency directory is built from the Pinellas Interagency Networking Council for Students (PINCS) Transition Services Resource Guide, last published in September 2015. Phone numbers and addresses may have changed. Always call before you go. The Study Group is working on a fresh verification pass and on plain-language and Spanish translations. To suggest a correction or addition, email <a href="mailto:shafferma@pcsb.org">shafferma@pcsb.org</a>.</p>
+                        <h3 data-i18n="hub.about.h3">Before you go</h3>
+                        <p data-i18n="hub.about.body">Information can change, so it's always smart to call ahead and confirm. To suggest a correction or a resource we should add, email <a href="mailto:shafferma@pcsb.org">shafferma@pcsb.org</a>.</p>
                     </div>
                 </div>
             </div>
@@ -326,7 +320,7 @@
     </main>
 
     <footer class="offset-footer">
-        <p data-i18n="hub.footer">Pinellas Technical College &middot; <a href="index.html">Return to PTC home</a> &middot; This is an offset Study Group resource and is not yet part of the main site navigation.</p>
+        <p data-i18n="hub.footer">Pinellas Technical College &middot; <a href="index.html">Return to PTC home</a></p>
     </footer>
 
     <script src="community-i18n.js"></script>
