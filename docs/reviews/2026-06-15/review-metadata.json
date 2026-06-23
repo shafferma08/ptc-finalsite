@@ -1,0 +1,52 @@
+{
+  "review_date": "2026-06-15",
+  "review_folder": "docs/reviews/2026-06-15",
+  "mode": "mockup",
+  "purpose": "Launch-readiness pass before the Jun 18 mockup deadline",
+  "pages_reviewed": [
+    "index.html",
+    "clearwater.html",
+    "stpete.html",
+    "programs.html",
+    "admissions.html",
+    "tuition-aid.html",
+    "practical-nursing-clearwater.html",
+    "contact.html",
+    "consumer-information.html",
+    "about.html"
+  ],
+  "page_count": 10,
+  "agents_run": [
+    "persona-prospective-student",
+    "persona-current-student",
+    "persona-parent-guardian",
+    "persona-faculty",
+    "persona-director",
+    "persona-designer",
+    "persona-accessibility",
+    "persona-finalsite-cms"
+  ],
+  "agent_count": 8,
+  "synthesizer": "review-pm",
+  "outputs": {
+    "consolidated_report": "docs/reviews/2026-06-15/consolidated-report.md",
+    "metadata": "docs/reviews/2026-06-15/review-metadata.json",
+    "issues_tracker": "docs/reviews/issues-tracker.md"
+  },
+  "previous_review": "docs/reviews/2026-06-11",
+  "timestamps": {
+    "synthesis_completed": "2026-06-15"
+  },
+  "summary": {
+    "launch_blockers": ["C11", "C9", "C12", "C10", "M47"],
+    "new_issues": ["C11", "C12"],
+    "resolved_this_cycle": ["C8", "H20", "M2", "M46", "M44", "M33", "M14-regressed"],
+    "regressions_reopened": ["M3 (A2)", "M24 (A5)", "H7", "L11"],
+    "verified_work": [
+      "programs.html grid reconciliation complete (0 dead links / 0 orphans)",
+      "clearwater.html + stpete.html dead # placeholders wired",
+      "campus-homepage featured-program blurbs corrected (campus pages only; index.html NOT scrubbed)"
+    ],
+    "new_counts": { "critical": 2, "high": 0, "medium": 0, "low": 0 }
+  }
+}

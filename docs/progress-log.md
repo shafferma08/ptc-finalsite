@@ -2948,3 +2948,96 @@ Two flagged items NOT mechanically fixable, logged as decisions instead of guess
 - Contact-page campus hours / safety info: live-sourced content, route verbatim from the live hours page rather than invent.
 
 Repo otherwise at committed HEAD; CSS consolidation was reverted earlier (see css-consolidation-analysis.md). Dead-link wiring is uncommitted in the working tree.
+
+## 2026-06-15 — Programs grid reconciliation + campus-homepage nav wiring
+
+Closed the two remaining open Programs-cluster items.
+
+**programs.html 41-vs-60+ grid reconciliation — DONE.** Verified the grid is a complete de-duplicated institutional index, not an incomplete list. 46 `.prog-card`s = 11 dual-campus + 17 Clearwater-only + 18 St. Pete-only, covering every one of the 28 Clearwater + 28 St. Pete full-time programs plus the Clearview CSIT-IET page (56 built program pages total; shared programs collapse to one dual-campus card). Apprenticeships, short courses, and adult-ed pathways are intentionally excluded from the A-Z grid and routed via the page-header callout + their own hubs. Checks run: every card link resolves to a file on disk (0 dead links); every built full-time program page is represented (0 orphans); all 8 `data-cluster` values map exactly to the 8 filter `<option>`s; count language ("40+ programs / 8 clusters") consistent across index.html + programs.html (about.html "about 60 programs" left verbatim per live). Fixed one A-Z ordering error: Phlebotomy now sorts before Plumbing.
+
+**Campus-homepage `#` nav placeholders — DONE.** clearwater.html and stpete.html were the last redesign pages still carrying the original `href="#"` placeholders (23 each). script.js sets no hrefs, so all were genuinely dead. Wired both end-to-end:
+- Current Students dropdown: Academic Calendar -> live campus calendar (clearwater.myptc.edu / stpete.myptc.edu), Canvas Login -> myptc canvas-login, Student Services -> {campus}-student-services.html, Campus Bookstore -> bncvirtual.com/ptc (verbatim live bookstore URL), Record Request -> records-request.html, Tech Support -> coming-soon.html.
+- Campus Info: Post a Job for Students -> employers.html, Advisory Committees -> coming-soon.html.
+- Hero "Start an Application" -> apply.myptc.edu (new tab).
+- 6 quick-links: Admissions -> {campus}-admissions.html, Financial Aid -> {campus}-tuition.html, Bookstore -> bncvirtual.com/ptc, Visit Campus -> campus-maps.html#{campus}, Student Portal -> myptc/student-links, Consumer Info -> consumer-information.html.
+- 6 featured-program cluster cards -> programs.html?cluster=X&campus={clw|stp} (STP "Education & Child Care" -> arts; both "Cosmetology" cards -> cosmo).
+- Footer Academic Calendar -> live campus calendar.
+
+External links carry target="_blank" rel="noopener". Only the campus-chrome search button (`<a href="#" aria-label="Search">`) remains `#` on both pages, left untouched because it is the separately-flagged sitewide-chrome decision (add overlay vs remove button), not a per-page nav fix.
+
+**Flagged (logged to follow-ups.md):** while wiring, found the campus-homepage "Featured Programs" card blurbs name programs that don't exist or were removed (STP Health: Nursing Assistant / Pharmacy Tech / Medical Assisting; STP IT: Television Production; CLW Health: Professional Nursing LPN-RN). Links now point to the correct cluster filters, but the descriptive text needs a verbatim-catalog rewrite. Medium-priority follow-up.
+
+All uncommitted.
+
+## 2026-06-15 (cont.) — Campus-homepage featured-program blurbs rewritten
+
+Fixed the phantom-program follow-up from the nav-wiring pass. Rewrote the inaccurate "Featured Programs" card blurbs on the two campus homepages to name only real catalog programs:
+- clearwater.html Health Sciences: "Professional Nursing (LPN-RN)" (taken down) -> Phlebotomy. Now "Practical Nursing, Phlebotomy, and Medical Administrative Specialist."
+- stpete.html Health Sciences: dropped Nursing Assistant / Pharmacy Tech / Medical Assisting (none are PTC programs). Now "Dental Assisting, Emergency Medical Technician, Surgical Technology, and Medical Coder/Biller."
+- stpete.html Information Technology: dropped Television Production (no such program). Now "Computer Systems and Information Technology, and Computer-Aided Drawing and Modeling."
+
+All 12 featured blurbs (6 CLW + 6 STP) re-verified against the catalog; the other 9 were already accurate. Follow-up marked resolved. All uncommitted.
+
+## 2026-06-15 (cont.) — Review panel (launch-readiness) + blocker fixes
+
+Ran the 8-persona + PM review panel (mockup mode) on a 10-page representative set: index, clearwater, stpete, programs, admissions, tuition-aid, practical-nursing-clearwater, contact, consumer-information, about. Output in docs/reviews/2026-06-15/ (consolidated-report.md + 8 agent files + metadata). Tracker updated.
+
+Panel verified 6 prior fixes as resolved: C8 (adult-ed script.js), H20/M2 (mobile-nav disclosure ARIA), M46 (programs filter live region), M44 (hero-eyebrow contrast), M33 (cluster-chip mislabels), M14-regressed (em-dash titles). Accessibility risk downgraded to LOW-MODERATE; 0 new Critical a11y defects.
+
+Fixed this session:
+- **C11 (launch-blocker) RESOLVED** — index.html still carried phantom programs in its featured-program blurbs (the campus pages were scrubbed earlier today but the homepage was missed). Rewrote all 8 homepage cluster blurbs to real catalog programs: Health (Medical Assisting/Pharmacy Tech/Patient Care -> Practical Nursing/Dental Assisting/Surgical Technology/Phlebotomy), IT (dropped Television Production -> Web Development + CAD & Modeling), Trades (Electrical->Electricity, Construction Technology->Building Trades), Culinary (dropped Hospitality Management -> Fundamental Foodservice Skills), Cosmo (Nail Technology->Nails Specialty), Business (dropped Administrative Office Specialist). grep confirms 0 phantom terms across index + both campus homes.
+- **M3-regressed RESOLVED** — campus split-hero `<img>` had both descriptive alt and aria-hidden; set alt="" (decorative) on clearwater.html + stpete.html.
+- **M24-regressed RESOLVED** — campus homepage logo alt="PTC Logo" -> campus-qualified descriptive alt on both pages.
+
+Still open / needs decision or verification (not fixed this pass):
+- C9 + C12 counselor attribution (Practical Nursing = Merritt Scott; Machining = Lidija Milisav listed as School Counselor). Verbatim-rule items: confirm against live + counseling office before external showing; route to follow-ups if live-sourced.
+- M47 dead campus-chrome search button (sitewide decision: add overlay vs remove).
+- H4 program outcomes (placement/pass-rate/salary) — strongest cross-agent ask, live-gated.
+- M5/M6/M39/M40/M50/M51 design-system + CSS extraction, H8/M49 programs.html Composer architecture — structural, pre-July-build.
+- L11/H7 regressions on contact/tuition-aid/consumer-information (breadcrumb opacity + lost clamp()).
+
+All uncommitted.
+
+## 2026-06-15 (cont.) — Post-review decisions applied (Marianne)
+
+- **C9 + C12 counselor attribution CONFIRMED CORRECT (not defects).** Marianne confirmed Merritt Scott is the Clearwater counselor for Practical Nursing (counsels both PN + Phlebotomy) and Lidija Milisav is the Clearwater counselor for Machining (also holds the Military/Veteran coordinator title). Both pages publish the right names. Marked resolved in tracker.
+- **M47 dead campus search button REMOVED sitewide.** Marianne decided not to build campus search. Deleted the dead `<a href="#">...fa-search</a>` anchor from all 33 campus-chrome pages + 4 templates (perl line-delete). 0 remaining; the 17 main-shell `button.search-toggle` + working overlay untouched; no orphaned `|` dividers left behind.
+- **H4 program outcomes -> suggested-content list.** Per Marianne, not inventing figures. Logged a High-priority follow-up listing suggested per-program outcome fields (placement rate, licensure/pass rate, median wage w/ citation, data vintage) for program/data owners + PCSB to source and approve, then add verbatim.
+
+Still pending a working conversation (not started): Finalsite Composer architecture (H8/M49 programs filter, M5/M6/M50/M51 CSS + global regions). Marianne wants to talk it through first. All uncommitted.
+
+## 2026-06-15 (cont.) — Dark-heading-on-green fixes
+
+Marianne flagged dark headings on green backgrounds. Root cause: styles.css `h1-h6 { color: var(--color-gray-900) }` beats inherited white, so dark/green sections must opt into white text via the whitelist (or `.on-dark`). Swept all solid-green/dark sections across the redesign:
+- **programs.html "Programs A-Z Directory"** — its green banner uses class `.page-header`, which was missing from the styles.css white-text whitelist. Added `.page-header` + its h1/h2/h3/p to the whitelist (styles.css). Fixes the heading at the root; `.page-header` is used only on programs.html.
+- **apprenticeships-clearwater.html + apprenticeships-stpete.html** — the "How Apprenticeships Work" step h3s (Apply and Get Hired / Train On the Job / Earn Your Credential) sat directly on a green-dark section with no explicit color, rendering dark-on-green. Added `class="on-dark"` to both sections (whitelist covers `.on-dark h1-h4`).
+- Verified clean: all program detail pages (hero uses whitelisted `.program-hero`, white h1; green only on badges/buttons/avatars that set their own white text), about.html (green = timeline line/dots, not headings), apprenticeships-workforce.html (`.aw-section` is light-bg, dark heading correct), careers.html (green = button).
+
+Pending Marianne decision (not changed): program-page Flyer + Program Costs placement. Currently in the "Credentials, Licensure & Cost" section, 7th of 9 sections (~3/4 down) in `_templates/program-page.html`. Marianne thinks it's too far down; agreed. Options to confirm before touching ~80 pages (see chat). All uncommitted.
+
+## 2026-06-15 (cont.) — Program-page IA restructure rolled out site-wide
+
+Marianne approved the nursing-page restructure (deconstruct the "Credentials, Licensure & Cost" kitchen-sink section: overview docs up top, application doc with admissions, credentials as outcomes, a dedicated Cost & Financial Aid section with inline tuition). Per her requirement that the shared mockup read as fully finished, applied the identical pattern to EVERY program page + the template.
+
+Spec written to c:\tmp\restructure-spec.md (single source of truth); nursing = reference. Fanned out 7 parallel agents over 54 standard program pages, then a tailored pass for the 3 welding pages, then the template by hand.
+
+Applied to each page: Tuition stat in hero ($2.92/hr FL resident); jump-nav split into Credentials + Cost & Aid; new "Program Documents" section after jump-nav (overview PDFs only); Application Information Kit moved into Admission Requirements where present; credentials heading renamed "Credentials & Licensure" with cost/aid-banner/PDFs stripped out; new "Cost & Financial Aid" section (id=program-cost) with inline tuition sentence ($2.92/$11.71 verbatim standard rate) + Program Costs PDF + aid-banner (campus-correct tuition link).
+
+**Coverage:** 54 standard program pages + practical-nursing-clearwater (reference) + welding-clearwater/stpete/advanced + _templates/program-page.html. All verbatim PDF hrefs relocated (none fabricated/lost).
+
+**Independent verification:** all pages have balanced <section> tags; every #program-credentials now paired with #program-cost; jump-nav anchors resolve; exactly one aid-banner per page (in the Cost section); 0 leftover old bundle headings; 0 em dashes. Welding 7/7, 7/7, 9/9; template 11/11.
+
+**Documented adaptations (not defects):** digital-media-multimedia-design-stpete (no overview PDFs -> Program Documents section dropped); child-care-apprenticeship-stpete (employer-sponsored, no clock-hour tuition -> no Tuition stat, cost language kept); welding-advanced (replaced a non-standard "$2.91/hr" line with the standard $2.92/$11.71); medical-administrative-specialist + computer-systems-it-clearview (two flyers incl. Spanish -> both kept in Program Documents); phlebotomy (kept its "not PELL eligible" cost language + moved Admissions Packet to admissions).
+
+**Known residual (flagged, not done):** 2 apprenticeship pages (industrial-pipefitter, industrial-machinery-maintenance) kept their original apprenticeship layout rather than the OCP program-page IA (different content type, no clock-hour tuition); they're consistent individually but differ from child-care-apprenticeship which was adapted. program-page-preview.html (internal scaffold, not shared) left on the old pattern. All uncommitted.
+
+## 2026-06-15 (cont.) — Apprenticeship-page alignment
+
+Per Marianne: align only apprenticeship pages built LIKE the program pages (have the credentials/cost structure); leave the thin ones. Of 8 individual apprenticeship pages, only 2 have a credentials/cost section: child-care-apprenticeship (already aligned in the main rollout) and industrial-pipefitter (had a credentials section with an embedded aid-banner, no cost split). Aligned industrial-pipefitter to match the child-care apprenticeship model: split the aid-banner out into a dedicated #program-cost "Cost & Financial Aid" section (apprenticeship cost framing, no clock-hour tuition line since employer-sponsored), renamed the credentials heading to "Credentials & Licensure", added the jump-nav "Cost & Aid" link. Verified 7/7 section balance, aid-banner moved out of credentials, anchors resolve. The other 6 apprenticeship pages have no credentials/cost content (thin Wave-6 pages) so there's nothing to split and adding sections would mean fabricating content; left as-is. program-page-preview.html (internal scaffold, not shared) intentionally left on the old pattern. All uncommitted.
+
+## 2026-06-15 (cont.) — L11/H7 regression fixes on funnel pages
+
+Cleared the two design regressions the review panel flagged on contact.html, tuition-aid.html, consumer-information.html:
+- L11: removed `opacity: 0.85` from `.page-hero__breadcrumb` (white-on-green breadcrumb now full opacity, matching the about.html fix).
+- H7: `.page-hero__title` hard-coded `font-size: 2.5rem` -> `clamp(1.85rem, 4vw, 2.5rem)` so the hero title is responsive in one rule.
+Note: the `.cta-band p { opacity: 0.85 }` left in place is a separate shared-component style (CTA paragraph), not the flagged breadcrumb regression. All uncommitted.

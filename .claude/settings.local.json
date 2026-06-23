@@ -178,7 +178,15 @@
       "Bash(mkdir -p /tmp/prog-backup)",
       "Bash(python3 /tmp/css_apply.py apply)",
       "Bash(ls docs/implementation_plan.md docs/*timeline* docs/*plan*)",
-      "Bash(ls urgent-fixes/)"
+      "Bash(ls urgent-fixes/)",
+      "Bash(perl -i -pe 's/\\(programs\\\\.html\\\\?cluster=[a-z]+\\)&\\(campus=\\(?:clw|stp\\)\\)/$1&amp;$2/g' clearwater.html stpete.html)",
+      "Bash(awk '/<style>/{f=1} f{c++} /<\\\\/style>/{print c; exit}' _templates/program-page.html)",
+      "Bash(tee /tmp/searchbtn.txt)",
+      "Bash(perl -i -pe 'if \\(/^\\\\| M47 \\\\|/\\) { s/\\\\| Open \\\\\\(scope expanded\\\\\\).*?\\\\| 2026-06-15 \\\\|$/| RESOLVED 2026-06-15 -- Marianne decided not to build campus search. Removed the dead search anchor from all 33 campus-chrome pages + 4 templates \\(0 remaining; the 17 main-shell button.search-toggle + working overlay left intact\\). No dead control remains | 2026-06-15 |/ }' docs/reviews/issues-tracker.md)",
+      "Bash(grep -nE '^\\\\s*h1|^\\\\s*h1,|h1 \\\\{|h2 \\\\{|h1,\\\\s*h2' styles.css)",
+      "Bash(grep -nE '\\\\.page-header[ ,{]' styles.css)",
+      "Bash(python -c \"import re,sys; h=open\\('practical-nursing-clearwater.html',encoding='utf-8'\\).read\\(\\); print\\('section open:', h.count\\('<section'\\), 'section close:', h.count\\('</section>'\\)\\)\")",
+      "Bash(grep -oE 'jump-nav__link[^>]*\" *$|href=\"#[a-z-]+\"' diesel-systems-technician-2-clearwater.html)"
     ],
     "additionalDirectories": [
       "C:\\Users\\mshaf\\Documents\\PTC\\Website\\ptc-finalsite",

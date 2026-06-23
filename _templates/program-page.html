@@ -1036,7 +1036,7 @@
                  <a href="campus-maps.html#[CAMPUS_SLUG]"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> [CAMPUS_ADDRESS]</a>
             </div>
             <div class="utility-bar__right">
-                <a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener"><i class="fas fa-desktop" aria-hidden="true"></i> Canvas Login</a>
+                <a href="canvas-login.html"><i class="fas fa-chalkboard-user" aria-hidden="true"></i> Canvas Login</a>
                 <span class="utility-bar__divider">|</span>
                 <a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener"><i class="fas fa-user-graduate" aria-hidden="true"></i> SIS Portal / Focus</a>
                 <span class="utility-bar__divider">|</span>
@@ -1105,7 +1105,7 @@
                                 <div class="dropdown__column">
                                     <ul>
                                         <li><a href="schedule-[CAMPUS_SLUG].html">Class Schedule</a></li>
-                                        <li><a href="https://www.myptc.edu/student-links/canvas-login" target="_blank" rel="noopener">Canvas Login</a></li>
+                                        <li><a href="canvas-login.html">Canvas Login</a></li>
                                         <li><a href="[CAMPUS_SLUG]-student-services.html">Student Services Hours</a></li>
                                         <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
                                         <li><a href="[CAMPUS_SLUG]-records-request.html">Record Request</a></li>
@@ -1195,6 +1195,10 @@
                             <div class="stat-bar__item">
                                 <strong>Length</strong>
                                 <span>[TOTAL_HOURS] Hours</span>
+                            </div>
+                            <div class="stat-bar__item">
+                                <strong>Tuition</strong>
+                                <span>$2.92/hr <span style="font-size: 0.8rem; opacity: 0.7;">&middot; FL resident</span></span>
                             </div>
                             <!--
                               Distance Ed stat: Use "Not Available" OR "Available" OR "Hybrid".
@@ -1294,12 +1298,38 @@
                     <!-- Include the next two only if those sections are present: -->
                     <!-- <a href="#path-to-rn" class="jump-nav__link">Your Path Forward</a> -->
                     <!-- <a href="#distance-ed" class="jump-nav__link">Distance Education</a> -->
-                    <a href="#program-credentials" class="jump-nav__link">Credentials &amp; Cost</a>
+                    <a href="#program-credentials" class="jump-nav__link">Credentials</a>
+                    <a href="#program-cost" class="jump-nav__link">Cost &amp; Aid</a>
                     <a href="#program-videos" class="jump-nav__link">See It In Action</a>
                     <a href="#counselor" class="jump-nav__link jump-nav__link--cta"><i class="fas fa-user-tie" aria-hidden="true"></i> Talk to a Counselor</a>
                 </div>
             </div>
         </nav>
+
+        <!-- =================================================
+             PROGRAM DOCUMENTS: at-a-glance overview docs surfaced high.
+             Include the Program Flyer and (if it exists) the General Information & FAQ.
+             Omit any card the program doesn't have; drop the whole section if neither exists.
+             The detailed Program Costs PDF goes in the Cost & Financial Aid section, NOT here.
+        ================================================== -->
+        <section id="program-docs" style="padding: 3rem 0 1rem; background: white;">
+            <div class="container" style="max-width: 1000px;">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 0.5rem; font-size: 1.6rem;">Program Documents</h2>
+                <p style="text-align: center; color: var(--color-gray-600); margin-bottom: 1.75rem; font-size: 1.05rem;">Start with the at-a-glance overview, then dig into the details below.</p>
+                <div class="resource-grid">
+                    <a class="pdf-card" href="[FLYER_PDF_URL]" target="_blank" rel="noopener">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Program Flyer</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">[PROGRAM_NAME] &middot; [CAMPUS] &middot; PDF</span></div>
+                    </a>
+                    <!-- Include only if the program has a General Information / FAQ PDF:
+                    <a class="pdf-card" href="[GENERAL_INFO_PDF_URL]" target="_blank" rel="noopener">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">General Information &amp; FAQ</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">[PROGRAM_NAME] &middot; PDF</span></div>
+                    </a>
+                    -->
+                </div>
+            </div>
+        </section>
 
         <!-- =================================================
              OPTIONAL SECTION A: ADMISSION REQUIREMENTS
@@ -1534,7 +1564,7 @@
         ================================================== -->
         <section id="program-credentials" style="padding: 5rem 0; background-color: var(--color-gray-100);">
             <div class="container">
-                <h2 style="color: var(--color-green-dark); margin-bottom: 2rem; font-family: var(--font-heading);">Credentials, Licensure &amp; Cost</h2>
+                <h2 style="color: var(--color-green-dark); margin-bottom: 2rem; font-family: var(--font-heading);">Credentials &amp; Licensure</h2>
 
                 <!-- CREDENTIAL STACK: add a .credential-card for each credential. -->
                 <div class="credential-stack">
@@ -1574,26 +1604,6 @@
                     <p>
                         Pinellas Technical College&rsquo;s [PROGRAM_NAME] program is approved by the [FLORIDA_BOARD_NAME] and meets the educational requirements for licensure in the State of Florida. Licensure requirements vary by state; students who plan to work outside Florida should review licensure requirements in their intended state of practice. Contact your counselor for more information.
                     </p>
-                </div>
-
-                <!-- Financial Aid banner + program resource cards (approved pattern; NOT a tall sidebar box) -->
-                <div class="aid-banner">
-                    <div>
-                        <h3>Financial Aid &amp; Costs</h3>
-                        <p>Program length and costs are approximate, and subject to change. Financial assistance is available to those who qualify.</p>
-                    </div>
-                    <a href="[CAMPUS_SLUG]-tuition.html" class="btn btn--accent">Explore Financial Aid</a>
-                </div>
-
-                <div class="resource-grid">
-                    <a class="pdf-card" href="[FLYER_PDF_URL]" target="_blank" rel="noopener">
-                        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
-                        <div><strong style="display: block; color: var(--color-gray-900);">Program Flyer</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">[PROGRAM_NAME] &middot; [CAMPUS] &middot; PDF</span></div>
-                    </a>
-                    <a class="pdf-card" href="[COSTS_PDF_URL]" target="_blank" rel="noopener">
-                        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
-                        <div><strong style="display: block; color: var(--color-gray-900);">Program Costs</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">[PROGRAM_NAME] &middot; [CAMPUS] &middot; PDF</span></div>
-                    </a>
                 </div>
 
                 <!-- =================================================
@@ -1686,6 +1696,35 @@
                         <li><strong>Proctored assessments:</strong> [On-campus / Online proctor]</li>
                         <li><strong>Required campus visits:</strong> [None / X visits for skills labs]</li>
                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================================================
+             COST & FINANCIAL AID — dedicated money section (split out of the old
+             "Credentials, Licensure & Cost" bundle). Holds the inline tuition figure,
+             the Program Costs PDF (if any), and the financial-aid banner.
+             The $2.92 / $11.71 clock-hour rate is the standard PTC tuition rate.
+        ================================================== -->
+        <section id="program-cost" style="padding: 5rem 0; background-color: white;">
+            <div class="container" style="max-width: 1000px;">
+                <h2 style="color: var(--color-green-dark); margin-bottom: 1.25rem; font-family: var(--font-heading);">Cost &amp; Financial Aid</h2>
+                <p style="color: var(--color-gray-700); line-height: 1.7; font-size: 1.05rem; margin-bottom: 2rem; max-width: 720px;">Tuition is <strong>$2.92 per clock hour</strong> for Florida residents (<strong>$11.71</strong> for non-residents), plus fees. Program length and costs are approximate and subject to change. Financial assistance is available to those who qualify.</p>
+
+                <!-- Include only if the program has a Program Costs PDF: -->
+                <div class="resource-grid" style="margin-bottom: 2rem;">
+                    <a class="pdf-card" href="[COSTS_PDF_URL]" target="_blank" rel="noopener">
+                        <div class="pdf-icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></div>
+                        <div><strong style="display: block; color: var(--color-gray-900);">Program Costs</strong><span style="font-size: 0.85rem; color: var(--color-gray-500);">[PROGRAM_NAME] &middot; [CAMPUS] &middot; PDF</span></div>
+                    </a>
+                </div>
+
+                <div class="aid-banner">
+                    <div>
+                        <h3>Financial Aid &amp; Costs</h3>
+                        <p>Grants, scholarships, and veterans benefits may help cover the cost. See what you qualify for.</p>
+                    </div>
+                    <a href="[CAMPUS_SLUG]-tuition.html" class="btn btn--accent">Explore Financial Aid</a>
                 </div>
             </div>
         </section>
