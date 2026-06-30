@@ -19,6 +19,7 @@ const TRANSLATIONS = {
         "hub.h1": "Ayuda para estudiantes y familias del condado de Pinellas",
         "hub.intro": "Una guía buscable que te conecta con apoyo local en un solo lugar: servicios para discapacidades, consejería, empleo, beneficios y transporte.",
         "hub.quick.h2": "Contactos rápidos",
+        "hub.thanks": "Creado con dedicación por el equipo del Estudio del Libro de ESE de PTC: Brenda, Joanna, Kelly, Korey, Merritt, Suzanne y Yata. Gracias.",
         "hub.crisis.title": "¿Necesitas ayuda ahora?",
         "hub.crisis.body": "Llama o envía un mensaje al <a href=\"tel:988\">988</a> para la Línea de Vida de Suicidio y Crisis, o marca el <a href=\"tel:211\">211</a> para comunicarte con 211 Tampa Bay Cares y obtener ayuda local en el condado de Pinellas (24 horas al día, 7 días a la semana).",
         "hub.ptc.title": "¿En PTC?",
