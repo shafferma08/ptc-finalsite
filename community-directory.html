@@ -97,7 +97,7 @@
             transition: all 0.15s ease; display: inline-flex; align-items: center; gap: 0.4rem; line-height: 1.2;
         }
         .chip i { font-size: 0.85em; }
-        .chip__count { color: var(--color-gray-500); font-weight: 500; font-size: 0.85em; }
+        .chip__count { display: none; }
         .chip:hover { border-color: var(--color-green); color: var(--color-green); }
         .chip:hover .chip__count { color: var(--color-green); }
         .chip:focus-visible { outline: 3px solid var(--color-green); outline-offset: 2px; box-shadow: 0 0 0 4px rgba(255, 207, 1, 0.5); }
@@ -592,7 +592,7 @@
 
                     <div class="filter-help">
                         <span data-i18n="dir.filter.help.label"><strong>How it works:</strong></span>
-                        <span data-i18n="dir.filter.help.body">Pick any options that apply in each row, and the list updates as you go. The number on each option shows how many agencies it would show. Greyed-out options would leave no results.</span>
+                        <span data-i18n="dir.filter.help.body">Pick any options that apply in each row, and the list updates as you go. Greyed-out options would leave no results.</span>
                     </div>
 
                     <div class="filter-group">

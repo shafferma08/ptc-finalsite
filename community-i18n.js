@@ -52,7 +52,7 @@ const TRANSLATIONS = {
         "dir.stale.label": "Bueno saber:",
         "dir.stale.body": "La información puede cambiar, así que llama antes de ir para confirmar el horario y la ubicación.",
         "dir.filter.help.label": "Cómo funciona:",
-        "dir.filter.help.body": "Elige las opciones que apliquen en cada fila y la lista se actualiza al instante. El número en cada opción muestra cuántas agencias aparecerían. Las opciones en gris no dejarían resultados.",
+        "dir.filter.help.body": "Elige las opciones que apliquen en cada fila y la lista se actualiza al instante. Las opciones en gris no dejarían resultados.",
         "dir.pop.label": "Busco ayuda para...",
         "dir.svc.label": "¿Qué tipo de ayuda?",
         "dir.label.hint": "(elige las que apliquen)",

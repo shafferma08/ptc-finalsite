@@ -20,3 +20,8 @@ npm-debug.log*
 .idea/
 *.swp
 *.swo
+
+docs/
+.claude/
+CLAUDE.md
+Schedule_Questions_Email_Draft*.docx
