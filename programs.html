@@ -8,14 +8,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .page-header { background: var(--color-green); color: white; padding: 4rem 0 2rem; text-align: center; }
-        .page-header h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; }
-        .page-header p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.5; color: rgba(255,255,255,0.9); }
-        
-        .filters { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin: -2rem auto 3rem; padding: 1.5rem; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 800px; position: relative; z-index: 10; border: 1px solid var(--color-gray-200); }
-        .filter-group { display: flex; flex-direction: column; gap: 0.5rem; }
-        .filter-group label { font-weight: 600; font-size: 0.9rem; color: var(--color-gray-700); }
-        .filter-select { padding: 0.6rem; border: 1px solid var(--color-gray-300); border-radius: 4px; font-family: inherit; font-size: 1rem; min-width: 250px; background: white; }
+        /* Calm program-page header pattern */
+        .prog-hero { background: var(--color-green); color: #fff; padding: 3rem 0 2.5rem; text-align: center; }
+        .prog-hero__tag { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.78rem; font-weight: 700; color: var(--color-yellow); margin-bottom: 0.6rem; }
+        .prog-hero h1 { font-family: var(--font-heading); font-size: 2.4rem; line-height: 1.1; margin-bottom: 0.6rem; }
+        .prog-hero__desc { font-size: 1.05rem; color: rgba(255,255,255,0.88); max-width: 560px; margin: 0 auto 1.75rem; line-height: 1.45; }
+
+        /* Segmented campus switcher */
+        .prog-switch { display: inline-flex; flex-wrap: wrap; justify-content: center; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.3rem; gap: 0.25rem; }
+        .prog-switch__btn { display: inline-block; padding: 0.5rem 1.15rem; border-radius: 999px; font-size: 0.92rem; font-weight: 600; color: #fff; text-decoration: none; white-space: nowrap; transition: background 0.15s, color 0.15s; }
+        .prog-switch__btn:hover { background: rgba(255,255,255,0.2); }
+        .prog-switch__btn.is-active { background: #fff; color: var(--color-green); }
+
+        /* Slim accreditation + consumer-information strip */
+        .accred-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; max-width: 1100px; margin: 1.5rem auto 0; padding: 0.8rem 1.15rem; font-size: 0.88rem; color: var(--color-gray-700); background: var(--color-gray-100); border: 1px solid var(--color-gray-200); border-radius: 8px; }
+        .accred-strip__icon { color: var(--color-green); font-size: 1rem; }
+        .accred-strip__text { font-weight: 500; }
+        .accred-strip__links { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; margin-left: auto; }
+        .accred-strip__links a { color: var(--color-green); font-weight: 600; text-decoration: none; white-space: nowrap; }
+        .accred-strip__links a:hover { text-decoration: underline; }
+
+        /* Flat filter row */
+        .prog-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; max-width: 1100px; margin: 1.75rem auto 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-gray-200); }
+        .prog-controls__filter { display: flex; align-items: center; gap: 0.6rem; }
+        .prog-controls__filter label { font-weight: 600; font-size: 0.9rem; color: var(--color-gray-700); }
+        .prog-controls__filter select { padding: 0.55rem 0.8rem; border: 1px solid var(--color-gray-300); border-radius: 6px; font-family: inherit; font-size: 0.95rem; background: #fff; min-width: 240px; }
+        .prog-controls__count { font-size: 0.9rem; color: var(--color-gray-600); font-weight: 600; margin: 0; }
+
+        /* Secondary "also explore" links */
+        .prog-explore { max-width: 1100px; margin: 0 auto 2rem; font-size: 0.88rem; color: var(--color-gray-600); }
+        .prog-explore a { color: var(--color-green); font-weight: 600; text-decoration: none; }
+        .prog-explore a:hover { text-decoration: underline; }
         
         .programs-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
         .prog-card { background: white; border: 1px solid var(--color-gray-200); border-radius: 8px; padding: 1.5rem; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
@@ -225,34 +248,40 @@
     </header>
 
     <main id="main-content">
-        <!-- PAGE HEADER -->
-        <section class="page-header" style="padding-bottom: 3rem;">
+        <!-- PAGE HERO -->
+        <section class="prog-hero">
             <div class="container">
-                <h1>Programs A–Z Directory</h1>
-                <p style="margin-bottom: 1.5rem;">Explore over 40 industry-certified training programs designed to fast-track your career. Filter by your area of interest or preferred campus.</p>
-                <div class="short-courses-callout">
-                    <span style="color: rgba(255,255,255,0.9); font-size: 0.95rem; margin-right: 15px;">Looking for apprenticeships or continuing education?</span>
-                    <a href="apprenticeships-clearwater.html" class="btn btn--outline-white btn--sm" style="border-width: 1px; padding: 0.4rem 1rem;">Clearwater Apprenticeships</a>
-                    <a href="apprenticeships-stpete.html" class="btn btn--outline-white btn--sm" style="border-width: 1px; padding: 0.4rem 1rem;">St. Petersburg Apprenticeships</a>
-                    <a href="workforce-continuing-education.html" class="btn btn--outline-white btn--sm" style="border-width: 1px; padding: 0.4rem 1rem;">Workforce &amp; Continuing Education</a>
-                </div>
+                <p class="prog-hero__tag">Career &amp; Technical Training</p>
+                <h1>Explore All Programs</h1>
+                <p class="prog-hero__desc">Browse every program across both campuses, or jump straight to a single campus.</p>
+                <nav class="prog-switch" aria-label="Choose a program view">
+                    <a class="prog-switch__btn is-active" href="programs.html" aria-current="page">All Programs A&ndash;Z</a>
+                    <a class="prog-switch__btn" href="clearwater-programs.html">Clearwater</a>
+                    <a class="prog-switch__btn" href="stpete-programs.html">St. Petersburg</a>
+                </nav>
             </div>
         </section>
 
         <!-- CONTENT -->
         <section class="container">
-            <!-- Campus-specific list pointers -->
-            <p style="max-width: 800px; margin: 0 auto 1.5rem; text-align: center; font-size: 0.95rem; color: var(--color-gray-700);">
-                Programs are offered at the campus shown on each card. For one campus's full list, see
-                <a href="clearwater-programs.html" style="color: var(--color-accent); font-weight: 600;">Clearwater Programs</a> or
-                <a href="stpete-programs.html" style="color: var(--color-accent); font-weight: 600;">St. Petersburg Programs</a>.
-            </p>
-            <!-- FILTERS -->
-            <div class="filters">
-                <div class="filter-group">
-                    <label for="filter-cluster">Career Cluster</label>
-                    <select id="filter-cluster" class="filter-select">
-                        <option value="all">All Clusters</option>
+
+            <!-- Slim accreditation + consumer-information strip -->
+            <aside class="accred-strip" aria-label="Accreditation and consumer information">
+                <i class="fas fa-award accred-strip__icon" aria-hidden="true"></i>
+                <span class="accred-strip__text">Each PTC campus is individually accredited by the Council on Occupational Education (COE).</span>
+                <span class="accred-strip__links">
+                    <a href="clearwater-accreditation.html">Clearwater Accreditation</a>
+                    <a href="stpete-accreditation.html">St. Petersburg Accreditation</a>
+                    <a href="consumer-information.html">Consumer Information</a>
+                </span>
+            </aside>
+
+            <!-- Filter row -->
+            <div class="prog-controls">
+                <div class="prog-controls__filter">
+                    <label for="filter-cluster">Filter by career area</label>
+                    <select id="filter-cluster">
+                        <option value="all">All career areas</option>
                         <option value="arts">Arts &amp; Audio/Visual</option>
                         <option value="auto">Automotive &amp; Transportation</option>
                         <option value="beauty">Beauty</option>
@@ -265,18 +294,16 @@
                         <option value="publicworks">Public Works</option>
                     </select>
                 </div>
-                <div class="filter-group">
-                    <label for="filter-campus">Location</label>
-                    <select id="filter-campus" class="filter-select">
-                        <option value="all">Both Campuses</option>
-                        <option value="clw">Clearwater Campus</option>
-                        <option value="stp">St. Petersburg Campus</option>
-                    </select>
-                </div>
+                <p class="prog-controls__count" id="filter-count" role="status" aria-live="polite" aria-atomic="true"></p>
             </div>
 
-            <!-- Screen-reader announcement of filter results -->
-            <p id="filter-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+            <!-- Secondary: also explore -->
+            <p class="prog-explore">
+                Also explore:
+                <a href="apprenticeships-clearwater.html">Clearwater Apprenticeships</a> &middot;
+                <a href="apprenticeships-stpete.html">St. Petersburg Apprenticeships</a> &middot;
+                <a href="workforce-continuing-education.html">Workforce &amp; Continuing Education</a>
+            </p>
 
             <!-- PROGRAMS LIST -->
             <div class="programs-list" id="programs-container">
@@ -685,33 +712,25 @@
         // Simple client-side filtering script (avoids frameworks, easy for Finalsite)
         document.addEventListener('DOMContentLoaded', () => {
             const clusterFilter = document.getElementById('filter-cluster');
-            const campusFilter = document.getElementById('filter-campus');
             const cards = document.querySelectorAll('.prog-card');
             const noResultsMsg = document.getElementById('no-results-msg');
-            const filterStatus = document.getElementById('filter-status');
+            const filterCount = document.getElementById('filter-count');
 
-            // Check for URL parameters (e.g. ?campus=clw)
+            // Check for URL parameter (e.g. ?cluster=health)
             const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('campus')) {
-                campusFilter.value = urlParams.get('campus');
-            }
             if (urlParams.has('cluster')) {
                 clusterFilter.value = urlParams.get('cluster');
             }
 
             function filterPrograms() {
                 const cluster = clusterFilter.value;
-                const campus = campusFilter.value;
                 let visibleCount = 0;
 
                 cards.forEach(card => {
                     const cardCluster = card.getAttribute('data-cluster');
-                    const cardCampus = card.getAttribute('data-campus');
-                    
                     const matchCluster = (cluster === 'all') || (cardCluster === cluster);
-                    const matchCampus = (campus === 'all') || (cardCampus.includes(campus));
 
-                    if (matchCluster && matchCampus) {
+                    if (matchCluster) {
                         card.classList.remove('hidden');
                         visibleCount++;
                     } else {
@@ -719,23 +738,17 @@
                     }
                 });
 
-                if (visibleCount === 0) {
-                    noResultsMsg.classList.remove('hidden');
-                } else {
-                    noResultsMsg.classList.add('hidden');
-                }
+                noResultsMsg.classList.toggle('hidden', visibleCount !== 0);
 
-                // Announce the result to screen-reader users
-                if (filterStatus) {
-                    filterStatus.textContent = visibleCount === 0
-                        ? 'No programs match your selected filters.'
-                        : visibleCount + (visibleCount === 1 ? ' program' : ' programs') + ' shown.';
+                if (filterCount) {
+                    filterCount.textContent = visibleCount === 0
+                        ? 'No programs match this filter'
+                        : 'Showing ' + visibleCount + (visibleCount === 1 ? ' program' : ' programs');
                 }
             }
 
             clusterFilter.addEventListener('change', filterPrograms);
-            campusFilter.addEventListener('change', filterPrograms);
-            
+
             // Run on initial load in case URL params set initial values
             filterPrograms();
         });
