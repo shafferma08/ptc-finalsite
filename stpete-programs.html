@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Petersburg Campus Programs | Pinellas Technical College</title>
+    <meta name="description" content="Full list of career and technical training programs offered at the Pinellas Technical College St. Petersburg campus.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header { background: var(--color-green); color: white; padding: 4rem 0 2rem; text-align: center; }
+        .page-header h1 { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; }
+        .page-header p { font-size: 1.1rem; max-width: 640px; margin: 0 auto; line-height: 1.5; color: rgba(255,255,255,0.9); }
+
+        .filters { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-items: flex-end; margin: -2rem auto 2rem; padding: 1.5rem; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 800px; position: relative; z-index: 10; border: 1px solid var(--color-gray-200); }
+        .filter-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        .filter-group label { font-weight: 600; font-size: 0.9rem; color: var(--color-gray-700); }
+        .filter-select { padding: 0.6rem; border: 1px solid var(--color-gray-300); border-radius: 4px; font-family: inherit; font-size: 1rem; min-width: 250px; background: white; }
+
+        .campus-crosslink { max-width: 800px; margin: 0 auto 2rem; text-align: center; font-size: 0.95rem; color: var(--color-gray-700); }
+        .campus-crosslink a { color: var(--color-accent); font-weight: 600; text-decoration: none; }
+        .campus-crosslink a:hover { text-decoration: underline; }
+
+        .disclosures { max-width: 1100px; margin: 0 auto 2.5rem; background: var(--color-gray-100); border: 1px solid var(--color-gray-200); border-left: 5px solid var(--color-green); border-radius: 8px; padding: 1.5rem 1.75rem; }
+        .disclosures h2 { font-family: var(--font-heading); font-size: 1.15rem; color: var(--color-gray-900); margin-bottom: 0.4rem; }
+        .disclosures p { font-size: 0.92rem; color: var(--color-gray-700); line-height: 1.5; margin-bottom: 1rem; }
+        .disclosures__links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .disclosures__links a { display: inline-flex; align-items: center; gap: 0.5rem; background: white; border: 1px solid var(--color-gray-300); border-radius: 6px; padding: 0.55rem 0.9rem; font-size: 0.9rem; font-weight: 600; color: var(--color-green); text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s; }
+        .disclosures__links a:hover { border-color: var(--color-green); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+
+        .programs-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+        .prog-card { background: white; border: 1px solid var(--color-gray-200); border-radius: 8px; padding: 1.5rem; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+        .prog-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .prog-card h3 { color: var(--color-green); font-family: var(--font-heading); margin-bottom: 0.5rem; font-size: 1.25rem; }
+        .prog-card p { font-size: 0.9rem; color: var(--color-gray-700); margin-bottom: 1rem; flex-grow: 1; line-height: 1.5; }
+        .prog-card .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .prog-card .tag { background: var(--color-gray-100); color: var(--color-gray-800); font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 500; }
+        .prog-card .campus-tag { background: #e0f2fe; color: #0284c7; }
+        .prog-card-link { margin-top: auto; color: var(--color-accent); font-weight: bold; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .prog-card-link:hover { text-decoration: underline; }
+
+        .hidden { display: none !important; }
+        .no-results { grid-column: 1 / -1; text-align: center; padding: 3rem; background: var(--color-gray-100); border-radius: 8px; color: var(--color-gray-700); font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- ============================================
+         CAMPUS UTILITY BAR
+    ============================================= -->
+    <div class="utility-bar utility-bar--campus">
+        <div class="container utility-bar__inner">
+            <div class="utility-bar__left">
+                 <a href="tel:7278932500"><i class="fas fa-phone" aria-hidden="true"></i> 727.893.2500</a>
+                 <span class="utility-bar__divider">|</span>
+                 <a href="campus-maps.html#stpete"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 901 34th St S, St. Petersburg, FL</a>
+            </div>
+            <div class="utility-bar__right">
+                <a href="canvas-login.html"><i class="fas fa-chalkboard-user" aria-hidden="true"></i> Canvas Login</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="https://pinellas.focusschoolsoftware.com/focus/" target="_blank" rel="noopener"><i class="fas fa-user-graduate" aria-hidden="true"></i> SIS Portal / Focus</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="index.html"><i class="fas fa-home" aria-hidden="true"></i> PTC Main Site</a>
+                <span class="utility-bar__divider">|</span>
+                <a href="clearwater-programs.html"><i class="fas fa-exchange-alt" aria-hidden="true"></i> Clearwater Programs</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         CAMPUS HEADER
+    ============================================= -->
+    <header class="site-header" id="site-header">
+        <div class="container site-header__inner">
+            <a href="stpete.html" class="site-header__logo" style="display: flex; align-items: center; gap: 1rem; text-decoration: none;">
+                <img src="assets/logos/ptc-circle-logo.png" alt="Pinellas Technical College, St. Petersburg Campus" style="height: 60px;">
+                <div class="campus-title" style="display: flex; flex-direction: column; white-space: nowrap; justify-content: center;">
+                    <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--color-gray-900); line-height: 1;">Pinellas Technical College</span>
+                    <span style="font-family: var(--font-heading); font-size: 0.95rem; font-weight: 600; color: var(--color-green); line-height: 1; margin-top: 3px; letter-spacing: 0.5px; text-transform: uppercase;">St. Petersburg Campus</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="main-nav" aria-label="Campus Navigation">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="stpete-programs.html" class="main-nav__link">Programs <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="stpete-programs.html">St. Petersburg Programs</a></li>
+                                        <li><a href="programs.html">All Programs A&ndash;Z</a></li>
+                                        <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                                        <li><a href="adult-education-pathways.html">Distance Learning</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item"><a href="apprenticeships-workforce.html" class="main-nav__link">Apprenticeships</a></li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="stpete-admissions.html" class="main-nav__link">Admissions &amp; Aid <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="stpete-admissions.html#how-to-apply">How to Apply</a></li>
+                                        <li><a href="stpete-admissions.html#testing">Placement Testing</a></li>
+                                        <li><a href="stpete-admissions.html#financial-aid">FAFSA &amp; Financial Aid</a></li>
+                                        <li><a href="stpete-counselors.html">Meet Your Counselors</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="schedule-stpete.html" class="main-nav__link">Current Students <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="https://stpete.myptc.edu/" target="_blank" rel="noopener">Academic Calendar</a></li>
+                                        <li><a href="canvas-login.html">Canvas Login</a></li>
+                                        <li><a href="stpete-student-services.html">Student Services</a></li>
+                                        <li><a href="https://bncvirtual.com/ptc" target="_blank" rel="noopener">Campus Bookstore</a></li>
+                                        <li><a href="records-request.html">Record Request</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="main-nav__item main-nav__item--has-dropdown">
+                        <a href="stpete-about.html" class="main-nav__link">Campus Info <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+                        <div class="main-nav__dropdown main-nav__dropdown--narrow">
+                            <div class="dropdown__inner">
+                                <div class="dropdown__column">
+                                    <ul>
+                                        <li><a href="stpete-about.html">About This Campus</a></li>
+                                        <li><a href="campus-maps.html#stpete">Map &amp; Directions</a></li>
+                                        <li><a href="stpete-accreditation.html">Accreditation</a></li>
+                                        <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
+                                        <li><a href="consumer-information.html">Consumer Information</a></li>
+                                        <li><a href="stpete-contact.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a href="https://apply.myptc.edu/" class="btn btn--primary btn--sm site-header__cta" target="_blank" rel="noopener">Apply Now</a>
+                <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu" aria-expanded="false">
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                    <span class="mobile-toggle__bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- PAGE HEADER -->
+        <section class="page-header">
+            <div class="container">
+                <h1>St. Petersburg Campus Programs</h1>
+                <p>Every career and technical training program offered at the Pinellas Technical College St. Petersburg campus. Filter by career cluster to find your path.</p>
+            </div>
+        </section>
+
+        <!-- CONTENT -->
+        <section class="container">
+
+            <!-- Cross-links -->
+            <p class="campus-crosslink">
+                Looking at both campuses? See the <a href="programs.html">full A&ndash;Z directory</a>.
+                Prefer Clearwater? View <a href="clearwater-programs.html">Clearwater campus programs</a>.
+            </p>
+
+            <!-- Institution-specific accreditation &amp; consumer information -->
+            <div class="disclosures">
+                <h2>St. Petersburg Campus: Accreditation &amp; Consumer Information</h2>
+                <p>The Pinellas Technical College St. Petersburg campus is accredited by the Council on Occupational Education (COE). The programs below are those offered at the St. Petersburg campus. For this campus's official disclosures, see the links below.</p>
+                <div class="disclosures__links">
+                    <a href="stpete-accreditation.html"><i class="fas fa-award" aria-hidden="true"></i> Accreditation</a>
+                    <a href="stpete-tuition.html"><i class="fas fa-dollar-sign" aria-hidden="true"></i> Tuition &amp; Fees</a>
+                    <a href="stpete-financial-accountability.html"><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i> Financial Accountability</a>
+                    <a href="consumer-information.html"><i class="fas fa-circle-info" aria-hidden="true"></i> Consumer Information</a>
+                </div>
+            </div>
+
+            <!-- FILTER (cluster only) -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filter-cluster">Career Cluster</label>
+                    <select id="filter-cluster" class="filter-select">
+                        <option value="all">All Clusters</option>
+                        <option value="arts">Arts &amp; Audio/Visual</option>
+                        <option value="auto">Automotive &amp; Transportation</option>
+                        <option value="beauty">Beauty</option>
+                        <option value="business">Business &amp; Information Technology</option>
+                        <option value="childcare">Child Care</option>
+                        <option value="construction">Construction &amp; Design</option>
+                        <option value="health">Health Science</option>
+                        <option value="hospitality">Hospitality</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="publicworks">Public Works</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Screen-reader announcement of filter results -->
+            <p id="filter-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+
+            <!-- PROGRAMS LIST (St. Petersburg only) -->
+            <div class="programs-list" id="programs-container">
+                <div class="prog-card" data-cluster="auto">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-car" aria-hidden="true"></i> Automotive &amp; Transportation</span></div>
+                    <h3>Automotive Collision Technology Technician</h3>
+                    <p>Learn to repair, reconstruct and finish automobile bodies, fenders, and external features.</p>
+                    <a href="automotive-collision-technology-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="beauty">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-cut" aria-hidden="true"></i> Beauty</span></div>
+                    <h3>Barbering</h3>
+                    <p>Train in hair cutting, styling, facial hair grooming, and salon management.</p>
+                    <a href="barbering-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="construction">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-hard-hat" aria-hidden="true"></i> Construction &amp; Design</span></div>
+                    <h3>Building Trades and Construction Design</h3>
+                    <p>Hands-on training in carpentry, masonry, plumbing, and basic electrical skills for construction.</p>
+                    <a href="building-trades-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="childcare">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-child" aria-hidden="true"></i> Child Care</span></div>
+                    <h3>Child Care Center Operations</h3>
+                    <p>Earn your Director's Credential to manage child care facilities and lead staff.</p>
+                    <a href="child-care-center-operations-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="auto">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-truck" aria-hidden="true"></i> Automotive &amp; Transportation</span></div>
+                    <h3>Commercial Class B Driving</h3>
+                    <p>Training to operate heavy straight trucks, dump trucks, and passenger buses safely.</p>
+                    <a href="commercial-class-b-driving-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="auto">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-truck" aria-hidden="true"></i> Automotive &amp; Transportation</span></div>
+                    <h3>Commercial Vehicle Driving (CDL)</h3>
+                    <p>Comprehensive Class A CDL training for a career in commercial interstate trucking.</p>
+                    <a href="commercial-vehicle-driving-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="construction">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-drafting-compass" aria-hidden="true"></i> Construction &amp; Design</span></div>
+                    <h3>Computer-Aided Drawing &amp; Modeling</h3>
+                    <p>Learn AutoCAD, Revit, and SolidWorks to create architectural and engineering drafts.</p>
+                    <a href="computer-aided-drawing-modeling-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="business">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-laptop" aria-hidden="true"></i> Business &amp; Information Technology</span></div>
+                    <h3>Computer Systems &amp; Information Technology (CSIT)</h3>
+                    <p>Get certified in CompTIA A+, Network+, and Security+ handling modern hardware and networks.</p>
+                    <a href="computer-systems-it-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="business">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete &middot; Clearview</span><span class="tag"><i class="fas fa-laptop" aria-hidden="true"></i> Business &amp; Information Technology</span></div>
+                    <h3>Computer Systems &amp; Information Technology (CSIT)-IET at Clearview</h3>
+                    <p>Integrated Education and Training: earn the CSIT credential while completing GED and/or ESOL at the Clearview Adult Education Center.</p>
+                    <a href="computer-systems-it-clearview-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="beauty">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-cut" aria-hidden="true"></i> Beauty</span></div>
+                    <h3>Cosmetology</h3>
+                    <p>Full licensing program covering hair styling, chemical services, skin care, and nail care.</p>
+                    <a href="cosmetology-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-tooth" aria-hidden="true"></i> Health Science</span></div>
+                    <h3>Dental Assisting</h3>
+                    <p>Prepare for a fast-paced career assisting dentists, managing patient care, and taking x-rays.</p>
+                    <a href="dental-assisting-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="arts">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-photo-video" aria-hidden="true"></i> Arts &amp; Audio/Visual</span></div>
+                    <h3>Digital Media &amp; Multimedia Design</h3>
+                    <p>Learn the digital media production industry while mastering studio and field equipment and workflows.</p>
+                    <a href="digital-media-multimedia-design-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="childcare">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-child" aria-hidden="true"></i> Child Care</span></div>
+                    <h3>Early Childhood Education</h3>
+                    <p>Prepare to become a lead preschool teacher with national CDA credential training.</p>
+                    <a href="early-childhood-education-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="construction">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-bolt" aria-hidden="true"></i> Construction &amp; Design</span></div>
+                    <h3>Electricity</h3>
+                    <p>Master residential and commercial electrical wiring, code compliance, and power systems.</p>
+                    <a href="electricity-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-ambulance" aria-hidden="true"></i> Health Science</span></div>
+                    <h3>Emergency Medical Technician</h3>
+                    <p>Fast-track training for critical pre-hospital emergency medical care and transport.</p>
+                    <a href="emergency-medical-technician-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="beauty">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-spa" aria-hidden="true"></i> Beauty</span></div>
+                    <h3>Facials Specialty</h3>
+                    <p>Learn advanced skincare, makeup application, and spa treatments to become a licensed esthetician.</p>
+                    <a href="facials-specialty-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="construction">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-snowflake" aria-hidden="true"></i> Construction &amp; Design</span></div>
+                    <h3>Heating, Ventilation, Air-Conditioning/Refrigeration (HVAC/R) 1</h3>
+                    <p>Heating, ventilation, air conditioning, and refrigeration installation and repair.</p>
+                    <a href="hvacr-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="auto">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-car" aria-hidden="true"></i> Automotive &amp; Transportation</span></div>
+                    <h3>Master Automotive Service Technology 1</h3>
+                    <p>Comprehensive training in engines, electrical systems, brakes, steering, and suspension toward ASE certification.</p>
+                    <a href="master-automotive-service-technology-1-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="auto">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-car" aria-hidden="true"></i> Automotive &amp; Transportation</span></div>
+                    <h3>Master Automotive Service Technology 2</h3>
+                    <p>Advanced automotive training in engine performance, transmissions, drive train, and air conditioning.</p>
+                    <a href="master-automotive-service-technology-2-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-heartbeat" aria-hidden="true"></i> Health Science</span></div>
+                    <h3>Medical Coder/Biller</h3>
+                    <p>Learn ICD-10, CPT coding, and health insurance claim processing for healthcare facilities.</p>
+                    <a href="medical-coder-biller-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="beauty">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-hand-sparkles" aria-hidden="true"></i> Beauty</span></div>
+                    <h3>Nails Specialty</h3>
+                    <p>Train in manicures, pedicures, extensions, and nail art techniques to become a licensed technician.</p>
+                    <a href="nails-specialty-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="construction">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-wrench" aria-hidden="true"></i> Construction &amp; Design</span></div>
+                    <h3>Plumbing</h3>
+                    <p>Learn pipe fitting, fixture installation, and water/waste system maintenance.</p>
+                    <a href="plumbing-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-user-nurse" aria-hidden="true"></i> Health Science</span></div>
+                    <h3>Practical Nursing</h3>
+                    <p>Intensive program preparing students for the NCLEX-PN exam to become a licensed practical nurse.</p>
+                    <a href="practical-nursing-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="hospitality">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-utensils" aria-hidden="true"></i> Hospitality</span></div>
+                    <h3>Professional Culinary Arts &amp; Hospitality</h3>
+                    <p>Train in classical and modern cooking techniques, food safety, and kitchen management.</p>
+                    <a href="professional-culinary-arts-hospitality-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="publicworks">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-road" aria-hidden="true"></i> Public Works</span></div>
+                    <h3>Public Works</h3>
+                    <p>Training in municipal infrastructure maintenance, street repair, and heavy equipment operation.</p>
+                    <a href="public-works-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="childcare">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-child" aria-hidden="true"></i> Child Care</span></div>
+                    <h3>School Age Professional Certificate</h3>
+                    <p>Specialized training for before and after-school care providers managing K-5 students.</p>
+                    <a href="school-age-professional-certificate-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="health">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-heartbeat" aria-hidden="true"></i> Health Science</span></div>
+                    <h3>Surgical Technology</h3>
+                    <p>Learn sterile techniques, instrumentation, and operating room procedures to assist surgeons.</p>
+                    <a href="surgical-technology-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="manufacturing">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-fire" aria-hidden="true"></i> Manufacturing</span></div>
+                    <h3>Welding Technology</h3>
+                    <p>Learn SMAW, GMAW, FCAW, and GTAW welding processes for construction and manufacturing.</p>
+                    <a href="welding-stpete.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="prog-card" data-cluster="manufacturing">
+                    <div class="tags"><span class="tag campus-tag"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> St. Pete</span><span class="tag"><i class="fas fa-fire" aria-hidden="true"></i> Manufacturing</span></div>
+                    <h3>Welding Technology - Advanced</h3>
+                    <p>Specialized pipe welding, layout, and fabrication techniques for advanced manufacturing.</p>
+                    <a href="welding-advanced.html" class="prog-card-link">Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+
+                <div id="no-results-msg" class="no-results hidden">
+                    <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; color: var(--color-gray-400); display: block;" aria-hidden="true"></i>
+                    No programs match your selected cluster. Try adjusting your selection.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================
+         FOOTER
+    ============================================= -->
+    <footer class="site-footer" id="site-footer">
+        <div class="container">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <img src="assets/logos/PTC-Logo-RGB-horiz-tag-300ppi-3in.png" alt="Pinellas Technical College" class="footer__logo">
+                    <p class="footer__tagline"><strong>901 34th St S, St. Petersburg, FL 33711</strong><br>
+                    Phone: 727.893.2500<br>
+                    Preparing students for high-demand careers through hands-on, industry-certified training since 1962.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/pinellastechnical/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/PinellasTechCollege/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://x.com/PinellasTech" target="_blank" rel="noopener" aria-label="X (formerly Twitter)"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@pinellastechnicalcollege8910" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/school/pinellas-technical-college" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer__nav">
+                    <div class="footer__col">
+                        <p class="footer__col-title">Quick Links</p>
+                        <ul>
+                            <li><a href="stpete-programs.html">St. Petersburg Programs</a></li>
+                            <li><a href="stpete-admissions.html">Admissions</a></li>
+                            <li><a href="stpete-tuition.html">Tuition &amp; Aid</a></li>
+                            <li><a href="student-resources.html">Student Resources</a></li>
+                            <li><a href="stpete-about.html">About This Campus</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">St. Petersburg Links</p>
+                        <ul>
+                            <li><a href="schedule-stpete.html">Class Schedule</a></li>
+                            <li><a href="campus-maps.html#stpete">Campus Map &amp; Directions</a></li>
+                            <li><a href="stpete-student-services.html">Student Services</a></li>
+                            <li><a href="admissions.html#campus-tours">Schedule a Visit</a></li>
+                            <li><a href="stpete-staff-directory.html">Staff Directory</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__col">
+                        <p class="footer__col-title">Resources</p>
+                        <ul>
+                            <li><a href="consumer-information.html">Consumer Information</a></li>
+                            <li><a href="consumer-information.html#non-discrimination">Non-Discrimination</a></li>
+                            <li><a href="stpete-accreditation.html">Accreditation</a></li>
+                            <li><a href="careers.html">Careers at PTC</a></li>
+                            <li><a href="stpete-contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__accreditation">
+                <div class="footer__accred-item">
+                    <img src="assets/logos/1COElogo_BWtransbkgrd-04242024.png" alt="COE Accredited" class="footer__accred-logo">
+                    <span>Accredited by the Council on Occupational Education</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/Cognia.png" alt="Cognia Accredited" class="footer__accred-logo footer__accred-logo--invert" style="max-height: 30px;">
+                    <span>Accredited as part of Pinellas County Schools</span>
+                </div>
+                <div class="footer__accred-item">
+                    <img src="assets/logos/district-header-logo.svg" alt="Pinellas County Schools" class="footer__accred-logo pcsb-logo">
+                    <span>Part of Pinellas County Schools</span>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2026 Pinellas Technical College. All rights reserved.</p>
+                <p>Pinellas County Schools prohibits any and all forms of discrimination and harassment based on race, color, sex, religion, national origin, marital status, age, sexual orientation, or disability.</p>
+                <p><a href="consumer-information.html#non-discrimination">Privacy Policy</a> | <a href="consumer-information.html#accessibility">Accessibility</a> | <a href="sitemap.html">Sitemap</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cluster-only filtering (single campus page)
+        document.addEventListener('DOMContentLoaded', () => {
+            const clusterFilter = document.getElementById('filter-cluster');
+            const cards = document.querySelectorAll('.prog-card');
+            const noResultsMsg = document.getElementById('no-results-msg');
+            const filterStatus = document.getElementById('filter-status');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('cluster')) {
+                clusterFilter.value = urlParams.get('cluster');
+            }
+
+            function filterPrograms() {
+                const cluster = clusterFilter.value;
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const cardCluster = card.getAttribute('data-cluster');
+                    const matchCluster = (cluster === 'all') || (cardCluster === cluster);
+                    if (matchCluster) {
+                        card.classList.remove('hidden');
+                        visibleCount++;
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                noResultsMsg.classList.toggle('hidden', visibleCount !== 0);
+
+                if (filterStatus) {
+                    filterStatus.textContent = visibleCount === 0
+                        ? 'No programs match your selected cluster.'
+                        : visibleCount + (visibleCount === 1 ? ' program' : ' programs') + ' shown.';
+                }
+            }
+
+            clusterFilter.addEventListener('change', filterPrograms);
+            filterPrograms();
+        });
+    </script>
+</body>
+</html>
